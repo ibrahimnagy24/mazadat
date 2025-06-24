@@ -8,7 +8,6 @@ import '../../../theme/colors/styles.dart';
 import '../../../theme/text_styles/text_styles.dart';
 
 import '../../enums/enums.dart';
-import '../../extensions/extensions.dart';
 import '../buttons/custom_gradient_button_widget.dart';
 import '../misc/restart_widget.dart';
 

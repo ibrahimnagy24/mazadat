@@ -60,4 +60,19 @@ class AppStrings {
       'Phone cannot be empty please enter a valid phone';
   static const String pleaseEnterAValidPhoneFormat =
       'Please enter a valid phone format';
+  static const String passwordCannotBeEmpty = 'Password cannot be empty';
+  static const String yourPasswordMustIncludeAtLeastOneUppercaseLetter =
+      'Your password must include at least one uppercase letter';
+  static const String yourPasswordMustIncludeAtLeastOneLowercaseLetter =
+      'Your password must include at least one lowercase letter';
+  static const String yourPasswordMustIncludeAtLeastOneNumber =
+      'Your password must include at least one number';
+  static const String yourPasswordCannotContainSpaces =
+      'Your password cannot contain spaces';
+  static const String passwordIsTooShortItMustBeAtLeast8 =
+      'Password is too short it must be at least 8';
+  static const String yourPasswordMustIncludeAtLeastOneSpecialCharacter =
+      'Your password must include at least one special character';
+  static const String passwordsDonTMatchPleaseTryAgain =
+      'Passwords don\'t match please try again';
 }

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
-import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 
 import '../../../../core/utils/extensions/extensions.dart';
@@ -34,7 +31,7 @@ class VisitorScreen extends StatelessWidget {
           ),
           Center(
             child:
-                Image.asset('assets/lunchers/logo_for_splash.png', height: 150),
+                Image.asset('assets/launchers/logo_for_splash.png', height: 150),
           ).animate().fade(duration: 500.ms),
           // Center(
           //     child: SvgPicture.asset(

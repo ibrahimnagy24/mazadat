@@ -6,7 +6,6 @@ import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/theme/text_styles/app_font_size_styles.dart';
 
 import '../../../../../core/utils/enums/enums.dart';
-import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../change_password/data/params/change_password_route_params.dart';
 import '../../logic/verify_code_cubit.dart';

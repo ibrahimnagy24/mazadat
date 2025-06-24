@@ -63,7 +63,7 @@
 		<key>UIStatusBarHidden</key>
 		<true/>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<true/>
+		<false/>
 		<key>com.apple.security.network.client</key>
 		<true/>
 		<key>LSApplicationQueriesSchemes</key>

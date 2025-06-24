@@ -5,7 +5,6 @@ import '../../../../../core/app_core.dart';
 import '../../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
-import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/shimmer/shimmer_text_widget.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';

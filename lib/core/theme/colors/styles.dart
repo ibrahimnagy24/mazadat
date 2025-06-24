@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   //mazadat
-  static const Color kPrimary = Color.fromRGBO(81, 94, 50, 1);
+  static const Color kPrimary = Color.fromRGBO(64, 77, 38, 1);
   //mazadat
   static const Color kPrimary900 = Color.fromRGBO(46, 46, 46, 1);
   //mazadat

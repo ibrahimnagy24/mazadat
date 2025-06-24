@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../theme/colors/styles.dart';
 import '../../../theme/text_styles/text_styles.dart';
 
-import '../../extensions/extensions.dart';
 import 'default_button.dart';
 
 class CustomGradientButtonWidget extends StatefulWidget {

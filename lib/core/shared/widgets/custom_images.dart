@@ -3,19 +3,20 @@ import 'package:flutter_svg/svg.dart';
 import '../../theme/colors/styles.dart';
 import '../../utils/extensions/extensions.dart';
 
-Widget customImageIcon({
-  String? folderPath,
-  required String? imageName,
-  String? imagePath,
-  double? width,
-  double? height,
-  color,
-}) {
+Widget customImageIcon(
+    {String? folderPath,
+    required String imageName,
+    String? imagePath,
+    double? width,
+    double? height,
+    color,
+    BoxFit? fit}) {
   return Image.asset(
-    'assets/${folderPath ?? "images"}/$imageName.${imagePath ?? "png"}',
+    imageName,
     color: color,
     width: width ?? 30,
     height: height ?? 25,
+    fit: fit,
   );
 }
 

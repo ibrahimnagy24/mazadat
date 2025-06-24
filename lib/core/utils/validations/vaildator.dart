@@ -91,31 +91,31 @@ class PhoneValidator {
 class PasswordValidator {
   static String? passwordValidator(String? password) {
     if (password == null || password.isEmpty) {
-      return 'AppStrings.passwordCannotBeEmpty.tr';
+      return AppStrings.passwordCannotBeEmpty.tr;
     }
 
     if (!RegExp(r'[A-Z]').hasMatch(password)) {
-      return 'AppStrings.yourPasswordMustIncludeAtLeastOneUppercaseLetter.tr';
+      return AppStrings.yourPasswordMustIncludeAtLeastOneUppercaseLetter.tr;
     }
 
     if (!RegExp(r'[a-z]').hasMatch(password)) {
-      return 'AppStrings.yourPasswordMustIncludeAtLeastOneLowercaseLetter.tr';
+      return AppStrings.yourPasswordMustIncludeAtLeastOneLowercaseLetter.tr;
     }
 
     if (!RegExp(r'[0-9]').hasMatch(password)) {
-      return 'AppStrings.yourPasswordMustIncludeAtLeastOneNumber.tr';
+      return AppStrings.yourPasswordMustIncludeAtLeastOneNumber.tr;
     }
     if (password.contains(' ')) {
-      return 'AppStrings.yourPasswordCannotContainSpaces.tr';
+      return AppStrings.yourPasswordCannotContainSpaces.tr;
     }
     if (password.length < 8) {
-      return 'AppStrings.passwordIsTooShortItMustBeAtLeast8.tr';
+      return AppStrings.passwordIsTooShortItMustBeAtLeast8.tr;
     }
 
     final reg = RegExp(r'[!@#\$%\^&\*\(\)_\+\-=\[\]\{\};:' ',<>./?]');
 
     if (!reg.hasMatch(password)) {
-      return 'AppStrings.yourPasswordMustIncludeAtLeastOneSpecialCharacter.tr';
+      return AppStrings.yourPasswordMustIncludeAtLeastOneSpecialCharacter.tr;
     }
 
     return null;
@@ -125,10 +125,10 @@ class PasswordValidator {
 class PasswordConfirmationValidator {
   static String? passwordValidator(String? password, String? confirmPassword) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
-      return 'AppStrings.passwordCannotBeEmpty.tr';
+      return AppStrings.passwordCannotBeEmpty.tr;
     }
     if (password != confirmPassword) {
-      return 'AppStrings.passwordsDonTMatchPleaseTryAgain.tr';
+      return AppStrings.passwordsDonTMatchPleaseTryAgain.tr;
     }
 
     return null;

@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
+import '../../navigation/custom_navigation.dart';
 import '../../translation/all_translation.dart';
 
 extension Translate on String {
   String get tr => allTranslations.text(this);
+}
+
+extension ScreenScale on num {
+  double get w =>
+      MediaQuery.of(CustomNavigator.navigatorState.currentContext!).size.width *
+      (toDouble() / 390);
+  double get h =>
+      MediaQuery.of(CustomNavigator.navigatorState.currentContext!)
+          .size
+          .height *
+      (toDouble() / 844);
 }
 
 extension EmptyPadding on num {

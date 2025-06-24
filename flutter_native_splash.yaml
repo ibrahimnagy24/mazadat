@@ -1,0 +1,12 @@
+flutter_native_splash:
+  background_image_android:  assets/launchers/splash.png
+  background_image_ios:  assets/launchers/splash.png
+  image: assets/launchers/logo.png
+  android_12:
+    image: assets/launchers/logo.png
+  ios_content_mode: center
+  android_gravity: center
+  web_image_mode: center
+  fullscreen: true
+  android: true
+  ios: true
