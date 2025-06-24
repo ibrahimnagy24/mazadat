@@ -1,0 +1,21 @@
+postman// "https://dark-moon-356531.postman.co/workspace/Team-Workspace~cf0a6564-ec20-4a35-88e6-cf798a26a9c6/request/36256807-cc0c36d1-3037-430d-868a-9fa238f51fc8"
+
+figma "https://www.figma.com/design/Ll41adKyj2XTQiIrCwdFcw/Barq---%D8%A8%D8%B1%D9%82?node-id=1448-27896&t=Op9i8KdSsk9oUS2M-1"
+
+for lunch deeplink on emulator android
+"adb shell am start -W -a android.intent.action.VIEW -d "barq://app/join-room/ABC123" com.innova.mazaadat"
+
+for lunch deeplink on emulator ios
+"xcrun simctl openurl booted "barq://app/join-room/ABC123""
+
+for lunch deeplink on emulator using server configure
+adb shell am start -W -a android.intent.action.VIEW -d "https://barq.innoeg.com/join-room/ABC123" com.innova.mazaadat
+
+website for configure deeplink
+https://codewithandrea.com/articles/flutter-deep-links/
+
+standup meeting link
+https://meet.google.com/iys-yvmo-tzi
+
+gmail : mazadatteam@gmail.com
+password : welcome@123

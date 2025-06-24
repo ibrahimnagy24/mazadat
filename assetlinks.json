@@ -1,0 +1,13 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+     "namespace": "android_app",
+      "package_name": "com.innova.mazaadat",
+      "sha256_cert_fingerprints":
+      [
+        "84:BC:EA:74:6D:BB:33:C7:96:6F:21:B3:39:CE:D7:DC:44:92:05:17"
+      ,"63:DB:1E:60:0C:50:D2:05:F5:FA:F6:77:F4:99:C8:53:BB:07:97:85"
+      ,"84:BC:EA:74:6D:BB:33:C7:96:6F:21:B3:39:CE:D7:DC:44:92:05:17"
+    ]
+    }
+  }]

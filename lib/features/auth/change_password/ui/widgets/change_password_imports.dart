@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import '../../../../../core/utils/constant/app_constant.dart';
+import '../../../../../core/utils/validations/vaildator.dart';
+import '../../../../../core/utils/widgets/form_fields/default_password_form_field.dart';
+import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import '../../../shared/auth_subtitle_text.dart';
+import '../../../shared/auth_title_widget.dart';
+import '../../../shared/auth_title_bold_text.dart';
+import '../../data/params/change_password_route_params.dart';
+import '../../logic/change_password_cubit.dart';
+import '../../logic/change_password_state.dart';
+import 'change_password_button_widget.dart';
+part '../pages/change_password_screen.dart';
+part '../pages/change_password_screen_mobile_design.dart';

@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+class AppConfig {
+  // static const LOCALE = 'https://2f04-197-61-38-60.eu.ngrok.io/api/v1/';
+  static String appName = 'Mazadat';
+  static String BASE_URL = 'http://165.22.214.94:8083';
+  static String BASE_URL_STAGING = 'http://165.22.214.94:8083';
+  static String BASE_URL_PRODUCTION = 'http://165.22.214.94:8083';
+
+  static const BASE_URL_SHARE = 'http://165.22.214.94:8083/details/';
+
+  static const SHA1_DEBUG =
+      '84:BC:EA:74:6D:BB:33:C7:96:6F:21:B3:39:CE:D7:DC:44:92:05:17';
+  static const SHA1_RELEASE =
+      '63:DB:1E:60:0C:50:D2:05:F5:FA:F6:77:F4:99:C8:53:BB:07:97:85';
+  static const SHA256_RELEASE =
+      '77:AE:31:71:D6:4B:2F:FD:00:93:62:82:80:9E:43:A8:05:A1:C4:16:05:A9:64:DE:A8:AA:37:F2:D8:06:A0:8E';
+  static const SHA1_PROFILE =
+      '84:BC:EA:74:6D:BB:33:C7:96:6F:21:B3:39:CE:D7:DC:44:92:05:17';
+
+  static const ANDROID_CLIENT_ID = '107000000000000000000';
+  static const IOS_CLIENT_ID = '10700001230000000';
+
+  static const APP_LINK = 'https://barq.innoeg.com';
+
+  static const PUSHER_API_KEY = '7a6aa46f5b5135831c02';
+  static const PUSHER_API_CLUSTER = 'eu';
+  static const PUSHER_AUTH_ENDPOINT = 'https://barq.innoeg.com';
+
+  static const int maximunNumberOfQuestions = 36;
+  static const ScrollPhysics appPhysics = BouncingScrollPhysics();
+
+  static APP_DEEP_LINK_JOIN_ROOM(String gameCode) =>
+      'barq://app/join-room/$gameCode';
+}

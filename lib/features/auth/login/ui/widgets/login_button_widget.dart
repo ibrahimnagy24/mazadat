@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/app_core.dart';
+import '../../../../../core/navigation/custom_navigation.dart';
+import '../../../../../core/navigation/routes.dart';
+
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/enums/enums.dart';
+
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/widgets/buttons/default_button.dart';
+import '../../../verify_code/data/params/verify_code_route_params.dart';
+import '../../logic/login_cubit.dart';
+import '../../logic/login_state.dart';
+
+class LoginButtonWidget extends StatelessWidget {
+  const LoginButtonWidget({
+    super.key,
+    this.height,
+    this.width,
+    this.borderRadiousValue,
+    this.fontSize,
+  });
+  final double? height;
+  final double? width;
+  final double? borderRadiousValue;
+  final double? fontSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<LoginCubit, LoginState>(
+      listenWhen: (previous, current) =>
+          current is LoginError || current is LoginSucess,
+      listener: (context, state) {
+        if (state is LoginError) {
+          showErrorSnackBar(state.error.message, error: state.error);
+          if (state.error.message == 'INACTIVE_ACCOUNT') {
+            CustomNavigator.push(
+              Routes.VERIFY_CODE_SCREEN,
+              extra: VerifyCodeRouteParams(
+                phone: context.read<LoginCubit>().phone.text,
+                fromScreenEnum: VerifyCodeFromScreen.fromLogin,
+                countryCode: '+966',
+              ),
+            );
+          }
+        }
+        if (state is LoginSucess) {
+          // if (state.loginEntity.message != null) {
+          //   showSuccessToast(state.loginEntity.message);
+          // }
+          FocusScope.of(context).unfocus();
+
+          if (state.loginEntity.userStatus == UserStatus.active) {
+            CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
+          } else {
+            showErrorSnackBar('account is not active');
+          }
+        }
+      },
+      buildWhen: (previous, current) =>
+          current is LoginLoading ||
+          current is LoginSucess ||
+          current is LoginError,
+      builder: (context, state) {
+        final cubit = context.read<LoginCubit>();
+        return DefaultButton(
+          isLoading: state is LoginLoading,
+          text: AppStrings.login.tr,
+          onPressed: () {
+            if (cubit.isLoginValidate()) {
+              FocusScope.of(context).unfocus();
+              cubit.loginStatesHandled();
+            }
+          },
+          height: height,
+          width: width,
+          borderRadiusValue: borderRadiousValue,
+          fontSize: fontSize,
+        );
+      },
+    );
+  }
+}

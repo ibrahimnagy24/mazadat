@@ -1,0 +1,83 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/app_core.dart';
+import '../../../../../core/navigation/custom_navigation.dart';
+import '../../../../../core/navigation/routes.dart';
+import '../../../../../core/theme/text_styles/app_font_size_styles.dart';
+
+import '../../../../../core/utils/enums/enums.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/widgets/buttons/default_button.dart';
+import '../../../change_password/data/params/change_password_route_params.dart';
+import '../../logic/verify_code_cubit.dart';
+import '../../logic/verify_code_state.dart';
+
+class VerifyCodeButtonWidget extends StatelessWidget {
+  const VerifyCodeButtonWidget({
+    super.key,
+    this.height,
+    this.width,
+    this.borderRadiousValue,
+    this.fontSize,
+  });
+  final double? height;
+  final double? width;
+  final double? borderRadiousValue;
+  final double? fontSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<VerifyCodeCubit, VerifyCodeState>(
+      listenWhen: (previous, current) =>
+          current is VerifyCodeError || current is VerifyCodeSucess,
+      listener: (context, state) {
+        final cubit = context.read<VerifyCodeCubit>();
+        if (state is VerifyCodeError) {
+          showErrorSnackBar(state.error.message);
+        }
+        if (state is VerifyCodeSucess) {
+          FocusScope.of(context).unfocus();
+          // showSuccessToast(state.data.message);
+          switch (cubit.resetPasswordParams.fromScreenEnum) {
+            case VerifyCodeFromScreen.fromLogin:
+              CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
+              break;
+            case VerifyCodeFromScreen.fromForgetPassword:
+              CustomNavigator.push(
+                Routes.CHANGE_PASSWORD_SCREEN,
+                replace: true,
+                extra: ChangePasswordRouteParams(
+                    email: cubit.resetPasswordParams.phone),
+              );
+              break;
+            case VerifyCodeFromScreen.fromRegister:
+              CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
+              break;
+          }
+        }
+      },
+      buildWhen: (previous, current) =>
+          current is VerifyCodeLoading ||
+          current is VerifyCodeSucess ||
+          current is VerifyCodeError,
+      builder: (context, state) {
+        final cubit = context.read<VerifyCodeCubit>();
+        return DefaultButton(
+          isLoading: state is VerifyCodeLoading,
+          text: 'AppStrings.confirmation.tr',
+          onPressed: () {
+            if (cubit.isResetValidate()) {
+              FocusScope.of(context).unfocus();
+              cubit.verifyCodeStatesHandled();
+            }
+          },
+          height: height,
+          width: width,
+          borderRadiusValue: borderRadiousValue,
+          fontSize: fontSize ?? AppFontSizes.fsM,
+          fontWeight: FontWeight.w500,
+        );
+      },
+    );
+  }
+}

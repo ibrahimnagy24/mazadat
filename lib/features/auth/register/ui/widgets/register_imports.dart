@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/theme/colors/styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import '../../../../../core/utils/widgets/misc/custom_screen_type_layout_widget.dart';
+import '../../../shared/auth_title_image_banner_widget.dart';
+import '../../logic/register_cubit.dart';
+import '../../logic/register_state.dart';
+import 'already_have_account_widget.dart';
+import 'privacy_and_conditions_widget.dart';
+import 'create_account_button_widget.dart';
+import 'register_form_field_widget.dart';
+
+part '../pages/register_screen.dart';
+part '../pages/register_screen_mobile_design.dart';

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883820146071",
+    "project_id": "barq-test",
+    "storage_bucket": "barq-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883820146071:android:fcb100ec285d944b5ca8d2",
+        "android_client_info": {
+          "package_name": "com.innova.mazaadat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP-1GyVPUSgM611y3RZmHMp4AtbonDLto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
