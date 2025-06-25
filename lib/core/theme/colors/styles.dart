@@ -10,15 +10,26 @@ abstract class AppColors {
   //mazadat
   static const Color kPrimary300 = Color.fromRGBO(94, 196, 237, 1);
   //mazadat
-  static const Color kPrimary2900 = Color.fromRGBO(6, 70, 96, 1);
+  static const Color kPrimary200 = Color.fromRGBO(138, 147, 118, 1);
   //mazadat
   static const Color kPrimary400 = Color.fromRGBO(212, 239, 252, 1);
   //mazadat
   static const Color iconSecondary = Color.fromRGBO(243, 220, 154, 1);
   //mazadat
-  static const Color iconDefault400 = Color.fromRGBO(162, 162, 162, 1);
+  static const Color iconDefault = Color.fromRGBO(162, 162, 162, 1);
+  static const Color background = Color.fromRGBO(238, 239, 235, 1);
+  static const Color fillColor = Color.fromRGBO(255, 255, 255, 0.5);
+  static const Color innerColor = Color.fromRGBO(238, 239, 236, 1);
+  static const border = Color.fromRGBO(209, 209, 209, 1);
+  static const borderNeutralSecondary = Color.fromRGBO(232, 232, 232, 1);
+  static const Color tertiary = Color.fromRGBO(57, 40, 42, 1);
 
-  //barq
+  static const textDefault = Color.fromRGBO(46, 46, 46,1);
+  static const textSecondaryParagraph = Color.fromRGBO(162, 162, 162, 1);
+  static const textPrimaryParagraph = Color.fromRGBO(116, 116, 116, 1);
+  static const textPrimary = Color.fromRGBO(81, 94, 50, 1);
+
+  //barq57, 40, 42, 1
   static const Color kPrimary1000 = Color(0xff1B0D31);
   //barq
   static const Color kPrimary50 = Color(0xffF3EBFF);

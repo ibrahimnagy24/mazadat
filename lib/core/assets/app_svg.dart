@@ -16,4 +16,5 @@ class AppSvg {
   static const String calendar = '$_svgPath/calendar.svg';
   //mazadat
   static const String saudiArabiaSymbol = '$_svgPath/Saudi_Riyal_Symbol.svg';
+  static const String logo = '$_svgPath/logo.svg';
 }

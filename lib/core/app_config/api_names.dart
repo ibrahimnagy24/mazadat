@@ -26,5 +26,7 @@ abstract class Endpoints {
 
 //-------------------------------NOT TESTED------------------------------------\\
 
+  static const String cities = 'cities';
+  static const String ages = 'ages';
   static const String googleLogin = 'client/google';
 }

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: depend_on_referenced_packages
 import 'package:vector_math/vector_math_64.dart' as vector;
 
+import '../../../theme/text_styles/app_font_size_styles.dart';
 import '../loading/adaptive_cirluer_progress.dart';
 import '../../../theme/colors/styles.dart';
 
@@ -23,7 +24,7 @@ class DefaultButton extends StatelessWidget {
     this.textColor,
     this.isLoading = false,
     this.fontWeight,
-    this.height,
+    this.height = 50,
     this.width,
     this.borderWidth,
     this.maxheight,
@@ -62,7 +63,7 @@ class DefaultButton extends StatelessWidget {
             onTap: () {},
             duration: animationDuration ?? const Duration(milliseconds: 1500),
             width: width ?? MediaQuery.of(context).size.width,
-            height: height ?? 50.5,
+            height: height ?? 50,
             borderRadius: borderRadiusValue ?? 15,
             child: ElevatedButton(
               onPressed: isLoading ? () {} : onPressed ?? () {},
@@ -97,8 +98,8 @@ class DefaultButton extends StatelessWidget {
                 style: textStyle ??
                     GoogleFonts.notoSans(
                       color: textColor ?? AppColors.kWhite,
-                      fontSize: fontSize ?? 15,
-                      fontWeight: fontWeight ?? FontWeight.w500,
+                      fontSize: fontSize ?? AppFontSizes.fsM,
+                      fontWeight: fontWeight ?? FontWeight.w700,
                     ),
               ),
             ),
@@ -110,7 +111,7 @@ class DefaultButton extends StatelessWidget {
                   backgroundColor ?? AppColors.kPrimary),
               side: side,
               minimumSize: WidgetStateProperty.all(Size(
-                  width ?? MediaQuery.of(context).size.width, height ?? 45)),
+                  width ?? MediaQuery.of(context).size.width, height ?? 50)),
               padding: WidgetStateProperty.all(
                   padding ?? const EdgeInsets.symmetric(horizontal: 5)),
               elevation: WidgetStateProperty.all(elevation ?? 1),
@@ -138,8 +139,8 @@ class DefaultButton extends StatelessWidget {
                       style: textStyle ??
                           GoogleFonts.notoSans(
                             color: textColor ?? AppColors.kWhite,
-                            fontSize: fontSize ?? 15,
-                            fontWeight: fontWeight ?? FontWeight.w500,
+                            fontSize: fontSize ?? AppFontSizes.fsM,
+                            fontWeight: fontWeight ?? FontWeight.w700,
                           ),
                     ),
           );

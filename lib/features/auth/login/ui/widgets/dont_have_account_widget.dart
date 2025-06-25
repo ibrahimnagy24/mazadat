@@ -19,12 +19,12 @@ class DontHaveAccountWidget extends StatelessWidget {
       children: [
         MainText(
           text: AppStrings.donthaveanaccount.tr,
-          style: AppTextStyles.bodyXsReq.copyWith(color: AppColors.kGeryText3),
+          style: AppTextStyles.textMdRegular,
         ),
         const SizedBox(width: 5),
         MainText(
           text: AppStrings.createANewAccount.tr,
-          style: AppTextStyles.bodyXsMed,
+          style: AppTextStyles.textMdBold,
           onTap: () {
             CustomNavigator.push(Routes.REGISTER_SCREEN);
           },

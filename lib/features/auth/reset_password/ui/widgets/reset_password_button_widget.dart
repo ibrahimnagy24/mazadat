@@ -57,7 +57,7 @@ class ResetPasswordButtonWidget extends StatelessWidget {
         final cubit = context.read<ResetPasswordCubit>();
         return DefaultButton(
           isLoading: state is ResetPasswordLoading,
-          text: AppStrings.Continue.tr,
+          text: AppStrings.next.tr,
           onPressed: () {
             if (cubit.isResetValidate()) {
               FocusScope.of(context).unfocus();

@@ -19,13 +19,13 @@ class CreateAccountButtonWidget extends StatelessWidget {
     this.width,
     this.borderRadiousValue,
     this.fontSize,
-    this.animationBorderRadious,
+    this.animationBorderRadius,
   });
   final double? height;
   final double? width;
   final double? borderRadiousValue;
   final double? fontSize;
-  final double? animationBorderRadious;
+  final double? animationBorderRadius;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(

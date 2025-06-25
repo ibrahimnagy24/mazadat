@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/assets/app_images.dart';
+import '../../../core/assets/app_svg.dart';
+import '../../../core/shared/widgets/custom_images.dart';
 import '../../../core/theme/text_styles/text_styles.dart';
 
 import '../../../core/utils/extensions/extensions.dart';
+import '../../../core/utils/extensions/media_query_helper.dart';
 import '../../../core/utils/widgets/text/main_text.dart';
 
 class AuthTitleImageBannerWidget extends StatelessWidget {
@@ -18,54 +21,51 @@ class AuthTitleImageBannerWidget extends StatelessWidget {
   final Widget? body;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          AppImages.menShakeHand,
-          width: MediaQuery.sizeOf(context).width,
-        ),
-        SafeArea(
-          child: Padding(
-            padding: const EdgeInsetsDirectional.only(
-              start: 8,
-              top: 27,
+    return Container(
+      width: MediaQueryHelper.width,
+      padding: EdgeInsetsDirectional.only(
+        start: 18.w,
+        end: 18.w,
+        top: 24.w,
+        bottom: 24.w,
+      ),
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(
+              AppImages.authHeaderBk,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    MainText(
-                      text: 'Mazadat',
-                      style: AppTextStyles.exoW700SizeMediumWhite,
-                    ),
-                    8.sbW,
-                    // SvgPicture.asset(
-                    //   AppSvg.logo,
-                    //   height: 18,
-                    //   width: 18,
-                    // )
-                  ],
-                ),
-                16.sbH,
-                MainText(
-                  text: title ?? 'AppStrings.welcomeToTheWorldOfAuctions.tr',
-                  style: AppTextStyles.headingLBold,
-                  textAlign: TextAlign.start,
-                ),
-                12.sbH,
-                MainText(
-                  text: subtitle ??
-                      'AppStrings.registerYourAccountAndStayCloseToTheStrongestAuctions.tr',
-                  style: AppTextStyles.bodyXsReq,
-                  textAlign: TextAlign.start,
-                ),
-                if (body != null) body!,
-              ],
+            fit: BoxFit.cover),
+      ),
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            customImageIconSVG(
+              imageName: AppSvg.logo,
+              height: 75.h,
+              width: 105.w,
             ),
-          ),
+            if (title != null) ...[
+              16.sbH,
+              MainText(
+                text: title ?? '',
+                style: AppTextStyles.headingLBold,
+                textAlign: TextAlign.start,
+              ),
+            ],
+            if (subtitle != null) ...[
+              12.sbH,
+              MainText(
+                text: subtitle ?? '',
+                style: AppTextStyles.bodyXsReq,
+                textAlign: TextAlign.start,
+              ),
+            ],
+            if (body != null) body!,
+          ],
         ),
-      ],
+      ),
     );
   }
 }

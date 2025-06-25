@@ -8,6 +8,8 @@ import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../static_pages/data/params/static_page_params.dart';
 import '../../logic/register_cubit.dart';
 import '../../logic/register_state.dart';
@@ -20,8 +22,6 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
   final double? fontSize;
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<RegisterCubit>();
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -30,25 +30,27 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
               current is AgreePolicyAndConditionsState,
           builder: (context, state) {
             return Checkbox.adaptive(
-              value: cubit.agreePolicyAndConditions,
-              activeColor: AppColors.kPrimary700,
-              checkColor: AppColors.kWhite,
+              value: context.read<RegisterCubit>().agreePolicyAndConditions,
+              activeColor: AppColors.background,
+              checkColor: AppColors.kPrimary,
               fillColor: WidgetStateProperty.resolveWith<Color>(
                   (Set<WidgetState> states) {
                 if (states.contains(WidgetState.selected)) {
-                  return AppColors.kPrimary700;
+                  return AppColors.background;
                 }
-                return Colors.white;
+                return AppColors.background;
               }),
               onChanged: (value) {
-                cubit.agreePolicyAndConditionsFunction();
+                context
+                    .read<RegisterCubit>()
+                    .agreePolicyAndConditionsFunction();
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),
-                side: const BorderSide(color: AppColors.kOpacityGrey),
+                side: const BorderSide(color: AppColors.kPrimary),
               ),
               side: const BorderSide(
-                color: AppColors.kOpacityGrey,
+                color: AppColors.kPrimary,
                 width: 1,
               ),
             );
@@ -59,32 +61,20 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: mainAppBloc.isArabic
-                      ? 'أنت موافق وقريت'
-                      : 'You agree and have read',
+                  text: '${AppStrings.youAgreeAndHaveRead.tr} ',
                   // text: AppStrings.pleaseCheckTermsAndConditions.tr,
-                  style: AppTextStyles.bodyXsReq.copyWith(
-                    fontSize: fontSize ?? 14,
-                    color: AppColors.kGeryText6,
-                  ),
+                  style: AppTextStyles.textMdRegular,
                 ),
-                const TextSpan(text: ' '),
                 TextSpan(
-                  text: mainAppBloc.isArabic
-                      ? 'شروطنا وسياسة الخصوصية'
-                      : 'our Terms and Privacy Policy',
-                  // text: AppStrings.termsAndConditions.tr,
-                  style: AppTextStyles.bodyXsMed.copyWith(
-                    fontSize: fontSize ?? 14,
-                    color: AppColors.kPrimary500,
-                  ),
+                  text: AppStrings.ourTermsAndPrivacyPolicy.tr,
+                  style: AppTextStyles.textSmSemibold,
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       CustomNavigator.push(
                         Routes.STATIC_PAGE,
-                        extra: const StaticPageParams(
+                        extra: StaticPageParams(
                           url: Endpoints.privacyAndPolicy,
-                          title: 'AppStrings.policyPrivacy',
+                          title: AppStrings.policyPrivacy.tr,
                         ),
                       );
                     },
@@ -92,11 +82,7 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
                 if (mainAppBloc.isArabic)
                   TextSpan(
                     text: ' حقّنا ',
-                    // text: AppStrings.pleaseCheckTermsAndConditions.tr,
-                    style: AppTextStyles.bodyXsReq.copyWith(
-                      fontSize: fontSize ?? 14,
-                      color: AppColors.kGeryText6,
-                    ),
+                    style: AppTextStyles.textMdRegular,
                   ),
               ],
             ),

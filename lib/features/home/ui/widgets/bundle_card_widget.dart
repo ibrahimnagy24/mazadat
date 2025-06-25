@@ -17,7 +17,7 @@ class BundleCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppRadiuos.rM),
+        borderRadius: BorderRadius.circular(AppRadius.rM),
         border: Border.all(color: AppColors.borderDefault),
         color: AppColors.kWhite,
       ),
@@ -57,7 +57,7 @@ class _BundleImageWidget extends StatelessWidget {
       height: 80,
       width: 80,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppRadiuos.rS),
+        borderRadius: BorderRadius.circular(AppRadius.rS),
         color: AppColors.kPrimary300,
         gradient: const LinearGradient(
           colors: [
@@ -89,7 +89,7 @@ class _BundleTitleWidget extends StatelessWidget {
           child: MainText(
             text: 'مزاد سيارات نقل',
             style:
-                AppTextStyles.bodyMBold.copyWith(color: AppColors.kPrimary2900),
+                AppTextStyles.bodyMBold.copyWith(color: AppColors.kPrimary200),
             maxLines: 1,
           ),
         ),

@@ -56,7 +56,7 @@ class AppCore {
                 children: [
                   if (notification.iconName != null)
                     customImageIconSVG(
-                        imageName: notification.iconName, color: Colors.white),
+                        imageName: notification.iconName!, color: Colors.white),
                   if (notification.iconName != null) const SizedBox(width: 8),
                   Expanded(
                     child: Text(

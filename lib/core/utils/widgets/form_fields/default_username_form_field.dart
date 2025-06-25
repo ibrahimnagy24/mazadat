@@ -36,20 +36,9 @@ class DefaultUsernameFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: needUserName ? titleText ?? AppStrings.userName.tr : null,
-      hintStyle: AppTextStyles.balooBhaijaan2W400Size14GreyText3.copyWith(
-        fontSize: hintFontSize ?? 14,
-      ),
-      style: AppTextStyles.bodyXsReq.copyWith(
-        fontSize: titleFontSize ?? 14,
-        color: AppColors.kPrimary900,
-      ),
-      titleStyle: AppTextStyles.bodyXsReq.copyWith(
-        fontSize: titleFontSize,
-        color: AppColors.kGeryText,
-      ),
-      hintText: hintText ?? '${AppStrings.enterYourName.tr}...',
+      hintText:   '${hintText??AppStrings.enterYourName.tr}...',
       // validator: (value) => validateEmail(value),
-      borderRadious: borderRadious ?? AppRadiuos.rS,
+      borderRadius: borderRadious ?? AppRadius.rS,
       keyboardType: TextInputType.name,
       controller: controller,
       readOnly: readonly,

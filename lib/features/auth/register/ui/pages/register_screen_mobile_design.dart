@@ -16,34 +16,41 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AuthTitleImageBannerWidget(
-              title: AppStrings.welcome.tr,
-              subtitle:
-                  AppStrings.loginAndStartBiddingOnExclusiveOpportunities.tr,
-            ),
+            const AuthTitleImageBannerWidget(),
             Expanded(
               child: Transform.translate(
                 offset: const Offset(0, -20),
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: AppColors.kWhite,
+                    color: AppColors.background,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(16),
-                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(24),
+                      topLeft: Radius.circular(24),
                     ),
                   ),
-                  padding: const EdgeInsets.all(24),
-                  child: const SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        RegisterFormFieldWidget(),
-                        SizedBox(height: 20),
-                        PrivacyAndConditionsWidget(),
-                        CreateAccountButtonWidget(),
-                        SizedBox(height: 12),
-                        AlreadyHaveAccountWidget(),
-                      ],
-                    ),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: SingleChildScrollView(
+                    child: StreamBuilder<int>(
+                        stream: context.read<RegisterCubit>().stepStream,
+                        builder: (context, snapshot) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AuthHeaderContent(
+                                  title: AppStrings.registerHeader.tr),
+                              const RegisterProgressIndicator(),
+                              24.sbH,
+                              if (snapshot.data == 0)
+                                const RegisterFieldStep1()
+                              else
+                                const RegisterFieldStep2(),
+                              20.sbH,
+                              const RegisterActions(),
+                              20.sbH,
+                              const Center(child: AlreadyHaveAccountWidget()),
+                            ],
+                          );
+                        }),
                   ),
                 ),
               ),

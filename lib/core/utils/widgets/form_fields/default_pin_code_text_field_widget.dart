@@ -67,7 +67,7 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
       enableActiveFill: true,
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
-        borderRadius: BorderRadius.circular(borderRadious ?? AppRadiuos.rS),
+        borderRadius: BorderRadius.circular(borderRadious ?? AppRadius.rS),
         fieldOuterPadding: const EdgeInsets.all(0),
         fieldHeight: fieldHeight ?? 60,
         fieldWidth: fieldWidth ?? 60,

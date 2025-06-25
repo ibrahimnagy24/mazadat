@@ -10,12 +10,30 @@ class UserEnumsConverter {
     }
   }
 
+  static GenderTypes stringToGender(String value) {
+    switch (value) {
+      case 'male':
+        return GenderTypes.male;
+      default:
+        return GenderTypes.female;
+    }
+  }
+
   static String userTypeToString(UserType value) {
     switch (value) {
       case UserType.user:
         return 'USER';
       case UserType.visitor:
         return 'visitor';
+    }
+  }
+
+  static String genderTypeToString(GenderTypes value) {
+    switch (value) {
+      case GenderTypes.male:
+        return 'MALE';
+      case GenderTypes.female:
+        return 'FEMALE';
     }
   }
 

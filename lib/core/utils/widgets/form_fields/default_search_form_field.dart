@@ -6,7 +6,7 @@ import '../../../theme/radiuos/app_radiuos.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
-import '../../validations/vaildator.dart';
+import '../../validations/validator.dart';
 import 'default_form_field.dart';
 
 class DefaultSearchFormField extends StatelessWidget {
@@ -51,7 +51,7 @@ class DefaultSearchFormField extends StatelessWidget {
       validator: needValidation
           ? (value) => EmailValidator.emailValidator(value)
           : null,
-      borderRadious: borderRadious ?? AppRadiuos.rS,
+      borderRadius: borderRadious ?? AppRadius.rS,
       keyboardType: TextInputType.emailAddress,
       controller: controller,
       onTapOutside: (p0) {},

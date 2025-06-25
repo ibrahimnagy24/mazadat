@@ -31,7 +31,7 @@ class LoginButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is LoginError || current is LoginSucess,
+          current is LoginError || current is LoginSuccess,
       listener: (context, state) {
         if (state is LoginError) {
           showErrorSnackBar(state.error.message, error: state.error);
@@ -46,7 +46,7 @@ class LoginButtonWidget extends StatelessWidget {
             );
           }
         }
-        if (state is LoginSucess) {
+        if (state is LoginSuccess) {
           // if (state.loginEntity.message != null) {
           //   showSuccessToast(state.loginEntity.message);
           // }
@@ -61,7 +61,7 @@ class LoginButtonWidget extends StatelessWidget {
       },
       buildWhen: (previous, current) =>
           current is LoginLoading ||
-          current is LoginSucess ||
+          current is LoginSuccess ||
           current is LoginError,
       builder: (context, state) {
         final cubit = context.read<LoginCubit>();

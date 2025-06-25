@@ -1,27 +1,38 @@
 class AppStrings {
-  static const String firstName = 'First name';
   static const String welcomeToTheWorldOfAuctions =
       'Welcome to the world of auctions';
   static const String registerYourAccountAndStayCloseToTheStrongestAuctions =
       'Register your account and stay close to the strongest auctions';
   static const String welcome = 'Welcome';
-  static const String loginAndStartBiddingOnExclusiveOpportunities =
-      'Log in and start bidding on exclusive opportunities.';
+  static const String loginHeader = 'loginHeader';
+  static const String loginSubHeader = 'loginSubHeader';
+
+  static const String registerHeader = 'new account';
+
   static const String mobileNumber = 'Mobile number';
   static const String rememberMe = 'Remember me';
   static const String donthaveanaccount = "Don't have an account?";
   static const String loginAsAVisitor = 'Login as a visitor';
+  static const String or = 'or';
   static const String example = 'Example';
+
+  static const String firstName = 'First name';
+  static const String enterFirstName = 'Enter first name here';
   static const String lastName = 'Last name';
+  static const String enterLastName = 'Enter last name here';
   static const String alreadyHaveAnAccount = 'Already have an account?';
+  static const String youAgreeAndHaveRead = 'You agree and have read';
+  static const String ourTermsAndPrivacyPolicy = 'our Terms and Privacy Policy';
+
   static const String veryStrong = 'Very Strong';
   static const String verificationCode = 'verification code';
   static const String a4DigitVerificationCodeHasBeenSent =
       'A 4-digit verification code has been sent to your mobile number.';
   static const String confirmMobileNumber = 'Confirm mobile number';
-  static const String pleaseEnterYourMobileNumberToSendNumVeri =
+  static const String pleaseEnterYourMobileNumberToSendNumVerify =
       'Please enter your mobile number to send a phone number confirmation message';
   static const String Continue = 'Continue';
+  static const String next = 'next';
   static const String chooseYourFavouriteList = 'Choose your favorite list';
   static const String chooseYourFavouriteListSubtitle =
       'Choose the categories that interest you and enter the world of auctions with a unique experience.';
@@ -75,4 +86,22 @@ class AppStrings {
       'Your password must include at least one special character';
   static const String passwordsDonTMatchPleaseTryAgain =
       'Passwords don\'t match please try again';
+
+  static const String policyPrivacy = 'Policy Privacy';
+  static const String city = 'City';
+  static const String selectCity = 'Select City';
+
+  static const String age = 'Age';
+  static const String selectAge = 'Select Age';
+  static const String selectAgeGroup = 'Select age group';
+
+  static const String gender = 'Gender';
+  static const String selectGender = 'Select Gender';
+  static const String isRequired = 'is Required';
+  static const String loading = 'Loading';
+  static const String somethingWentWrong = 'Oops, Something went wrong!';
+  static const String no_data = 'No Data!';
+  static const String confirm = 'Confirm';
+  static const String submit = 'Submit';
+  static const String cancel = 'Cancel';
 }

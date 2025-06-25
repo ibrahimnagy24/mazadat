@@ -13,15 +13,62 @@ abstract class AppTextStyles {
   static const TextStyle w500 = TextStyle(fontWeight: FontWeight.w500);
 //MAZADAT
 //----------------------------------EXOW700----------------------------------//
+
+  static TextStyle displayMdBold = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsXL,
+    color: AppColors.kPrimary,
+  );
+
+  static TextStyle heading = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsL,
+    color: AppColors.textDefault,
+  );
+  static TextStyle textMdBold = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle textSmSemibold = const TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: AppFontSizes.xxs,
+    color: AppColors.kPrimary,
+  );
+  static TextStyle textMdMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textSecondaryParagraph,
+  );
+  static TextStyle textXLMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.textDefault,
+  );
+
+  static TextStyle textMdRegular = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textPrimaryParagraph,
+  );
+
+  static TextStyle textLgRegular = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsS,
+    color: AppColors.textSecondaryParagraph,
+  );
+
   static TextStyle exoW700SizeMediumWhite = GoogleFonts.exo(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsM,
     color: AppColors.kWhite,
     letterSpacing: 0,
   );
+
   static TextStyle headingLBold = GoogleFonts.notoSans(
     fontWeight: FontWeight.w700,
-    fontSize: AppFontSizes.fsL,
+    fontSize: AppFontSizes.fsXL,
     color: AppColors.kWhite,
     letterSpacing: 0,
   );

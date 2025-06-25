@@ -48,7 +48,7 @@ class AuctionContent extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: AppColors.kOpacityGrey3,
-                  borderRadius: BorderRadius.circular(AppRadiuos.rM),
+                  borderRadius: BorderRadius.circular(AppRadius.rM),
                   border: Border.all(color: AppColors.kOpacityGrey),
                 ),
                 padding:
@@ -85,13 +85,13 @@ class AuctionContent extends StatelessWidget {
                             children: [
                               Icon(
                                 Iconsax.clock,
-                                color: AppColors.iconDefault400,
+                                color: AppColors.iconDefault,
                                 size: 14,
                               ),
                               SizedBox(width: 4),
                               MainText(
                                 text: 'ينتهي بعد',
-                                color: AppColors.iconDefault400,
+                                color: AppColors.iconDefault,
                               )
                             ],
                           ),
@@ -129,7 +129,7 @@ class AuctionContent extends StatelessWidget {
                         children: [
                           const MainText(
                             text: 'السعر الإفتتاحي',
-                            color: AppColors.iconDefault400,
+                            color: AppColors.iconDefault,
                           ),
                           const SizedBox(height: 4),
                           PriceWidgetWithFlagWidget(
@@ -217,7 +217,7 @@ class AuctionContent extends StatelessWidget {
                           text: 'السعر الحالي',
                           style: AppTextStyles
                               .balooBhaijaan2W400Size12kOpacityGrey4
-                              .copyWith(color: AppColors.iconDefault400),
+                              .copyWith(color: AppColors.iconDefault),
                         ),
                       ),
                     ),
@@ -229,7 +229,7 @@ class AuctionContent extends StatelessWidget {
                 children: [
                   const Icon(
                     Iconsax.info_circle,
-                    color: AppColors.iconDefault400,
+                    color: AppColors.iconDefault,
                     size: 14,
                   ),
                   const SizedBox(width: 4),

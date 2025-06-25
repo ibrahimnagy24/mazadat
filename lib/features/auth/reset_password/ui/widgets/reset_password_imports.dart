@@ -10,6 +10,7 @@ import '../../../../../core/utils/widgets/form_fields/default_phone_form_field.d
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../../../core/utils/widgets/misc/custom_screen_type_layout_widget.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
+import '../../../shared/auth_header_content.dart';
 import '../../logic/reset_password_cubit.dart';
 import '../../logic/reset_password_state.dart';
 import 'reset_password_button_widget.dart';

@@ -8,7 +8,7 @@ import '../../../theme/text_styles/text_styles.dart';
 
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
-import '../../validations/vaildator.dart';
+import '../../validations/validator.dart';
 import 'default_form_field.dart';
 
 class DefaultPhoneFormField extends StatelessWidget {
@@ -37,17 +37,9 @@ class DefaultPhoneFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: AppStrings.mobileNumber.tr,
-      hintStyle: AppTextStyles.balooBhaijaan2W400Size14GreyText3.copyWith(
-        fontSize: hintFontSize ?? 14,
-      ),
-      style: AppTextStyles.bodyXsReq.copyWith(
-        fontSize: titleFontSize ?? 14,
-        color: AppColors.kPrimary900,
-      ),
-      titleStyle: AppTextStyles.bodyXsReq.copyWith(
-        fontSize: titleFontSize,
-        color: AppColors.kGeryText,
-      ),
+      hintStyle: AppTextStyles.textMdRegular,
+      style: AppTextStyles.textMdMedium.copyWith(color: AppColors.kBlack),
+      titleStyle: AppTextStyles.textMdRegular,
       prefixIcon: Container(
         width: 64,
         height: 53,
@@ -59,12 +51,17 @@ class DefaultPhoneFormField extends StatelessWidget {
           end: 8,
         ),
         decoration: const BoxDecoration(
-          color: AppColors.kOpacityGrey,
-          borderRadius: BorderRadiusDirectional.only(
-            topStart: Radius.circular(AppRadiuos.rS),
-            bottomStart: Radius.circular(AppRadiuos.rS),
-          ),
-        ),
+            color: AppColors.fillColor,
+            borderRadius: BorderRadiusDirectional.only(
+              topStart: Radius.circular(AppRadius.rS),
+              bottomStart: Radius.circular(AppRadius.rS),
+            ),
+            border: Border(
+              left:
+                  BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
+              right:
+                  BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
+            )),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         alignment: AlignmentDirectional.center,
         child: SvgPicture.asset(AppSvg.saudiArabiaFlag),
@@ -74,7 +71,8 @@ class DefaultPhoneFormField extends StatelessWidget {
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
       ],
-      borderRadious: borderRadious ?? AppRadiuos.rS,
+      maxLength: 9,
+      borderRadius: borderRadious ?? AppRadius.rS,
       keyboardType: TextInputType.phone,
       controller: controller,
       needValidation: needValidation,

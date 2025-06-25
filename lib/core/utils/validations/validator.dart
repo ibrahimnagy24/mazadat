@@ -267,9 +267,11 @@ class AddressValidator {
 }
 
 class DefaultValidator {
-  static String? defaultValidator(var value) {
+  static String? defaultValidator(var value, {String? label}) {
     if (value!.length < 1) {
-      return 'this_field_is_required'.tr;
+      return label != null
+          ? '$label ${AppStrings.isRequired.tr}'
+          : 'this_field_is_required'.tr;
     }
     return null;
   }

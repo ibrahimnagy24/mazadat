@@ -89,7 +89,7 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
             color: isSelected ? AppColors.kPrimary500 : AppColors.kOpacityGrey2,
           ),
           borderRadius:
-              BorderRadius.circular(borderRadiusValue ?? AppRadiuos.rS),
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
         ),
         child: Stack(
           children: [
@@ -174,7 +174,7 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
             width: isSelected ? 1.5 : .6,
           ),
           borderRadius:
-              BorderRadius.circular(borderRadiusValue ?? AppRadiuos.rS),
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
         ),
         child: Column(
           children: [

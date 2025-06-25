@@ -32,7 +32,7 @@ class CustomScaffoldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color? background = backgroundColor;
     return Scaffold(
-      backgroundColor: backgroundColor ?? AppColors.kWhite,
+      backgroundColor: backgroundColor ?? AppColors.background,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: needAppbar
           ? (appbar ??
@@ -42,11 +42,12 @@ class CustomScaffoldWidget extends StatelessWidget {
                   centerTitle: centerAppbarTitle,
                   backgroundColor: AppColors.kWhite,
                   elevation: 0,
-                  systemOverlayStyle: background == AppColors.kWhite
+
+                  systemOverlayStyle: background == AppColors.background
                       ? const SystemUiOverlayStyle(
-                          statusBarColor: AppColors.kWhite,
+                          statusBarColor: AppColors.background,
                           statusBarIconBrightness: Brightness.dark,
-                          systemNavigationBarColor: AppColors.kWhite,
+                          systemNavigationBarColor: AppColors.background,
                           systemNavigationBarIconBrightness: Brightness.dark,
                         )
                       : SystemUiOverlayStyle.dark,

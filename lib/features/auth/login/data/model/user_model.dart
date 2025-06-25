@@ -6,6 +6,7 @@ import '../entity/user_entity.dart';
 class UserModel extends UserEntity {
   const UserModel({
     required super.userType,
+    required super.gender,
     required super.userStatus,
     required super.email,
     required super.phone,
@@ -25,6 +26,7 @@ class UserModel extends UserEntity {
     return UserModel(
       id: json['id'],
       userType: UserEnumsConverter.stringToUserType(json['userType']),
+      gender: UserEnumsConverter.stringToGender(json['gender']),
       userStatus: UserEnumsConverter.intToUserStatus(json['is_active']),
       email: json['email'],
       phone: json['phone'],

@@ -7,7 +7,7 @@ import '../../../theme/text_styles/text_styles.dart';
 
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
-import '../../validations/vaildator.dart';
+import '../../validations/validator.dart';
 import '../misc/verifiy_password_widget.dart';
 import 'default_form_field.dart';
 
@@ -58,24 +58,12 @@ class _DefaultPasswordFormFieldState extends State<DefaultPasswordFormField> {
         DefaultFormField(
           titleText: widget.titleText ?? AppStrings.password.tr,
           needValidation: widget.needValidation,
-          hintText: widget.hintText ?? '${AppStrings.enterYourPassword.tr}...',
-          hintStyle: AppTextStyles.bodyXsReq.copyWith(
-            fontSize: widget.hintFontSize ?? 14,
-            color: AppColors.kGeryText2,
-          ),
-          style: AppTextStyles.bodyXsReq.copyWith(
-            fontSize: widget.titleFontSize ?? 14,
-            color: AppColors.kPrimary900,
-          ),
-          titleStyle: AppTextStyles.bodyXsReq.copyWith(
-            fontSize: widget.titleFontSize,
-            color: AppColors.kGeryText,
-          ),
+          hintText: widget.hintText ?? '***********',
           validator: widget.needValidation
               ? widget.validator ??
                   (value) => PasswordValidator.passwordValidator(value)
               : null,
-          borderRadious: widget.borderRadious ?? AppRadiuos.rS,
+          borderRadius: widget.borderRadious ?? AppRadius.rS,
           obscureText: isPasswordVisible,
           keyboardType: TextInputType.visiblePassword,
           suffixIcon: IconButton(

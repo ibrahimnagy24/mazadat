@@ -249,7 +249,7 @@ class _HomeDepartmentsWidget extends StatelessWidget {
                         animationDuration: (index * 10).ms,
                         width: 75,
                         height: 86,
-                        borderRadiusValue: AppRadiuos.rM,
+                        borderRadiusValue: AppRadius.rM,
                       );
                     },
                     separatorBuilder: (context, index) {

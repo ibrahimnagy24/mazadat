@@ -18,14 +18,12 @@ class AlreadyHaveAccountWidget extends StatelessWidget {
         children: [
           TextSpan(
             text: AppStrings.alreadyHaveAnAccount.tr,
-            style:
-                AppTextStyles.bodyXsReq.copyWith(color: AppColors.kGeryText6),
+            style: AppTextStyles.textMdRegular,
           ),
           const TextSpan(text: ' '),
           TextSpan(
             text: AppStrings.login.tr,
-            style:
-                AppTextStyles.bodyXsMed.copyWith(color: AppColors.kPrimary500),
+            style: AppTextStyles.textMdBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 CustomNavigator.pop();

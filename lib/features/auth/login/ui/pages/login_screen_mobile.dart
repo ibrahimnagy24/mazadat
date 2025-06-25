@@ -16,26 +16,27 @@ class LoginScreenMobilePortraitDesignScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AuthTitleImageBannerWidget(
-              title: AppStrings.welcome.tr,
-              subtitle:
-                  AppStrings.loginAndStartBiddingOnExclusiveOpportunities.tr,
-            ),
+            const AuthTitleImageBannerWidget(),
             Expanded(
               child: Transform.translate(
                 offset: const Offset(0, -20),
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: AppColors.kWhite,
+                    color: AppColors.background,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(16),
-                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(24),
+                      topLeft: Radius.circular(24),
                     ),
                   ),
                   padding: const EdgeInsets.all(24),
                   child: SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        AuthHeaderContent(
+                          title: AppStrings.loginHeader.tr,
+                          subtitle: AppStrings.loginSubHeader.tr,
+                        ),
                         DefaultPhoneFormField(
                           controller: context.read<LoginCubit>().phone,
                         ),
@@ -45,12 +46,11 @@ class LoginScreenMobilePortraitDesignScreen extends StatelessWidget {
                         ),
                         5.sbH,
                         const LoginRememberMeWidget(),
-                        40.sbH,
+                        32.sbH,
                         const LoginButtonWidget(),
-                        12.sbH,
-                        const DontHaveAccountWidget(),
-                        16.sbH,
                         const LoginAsVisitorTextWidget(),
+                        16.sbH,
+                        const DontHaveAccountWidget(),
                       ],
                     ),
                   ),

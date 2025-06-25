@@ -6,6 +6,7 @@ import '../../../choose_category/data/entity/category_entity.dart';
 class UserEntity extends Equatable {
   const UserEntity({
     required this.id,
+    required this.gender,
     required this.userType,
     required this.userStatus,
     required this.email,
@@ -21,6 +22,7 @@ class UserEntity extends Equatable {
   });
 
   final int id;
+  final GenderTypes gender;
   final UserType userType;
 
   final String firstName;
@@ -42,6 +44,7 @@ class UserEntity extends Equatable {
     String? token,
     String? createdAt,
     UserType? userType,
+    GenderTypes? gender,
     UserStatus? userStatus,
     String? email,
     String? phone,
@@ -60,6 +63,7 @@ class UserEntity extends Equatable {
       countryCode: countryCode ?? this.countryCode,
       email: email ?? this.email,
       userType: userType ?? this.userType,
+      gender: gender ?? this.gender,
       userStatus: userStatus ?? this.userStatus,
       firstName: firstName ?? this.firstName,
       isVerified: isVerified ?? this.isVerified,
@@ -73,6 +77,7 @@ class UserEntity extends Equatable {
   Map<String, dynamic> toJson() => {
         'id': id,
         'userType': UserEnumsConverter.userTypeToString(userType),
+        'gender': UserEnumsConverter.genderTypeToString(gender),
         'firstName': firstName,
         'lastName': lastName,
         'countryCode': countryCode,
@@ -89,6 +94,7 @@ class UserEntity extends Equatable {
   List<Object?> get props => [
         id,
         userType,
+        gender,
         firstName,
         lastName,
         countryCode,

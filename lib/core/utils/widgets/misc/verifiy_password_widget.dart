@@ -5,7 +5,7 @@ import '../../../theme/colors/styles.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
-import '../../validations/vaildator.dart';
+import '../../validations/validator.dart';
 import '../../validations/validation.dart';
 import '../text/main_text.dart';
 

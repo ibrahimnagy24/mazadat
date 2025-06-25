@@ -58,7 +58,7 @@ class DefaultTeamNameFormField extends StatelessWidget {
       ),
       hintText: '${'AppStrings.teamName.tr'}...',
       // validator: (value) => validateEmail(value),
-      borderRadious: borderRadious ?? 24,
+      borderRadius: borderRadious ?? 24,
       keyboardType: TextInputType.name,
       controller: controller,
       onChanged: onChanged,

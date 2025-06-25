@@ -66,7 +66,7 @@ Widget customCircleSvgIcon(
 }
 
 Widget customImageIconSVG({
-  required String? imageName,
+  required String imageName,
   Color? color,
   double? height,
   double? width,
@@ -75,7 +75,7 @@ Widget customImageIconSVG({
   return GestureDetector(
     onTap: onTap,
     child: SvgPicture.asset(
-      'assets/svgs/$imageName.svg',
+      imageName,
       color: color,
       width: width,
       height: height,

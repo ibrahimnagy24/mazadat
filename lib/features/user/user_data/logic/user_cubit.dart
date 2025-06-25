@@ -22,6 +22,7 @@ class UserCubit extends Cubit<UserState> {
     final name = visitorName ?? 'visitor${Random().nextInt(1000)}';
     _userEntity = UserEntity(
       id: -1,
+      gender: GenderTypes.male,
       userType: UserType.visitor,
       userStatus: UserStatus.active,
       email: '$name@mazadat.com',

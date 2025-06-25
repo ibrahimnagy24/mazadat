@@ -35,7 +35,7 @@ class AuctionCardWidget extends StatelessWidget {
         height: 260,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppRadiuos.rM),
+          borderRadius: BorderRadius.circular(AppRadius.rM),
           border: Border.all(color: AppColors.kGeryText8),
         ),
         child: Column(
@@ -57,8 +57,8 @@ class AuctionCardWidget extends StatelessWidget {
                           horizontal: 12, vertical: 6),
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadiusDirectional.only(
-                          topStart: Radius.circular(AppRadiuos.rM),
-                          bottomEnd: Radius.circular(AppRadiuos.rM),
+                          topStart: Radius.circular(AppRadius.rM),
+                          bottomEnd: Radius.circular(AppRadius.rM),
                         ),
                         color: AppColors.kPrimary400,
                       ),
@@ -76,8 +76,8 @@ class AuctionCardWidget extends StatelessWidget {
                           horizontal: 12, vertical: 6),
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadiusDirectional.only(
-                          topEnd: Radius.circular(AppRadiuos.rM),
-                          bottomStart: Radius.circular(AppRadiuos.rM),
+                          topEnd: Radius.circular(AppRadius.rM),
+                          bottomStart: Radius.circular(AppRadius.rM),
                         ),
                         color: AppColors.kPrimary500,
                       ),
@@ -176,7 +176,7 @@ class _AuctionInfo extends StatelessWidget {
                 child: MainText(
                   text: auction.productName,
                   style: AppTextStyles.bodyMMed
-                      .copyWith(color: AppColors.kPrimary2900),
+                      .copyWith(color: AppColors.kPrimary200),
                   maxLines: 1,
                 ),
               ),

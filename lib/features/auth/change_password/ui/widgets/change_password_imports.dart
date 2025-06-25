@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../../../../../core/utils/constant/app_constant.dart';
-import '../../../../../core/utils/validations/vaildator.dart';
+import '../../../../../core/utils/validations/validator.dart';
 import '../../../../../core/utils/widgets/form_fields/default_password_form_field.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../shared/auth_subtitle_text.dart';
