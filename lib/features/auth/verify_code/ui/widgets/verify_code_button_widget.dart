@@ -5,11 +5,16 @@ import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/theme/text_styles/app_font_size_styles.dart';
 
+import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
+import '../../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart'
+    show CustomSimpleDialog;
 import '../../../change_password/data/params/change_password_route_params.dart';
 import '../../logic/verify_code_cubit.dart';
 import '../../logic/verify_code_state.dart';
+import 'register_success_dialog.dart';
 
 class VerifyCodeButtonWidget extends StatelessWidget {
   const VerifyCodeButtonWidget({
@@ -50,7 +55,14 @@ class VerifyCodeButtonWidget extends StatelessWidget {
               );
               break;
             case VerifyCodeFromScreen.fromRegister:
-              CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
+              CustomSimpleDialog.parentSimpleDialog(
+                customListWidget: const RegisterSuccessDialog(),
+              );
+              break;
+            case VerifyCodeFromScreen.fromChangePhoneNumber:
+              CustomSimpleDialog.parentSimpleDialog(
+                customListWidget: const RegisterSuccessDialog(),
+              );
               break;
           }
         }
@@ -63,7 +75,7 @@ class VerifyCodeButtonWidget extends StatelessWidget {
         final cubit = context.read<VerifyCodeCubit>();
         return DefaultButton(
           isLoading: state is VerifyCodeLoading,
-          text: 'AppStrings.confirmation.tr',
+          text: AppStrings.next.tr,
           onPressed: () {
             if (cubit.isResetValidate()) {
               FocusScope.of(context).unfocus();

@@ -18,7 +18,8 @@
   "Already have an account?": "Already have an account?",
   "Very Strong": "Very Strong",
   "verification code": "verification code",
-  "A 4-digit verification code has been sent to your mobile number.": "A 4-digit verification code has been sent to your mobile number.",
+  "A 4-digit verification code has been sent to your mobile number": "A 4-digit verification code has been sent to your mobile number",
+  "Will be available at": "Will be available at",
   "Confirm mobile number": "Confirm mobile number",
   "Please enter your mobile number to send a phone number confirmation message": "Please enter your mobile number to send a phone number confirmation message",
   "Continue": "Continue",
@@ -83,5 +84,10 @@
   "No Data!": "No Data!",
   "Confirm": "Confirm",
   "Submit": "Submit",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+  "male": "Male",
+  "female": "Female",
+  "Please, Enter Valid code": "Please, Enter Valid code",
+  "Didn't receive the code?": "Didn't receive the code?",
+  "Send new code": "Send new code"
 }

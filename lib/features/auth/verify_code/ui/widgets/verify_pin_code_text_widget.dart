@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/form_fields/default_pin_code_text_field_widget.dart';
 
 class VerifyPinCodeTextWidget extends StatelessWidget {
   const VerifyPinCodeTextWidget({
     super.key,
-    this.borderRadious,
+    this.borderRadius,
     this.hintFontSize,
     this.controller,
     this.fieldHeight,
@@ -13,7 +14,7 @@ class VerifyPinCodeTextWidget extends StatelessWidget {
     this.fontSize,
   });
   final double? hintFontSize;
-  final double? borderRadious;
+  final double? borderRadius;
   final TextEditingController? controller;
   final double? fieldHeight;
   final double? fieldWidth;
@@ -21,16 +22,19 @@ class VerifyPinCodeTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: DefaultPinCodeTextFieldWidget(
-        hintFontSize: hintFontSize,
-        borderRadious: borderRadious,
-        controller: controller,
-        fieldHeight: fieldHeight,
-        fieldWidth: fieldWidth,
-        fontSize: fontSize,
-        onChanged: (value) => controller?.text = value,
+    return Padding(
+      padding: EdgeInsets.only(top: 24.h),
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: DefaultPinCodeTextFieldWidget(
+          hintFontSize: hintFontSize,
+          borderRadius: borderRadius,
+          controller: controller,
+          fieldHeight: fieldHeight,
+          fieldWidth: fieldWidth,
+          fontSize: fontSize,
+          onChanged: (value) => controller?.text = value,
+        ),
       ),
     );
   }

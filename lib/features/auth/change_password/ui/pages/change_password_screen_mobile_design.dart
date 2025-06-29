@@ -6,48 +6,42 @@ class ChangePasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
-        child: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 16),
-            const AuthTitleWidget(needBackButton: true),
-            const SizedBox(height: 32),
-            const AuthTitleBoldText(
-              text: 'AppStrings.resetPassword.tr',
-              fontSize: 20,
+        needAppbar: false,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomBackIcon(),
+                AuthHeaderContent(
+                    title: AppStrings.resetPassword.tr,
+                    subtitle: AppStrings
+                        .pleaseWriteSomethingThatYouWillRememberAndThatIsDifficultForOthersToGuess
+                        .tr),
+                DefaultPasswordFormField(
+                  controller: context.read<ChangePasswordCubit>().newPassword,
+                  titleText: AppStrings.newPassword.tr,
+                  hintText: '*******',
+                ),
+                12.sbH,
+                DefaultPasswordFormField(
+                  controller:
+                      context.read<ChangePasswordCubit>().confirmPassword,
+                  titleText: AppStrings.confirmNewPassword.tr,
+                  hintText: '*******',
+                  validator: (value) =>
+                      PasswordConfirmationValidator.passwordValidator(
+                    context.read<ChangePasswordCubit>().newPassword.text,
+                    value,
+                  ),
+                ),
+                40.sbH,
+                const ChangePasswordButtonWidget(),
+              ],
             ),
-            const SizedBox(height: 12),
-            const AuthSubtitleText(
-              text:
-                  'AppStrings.pleaseWriteSomethingThatYouWillRememberAndThatIsDifficultForOthersToGuess.tr',
-              fontSize: 14,
-            ),
-            const SizedBox(height: 24),
-            DefaultPasswordFormField(
-              controller: context.read<ChangePasswordCubit>().newPassword,
-              titleText: 'AppStrings.newPassword.tr',
-              hintText: 'AppStrings.mustConsistOf8Letters.tr',
-            ),
-            const SizedBox(height: 24),
-            DefaultPasswordFormField(
-              controller: context.read<ChangePasswordCubit>().confirmPassword,
-              titleText: 'AppStrings.confirmNewPassword.tr',
-              hintText: 'AppStrings.repeatPassword.tr',
-              validator: (value) =>
-                  PasswordConfirmationValidator.passwordValidator(
-                context.read<ChangePasswordCubit>().newPassword.text,
-                value,
-              ),
-            ),
-            const SizedBox(height: 64),
-            const ChangePasswordButtonWidget(),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }
 
@@ -109,7 +103,7 @@ class ChangePasswordScreenMobileLandscapeDesignScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
                     const ChangePasswordButtonWidget(
-                      borderRadiousValue: 50,
+                      borderRadiusValue: 50,
                       fontSize: 10,
                       height: 70,
                     ),

@@ -26,7 +26,7 @@ class UserModel extends UserEntity {
     return UserModel(
       id: json['id'],
       userType: UserEnumsConverter.stringToUserType(json['userType']),
-      gender: UserEnumsConverter.stringToGender(json['gender']),
+      gender: UserEnumsConverter.stringToGender(json['gender']??'male'),
       userStatus: UserEnumsConverter.intToUserStatus(json['is_active']),
       email: json['email'],
       phone: json['phone'],

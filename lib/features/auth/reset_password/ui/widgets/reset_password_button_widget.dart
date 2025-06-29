@@ -10,7 +10,7 @@ import '../../../../../core/utils/enums/enums.dart';
 
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
-import '../../data/params/reset_password_params.dart';
+import '../../../verify_code/data/params/verify_code_route_params.dart';
 import '../../logic/reset_password_cubit.dart';
 import '../../logic/reset_password_state.dart';
 
@@ -19,12 +19,12 @@ class ResetPasswordButtonWidget extends StatelessWidget {
     super.key,
     this.height,
     this.width,
-    this.borderRadiousValue,
+    this.borderRadiusValue,
     this.fontSize,
   });
   final double? height;
   final double? width;
-  final double? borderRadiousValue;
+  final double? borderRadiusValue;
   final double? fontSize;
 
   @override
@@ -41,7 +41,7 @@ class ResetPasswordButtonWidget extends StatelessWidget {
           CustomNavigator.push(
             Routes.VERIFY_CODE_SCREEN,
             replace: true,
-            extra: ResetPasswordParams(
+            extra: VerifyCodeRouteParams(
               phone: cubit.phone.text,
               fromScreenEnum: VerifyCodeFromScreen.fromForgetPassword,
               countryCode: '966',
@@ -66,7 +66,7 @@ class ResetPasswordButtonWidget extends StatelessWidget {
           },
           height: height,
           width: width,
-          borderRadiusValue: borderRadiousValue,
+          borderRadiusValue: borderRadiusValue,
           fontSize: fontSize,
         );
       },

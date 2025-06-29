@@ -1,10 +1,12 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../assets/app_svg.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../theme/colors/styles.dart';
+import '../../utils/extensions/extensions.dart';
+import '../blocs/main_app_bloc.dart';
+import 'custom_images.dart';
 
 class CustomBackIcon extends StatelessWidget {
   const CustomBackIcon({
@@ -16,24 +18,14 @@ class CustomBackIcon extends StatelessWidget {
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: AppColors.transparent,
-      radius: radius,
-      child: IconButton(
-        icon: Platform.isIOS
-            ? const Icon(
-                CupertinoIcons.back,
-                color: AppColors.kBlack,
-              )
-            : const Icon(
-                Icons.arrow_back,
-                color: AppColors.kBlack,
-              ),
-        onPressed: onPressed ??
-            () {
-              CustomNavigator.pop();
-            },
-      ),
+    return RotatedBox(
+      quarterTurns: mainAppBloc.isArabic ? 0 : 4,
+      child: customImageIconSVG(
+          imageName: AppSvg.backArrow,
+          width: 24.w,
+          height: 24.w,
+          color: AppColors.HEADER,
+          onTap: () => CustomNavigator.pop()),
     );
   }
 }

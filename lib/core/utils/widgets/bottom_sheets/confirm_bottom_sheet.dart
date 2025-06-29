@@ -32,97 +32,97 @@ abstract class CustomBottomSheet {
       useRootNavigator: true,
       isDismissible: true,
       builder: (c) {
-        return Padding(
-          padding: MediaQuery.of(CustomNavigator.navigatorState.currentContext!)
-              .viewInsets,
-          child: Container(
-            constraints: BoxConstraints(
-                maxHeight: height ?? MediaQueryHelper.height * 0.7),
-            width: MediaQueryHelper.width,
-            decoration: BoxDecoration(
-              color: AppColors.kWhite,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30.w),
-                topLeft: Radius.circular(30.w),
+        return SafeArea(
+          child: Padding(
+            padding:
+                MediaQuery.of(CustomNavigator.navigatorState.currentContext!)
+                    .viewInsets,
+            child: Container(
+              constraints: BoxConstraints(
+                  maxHeight: height ?? MediaQueryHelper.height * 0.7),
+              width: MediaQueryHelper.width,
+              decoration: BoxDecoration(
+                color: AppColors.kWhite,
+                borderRadius: BorderRadius.circular(16.w),
               ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 60.w,
-                  height: 4.h,
-                  margin: EdgeInsets.only(
-                    left: 18.w,
-                    right: 18.w,
-                    top: 8.h,
-                    bottom: 18.h,
-                  ),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: AppColors.kGeryText,
-                      borderRadius: BorderRadius.circular(100)),
-                ),
-                labelWidget ?? const SizedBox(),
-                if (label != null)
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(label, style: AppTextStyles.heading),
-                        GestureDetector(
-                          onTap: () {
-                            CustomNavigator.pop();
-                            onDismiss?.call();
-                          },
-                          child: const Icon(Icons.clear,
-                              size: 24, color: AppColors.textDefault),
-                        )
-                      ],
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 60.w,
+                    height: 4.h,
+                    margin: EdgeInsets.only(
+                      left: 18.w,
+                      right: 18.w,
+                      top: 8.h,
+                      bottom: 18.h,
                     ),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: AppColors.kGeryText,
+                        borderRadius: BorderRadius.circular(100)),
                   ),
-                if (label != null)
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 8.h, horizontal: 18.w),
-                    child: const Divider(color: AppColors.border),
-                  ),
-                Flexible(child: widget),
-                Visibility(
-                  visible: child != null || onConfirm != null,
-                  child: SafeArea(
-                    top: false,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 18.w, vertical: 10.h),
-                      child: child ??
-                          Row(
-                            children: [
-                              Expanded(
-                                child: DefaultButton(
-                                  text: buttonText ?? AppStrings.confirm.tr,
-                                  isLoading: isLoading ?? false,
-                                  onPressed: onConfirm,
-                                ),
-                              ),
-                              if (withCancel) SizedBox(width: 8.w),
-                              if (withCancel)
+                  labelWidget ?? const SizedBox(),
+                  if (label != null)
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(label, style: AppTextStyles.heading),
+                          GestureDetector(
+                            onTap: () {
+                              CustomNavigator.pop();
+                              onDismiss?.call();
+                            },
+                            child: const Icon(Icons.clear,
+                                size: 24, color: AppColors.textDefault),
+                          )
+                        ],
+                      ),
+                    ),
+                  // if (label != null)
+                  //   Padding(
+                  //     padding:
+                  //         EdgeInsets.symmetric(vertical: 8.h, horizontal: 18.w),
+                  //     child: const Divider(color: AppColors.border),
+                  //   ),
+                  Flexible(child: widget),
+                  Visibility(
+                    visible: child != null || onConfirm != null,
+                    child: SafeArea(
+                      top: false,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 18.w, vertical: 10.h),
+                        child: child ??
+                            Row(
+                              children: [
                                 Expanded(
                                   child: DefaultButton(
-                                    text: AppStrings.cancel.tr,
-                                    backgroundColor: AppColors.kWhite,
-                                    borderColor: AppColors.textPrimary,
-                                    textColor: AppColors.textPrimary,
-                                    onPressed: onCancel,
+                                    text: buttonText ?? AppStrings.confirm.tr,
+                                    isLoading: isLoading ?? false,
+                                    onPressed: onConfirm,
                                   ),
                                 ),
-                            ],
-                          ),
+                                if (withCancel) SizedBox(width: 8.w),
+                                if (withCancel)
+                                  Expanded(
+                                    child: DefaultButton(
+                                      text: AppStrings.cancel.tr,
+                                      backgroundColor: AppColors.kWhite,
+                                      borderColor: AppColors.textPrimary,
+                                      textColor: AppColors.textPrimary,
+                                      onPressed: onCancel,
+                                    ),
+                                  ),
+                              ],
+                            ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

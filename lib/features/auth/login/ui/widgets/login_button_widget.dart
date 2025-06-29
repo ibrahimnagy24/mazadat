@@ -41,7 +41,7 @@ class LoginButtonWidget extends StatelessWidget {
               extra: VerifyCodeRouteParams(
                 phone: context.read<LoginCubit>().phone.text,
                 fromScreenEnum: VerifyCodeFromScreen.fromLogin,
-                countryCode: '+966',
+                countryCode: '966',
               ),
             );
           }

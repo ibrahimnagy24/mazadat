@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 import '../../../theme/text_styles/app_font_size_styles.dart';
+import '../../constant/app_strings.dart';
+import '../../extensions/extensions.dart';
 import '../loading/adaptive_cirluer_progress.dart';
 import '../../../theme/colors/styles.dart';
 
@@ -94,7 +96,7 @@ class DefaultButton extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'loading',
+              AppStrings.loading.tr,
                 style: textStyle ??
                     GoogleFonts.notoSans(
                       color: textColor ?? AppColors.kWhite,

@@ -18,7 +18,8 @@
   "Already have an account?": "هل لديك حساب بالفعل؟",
   "Very Strong": "قوي جدًا",
   "verification code": "رمز التحقق",
-  "A 4-digit verification code has been sent to your mobile number.": "تم إرسال رمز تحقق مكون من 4 أرقام إلى رقم هاتفك.",
+  "A 4-digit verification code has been sent to your mobile number": "تم إرسال رمز التحقق المكون من 4 أرقام إلى رقم جوالك",
+  "Will be available at": "سيتوفر خلال",
   "Confirm mobile number": "تأكيد رقم الجوال",
   "Please enter your mobile number to send a phone number confirmation message": "فضلاً إدخال رقم جوالك الجديد لإرسال رمز التحقق",
   "Continue": "متابعة",
@@ -83,5 +84,10 @@
   "No Data!": "لا توجد بيانات!",
   "Confirm": "تأكيد",
   "Submit": "ارسال",
-  "Cancel": "الغاء"
+  "Cancel": "الغاء",
+  "male": "ذكر",
+  "female": "انثي",
+  "Please, Enter Valid code": "من فضلك ادخل كود صحيح",
+  "Didn't receive the code?": "لم يتم إرسال الكود إليك؟",
+  "Send new code": "إرسال كود جديد"
 }

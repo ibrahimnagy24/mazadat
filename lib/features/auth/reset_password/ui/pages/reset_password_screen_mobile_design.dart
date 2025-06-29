@@ -9,7 +9,7 @@ class ResetPasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
         needAppbar: false,
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(24.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -30,7 +30,7 @@ class ResetPasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
                     );
                   },
                 ),
-                64.sbH,
+                40.sbH,
                 const ResetPasswordButtonWidget(),
               ],
             ),

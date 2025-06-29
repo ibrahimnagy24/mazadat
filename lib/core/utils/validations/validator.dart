@@ -271,7 +271,17 @@ class DefaultValidator {
     if (value!.length < 1) {
       return label != null
           ? '$label ${AppStrings.isRequired.tr}'
-          : 'this_field_is_required'.tr;
+          : AppStrings.required.tr;
+    }
+    return null;
+  }
+}
+
+
+class OTPValidator {
+  static String? otpValidator(var value) {
+    if (value!.length < 4) {
+      return AppStrings.otpValidation.tr;
     }
     return null;
   }

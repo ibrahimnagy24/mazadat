@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../../../core/shared/widgets/custom_back_icon.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import '../../../shared/auth_header_content.dart';
 import '../../../shared/auth_title_image_banner_widget.dart';
 import '../widgets/categories_grid_widget.dart';
 
@@ -24,42 +26,53 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            AuthTitleImageBannerWidget(
-              title: AppStrings.chooseYourFavouriteList.tr,
-              subtitle: AppStrings.chooseYourFavouriteListSubtitle.tr,
-            ),
+            const AuthTitleImageBannerWidget(),
             Expanded(
               child: Transform.translate(
                 offset: const Offset(0, -20),
                 child: Container(
-                  decoration: const BoxDecoration(
-                    color: AppColors.kOpacityGrey3,
+                  decoration: BoxDecoration(
+                    color: AppColors.background,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(16),
-                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16.w),
+                      topLeft: Radius.circular(16.w),
                     ),
                   ),
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    children: [
-                      const Expanded(
-                        child: SingleChildScrollView(
-                          child: ChooseCategoriesGridWidget(),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          spacing: 8.w,
+                          children: [
+                            const CustomBackIcon(),
+                            Expanded(
+                              child: AuthHeaderContent(
+                                title: AppStrings.chooseYourFavouriteList.tr,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      const SizedBox(height: 24),
-                      DefaultButton(
-                        text: AppStrings.Continue.tr,
-                      ),
-                      DefaultButton(
-                        text: AppStrings.skip.tr,
-                        onPressed: () {},
-                        backgroundColor: AppColors.transparent,
-                        elevation: 0,
-                        textStyle: AppTextStyles.bodyXsMed
-                            .copyWith(color: AppColors.kPrimary500),
-                      ),
-                    ],
+                        const Expanded(
+                          child: SingleChildScrollView(
+                            child: ChooseCategoriesGridWidget(),
+                          ),
+                        ),
+                        24.sbH,
+                        DefaultButton(
+                          text: AppStrings.confirm.tr,
+                        ),
+                        DefaultButton(
+                          text: AppStrings.skip.tr,
+                          onPressed: () {},
+                          backgroundColor: AppColors.transparent,
+                          elevation: 0,
+                          textStyle: AppTextStyles.bodyXsMed
+                              .copyWith(color: AppColors.kPrimary),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

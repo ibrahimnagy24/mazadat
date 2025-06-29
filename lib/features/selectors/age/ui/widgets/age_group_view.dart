@@ -38,13 +38,15 @@ class _AgeGroupViewState extends State<AgeGroupView> {
             widget.onSelect?.call(widget.data[index]);
           },
           child: Container(
-            margin: EdgeInsets.only(bottom: 12.h),
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               border: Border(
-                  bottom: BorderSide(
-                color: AppColors.border,
-              )),
+                bottom: BorderSide(
+                  color: (widget.data.length - 1) == index
+                      ? Colors.transparent
+                      : AppColors.border,
+                ),
+              ),
             ),
             width: MediaQueryHelper.width,
             child: Row(

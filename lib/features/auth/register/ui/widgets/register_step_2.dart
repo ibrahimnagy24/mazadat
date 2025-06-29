@@ -43,7 +43,8 @@ class RegisterFieldStep2 extends StatelessWidget {
                       stream: context.read<RegisterCubit>().genderStream,
                       builder: (context, asyncSnapshot) {
                         return GenderInput(
-                          initialValue: context.read<RegisterCubit>().gender.valueOrNull,
+                          initialValue:
+                              context.read<RegisterCubit>().gender.valueOrNull,
                           onSelect: context.read<RegisterCubit>().updateGender,
                         );
                       }),
@@ -51,7 +52,7 @@ class RegisterFieldStep2 extends StatelessWidget {
               ],
             ),
 
-            ///City
+            // ///City
             StreamBuilder(
                 stream: context.read<RegisterCubit>().cityStream,
                 builder: (context, asyncSnapshot) {

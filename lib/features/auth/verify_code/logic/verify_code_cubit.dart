@@ -102,6 +102,10 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
         case VerifyCodeFromScreen.fromRegister:
           await SharedHelper.sharedHelper?.cacheLoginData(success);
           break;
+
+        case VerifyCodeFromScreen.fromChangePhoneNumber:
+          await SharedHelper.sharedHelper?.cacheLoginData(success);
+          break;
       }
 
       return emit(VerifyCodeSucess(success));

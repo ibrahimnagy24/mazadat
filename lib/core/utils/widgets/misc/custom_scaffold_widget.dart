@@ -10,7 +10,7 @@ class CustomScaffoldWidget extends StatelessWidget {
     required this.child,
     this.appbar,
     this.floatingActionButton,
-    this.backgroundColor = AppColors.surfaceBackground,
+    this.backgroundColor = AppColors.background,
     this.resizeToAvoidBottomInset,
     this.needAppbar = true,
     this.appbarTitle,
@@ -30,7 +30,6 @@ class CustomScaffoldWidget extends StatelessWidget {
   final bool? centerAppbarTitle;
   @override
   Widget build(BuildContext context) {
-    final Color? background = backgroundColor;
     return Scaffold(
       backgroundColor: backgroundColor ?? AppColors.background,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
@@ -42,8 +41,7 @@ class CustomScaffoldWidget extends StatelessWidget {
                   centerTitle: centerAppbarTitle,
                   backgroundColor: AppColors.kWhite,
                   elevation: 0,
-
-                  systemOverlayStyle: background == AppColors.background
+                  systemOverlayStyle: backgroundColor == AppColors.background
                       ? const SystemUiOverlayStyle(
                           statusBarColor: AppColors.background,
                           statusBarIconBrightness: Brightness.dark,

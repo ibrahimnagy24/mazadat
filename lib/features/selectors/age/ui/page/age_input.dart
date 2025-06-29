@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/theme/colors/styles.dart';
 import '../../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../../core/utils/validations/validator.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
@@ -31,10 +30,11 @@ class AgeInput extends StatelessWidget {
           return DefaultFormField(
             titleText: AppStrings.age.tr,
             hintText: '${AppStrings.selectAge.tr}...',
-            validator: (v) => DefaultValidator.defaultValidator(
-              initialValue?.name ?? '',
-              label: AppStrings.age.tr,
-            ),
+            needValidation: false,
+            // validator: (v) => DefaultValidator.defaultValidator(
+            //   initialValue?.name ?? '',
+            //   label: AppStrings.age.tr,
+            // ),
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
             suffixIcon: const Icon(

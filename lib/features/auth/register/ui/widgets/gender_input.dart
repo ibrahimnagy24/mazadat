@@ -4,7 +4,9 @@ import '../../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../../core/utils/validations/validator.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
+import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
+import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
@@ -20,11 +22,12 @@ class GenderInput extends StatelessWidget {
     return DefaultFormField(
       titleText: AppStrings.gender.tr,
       hintText: '${AppStrings.selectGender.tr}...',
-      validator: (v) => DefaultValidator.defaultValidator(
-        initialValue?.name ?? '',
-        label: AppStrings.gender.tr,
-      ),
-      controller: TextEditingController(text: initialValue?.name ?? ''),
+      // validator: (v) => DefaultValidator.defaultValidator(
+      //   initialValue?.name ?? '',
+      //   label: AppStrings.gender.tr,
+      // ),
+      needValidation: false,
+      controller: TextEditingController(text: initialValue != null ? (initialValue?.name ?? '').tr : null),
       readOnly: true,
       suffixIcon: const Icon(
         Icons.keyboard_arrow_down_rounded,
@@ -41,7 +44,7 @@ class GenderInput extends StatelessWidget {
               onSelect?.call(v);
             },
           ),
-          onConfirm: () => CustomNavigator.pop(),
+          // onConfirm: () => CustomNavigator.pop(),
         );
       },
     );
@@ -81,18 +84,26 @@ class _GenderViewState extends State<GenderView> {
             widget.onSelect?.call(widget.data[index]);
           },
           child: Container(
-            margin: EdgeInsets.only(bottom: 12.h),
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               border: Border(
-                  bottom: BorderSide(
-                color: AppColors.border,
-              )),
+                bottom: BorderSide(
+                  color: (widget.data.length - 1) == index
+                      ? Colors.transparent
+                      : AppColors.border,
+                ),
+              ),
             ),
             width: MediaQueryHelper.width,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 12.w,
               children: [
+                customImageIconSVG(
+                    imageName: AppSvg.gender(widget.data[index].name),
+                    width: 24.w,
+                    height: 24.w,
+                    color: AppColors.HEADER),
                 Expanded(
                   child: Text(
                     widget.data[index].name.tr,

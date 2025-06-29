@@ -5,6 +5,7 @@ abstract class Endpoints {
   static const String verifyCode = '/users/verifyAccount';
   static const String resendCode = '/users/sendVerificationCode';
   static const String forgotPassword = '/users/sendVerificationCode';
+  static const String changePhoneNumber = '/users/changePhoneNumber';
   static const String visitor = '/visitors/checkIn';
   static const String resetPassword = '/reset/password';
 //----------------------------------HOME--------------------------------------\\

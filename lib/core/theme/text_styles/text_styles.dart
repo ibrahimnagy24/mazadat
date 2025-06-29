@@ -25,10 +25,23 @@ abstract class AppTextStyles {
     fontSize: AppFontSizes.fsL,
     color: AppColors.textDefault,
   );
+
+  static TextStyle textLgBold = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsS,
+    color: AppColors.textPrimary,
+  );
+
   static TextStyle textMdBold = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsXs,
     color: AppColors.textPrimary,
+  );
+
+  static TextStyle textMdSemibold = const TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.kPrimary,
   );
 
   static TextStyle textSmSemibold = const TextStyle(

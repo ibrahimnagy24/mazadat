@@ -33,10 +33,11 @@ class CityInput extends StatelessWidget {
           return DefaultFormField(
             titleText: AppStrings.city.tr,
             hintText: '${AppStrings.selectCity.tr}...',
-            validator: (v) => DefaultValidator.defaultValidator(
-              initialValue?.name ?? '',
-              label: AppStrings.city.tr,
-            ),
+            needValidation: false,
+            // validator: (v) => DefaultValidator.defaultValidator(
+            //   initialValue?.name ?? '',
+            //   label: AppStrings.city.tr,
+            // ),
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
             suffixIcon: const Icon(

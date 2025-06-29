@@ -31,15 +31,8 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
           builder: (context, state) {
             return Checkbox.adaptive(
               value: context.read<RegisterCubit>().agreePolicyAndConditions,
-              activeColor: AppColors.background,
-              checkColor: AppColors.kPrimary,
-              fillColor: WidgetStateProperty.resolveWith<Color>(
-                  (Set<WidgetState> states) {
-                if (states.contains(WidgetState.selected)) {
-                  return AppColors.background;
-                }
-                return AppColors.background;
-              }),
+              activeColor: AppColors.kPrimary,
+              checkColor: AppColors.kWhite,
               onChanged: (value) {
                 context
                     .read<RegisterCubit>()
@@ -47,12 +40,8 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),
-                side: const BorderSide(color: AppColors.kPrimary),
               ),
-              side: const BorderSide(
-                color: AppColors.kPrimary,
-                width: 1,
-              ),
+              side: const BorderSide(color: AppColors.kPrimary),
             );
           },
         ),
@@ -67,7 +56,7 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
                 ),
                 TextSpan(
                   text: AppStrings.ourTermsAndPrivacyPolicy.tr,
-                  style: AppTextStyles.textSmSemibold,
+                  style: AppTextStyles.textMdBold,
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       CustomNavigator.push(

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/app_core.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
-import '../../../../../core/navigation/routes.dart';
-import '../../../../../core/utils/widgets/buttons/custom_gradient_button_widget.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/widgets/buttons/default_button.dart';
+import '../../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart';
+import '../../../verify_code/ui/widgets/register_success_dialog.dart';
 import '../../logic/change_password_cubit.dart';
 import '../../logic/change_password_state.dart';
 
@@ -13,12 +15,12 @@ class ChangePasswordButtonWidget extends StatelessWidget {
     super.key,
     this.height,
     this.width,
-    this.borderRadiousValue,
+    this.borderRadiusValue,
     this.fontSize,
   });
   final double? height;
   final double? width;
-  final double? borderRadiousValue;
+  final double? borderRadiusValue;
   final double? fontSize;
 
   @override
@@ -32,11 +34,9 @@ class ChangePasswordButtonWidget extends StatelessWidget {
         }
         if (state is ChangePasswordSucess) {
           FocusScope.of(context).unfocus();
-          showSuccessToast(state.data.message);
-
-          CustomNavigator.push(
-            Routes.CHANGE_PASSWORD_SUCCESS_SCREEN,
-            replace: true,
+          CustomSimpleDialog.parentSimpleDialog(
+            isDismissible: false,
+            customListWidget: const RegisterSuccessDialog(),
           );
         }
       },
@@ -46,9 +46,9 @@ class ChangePasswordButtonWidget extends StatelessWidget {
           current is ChangePasswordError,
       builder: (context, state) {
         final cubit = context.read<ChangePasswordCubit>();
-        return CustomGradientButtonWidget(
+        return DefaultButton(
           isLoading: state is ChangePasswordLoading,
-          text: ' AppStrings.resetPassword.tr',
+          text: AppStrings.save.tr,
           onPressed: () {
             if (cubit.isNewPasswordValid()) {
               FocusScope.of(context).unfocus();
@@ -57,7 +57,7 @@ class ChangePasswordButtonWidget extends StatelessWidget {
           },
           height: height,
           width: width,
-          borderRadiousValue: borderRadiousValue,
+          borderRadiusValue: borderRadiusValue,
           fontSize: fontSize,
         );
       },

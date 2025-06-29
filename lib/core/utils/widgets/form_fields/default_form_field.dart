@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../../../theme/colors/styles.dart';
 import '../../../theme/radiuos/app_radiuos.dart';
 import '../../../theme/text_styles/text_styles.dart';
+import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
 import '../text/main_text.dart';
 
@@ -160,7 +161,7 @@ class DefaultFormField extends StatelessWidget {
                 validator: validator ??
                     (needValidation!
                         ? (value) => value!.isEmpty
-                            ? 'AppStrings.thisFieldIsRequired.tr'
+                            ? AppStrings.required.tr
                             : null
                         : null),
                 autovalidateMode:

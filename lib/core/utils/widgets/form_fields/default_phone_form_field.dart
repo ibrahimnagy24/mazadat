@@ -51,17 +51,17 @@ class DefaultPhoneFormField extends StatelessWidget {
           end: 8,
         ),
         decoration: const BoxDecoration(
-            color: AppColors.fillColor,
-            borderRadius: BorderRadiusDirectional.only(
-              topStart: Radius.circular(AppRadius.rS),
-              bottomStart: Radius.circular(AppRadius.rS),
-            ),
-            border: Border(
-              left:
-                  BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
-              right:
-                  BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
-            )),
+          color: AppColors.fillColor,
+          borderRadius: BorderRadiusDirectional.only(
+            topStart: Radius.circular(AppRadius.rS),
+            bottomStart: Radius.circular(AppRadius.rS),
+          ),
+          border: Border(
+            left: BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
+            right:
+                BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
+          ),
+        ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         alignment: AlignmentDirectional.center,
         child: SvgPicture.asset(AppSvg.saudiArabiaFlag),
@@ -76,7 +76,6 @@ class DefaultPhoneFormField extends StatelessWidget {
       keyboardType: TextInputType.phone,
       controller: controller,
       needValidation: needValidation,
-      onTapOutside: (p0) {},
       readOnly: readOnly,
       // contentPadding: EdgeInsetsDirectional.fromSTEB(24.r, 10, 10, 10),
     );

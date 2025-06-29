@@ -7,6 +7,7 @@ import '../../assets/app_svg.dart';
 import '../../theme/colors/styles.dart';
 import '../../theme/radiuos/app_radiuos.dart';
 import '../../theme/text_styles/text_styles.dart';
+import '../../utils/extensions/extensions.dart';
 import '../../utils/widgets/misc/default_network_image.dart';
 import '../../utils/widgets/text/main_text.dart';
 
@@ -86,7 +87,7 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.kWhite,
           border: Border.all(
-            color: isSelected ? AppColors.kPrimary500 : AppColors.kOpacityGrey2,
+            color: isSelected ? AppColors.kPrimary : AppColors.kOpacityGrey2,
           ),
           borderRadius:
               BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
@@ -118,24 +119,24 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: isSelected
-                        ? AppTextStyles.bodyXsMed
-                            .copyWith(color: AppColors.kPrimary500)
-                        : AppTextStyles.bodyXsReq
-                            .copyWith(color: AppColors.kGeryText9),
+                        ? AppTextStyles.textMdBold
+                            .copyWith(color: AppColors.kPrimary)
+                        : AppTextStyles.textMdRegular
+                            .copyWith(color: AppColors.textSecondaryParagraph),
                   ),
                 )
               ],
             ).animate().fadeIn(delay: animationDuration),
             if (isSelected)
-              Positioned(
-                top: 5,
-                right: 5,
+              PositionedDirectional(
+                top: 5.w,
+                end: 5.w,
                 child: SvgPicture.asset(
-                  AppSvg.checkRightCircle,
-                  height: 21,
-                  width: 21,
-                ),
-              ).animate().fadeIn()
+                  AppSvg.tickCheck,
+                  height: 20.w,
+                  width: 20.w,
+                ).animate().fadeIn(),
+              ),
           ],
         ),
       ),

@@ -10,7 +10,7 @@ enum UserStatus { active, inactive }
 
 /// [fromResetPassword] for ResetPasswordScreen and [fromRegister] for RegisterScreen
 /// Cuz they have the same layout and behavior but different actions
-enum VerifyCodeFromScreen { fromForgetPassword, fromRegister, fromLogin }
+enum VerifyCodeFromScreen { fromForgetPassword, fromRegister, fromLogin, fromChangePhoneNumber }
 
 enum FileTypeEnum { question, answer, audio, image, user_profile }
 

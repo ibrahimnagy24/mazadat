@@ -83,7 +83,7 @@ abstract class AppColors {
   //mazadat
   static const Color borderDefault = Color.fromRGBO(232, 232, 232, 1);
   //mazadat
-  static const Color surfaceBackground = Color.fromRGBO(250, 250, 250, 1);
+  static const Color surfaceBackground = Color.fromRGBO(238, 239, 235, 1);
   //mazadat
   static const Color mainDark = Color.fromRGBO(46, 46, 46, 1);
 
