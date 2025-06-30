@@ -56,6 +56,8 @@ class AppStrings {
   static const String upcomingAuctions = 'Upcoming auctions';
   static const String numberOfAuctions = 'Number of auctions';
   static const String auctions = 'auctions';
+  static const String bundle = 'Bundle';
+  static const String bundles = 'Bundles';
   static const String totalInsuranceAmount = 'Total insurance amount';
   static const String availablePackages = 'Available packages';
   static const String enterYourPhone = 'Enter your phone';
@@ -117,4 +119,7 @@ class AppStrings {
   static const String sendNewCode = 'Send new code' ;
   static const String accountCreatedSuccessfully = 'Account Created Successfully' ;
   static const String mainPage = 'Main Page' ;
+  static const String myAuctions = 'My Auctions' ;
+  static const String home = 'Home' ;
+  static const String favourite = 'Favourite' ;
 }

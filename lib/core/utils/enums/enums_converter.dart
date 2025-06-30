@@ -70,3 +70,23 @@ class GenderTypeConverter {
     }
   }
 }
+
+class CategoryTypeConverter {
+  static String categoryTypeToString(CategoryTypes value) {
+    switch (value) {
+      case CategoryTypes.auction:
+        return 'AUCTION';
+      case CategoryTypes.bundle:
+        return 'BUNDLE';
+    }
+  }
+
+  static CategoryTypes stringToCategoryType(String value) {
+    switch (value) {
+      case 'bundle':
+        return CategoryTypes.bundle;
+      default:
+        return CategoryTypes.auction;
+    }
+  }
+}

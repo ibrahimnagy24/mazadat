@@ -18,7 +18,7 @@ abstract class SaveFileRepo {
         'Endpoints.saveFile',
         method: ServerMethods.POST,
         body: FormData.fromMap(body),
-        timoutDuration: const Duration(minutes: 10),
+        timOutDuration: const Duration(minutes: 10),
       );
       return Right(SaveFileModel.fromJson(
         response.data['data']['file'],

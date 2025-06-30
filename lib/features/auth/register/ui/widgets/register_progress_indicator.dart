@@ -28,7 +28,7 @@ class RegisterProgressIndicator extends StatelessWidget {
                       color: i == 0
                           ? AppColors.kPrimary
                           : (snapshot.data ?? 0) == 1
-                              ? AppColors.kPrimary200
+                              ? AppColors.borderPrimary
                               : AppColors.kWhite,
                       borderRadius: BorderRadius.circular(100)),
                 ),

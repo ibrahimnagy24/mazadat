@@ -67,7 +67,6 @@ class Network {
       'Access-Control-Allow-Origin': '*',
       'Authorization': token != null ? 'Bearer $token' : '',
       'lang': mainAppBloc.globalLang,
-      // 'Accept-Language': mainAppBloc.globalLang,
     };
   }
 
@@ -81,7 +80,7 @@ class Network {
     final String? downloadPath,
     Function(int recived, int total)? onProgress,
     final String? baseUrl,
-    final Duration? timoutDuration,
+    final Duration? timOutDuration,
     final bool removeToken = false,
     final String? tempToken,
   }) async {
@@ -90,10 +89,10 @@ class Network {
     if (baseUrl != null) {
       _dio.options.baseUrl = baseUrl;
     }
-    if (timoutDuration != null) {
-      _dio.options.sendTimeout = timoutDuration;
-      _dio.options.receiveTimeout = timoutDuration;
-      _dio.options.connectTimeout = timoutDuration;
+    if (timOutDuration != null) {
+      _dio.options.sendTimeout = timOutDuration;
+      _dio.options.receiveTimeout = timOutDuration;
+      _dio.options.connectTimeout = timOutDuration;
     }
     if (removeToken) {
       _removeTokenFromHeader();

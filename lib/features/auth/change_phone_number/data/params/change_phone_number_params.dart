@@ -12,7 +12,7 @@ class ChangePhoneNumberParams extends Equatable {
   final String countryCode;
   final VerifyCodeFromScreen fromScreenEnum;
   Map<String, dynamic> returnedMap() {
-    Map<String, dynamic> map = {'phone': '$countryCode$phone'};
+    Map<String, dynamic> map = {'countryCode': countryCode, 'phone': phone};
     map.removeWhere((key, value) => value == null);
     return map;
   }

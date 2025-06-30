@@ -5,10 +5,11 @@ abstract class Endpoints {
   static const String verifyCode = '/users/verifyAccount';
   static const String resendCode = '/users/sendVerificationCode';
   static const String forgotPassword = '/users/sendVerificationCode';
-  static const String changePhoneNumber = '/users/changePhoneNumber';
+  static const String changePhoneNumber = '/users/updateMyPhoneNumber';
   static const String visitor = '/visitors/checkIn';
   static const String resetPassword = '/reset/password';
 //----------------------------------HOME--------------------------------------\\
+  static const String auctions = '/auctions/list';
   static const String featuredAuction = '/auctions/featuredAuction';
   static const String inProgressAuction = '/auctions/liveAuction';
   static const String upComingAuction = '/auctions/upcommingAuction';

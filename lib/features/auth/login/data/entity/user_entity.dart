@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/enums/enums_converter.dart';
-import '../../../choose_category/data/entity/category_entity.dart';
+import '../../../../category/data/entity/category_entity.dart';
 
 class UserEntity extends Equatable {
   const UserEntity({

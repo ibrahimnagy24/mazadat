@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../theme/colors/styles.dart';
-import '../../../theme/radiuos/app_radiuos.dart';
+import '../../../theme/radiuos/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';

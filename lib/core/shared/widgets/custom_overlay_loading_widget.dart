@@ -5,7 +5,7 @@ import '../../theme/colors/styles.dart';
 import '../../theme/text_styles/text_styles.dart';
 
 import '../../utils/extensions/extensions.dart';
-import '../../utils/widgets/loading/adaptive_cirluer_progress.dart';
+import '../../utils/widgets/loading/adaptive_circle_progress.dart';
 import '../../utils/widgets/text/main_text.dart';
 
 class CustomOverlayLoadingWidget extends StatelessWidget {

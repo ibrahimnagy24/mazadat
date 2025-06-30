@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../loading/adaptive_cirluer_progress.dart';
+import '../loading/adaptive_circle_progress.dart';
 
 class DefaultNetworkImage extends StatelessWidget {
   const DefaultNetworkImage(

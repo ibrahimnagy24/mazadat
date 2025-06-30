@@ -62,8 +62,7 @@ class ResendVerifyCodeTimerWidget extends StatelessWidget {
                         : AppColors.textSecondaryParagraph),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    if (cubit.timerDuration == 0 &&
-                        state is! ResendVerifyCodeLoading) {
+                    if (cubit.timerDuration == 0 && state is! ResendVerifyCodeLoading) {
                       cubit.resendVerifyCodeStatesHandled();
                     }
                   },

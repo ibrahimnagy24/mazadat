@@ -6,7 +6,6 @@ class AppSvg {
   static const String checkRightCircle = '$_svgPath/tick_circle.svg';
   static const String tickCheck = '$_svgPath/tick_check.svg';
   //mazadat
-  static const String notification = '$_svgPath/notification.svg';
   //mazadat
   static const String searchIcon = '$_svgPath/search_icon.svg';
   //mazadat
@@ -24,5 +23,12 @@ class AppSvg {
   static const String female = '$_svgPath/female.svg';
   static gender(v) => '$_svgPath/$v.svg';
   static const String backArrow = '$_svgPath/back_arrow.svg';
-
+  static const String user = '$_svgPath/user.svg';
+  static const String notification = '$_svgPath/notification.svg';
+  static const String menu = '$_svgPath/menu.svg';
+  static const String favourite = '$_svgPath/favourite.svg';
+  static const String auction = '$_svgPath/auction.svg';
+  static const String list = '$_svgPath/list.svg';
+  static const String grid = '$_svgPath/grid.svg';
+  static const String package = '$_svgPath/package.svg';
 }

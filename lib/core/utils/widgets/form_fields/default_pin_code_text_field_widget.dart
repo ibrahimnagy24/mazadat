@@ -4,7 +4,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../shared/blocs/main_app_bloc.dart';
-import '../../../theme/radiuos/app_radiuos.dart';
+import '../../../theme/radiuos/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../validations/validator.dart';
 

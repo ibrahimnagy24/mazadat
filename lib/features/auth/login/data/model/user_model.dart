@@ -1,6 +1,6 @@
 import '../../../../../core/utils/enums/enums_converter.dart';
 import '../../../../../core/utils/utility.dart';
-import '../../../choose_category/data/model/category_model.dart';
+import '../../../../category/data/model/category_model.dart';
 import '../entity/user_entity.dart';
 
 class UserModel extends UserEntity {
@@ -26,13 +26,13 @@ class UserModel extends UserEntity {
     return UserModel(
       id: json['id'],
       userType: UserEnumsConverter.stringToUserType(json['userType']),
-      gender: UserEnumsConverter.stringToGender(json['gender']??'male'),
+      gender: UserEnumsConverter.stringToGender(json['gender'] ?? 'male'),
       userStatus: UserEnumsConverter.intToUserStatus(json['is_active']),
       email: json['email'],
       phone: json['phone'],
       compeletePhone: json['completePhone'],
       countryCode: json['countryCode'],
-      token: token ?? json['TOKEN'],
+      token: token ?? (json['TOKEN']) ?? '',
       isVerified: json['isVerified'] == '1' ? true : false,
       allowNotification: json['allowNotification'] == '1' ? true : false,
       firstName: json['firstName'],

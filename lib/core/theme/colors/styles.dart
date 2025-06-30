@@ -6,11 +6,11 @@ abstract class AppColors {
   //mazadat
   static const Color kPrimary900 = Color.fromRGBO(46, 46, 46, 1);
   //mazadat
-  static const Color kPrimary500 = Color.fromRGBO(14, 167, 228, 1);
+  static const Color kPrimary500 = Color.fromRGBO(138, 147, 118, 1);
   //mazadat
-  static const Color kPrimary300 = Color.fromRGBO(94, 196, 237, 1);
+  static const Color kPrimary300 = Color.fromRGBO(138, 147, 118, 1);
   //mazadat
-  static const Color kPrimary200 = Color.fromRGBO(138, 147, 118, 1);
+  static const Color borderPrimary = Color.fromRGBO(138, 147, 118, 1);
   //mazadat
   static const Color kPrimary400 = Color.fromRGBO(212, 239, 252, 1);
   //mazadat
@@ -24,7 +24,7 @@ abstract class AppColors {
   static const borderNeutralSecondary = Color.fromRGBO(232, 232, 232, 1);
   static const Color tertiary = Color.fromRGBO(57, 40, 42, 1);
 
-  static const textDefault = Color.fromRGBO(46, 46, 46,1);
+  static const textDefault = Color.fromRGBO(46, 46, 46, 1);
   static const textSecondaryParagraph = Color.fromRGBO(162, 162, 162, 1);
   static const textPrimaryParagraph = Color.fromRGBO(116, 116, 116, 1);
   static const textPrimary = Color.fromRGBO(81, 94, 50, 1);
@@ -83,6 +83,7 @@ abstract class AppColors {
   //mazadat
   static const Color borderDefault = Color.fromRGBO(232, 232, 232, 1);
   //mazadat
+  static const Color navBarBackground = Color.fromRGBO(255, 255, 255, 1);
   static const Color surfaceBackground = Color.fromRGBO(238, 239, 235, 1);
   //mazadat
   static const Color mainDark = Color.fromRGBO(46, 46, 46, 1);
@@ -121,6 +122,10 @@ abstract class AppColors {
   static const Color BOARDING_BLUR = Color.fromRGBO(0, 0, 0, 0.7);
   static const Color ALERT_COLOR = Color(0xffDBAB02);
   static const Color DARK_RED = Color(0xff982929);
+  static List<Color> kAppBarGradient = [
+    const Color.fromRGBO(64, 77, 38, 1),
+    const Color.fromRGBO(24, 28, 16, 1),
+  ];
   static const TextStyle SUB_HEADER_STYLE = TextStyle(
       color: AppColors.SUB_HEADER, fontSize: 12, fontWeight: FontWeight.w600);
   static const String fontFamily = 'text';

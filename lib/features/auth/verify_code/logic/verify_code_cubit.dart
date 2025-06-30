@@ -92,12 +92,12 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
     }, (success) async {
       switch (resetPasswordParams.fromScreenEnum) {
         case VerifyCodeFromScreen.fromForgetPassword:
-          SharedHelper.sharedHelper
+          await SharedHelper.sharedHelper
               ?.saveToken(success.token, needToCacheToken: false);
           break;
         case VerifyCodeFromScreen.fromLogin:
-          SharedHelper.sharedHelper
-              ?.saveToken(success.token, needToCacheToken: false);
+          await SharedHelper.sharedHelper?.cacheLoginData(success);
+          // SharedHelper.sharedHelper?.saveToken(success.token, needToCacheToken: false);
           break;
         case VerifyCodeFromScreen.fromRegister:
           await SharedHelper.sharedHelper?.cacheLoginData(success);

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
-import '../../../auth/choose_category/logic/category_cubit.dart';
-import '../../data/enums/home_enums.dart';
+import '../../../auctions/data/params/auction_params.dart';
+import '../../../auctions/logic/auctions_cubit.dart';
+import '../../../auctions/ui/page/auctions_page.dart';
+import '../../../category/logic/category_cubit.dart';
+import '../../../category/ui/widgets/categories_section.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
-import '../widgets/home_appbar_widget.dart';
-import '../widgets/home_bundle_auctions_widget.dart';
-import '../widgets/home_current_auctions_widget.dart';
-import '../widgets/home_featured_auctions_widget.dart';
-import '../widgets/home_upcomming_auctions_widget.dart';
+import '../widgets/home_appbar.dart';
+import '../widgets/home_search_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,40 +22,51 @@ class HomeScreen extends StatelessWidget {
           create: (context) => CategoryCubit()..categoriesStatesHandled(),
         ),
         BlocProvider(
-          create: (context) => HomeCubit()
-            ..auctionStatesHandled(HomeAuctionType.featured)
-            ..auctionStatesHandled(HomeAuctionType.inProgress)
-            ..auctionStatesHandled(HomeAuctionType.upComing),
-        ),
+            create: (context) => AuctionsCubit()..auctionStatesHandled()),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
-        buildWhen: (previous, current) => current is HomeTitleTypeChanged,
         builder: (context, state) {
-          final isAuctionSelected =
-              context.read<HomeCubit>().getHomeTitleType ==
-                  HomeTitleType.auction;
+          final cubit = context.read<HomeCubit>();
           return CustomScaffoldWidget(
-            appbar: HomeAppbarWidget(height: isAuctionSelected ? 370 : 270),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: CustomScrollView(
-                slivers: isAuctionSelected
-                    ? const [
-                        //FEATURED
-                        HomeFeaturedTitleWidget(),
-                        HomeFeaturedWidget(),
-                        //CURRENT
-                        HomeCurrentAuctionsTitleWidget(),
-                        HomeCurrentAuctionsWidget(),
-                        //UPCOMING
-                        HomeUpComingAuctionsTitleWidget(),
-                        HomeUpComingAuctionsWidget(),
-                      ]
-                    : const [
-                        HomeBundleTitleWidget(),
-                        HomeBundleAuctionsWidget(),
-                      ],
-              ),
+            appbar: const HomeAppbar(),
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: AnimatedOpacity(
+                    opacity: 1.0,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.easeOutQuad,
+                      child: CategoriesSection(
+                        onTap: (v) => context
+                            .read<AuctionsCubit>()
+                            .auctionStatesHandled(
+                                params: AuctionParams(categoryId: v.id)),
+                      ),
+                    ),
+                  ),
+                ),
+                const HomeSearchCard(),
+                StreamBuilder(
+                    stream: context.read<HomeCubit>().listingStream,
+                    builder: (c, snapshot) {
+                      return AuctionsPage(isListing: snapshot.data == true);
+                    }),
+                // //CURRENT
+                // HomeCurrentAuctionsTitleWidget(),
+                // HomeCurrentAuctionsWidget(),
+                // //UPCOMING
+                // HomeUpComingAuctionsTitleWidget(),
+                // HomeUpComingAuctionsWidget(),
+              ],
+
+              // isAuctionSelected
+              //     ? const [
+              //         HomeBundleTitleWidget(),
+              //         HomeBundleAuctionsWidget(),
+              //       ],
             ),
           );
         },

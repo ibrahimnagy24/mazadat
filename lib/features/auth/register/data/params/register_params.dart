@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../choose_category/data/entity/category_entity.dart';
+import '../../../../../core/shared/blocs/main_app_bloc.dart';
+import '../../../../category/data/entity/category_entity.dart';
 
 class RegisterParams extends Equatable {
   const RegisterParams({
@@ -29,6 +30,7 @@ class RegisterParams extends Equatable {
       'email': email,
       'password': password,
       'favoriteCategories': favCategories,
+      'visitor_token': mainAppBloc.globalToken,
     };
     map.removeWhere((key, value) => value == null);
     return map;
