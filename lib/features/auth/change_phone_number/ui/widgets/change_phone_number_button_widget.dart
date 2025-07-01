@@ -29,7 +29,6 @@ class ChangePhoneButtonWidget extends StatelessWidget {
   final double? fontSize;
   final String oldPhone;
 
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChangePhoneNumberCubit, ChangePhoneNumberState>(
@@ -46,6 +45,7 @@ class ChangePhoneButtonWidget extends StatelessWidget {
             Routes.VERIFY_CODE_SCREEN,
             replace: true,
             extra: VerifyCodeRouteParams(
+              oldPhone: oldPhone,
               phone: cubit.phone.text,
               fromScreenEnum: VerifyCodeFromScreen.fromChangePhoneNumber,
               countryCode: '966',

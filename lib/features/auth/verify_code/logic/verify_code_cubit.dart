@@ -81,6 +81,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
     emit(const VerifyCodeLoading());
     final response = await VerifyCodeRepo.verifyCode(
       VerifyCodeParams(
+        oldPhone: verifyCodeRouteParams.oldPhone,
         phone: verifyCodeRouteParams.phone,
         countryCode: verifyCodeRouteParams.countryCode,
         code: code.text,
