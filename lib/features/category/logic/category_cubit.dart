@@ -35,7 +35,7 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   CategoryEntity? _selectedCategory;
   CategoryEntity? get selectedCategory => _selectedCategory;
-  void updateSelectedCategory(CategoryEntity category) {
+  void updateSelectedCategory(CategoryEntity? category) {
     _selectedCategory = category;
     emit(ChosenCategoryUpdated());
   }

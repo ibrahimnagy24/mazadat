@@ -9,6 +9,9 @@ abstract class Endpoints {
   static const String visitor = '/visitors/checkIn';
   static const String resetPassword = '/reset/password';
 //----------------------------------HOME--------------------------------------\\
+
+  static const String homeBundles = '/bundles/searchBundles';
+
   static const String homeAuction = '/auctions/homePageFilterAuction';
   static const String auctions = '/auctions/list';
   static const String featuredAuction = '/auctions/featuredAuction';

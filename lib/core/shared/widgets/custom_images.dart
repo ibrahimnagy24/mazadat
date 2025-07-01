@@ -70,6 +70,7 @@ Widget customImageIconSVG({
   Color? color,
   double? height,
   double? width,
+  BoxFit? fit,
   Function()? onTap,
 }) {
   return GestureDetector(
@@ -79,6 +80,7 @@ Widget customImageIconSVG({
       color: color,
       width: width,
       height: height,
+      fit:fit?? BoxFit.cover,
     ),
   );
 }

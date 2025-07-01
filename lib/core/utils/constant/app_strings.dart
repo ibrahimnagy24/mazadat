@@ -58,6 +58,7 @@ class AppStrings {
   static const String upcomingAuctions = 'Upcoming auctions';
   static const String numberOfAuctions = 'Number of auctions';
   static const String auctions = 'auctions';
+  static const String auctionsNumber = 'Auctions Number';
   static const String bundle = 'Bundle';
   static const String bundles = 'Bundles';
   static const String totalInsuranceAmount = 'Total insurance amount';

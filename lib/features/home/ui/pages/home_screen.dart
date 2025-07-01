@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../auctions/data/params/auction_params.dart';
 import '../../../auctions/logic/auctions_cubit.dart';
 import '../../../auctions/ui/page/auctions_page.dart';
+import '../../../bundles/logic/bundles_cubit.dart' show BundlesCubit;
+import '../../../bundles/ui/page/bundles_page.dart';
 import '../../../category/logic/category_cubit.dart';
 import '../../../category/ui/widgets/categories_section.dart';
 import '../../logic/home_cubit.dart';
@@ -22,53 +25,60 @@ class HomeScreen extends StatelessWidget {
           create: (context) => CategoryCubit()..categoriesStatesHandled(),
         ),
         BlocProvider(
+            create: (context) => BundlesCubit()..bundlesStatesHandled()),
+        BlocProvider(
             create: (context) => AuctionsCubit()..auctionStatesHandled()),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           final cubit = context.read<HomeCubit>();
-          return CustomScaffoldWidget(
-            appbar: const HomeAppbar(),
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: AnimatedOpacity(
-                    opacity: 1.0,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 400),
-                      curve: Curves.easeOutQuad,
-                      child: CategoriesSection(
-                        onTap: (v) => context
-                            .read<AuctionsCubit>()
-                            .auctionStatesHandled(
-                                params: AuctionParams(categoryId: v.id)),
+          return StreamBuilder(
+              stream: context.read<HomeCubit>().categoryTypeStream,
+              builder: (c, categorySnapshot) {
+                return CustomScaffoldWidget(
+                  appbar: const HomeAppbar(),
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: AnimatedOpacity(
+                          opacity: 1.0,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeOutQuad,
+                            child: CategoriesSection(
+                              onTap: (v) {
+                                if (v?.categoryType == CategoryTypes.auction) {
+                                  context
+                                      .read<AuctionsCubit>()
+                                      .auctionStatesHandled(
+                                          params:
+                                              AuctionParams(categoryId: v?.id));
+                                }
+                                if (categorySnapshot.data != v?.categoryType) {
+                                  context.read<HomeCubit>().updateCategoryType(
+                                      v?.categoryType ?? CategoryTypes.auction);
+                                }
+                              },
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      const HomeSearchCard(),
+                      StreamBuilder(
+                          stream: context.read<HomeCubit>().listingStream,
+                          builder: (c, listSnapshot) {
+                            return categorySnapshot.data == CategoryTypes.bundle
+                                ? BundlesPage(
+                                    isListing: listSnapshot.data == true)
+                                : AuctionsPage(
+                                    isListing: listSnapshot.data == true);
+                          }),
+                    ],
                   ),
-                ),
-                const HomeSearchCard(),
-                StreamBuilder(
-                    stream: context.read<HomeCubit>().listingStream,
-                    builder: (c, snapshot) {
-                      return AuctionsPage(isListing: snapshot.data == true);
-                    }),
-                // //CURRENT
-                // HomeCurrentAuctionsTitleWidget(),
-                // HomeCurrentAuctionsWidget(),
-                // //UPCOMING
-                // HomeUpComingAuctionsTitleWidget(),
-                // HomeUpComingAuctionsWidget(),
-              ],
-
-              // isAuctionSelected
-              //     ? const [
-              //         HomeBundleTitleWidget(),
-              //         HomeBundleAuctionsWidget(),
-              //       ],
-            ),
-          );
+                );
+              });
         },
       ),
     );

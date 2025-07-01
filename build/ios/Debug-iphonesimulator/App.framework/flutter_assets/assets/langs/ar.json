@@ -32,6 +32,9 @@
   "Departments": "الأقسام",
   "View all": "عرض الكل",
   "Ends yet": "تنتهي خلال",
+  "Auction type": "نوع المزاد",
+  "public": "عام",
+  "private": "خاص",
   "Auction duration": "مدة المزاد",
   "End Date": "تاريخ الإنتهاء",
   "Opening price": "السعر الافتتاحي",
@@ -104,5 +107,7 @@
   "Home": "الرئيسية",
   "Favourite": "المفضلة",
   "Bundle": "حزمة",
-  "Bundles": "حزم"
+  "Bundles": "حزم",
+  "Auctions Number": "عدد المزادات"
+
 }

@@ -32,6 +32,9 @@
   "Departments": "Departments",
   "View all": "View all",
   "Ends yet": "Ends yet",
+  "Auction type": "Auction type",
+  "public": "Public",
+  "private": "Private",
   "Auction duration": "Auction duration",
   "End Date": "End Date",
   "Opening price": "Opening price",
@@ -104,5 +107,7 @@
   "Home": "Home",
   "Favourite": "Favourite",
   "Bundle": "Bundle",
-  "Bundles": "Bundles"
+  "Bundles": "Bundles",
+  "Auctions Number": "Auctions Number"
+
 }

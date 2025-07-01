@@ -42,7 +42,6 @@ class GridAuctionCard extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              flex: 3,
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [

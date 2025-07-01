@@ -195,7 +195,7 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
                           color: isSelected
                               ? AppColors.kPrimary
                               : AppColors.textDefault,
-                        )
+                          fit: BoxFit.contain)
                       : DefaultNetworkImage(category.iconUrl ?? ''),
                 ),
               ),

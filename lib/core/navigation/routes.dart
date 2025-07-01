@@ -23,4 +23,5 @@ class Routes {
   static const ZOOM_IN_IMAGE = 'ZOOM_IN_IMAGE';
   //-----------------------------------VIEW AUCTION---------------------------\\
   static const VIEW_AUCTION = 'VIEW_AUCTION';
+  static const VIEW_BUNDLES = 'VIEW_BUNDLES';
 }

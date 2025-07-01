@@ -11,7 +11,7 @@ import '../../logic/category_cubit.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key, this.onTap});
-  final Function(CategoryEntity)? onTap;
+  final Function(CategoryEntity?)? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +54,16 @@ class CategoriesSection extends StatelessWidget {
                           isSelected: cubit.selectedCategory ==
                               cubit.allCategories![index],
                           onTap: () {
-                            cubit.updateSelectedCategory(
-                                cubit.allCategories![index]);
-                            onTap?.call(cubit.allCategories![index]);
+                            if(cubit.selectedCategory ==
+                                cubit.allCategories![index]){
+                              cubit.updateSelectedCategory(null);
+                              onTap?.call(null);
+                            }else {
+                              cubit.updateSelectedCategory(
+                                  cubit.allCategories![index]);
+                              onTap?.call(cubit.allCategories![index]);
+                            }
+
                           },
                           type: CategoryWidgetType.type2,
                           animationDuration: (index * 10).ms,
