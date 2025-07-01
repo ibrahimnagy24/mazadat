@@ -27,8 +27,9 @@ class AppStrings {
 
   static const String veryStrong = 'Very Strong';
   static const String verificationCode = 'verification code';
-  static const String a4DigitVerificationCodeHasBeenSent = 'A 4-digit verification code has been sent to your mobile number';
-  static const String  changePhoneNumber = 'Change Phone Number';
+  static const String a4DigitVerificationCodeHasBeenSent =
+      'A 4-digit verification code has been sent to your mobile number';
+  static const String changePhoneNumber = 'Change Phone Number';
   static const String confirmMobileNumber = 'Confirm mobile number';
   static const String pleaseEnterYourMobileNumberToSendNumVerify =
       'Please enter your mobile number to send a phone number confirmation message';
@@ -47,6 +48,7 @@ class AppStrings {
   static const String viewAll = 'View all';
   static const String endsYet = 'Ends yet';
   static const String auctionDuration = 'Auction duration';
+  static const String endDate = 'End Date';
   static const String openingPrice = 'Opening price';
   static const String insuranceAmount = 'Insurance amount';
   static const String bidding = 'Bidding';
@@ -62,8 +64,11 @@ class AppStrings {
   static const String availablePackages = 'Available packages';
   static const String enterYourPhone = 'Enter your phone';
   static const String resetPassword = 'Reset Password';
-  static const String passwordChangedSuccessfully = 'Password Changed Successfully' ;
-  static const String pleaseWriteSomethingThatYouWillRememberAndThatIsDifficultForOthersToGuess = 'Please, Write something that you will remember and that is difficult for others to guess';
+  static const String passwordChangedSuccessfully =
+      'Password Changed Successfully';
+  static const String
+      pleaseWriteSomethingThatYouWillRememberAndThatIsDifficultForOthersToGuess =
+      'Please, Write something that you will remember and that is difficult for others to guess';
   static const String newPassword = 'New Password';
   static const String password = 'Password';
   static const String enterYourPassword = 'Enter your password';
@@ -107,7 +112,7 @@ class AppStrings {
   static const String gender = 'Gender';
   static const String selectGender = 'Select Gender';
   static const String isRequired = 'is Required';
-  static const String required =  'Required';
+  static const String required = 'Required';
   static const String loading = 'Loading';
   static const String somethingWentWrong = 'Oops, Something went wrong!';
   static const String no_data = 'No Data!';
@@ -115,11 +120,15 @@ class AppStrings {
   static const String save = 'Save';
   static const String submit = 'Submit';
   static const String cancel = 'Cancel';
-  static const String didntReceiveTheCode = "Didn't receive the code?" ;
-  static const String sendNewCode = 'Send new code' ;
-  static const String accountCreatedSuccessfully = 'Account Created Successfully' ;
-  static const String mainPage = 'Main Page' ;
-  static const String myAuctions = 'My Auctions' ;
-  static const String home = 'Home' ;
-  static const String favourite = 'Favourite' ;
+  static const String didntReceiveTheCode = "Didn't receive the code?";
+  static const String sendNewCode = 'Send new code';
+  static const String accountCreatedSuccessfully =
+      'Account Created Successfully';
+  static const String mainPage = 'Main Page';
+  static const String myAuctions = 'My Auctions';
+  static const String home = 'Home';
+  static const String favourite = 'Favourite';
+
+  static const String bank = 'Bank';
+  static const String selectBank = 'Select Bank';
 }

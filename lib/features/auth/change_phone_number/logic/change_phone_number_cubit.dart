@@ -28,10 +28,11 @@ class ChangePhoneNumberCubit extends Cubit<ChangePhoneNumberState> {
   }
 
 //----------------------------------REQUEST-----------------------------------//
-  Future<void> changePhoneNumberStatesHandled() async {
+  Future<void> changePhoneNumberStatesHandled(String oldPhone) async {
     emit(const ChangePhoneNumberLoading());
     final response =
         await ChangePhoneNumberRepo.changePhoneNumber(ChangePhoneNumberParams(
+      oldPhone: oldPhone,
       phone: phone.text,
       countryCode: '966',
       fromScreenEnum: VerifyCodeFromScreen.fromChangePhoneNumber,

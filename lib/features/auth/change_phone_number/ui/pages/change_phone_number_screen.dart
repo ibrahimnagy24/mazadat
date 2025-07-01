@@ -1,7 +1,8 @@
 part of '../widgets/change_phone_number_imports.dart';
 
 class ChangePhoneNumberScreen extends StatelessWidget {
-  const ChangePhoneNumberScreen({super.key});
+  const ChangePhoneNumberScreen({super.key, required this.oldPhone});
+  final String oldPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +14,11 @@ class ChangePhoneNumberScreen extends StatelessWidget {
             key: context.read<ChangePhoneNumberCubit>().formKey,
             child: CustomScreenTypeLayoutWidget(
               mobilePortrait: (context) =>
-                  const ChangePhoneNumberScreenMobilePortraitDesignScreen(),
+                  ChangePhoneNumberScreenMobilePortraitDesignScreen(
+                      oldPhone: oldPhone),
               mobileLandscape: (context) =>
-                  const ChangePhoneNumberScreenMobilePortraitDesignScreen(),
+                  ChangePhoneNumberScreenMobilePortraitDesignScreen(
+                      oldPhone: oldPhone),
             ),
           );
         },

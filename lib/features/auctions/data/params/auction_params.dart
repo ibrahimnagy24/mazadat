@@ -11,7 +11,7 @@ class AuctionParams extends Equatable {
     this.page,
     this.size,
     this.categoryId,
-     this.type,
+    this.type,
   });
   @override
   List<Object?> get props => [page, size, type, categoryId];
@@ -19,7 +19,7 @@ class AuctionParams extends Equatable {
     Map<String, dynamic> map = {
       'page': page,
       'size': size,
-      'categoryId': categoryId,
+      'categoryIds': categoryId,
       'type': type?.name,
     };
     map.removeWhere((key, value) => value == null);

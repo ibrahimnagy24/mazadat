@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/services/cache/shared_helper.dart';
 import '../../../../core/services/device_info/device_info_service.dart';
 import '../data/params/visitor_login_params.dart';
 import '../data/repo/visitor_repo.dart';
@@ -29,8 +28,7 @@ class VisitorCubit extends Cubit<VisitorState> {
     response.fold((failure) {
       return emit(VisitorLoginError(failure));
     }, (success) async {
-      await SharedHelper.sharedHelper
-          ?.saveToken(success.token, needToCacheToken: false);
+
       return emit(VisitorLoginSuccess(success));
     });
   }

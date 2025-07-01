@@ -33,7 +33,7 @@ class CustomSimpleDialog {
           );
         },
         transitionDuration: const Duration(milliseconds: 300),
-        barrierDismissible: isDismissible ?? true,
+        barrierDismissible: isDismissible ?? false,
         barrierLabel: '',
         context: CustomNavigator.context,
         // ignore: missing_return

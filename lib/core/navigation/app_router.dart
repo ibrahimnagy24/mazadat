@@ -16,8 +16,8 @@ import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';
-import '../../features/view_auction/data/params/view_auction_route_params.dart';
-import '../../features/view_auction/ui/pages/view_auction_screen.dart';
+import '../../features/auction_details/data/params/view_auction_route_params.dart';
+import '../../features/auction_details/ui/pages/view_auction_screen.dart';
 import '../../features/visitor/ui/pages/visitor_screen.dart';
 import '../utils/widgets/misc/zoom_image.dart';
 import 'routes.dart';
@@ -70,7 +70,9 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/change-phone-number',
       name: Routes.CHANGE_PHONE_NUMBER_SCREEN,
-      builder: (context, state) => const ChangePhoneNumberScreen(),
+      builder: (context, state) => ChangePhoneNumberScreen(
+        oldPhone: state.extra as String,
+      ),
     ),
 
     GoRoute(

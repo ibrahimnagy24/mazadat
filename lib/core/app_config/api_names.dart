@@ -9,6 +9,7 @@ abstract class Endpoints {
   static const String visitor = '/visitors/checkIn';
   static const String resetPassword = '/reset/password';
 //----------------------------------HOME--------------------------------------\\
+  static const String homeAuction = '/auctions/homePageFilterAuction';
   static const String auctions = '/auctions/list';
   static const String featuredAuction = '/auctions/featuredAuction';
   static const String inProgressAuction = '/auctions/liveAuction';
@@ -28,7 +29,9 @@ abstract class Endpoints {
 
 //-------------------------------NOT TESTED------------------------------------\\
 
-  static const String cities = 'cities';
-  static const String ages = 'ages';
-  static const String googleLogin = 'client/google';
+  static const String cities = '/cities/searchByKeyword';
+  static const String ages = '/age/listAgeLookups';
+  static const String auctionStatuses = '/auction/statuses';
+  static const String banks = '/banks/searchBanks';
+  static const String googleLogin = '/client/google';
 }

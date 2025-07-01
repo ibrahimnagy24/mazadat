@@ -4,11 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/theme/colors/styles.dart';
 import '../../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../../core/utils/validations/validator.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../data/entity/city_entity.dart';
 import '../../logic/city_cubit.dart';
@@ -48,7 +46,7 @@ class CityInput extends StatelessWidget {
             onTap: () {
               if (state is CityDone) {
                 CustomBottomSheet.show(
-                  label: AppStrings.selectAgeGroup.tr,
+                  label: AppStrings.selectCity.tr,
                   widget: CitiesView(
                     data: state.cities,
                     initialValue: initialValue?.id,
@@ -56,7 +54,6 @@ class CityInput extends StatelessWidget {
                       onSelect?.call(v);
                     },
                   ),
-                  onConfirm: () => CustomNavigator.pop(),
                 );
               } else if (state is CityLoading) {
                 AppCore.showSnackBar(
@@ -78,7 +75,7 @@ class CityInput extends StatelessWidget {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.somethingWentWrong,
-                    backgroundColor: AppColors.RED_CHART_COLOR,
+                    backgroundColor: AppColors.textError,
                   ),
                 );
               }

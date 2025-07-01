@@ -21,12 +21,12 @@ class VerifyCodeButtonWidget extends StatelessWidget {
     super.key,
     this.height,
     this.width,
-    this.borderRadiousValue,
+    this.borderRadiusValue,
     this.fontSize,
   });
   final double? height;
   final double? width;
-  final double? borderRadiousValue;
+  final double? borderRadiusValue;
   final double? fontSize;
 
   @override
@@ -84,7 +84,7 @@ class VerifyCodeButtonWidget extends StatelessWidget {
           },
           height: height,
           width: width,
-          borderRadiusValue: borderRadiousValue,
+          borderRadiusValue: borderRadiusValue,
           fontSize: fontSize ?? AppFontSizes.fsM,
           fontWeight: FontWeight.w500,
         );

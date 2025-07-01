@@ -85,13 +85,14 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(const RegisterLoading());
     final response = await RegisterRepo.register(
       RegisterParams(
-        email: email.text,
-        password: password.text,
-        categories: const [],
-        firstName: firstName.text,
-        lastName: lastName.text,
-        phone: phone.text,
-      ),
+          email: email.text,
+          password: password.text,
+          firstName: firstName.text,
+          lastName: lastName.text,
+          phone: phone.text,
+          city: city.valueOrNull?.id,
+          age: age.valueOrNull?.id,
+          gender: gender.valueOrNull),
     );
     response.fold((failure) {
       return emit(RegisterError(failure));

@@ -1,1 +1,1 @@
-enum AuctionType { all, featured, inProgress, upComing }
+enum AuctionType { private, public }

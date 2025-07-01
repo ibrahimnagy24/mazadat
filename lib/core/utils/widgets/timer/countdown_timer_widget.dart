@@ -1,14 +1,19 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import '../../../shared/blocs/main_app_bloc.dart';
+import '../../../theme/colors/styles.dart';
+import '../../../theme/text_styles/text_styles.dart';
+
 class CountdownTimerWidget extends StatefulWidget {
-  final DateTime endTime;
-  final String language;
+  final DateTime endTime, startDate;
+  final double? fontSize;
 
   const CountdownTimerWidget({
     super.key,
+    required this.startDate,
     required this.endTime,
-    this.language = 'ar',
+    this.fontSize,
   });
 
   @override
@@ -45,9 +50,12 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
     super.dispose();
   }
 
-  void _calculateRemainingTime() {
-    final now = DateTime.now();
-    if (widget.endTime.isAfter(now)) {
+  final now = DateTime.now();
+
+  _calculateRemainingTime() {
+    if (widget.startDate.isAfter(now)) {
+      _remainingTime = widget.startDate.difference(now);
+    } else if (widget.endTime.isAfter(now)) {
       _remainingTime = widget.endTime.difference(now);
     } else {
       _remainingTime = const Duration();
@@ -55,7 +63,7 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
     setState(() {});
   }
 
-  void _startTimer() {
+  _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _calculateRemainingTime();
     });
@@ -70,7 +78,7 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
   }
 
   String _formatTime(int hours, int minutes, int seconds) {
-    if (widget.language == 'ar') {
+    if (mainAppBloc.isArabic) {
       return '${_convertToArabicNumerals(hours)} س : ${_convertToArabicNumerals(minutes)}د : ${_convertToArabicNumerals(seconds)} ث';
     } else {
       return '${hours.toString().padLeft(2, '0')}h : ${minutes.toString().padLeft(2, '0')}m : ${seconds.toString().padLeft(2, '0')}s';
@@ -85,7 +93,11 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
 
     return Text(
       _formatTime(hours, minutes, seconds),
-      style: Theme.of(context).textTheme.bodyMedium,
+      style: AppTextStyles.textLgMedium.copyWith(
+          color: widget.startDate.isAfter(now)
+              ? AppColors.textSuccess
+              : AppColors.textError,
+          fontSize: widget.fontSize),
     );
   }
 }

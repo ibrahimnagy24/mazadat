@@ -53,7 +53,6 @@ class AgeInput extends StatelessWidget {
                       onSelect?.call(v);
                     },
                   ),
-                  onConfirm: () => CustomNavigator.pop(),
                 );
               } else if (state is AgeLoading) {
                 AppCore.showSnackBar(
@@ -75,7 +74,7 @@ class AgeInput extends StatelessWidget {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.somethingWentWrong,
-                    backgroundColor: AppColors.RED_CHART_COLOR,
+                    backgroundColor: AppColors.textError,
                   ),
                 );
               }

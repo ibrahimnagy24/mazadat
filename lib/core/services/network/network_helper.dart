@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import '../../../core/services/device_info/device_info_service.dart';
 
 import '../../app_config/app_config.dart';
 import '../../shared/blocs/main_app_bloc.dart';
@@ -61,12 +62,14 @@ class Network {
 
   static Future<Map<String, dynamic>> _getHeaders() async {
     String? token = SharedHelper.sharedHelper?.getToken();
+    final deviceInfo = await DeviceInfoService.getDeviceInfo();
 
     return {
       'Accept': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Authorization': token != null ? 'Bearer $token' : '',
       'lang': mainAppBloc.globalLang,
+      'device': deviceInfo.deviceName,
     };
   }
 

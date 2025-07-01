@@ -17,7 +17,12 @@ abstract class AppColors {
   static const Color iconSecondary = Color.fromRGBO(243, 220, 154, 1);
   //mazadat
   static const Color iconDefault = Color.fromRGBO(162, 162, 162, 1);
+
+  ///Background
   static const Color background = Color.fromRGBO(238, 239, 235, 1);
+  static const Color backgroundSecondary = Color.fromRGBO(243, 220, 154, 1);
+  static const Color backgroundBody = Color.fromRGBO(250, 250, 250, 1);
+
   static const Color fillColor = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color innerColor = Color.fromRGBO(238, 239, 236, 1);
   static const border = Color.fromRGBO(209, 209, 209, 1);
@@ -28,6 +33,7 @@ abstract class AppColors {
   static const textSecondaryParagraph = Color.fromRGBO(162, 162, 162, 1);
   static const textPrimaryParagraph = Color.fromRGBO(116, 116, 116, 1);
   static const textPrimary = Color.fromRGBO(81, 94, 50, 1);
+  static const textSuccess = Color.fromRGBO(69, 173, 34, 1);
 
   //barq57, 40, 42, 1
   static const Color kPrimary1000 = Color(0xff1B0D31);
@@ -111,7 +117,7 @@ abstract class AppColors {
 
   static Color kSecondary = const Color(0xffEA5426).withOpacity(0.5);
   static const Color LIGHT_GREY = Color(0xFF959494);
-  static const Color RED_CHART_COLOR = Color(0xffE24F4F);
+  static const Color textError = Color.fromRGBO(224, 44, 31, 1);
   static const Color SUB_TEXT = Color(0xFF6A7887);
   static const Color ACTIVE = Color(0xFF2FAB86);
   static const Color IN_ACTIVE = Color(0xFFDB5353);

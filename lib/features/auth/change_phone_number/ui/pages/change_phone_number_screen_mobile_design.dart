@@ -2,7 +2,11 @@ part of '../widgets/change_phone_number_imports.dart';
 
 class ChangePhoneNumberScreenMobilePortraitDesignScreen
     extends StatelessWidget {
-  const ChangePhoneNumberScreenMobilePortraitDesignScreen({super.key});
+  const ChangePhoneNumberScreenMobilePortraitDesignScreen({
+    super.key,
+    required this.oldPhone,
+  });
+  final String oldPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +14,7 @@ class ChangePhoneNumberScreenMobilePortraitDesignScreen
         needAppbar: false,
         child: SafeArea(
           child: SingleChildScrollView(
-            padding:  EdgeInsets.all(24.w),
+            padding: EdgeInsets.all(24.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -32,7 +36,9 @@ class ChangePhoneNumberScreenMobilePortraitDesignScreen
                   },
                 ),
                 40.sbH,
-                const ChangePhoneButtonWidget(),
+                ChangePhoneButtonWidget(
+                  oldPhone: oldPhone,
+                ),
               ],
             ),
           ),

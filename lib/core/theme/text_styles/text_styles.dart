@@ -54,10 +54,31 @@ abstract class AppTextStyles {
     fontSize: AppFontSizes.fsXs,
     color: AppColors.textSecondaryParagraph,
   );
+
+  static TextStyle textLgMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsS,
+    color: AppColors.textDefault,
+  );
+
   static TextStyle textXLMedium = const TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsM,
     color: AppColors.textDefault,
+  );
+
+
+  static TextStyle bodyMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsS,
+    color: AppColors.textPrimary,
+  );
+
+
+  static TextStyle bodyRegular = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textSecondaryParagraph,
   );
 
   static TextStyle textMdRegular = const TextStyle(

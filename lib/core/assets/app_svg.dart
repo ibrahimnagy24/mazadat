@@ -1,3 +1,5 @@
+import '../../features/auctions/data/enums/auction_enums.dart';
+
 class AppSvg {
   static const String _svgPath = 'assets/svgs';
   //mazadat
@@ -31,4 +33,10 @@ class AppSvg {
   static const String list = '$_svgPath/list.svg';
   static const String grid = '$_svgPath/grid.svg';
   static const String package = '$_svgPath/package.svg';
+  static const String fav = '$_svgPath/fav.svg';
+  static const String fillFav = '$_svgPath/fill_fav.svg';
+  static auctionType(AuctionType type) =>
+      type == AuctionType.public ? public : private;
+  static const String public = '$_svgPath/public.svg';
+  static const String private = '$_svgPath/private.svg';
 }

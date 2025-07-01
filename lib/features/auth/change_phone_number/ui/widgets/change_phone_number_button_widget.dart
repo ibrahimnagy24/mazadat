@@ -21,11 +21,14 @@ class ChangePhoneButtonWidget extends StatelessWidget {
     this.width,
     this.borderRadiusValue,
     this.fontSize,
+    required this.oldPhone,
   });
   final double? height;
   final double? width;
   final double? borderRadiusValue;
   final double? fontSize;
+  final String oldPhone;
+
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +65,7 @@ class ChangePhoneButtonWidget extends StatelessWidget {
           onPressed: () {
             if (cubit.isResetValidate()) {
               FocusScope.of(context).unfocus();
-              cubit.changePhoneNumberStatesHandled();
+              cubit.changePhoneNumberStatesHandled(oldPhone);
             }
           },
         );

@@ -5,7 +5,6 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
-import '../../data/enums/auction_enums.dart';
 import '../../logic/auctions_cubit.dart';
 import '../../logic/auctions_state.dart';
 
@@ -26,19 +25,37 @@ class AuctionsPage extends StatelessWidget {
           current is AuctionsError,
       builder: (context, state) {
         if (state is AuctionsLoading) {
-          return SliverList.separated(
-            itemBuilder: (context, index) => Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: CustomShimmerContainer(
-                height: 120.h,
-                width: MediaQueryHelper.width,
-              ),
-            ),
-            itemCount: cubit.allAuctions?.length ?? 0,
-            separatorBuilder: (context, index) {
-              return SizedBox(height: 16.h);
-            },
-          );
+          return isListing
+              ? SliverList.separated(
+                  itemBuilder: (context, index) => Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: CustomShimmerContainer(
+                      height: 120.h,
+                      width: MediaQueryHelper.width,
+                    ),
+                  ),
+                  itemCount: cubit.allAuctions?.length ?? 0,
+                  separatorBuilder: (context, index) {
+                    return SizedBox(height: 16.h);
+                  },
+                )
+              : SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) {
+                      return CustomShimmerContainer(
+                        height: 120.h,
+                        width: MediaQueryHelper.width,
+                      );
+                    },
+                    itemCount: 20,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16.w,
+                      crossAxisSpacing: 16.w,
+                      childAspectRatio: 0.9,
+                    ),
+                  ));
         }
         if (state is AuctionsError) {
           return SliverToBoxAdapter(
@@ -61,33 +78,30 @@ class AuctionsPage extends StatelessWidget {
               ? SliverList.separated(
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: isListing
-                          ? ListAuctionCard(auction: cubit.allAuctions![index])
-                          : GridAuctionCard(auction: cubit.allAuctions![index]),
-                    );
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        child: ListAuctionCard(
+                            auction: cubit.allAuctions![index]));
                   },
                   itemCount: cubit.allAuctions?.length ?? 0,
                   separatorBuilder: (context, index) {
                     return const SizedBox(height: 16);
                   },
                 )
-              : SliverGrid.builder(
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child:
-                          GridAuctionCard(auction: cubit.allAuctions![index]),
-                    );
-                  },
-                  itemCount: cubit.allAuctions?.length ?? 0,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16.w,
-                    crossAxisSpacing: 16.w,
-                    childAspectRatio: 1,
-                  ),
-                );
+              : SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) {
+                      return GridAuctionCard(
+                          auction: cubit.allAuctions![index]);
+                    },
+                    itemCount: cubit.allAuctions?.length ?? 0,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16.w,
+                      crossAxisSpacing: 16.w,
+                      childAspectRatio: 0.9,
+                    ),
+                  ));
         }
         return SliverToBoxAdapter(
             child: Padding(

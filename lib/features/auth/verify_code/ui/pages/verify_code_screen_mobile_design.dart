@@ -30,7 +30,8 @@ class VerifyCodeScreenMobilePortraitDesignScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           CustomNavigator.push(
-                              Routes.CHANGE_PHONE_NUMBER_SCREEN);
+                              Routes.CHANGE_PHONE_NUMBER_SCREEN,
+                              extra: param.phone);
                         },
                         child: Row(
                           spacing: 4.w,

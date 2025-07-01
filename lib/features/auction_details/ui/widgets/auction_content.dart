@@ -97,12 +97,8 @@ class AuctionContent extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           CountdownTimerWidget(
-                            language: mainAppBloc.isArabic ? 'ar' : 'en',
-                            endTime: DateTime.parse(
-                              DateTime.now()
-                                  .add(const Duration(days: 1))
-                                  .toString(),
-                            ),
+                            startDate: DateTime.now().add(Duration(days: 2)),
+                            endTime: DateTime.now().add(Duration(days: 4)),
                           ),
                         ],
                       ),

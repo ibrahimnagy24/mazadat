@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../../../../../core/shared/blocs/main_app_bloc.dart';
-import '../../../../category/data/entity/category_entity.dart';
+import '../../../../../core/utils/enums/enums.dart';
 
 class RegisterParams extends Equatable {
   const RegisterParams({
@@ -9,18 +7,20 @@ class RegisterParams extends Equatable {
     required this.lastName,
     required this.phone,
     required this.password,
-    required this.categories,
-    this.email,
+    required this.email,
+    this.gender,
+    this.city,
+    this.age,
   });
 
   final String firstName;
   final String lastName;
   final String phone;
-  final String? email;
+  final String email;
   final String password;
-  final List<CategoryEntity> categories;
+  final GenderTypes? gender;
+  final int? city, age;
   Map<String, dynamic> returnedMap() {
-    final favCategories = categories.map((e) => {'id': e.id}).toList();
     Map<String, dynamic> map = {
       'firstName': firstName,
       'lastName': lastName,
@@ -28,9 +28,10 @@ class RegisterParams extends Equatable {
       'phone': phone,
       'isTermsAccepted': '1',
       'email': email,
+      if (gender != null) 'gender': gender?.name[0].toUpperCase(),
+     if(city != null) 'city': {'id': city},
+      if(age != null)  'age': {'id': age},
       'password': password,
-      'favoriteCategories': favCategories,
-      'visitor_token': mainAppBloc.globalToken,
     };
     map.removeWhere((key, value) => value == null);
     return map;
@@ -43,6 +44,8 @@ class RegisterParams extends Equatable {
         phone,
         email,
         password,
-        categories,
+        city,
+        gender,
+        age,
       ];
 }

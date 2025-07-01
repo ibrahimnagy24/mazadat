@@ -14,7 +14,7 @@ abstract class ChangePhoneNumberRepo {
     try {
       final response = await Network().request(
         Endpoints.changePhoneNumber,
-        method: ServerMethods.GET,
+        method: ServerMethods.POST,
         queryParameters: params.returnedMap(),
       );
       return Right(ChangePhoneNumberModel.fromJson(response.data));

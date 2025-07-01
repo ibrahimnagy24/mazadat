@@ -11,22 +11,23 @@ import '../params/auction_params.dart';
 abstract class AuctionRepo {
   static Future<Either<ErrorEntity, List<AuctionEntity>>> auction(
       AuctionParams? params) async {
-    try {
+    // try {
       final response = await Network().request(
-        Endpoints.auctions,
+        Endpoints.homeAuction,
         method: ServerMethods.GET,
         queryParameters: params?.returnedMap(),
       );
 
-      final List<AuctionEntity> auctions = checkFromArray(response.data)
-          ? (response.data as List)
-              .map((e) => AuctionModel.fromJson(e))
-              .toList()
-          : [];
+      final List<AuctionEntity> auctions =
+          checkFromArray(response.data['content'])
+              ? (response.data['content'] as List)
+                  .map((e) => AuctionModel.fromJson(e))
+                  .toList()
+              : [];
 
       return Right(auctions);
-    } catch (error) {
-      return Left(ApiErrorHandler().handleError(error));
-    }
+    // } catch (error) {
+    //   return Left(ApiErrorHandler().handleError(error));
+    // }
   }
 }

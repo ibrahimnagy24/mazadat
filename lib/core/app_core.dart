@@ -81,7 +81,6 @@ void showErrorSnackBar(message, {ErrorEntity? error}) {
       message: message.toString(),
       backgroundColor: AppColors.IN_ACTIVE,
       borderColor: AppColors.DARK_RED,
-      iconName: 'fill-close-circle',
       isFloating: true,
     ),
   );

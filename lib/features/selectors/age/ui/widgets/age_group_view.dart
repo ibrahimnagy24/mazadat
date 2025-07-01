@@ -4,6 +4,7 @@ import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
+import '../../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../data/entity/age_entity.dart';
 
 class AgeGroupView extends StatefulWidget {
@@ -29,8 +30,8 @@ class _AgeGroupViewState extends State<AgeGroupView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(
+    return ListAnimator(
+      data: List.generate(
         widget.data.length,
         (index) => GestureDetector(
           onTap: () {
