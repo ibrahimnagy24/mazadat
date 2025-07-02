@@ -26,7 +26,8 @@ class VerifyCodeScreenMobilePortraitDesignScreen extends StatelessWidget {
                       ),
                     ),
                     if (param.fromScreenEnum ==
-                        VerifyCodeFromScreen.fromRegister)
+                            VerifyCodeFromScreen.fromRegister ||
+                        param.fromScreenEnum == VerifyCodeFromScreen.fromLogin)
                       TextButton(
                         onPressed: () {
                           CustomNavigator.push(

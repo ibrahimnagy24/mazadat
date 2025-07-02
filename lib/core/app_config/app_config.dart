@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class AppConfig {
   // static const LOCALE = 'https://2f04-197-61-38-60.eu.ngrok.io/api/v1/';
   static String appName = 'Mazadat';
-  static String BASE_URL = 'http://165.22.214.94:8083';
-  static String BASE_URL_STAGING = 'http://165.22.214.94:8083';
-  static String BASE_URL_PRODUCTION = 'http://165.22.214.94:8083';
+  static String BASE_URL = 'https://mazadat.api.innoeg.com';
+  static String BASE_URL_STAGING = 'https://mazadat.api.innoeg.com';
+  static String BASE_URL_PRODUCTION = 'https://mazadat.api.innoeg.com';
 
-  static const BASE_URL_SHARE = 'http://165.22.214.94:8083/details/';
+  static const BASE_URL_SHARE = 'https://mazadat.api.innoeg.com/details/';
 
   static const SHA1_DEBUG =
       '84:BC:EA:74:6D:BB:33:C7:96:6F:21:B3:39:CE:D7:DC:44:92:05:17';
@@ -21,11 +21,11 @@ class AppConfig {
   static const ANDROID_CLIENT_ID = '107000000000000000000';
   static const IOS_CLIENT_ID = '10700001230000000';
 
-  static const APP_LINK = 'https://barq.innoeg.com';
+  static const APP_LINK = 'https://mazadat.api.innoeg.com';
 
   static const PUSHER_API_KEY = '7a6aa46f5b5135831c02';
   static const PUSHER_API_CLUSTER = 'eu';
-  static const PUSHER_AUTH_ENDPOINT = 'https://barq.innoeg.com';
+  static const PUSHER_AUTH_ENDPOINT = 'https://mazadat.api.innoeg.com';
 
   static const int maximunNumberOfQuestions = 36;
   static const ScrollPhysics appPhysics = BouncingScrollPhysics();

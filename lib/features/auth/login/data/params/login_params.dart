@@ -10,7 +10,7 @@ class LoginParams extends Equatable {
   final String password;
   Map<String, dynamic> returnedMap() {
     Map<String, dynamic> map = {
-      'countryCode': '996',
+      'countryCode': '966',
       'phone': phone,
       'password': password,
     };

@@ -20,11 +20,11 @@ Future<void> main() async {
     cprint(e.toString());
   }
 
-  // try {
-  //   await Utility.logout();
-  // } catch (e) {
-  //   cprint(e.toString());
-  // }
+  try {
+    await Utility.logout();
+  } catch (e) {
+    cprint(e.toString());
+  }
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

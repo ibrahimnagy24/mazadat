@@ -24,7 +24,7 @@ class RegisterParams extends Equatable {
     Map<String, dynamic> map = {
       'firstName': firstName,
       'lastName': lastName,
-      'countryCode': '996',
+      'countryCode': '966',
       'phone': phone,
       'isTermsAccepted': '1',
       'email': email,

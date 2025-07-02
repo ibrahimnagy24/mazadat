@@ -43,7 +43,7 @@ class CreateAccountButtonWidget extends StatelessWidget {
             extra: VerifyCodeRouteParams(
               phone: context.read<RegisterCubit>().phone.text,
               fromScreenEnum: VerifyCodeFromScreen.fromRegister,
-              countryCode: '996',
+              countryCode: '966',
             ),
           );
           showSuccessToast(state.registerEntity.message);
