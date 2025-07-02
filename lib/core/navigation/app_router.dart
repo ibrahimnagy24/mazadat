@@ -13,6 +13,7 @@ import '../../features/auth/verify_code/data/params/verify_code_route_params.dar
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
 import '../../features/home/ui/pages/home_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
+import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';
@@ -103,6 +104,13 @@ final GoRouter appRouter = GoRouter(
       path: '/home',
       name: Routes.CUSTOM_HOME,
       builder: (context, state) => const HomeScreen(),
+    ),
+
+    // Search routes
+    GoRoute(
+      path: '/search',
+      name: Routes.SEARCH,
+      builder: (context, state) => const SearchPage(),
     ),
 
     // More routes

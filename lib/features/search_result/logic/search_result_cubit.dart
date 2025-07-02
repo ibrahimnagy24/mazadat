@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/services/pagination/pagination_service.dart';
-import '../data/entity/bundle_entity.dart';
-import '../data/model/bundles_model.dart';
-import '../data/repo/bundles_repo.dart';
-import 'bundles_state.dart';
+import '../../auctions/data/entity/auction_entity.dart';
+import '../data/model/search_result_model.dart';
+import '../data/repo/search_result_repo.dart';
+import 'search_state.dart';
 
-class BundlesCubit extends Cubit<BundlesState> {
-  BundlesCubit() : super(const BundlesInitial()) {
+class SearchResultCubit extends Cubit<SearchResultState> {
+  SearchResultCubit() : super(const SearchResultInitial()) {
     controller = ScrollController();
     customScroll(controller);
   }
@@ -15,7 +15,7 @@ class BundlesCubit extends Cubit<BundlesState> {
 
   late ScrollController controller;
   late SearchEngine _engine;
-  List<BundleEntity>? model;
+  List<AuctionEntity>? model;
 
 //---------------------------------FUNCTIONS----------------------------------//
   customScroll(ScrollController controller) {
@@ -23,26 +23,26 @@ class BundlesCubit extends Cubit<BundlesState> {
       bool scroll = PaginationService.scrollListener(controller,
           maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
       if (scroll) {
-        bundlesStatesHandled(_engine);
+        searchResultStatesHandled(_engine);
       }
     });
   }
 
 //----------------------------------REQUEST-----------------------------------//
-  Future<void> bundlesStatesHandled(SearchEngine params) async {
+  Future<void> searchResultStatesHandled(SearchEngine params) async {
     _engine = params;
     if (_engine.currentPage == -1) {
       model = [];
-      emit(const BundlesLoading());
+      emit(const SearchResultLoading());
     } else {
-      emit(BundlesSuccess(bundles: model!, isLoading: true));
+      emit(SearchResultSuccess(auctions: model!, isLoading: true));
     }
 
-    final response = await BundlesRepo.bundles(params);
+    final response = await SearchResultRepo.searchResult(params);
     response.fold((failure) {
-      return emit(BundlesError(failure));
+      return emit(SearchResultError(failure));
     }, (success) {
-      BundlesModel? res = BundlesModel.fromJson(success.data);
+      SearchResultModel? res = SearchResultModel.fromJson(success.data);
 
       if (_engine.currentPage == -1) {
         model?.clear();
@@ -58,9 +58,9 @@ class BundlesCubit extends Cubit<BundlesState> {
       _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
-        return emit(BundlesSuccess(bundles: model!, isLoading: false));
+        return emit(SearchResultSuccess(auctions: model!, isLoading: false));
       } else {
-        return emit(const BundlesEmpty());
+        return emit(const SearchResultEmpty());
       }
     });
   }

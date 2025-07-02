@@ -6,12 +6,12 @@ import '../../../../core/services/network/network_helper.dart';
 import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/shared/entity/error_entity.dart';
 
-abstract class BundlesRepo {
-  static Future<Either<ErrorEntity, Response>> bundles(
+abstract class SearchRepo {
+  static Future<Either<ErrorEntity, Response>> search(
       SearchEngine params) async {
     try {
       final response = await Network().request(
-        Endpoints.homeBundles,
+        Endpoints.getSearch,
         method: ServerMethods.GET,
         queryParameters: params.toJson(),
       );

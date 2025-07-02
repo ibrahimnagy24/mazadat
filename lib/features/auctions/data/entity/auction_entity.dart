@@ -6,43 +6,43 @@ class AuctionEntity extends Equatable {
   final AuctionType auctionType;
   final String auctionStatus;
   final String image;
-  final String productName;
-  final String productDescription;
+  final String name;
+  final String description;
   final dynamic openingPrice;
   final dynamic insurancePrice;
   final DateTime startDate, endDate;
-  final String auctionDuration;
   final int id;
+  final int? searchId;
   final bool isFav;
 
   const AuctionEntity({
     required this.id,
+    required this.searchId,
     required this.auctionStatus,
     required this.auctionType,
     required this.image,
-    required this.productName,
-    required this.productDescription,
+    required this.name,
+    required this.description,
     required this.openingPrice,
     required this.insurancePrice,
     required this.startDate,
     required this.endDate,
-    required this.auctionDuration,
     required this.isFav,
   });
 
   @override
   List<Object?> get props => [
+        id,
+        searchId,
         auctionType,
         auctionStatus,
         image,
-        productName,
-        productDescription,
+        name,
+        description,
         openingPrice,
         insurancePrice,
         startDate,
         endDate,
-        auctionDuration,
-        id,
         isFav,
       ];
 }

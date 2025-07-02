@@ -113,6 +113,9 @@
   "Favourite": "المفضلة",
   "Bundle": "حزمة",
   "Bundles": "حزم",
-  "Auctions Number": "عدد المزادات"
-
+  "Auctions Number": "عدد المزادات",
+  "Search": "البحث",
+  "Last Result": "آخر النتائج",
+  "Delete All": "حذف الكل",
+   "Search For Auctions":"أبحث عن المزادات"
 }

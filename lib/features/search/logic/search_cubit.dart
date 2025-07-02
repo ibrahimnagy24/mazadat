@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rxdart/rxdart.dart';
 import '../../../core/services/pagination/pagination_service.dart';
-import '../data/entity/bundle_entity.dart';
-import '../data/model/bundles_model.dart';
-import '../data/repo/bundles_repo.dart';
-import 'bundles_state.dart';
+import '../../auctions/data/entity/auction_entity.dart';
+import '../data/model/search_model.dart';
+import '../data/params/filter_params.dart';
+import '../data/repo/search_repo.dart';
+import 'search_state.dart';
 
-class BundlesCubit extends Cubit<BundlesState> {
-  BundlesCubit() : super(const BundlesInitial()) {
+class SearchCubit extends Cubit<SearchState> {
+  SearchCubit() : super(const SearchInitial()) {
+    updateFilter(FilterParams());
     controller = ScrollController();
     customScroll(controller);
   }
@@ -15,7 +18,11 @@ class BundlesCubit extends Cubit<BundlesState> {
 
   late ScrollController controller;
   late SearchEngine _engine;
-  List<BundleEntity>? model;
+  List<AuctionEntity>? model;
+
+  final filter = BehaviorSubject<FilterParams>();
+  Function(FilterParams) get updateFilter => filter.sink.add;
+  Stream<FilterParams> get filterStream => filter.stream.asBroadcastStream();
 
 //---------------------------------FUNCTIONS----------------------------------//
   customScroll(ScrollController controller) {
@@ -23,26 +30,28 @@ class BundlesCubit extends Cubit<BundlesState> {
       bool scroll = PaginationService.scrollListener(controller,
           maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
       if (scroll) {
-        bundlesStatesHandled(_engine);
+        searchStatesHandled(_engine);
       }
     });
   }
 
 //----------------------------------REQUEST-----------------------------------//
-  Future<void> bundlesStatesHandled(SearchEngine params) async {
+  Future<void> searchStatesHandled(SearchEngine params) async {
     _engine = params;
     if (_engine.currentPage == -1) {
       model = [];
-      emit(const BundlesLoading());
+      emit(const SearchLoading());
     } else {
-      emit(BundlesSuccess(bundles: model!, isLoading: true));
+      emit(SearchSuccess(auctions: model!, isLoading: true));
     }
 
-    final response = await BundlesRepo.bundles(params);
+    _engine.query = filter.valueOrNull?.toJson();
+
+    final response = await SearchRepo.search(params);
     response.fold((failure) {
-      return emit(BundlesError(failure));
+      return emit(SearchError(failure));
     }, (success) {
-      BundlesModel? res = BundlesModel.fromJson(success.data);
+      SearchModel? res = SearchModel.fromJson(success.data);
 
       if (_engine.currentPage == -1) {
         model?.clear();
@@ -58,9 +67,9 @@ class BundlesCubit extends Cubit<BundlesState> {
       _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
-        return emit(BundlesSuccess(bundles: model!, isLoading: false));
+        return emit(SearchSuccess(auctions: model!, isLoading: false));
       } else {
-        return emit(const BundlesEmpty());
+        return emit(const SearchEmpty());
       }
     });
   }

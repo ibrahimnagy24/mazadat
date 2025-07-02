@@ -9,13 +9,18 @@ final class BundlesInitial extends BundlesState {
   const BundlesInitial();
 }
 
+final class BundlesEmpty extends BundlesState {
+  const BundlesEmpty();
+}
+
 class BundlesLoading extends BundlesState {
   const BundlesLoading();
 }
 
 class BundlesSuccess extends BundlesState {
   final List<BundleEntity> bundles;
-  const BundlesSuccess(this.bundles);
+  final bool isLoading;
+  const BundlesSuccess({required this.bundles, this.isLoading = false});
 }
 
 class BundlesError extends BundlesState {

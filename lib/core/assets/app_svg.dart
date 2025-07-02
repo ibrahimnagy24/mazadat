@@ -39,4 +39,6 @@ class AppSvg {
       type == AuctionType.public ? public : private;
   static const String public = '$_svgPath/public.svg';
   static const String private = '$_svgPath/private.svg';
+  static const String arrowBack = '$_svgPath/arrow_back.svg';
+  static const String filter = '$_svgPath/filter.svg';
 }

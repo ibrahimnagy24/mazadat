@@ -7,33 +7,31 @@ import '../enums/auction_enums.dart';
 class AuctionModel extends AuctionEntity {
   const AuctionModel({
     required super.id,
+     super.searchId,
     required super.isFav,
     required super.auctionStatus,
     required super.auctionType,
     required super.image,
-    required super.productName,
-    required super.productDescription,
+    required super.name,
+    required super.description,
     required super.openingPrice,
     required super.insurancePrice,
     required super.startDate,
     required super.endDate,
-    required super.auctionDuration,
   });
 
   factory AuctionModel.fromJson(Map<String, dynamic> json) => AuctionModel(
+        id: json['id'],
+        searchId: json['searchId'] ,
         auctionType: checkFromMap(json['auctionType'])
             ? AuctionEnumConverter.stringToAuctionType(
-                json['auctionType']['code'] ?? 'PRIVATE')
+                json['auctionType']['code']?.toString().toUpperCase() ??
+                    'PRIVATE')
             : AuctionType.public,
         auctionStatus: json['statusLabel'],
-        image:
-            checkFromMap(json['attachment']) ? json['attachment']['path'] : '',
-        productName: checkFromMap(json['product'])
-            ? json['product']['name']
-            : AppConstant.nullFromBack,
-        productDescription: checkFromMap(json['product'])
-            ? json['product']['description']
-            : AppConstant.nullFromBack,
+        image: json['image'] ?? '',
+        name: json['name'] ?? AppConstant.nullFromBack,
+        description: json['description'] ?? AppConstant.nullFromBack,
         openingPrice: json['openingPrice'],
         insurancePrice: json['insurancePrice'],
         startDate: json['endDate'] != null
@@ -42,8 +40,22 @@ class AuctionModel extends AuctionEntity {
         endDate: json['endDate'] != null
             ? DateTime.parse(json['endDate'])
             : DateTime.now(),
-        auctionDuration: json['acutionDuration'] ?? AppConstant.nullFromBack,
-        id: json['id'],
         isFav: json['myfav'],
       );
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['searchId'] = searchId;
+    data['image'] = auctionStatus;
+    data['name'] = name;
+    data['description'] = description;
+    data['statusLabel'] = auctionStatus;
+    data['auctionType'] = auctionType.name.toUpperCase();
+    data['openingPrice'] = openingPrice;
+    data['startDate'] = startDate;
+    data['endDate'] = endDate;
+    data['myfav'] = isFav;
+    return data;
+  }
 }

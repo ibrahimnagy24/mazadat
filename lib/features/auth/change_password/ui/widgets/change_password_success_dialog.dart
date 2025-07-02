@@ -33,7 +33,7 @@ class ChangePasswordSuccessDialog extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         DefaultButton(
-          text: AppStrings.mainPage.tr,
+          text: AppStrings.Continue.tr,
           onPressed: () =>
               CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true),
         )

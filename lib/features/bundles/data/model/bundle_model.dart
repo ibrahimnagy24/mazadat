@@ -16,4 +16,14 @@ class BundleModel extends BundleEntity {
             json['numberOfAuctions']?.toString() ?? AppConstant.nullFromBack,
         price: json['price'] ?? AppConstant.nullFromBack,
       );
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['numberOfAuctions'] = numberOfAuctions;
+    data['price'] = price;
+
+    return data;
+  }
 }

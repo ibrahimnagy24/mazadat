@@ -13,9 +13,14 @@ class AuctionsLoading extends AuctionsState {
   const AuctionsLoading();
 }
 
+class AuctionsEmpty extends AuctionsState {
+  const AuctionsEmpty();
+}
+
 class AuctionsSuccess extends AuctionsState {
   final List<AuctionEntity> auctions;
-  const AuctionsSuccess(this.auctions);
+  final bool isLoading;
+  const AuctionsSuccess({required this.auctions, this.isLoading = false});
 }
 
 class AuctionsError extends AuctionsState {

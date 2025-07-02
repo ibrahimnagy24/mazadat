@@ -139,4 +139,8 @@ class AppStrings {
 
   static const String bank = 'Bank';
   static const String selectBank = 'Select Bank';
+  static const String search = 'Search';
+  static const String lastResult = 'Last Result';
+  static const String deleteAll = 'Delete All';
+  static const String searchForAuctions = 'Search For Auctions';
 }

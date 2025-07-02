@@ -21,6 +21,10 @@ abstract class Endpoints {
 //----------------------------------CATEGORY--------------------------------------\\
   static const String getCategories = '/auctionCategory/listActiveCategories';
 
+  //----------------------------------SEARCH--------------------------------------\\
+  static const String getSearchResult = '/searchResult/getLatestSearchResult';
+  static const String getSearch = homeAuction;
+
 //--------------------------------USER OPERATIONS--------------------------------------\\
   static const String getUserInfo = '/profile';
 

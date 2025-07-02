@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
-import '../../../auctions/data/params/auction_params.dart';
 import '../../../auctions/logic/auctions_cubit.dart';
 import '../../../auctions/ui/page/auctions_page.dart';
 import '../../../bundles/logic/bundles_cubit.dart' show BundlesCubit;
@@ -25,9 +25,11 @@ class HomeScreen extends StatelessWidget {
           create: (context) => CategoryCubit()..categoriesStatesHandled(),
         ),
         BlocProvider(
-            create: (context) => BundlesCubit()..bundlesStatesHandled()),
+            create: (context) =>
+                BundlesCubit()..bundlesStatesHandled(SearchEngine())),
         BlocProvider(
-            create: (context) => AuctionsCubit()..auctionStatesHandled()),
+            create: (context) =>
+                AuctionsCubit()..auctionStatesHandled(SearchEngine())),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
@@ -40,11 +42,9 @@ class HomeScreen extends StatelessWidget {
                   child: StreamBuilder(
                       stream: context.read<HomeCubit>().listingStream,
                       builder: (c, listSnapshot) {
-
-                      return CustomScrollView(
-                        slivers: [
-                          SliverToBoxAdapter(
-                            child: AnimatedOpacity(
+                        return Column(
+                          children: [
+                            AnimatedOpacity(
                               opacity: 1.0,
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeInOut,
@@ -53,36 +53,38 @@ class HomeScreen extends StatelessWidget {
                                 curve: Curves.easeOutQuad,
                                 child: CategoriesSection(
                                   onTap: (v) {
-                                    if (v?.categoryType != CategoryTypes.bundle ) {
+                                    if (v?.categoryType !=
+                                        CategoryTypes.bundle) {
                                       context
                                           .read<AuctionsCubit>()
-                                          .auctionStatesHandled(
-                                              params:
-                                                  AuctionParams(categoryId: v?.id));
+                                          .auctionStatesHandled(SearchEngine(
+                                              query: {'categoryIds': v?.id}));
                                     }
-                                    if (categorySnapshot.data != v?.categoryType) {
-                                      context.read<HomeCubit>().updateCategoryType(
-                                          v?.categoryType ?? CategoryTypes.auction);
+                                    if (categorySnapshot.data !=
+                                        v?.categoryType) {
+                                      context
+                                          .read<HomeCubit>()
+                                          .updateCategoryType(v?.categoryType ??
+                                              CategoryTypes.auction);
                                     }
                                   },
                                 ),
                               ),
                             ),
-                          ),
-                          const HomeSearchCard(),
-                          StreamBuilder(
-                              stream: context.read<HomeCubit>().listingStream,
-                              builder: (c, listSnapshot) {
-                                return categorySnapshot.data == CategoryTypes.bundle
-                                    ? BundlesPage(
-                                        isListing: listSnapshot.data == true)
-                                    : AuctionsPage(
-                                        isListing: listSnapshot.data == true);
-                              }),
-                        ],
-                      );
-                    }
-                  ),
+                            const HomeSearchCard(),
+                            StreamBuilder(
+                                stream: context.read<HomeCubit>().listingStream,
+                                builder: (c, listSnapshot) {
+                                  return categorySnapshot.data ==
+                                          CategoryTypes.bundle
+                                      ? BundlesPage(
+                                          isListing: listSnapshot.data == true)
+                                      : AuctionsPage(
+                                          isListing: listSnapshot.data == true);
+                                }),
+                          ],
+                        );
+                      }),
                 );
               });
         },

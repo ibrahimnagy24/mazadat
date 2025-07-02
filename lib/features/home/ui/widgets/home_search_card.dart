@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/assets/app_svg.dart';
+import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radiuos/app_radius.dart';
@@ -15,15 +17,14 @@ class HomeSearchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-        child: Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
       child: Row(
         spacing: 8.w,
         children: [
           Expanded(
             child: InkWell(
-              onTap: () {},
+              onTap: () => CustomNavigator.push(Routes.SEARCH),
               child: Container(
                 height: 50.h,
                 padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
@@ -90,6 +91,6 @@ class HomeSearchCard extends StatelessWidget {
               }),
         ],
       ),
-    ));
+    );
   }
 }
