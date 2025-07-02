@@ -15,7 +15,7 @@ class LoginRememberMeWidget extends StatelessWidget {
     final cubit = context.read<LoginCubit>();
     return TextButton(
       onPressed: () {
-        CustomNavigator.push(Routes.RESET_PASSWORD_SCREEN);
+        CustomNavigator.push(Routes.FORGET_PASSWORD_SCREEN);
       },
       child: Text(
         AppStrings.forgotYourPassword.tr,

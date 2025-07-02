@@ -65,6 +65,7 @@ class AppStrings {
   static const String availablePackages = 'Available packages';
   static const String enterYourPhone = 'Enter your phone';
   static const String resetPassword = 'Reset Password';
+  static const String changePassword = 'Change Password';
   static const String passwordChangedSuccessfully =
       'Password Changed Successfully';
   static const String
@@ -82,6 +83,7 @@ class AppStrings {
   static const String enterYourName = 'Enter your name';
   static const String enterYourEmail = 'Enter your email';
   static const String theEmail = 'The email';
+  static const String pleaseEnterValidEmail = 'Please enter valid e-mail';
   static const String phoneCannotBeEmptyPleaseEnterAValidPhone =
       'Phone cannot be empty please enter a valid phone';
   static const String pleaseEnterAValidPhoneFormat =
@@ -101,6 +103,9 @@ class AppStrings {
       'Password is too short it must be at least 8';
   static const String yourPasswordMustIncludeAtLeastOneSpecialCharacter =
       'Your password must include at least one special character';
+
+  static const String newPasswordMatchValidation = 'New password must be different the current password';
+  static const String confirmedNewPasswordMatchValidation = 'Confirmed new password doesn\'t match the new password';
   static const String passwordsDonTMatchPleaseTryAgain =
       'Passwords don\'t match please try again';
 

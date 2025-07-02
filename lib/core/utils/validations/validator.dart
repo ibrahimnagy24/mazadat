@@ -56,16 +56,11 @@ class EmailValidator {
     final emailReg =
         RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
-    if (email == null || email.isEmpty) {
-      return 'AppStrings.emailCannotBeEmptyPleaseEnterAValidEmail.tr';
-    }
-
-    if (email.contains(' ')) {
-      return 'AppStrings.emailCannotContainSpaces.tr';
-    }
-
-    if (!emailReg.hasMatch(email)) {
-      return 'AppStrings.pleaseEnterAValidEmailFormat.tr';
+    if (email == null ||
+        email.isEmpty ||
+        email.contains(' ') ||
+        !emailReg.hasMatch(email)) {
+      return AppStrings.pleaseEnterValidEmail.tr;
     }
 
     return null;
@@ -135,14 +130,31 @@ class PasswordConfirmationValidator {
   }
 }
 
-class ChangePasswordConfirmationValidator {
-  static passwordValidator(String? password, BuildContext context) {
-    if (password!.length < 6) {
-      return 'confirm_password'.tr;
+class NewPasswordValidator {
+  static String? newPasswordValidator(String? password, String? newPassword) {
+    if (newPassword == null || newPassword.isEmpty) {
+      return AppStrings.passwordCannotBeEmpty.tr;
     }
-    // else if (password != context.read<PasswordBloc>().newPassword.value) {
-    //   ext('confirmed_password_match_password'.tr;
-    // }
+    if (password == newPassword) {
+      return AppStrings.newPasswordMatchValidation.tr;
+    }
+
+    return null;
+  }
+}
+
+class ConfirmNewPasswordValidator {
+  static String? confirmNewPasswordValidator(
+    String? newPassword,
+    String? confirmNewPassword,
+  ) {
+    if (confirmNewPassword == null || confirmNewPassword.isEmpty) {
+      return AppStrings.passwordCannotBeEmpty.tr;
+    }
+    if (confirmNewPassword != newPassword) {
+      return AppStrings.confirmedNewPasswordMatchValidation.tr;
+    }
+
     return null;
   }
 }
@@ -276,7 +288,6 @@ class DefaultValidator {
     return null;
   }
 }
-
 
 class OTPValidator {
   static String? otpValidator(var value) {

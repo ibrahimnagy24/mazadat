@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../app/app.dart';
+import '../../features/auth/change_password/ui/widgets/change_password_imports.dart';
 import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
 import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
-import '../../features/auth/change_password_success/widgets/change_password_success_imports.dart';
 import '../../features/auth/change_phone_number/ui/widgets/change_phone_number_imports.dart';
 import '../../features/category/ui/screens/choose_categories_screen.dart';
 import '../../features/auth/login/ui/widgets/login_imports.dart';
@@ -62,8 +62,8 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const ChooseCategoriesScreen(),
     ),
     GoRoute(
-      path: '/reset-password',
-      name: Routes.RESET_PASSWORD_SCREEN,
+      path: '/forget-password',
+      name: Routes.FORGET_PASSWORD_SCREEN,
       builder: (context, state) => const ForgetPasswordScreen(),
     ),
 
@@ -84,17 +84,18 @@ final GoRouter appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/change-password',
-      name: Routes.CHANGE_PASSWORD_SCREEN,
+      path: '/reset-password',
+      name: Routes.RESET_PASSWORD_SCREEN,
       builder: (context, state) {
         final routeParams = state.extra as ResetPasswordRouteParams;
         return ResetPasswordScreen(routeParams: routeParams);
       },
     ),
+
     GoRoute(
-      path: '/change-password-success',
-      name: Routes.CHANGE_PASSWORD_SUCCESS_SCREEN,
-      builder: (context, state) => const ChangePasswordSuccessScreen(),
+      path: '/change-password',
+      name: Routes.CHANGE_PASSWORD_SCREEN,
+      builder: (context, state) => const ChangePasswordScreen(),
     ),
 
     // Home routes

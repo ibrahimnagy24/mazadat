@@ -48,7 +48,7 @@ class VerifyCodeButtonWidget extends StatelessWidget {
               break;
             case VerifyCodeFromScreen.fromForgetPassword:
               CustomNavigator.push(
-                Routes.CHANGE_PASSWORD_SCREEN,
+                Routes.RESET_PASSWORD_SCREEN,
                 replace: true,
                 extra: ResetPasswordRouteParams(
                     phone: cubit.resetPasswordParams.phone,
