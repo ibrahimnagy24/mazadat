@@ -9,14 +9,8 @@ class AuctionsCubit extends Cubit<AuctionsState> {
 //---------------------------------VARIABLES----------------------------------//
 
   List<AuctionEntity>? allAuctions;
-  bool isList = false;
-
 //---------------------------------FUNCTIONS----------------------------------//
 
-  // updateListingCard() {
-  //   isList = !isList;
-  //   emit(ListingState());
-  // }
 
 //----------------------------------REQUEST-----------------------------------//
   Future<void> auctionStatesHandled({AuctionParams? params}) async {

@@ -19,25 +19,19 @@ class BundlesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<BundlesCubit>();
     return BlocBuilder<BundlesCubit, BundlesState>(
-      buildWhen: (previous, current) =>
-          current is BundlesLoading ||
-          current is BundlesSuccess ||
-          current is BundlesError,
       builder: (context, state) {
         if (state is BundlesLoading) {
           return isListing
-              ? SliverList.separated(
-                  itemBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: CustomShimmerContainer(
+              ? SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  sliver: SliverList.separated(
+                    itemBuilder: (context, index) => CustomShimmerContainer(
                       height: 120.h,
                       width: MediaQueryHelper.width,
                     ),
+                    itemCount: 10,
+                    separatorBuilder: (c, i) => const SizedBox(height: 16),
                   ),
-                  itemCount: cubit.allAuctions?.length ?? 0,
-                  separatorBuilder: (context, index) {
-                    return SizedBox(height: 16.h);
-                  },
                 )
               : SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -58,31 +52,29 @@ class BundlesPage extends StatelessWidget {
                   ));
         }
         if (state is BundlesError) {
-          return SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: ErrorMessageWidget(
-                error: state.error,
-                onTap: () {
-                  cubit.bundlesStatesHandled();
-                },
-              ),
+          return SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            sliver: ErrorMessageWidget(
+              error: state.error,
+              onTap: () {
+                cubit.bundlesStatesHandled();
+              },
             ),
           );
         }
-        if (cubit.allAuctions != null) {
-          if (cubit.allAuctions!.isEmpty) {
-            return const SizedBox();
+        if (cubit.allBundles != null) {
+          if (cubit.allBundles!.isEmpty) {
+            return const SliverToBoxAdapter(child: SizedBox());
           }
           return isListing
               ? SliverList.separated(
                   itemBuilder: (context, index) {
                     return Padding(
                         padding: EdgeInsets.symmetric(horizontal: 24.w),
-                        child: ListBundleCard(
-                            bundle: cubit.allAuctions![index]));
+                        child:
+                            ListBundleCard(bundle: cubit.allBundles![index]));
                   },
-                  itemCount: cubit.allAuctions?.length ?? 0,
+                  itemCount: cubit.allBundles?.length ?? 0,
                   separatorBuilder: (context, index) {
                     return const SizedBox(height: 16);
                   },
@@ -91,10 +83,9 @@ class BundlesPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   sliver: SliverGrid.builder(
                     itemBuilder: (context, index) {
-                      return GridBundleCard(
-                          bundle: cubit.allAuctions![index]);
+                      return GridBundleCard(bundle: cubit.allBundles![index]);
                     },
-                    itemCount: cubit.allAuctions?.length ?? 0,
+                    itemCount: cubit.allBundles?.length ?? 0,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 16.w,
@@ -103,11 +94,10 @@ class BundlesPage extends StatelessWidget {
                     ),
                   ));
         }
-        return SliverToBoxAdapter(
-            child: Padding(
+        return SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: const Center(child: Text('no state provided')),
-        ));
+          sliver: const Center(child: Text('no state provided')),
+        );
       },
     );
   }

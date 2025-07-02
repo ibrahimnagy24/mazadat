@@ -72,7 +72,7 @@ class ListBundleCard extends StatelessWidget {
                             ),
                             Flexible(
                               child: MainText(
-                                  text: bundle.openingPrice,
+                                  text: bundle.price,
                                   style: AppTextStyles.textMdRegular
                                       .copyWith(color: AppColors.textPrimary)),
                             ),
@@ -92,7 +92,7 @@ class ListBundleCard extends StatelessWidget {
                               style: AppTextStyles.textMdRegular,
                             ),
                             Text(
-                              bundle.linkedAuctionsCount,
+                              bundle.numberOfAuctions,
                               style: AppTextStyles.textMdBold
                                   .copyWith(color: AppColors.tertiary),
                             ),

@@ -11,7 +11,7 @@ import '../params/bundle_params.dart';
 abstract class BundlesRepo {
   static Future<Either<ErrorEntity, List<BundleEntity>>> bundles(
       BundleParams? params) async {
-    try {
+    // try {
       final response = await Network().request(
         Endpoints.homeBundles,
         method: ServerMethods.GET,
@@ -26,8 +26,8 @@ abstract class BundlesRepo {
               : [];
 
       return Right(auctions);
-    } catch (error) {
-      return Left(ApiErrorHandler().handleError(error));
-    }
+    // } catch (error) {
+    //   return Left(ApiErrorHandler().handleError(error));
+    // }
   }
 }

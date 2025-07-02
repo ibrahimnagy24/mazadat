@@ -25,7 +25,7 @@ class AuctionModel extends AuctionEntity {
             ? AuctionEnumConverter.stringToAuctionType(
                 json['auctionType']['code'] ?? 'PRIVATE')
             : AuctionType.public,
-        auctionStatus: json['status'],
+        auctionStatus: json['statusLabel'],
         image:
             checkFromMap(json['attachment']) ? json['attachment']['path'] : '',
         productName: checkFromMap(json['product'])
@@ -44,6 +44,6 @@ class AuctionModel extends AuctionEntity {
             : DateTime.now(),
         auctionDuration: json['acutionDuration'] ?? AppConstant.nullFromBack,
         id: json['id'],
-        isFav: json['isFav'] == 1,
+        isFav: json['myfav'],
       );
 }

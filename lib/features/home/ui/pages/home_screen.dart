@@ -37,45 +37,51 @@ class HomeScreen extends StatelessWidget {
               builder: (c, categorySnapshot) {
                 return CustomScaffoldWidget(
                   appbar: const HomeAppbar(),
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: AnimatedOpacity(
-                          opacity: 1.0,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 400),
-                            curve: Curves.easeOutQuad,
-                            child: CategoriesSection(
-                              onTap: (v) {
-                                if (v?.categoryType == CategoryTypes.auction) {
-                                  context
-                                      .read<AuctionsCubit>()
-                                      .auctionStatesHandled(
-                                          params:
-                                              AuctionParams(categoryId: v?.id));
-                                }
-                                if (categorySnapshot.data != v?.categoryType) {
-                                  context.read<HomeCubit>().updateCategoryType(
-                                      v?.categoryType ?? CategoryTypes.auction);
-                                }
-                              },
+                  child: StreamBuilder(
+                      stream: context.read<HomeCubit>().listingStream,
+                      builder: (c, listSnapshot) {
+
+                      return CustomScrollView(
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: AnimatedOpacity(
+                              opacity: 1.0,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 400),
+                                curve: Curves.easeOutQuad,
+                                child: CategoriesSection(
+                                  onTap: (v) {
+                                    if (v?.categoryType != CategoryTypes.bundle ) {
+                                      context
+                                          .read<AuctionsCubit>()
+                                          .auctionStatesHandled(
+                                              params:
+                                                  AuctionParams(categoryId: v?.id));
+                                    }
+                                    if (categorySnapshot.data != v?.categoryType) {
+                                      context.read<HomeCubit>().updateCategoryType(
+                                          v?.categoryType ?? CategoryTypes.auction);
+                                    }
+                                  },
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      const HomeSearchCard(),
-                      StreamBuilder(
-                          stream: context.read<HomeCubit>().listingStream,
-                          builder: (c, listSnapshot) {
-                            return categorySnapshot.data == CategoryTypes.bundle
-                                ? BundlesPage(
-                                    isListing: listSnapshot.data == true)
-                                : AuctionsPage(
-                                    isListing: listSnapshot.data == true);
-                          }),
-                    ],
+                          const HomeSearchCard(),
+                          StreamBuilder(
+                              stream: context.read<HomeCubit>().listingStream,
+                              builder: (c, listSnapshot) {
+                                return categorySnapshot.data == CategoryTypes.bundle
+                                    ? BundlesPage(
+                                        isListing: listSnapshot.data == true)
+                                    : AuctionsPage(
+                                        isListing: listSnapshot.data == true);
+                              }),
+                        ],
+                      );
+                    }
                   ),
                 );
               });

@@ -46,8 +46,7 @@ class GridBundleCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(AppRadius.rXS),
                       color: AppColors.fillColor,
                       border: Border.all(
-                          color: AppColors.iconSecondary,
-                      width: 1.5),
+                          color: AppColors.iconSecondary, width: 1.5),
                     ),
                     child: customImageIconSVG(
                       imageName: AppSvg.package,
@@ -67,7 +66,7 @@ class GridBundleCard extends StatelessWidget {
                           style: AppTextStyles.textMdRegular,
                         ),
                         MainText(
-                          text: bundle.linkedAuctionsCount,
+                          text: bundle.numberOfAuctions,
                           style: AppTextStyles.textMdBold
                               .copyWith(color: AppColors.tertiary),
                         ),
@@ -96,7 +95,7 @@ class GridBundleCard extends StatelessWidget {
                 ),
                 Flexible(
                   child: MainText(
-                      text: bundle.openingPrice,
+                      text: bundle.price,
                       style: AppTextStyles.textMdRegular
                           .copyWith(color: AppColors.textPrimary)),
                 ),

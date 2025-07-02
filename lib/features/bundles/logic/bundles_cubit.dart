@@ -8,7 +8,7 @@ class BundlesCubit extends Cubit<BundlesState> {
   BundlesCubit() : super(const BundlesInitial());
 //---------------------------------VARIABLES----------------------------------//
 
-  List<BundleEntity>? allAuctions;
+  List<BundleEntity>? allBundles;
   bool isList = false;
 
 //---------------------------------FUNCTIONS----------------------------------//
@@ -25,7 +25,7 @@ class BundlesCubit extends Cubit<BundlesState> {
     response.fold((failure) {
       return emit(BundlesError(failure));
     }, (success) {
-      allAuctions = success;
+      allBundles = success;
       emit(BundlesSuccess(success));
     });
   }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
+import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radiuos/app_radius.dart';
@@ -197,7 +198,9 @@ class AuctionInfo extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Text(
-                    auction.endDate.toDateFormat(format: 'd MMMM yyyy'),
+                    auction.endDate.toDateFormat(
+                        format: 'd MMMM yyyy',
+                        locale: mainAppBloc.lang.valueOrNull),
                     maxLines: 1,
                     style: AppTextStyles.textLgRegular
                         .copyWith(color: AppColors.textPrimaryParagraph),
