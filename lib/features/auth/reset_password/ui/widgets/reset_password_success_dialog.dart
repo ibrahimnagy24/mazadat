@@ -11,8 +11,8 @@ import '../../../../../core/utils/constant/app_strings.dart' show AppStrings;
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 
-class ChangePasswordSuccessDialog extends StatelessWidget {
-  const ChangePasswordSuccessDialog({super.key});
+class ResetPasswordSuccessDialog extends StatelessWidget {
+  const ResetPasswordSuccessDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

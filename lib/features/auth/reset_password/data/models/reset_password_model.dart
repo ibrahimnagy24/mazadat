@@ -1,22 +1,15 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../../core/utils/utility.dart';
-
 class ResetPasswordModel extends Equatable {
-  const ResetPasswordModel({
-    required this.message,
-    required this.code,
-  });
+  const ResetPasswordModel({required this.message});
   final String message;
-  final dynamic code;
 
-  factory ResetPasswordModel.fromJson(dynamic json) {
+  factory ResetPasswordModel.fromJson(Map<String, dynamic> json) {
     return ResetPasswordModel(
-      message: checkFromMap(json) ? (json['message'] ?? '') : json.toString(),
-      code: json['code'],
+      message: json['message'] ?? ' AppStrings.thePasswordHasBeenChanged.tr',
     );
   }
 
   @override
-  List<Object?> get props => [message, code];
+  List<Object?> get props => [message];
 }

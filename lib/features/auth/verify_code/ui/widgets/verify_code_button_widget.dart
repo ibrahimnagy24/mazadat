@@ -11,7 +11,7 @@ import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart'
     show CustomSimpleDialog;
-import '../../../change_password/data/params/change_password_route_params.dart';
+import '../../../reset_password/data/params/reset_password_route_params.dart';
 import '../../logic/verify_code_cubit.dart';
 import '../../logic/verify_code_state.dart';
 import 'register_success_dialog.dart';
@@ -50,8 +50,9 @@ class VerifyCodeButtonWidget extends StatelessWidget {
               CustomNavigator.push(
                 Routes.CHANGE_PASSWORD_SCREEN,
                 replace: true,
-                extra: ChangePasswordRouteParams(
-                    email: cubit.resetPasswordParams.phone),
+                extra: ResetPasswordRouteParams(
+                    phone: cubit.resetPasswordParams.phone,
+                    otp: cubit.code.text.trim()),
               );
               break;
             case VerifyCodeFromScreen.fromRegister:

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../app/app.dart';
-import '../../features/auth/change_password/data/params/change_password_route_params.dart';
-import '../../features/auth/change_password/ui/widgets/change_password_imports.dart';
+import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
+import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
 import '../../features/auth/change_password_success/widgets/change_password_success_imports.dart';
 import '../../features/auth/change_phone_number/ui/widgets/change_phone_number_imports.dart';
 import '../../features/category/ui/screens/choose_categories_screen.dart';
 import '../../features/auth/login/ui/widgets/login_imports.dart';
 import '../../features/auth/register/ui/widgets/register_imports.dart';
-import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
+import '../../features/auth/forget_password/ui/widgets/forget_password_imports.dart';
 import '../../features/auth/verify_code/data/params/verify_code_route_params.dart';
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
 import '../../features/home/ui/pages/home_screen.dart';
@@ -64,7 +64,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/reset-password',
       name: Routes.RESET_PASSWORD_SCREEN,
-      builder: (context, state) => const ResetPasswordScreen(),
+      builder: (context, state) => const ForgetPasswordScreen(),
     ),
 
     GoRoute(
@@ -87,8 +87,8 @@ final GoRouter appRouter = GoRouter(
       path: '/change-password',
       name: Routes.CHANGE_PASSWORD_SCREEN,
       builder: (context, state) {
-        final routeParams = state.extra as ChangePasswordRouteParams;
-        return ChangePasswordScreen(routeParams: routeParams);
+        final routeParams = state.extra as ResetPasswordRouteParams;
+        return ResetPasswordScreen(routeParams: routeParams);
       },
     ),
     GoRoute(

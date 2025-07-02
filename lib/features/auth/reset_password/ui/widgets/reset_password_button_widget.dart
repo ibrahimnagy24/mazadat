@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/app_core.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
-import '../../../../../core/navigation/routes.dart';
-
 import '../../../../../core/utils/constant/app_strings.dart';
-import '../../../../../core/utils/enums/enums.dart';
-
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
-import '../../../verify_code/data/params/verify_code_route_params.dart';
+import '../../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart';
 import '../../logic/reset_password_cubit.dart';
 import '../../logic/reset_password_state.dart';
+import 'reset_password_success_dialog.dart';
 
 class ResetPasswordButtonWidget extends StatelessWidget {
   const ResetPasswordButtonWidget({
@@ -31,35 +27,30 @@ class ResetPasswordButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
       listenWhen: (previous, current) =>
-          current is ResetPasswordError || current is ResetPasswordSucess,
+          current is ResetPasswordError || current is ResetPasswordSuccess,
       listener: (context, state) {
-        final cubit = context.read<ResetPasswordCubit>();
         if (state is ResetPasswordError) {
           showErrorSnackBar(state.error.message);
         }
-        if (state is ResetPasswordSucess) {
-          CustomNavigator.push(
-            Routes.VERIFY_CODE_SCREEN,
-            replace: true,
-            extra: VerifyCodeRouteParams(
-              phone: cubit.phone.text,
-              fromScreenEnum: VerifyCodeFromScreen.fromForgetPassword,
-              countryCode: '966',
-            ),
+        if (state is ResetPasswordSuccess) {
+          FocusScope.of(context).unfocus();
+          CustomSimpleDialog.parentSimpleDialog(
+            isDismissible: false,
+            customListWidget: const ResetPasswordSuccessDialog(),
           );
         }
       },
       buildWhen: (previous, current) =>
           current is ResetPasswordLoading ||
-          current is ResetPasswordSucess ||
+          current is ResetPasswordSuccess ||
           current is ResetPasswordError,
       builder: (context, state) {
         final cubit = context.read<ResetPasswordCubit>();
         return DefaultButton(
           isLoading: state is ResetPasswordLoading,
-          text: AppStrings.next.tr,
+          text: AppStrings.save.tr,
           onPressed: () {
-            if (cubit.isResetValidate()) {
+            if (cubit.isNewPasswordValid()) {
               FocusScope.of(context).unfocus();
               cubit.resetPasswordStatesHandled();
             }

@@ -11,8 +11,8 @@ final class ResetPasswordLoading extends ResetPasswordState {
   const ResetPasswordLoading();
 }
 
-final class ResetPasswordSucess extends ResetPasswordState {
-  const ResetPasswordSucess(this.data);
+final class ResetPasswordSuccess extends ResetPasswordState {
+  const ResetPasswordSuccess(this.data);
   final ResetPasswordModel data;
 }
 

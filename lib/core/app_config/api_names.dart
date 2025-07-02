@@ -7,7 +7,7 @@ abstract class Endpoints {
   static const String forgotPassword = '/users/sendVerificationCode';
   static const String changePhoneNumber = '/users/updateMyPhoneNumber';
   static const String visitor = '/visitors/checkIn';
-  static const String resetPassword = '/reset/password';
+  static const String resetPassword = '/users/updatePassword';
 //----------------------------------HOME--------------------------------------\\
 
   static const String homeBundles = '/bundles/searchBundles';

@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_core.dart';
 import '../../../../core/services/cache/shared_helper.dart';
+import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/enums/enums.dart';
-import '../../reset_password/data/params/reset_password_params.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../forget_password/data/params/forget_password_params.dart';
 import '../data/params/send_code_params.dart';
 import '../data/params/verify_code_params.dart';
 import '../data/params/verify_code_route_params.dart';
@@ -18,7 +20,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
 //---------------------------------VARIABLES----------------------------------//
   final TextEditingController code = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  late final ResetPasswordParams resetPasswordParams;
+  late final ForgetPasswordParams resetPasswordParams;
   late final VerifyCodeRouteParams verifyCodeRouteParams;
   Timer? _timer;
   int timerDuration = 60;
@@ -30,7 +32,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
   }
 
   void setResetPasswordParams() {
-    resetPasswordParams = ResetPasswordParams(
+    resetPasswordParams = ForgetPasswordParams(
       phone: verifyCodeRouteParams.phone,
       fromScreenEnum: verifyCodeRouteParams.fromScreenEnum,
       countryCode: verifyCodeRouteParams.countryCode,
@@ -65,7 +67,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
 
   bool isResetValidate() {
     if (code.text.length < 4) {
-      showErrorSnackBar('AppStrings.pleaseEnterValidCode.tr');
+      showErrorSnackBar(AppStrings.pleaseEnterValidCode.tr);
       return false;
     }
     if (formKey.currentState!.validate()) {
@@ -93,8 +95,6 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
     }, (success) async {
       switch (resetPasswordParams.fromScreenEnum) {
         case VerifyCodeFromScreen.fromForgetPassword:
-          await SharedHelper.sharedHelper
-              ?.saveToken(success.token, needToCacheToken: false);
           break;
         case VerifyCodeFromScreen.fromLogin:
           await SharedHelper.sharedHelper?.cacheLoginData(success);

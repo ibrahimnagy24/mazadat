@@ -86,6 +86,8 @@ class AppStrings {
       'Phone cannot be empty please enter a valid phone';
   static const String pleaseEnterAValidPhoneFormat =
       'Please enter a valid phone format';
+
+  static const String pleaseEnterValidCode = 'Please enter a valid code';
   static const String passwordCannotBeEmpty = 'Password cannot be empty';
   static const String yourPasswordMustIncludeAtLeastOneUppercaseLetter =
       'Your password must include at least one uppercase letter';
