@@ -62,9 +62,12 @@ class AuctionsPage extends StatelessWidget {
             ),
           );
         }
-        if (cubit.allAuctions != null) {
+        if (state is AuctionsSuccess) {
           if (cubit.allAuctions!.isEmpty) {
-            return const SliverToBoxAdapter(child: SizedBox());
+            return SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              sliver: const SliverToBoxAdapter(child: Text('no Data')),
+            );
           }
           return isListing
               ? SliverList.separated(
@@ -97,7 +100,7 @@ class AuctionsPage extends StatelessWidget {
         }
         return SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
-          sliver: const Center(child: Text('no state provided')),
+          sliver: const SliverToBoxAdapter(child: Text('no state provided')),
         );
       },
     );
