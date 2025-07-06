@@ -5,6 +5,7 @@ import '../../../../core/services/error_handler/error_handler.dart';
 import '../../../../core/services/network/network_helper.dart';
 import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/shared/entity/error_entity.dart';
+import '../params/toggle_favourites_params.dart';
 
 abstract class FavouritesRepo {
   static Future<Either<ErrorEntity, Response>> favouritesAuction(
@@ -27,12 +28,12 @@ abstract class FavouritesRepo {
   }
 
   static Future<Either<ErrorEntity, Response>> toggleFavoriteAuction(
-      params) async {
+     ToggleFavouritesParams params) async {
     try {
       final response = await Network().request(
         Endpoints.toggleFavoriteAuction,
         method: ServerMethods.GET,
-        queryParameters: params,
+        queryParameters: params.returnedMap(),
       );
 
       if (response.statusCode == 200) {

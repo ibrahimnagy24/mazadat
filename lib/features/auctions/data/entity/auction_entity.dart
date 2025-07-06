@@ -5,7 +5,7 @@ import '../enums/auction_enums.dart';
 class AuctionEntity extends Equatable {
   final AuctionType auctionType;
   final String auctionStatus;
-  final String image;
+  final String primaryPhoto;
   final String name;
   final String description;
   final dynamic openingPrice;
@@ -20,7 +20,7 @@ class AuctionEntity extends Equatable {
     required this.searchId,
     required this.auctionStatus,
     required this.auctionType,
-    required this.image,
+    required this.primaryPhoto,
     required this.name,
     required this.description,
     required this.openingPrice,
@@ -36,7 +36,7 @@ class AuctionEntity extends Equatable {
         searchId,
         auctionType,
         auctionStatus,
-        image,
+        primaryPhoto,
         name,
         description,
         openingPrice,

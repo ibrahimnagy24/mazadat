@@ -45,7 +45,7 @@ class GridAuctionCard extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
-                  DefaultNetworkImage(auction.image, raduis: AppRadius.rXXS),
+                  DefaultNetworkImage(auction.primaryPhoto, raduis: AppRadius.rXXS),
 
                   ///Auction Status
                   Align(

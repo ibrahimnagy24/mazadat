@@ -11,7 +11,7 @@ class AuctionModel extends AuctionEntity {
     required super.isFav,
     required super.auctionStatus,
     required super.auctionType,
-    required super.image,
+    required super.primaryPhoto,
     required super.name,
     required super.description,
     required super.openingPrice,
@@ -29,9 +29,8 @@ class AuctionModel extends AuctionEntity {
                     'PRIVATE')
             : AuctionType.public,
         auctionStatus: json['statusLabel'],
-        image: checkFromMap(json['images']) &&
-                checkFromMap(json['images'][0]['path'])
-            ? json['images'][0]['path']
+        primaryPhoto: checkFromMap(json['primaryPhoto'])
+            ? json['primaryPhoto']
             : AppConstant.nullFromBack,
         name: json['name'] ?? AppConstant.nullFromBack,
         description: json['description'] ?? AppConstant.nullFromBack,

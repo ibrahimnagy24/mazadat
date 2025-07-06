@@ -45,7 +45,7 @@ class ListAuctionCard extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
-                  DefaultNetworkImage(auction.image),
+                  DefaultNetworkImage(auction.primaryPhoto),
                   Transform.translate(
                     offset: Offset(0, 12.h),
                     child: Row(

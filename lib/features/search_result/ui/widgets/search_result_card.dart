@@ -42,7 +42,7 @@ class SearchResultCard extends StatelessWidget {
           spacing: 12.w,
           children: [
             DefaultNetworkImage(
-              auction.image,
+              auction.primaryPhoto,
               width: 80.w,
               height: 80.w,
               raduis: AppRadius.rMd.w,
