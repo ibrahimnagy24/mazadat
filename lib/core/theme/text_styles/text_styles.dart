@@ -20,6 +20,18 @@ abstract class AppTextStyles {
     color: AppColors.kPrimary,
   );
 
+  static TextStyle displaySMMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsS,
+    color: AppColors.kPrimary900,
+  );
+
+  static TextStyle displayLgMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsL,
+    color: AppColors.kPrimary900,
+  );
+
   static TextStyle heading = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsL,
@@ -67,13 +79,11 @@ abstract class AppTextStyles {
     color: AppColors.textDefault,
   );
 
-
   static TextStyle bodyMedium = const TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsS,
     color: AppColors.textPrimary,
   );
-
 
   static TextStyle bodyRegular = const TextStyle(
     fontWeight: FontWeight.w400,
@@ -116,7 +126,7 @@ abstract class AppTextStyles {
   static TextStyle bodyXsReq = GoogleFonts.notoSans(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.fsXs,
-    color: AppColors.kWhite,
+    color: AppColors.textPrimaryParagraph,
     letterSpacing: 0,
   );
   static TextStyle bodyXXsReq = GoogleFonts.notoSans(
@@ -139,7 +149,7 @@ abstract class AppTextStyles {
   );
   static TextStyle bodySMed = GoogleFonts.notoSans(
     fontWeight: FontWeight.w500,
-    fontSize: AppFontSizes.fsS2,
+    fontSize: AppFontSizes.fsS,
     color: AppColors.kGeryText7,
     letterSpacing: 0,
   );

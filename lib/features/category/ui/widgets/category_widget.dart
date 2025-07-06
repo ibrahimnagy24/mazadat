@@ -7,7 +7,7 @@ import '../../../../core/utils/enums/enums.dart';
 import '../../data/entity/category_entity.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/theme/radiuos/app_radius.dart';
+import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
@@ -56,11 +56,26 @@ class CategoryWidget extends StatelessWidget {
           width: width,
           borderRadiusValue: borderRadiusValue,
         );
+
+      case CategoryWidgetType.type3:
+        return _CategoryWidgetTypeThree(
+          onTap: onTap,
+          category: category,
+          isSelected: isSelected,
+          animationDuration: animationDuration,
+          height: height,
+          width: width,
+          borderRadiusValue: borderRadiusValue,
+        );
     }
   }
 }
 
-enum CategoryWidgetType { type1, type2 }
+enum CategoryWidgetType {
+  type1,
+  type2,
+  type3,
+}
 
 class _CategoryWidgetTypeOne extends StatelessWidget {
   const _CategoryWidgetTypeOne({
@@ -232,5 +247,52 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
         ).animate().fadeIn(delay: animationDuration),
       ),
     );
+  }
+}
+
+class _CategoryWidgetTypeThree extends StatelessWidget {
+  const _CategoryWidgetTypeThree({
+    required this.onTap,
+    required this.category,
+    required this.isSelected,
+    this.animationDuration,
+    this.height,
+    this.width,
+    this.borderRadiusValue,
+  });
+  final void Function()? onTap;
+  final CategoryEntity category;
+  final bool isSelected;
+  final Duration? animationDuration;
+  final double? height;
+  final double? width;
+  final double? borderRadiusValue;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: height,
+        width: width,
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        decoration: BoxDecoration(
+          color: AppColors.kWhite,
+          border: Border.all(
+            color: isSelected
+                ? AppColors.borderPrimary
+                : AppColors.borderNeutralSecondary,
+            width: isSelected ? 1.5 : .6,
+          ),
+          borderRadius:
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
+        ),
+        child: Text(
+          category.name,
+          style: isSelected
+              ? AppTextStyles.textMdBold
+              : AppTextStyles.textMdRegular,
+        ),
+      ),
+    ).animate().fadeIn(delay: animationDuration);
   }
 }

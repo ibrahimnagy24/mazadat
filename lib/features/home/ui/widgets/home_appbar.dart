@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/theme/radiuos/app_radius.dart';
+import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';

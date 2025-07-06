@@ -10,11 +10,17 @@ import 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(const SearchInitial()) {
-    updateFilter(FilterParams());
+    updateFilter(FilterParams(keywordTEC: TextEditingController()));
     controller = ScrollController();
     customScroll(controller);
   }
 //---------------------------------VARIABLES----------------------------------//
+
+  resetFilter() {
+    filter.valueOrNull?.keywordTEC?.clear();
+    updateFilter(FilterParams());
+    searchStatesHandled(SearchEngine());
+  }
 
   late ScrollController controller;
   late SearchEngine _engine;

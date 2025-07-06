@@ -57,6 +57,7 @@
   "Login": "تسجيل الدخول",
   "Confirm Password": "تأكيد كلمة المرور",
   "Reset Password": "إعادة تعيين كلمة المرور",
+  "Change Password": "تغيير كلمة المرور",
   "Please, Write something that you will remember and that is difficult for others to guess": "يرجى كتابة شيء تتذكره ويصعب على الآخرين تخمينه",
   "New Password": "كلمة المرور الجديدة",
   "Confirm New Password": "تأكيد كلمة المرور الجديدة",
@@ -65,11 +66,13 @@
   "Enter your name": "أدخل اسمك",
   "Enter your email": "أدخل بريدك الإلكتروني",
   "The email": "البريد الإلكتروني",
+  "Please enter valid e-mail": "يرجى إدخال بريد إلكتروني صالح",
   "You agree and have read": "أنت توافق وقريت",
   "our Terms and Privacy Policy": "شروطنا وسياسة الخصوصية",
   "Privacy Policy": "سياسة الخصوصية",
   "Phone cannot be empty please enter a valid phone": "رقم الهاتف لا يمكن أن يكون فارغًا، يرجى إدخال رقم صحيح",
   "Please enter a valid phone format": "يرجى إدخال رقم هاتف بصيغة صحيحة",
+  "Please enter a valid code": "يرجى إدخال رقم كود صحيح",
   "Password cannot be empty": "كلمة المرور لا يمكن أن تكون فارغة",
   "Your password must include at least one uppercase letter": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
   "Your password must include at least one lowercase letter": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
@@ -78,6 +81,8 @@
   "Password is too short it must be at least 8": "كلمة المرور قصيرة جدًا يجب أن تكون 8 أحرف على الأقل",
   "Your password must include at least one special character": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل",
   "Passwords don't match please try again": "كلمتا المرور غير متطابقتين، يرجى المحاولة مرة أخرى",
+  "New password must be different the current password": "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية",
+  "Confirmed new password doesn't match the new password": "تأكيد كلمة المرور الجديدة لا يطابق كلمة المرور الجديدة",
   "City": "المدينة",
   "Select City": "اختر المدينة",
   "Age": "العمر",
@@ -108,6 +113,9 @@
   "Favourite": "المفضلة",
   "Bundle": "حزمة",
   "Bundles": "حزم",
-  "Auctions Number": "عدد المزادات"
-
+  "Auctions Number": "عدد المزادات",
+  "Search": "البحث",
+  "Last Result": "آخر النتائج",
+  "Delete All": "حذف الكل",
+   "Search For Auctions":"أبحث عن المزادات"
 }

@@ -1,30 +1,45 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import '../../../../core/app_config/api_names.dart';
 import '../../../../core/services/error_handler/error_handler.dart';
 import '../../../../core/services/network/network_helper.dart';
+import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/shared/entity/error_entity.dart';
-import '../../../../core/utils/utility.dart';
-import '../../../auctions/data/entity/auction_entity.dart';
-import '../../../auctions/data/model/auction_model.dart';
-import '../params/favourites_params.dart';
 
 abstract class FavouritesRepo {
-  static Future<Either<ErrorEntity, List<AuctionEntity>>> favouritesAuction(
-      FavouritesParams? params) async {
+  static Future<Either<ErrorEntity, Response>> favouritesAuction(
+      SearchEngine params) async {
     try {
       final response = await Network().request(
-        Endpoints.auctions,
+        Endpoints.getFavorites,
         method: ServerMethods.GET,
-        queryParameters: params?.returnedMap(),
+        queryParameters: params.toJson(),
       );
 
-      final List<AuctionEntity> auctions = checkFromArray(response.data)
-          ? (response.data as List)
-              .map((e) => AuctionModel.fromJson(e))
-              .toList()
-          : [];
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(ApiErrorHandler().handleError(response.data['message']));
+      }
+    } catch (error) {
+      return Left(ApiErrorHandler().handleError(error));
+    }
+  }
 
-      return Right(auctions);
+  static Future<Either<ErrorEntity, Response>> toggleFavoriteAuction(
+      params) async {
+    try {
+      final response = await Network().request(
+        Endpoints.toggleFavoriteAuction,
+        method: ServerMethods.GET,
+        queryParameters: params,
+      );
+
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(ApiErrorHandler().handleError(response.data['message']));
+      }
     } catch (error) {
       return Left(ApiErrorHandler().handleError(error));
     }

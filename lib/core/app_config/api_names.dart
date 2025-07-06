@@ -23,7 +23,15 @@ abstract class Endpoints {
 
   //----------------------------------SEARCH--------------------------------------\\
   static const String getSearchResult = '/searchResult/getLatestSearchResult';
+  static  String deleteSearchResult(id) => '/searchResult/delete?id=$id';
+  static const String deleteAllSearchResult = '/searchResult/deleteAll';
   static const String getSearch = homeAuction;
+
+//--------------------------------Favourites--------------------------------------\\
+
+  static const String getFavorites = '/favorites/getFavoriteList';
+  static const String toggleFavoriteAuction = '/favorites/toggleFavoriteAuction';
+
 
 //--------------------------------USER OPERATIONS--------------------------------------\\
   static const String getUserInfo = '/profile';
@@ -39,7 +47,7 @@ abstract class Endpoints {
 
   static const String cities = '/cities/searchByKeyword';
   static const String ages = '/age/listAgeLookups';
-  static const String auctionStatuses = '/auction/statuses';
+  static const String auctionStatuses = '/utils/getLookup?lookups=AUCTION_STATUS';
   static const String banks = '/banks/searchBanks';
   static const String googleLogin = '/client/google';
 }

@@ -41,6 +41,20 @@ class MyApp extends StatelessWidget {
                   TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
                 },
               ),
+              primaryColor: AppColors.kPrimary,
+              colorScheme: const ColorScheme.light(
+                primary: AppColors.kPrimary,
+                secondary: AppColors.kPrimary300,
+              ),
+              checkboxTheme: CheckboxThemeData(
+                overlayColor: WidgetStateProperty.all<Color>(
+                      AppColors.kPrimary.withOpacity(0.1),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+              ),
+              fontFamily: 'en',
               appBarTheme:
                   const AppBarTheme(surfaceTintColor: AppColors.transparent),
             ),

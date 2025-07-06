@@ -25,4 +25,36 @@ abstract class SearchResultRepo {
       return Left(ApiErrorHandler().handleError(error));
     }
   }
+
+  static Future<Either<ErrorEntity, Response>> deleteSearch(int id) async {
+    try {
+      final response = await Network().request(
+        Endpoints.deleteSearchResult(id),
+        method: ServerMethods.DELETE,
+      );
+
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(ApiErrorHandler().handleError(response.data['message']));
+      }
+    } catch (error) {
+      return Left(ApiErrorHandler().handleError(error));
+    }
+  }
+
+  static Future<Either<ErrorEntity, Response>> deleteAllSearch() async {
+    try {
+      final response = await Network().request(Endpoints.deleteAllSearchResult,
+          method: ServerMethods.DELETE);
+
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(ApiErrorHandler().handleError(response.data['message']));
+      }
+    } catch (error) {
+      return Left(ApiErrorHandler().handleError(error));
+    }
+  }
 }

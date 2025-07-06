@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/assets/app_images.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/theme/radiuos/app_radius.dart';
+import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 
 import '../../../../core/utils/constant/app_strings.dart';

@@ -117,5 +117,18 @@
   "Search": "البحث",
   "Last Result": "آخر النتائج",
   "Delete All": "حذف الكل",
-   "Search For Auctions":"أبحث عن المزادات"
+  "Search For Auctions":"أبحث عن المزادات",
+  "Filter": "تصفية",
+  "Reset": "إعادة تعيين",
+  "Apply": "تطبيق",
+  "Categories": "الأقسام",
+  "Auction Status": "حاله المزايده",
+  "Order": "الترتيب",
+  "From : to": "من : إلى",
+  "From Old to New": "من الأقدم إلى الأحدث",
+  "From New to Old": "من الأحدث إلى الأقدم",
+  "no_favourite_auctions": "لم يتم إضافة أي مزاد مفضل بعد",
+  "favourite_auction_hint": "ابدأ بإضافة المزاد الذي يعجبك إلى المفضلة للوصول إليه لاحقًا بسهولة.",
+  "Discover More": "إكتشف المزيد"
+
 }

@@ -13,9 +13,14 @@ class FavouritesLoading extends FavouritesState {
   const FavouritesLoading();
 }
 
+class FavouritesEmpty extends FavouritesState {
+  const FavouritesEmpty();
+}
+
 class FavouritesSuccess extends FavouritesState {
   final List<AuctionEntity> auctions;
-  const FavouritesSuccess(this.auctions);
+  final bool isLoading;
+  const FavouritesSuccess({required this.auctions, this.isLoading = false});
 }
 
 class FavouritesError extends FavouritesState {

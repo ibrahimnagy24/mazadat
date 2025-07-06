@@ -39,7 +39,7 @@ class CustomScaffoldWidget extends StatelessWidget {
                 preferredSize: Size.fromHeight(appbarHeight ?? 0),
                 child: AppBar(
                   centerTitle: centerAppbarTitle,
-                  backgroundColor: AppColors.kWhite,
+                  backgroundColor: backgroundColor ?? AppColors.background,
                   elevation: 0,
                   systemOverlayStyle: backgroundColor == AppColors.background
                       ? const SystemUiOverlayStyle(

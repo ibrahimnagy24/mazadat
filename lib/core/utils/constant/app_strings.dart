@@ -104,8 +104,10 @@ class AppStrings {
   static const String yourPasswordMustIncludeAtLeastOneSpecialCharacter =
       'Your password must include at least one special character';
 
-  static const String newPasswordMatchValidation = 'New password must be different the current password';
-  static const String confirmedNewPasswordMatchValidation = 'Confirmed new password doesn\'t match the new password';
+  static const String newPasswordMatchValidation =
+      'New password must be different the current password';
+  static const String confirmedNewPasswordMatchValidation =
+      'Confirmed new password doesn\'t match the new password';
   static const String passwordsDonTMatchPleaseTryAgain =
       'Passwords don\'t match please try again';
 
@@ -143,4 +145,17 @@ class AppStrings {
   static const String lastResult = 'Last Result';
   static const String deleteAll = 'Delete All';
   static const String searchForAuctions = 'Search For Auctions';
+  static const String filter = 'Filter';
+  static const String reset = 'Reset';
+  static const String apply = 'Apply';
+  static const String categories = 'Categories';
+  static const String auctionStatus = 'Auction Status';
+  static const String order = 'Order';
+
+  static const String fromTo = 'From : to';
+  static const String fromOldToNew = 'From Old to New';
+  static const String fromNewToOld = 'From New to Old';
+  static const String noFavouriteAuctions = 'no_favourite_auctions';
+  static const String favouriteAuctionHint = 'favourite_auction_hint';
+  static const String discoverMore = 'Discover More';
 }

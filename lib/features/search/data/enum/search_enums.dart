@@ -1,0 +1,1 @@
+enum SearchOrder { NEW,OLD }

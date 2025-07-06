@@ -46,14 +46,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           spacing: 12.w,
           children: [
             withBack && CustomNavigator.navigatorState.currentState!.canPop()
-                ? RotatedBox(
-                    quarterTurns: mainAppBloc.lang.valueOrNull == 'en' ? 2 : 0,
-                    child: customImageIconSVG(
-                        imageName: AppSvg.arrowBack,
-                        width: 30.w,
-                        height: 24.w,
-                        color: AppColors.textPrimary),
-                  )
+                ? InkWell(
+              onTap:()=> CustomNavigator.pop(),
+                  child: RotatedBox(
+                      quarterTurns: mainAppBloc.lang.valueOrNull == 'en' ? 2 : 0,
+                      child: customImageIconSVG(
+                          imageName: AppSvg.arrowBack,
+                          width: 30.w,
+                          height: 24.w,
+                          color: AppColors.textPrimary),
+                    ),
+                )
                 : SizedBox(width: actionWidth ?? 30),
             Expanded(
               child: Text(

@@ -130,39 +130,5 @@ abstract class CustomBottomSheet {
     ).then((value) => onClose?.call());
   }
 
-  static general(
-      {Function()? onConfirm,
-      double? height,
-      bool canDismiss = false,
-      required Widget? widget,
-      Function()? onDismiss,
-      Function()? onClose}) {
-    return showMaterialModalBottomSheet(
-      enableDrag: true,
-      clipBehavior: Clip.antiAlias,
-      backgroundColor: Colors.transparent,
-      context: CustomNavigator.navigatorState.currentContext!,
-      expand: false,
-      useRootNavigator: true,
-      isDismissible: canDismiss,
-      builder: (_) {
-        return Padding(
-          padding: MediaQuery.of(CustomNavigator.navigatorState.currentContext!)
-              .viewInsets,
-          child: Container(
-            height: height ?? 500.h,
-            width: MediaQueryHelper.width,
-            decoration: BoxDecoration(
-              color: AppColors.kWhite,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30.w),
-                topLeft: Radius.circular(30.w),
-              ),
-            ),
-            child: widget,
-          ),
-        );
-      },
-    ).then((value) => onClose?.call());
-  }
+
 }

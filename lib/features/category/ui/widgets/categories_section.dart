@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/entity/category_entity.dart';
 import 'category_widget.dart';
-import '../../../../core/theme/radiuos/app_radius.dart';
+import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/adaptive_circle_progress.dart';

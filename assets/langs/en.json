@@ -117,6 +117,17 @@
   "Search": "Search",
   "Last Result": "Last Result",
   "Delete All": "Delete All",
-  "Search For Auctions": "Search For Auctions"
-
+  "Search For Auctions": "Search For Auctions",
+  "Filter": "Filter",
+  "Reset": "Reset",
+  "Apply": "Apply",
+  "Categories": "Categories",
+  "Auction Status": "Auction Status",
+  "Order": "Order",
+  "From : to": "From : to",
+  "From Old to New": "From Old to New",
+  "From New to Old": "From New to Old",
+  "no_favourite_auctions": "No favourite auctions have been added yet",
+  "favourite_auction_hint": "Start adding the auctions you like to favourites for easy access later.",
+  "Discover More": "Discover More"
 }

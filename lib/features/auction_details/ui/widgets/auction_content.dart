@@ -5,7 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/shared/widgets/price_widget_with_flag_widget.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/theme/radiuos/app_radius.dart';
+import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';

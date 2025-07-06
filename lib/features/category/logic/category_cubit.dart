@@ -10,7 +10,7 @@ part 'category_state.dart';
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit() : super(CategoryInitial());
 //---------------------------------VARIABLES----------------------------------//
-  final List<CategoryEntity> _chosenCategories = [];
+  List<CategoryEntity> chosenCategories = [];
   final List<CategoryEntity> _allCategories = [
     CategoryEntity(
         id: -1,
@@ -22,15 +22,18 @@ class CategoryCubit extends Cubit<CategoryState> {
   ];
 
 //---------------------------------FUNCTIONS----------------------------------//
-  List<CategoryEntity> get chosenCategories => _chosenCategories;
   List<CategoryEntity>? get allCategories => _allCategories;
   void checkAndToggleCategory(CategoryEntity category) {
-    if (_chosenCategories.contains(category)) {
-      _chosenCategories.remove(category);
+    if (chosenCategories.contains(category)) {
+      chosenCategories.remove(category);
     } else {
-      _chosenCategories.add(category);
+      chosenCategories.add(category);
     }
     emit(ChosenCategoryUpdated());
+  }
+
+  void initChosenCategory(List<CategoryEntity>? categories) {
+    chosenCategories = categories ?? [];
   }
 
   CategoryEntity? _selectedCategory;
@@ -41,11 +44,11 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   bool isCategoryChosen(CategoryEntity interest) {
-    return _chosenCategories.contains(interest);
+    return chosenCategories.contains(interest);
   }
 
   bool hasChosenCategories() {
-    return _chosenCategories.isNotEmpty;
+    return chosenCategories.isNotEmpty;
   }
 
 //----------------------------------REQUEST-----------------------------------//
@@ -59,6 +62,7 @@ class CategoryCubit extends Cubit<CategoryState> {
       for (var e in success) {
         _allCategories.add(e);
       }
+
       return emit(GetCategoriesSuccess(success));
     });
   }

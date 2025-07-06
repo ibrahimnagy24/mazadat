@@ -9,9 +9,9 @@ import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/utils/widgets/custom_loading_text.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
+import '../../../search_result/ui/widgets/search_result_card.dart';
 import '../../logic/search_cubit.dart';
 import '../../logic/search_state.dart';
-import '../widgets/search_card.dart';
 
 class SearchBody extends StatelessWidget {
   const SearchBody({super.key});
@@ -59,10 +59,8 @@ class SearchBody extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 data: List.generate(
                   state.auctions.length,
-                  (i) => Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: SearchCard(auction: state.auctions[i]),
-                  ),
+                  (i) => SearchResultCard(
+                      withClear: false, auction: state.auctions[i]),
                 ),
               )),
               CustomLoadingText(loading: state.isLoading),

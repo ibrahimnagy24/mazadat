@@ -41,4 +41,6 @@ class AppSvg {
   static const String private = '$_svgPath/private.svg';
   static const String arrowBack = '$_svgPath/arrow_back.svg';
   static const String filter = '$_svgPath/filter.svg';
+  static const String ascending = '$_svgPath/ascending.svg';
+  static const String descending = '$_svgPath/descending.svg';
 }

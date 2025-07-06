@@ -67,7 +67,8 @@ class SearchResultPage extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          context.read<SearchResultCubit>().onDeleteAll(),
                       child: Text(
                         AppStrings.deleteAll.tr,
                         style: AppTextStyles.textMdSemibold,
@@ -82,10 +83,7 @@ class SearchResultPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 data: List.generate(
                   state.auctions.length,
-                  (i) => Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: SearchResultCard(auction: state.auctions[i]),
-                  ),
+                  (i) => SearchResultCard(auction: state.auctions[i]),
                 ),
               )),
               CustomLoadingText(loading: state.isLoading),

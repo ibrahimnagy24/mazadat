@@ -7,7 +7,7 @@ import '../enums/auction_enums.dart';
 class AuctionModel extends AuctionEntity {
   const AuctionModel({
     required super.id,
-     super.searchId,
+    super.searchId,
     required super.isFav,
     required super.auctionStatus,
     required super.auctionType,
@@ -22,14 +22,17 @@ class AuctionModel extends AuctionEntity {
 
   factory AuctionModel.fromJson(Map<String, dynamic> json) => AuctionModel(
         id: json['id'],
-        searchId: json['searchId'] ,
+        searchId: json['searchId'],
         auctionType: checkFromMap(json['auctionType'])
             ? AuctionEnumConverter.stringToAuctionType(
                 json['auctionType']['code']?.toString().toUpperCase() ??
                     'PRIVATE')
             : AuctionType.public,
         auctionStatus: json['statusLabel'],
-        image: json['image'] ?? '',
+        image: checkFromMap(json['images']) &&
+                checkFromMap(json['images'][0]['path'])
+            ? json['images'][0]['path']
+            : AppConstant.nullFromBack,
         name: json['name'] ?? AppConstant.nullFromBack,
         description: json['description'] ?? AppConstant.nullFromBack,
         openingPrice: json['openingPrice'],

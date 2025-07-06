@@ -1,16 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
-import '../data/entity/auction_types_entity.dart';
+import '../data/entity/auction_status_entity.dart';
 import '../data/repo/auction_statuses_repo.dart';
 part 'auction_statuses_state.dart';
 
 class AuctionStatusesCubit extends Cubit<AuctionStatusesState> {
   AuctionStatusesCubit() : super(AuctionStatusesStart());
 //---------------------------------VARIABLES----------------------------------//
-  List<AuctionStatusesEntity>? _allAuctionTypes;
+  List<AuctionStatusEntity>? _allAuctionTypes;
 
 //---------------------------------FUNCTIONS----------------------------------//
-  List<AuctionStatusesEntity>? get allAuctionTypes => _allAuctionTypes;
+  List<AuctionStatusEntity>? get allAuctionStatuses => _allAuctionTypes;
+
+
 
   Future<void> auctionStatusesStatesHandled() async {
     emit(AuctionStatusesLoading());

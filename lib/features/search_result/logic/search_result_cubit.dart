@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/app_core.dart';
+import '../../../core/navigation/custom_navigation.dart';
 import '../../../core/services/pagination/pagination_service.dart';
+import '../../../core/utils/widgets/dialogs/loading_dialog.dart';
 import '../../auctions/data/entity/auction_entity.dart';
 import '../data/model/search_result_model.dart';
 import '../data/repo/search_result_repo.dart';
@@ -63,5 +66,55 @@ class SearchResultCubit extends Cubit<SearchResultState> {
         return emit(const SearchResultEmpty());
       }
     });
+  }
+
+  Future<void> onDeleteItem(id) async {
+    try {
+      loadingDialog();
+
+      final response = await SearchResultRepo.deleteSearch(id);
+      CustomNavigator.pop();
+
+      response.fold((fail) {
+        return showErrorSnackBar(fail.message);
+      }, (success) {
+        showSuccessSnackBar(success.data['MESSAGE']);
+        model?.removeWhere((e) => e.searchId == id);
+
+        if (model != null && model!.isNotEmpty) {
+          return emit(SearchResultSuccess(auctions: model!, isLoading: false));
+        } else {
+          return emit(const SearchResultEmpty());
+        }
+      });
+    } catch (e) {
+      CustomNavigator.pop();
+      return showErrorSnackBar(e.toString());
+    }
+  }
+
+  Future<void> onDeleteAll() async {
+    try {
+      loadingDialog();
+
+      final response = await SearchResultRepo.deleteAllSearch();
+      CustomNavigator.pop();
+
+      response.fold((fail) {
+        return showErrorSnackBar(fail.message);
+      }, (success) {
+        showSuccessSnackBar(success.data['MESSAGE']);
+        model?.clear();
+
+        if (model != null && model!.isNotEmpty) {
+          return emit(SearchResultSuccess(auctions: model!, isLoading: false));
+        } else {
+          return emit(const SearchResultEmpty());
+        }
+      });
+    } catch (e) {
+      CustomNavigator.pop();
+      return showErrorSnackBar(e.toString());
+    }
   }
 }

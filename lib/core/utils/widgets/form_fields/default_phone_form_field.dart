@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../assets/app_svg.dart';
 import '../../../theme/colors/styles.dart';
-import '../../../theme/radiuos/app_radius.dart';
+import '../../../theme/radius/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
 
 import '../../constant/app_strings.dart';

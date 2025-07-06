@@ -5,5 +5,4 @@ abstract class AppFontSizes {
   static const double fsXs = 12;
   static const double fsS = 14;
   static const double xxs = 10;
-  static const double fsS2 = 14;
 }
