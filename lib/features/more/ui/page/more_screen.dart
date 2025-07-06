@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import '../../../../core/utils/constant/app_constant.dart';
+import 'more_mobile_design.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScaffoldWidget(child: Text('more screeennnnnn'));
+    return ScreenTypeLayout.builder(
+      breakpoints: AppConstant.breakpoints,
+      mobile: (_) => OrientationLayoutBuilder(
+        portrait: (context) => const MoreMobileDesign(),
+        landscape: (context) => const MoreMobileDesign(),
+      ),
+      tablet: (_) => OrientationLayoutBuilder(
+        portrait: (context) => const MoreMobileDesign(),
+        landscape: (context) => const MoreMobileDesign(),
+      ),
+    );
   }
 }

@@ -14,7 +14,7 @@ enum VerifyCodeFromScreen { fromForgetPassword, fromRegister, fromLogin, fromCha
 
 enum FileTypeEnum { question, answer, audio, image, user_profile }
 
-enum LangKeysConstances { ar, en }
+enum LangKeysConstances {  en,ar }
 
 enum MediaType { image, audio, video }
 

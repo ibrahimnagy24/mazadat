@@ -43,4 +43,16 @@ class AppSvg {
   static const String filter = '$_svgPath/filter.svg';
   static const String ascending = '$_svgPath/ascending.svg';
   static const String descending = '$_svgPath/descending.svg';
+  static const String customerService = '$_svgPath/customer_service.svg';
+  static const String terms = '$_svgPath/terms.svg';
+  static const String policy = '$_svgPath/policy.svg';
+  static const String quiz = '$_svgPath/quiz.svg';
+  static const String location = '$_svgPath/location.svg';
+  static const String saleTag = '$_svgPath/sale_tag.svg';
+  static const String wishlist = '$_svgPath/wishlist.svg';
+  static const String cart = '$_svgPath/cart.svg';
+  static const String clock = '$_svgPath/clock.svg';
+  static const String info = '$_svgPath/info.svg';
+  static const String language = '$_svgPath/language.svg';
+
 }

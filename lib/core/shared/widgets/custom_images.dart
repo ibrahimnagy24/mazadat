@@ -23,8 +23,7 @@ Widget customImageIcon(
 Widget customCircleSvgIcon(
     {String? folderPath,
     String? title,
-    required String? imageName,
-    String? imagePath,
+    required String imageName,
     Function? onTap,
     color,
     width,
@@ -36,30 +35,24 @@ Widget customCircleSvgIcon(
     },
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 2.h,
       children: [
         CircleAvatar(
           backgroundColor: color ?? AppColors.kPrimary.withOpacity(0.1),
           radius: radius ?? 24,
           child: SvgPicture.asset(
-            'assets/svgs/$folderPath/$imageName.svg',
+            imageName,
           ),
         ),
-        Visibility(
-          visible: title != null,
-          child: Column(
-            children: [
-              2.sbH,
-              Text(
-                title ?? '',
-                style: const TextStyle(
-                    color: AppColors.kPrimary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 10),
-                overflow: TextOverflow.ellipsis,
-              )
-            ],
+        if (title != null)
+          Text(
+            title ?? '',
+            style: const TextStyle(
+                color: AppColors.kPrimary,
+                fontWeight: FontWeight.w600,
+                fontSize: 10),
+            overflow: TextOverflow.ellipsis,
           ),
-        ),
       ],
     ),
   );
@@ -80,7 +73,42 @@ Widget customImageIconSVG({
       color: color,
       width: width,
       height: height,
-      fit:fit?? BoxFit.cover,
+      fit: fit ?? BoxFit.cover,
+    ),
+  );
+}
+
+Widget customContainerSvgIcon(
+    {required String imageName,
+    Function? onTap,
+    Color? color,
+    Color? backGround,
+    Color? borderColor,
+    double? padding,
+    double? width,
+    double? height,
+    double? radius}) {
+  return InkWell(
+    onTap: () {
+      onTap?.call();
+    },
+    highlightColor: Colors.transparent,
+    hoverColor: Colors.transparent,
+    focusColor: Colors.transparent,
+    splashColor: Colors.transparent,
+    child: Container(
+      height: height ?? 50,
+      width: width ?? 50,
+      padding: EdgeInsets.all(padding ?? 16),
+      decoration: BoxDecoration(
+        border: Border.all(color: borderColor ?? Colors.transparent),
+        color: backGround ?? AppColors.kWhite,
+        borderRadius: BorderRadius.circular(radius ?? 12),
+      ),
+      child: SvgPicture.asset(
+        imageName,
+        color: color,
+      ),
     ),
   );
 }

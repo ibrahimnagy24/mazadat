@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   //mazadat
   static const Color kPrimary = Color.fromRGBO(64, 77, 38, 1);
+  static const Color kSecondary = Color.fromRGBO(173, 156, 109, 1);
   //mazadat
   static const Color kPrimary900 = Color.fromRGBO(46, 46, 46, 1);
   //mazadat
@@ -17,6 +18,7 @@ abstract class AppColors {
   static const Color iconSecondary = Color.fromRGBO(243, 220, 154, 1);
   //mazadat
   static const Color iconDefault = Color.fromRGBO(162, 162, 162, 1);
+  static const Color iconPrimary = Color.fromRGBO(81, 94, 50, 1);
 
   ///Background
   static const Color background = Color.fromRGBO(238, 239, 235, 1);
@@ -87,6 +89,7 @@ abstract class AppColors {
   //barq
   static const Color kOpacityGrey4 = Color.fromRGBO(148, 148, 148, 1);
   //mazadat
+  static const Color borderSecondary = Color.fromRGBO(243, 220, 154, 1);
   static const Color borderDefault = Color.fromRGBO(232, 232, 232, 1);
   //mazadat
   static const Color navBarBackground = Color.fromRGBO(255, 255, 255, 1);
@@ -115,7 +118,6 @@ abstract class AppColors {
   //barq
   static const Color LIGHT_GREY_BORDER = Color(0XFFEEEEEE);
 
-  static Color kSecondary = const Color(0xffEA5426).withOpacity(0.5);
   static const Color LIGHT_GREY = Color(0xFF959494);
   static const Color textError = Color.fromRGBO(224, 44, 31, 1);
   static const Color SUB_TEXT = Color(0xFF6A7887);

@@ -12,6 +12,7 @@ import '../../features/auth/forget_password/ui/widgets/forget_password_imports.d
 import '../../features/auth/verify_code/data/params/verify_code_route_params.dart';
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
 import '../../features/home/ui/pages/home_screen.dart';
+import '../../features/more/ui/page/more_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
 import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
@@ -112,8 +113,14 @@ final GoRouter appRouter = GoRouter(
       name: Routes.SEARCH,
       builder: (context, state) => const SearchPage(),
     ),
-
     // More routes
+    GoRoute(
+      path: '/more',
+      name: Routes.MORE,
+      builder: (context, state) => const MoreScreen(),
+    ),
+
+    // Static routes
     GoRoute(
       path: '/static-page',
       name: Routes.STATIC_PAGE,

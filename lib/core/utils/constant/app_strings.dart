@@ -158,4 +158,19 @@ class AppStrings {
   static const String noFavouriteAuctions = 'no_favourite_auctions';
   static const String favouriteAuctionHint = 'favourite_auction_hint';
   static const String discoverMore = 'Discover More';
+  static const String more = 'More';
+  static const String customerService = 'Customer Service';
+  static const String faqs = 'Faqs';
+  static const String termsAndConditions = 'Terms and Conditions';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String myProfile = 'My Profile';
+  static const String myAddresses = 'My Address';
+  static const String mySales = 'My Sales';
+  static const String myPurchases = 'My Purchases';
+  static const String paymentHistory = 'Payment History';
+  static const String myBundles = 'My Bundles';
+  static const String appSettings = 'App Settings';
+  static const String whoUs = 'Who us';
+  static const String notifications = 'Notifications';
+  static const String language = 'language';
 }

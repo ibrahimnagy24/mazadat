@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/assets/app_svg.dart';
+import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
@@ -40,7 +42,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                       spacing: 24.w,
                       children: [
                         customImageIconSVG(
-                            onTap: () {},
+                            onTap: () => CustomNavigator.push(Routes.MORE),
                             imageName: AppSvg.menu,
                             width: 24.w,
                             height: 24.w,
