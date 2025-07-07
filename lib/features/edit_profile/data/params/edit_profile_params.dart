@@ -29,6 +29,7 @@ class EditProfileParams extends Equatable {
       if (gender != null) 'gender': gender?.name[0].toUpperCase(),
       if (city != null) 'city': {'id': city},
       if (age != null) 'age': {'id': age},
+      // "favoriteCategories":[ {"id": 1},{"id":3},{"id":5}],
     };
     map.removeWhere((key, value) => value == null);
     return map;
