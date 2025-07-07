@@ -1,10 +1,15 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/form_fields/default_email_form_field.dart';
 import '../../../../../core/utils/widgets/form_fields/default_phone_form_field.dart';
 import '../../../../../core/utils/widgets/form_fields/default_username_form_field.dart';
+import '../../../../core/assets/app_svg.dart';
+import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
+import '../../../../core/shared/widgets/custom_images.dart';
+import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../auth/register/ui/widgets/gender_input.dart';
 import '../../../selectors/age/ui/page/age_input.dart';
@@ -57,9 +62,12 @@ class EditProfileBody extends StatelessWidget {
                         stream: context.read<EditProfileCubit>().ageStream,
                         builder: (context, asyncSnapshot) {
                           return AgeInput(
-                            initialValue:
-                                context.read<EditProfileCubit>().age.valueOrNull,
-                            onSelect: context.read<EditProfileCubit>().updateAge,
+                            initialValue: context
+                                .read<EditProfileCubit>()
+                                .age
+                                .valueOrNull,
+                            onSelect:
+                                context.read<EditProfileCubit>().updateAge,
                           );
                         }),
                   ),
@@ -99,6 +107,17 @@ class EditProfileBody extends StatelessWidget {
               DefaultPhoneFormField(
                 controller: context.read<EditProfileCubit>().phone,
                 readOnly: true,
+                suffixWidget: IconButton(
+                    onPressed: () => CustomNavigator.push(
+                        Routes.CHANGE_PHONE_NUMBER_SCREEN,
+                        extra:
+                            context.read<EditProfileCubit>().phone.text.trim()),
+                    icon: customImageIconSVG(
+                      imageName: AppSvg.edit,
+                      width: 16.w,
+                      height: 16.w,
+                      color: AppColors.kPrimary,
+                    )),
               ),
               16.sbH,
 

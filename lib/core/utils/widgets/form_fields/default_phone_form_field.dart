@@ -21,18 +21,20 @@ class DefaultPhoneFormField extends StatelessWidget {
     //default 24.sp
     this.titleIconSize,
     //default 24.r
-    this.borderRadious,
+    this.borderRadius,
     this.controller,
     this.readOnly = false,
     this.needValidation,
+    this.suffixWidget,
   });
   final double? titleFontSize;
   final double? hintFontSize;
   final double? titleIconSize;
-  final double? borderRadious;
+  final double? borderRadius;
   final TextEditingController? controller;
   final bool readOnly;
   final bool? needValidation;
+  final Widget? suffixWidget;
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
@@ -72,11 +74,12 @@ class DefaultPhoneFormField extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       maxLength: 9,
-      borderRadius: borderRadious ?? AppRadius.rS,
+      borderRadius: borderRadius ?? AppRadius.rS,
       keyboardType: TextInputType.phone,
       controller: controller,
       needValidation: needValidation,
       readOnly: readOnly,
+      suffixIcon: suffixWidget,
       // contentPadding: EdgeInsetsDirectional.fromSTEB(24.r, 10, 10, 10),
     );
   }

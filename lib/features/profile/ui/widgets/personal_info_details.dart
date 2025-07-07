@@ -86,27 +86,27 @@ class PersonalInfoDetails extends StatelessWidget {
                   title: AppStrings.mobileNumber.tr,
                   value: cubit.userEntity?.completePhone,
                   icon: AppSvg.phone,
-                  action: TextButton(
-                    onPressed: () => CustomNavigator.push(
-                        Routes.CHANGE_PHONE_NUMBER_SCREEN,
-                        extra: cubit.userEntity?.phone),
-                    child: Row(
-                      spacing: 4.w,
-                      children: [
-                        Text(
-                          AppStrings.edit.tr,
-                          style: AppTextStyles.textMdSemibold,
-                          textAlign: TextAlign.start,
-                        ),
-                        customImageIconSVG(
-                          imageName: AppSvg.edit,
-                          width: 16.w,
-                          height: 16.w,
-                          color: AppColors.kPrimary,
-                        )
-                      ],
-                    ),
-                  ),
+                  // action: TextButton(
+                  //   onPressed: () => CustomNavigator.push(
+                  //       Routes.CHANGE_PHONE_NUMBER_SCREEN,
+                  //       extra: cubit.userEntity?.phone),
+                  //   child: Row(
+                  //     spacing: 4.w,
+                  //     children: [
+                  //       Text(
+                  //         AppStrings.edit.tr,
+                  //         style: AppTextStyles.textMdSemibold,
+                  //         textAlign: TextAlign.start,
+                  //       ),
+                  //       customImageIconSVG(
+                  //         imageName: AppSvg.edit,
+                  //         width: 16.w,
+                  //         height: 16.w,
+                  //         color: AppColors.kPrimary,
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                 ),
                 ProfileDetailsInfo(
                   title: AppStrings.theEmail.tr,
