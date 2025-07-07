@@ -6,6 +6,7 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/utility.dart';
 import 'more_button.dart';
 import 'switch_language_button.dart';
 
@@ -36,7 +37,8 @@ class AppSettingsButtons extends StatelessWidget {
                 icon: AppSvg.language,
                 action: const SwitchLanguageButton(),
               ),
-              MoreButton(
+              if (Utility.isUserLoggedIn())
+                MoreButton(
                 title: AppStrings.notifications.tr,
                 icon: AppSvg.notification,
                 action: SizedBox(

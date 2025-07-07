@@ -138,6 +138,7 @@ class AppStrings {
   static const String myAuctions = 'My Auctions';
   static const String home = 'Home';
   static const String favourite = 'Favourite';
+  static const String favouriteCategories = 'Favourite Categories';
 
   static const String bank = 'Bank';
   static const String selectBank = 'Select Bank';
@@ -173,4 +174,35 @@ class AppStrings {
   static const String whoUs = 'Who us';
   static const String notifications = 'Notifications';
   static const String language = 'language';
+
+  static const String accountSettings = 'Account Settings';
+  static const String deleteAccount = 'Delete Account';
+  static const String areYouSureYouWantToDeleteAccount =
+      'Are you sure you want to delete account?';
+  static const String youCanReactivateYourAccountAtAnyTime =
+      'You can reactivate your account at any time.';
+
+  static const String youCantDeleteAccountNow = 'You can\'t delete account now';
+  static const String thereAreCurrentlyActiveAuctionsAssociatedWithYourAccount =
+      'There are currently active Auctions associated with your account.';
+  static const String pleaseEnterYourPasswordToConfirmDeleteAccount =
+      'Please enter your password to confirm delete account';
+  static const String accountDeletedSuccessfully =
+      'Account deleted successfully';
+  static const String youWillBeRedirectedToTheLoginPage =
+      'You will be redirected to the login page.';
+  static const String goToLogin = 'Go to Login';
+  static const String logout = 'Log out';
+  static const String areYouSureYouWantToLogout =
+      'Are you sure you want to log out?';
+  static const String okay = 'Okay';
+  static const String profile = 'Profile';
+  static const String commercialNumber = 'Commercial Number';
+  static const String personalInfo = 'Personal Information';
+  static const String edit = 'Edit';
+  static const String bankInfo = 'Bank Information';
+  static const String editBankInfo = 'Edit Bank Information';
+  static const String ibanNumber = 'Iban Number';
+  static const String bankNumber = 'Bank Number';
+  static const String bankName = 'Bank Name';
 }

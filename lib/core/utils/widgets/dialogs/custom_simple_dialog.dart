@@ -25,7 +25,7 @@ class CustomSimpleDialog {
                   ),
                   elevation: 3,
                   contentPadding: EdgeInsets.all(24.w),
-                  backgroundColor: AppColors.background,
+                  backgroundColor: AppColors.kWhite,
                   children: [customListWidget],
                 ),
               ),

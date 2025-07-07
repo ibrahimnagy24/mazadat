@@ -68,7 +68,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       customImageIconSVG(
-                          onTap: () {},
+                          onTap: () => CustomNavigator.push(Routes.PROFILE),
                           imageName: AppSvg.user,
                           width: 24.w,
                           height: 24.w,

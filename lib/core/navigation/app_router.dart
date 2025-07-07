@@ -11,9 +11,11 @@ import '../../features/auth/register/ui/widgets/register_imports.dart';
 import '../../features/auth/forget_password/ui/widgets/forget_password_imports.dart';
 import '../../features/auth/verify_code/data/params/verify_code_route_params.dart';
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
+import '../../features/delete_account/ui/widgets/delete_account_imports.dart';
 import '../../features/home/ui/pages/home_screen.dart';
 import '../../features/more/ui/page/more_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
+import '../../features/profile/ui/page/profile_screen.dart';
 import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
@@ -120,6 +122,27 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const MoreScreen(),
     ),
 
+    GoRoute(
+      path: '/profile',
+      name: Routes.PROFILE,
+      builder: (context, state) => const ProfileScreen(),
+    ),
+
+
+    //DELETE ACCOUNT
+    GoRoute(
+      path: '/delete-account',
+      name: Routes.DELETE_ACCOUNT,
+      builder: (context, state) => const DeleteAccountScreen(),
+    ),
+
+    // Misc routes
+    GoRoute(
+      path: '/nav-bar-layout',
+      name: Routes.NAV_BAR_LAYOUT,
+      builder: (context, state) => const CustomNavbarLayoutScreen(),
+    ),
+
     // Static routes
     GoRoute(
       path: '/static-page',
@@ -130,12 +153,6 @@ final GoRouter appRouter = GoRouter(
       },
     ),
 
-    // Misc routes
-    GoRoute(
-      path: '/nav-bar-layout',
-      name: Routes.NAV_BAR_LAYOUT,
-      builder: (context, state) => const CustomNavbarLayoutScreen(),
-    ),
     GoRoute(
       path: '/zoom-image',
       name: Routes.ZOOM_IN_IMAGE,

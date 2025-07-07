@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/assets/app_svg.dart';
+import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../../nav_layout/cubit/navbar_layout_cubit.dart';
 import 'more_button.dart';
 
 class MoreProfileButtons extends StatelessWidget {
@@ -41,6 +43,10 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                 title: AppStrings.favourite.tr,
                 icon: AppSvg.wishlist,
+                onTap: (){
+                  NavbarLayoutCubit.instance.onItemTapped(1);
+                  CustomNavigator.pop();
+                },
               ),
               MoreButton(
                 title: AppStrings.myPurchases.tr,

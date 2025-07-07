@@ -84,6 +84,7 @@ class Utility {
       );
     } else {
       CustomNavigator.context.read<UserCubit>().clearUser();
+      CustomNavigator.pop();
       CustomNavigator.push(Routes.LOGIN_SCREEN, clean: true);
     }
   }

@@ -38,6 +38,7 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SafeArea(
+              bottom: false,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 24.w,

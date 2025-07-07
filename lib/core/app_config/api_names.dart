@@ -9,6 +9,8 @@ abstract class Endpoints {
   static const String visitor = '/visitors/checkIn';
   static const String resetPassword = '/users/updatePassword';
   static const String changePassword = '/users/changePassword';
+  static const String deleteAccount = '/users/deleteAccount';
+  static const String checkDeleteAccount = '/users/checkDeleteAccount';
 //----------------------------------HOME--------------------------------------\\
 
   static const String homeBundles = '/bundles/searchBundles';
@@ -34,7 +36,7 @@ abstract class Endpoints {
 
 
 //--------------------------------USER OPERATIONS--------------------------------------\\
-  static const String getUserInfo = '/profile';
+  static const String getUserInfo = '/users/viewMyProfile';
 
 //--------------------------------STATIC PAGES--------------------------------------\\
   static const String privacyAndPolicy =

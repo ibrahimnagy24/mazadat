@@ -25,16 +25,17 @@ class UserCubit extends Cubit<UserState> {
       gender: GenderTypes.male,
       userType: UserType.visitor,
       userStatus: UserStatus.active,
-      email: '$name@mazadat.com',
+      email: '$name@Mazaadat.com',
       token: '',
       isVerified: false,
       allowNotification: false,
-      compeletePhone: '996084737833',
+      phone: '500000000',
+      completePhone: '966500000000',
+      commericalNumber: '500000000',
       countryCode: '966',
       favoriteCategories: const [],
-      firstName: 'egy ',
-      lastName: 'best',
-      phone: '7898200',
+      firstName: 'Mazaadat',
+      lastName: 'App',
     );
     mainAppBloc.setGlobalUserData = _userEntity;
     emit(UserDataSuccess(_userEntity!));
@@ -64,6 +65,7 @@ class UserCubit extends Cubit<UserState> {
       return emit(UserDataError(failure));
     }, (success) async {
       await SharedHelper.sharedHelper?.saveUser(success);
+
       return emit(UserDataSuccess(success));
     });
   }

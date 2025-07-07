@@ -35,6 +35,7 @@ class ForgetPasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        ),
+    );
   }
 }

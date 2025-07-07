@@ -1,4 +1,5 @@
 import '../../../../../core/utils/utility.dart';
+import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/enums/enums_converter.dart';
 import '../entity/category_entity.dart';
 
@@ -16,9 +17,20 @@ class CategoryModel extends CategoryEntity {
         id: json['id'],
         name: json['name'],
         description: json['description'],
-        iconId: checkFromMap(json['icon']) ? json['icon']['id'] : null,
+        iconId: checkFromMap(json['iconId']) ? json['iconId'] : null,
         iconUrl: checkFromMap(json['icon']) ? json['icon']['path'] : null,
         categoryType: CategoryTypeConverter.stringToCategoryType(
             json['type'] ?? 'auction'),
       );
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['description'] = description;
+    data['iconId'] = iconId;
+    data['icon'] = iconUrl;
+    data['type'] = CategoryTypes.auction.name;
+    return data;
+  }
 }

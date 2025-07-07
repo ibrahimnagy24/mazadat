@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/utils/utility.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import '../widgets/account_settings_buttons.dart';
 import '../widgets/app_settings_buttons.dart';
 import '../widgets/more_app_bar.dart';
 import '../widgets/more_header.dart';
@@ -37,21 +39,26 @@ class MoreMobileDesign extends StatelessWidget {
                     ),
                   ),
                   padding: const EdgeInsets.all(24),
-                  child: const SingleChildScrollView(
+                  child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ///App Bar
-                        MoreAppBar(),
+                        const MoreAppBar(),
 
                         ///More Static Buttons
-                        MoreStaticButtons(),
+                        const MoreStaticButtons(),
 
                         ///More Profile Buttons
-                        MoreProfileButtons(),
+                        if (Utility.isUserLoggedIn())
+                          const MoreProfileButtons(),
 
                         ///App Settings Buttons
-                        AppSettingsButtons(),
+                        const AppSettingsButtons(),
+
+                        ///Account Settings Buttons
+
+                          const AccountSettingsButtons(),
                       ],
                     ),
                   ),

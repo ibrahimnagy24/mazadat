@@ -1,24 +1,34 @@
 import 'package:equatable/equatable.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/enums/enums_converter.dart';
-import '../../../../category/data/entity/category_entity.dart';
+import '../../../../category/data/model/category_model.dart';
+import '../../../../selectors/age/data/model/age_model.dart';
+import '../../../../selectors/banks/data/model/bank_model.dart';
+import '../../../../selectors/city/data/model/city_model.dart';
 
 class UserEntity extends Equatable {
   const UserEntity({
     required this.id,
     required this.gender,
+    this.city,
+    this.age,
+    this.bank,
     required this.userType,
     required this.userStatus,
     required this.email,
     required this.token,
     required this.phone,
+    required this.completePhone,
     required this.isVerified,
     required this.firstName,
     required this.lastName,
     required this.countryCode,
-    required this.compeletePhone,
+    this.commericalNumber,
     required this.allowNotification,
     required this.favoriteCategories,
+    this.bankNumber,
+    this.ibanNumber,
+    this.isSeller,
   });
 
   final int id;
@@ -30,64 +40,44 @@ class UserEntity extends Equatable {
 
   final String countryCode;
   final String phone;
-  final String compeletePhone;
+  final String completePhone;
+  final CityModel? city;
+  final AgeModel? age;
+  final BankModel? bank;
 
   final bool isVerified;
   final bool? allowNotification;
+  final bool? isSeller;
   final String email;
+  final String? commericalNumber;
   final String token;
+  final String? bankNumber, ibanNumber;
 
   final UserStatus userStatus;
-  final List<CategoryEntity> favoriteCategories;
-  UserEntity copyWith({
-    int? id,
-    String? token,
-    String? createdAt,
-    UserType? userType,
-    GenderTypes? gender,
-    UserStatus? userStatus,
-    String? email,
-    String? phone,
-    bool? allowNotification,
-    String? compeletePhone,
-    String? countryCode,
-    String? firstName,
-    String? lastName,
-    bool? isVerified,
-    List<CategoryEntity>? favoriteCategories,
-  }) {
-    return UserEntity(
-      id: id ?? this.id,
-      allowNotification: allowNotification ?? this.allowNotification,
-      compeletePhone: compeletePhone ?? this.compeletePhone,
-      countryCode: countryCode ?? this.countryCode,
-      email: email ?? this.email,
-      userType: userType ?? this.userType,
-      gender: gender ?? this.gender,
-      userStatus: userStatus ?? this.userStatus,
-      firstName: firstName ?? this.firstName,
-      isVerified: isVerified ?? this.isVerified,
-      lastName: lastName ?? this.lastName,
-      phone: phone ?? this.phone,
-      token: token ?? this.token,
-      favoriteCategories: favoriteCategories ?? this.favoriteCategories,
-    );
-  }
+  final List<CategoryModel> favoriteCategories;
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'userType': UserEnumsConverter.userTypeToString(userType),
         'gender': UserEnumsConverter.genderTypeToString(gender),
+        'city': city?.toJson(),
+        'age': age?.toJson(),
+        'bank': bank?.toJson(),
         'firstName': firstName,
         'lastName': lastName,
         'countryCode': countryCode,
         'phone': phone,
-        'completePhone': compeletePhone,
+        'completePhone': completePhone,
+        'commericalNumber': commericalNumber,
+        'ibanNumber': ibanNumber,
+        'bankNumber': bankNumber,
         'email': email,
-        'isVerified': isVerified ? '1' : '0',
+        'isVerified': isVerified,
         'status': UserEnumsConverter.userStatusToInt(userStatus),
         'allowNotification': allowNotification,
-        'favoriteCategories': favoriteCategories,
+        'isSeller': isSeller,
+        'favoriteCategories':
+            favoriteCategories.map((v) => v.toJson()).toList(),
       };
 
   @override
@@ -99,12 +89,17 @@ class UserEntity extends Equatable {
         lastName,
         countryCode,
         phone,
-        compeletePhone,
+        completePhone,
+        commericalNumber,
         isVerified,
         allowNotification,
+        isSeller,
         email,
         token,
         userStatus,
+        bank,
+        ibanNumber,
+        bankNumber,
         favoriteCategories,
       ];
 }

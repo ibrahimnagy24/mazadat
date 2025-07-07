@@ -26,6 +26,7 @@ class AppSvg {
   static gender(v) => '$_svgPath/$v.svg';
   static const String backArrow = '$_svgPath/back_arrow.svg';
   static const String user = '$_svgPath/user.svg';
+  static const String userGender = '$_svgPath/gender.svg';
   static const String notification = '$_svgPath/notification.svg';
   static const String menu = '$_svgPath/menu.svg';
   static const String favourite = '$_svgPath/favourite.svg';
@@ -54,5 +55,16 @@ class AppSvg {
   static const String clock = '$_svgPath/clock.svg';
   static const String info = '$_svgPath/info.svg';
   static const String language = '$_svgPath/language.svg';
+  static const String delete = '$_svgPath/delete.svg';
+  static const String logout = '$_svgPath/logout.svg';
+  static const String login = '$_svgPath/login.svg';
+  static const String logoutConfirm = '$_svgPath/logout_confirm.svg';
+  static const String cancel = '$_svgPath/cancel.svg';
+  static const String city = '$_svgPath/city.svg';
+  static const String phone = '$_svgPath/phone.svg';
+  static const String mail = '$_svgPath/mail.svg';
+  static const String lock = '$_svgPath/lock.svg';
+  static const String invoice = '$_svgPath/invoice.svg';
+  static const String bank = '$_svgPath/bank.svg';
 
 }

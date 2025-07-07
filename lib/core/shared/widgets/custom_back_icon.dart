@@ -13,18 +13,20 @@ class CustomBackIcon extends StatelessWidget {
     super.key,
     this.radius = 24,
     this.onPressed,
+    this.iconColor,
   });
   final double radius;
   final void Function()? onPressed;
+  final Color? iconColor;
   @override
   Widget build(BuildContext context) {
     return RotatedBox(
-      quarterTurns: mainAppBloc.isArabic ? 0 : 4,
+      quarterTurns: mainAppBloc.isArabic ? 0 : 2,
       child: customImageIconSVG(
           imageName: AppSvg.backArrow,
           width: 24.w,
           height: 24.w,
-          color: AppColors.HEADER,
+          color: iconColor??AppColors.HEADER,
           onTap: () => CustomNavigator.pop()),
     );
   }

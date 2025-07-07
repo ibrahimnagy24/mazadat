@@ -5,7 +5,7 @@ import '../../../../../../core/services/network/network_helper.dart';
 import '../../../../../../core/shared/entity/error_entity.dart';
 import '../../../../../../core/utils/utility.dart';
 import '../entity/age_entity.dart';
-import '../model/age_model.dart';
+import '../model/bank_model.dart';
 
 abstract class BanksRepo {
   const BanksRepo();

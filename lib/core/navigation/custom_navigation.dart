@@ -87,17 +87,3 @@ abstract class CustomNavigator {
     );
   }
 }
-
-class OtpParams {
-  final String phone;
-  final bool isFromRegistration;
-  final bool isUserLogin;
-  final bool isForgetPassword;
-
-  OtpParams({
-    required this.phone,
-    required this.isFromRegistration,
-    required this.isUserLogin,
-    required this.isForgetPassword,
-  });
-}

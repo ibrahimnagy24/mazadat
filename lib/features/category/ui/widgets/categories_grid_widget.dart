@@ -44,6 +44,7 @@ class ChooseCategoriesGridWidget extends StatelessWidget {
           if (cubit.allCategories!.isEmpty) {
             return const EmptyState();
           } else {
+            cubit.allCategories!.removeWhere((e) => e.id == -1);
             return StaggeredGrid.count(
               crossAxisCount: 3,
               mainAxisSpacing: 20,

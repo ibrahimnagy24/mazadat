@@ -130,6 +130,7 @@ abstract class AppColors {
   static const Color BOARDING_BLUR = Color.fromRGBO(0, 0, 0, 0.7);
   static const Color ALERT_COLOR = Color(0xffDBAB02);
   static const Color DARK_RED = Color(0xff982929);
+  static const Color RED = Color.fromRGBO(224, 44, 31, 1);
   static List<Color> kAppBarGradient = [
     const Color.fromRGBO(64, 77, 38, 1),
     const Color.fromRGBO(24, 28, 16, 1),

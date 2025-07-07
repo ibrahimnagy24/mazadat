@@ -14,10 +14,12 @@ class MoreAppBar extends StatelessWidget {
       spacing: 8.w,
       children: [
         const CustomBackIcon(),
-        Text(
-          AppStrings.more.tr,
-          style: AppTextStyles.displayMdBold,
-          textAlign: TextAlign.start,
+        Expanded(
+          child: Text(
+            AppStrings.more.tr,
+            style: AppTextStyles.displayMdBold,
+            textAlign: TextAlign.start,
+          ),
         ),
       ],
     );
