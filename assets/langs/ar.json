@@ -159,6 +159,7 @@
   "Okay": "حسناً",
   "Profile": "الحساب الشخصي",
   "Personal Information": "البيانات الشخصية",
+  "Edit Personal Information": "تعديل البيانات الشخصية",
   "Edit": "تعديل",
   "Commercial Number": "الرقم التجاري",
   "Bank Information": "بيانات الحساب البنكي",
@@ -166,6 +167,7 @@
   "Iban Number": "رقم الآيبان",
   "Bank Number": "رقم الحساب البنكي",
   "Bank Name": "اسم البنك",
-  "Favourite Categories": "الأقسام المفضلة"
+  "Favourite Categories": "الأقسام المفضلة",
+  "Changes Saved Successfully": "تم حفظ التعديلات بنجاح"
 
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import '../../../../../core/navigation/custom_navigation.dart';
+import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/widgets/custom_back_icon.dart' show CustomBackIcon;
+import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_constant.dart';
 import '../../../../../core/utils/constant/app_strings.dart' show AppStrings;
 import '../../../../../core/utils/extensions/extensions.dart';

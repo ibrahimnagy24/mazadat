@@ -109,7 +109,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
           break;
       }
 
-      return emit(VerifyCodeSucess(success));
+      return emit(VerifyCodeSuccess(success));
     });
   }
 

@@ -24,6 +24,16 @@ class ChangePasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
                   titleText: AppStrings.password.tr,
                   hintText: '*******',
                 ),
+                TextButton(
+                  onPressed: () {
+                    CustomNavigator.push(Routes.FORGET_PASSWORD_SCREEN);
+                  },
+                  child: Text(
+                    AppStrings.forgotYourPassword.tr,
+                    style: AppTextStyles.textSmSemibold,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
                 12.sbH,
                 DefaultPasswordFormField(
                   controller: context.read<ChangePasswordCubit>().newPassword,

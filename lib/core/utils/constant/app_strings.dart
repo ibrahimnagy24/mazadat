@@ -199,10 +199,12 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String commercialNumber = 'Commercial Number';
   static const String personalInfo = 'Personal Information';
+  static const String editProfileInfo = 'Edit Personal Information';
   static const String edit = 'Edit';
   static const String bankInfo = 'Bank Information';
   static const String editBankInfo = 'Edit Bank Information';
   static const String ibanNumber = 'Iban Number';
   static const String bankNumber = 'Bank Number';
   static const String bankName = 'Bank Name';
+  static const String changesSavedSuccessfully = 'Changes Saved Successfully';
 }

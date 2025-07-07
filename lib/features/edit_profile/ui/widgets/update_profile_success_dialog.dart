@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/navigation/custom_navigation.dart'
-    show CustomNavigator;
-import '../../../../../core/navigation/routes.dart' show Routes;
+import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/shared/widgets/custom_images.dart';
-import '../../../../../core/theme/text_styles/text_styles.dart'
-    show AppTextStyles;
-import '../../../../../core/utils/constant/app_strings.dart' show AppStrings;
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart' ;
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 
-class RegisterSuccessDialog extends StatelessWidget {
-  const RegisterSuccessDialog({super.key,  this.fromRegister = true});
-  final bool fromRegister;
+class UpdateProfileSuccessDialog extends StatelessWidget {
+  const UpdateProfileSuccessDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 24.h,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -28,16 +23,16 @@ class RegisterSuccessDialog extends StatelessWidget {
           width: 90.w,
           height: 90.w,
         ),
+        24.sbH,
         Text(
-          fromRegister? AppStrings.accountCreatedSuccessfully.tr:
           AppStrings.changesSavedSuccessfully.tr,
           style: AppTextStyles.heading,
           textAlign: TextAlign.center,
         ),
+        24.sbH,
         DefaultButton(
-          text: AppStrings.mainPage.tr,
-          onPressed: () =>
-              CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true),
+          text: AppStrings.profile.tr,
+          onPressed: () => CustomNavigator.pop(),
         )
       ],
     );

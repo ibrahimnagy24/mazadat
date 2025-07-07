@@ -30,5 +30,6 @@ class Routes {
   //-----------------------------------MORE---------------------------\\
   static const MORE = 'MORE';
   static const PROFILE = 'PROFILE';
+  static const EDIT_PROFILE = 'EDIT_PROFILE';
   static const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 }

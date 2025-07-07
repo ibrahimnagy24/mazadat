@@ -1,5 +1,5 @@
-import '../../../auth/login/data/entity/user_entity.dart';
 import '../../../../core/shared/entity/error_entity.dart';
+import '../data/entity/user_entity.dart';
 
 sealed class UserState {
   const UserState();

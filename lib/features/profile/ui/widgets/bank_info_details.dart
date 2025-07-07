@@ -8,8 +8,8 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
-import '../../../user/user_data/logic/user_cubit.dart';
-import '../../../user/user_data/logic/user_state.dart';
+import '../../../user/logic/user_cubit.dart';
+import '../../../user/logic/user_state.dart';
 import 'profile_details_info.dart';
 
 class BankInfoDetails extends StatelessWidget {

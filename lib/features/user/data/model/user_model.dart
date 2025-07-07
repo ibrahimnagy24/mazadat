@@ -1,9 +1,9 @@
 import '../../../../../core/utils/enums/enums_converter.dart';
 import '../../../../../core/utils/utility.dart';
-import '../../../../category/data/model/category_model.dart';
-import '../../../../selectors/age/data/model/age_model.dart';
-import '../../../../selectors/banks/data/model/bank_model.dart';
-import '../../../../selectors/city/data/model/city_model.dart';
+import '../../../category/data/model/category_model.dart';
+import '../../../selectors/age/data/model/age_model.dart';
+import '../../../selectors/banks/data/model/bank_model.dart';
+import '../../../selectors/city/data/model/city_model.dart';
 import '../entity/user_entity.dart';
 
 class UserModel extends UserEntity {
@@ -49,12 +49,12 @@ class UserModel extends UserEntity {
       isSeller: json['isSeller'] == '1' ? true : false,
       firstName: json['firstName'],
       lastName: json['lastName'],
-      city: checkFromArray(json['city'])
+      city: checkFromMap(json['city'])
           ? CityModel.fromJson(json['city'])
           : null,
-      age: checkFromArray(json['age']) ?
+      age: checkFromMap(json['age']) ?
       AgeModel.fromJson(json['age']) : null,
-      bank: checkFromArray(json['bank'])
+      bank: checkFromMap(json['bank'])
           ? BankModel.fromJson(json['bank'])
           : null,
       bankNumber: json['bankNumber'],

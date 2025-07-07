@@ -1,5 +1,5 @@
 import '../../../../core/shared/entity/error_entity.dart';
-import '../../login/data/entity/user_entity.dart';
+import '../../../user/data/entity/user_entity.dart';
 import '../data/models/send_code_model.dart';
 
 sealed class VerifyCodeState {
@@ -12,8 +12,8 @@ final class VerifyCodeLoading extends VerifyCodeState {
   const VerifyCodeLoading();
 }
 
-final class VerifyCodeSucess extends VerifyCodeState {
-  const VerifyCodeSucess(this.data);
+final class VerifyCodeSuccess extends VerifyCodeState {
+  const VerifyCodeSuccess(this.data);
   final UserEntity data;
 }
 

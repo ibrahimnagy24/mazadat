@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/enums/enums_converter.dart';
-import '../../../../category/data/model/category_model.dart';
-import '../../../../selectors/age/data/model/age_model.dart';
-import '../../../../selectors/banks/data/model/bank_model.dart';
-import '../../../../selectors/city/data/model/city_model.dart';
+import '../../../category/data/model/category_model.dart';
+import '../../../selectors/age/data/model/age_model.dart';
+import '../../../selectors/banks/data/model/bank_model.dart';
+import '../../../selectors/city/data/model/city_model.dart';
+
 
 class UserEntity extends Equatable {
   const UserEntity({

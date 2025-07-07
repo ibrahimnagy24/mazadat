@@ -33,13 +33,13 @@ class VerifyCodeButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<VerifyCodeCubit, VerifyCodeState>(
       listenWhen: (previous, current) =>
-          current is VerifyCodeError || current is VerifyCodeSucess,
+          current is VerifyCodeError || current is VerifyCodeSuccess,
       listener: (context, state) {
         final cubit = context.read<VerifyCodeCubit>();
         if (state is VerifyCodeError) {
           showErrorSnackBar(state.error.message);
         }
-        if (state is VerifyCodeSucess) {
+        if (state is VerifyCodeSuccess) {
           FocusScope.of(context).unfocus();
           // showSuccessToast(state.data.message);
           switch (cubit.resetPasswordParams.fromScreenEnum) {
@@ -62,7 +62,9 @@ class VerifyCodeButtonWidget extends StatelessWidget {
               break;
             case VerifyCodeFromScreen.fromChangePhoneNumber:
               CustomSimpleDialog.parentSimpleDialog(
-                customListWidget: const RegisterSuccessDialog(),
+                customListWidget: const RegisterSuccessDialog(
+                  fromRegister: false,
+                ),
               );
               break;
           }
@@ -70,7 +72,7 @@ class VerifyCodeButtonWidget extends StatelessWidget {
       },
       buildWhen: (previous, current) =>
           current is VerifyCodeLoading ||
-          current is VerifyCodeSucess ||
+          current is VerifyCodeSuccess ||
           current is VerifyCodeError,
       builder: (context, state) {
         final cubit = context.read<VerifyCodeCubit>();

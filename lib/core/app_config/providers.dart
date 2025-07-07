@@ -5,7 +5,7 @@ import 'package:flutter_bloc/src/bloc_provider.dart'
 import '../../features/check_from_internet/controller/check_internet_cubit.dart';
 import '../../features/more/logic/more_cubit.dart';
 import '../../features/nav_layout/cubit/navbar_layout_cubit.dart';
-import '../../features/user/user_data/logic/user_cubit.dart';
+import '../../features/user/logic/user_cubit.dart';
 
 abstract class ProviderList {
   static List<BlocProviderSingleChildWidget> providers = [

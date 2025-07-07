@@ -12,6 +12,7 @@ import '../../features/auth/forget_password/ui/widgets/forget_password_imports.d
 import '../../features/auth/verify_code/data/params/verify_code_route_params.dart';
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
 import '../../features/delete_account/ui/widgets/delete_account_imports.dart';
+import '../../features/edit_profile/ui/widgets/edit_profile_imports.dart';
 import '../../features/home/ui/pages/home_screen.dart';
 import '../../features/more/ui/page/more_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
@@ -126,6 +127,12 @@ final GoRouter appRouter = GoRouter(
       path: '/profile',
       name: Routes.PROFILE,
       builder: (context, state) => const ProfileScreen(),
+    ),
+
+    GoRoute(
+      path: '/edit-profile',
+      name: Routes.EDIT_PROFILE,
+      builder: (context, state) => const EditProfileScreen(),
     ),
 
 

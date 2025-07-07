@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../features/user/user_data/logic/user_cubit.dart';
+import '../../features/user/logic/user_cubit.dart';
 import '../app_core.dart';
 import '../navigation/custom_navigation.dart';
 import '../navigation/routes.dart';

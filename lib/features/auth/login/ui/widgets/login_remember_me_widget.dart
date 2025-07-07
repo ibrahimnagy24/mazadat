@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../logic/login_cubit.dart';
 
 class LoginRememberMeWidget extends StatelessWidget {
   const LoginRememberMeWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
     return TextButton(
       onPressed: () {
         CustomNavigator.push(Routes.FORGET_PASSWORD_SCREEN);

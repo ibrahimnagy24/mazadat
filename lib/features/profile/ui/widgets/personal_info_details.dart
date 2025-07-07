@@ -10,8 +10,8 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
-import '../../../user/user_data/logic/user_cubit.dart';
-import '../../../user/user_data/logic/user_state.dart';
+import '../../../user/logic/user_cubit.dart';
+import '../../../user/logic/user_state.dart';
 import 'profile_details_info.dart';
 
 class PersonalInfoDetails extends StatelessWidget {
@@ -34,7 +34,7 @@ class PersonalInfoDetails extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () => CustomNavigator.push(Routes.EDIT_PROFILE),
                 child: Row(
                   spacing: 4.w,
                   children: [
@@ -86,6 +86,27 @@ class PersonalInfoDetails extends StatelessWidget {
                   title: AppStrings.mobileNumber.tr,
                   value: cubit.userEntity?.completePhone,
                   icon: AppSvg.phone,
+                  action: TextButton(
+                    onPressed: () => CustomNavigator.push(
+                        Routes.CHANGE_PHONE_NUMBER_SCREEN,
+                        extra: cubit.userEntity?.phone),
+                    child: Row(
+                      spacing: 4.w,
+                      children: [
+                        Text(
+                          AppStrings.edit.tr,
+                          style: AppTextStyles.textMdSemibold,
+                          textAlign: TextAlign.start,
+                        ),
+                        customImageIconSVG(
+                          imageName: AppSvg.edit,
+                          width: 16.w,
+                          height: 16.w,
+                          color: AppColors.kPrimary,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 ProfileDetailsInfo(
                   title: AppStrings.theEmail.tr,
@@ -97,7 +118,6 @@ class PersonalInfoDetails extends StatelessWidget {
                   value: '********',
                   icon: AppSvg.lock,
                   action: TextButton(
-
                     onPressed: () =>
                         CustomNavigator.push(Routes.CHANGE_PASSWORD_SCREEN),
                     child: Row(

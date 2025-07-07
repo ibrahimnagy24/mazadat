@@ -160,11 +160,13 @@
   "Profile": "Profile",
   "Edit": "Edit",
   "Personal Information": "Personal Information",
+  "Edit Personal Information": "Edit Personal Information",
   "Commercial Number": "Commercial Number",
   "Bank Information": "Bank Information",
   "Edit Bank Information": "Edit Bank Information",
   "Iban Number": "Iban Number",
   "Bank Number": "Bank Number",
   "Bank Name": "Bank Name",
-  "Favourite Categories": "Favourite Categories"
+  "Favourite Categories": "Favourite Categories",
+  "Changes Saved Successfully": "Changes Saved Successfully"
 }

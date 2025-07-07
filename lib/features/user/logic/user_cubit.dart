@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/utility.dart';
-import '../../../auth/login/data/entity/user_entity.dart';
 import '../../../../core/services/cache/shared_helper.dart';
+import '../data/entity/user_entity.dart';
 import '../repo/user_repo.dart';
 import 'user_state.dart';
 
