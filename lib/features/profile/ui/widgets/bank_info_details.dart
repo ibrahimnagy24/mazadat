@@ -59,17 +59,21 @@ class BankInfoDetails extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppRadius.rLg.w),
             ),
             child: Column(
-
               children: [
                 ProfileDetailsInfo(
                   title: AppStrings.bankNumber.tr,
-                  value: cubit.userEntity?.bankNumber ?? '----------------',
+                  value: cubit.userEntity?.bankNumber,
                   icon: AppSvg.invoice,
                 ),
                 ProfileDetailsInfo(
                   title: AppStrings.ibanNumber.tr,
-                  value: cubit.userEntity?.ibanNumber ?? '----------------',
+                  value: cubit.userEntity?.ibanNumber,
                   icon: AppSvg.bank,
+                  action: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 18,
+                    color: AppColors.iconPrimary,
+                  ),
                 ),
               ],
             ),

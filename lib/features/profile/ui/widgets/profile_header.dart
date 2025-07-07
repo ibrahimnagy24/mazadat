@@ -19,7 +19,7 @@ class ProfileHeader extends StatelessWidget {
         start: 18.w,
         end: 18.w,
         top: 24.h,
-        bottom: 60.h,
+        bottom: 100.h,
       ),
       decoration: const BoxDecoration(
         image: DecorationImage(
