@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
@@ -39,6 +40,7 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                 title: AppStrings.mySales.tr,
                 icon: AppSvg.saleTag,
+                  onTap: ()=>CustomNavigator.push(Routes.MY_SALES)
               ),
               MoreButton(
                 title: AppStrings.favourite.tr,
@@ -51,6 +53,7 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                 title: AppStrings.myPurchases.tr,
                 icon: AppSvg.cart,
+                  onTap: ()=>CustomNavigator.push(Routes.MY_PURCHASES)
               ),
               MoreButton(
                 title: AppStrings.paymentHistory.tr,
@@ -59,6 +62,7 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                 title: AppStrings.myBundles.tr,
                 icon: AppSvg.package,
+                onTap: ()=>CustomNavigator.push(Routes.MY_BUNDLES)
               ),
             ],
           ),

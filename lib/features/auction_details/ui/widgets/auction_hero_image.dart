@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
-import '../../data/params/view_auction_route_params.dart';
+import '../../data/params/auction_details_route_params.dart';
 import '../../logic/view_auction_controller.dart';
 import '../../logic/view_auction_cubit.dart';
 
@@ -11,66 +12,68 @@ class AuctionHeroImage extends StatelessWidget {
     super.key,
     required this.controller,
     required this.routeParams,
+    required this.imageUrls,
     this.imageUrl,
   });
 
   final ViewAuctionController controller;
-  final ViewAuctionRouteParams routeParams;
+  final AuctionDetailsRouteParams routeParams;
   final String? imageUrl;
+  final List<String> imageUrls;
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final screenHeight = screenSize.height;
+    return StreamBuilder<int>(
+      stream: context.read<AuctionDetailsCubit>().imageIndexStream,
+      builder: (context, snapshot) {
+        // handle null or out of bounds index
+        final index = snapshot.data;
+        final hasValidIndex = index != null && index >= 0 && index < imageUrls.length;
 
-    return BlocBuilder<ViewAuctionCubit, ViewAuctionState>(
-      builder: (context, state) {
-        String currentImageUrl;
+        if (!hasValidIndex) return const SizedBox();
 
-        if (state is ViewAuctionImagesLoaded) {
-          currentImageUrl = state.imageUrls[state.selectedImageIndex];
-        } else {
-          currentImageUrl = imageUrl ?? 'https://picsum.photos/800/800';
-        }
+        final imageUrl = imageUrls[index];
 
         return AnimatedBuilder(
           animation: controller.scaleAnimation,
           builder: (context, child) {
-            final imageHeight = screenHeight *
+            final animationValue = controller.scaleAnimation.value;
+            final imageHeight = MediaQueryHelper.height *
                 (controller.minImageFraction +
-                    (controller.maxImageFraction -
-                            controller.minImageFraction) *
-                        controller.scaleAnimation.value);
+                    (controller.maxImageFraction - controller.minImageFraction) *
+                        animationValue);
+
             return Positioned(
               top: 0,
               left: 0,
               right: 0,
               height: imageHeight,
               child: Hero(
-                tag: 'auction_image_$routeParams',
+                tag: 'auction_image_${routeParams.primaryImage}',
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 500),
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) {
+                  transitionBuilder: (child, animation) {
+                    final curved = CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeOutCubic,
+                    );
+
                     return FadeTransition(
                       opacity: animation,
                       child: ScaleTransition(
                         scale: Tween<double>(
                           begin: 0.95,
                           end: 1.0,
-                        ).animate(CurvedAnimation(
-                          parent: animation,
-                          curve: Curves.easeOutCubic,
-                        )),
+                        ).animate(curved),
                         child: child,
                       ),
                     );
                   },
                   child: DefaultNetworkImage(
-                    currentImageUrl,
-                    key: ValueKey<String>(currentImageUrl),
+                    imageUrl,
+                    key: ValueKey<String>(imageUrl),
                     fit: BoxFit.cover,
-                    width: screenSize.width,
+                    width: MediaQueryHelper.width,
                     height: imageHeight,
                   ),
                 ),

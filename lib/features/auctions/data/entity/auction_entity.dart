@@ -14,6 +14,7 @@ class AuctionEntity extends Equatable {
   final int id;
   final int? searchId;
   final bool isFav;
+  final String? orderNumber;
 
   const AuctionEntity({
     required this.id,
@@ -28,6 +29,7 @@ class AuctionEntity extends Equatable {
     required this.startDate,
     required this.endDate,
     required this.isFav,
+     this.orderNumber,
   });
 
   @override
@@ -44,5 +46,6 @@ class AuctionEntity extends Equatable {
         startDate,
         endDate,
         isFav,
+    orderNumber,
       ];
 }

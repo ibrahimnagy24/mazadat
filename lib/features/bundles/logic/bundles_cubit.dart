@@ -38,7 +38,7 @@ class BundlesCubit extends Cubit<BundlesState> {
       emit(BundlesSuccess(bundles: model!, isLoading: true));
     }
 
-    final response = await BundlesRepo.bundles(params);
+    final response = await BundlesRepo.bundles(_engine);
     response.fold((failure) {
       return emit(BundlesError(failure));
     }, (success) {

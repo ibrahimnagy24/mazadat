@@ -1,33 +1,28 @@
 part of 'view_auction_cubit.dart';
 
-sealed class ViewAuctionState extends Equatable {
-  const ViewAuctionState();
+sealed class AuctionDetailsState extends Equatable {
+  const AuctionDetailsState();
 
   @override
   List<Object> get props => [];
 }
 
-class ViewAuctionInitial extends ViewAuctionState {}
+class AuctionDetailsInitial extends AuctionDetailsState {}
 
-class ViewAuctionImagesLoaded extends ViewAuctionState {
-  final List<String> imageUrls;
-  final int selectedImageIndex;
+class AuctionDetailsLoading extends AuctionDetailsState {
+  const AuctionDetailsLoading();
+}
 
-  const ViewAuctionImagesLoaded({
-    required this.imageUrls,
-    this.selectedImageIndex = 0,
-  });
+class AuctionDetailsEmpty extends AuctionDetailsState {
+  const AuctionDetailsEmpty();
+}
 
-  @override
-  List<Object> get props => [imageUrls, selectedImageIndex];
+class AuctionDetailsSuccess extends AuctionDetailsState {
+  final AuctionDetailsModel AuctionDetails;
+  const AuctionDetailsSuccess({required this.AuctionDetails});
+}
 
-  ViewAuctionImagesLoaded copyWith({
-    List<String>? imageUrls,
-    int? selectedImageIndex,
-  }) {
-    return ViewAuctionImagesLoaded(
-      imageUrls: imageUrls ?? this.imageUrls,
-      selectedImageIndex: selectedImageIndex ?? this.selectedImageIndex,
-    );
-  }
+class AuctionDetailsError extends AuctionDetailsState {
+  final ErrorEntity error;
+  const AuctionDetailsError(this.error);
 }

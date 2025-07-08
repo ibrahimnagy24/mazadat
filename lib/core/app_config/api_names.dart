@@ -16,6 +16,7 @@ abstract class Endpoints {
   static const String homeBundles = '/bundles/searchBundles';
 
   static const String homeAuction = '/auctions/homePageFilterAuction';
+  static   auctionDetails(id) => '/auctions/viewAuction/$id';
   static const String auctions = '/auctions/list';
   static const String featuredAuction = '/auctions/featuredAuction';
   static const String inProgressAuction = '/auctions/liveAuction';
@@ -28,6 +29,10 @@ abstract class Endpoints {
   static  String deleteSearchResult(id) => '/searchResult/delete?id=$id';
   static const String deleteAllSearchResult = '/searchResult/deleteAll';
   static const String getSearch = homeAuction;
+
+  static const String myPurchases = '/auctions/homePageFilterAuction';
+  static const String mySales = '/auctions/homePageFilterAuction';
+
 
 //--------------------------------Favourites--------------------------------------\\
 

@@ -218,5 +218,9 @@ class AppStrings {
   static const String enterIbanNumber = 'Enter Iban Number';
 
   static const String editFavouriteCategories = 'Edit Favourite Categories';
+  static const String searchForBundles = 'Search For Bundles';
+  static const String orderNumber= 'Order Number';
+  static const String searchByOrderNumber= 'Search by order number';
+
 
 }

@@ -14,20 +14,28 @@ import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
 import '../../../favourites/ui/widgets/favourite_button.dart';
-import '../../../auction_details/data/params/view_auction_route_params.dart';
+import '../../../auction_details/data/params/auction_details_route_params.dart';
 import '../../data/entity/auction_entity.dart';
 
 class ListAuctionCard extends StatelessWidget {
-  const ListAuctionCard({super.key, required this.auction});
+  const ListAuctionCard(
+      {super.key, required this.auction, this.fromMyPurchase = false});
   final AuctionEntity auction;
+  final bool fromMyPurchase;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        CustomNavigator.push(
-          Routes.VIEW_AUCTION,
-          extra: ViewAuctionRouteParams(auctionId: auction.id.toString()),
-        );
+        if (fromMyPurchase) {
+          CustomNavigator.push(Routes.VIEW_ORDER_DETAILS, extra: auction.id);
+        } else {
+          CustomNavigator.push(
+            Routes.AUCTION_DETAILS,
+            extra: AuctionDetailsRouteParams(
+                auctionId: auction.id, primaryImage: auction.primaryPhoto),
+          );
+        }
       },
       child: Container(
         height: 215.h,
@@ -101,7 +109,10 @@ class ListAuctionCard extends StatelessWidget {
                 ],
               ),
             ),
-            AuctionInfo(auction: auction),
+            AuctionInfo(
+              auction: auction,
+              fromMyPurchase: fromMyPurchase,
+            ),
           ],
         ),
       ),
@@ -140,8 +151,10 @@ class _AuctionFinance extends StatelessWidget {
 }
 
 class AuctionInfo extends StatelessWidget {
-  const AuctionInfo({super.key, required this.auction});
+  const AuctionInfo(
+      {super.key, required this.auction, this.fromMyPurchase = false});
   final AuctionEntity auction;
+  final bool fromMyPurchase;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -154,23 +167,31 @@ class AuctionInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               spacing: 4.w,
               children: [
-                customImageIconSVG(
-                    imageName: AppSvg.timer,
-                    width: 16.w,
-                    height: 16.w,
-                    color: AppColors.iconDefault),
-                Flexible(
-                  child: Text(
-                    AppStrings.auctionDuration.tr,
-                    style: AppTextStyles.textMdRegular,
-                    maxLines: 1,
+                if (!fromMyPurchase)
+                  customImageIconSVG(
+                      imageName: AppSvg.timer,
+                      width: 16.w,
+                      height: 16.w,
+                      color: AppColors.iconDefault),
+                if (fromMyPurchase)
+                  Flexible(
+                    child: Text(
+                      AppStrings.orderNumber.tr,
+                      style: AppTextStyles.textMdRegular,
+                      maxLines: 1,
+                    ),
                   ),
-                ),
                 Flexible(
-                  child: CountdownTimerWidget(
-                    startDate: auction.startDate,
-                    endTime: auction.endDate,
-                  ),
+                  child: fromMyPurchase
+                      ? Text(
+                          auction.orderNumber ?? 'ss2',
+                          style: AppTextStyles.bodySReq,
+                          maxLines: 1,
+                        )
+                      : CountdownTimerWidget(
+                          startDate: auction.startDate,
+                          endTime: auction.endDate,
+                        ),
                 ),
               ],
             ),
@@ -188,15 +209,14 @@ class AuctionInfo extends StatelessWidget {
                     height: 16.w,
                     color: AppColors.iconDefault),
                 Flexible(
-                  flex: 1,
                   child: Text(
                     AppStrings.endDate.tr,
                     style: AppTextStyles.textMdRegular,
                     maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Flexible(
-                  flex: 1,
                   child: Text(
                     auction.endDate.toDateFormat(
                         format: 'd MMMM yyyy',

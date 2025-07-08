@@ -21,7 +21,7 @@ class Routes {
   //--------------------------------------MISC---------------------------\\
   static const ZOOM_IN_IMAGE = 'ZOOM_IN_IMAGE';
   //-----------------------------------VIEW AUCTION---------------------------\\
-  static const VIEW_AUCTION = 'VIEW_AUCTION';
+  static const AUCTION_DETAILS = 'VIEW_AUCTION';
   static const VIEW_BUNDLES = 'VIEW_BUNDLES';
 
   //-----------------------------------SEARCH---------------------------\\
@@ -34,4 +34,9 @@ class Routes {
   static const EDIT_BANK_DETAILS = 'EDIT_BANK_DETAILS';
   static const EDIT_FAVOURITES_CATEGORIES = 'EDIT_FAVOURITES_CATEGORIES';
   static const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+  static const MY_BUNDLES = 'MY_BUNDLES';
+  static const MY_SALES = 'MY_SALES';
+  static const MY_PURCHASES = 'MY_PURCHASES';
+  static const VIEW_ORDER_DETAILS = 'VIEW_ORDER_DETAILS';
+
 }

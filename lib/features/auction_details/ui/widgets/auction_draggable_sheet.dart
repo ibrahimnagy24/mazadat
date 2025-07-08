@@ -11,10 +11,12 @@ class AuctionDraggableSheet extends StatelessWidget {
     super.key,
     required this.controller,
     required this.child,
+    required this.imageUrls,
   });
 
   final ViewAuctionController controller;
   final Widget child;
+  final List<String> imageUrls;
 
   @override
   Widget build(BuildContext context) {
@@ -28,24 +30,27 @@ class AuctionDraggableSheet extends StatelessWidget {
       builder: (context, scrollController) {
         return Column(
           children: [
-            GlassyImagesRow(controller: controller),
+            if (imageUrls.isNotEmpty)
+              GlassyImagesRow(controller: controller, imageUrls: imageUrls),
             Expanded(
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
-                  border: Border.symmetric(
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(25)),
+                  border: const Border.symmetric(
                     horizontal: BorderSide(
                       color: AppColors.kOpacityGrey3,
                       width: 1,
                     ),
                   ),
                   boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10,
-                      spreadRadius: 50,
-                    )
+                    if (imageUrls.isNotEmpty)
+                      const BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10,
+                        spreadRadius: 50,
+                      )
                   ],
                 ),
                 child: ListView(

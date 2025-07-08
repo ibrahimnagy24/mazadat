@@ -17,14 +17,17 @@ import '../../features/edit_favourite_categories/ui/widgets/edit_favourite_categ
 import '../../features/edit_profile/ui/widgets/edit_profile_imports.dart';
 import '../../features/home/ui/pages/home_screen.dart';
 import '../../features/more/ui/page/more_screen.dart';
+import '../../features/my_bundles/ui/page/my_bundles_screen.dart';
+import '../../features/my_purchases/ui/page/my_purchases_screen.dart';
+import '../../features/my_sales/ui/page/my_sales_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
 import '../../features/profile/ui/page/profile_screen.dart';
 import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';
-import '../../features/auction_details/data/params/view_auction_route_params.dart';
-import '../../features/auction_details/ui/pages/view_auction_screen.dart';
+import '../../features/auction_details/data/params/auction_details_route_params.dart';
+import '../../features/auction_details/ui/pages/auction_details_screen.dart';
 import '../../features/visitor/ui/pages/visitor_screen.dart';
 import '../utils/widgets/misc/zoom_image.dart';
 import 'routes.dart';
@@ -156,6 +159,26 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const DeleteAccountScreen(),
     ),
 
+    //MY BUNDLES
+    GoRoute(
+      path: '/my-bundles',
+      name: Routes.MY_BUNDLES,
+      builder: (context, state) => const MyBundlesScreen(),
+    ),
+    //MY SALES
+    GoRoute(
+      path: '/my-sales',
+      name: Routes.MY_SALES,
+      builder: (context, state) => const MySalesScreen(),
+    ),
+
+    //MY PURCHASES
+    GoRoute(
+      path: '/my-purchases',
+      name: Routes.MY_PURCHASES,
+      builder: (context, state) => const MyPurchasesScreen(),
+    ),
+
     // Misc routes
     GoRoute(
       path: '/nav-bar-layout',
@@ -182,13 +205,11 @@ final GoRouter appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/view-auction',
-      name: Routes.VIEW_AUCTION,
+      path: '/auction-details',
+      name: Routes.AUCTION_DETAILS,
       builder: (context, state) {
-        final params = state.extra == null
-            ? const ViewAuctionRouteParams(auctionId: '')
-            : (state.extra as ViewAuctionRouteParams);
-        return ViewAuctionScreen(routeParams: params);
+        return AuctionDetailsScreen(
+            routeParams: state.extra as AuctionDetailsRouteParams);
       },
     ),
     GoRoute(

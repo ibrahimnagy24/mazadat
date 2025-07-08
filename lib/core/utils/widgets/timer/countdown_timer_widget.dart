@@ -77,22 +77,36 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
         .join('');
   }
 
-  String _formatTime(int hours, int minutes, int seconds) {
+  String _formatTime(int days, int hours, int minutes, int seconds) {
     if (mainAppBloc.isArabic) {
-      return '${_convertToArabicNumerals(hours)} س : ${_convertToArabicNumerals(minutes)}د : ${_convertToArabicNumerals(seconds)} ث';
+      if (days > 0) {
+        return '${_convertToArabicNumerals(days)} ي : ${_convertToArabicNumerals(hours)} س ';
+      } else {
+        return '${_convertToArabicNumerals(hours)} س : ${_convertToArabicNumerals(minutes)}د : ${_convertToArabicNumerals(seconds)} ث';
+      }
     } else {
-      return '${hours.toString().padLeft(2, '0')}h : ${minutes.toString().padLeft(2, '0')}m : ${seconds.toString().padLeft(2, '0')}s';
+      if (days > 0) {
+        return '${days.toString().padLeft(2, '0')}d :${hours.toString().padLeft(2, '0')}h';
+      } else {
+        return '${hours.toString().padLeft(2, '0')}h : ${minutes.toString().padLeft(2, '0')}m : ${seconds.toString().padLeft(2, '0')}s';
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final hours = _remainingTime.inHours;
+    final days = _remainingTime.inDays;
+    final hours;
+    if (days > 0) {
+      hours = _remainingTime.inHours.remainder(24);
+    } else {
+      hours = _remainingTime.inHours;
+    }
     final minutes = _remainingTime.inMinutes.remainder(60);
     final seconds = _remainingTime.inSeconds.remainder(60);
 
     return Text(
-      _formatTime(hours, minutes, seconds),
+      _formatTime(days, hours, minutes, seconds),
       style: AppTextStyles.textLgMedium.copyWith(
           color: widget.startDate.isAfter(now)
               ? AppColors.textSuccess

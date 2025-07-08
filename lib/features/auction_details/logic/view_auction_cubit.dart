@@ -1,42 +1,51 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rxdart/rxdart.dart';
+
+import '../../../core/shared/entity/error_entity.dart';
+import '../data/model/auction_details_model.dart';
+import '../data/params/auction_details_route_params.dart';
+import '../data/repo/auction_details_repo.dart';
 part 'view_auction_state.dart';
 
-class ViewAuctionCubit extends Cubit<ViewAuctionState> {
-  ViewAuctionCubit() : super(ViewAuctionInitial());
-  
+class AuctionDetailsCubit extends Cubit<AuctionDetailsState> {
+  AuctionDetailsCubit() : super(AuctionDetailsInitial()) {
+    updateImageIndex(0);
+  }
+
 //---------------------------------VARIABLES----------------------------------//
-  // Mock data for demonstration - in a real app, this would come from an API
-  final List<String> _mockImages = List.generate(
-    10, 
-    (index) => 'https://picsum.photos/800/800?random=$index'
-  );
 
 //---------------------------------FUNCTIONS----------------------------------//
-  /// Load the auction images (in a real app, this would fetch from an API)
-  void loadAuctionImages() {
-    emit(ViewAuctionImagesLoaded(imageUrls: _mockImages));
-  }
-  
+
   /// Select a specific image from the gallery
-  void selectImage(int index) {
-    final currentState = state;
-    if (currentState is ViewAuctionImagesLoaded) {
-      // Only update if the index is valid
-      if (index >= 0 && index < currentState.imageUrls.length) {
-        emit(currentState.copyWith(selectedImageIndex: index));
-      }
-    }
-  }
-  
-  /// Get the currently selected image URL
-  String? getSelectedImageUrl() {
-    final currentState = state;
-    if (currentState is ViewAuctionImagesLoaded) {
-      return currentState.imageUrls[currentState.selectedImageIndex];
-    }
-    return null;
-  }
+  final imageIndex = BehaviorSubject<int>();
+  Function(int) get updateImageIndex => imageIndex.sink.add;
+  Stream<int> get imageIndexStream => imageIndex.stream.asBroadcastStream();
 
 //----------------------------------REQUEST-----------------------------------//
+
+  Future<void> auctionDetailsStatesHandled(
+      AuctionDetailsRouteParams params) async {
+    emit(const AuctionDetailsLoading());
+
+    final response = await AuctionDetailsRepo.getAuctionDetails(params);
+    response.fold((failure) {
+      return emit(AuctionDetailsError(failure));
+    }, (success) {
+      if (success.statusCode == 200) {
+        AuctionDetailsModel? res =
+            AuctionDetailsModel.fromJson(success.data['DATA']);
+        int currentIndex =
+            res.images?.indexWhere((e) => e == params.primaryImage) ?? 0;
+        updateImageIndex(currentIndex == -1 ? 0 : currentIndex);
+
+        return emit(AuctionDetailsSuccess(AuctionDetails: res));
+      } else {
+        return emit(AuctionDetailsError(ErrorEntity(
+            message: success.data['MESSAGE'],
+            statusCode: success.statusCode ?? 400,
+            errors: const [])));
+      }
+    });
+  }
 }

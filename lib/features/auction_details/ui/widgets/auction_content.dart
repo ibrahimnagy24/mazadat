@@ -1,8 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-
-import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/shared/widgets/price_widget_with_flag_widget.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
@@ -11,15 +9,8 @@ import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
 
-/// Widget that displays the content of an auction inside the draggable sheet.
-/// This can be customized based on the actual data you want to display.
 class AuctionContent extends StatelessWidget {
-  const AuctionContent({
-    super.key,
-    required this.auctionId,
-  });
-
-  final String auctionId;
+  const AuctionContent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +32,7 @@ class AuctionContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const MainText(text: 'لوحة فنية لزهور التوليب'),
-                    MainText(text: 'رقم المزاد: $auctionId'),
+                    MainText(text: 'رقم المزاد: '),
                   ],
                 ),
               ),

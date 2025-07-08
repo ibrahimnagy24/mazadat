@@ -12,7 +12,7 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auctions/data/entity/auction_entity.dart';
-import '../../../auction_details/data/params/view_auction_route_params.dart';
+import '../../../auction_details/data/params/auction_details_route_params.dart';
 import '../../logic/search_result_cubit.dart';
 
 class SearchResultCard extends StatelessWidget {
@@ -23,12 +23,11 @@ class SearchResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        CustomNavigator.push(
-          Routes.VIEW_AUCTION,
-          extra: ViewAuctionRouteParams(auctionId: auction.id.toString()),
-        );
-      },
+      onTap: () => CustomNavigator.push(
+        Routes.AUCTION_DETAILS,
+        extra: AuctionDetailsRouteParams(
+            auctionId: auction.id, primaryImage: auction.primaryPhoto),
+      ),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 8.h),
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
@@ -65,7 +64,9 @@ class SearchResultCard extends StatelessWidget {
                       ),
                       if (withClear)
                         InkWell(
-                            onTap: ()=>context.read<SearchResultCubit>().onDeleteItem(auction.searchId),
+                            onTap: () => context
+                                .read<SearchResultCubit>()
+                                .onDeleteItem(auction.searchId),
                             child: const Icon(
                               Icons.clear,
                               color: AppColors.iconDefault,

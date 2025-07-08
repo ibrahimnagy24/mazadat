@@ -18,6 +18,7 @@ class AuctionModel extends AuctionEntity {
     required super.insurancePrice,
     required super.startDate,
     required super.endDate,
+    super.orderNumber,
   });
 
   factory AuctionModel.fromJson(Map<String, dynamic> json) => AuctionModel(
@@ -43,6 +44,7 @@ class AuctionModel extends AuctionEntity {
             ? DateTime.parse(json['endDate'])
             : DateTime.now(),
         isFav: json['myfav'],
+        orderNumber: json['orderNumber'],
       );
 
   Map<String, dynamic> toJson() {
@@ -58,6 +60,7 @@ class AuctionModel extends AuctionEntity {
     data['startDate'] = startDate;
     data['endDate'] = endDate;
     data['myfav'] = isFav;
+    data['orderNumber'] = orderNumber;
     return data;
   }
 }

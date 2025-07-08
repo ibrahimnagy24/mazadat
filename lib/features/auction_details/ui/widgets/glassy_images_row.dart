@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glass_kit/glass_kit.dart';
+import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../logic/view_auction_controller.dart';
 import '../../logic/view_auction_cubit.dart';
@@ -9,41 +10,45 @@ class GlassyImagesRow extends StatelessWidget {
   const GlassyImagesRow({
     super.key,
     required this.controller,
+    required this.imageUrls,
   });
 
   final ViewAuctionController controller;
+  final List<String> imageUrls;
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
     return AnimatedBuilder(
       animation: controller.scaleAnimation,
       builder: (context, child) {
+        final scale = controller.scaleAnimation.value;
+
+        // Base values
         const baseHeight = 70.0;
-        final heightScale = 0.3 + (0.7 * controller.scaleAnimation.value);
-        final height = baseHeight * heightScale;
-
-        final widthScale = 0.5 + (0.5 * controller.scaleAnimation.value);
-        // final width = screenSize.width * widthScale;
-        final width = screenSize.width;
-
-        // final verticalMargin = 4.0 + (12.0 * controller.scaleAnimation.value);
-        // final horizontalMargin =
-        //     10.0 + (10.0 * controller.scaleAnimation.value);
         const verticalMargin = 4.0;
         const horizontalMargin = 10.0;
+        const baseImgSize = 60.0;
+        const baseBorderRadius = 4.0;
 
-        final borderRadiusValue = 4.0 + (8.0 * controller.scaleAnimation.value);
+        // Scaled values
+        final height = baseHeight * (0.3 + 0.7 * scale);
+        final borderRadiusValue = baseBorderRadius + (8.0 * scale);
+        final scaleTransform = 0.6 + (0.4 * scale);
+        final blur = 10.0 + (10.0 * scale);
+        final borderWidth = 0.8 + (1.2 * scale);
+        final elevation = 1.0 + (3.0 * scale);
+        final shadowOpacity = 0.1 + (0.2 * scale);
 
         return Transform.scale(
-          scale: 0.6 + (0.4 * controller.scaleAnimation.value),
+          scale: scaleTransform,
           child: GlassContainer(
             height: height,
-            width: width,
-            borderRadius: BorderRadius.circular(4),
+            width: MediaQueryHelper.width,
+            borderRadius: BorderRadius.circular(borderRadiusValue),
             margin: const EdgeInsets.symmetric(
-                horizontal: horizontalMargin, vertical: verticalMargin),
+              horizontal: horizontalMargin,
+              vertical: verticalMargin,
+            ),
             padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 3.0),
             gradient: LinearGradient(
               colors: [
@@ -58,66 +63,51 @@ class GlassyImagesRow extends StatelessWidget {
                 Colors.white.withOpacity(0.6),
                 Colors.white.withOpacity(0.1),
                 Colors.lightBlueAccent.withOpacity(0.05),
-                Colors.lightBlueAccent.withOpacity(0.6)
+                Colors.lightBlueAccent.withOpacity(0.6),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               stops: const [0.0, 0.39, 0.4, 1.0],
             ),
-            blur: 10.0 + (10.0 * controller.scaleAnimation.value),
-            borderWidth: 0.8 + (1.2 * controller.scaleAnimation.value),
-            elevation: 1.0 + (3.0 * controller.scaleAnimation.value),
-            shadowColor: Colors.white
-                .withOpacity(0.1 + (0.2 * controller.scaleAnimation.value)),
+            blur: blur,
+            borderWidth: borderWidth,
+            elevation: elevation,
+            shadowColor: Colors.white.withOpacity(shadowOpacity),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: BlocBuilder<ViewAuctionCubit, ViewAuctionState>(
-                builder: (context, state) {
-                  late List<String> imageUrls;
-                  int selectedIndex = 0;
+              child: StreamBuilder<int>(
+                stream: context.read<AuctionDetailsCubit>().imageIndexStream,
+                builder: (context, snapshot) {
+                  final selectedIndex = snapshot.data;
 
-                  if (state is ViewAuctionImagesLoaded) {
-                    imageUrls = state.imageUrls;
-                    selectedIndex = state.selectedImageIndex;
-                  } else {
-                    imageUrls = List.generate(
-                        10, (i) => 'https://picsum.photos/800/800?random=$i');
+                  if (selectedIndex == null || imageUrls.isEmpty) {
+                    return const SizedBox();
                   }
 
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(imageUrls.length, (index) {
-                      const baseImgSize = 60.0;
-                      final imgSize = baseImgSize *
-                          (0.3 + (0.7 * controller.scaleAnimation.value));
-
-                      const paddingValue = 1.0;
-
-                      const imgBorderRadius = 4.0;
-
-                      final isSelected = index == selectedIndex;
+                    children: List.generate(imageUrls.length, (i) {
+                      final imgSize = baseImgSize * (0.3 + 0.7 * scale);
+                      final isSelected = i == selectedIndex;
 
                       return GestureDetector(
                         onTap: () {
-                          context.read<ViewAuctionCubit>().selectImage(index);
+                          context.read<AuctionDetailsCubit>().updateImageIndex(i);
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
-                          padding: const EdgeInsets.all(paddingValue),
+                          padding: const EdgeInsets.all(1.0),
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color:
-                                  isSelected ? Colors.blue : Colors.transparent,
+                              color: isSelected ? Colors.blue : Colors.transparent,
                               width: 2.0,
                             ),
-                            borderRadius:
-                                BorderRadius.circular(imgBorderRadius + 2),
+                            borderRadius: BorderRadius.circular(baseBorderRadius + 2),
                           ),
                           child: ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(imgBorderRadius),
+                            borderRadius: BorderRadius.circular(baseBorderRadius),
                             child: DefaultNetworkImage(
-                              imageUrls[index],
+                              imageUrls[i],
                               width: imgSize,
                               height: imgSize,
                               fit: BoxFit.cover,
