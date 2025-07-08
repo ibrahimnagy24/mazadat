@@ -81,7 +81,7 @@ class HomeSearchCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(AppRadius.rMd)),
                     child: customImageIconSVG(
                       imageName:
-                          snapshot.data == true ? AppSvg.list : AppSvg.grid,
+                          snapshot.data == true ? AppSvg.grid : AppSvg.list,
                       width: 20.w,
                       height: 20.w,
                       color: AppColors.iconDefault,
