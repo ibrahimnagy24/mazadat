@@ -62,7 +62,8 @@ class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
                         data: [
                           80.sbH,
                           const PersonalInfoDetails(),
-                          if (cubit.userEntity?.isSeller == true) ...[
+                          // if (cubit.userEntity?.isSeller == true)
+                            ...[
                             16.sbH,
                             const BankInfoDetails(),
                           ]

@@ -52,10 +52,8 @@ class ChooseCategoriesGridWidget extends StatelessWidget {
               children: List.generate(cubit.allCategories!.length, (index) {
                 return CategoryWidget(
                   category: cubit.allCategories![index],
-                  isSelected:
-                      cubit.isCategoryChosen(cubit.allCategories![index]),
-                  onTap: () =>
-                      cubit.checkAndToggleCategory(cubit.allCategories![index]),
+                  isSelected: cubit.isCategoryChosen(cubit.allCategories![index]),
+                  onTap: () => cubit.checkAndToggleCategory(cubit.allCategories![index]),
                   type: CategoryWidgetType.type1,
                   animationDuration: (index * 10).ms,
                 );

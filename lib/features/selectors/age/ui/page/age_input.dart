@@ -7,16 +7,16 @@ import '../../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../data/entity/age_entity.dart';
 import '../../logic/age_cubit.dart';
 import '../widgets/age_group_view.dart';
 
 class AgeInput extends StatelessWidget {
-  const AgeInput({super.key, this.initialValue, this.onSelect});
+  const AgeInput({super.key, this.initialValue, this.onSelect, this.validator});
   final AgeEntity? initialValue;
   final Function(AgeEntity)? onSelect;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +30,8 @@ class AgeInput extends StatelessWidget {
           return DefaultFormField(
             titleText: AppStrings.age.tr,
             hintText: '${AppStrings.selectAge.tr}...',
-            needValidation: false,
-            // validator: (v) => DefaultValidator.defaultValidator(
-            //   initialValue?.name ?? '',
-            //   label: AppStrings.age.tr,
-            // ),
+            needValidation: validator != null,
+            validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
             suffixIcon: const Icon(

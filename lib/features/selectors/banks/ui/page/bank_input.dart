@@ -7,7 +7,7 @@ import '../../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
+import '../../../../../core/utils/validations/validator.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../data/entity/age_entity.dart';
 import '../../logic/bank_cubit.dart';
@@ -21,7 +21,7 @@ class BankInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BankCubit()..citiesStatesHandled(),
+      create: (context) => BankCubit()..bankStatesHandled(),
       child: BlocBuilder<BankCubit, BankState>(
         buildWhen: (previous, current) =>
             current is BankLoading || current is BankDone || current is BankError,
@@ -31,10 +31,10 @@ class BankInput extends StatelessWidget {
             titleText: AppStrings.bank.tr,
             hintText: '${AppStrings.selectBank.tr}...',
             needValidation: false,
-            // validator: (v) => DefaultValidator.defaultValidator(
-            //   initialValue?.name ?? '',
-            //   label: AppStrings.age.tr,
-            // ),
+            validator: (v) => DefaultValidator.defaultValidator(
+              initialValue?.name ?? '',
+              label: AppStrings.bank.tr,
+            ),
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
             suffixIcon: const Icon(

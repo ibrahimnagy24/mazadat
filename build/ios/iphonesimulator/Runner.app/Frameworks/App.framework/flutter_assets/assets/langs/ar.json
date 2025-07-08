@@ -156,6 +156,23 @@
   "Go to Login": "الذهاب إلى تسجيل الدخول",
   "Log out": "تسجيل الخروج",
   "Are you sure you want to log out?": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-  "Okay": "حسناً"
+  "Okay": "حسناً",
+  "Profile": "الحساب الشخصي",
+  "Personal Information": "البيانات الشخصية",
+  "Edit Personal Information": "تعديل البيانات الشخصية",
+  "Edit": "تعديل",
+  "Commercial Number": "الرقم التجاري",
+  "Bank Information": "بيانات الحساب البنكي",
+  "Edit Bank Information": "تعديل بيانات الحساب البنكي",
+  "Iban Number": "رقم الآيبان",
+  "Bank Number": "رقم الحساب البنكي",
+  "Bank Name": "اسم البنك",
+  "Favourite Categories": "الأقسام المفضلة",
+  "Changes Saved Successfully": "تم حفظ التعديلات بنجاح",
+  "Bank": "البنك",
+  "Select Bank": "اختر البنك",
+  "Enter Commercial Number": "رقم السجل التجاري",
+  "Enter Bank Number": "أدخل رقم الحساب البنكي",
+  "Enter Iban Number": "رقم البطاقة الإئتماني (IBAN)"
 
 }

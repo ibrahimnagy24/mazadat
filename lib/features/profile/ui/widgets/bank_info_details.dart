@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/assets/app_svg.dart';
+import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
@@ -32,7 +34,7 @@ class BankInfoDetails extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () => CustomNavigator.push(Routes.EDIT_BANK_DETAILS),
                 child: Row(
                   spacing: 4.w,
                   children: [
@@ -69,10 +71,13 @@ class BankInfoDetails extends StatelessWidget {
                   title: AppStrings.ibanNumber.tr,
                   value: cubit.userEntity?.ibanNumber,
                   icon: AppSvg.bank,
-                  action: const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 18,
-                    color: AppColors.iconPrimary,
+                  action: InkWell(
+                    onTap: () => CustomNavigator.push(Routes.EDIT_BANK_DETAILS),
+                    child: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 18,
+                      color: AppColors.iconPrimary,
+                    ),
                   ),
                 ),
               ],

@@ -17,7 +17,7 @@ abstract class EditProfileRepo {
         body: params.returnedMap(),
       );
 
-      final UserModel user = UserModel.fromJson(response.data);
+      final UserModel user = UserModel.fromJson(response.data['DATA']);
       return Right(user);
     } catch (error) {
       return Left(ApiErrorHandler().handleError(error));

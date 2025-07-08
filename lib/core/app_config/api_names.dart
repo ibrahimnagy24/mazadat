@@ -38,6 +38,7 @@ abstract class Endpoints {
 //--------------------------------USER OPERATIONS--------------------------------------\\
   static const String getUserInfo = '/users/viewMyProfile';
   static const String updateUserInfo = '/users/updateMyProfile';
+  static const String updateBankInfo = '/users/updateMyBankDetails';
 
 //--------------------------------STATIC PAGES--------------------------------------\\
   static const String privacyAndPolicy =

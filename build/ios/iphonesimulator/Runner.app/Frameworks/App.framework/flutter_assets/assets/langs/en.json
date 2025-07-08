@@ -156,5 +156,22 @@
   "Go to Login": "Go to Login",
   "Log out": "Log out",
   "Are you sure you want to log out?": "Are you sure you want to log out?",
-  "Okay": "Okay"
+  "Okay": "Okay",
+  "Profile": "Profile",
+  "Edit": "Edit",
+  "Personal Information": "Personal Information",
+  "Edit Personal Information": "Edit Personal Information",
+  "Commercial Number": "Commercial Number",
+  "Bank Information": "Bank Information",
+  "Edit Bank Information": "Edit Bank Information",
+  "Iban Number": "Iban Number",
+  "Bank Number": "Bank Number",
+  "Bank Name": "Bank Name",
+  "Favourite Categories": "Favourite Categories",
+  "Changes Saved Successfully": "Changes Saved Successfully",
+  "Bank": "Bank",
+  "Select Bank": "Select Bank",
+  "Enter Commercial Number": "Enter Commercial Number",
+  "Enter Bank Number": "Enter Bank Number",
+  "Enter Iban Number": "Enter Iban Number"
 }

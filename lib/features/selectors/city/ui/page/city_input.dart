@@ -13,9 +13,11 @@ import '../../logic/city_cubit.dart';
 import '../widgets/cities_view.dart';
 
 class CityInput extends StatelessWidget {
-  const CityInput({super.key, this.initialValue, this.onSelect});
+  const CityInput(
+      {super.key, this.initialValue, this.onSelect, this.validator});
   final CityEntity? initialValue;
   final Function(CityEntity)? onSelect;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +33,8 @@ class CityInput extends StatelessWidget {
           return DefaultFormField(
             titleText: AppStrings.city.tr,
             hintText: '${AppStrings.selectCity.tr}...',
-            needValidation: false,
-            // validator: (v) => DefaultValidator.defaultValidator(
-            //   initialValue?.name ?? '',
-            //   label: AppStrings.city.tr,
-            // ),
+            needValidation: validator != null,
+            validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
             suffixIcon: const Icon(

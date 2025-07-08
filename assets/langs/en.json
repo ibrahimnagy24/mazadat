@@ -168,5 +168,12 @@
   "Bank Number": "Bank Number",
   "Bank Name": "Bank Name",
   "Favourite Categories": "Favourite Categories",
-  "Changes Saved Successfully": "Changes Saved Successfully"
+  "Changes Saved Successfully": "Changes Saved Successfully",
+  "Bank": "Bank",
+  "Select Bank": "Select Bank",
+  "Enter Commercial Number": "Enter Commercial Number",
+  "Enter Bank Number": "Enter Bank Number",
+  "Enter Iban Number": "Enter Iban Number",
+  "Edit Favourite Categories": "Edit Favourite Categories"
+
 }

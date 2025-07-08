@@ -139,7 +139,8 @@ class PersonalInfoDetails extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () =>
+                      CustomNavigator.push(Routes.EDIT_FAVOURITES_CATEGORIES),
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 12.h),
                     child: Row(

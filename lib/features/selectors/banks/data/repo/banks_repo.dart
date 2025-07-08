@@ -13,7 +13,7 @@ abstract class BanksRepo {
   static Future<Either<ErrorEntity, List<BankEntity>>> getBanks() async {
     try {
       final response = await Network().request(
-        Endpoints.ages,
+        Endpoints.banks,
         method: ServerMethods.GET,
       );
       final List<BankEntity> user = checkFromArray(response.data['content'])

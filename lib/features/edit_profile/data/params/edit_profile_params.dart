@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import '../../../../../core/utils/enums/enums.dart';
+import '../../../category/data/entity/category_entity.dart';
+
 
 class EditProfileParams extends Equatable {
   const EditProfileParams({
@@ -7,17 +9,21 @@ class EditProfileParams extends Equatable {
     required this.lastName,
     required this.phone,
     required this.email,
-    this.gender,
-    this.city,
-    this.age,
+    required this.categories,
+    required this.gender,
+    required this.city,
+    required this.age,
   });
 
   final String firstName;
   final String lastName;
   final String email;
   final String phone;
-  final GenderTypes? gender;
-  final int? city, age;
+  final GenderTypes gender;
+  final int city, age;
+
+  final List<CategoryEntity> categories;
+
   Map<String, dynamic> returnedMap() {
     Map<String, dynamic> map = {
       'firstName': firstName,
@@ -26,10 +32,11 @@ class EditProfileParams extends Equatable {
       'countryCode': '996', // Without +
       'phone': phone,
       'imageId': '',
-      if (gender != null) 'gender': gender?.name[0].toUpperCase(),
-      if (city != null) 'city': {'id': city},
-      if (age != null) 'age': {'id': age},
-      // "favoriteCategories":[ {"id": 1},{"id":3},{"id":5}],
+      'gender': gender.name[0].toUpperCase(),
+      'city': {'id': city},
+      'age': {'id': age},
+      'favoriteCategories':
+      categories.map((e) => e.returnedCategoryIdMap()).toList(),
     };
     map.removeWhere((key, value) => value == null);
     return map;
@@ -37,11 +44,12 @@ class EditProfileParams extends Equatable {
 
   @override
   List<Object?> get props => [
-        firstName,
-        lastName,
-        email,
-        city,
-        gender,
-        age,
-      ];
+    firstName,
+    lastName,
+    email,
+    city,
+    gender,
+    age,
+    categories,
+  ];
 }

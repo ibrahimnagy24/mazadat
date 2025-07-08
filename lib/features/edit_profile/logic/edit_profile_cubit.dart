@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/subjects.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../core/navigation/custom_navigation.dart';
+import '../../../core/services/cache/shared_helper.dart';
 import '../../selectors/age/data/entity/age_entity.dart';
 import '../../selectors/city/data/entity/city_entity.dart';
 import '../../user/data/entity/user_entity.dart';
@@ -69,15 +70,18 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         email: email.text,
         firstName: firstName.text,
         lastName: lastName.text,
-        city: city.valueOrNull?.id,
-        age: age.valueOrNull?.id,
-        gender: gender.valueOrNull,
+        city: city.valueOrNull!.id,
+        age: age.valueOrNull!.id,
+        gender: gender.valueOrNull!,
         phone: user?.phone ?? '',
+        categories: user?.favoriteCategories ?? [],
       ),
     );
     response.fold((failure) {
       return emit(EditProfileError(failure));
     }, (success) async {
+      await SharedHelper.sharedHelper?.saveUser(success);
+
       return emit(EditProfileSuccess(success));
     });
   }

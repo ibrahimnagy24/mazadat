@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/theme/colors/styles.dart';
 import '../../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../../core/utils/validations/validator.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/enums/enums.dart';
@@ -13,21 +11,21 @@ import '../../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 
 class GenderInput extends StatelessWidget {
-  const GenderInput({super.key, this.initialValue, this.onSelect});
+  const GenderInput(
+      {super.key, this.initialValue, this.onSelect, this.validator});
   final GenderTypes? initialValue;
   final Function(GenderTypes)? onSelect;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: AppStrings.gender.tr,
       hintText: '${AppStrings.selectGender.tr}...',
-      // validator: (v) => DefaultValidator.defaultValidator(
-      //   initialValue?.name ?? '',
-      //   label: AppStrings.gender.tr,
-      // ),
-      needValidation: false,
-      controller: TextEditingController(text: initialValue != null ? (initialValue?.name ?? '').tr : null),
+      needValidation: validator != null,
+      validator: validator,
+      controller: TextEditingController(
+          text: initialValue != null ? (initialValue?.name ?? '').tr : null),
       readOnly: true,
       suffixIcon: const Icon(
         Icons.keyboard_arrow_down_rounded,
@@ -44,7 +42,6 @@ class GenderInput extends StatelessWidget {
               onSelect?.call(v);
             },
           ),
-          // onConfirm: () => CustomNavigator.pop(),
         );
       },
     );

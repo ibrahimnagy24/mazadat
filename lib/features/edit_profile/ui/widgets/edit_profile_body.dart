@@ -10,6 +10,7 @@ import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/utils/validations/validator.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../auth/register/ui/widgets/gender_input.dart';
 import '../../../selectors/age/ui/page/age_input.dart';
@@ -68,6 +69,10 @@ class EditProfileBody extends StatelessWidget {
                                 .valueOrNull,
                             onSelect:
                                 context.read<EditProfileCubit>().updateAge,
+                            validator: (v) => DefaultValidator.defaultValidator(
+                              asyncSnapshot.data?.name ?? '',
+                              label: AppStrings.age.tr,
+                            ),
                           );
                         }),
                   ),
@@ -84,6 +89,10 @@ class EditProfileBody extends StatelessWidget {
                                 .valueOrNull,
                             onSelect:
                                 context.read<EditProfileCubit>().updateGender,
+                            validator: (v) => DefaultValidator.defaultValidator(
+                              asyncSnapshot.data?.name ?? '',
+                              label: AppStrings.gender.tr,
+                            ),
                           );
                         }),
                   ),
@@ -99,6 +108,10 @@ class EditProfileBody extends StatelessWidget {
                       initialValue:
                           context.read<EditProfileCubit>().city.valueOrNull,
                       onSelect: context.read<EditProfileCubit>().updateCity,
+                      validator: (v) => DefaultValidator.defaultValidator(
+                        asyncSnapshot.data?.name ?? '',
+                        label: AppStrings.city.tr,
+                      ),
                     );
                   }),
               16.sbH,

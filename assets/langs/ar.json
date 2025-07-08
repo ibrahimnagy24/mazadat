@@ -164,10 +164,17 @@
   "Commercial Number": "الرقم التجاري",
   "Bank Information": "بيانات الحساب البنكي",
   "Edit Bank Information": "تعديل بيانات الحساب البنكي",
-  "Iban Number": "رقم الآيبان",
+  "Iban Number": "رقم البطاقة الإئتماني (IBAN)",
   "Bank Number": "رقم الحساب البنكي",
   "Bank Name": "اسم البنك",
   "Favourite Categories": "الأقسام المفضلة",
-  "Changes Saved Successfully": "تم حفظ التعديلات بنجاح"
+  "Changes Saved Successfully": "تم حفظ التعديلات بنجاح",
+  "Bank": "البنك",
+  "Select Bank": "اختر البنك",
+  "Enter Commercial Number": "رقم السجل التجاري",
+  "Enter Bank Number": "أدخل رقم الحساب البنكي",
+  "Enter Iban Number": "أدخل رقم البطاقة الإئتماني (IBAN)",
+  "Edit Favourite Categories": "تعديل الأقسام المفضلة"
+
 
 }

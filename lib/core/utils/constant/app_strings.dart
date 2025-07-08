@@ -140,8 +140,6 @@ class AppStrings {
   static const String favourite = 'Favourite';
   static const String favouriteCategories = 'Favourite Categories';
 
-  static const String bank = 'Bank';
-  static const String selectBank = 'Select Bank';
   static const String search = 'Search';
   static const String lastResult = 'Last Result';
   static const String deleteAll = 'Delete All';
@@ -205,6 +203,20 @@ class AppStrings {
   static const String editBankInfo = 'Edit Bank Information';
   static const String ibanNumber = 'Iban Number';
   static const String bankNumber = 'Bank Number';
+
   static const String bankName = 'Bank Name';
+
   static const String changesSavedSuccessfully = 'Changes Saved Successfully';
+
+  static const String bank = 'Bank';
+  static const String selectBank = 'Select Bank';
+
+  static const String enterCommercialNumber = 'Enter Commercial Number';
+
+  static const String enterBankNumber = 'Enter Bank Number';
+
+  static const String enterIbanNumber = 'Enter Iban Number';
+
+  static const String editFavouriteCategories = 'Edit Favourite Categories';
+
 }

@@ -31,5 +31,7 @@ class Routes {
   static const MORE = 'MORE';
   static const PROFILE = 'PROFILE';
   static const EDIT_PROFILE = 'EDIT_PROFILE';
+  static const EDIT_BANK_DETAILS = 'EDIT_BANK_DETAILS';
+  static const EDIT_FAVOURITES_CATEGORIES = 'EDIT_FAVOURITES_CATEGORIES';
   static const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 }

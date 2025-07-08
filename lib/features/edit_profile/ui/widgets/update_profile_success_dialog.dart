@@ -4,7 +4,7 @@ import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
-import '../../../../../core/utils/constant/app_strings.dart' ;
+import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 
@@ -32,7 +32,10 @@ class UpdateProfileSuccessDialog extends StatelessWidget {
         24.sbH,
         DefaultButton(
           text: AppStrings.profile.tr,
-          onPressed: () => CustomNavigator.pop(),
+          onPressed: () {
+            CustomNavigator.pop();
+            CustomNavigator.pop();
+          },
         )
       ],
     );
