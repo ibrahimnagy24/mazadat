@@ -16,7 +16,6 @@ class CategoryCubit extends Cubit<CategoryState> {
         id: -1,
         name: AppStrings.bundles.tr,
         description: '',
-        iconId: -1,
         iconUrl: '',
         categoryType: CategoryTypes.bundle),
   ];

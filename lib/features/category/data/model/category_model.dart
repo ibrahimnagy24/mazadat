@@ -8,7 +8,6 @@ class CategoryModel extends CategoryEntity {
     required super.id,
     required super.name,
     required super.description,
-    required super.iconId,
     required super.iconUrl,
     required super.categoryType,
   });
@@ -17,7 +16,6 @@ class CategoryModel extends CategoryEntity {
         id: json['id'],
         name: json['name'],
         description: json['description'],
-        iconId: checkFromMap(json['iconId']) ? json['iconId'] : null,
         iconUrl: checkFromMap(json['icon']) ? json['icon']['path'] : null,
         categoryType: CategoryTypeConverter.stringToCategoryType(
             json['type'] ?? 'auction'),
@@ -28,7 +26,6 @@ class CategoryModel extends CategoryEntity {
     data['id'] = id;
     data['name'] = name;
     data['description'] = description;
-    data['iconId'] = iconId;
     data['icon'] = iconUrl;
     data['type'] = CategoryTypes.auction.name;
     return data;

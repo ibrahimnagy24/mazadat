@@ -113,16 +113,15 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
           children: [
             Column(
               children: [
-                if (category.iconUrl != null)
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 2,
-                      ),
-                      child: DefaultNetworkImage(category.iconUrl ?? ''),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 2,
                     ),
+                    child: DefaultNetworkImage(category.iconUrl ?? ''),
                   ),
+                ),
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
                     bottom: 12,
@@ -197,23 +196,22 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
         ),
         child: Column(
           children: [
-            if (category.iconUrl != null)
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 4,
-                  ),
-                  child: category.categoryType == CategoryTypes.bundle
-                      ? customImageIconSVG(
-                          imageName: AppSvg.package,
-                          color: isSelected
-                              ? AppColors.kPrimary
-                              : AppColors.textDefault,
-                          fit: BoxFit.contain)
-                      : DefaultNetworkImage(category.iconUrl ?? ''),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 4,
+                  horizontal: 4,
                 ),
+                child: category.categoryType == CategoryTypes.bundle
+                    ? customImageIconSVG(
+                        imageName: AppSvg.package,
+                        color: isSelected
+                            ? AppColors.kPrimary
+                            : AppColors.textDefault,
+                        fit: BoxFit.contain)
+                    : DefaultNetworkImage(category.iconUrl ?? ''),
               ),
+            ),
             Padding(
               padding: EdgeInsetsDirectional.symmetric(
                 vertical: 10.h,
