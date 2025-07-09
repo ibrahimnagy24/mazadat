@@ -87,7 +87,6 @@ class MySalesBody extends StatelessWidget {
                                         padding:
                                             EdgeInsets.symmetric(vertical: 8.h),
                                         child: ListAuctionCard(
-                                            fromMyPurchase: true,
                                             auction: state.auctions[i]),
                                       ),
                                     ),
