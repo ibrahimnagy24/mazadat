@@ -48,6 +48,9 @@ class AppStrings {
   static const String viewAll = 'View all';
   static const String endsYet = 'Ends yet';
   static const String auctionDuration = 'Auction duration';
+  static const String auctionStartDate = 'Auction Start Date';
+  static const String auctionEndDate = 'Auction End Date';
+  static const String startDate = 'Start Date';
   static const String endDate = 'End Date';
   static const String openingPrice = 'Opening price';
   static const String insuranceAmount = 'Insurance amount';
@@ -58,6 +61,7 @@ class AppStrings {
   static const String upcomingAuctions = 'Upcoming auctions';
   static const String numberOfAuctions = 'Number of auctions';
   static const String auctions = 'auctions';
+  static const String auctionNumber = 'Auction Number';
   static const String auctionsNumber = 'Auctions Number';
   static const String bundle = 'Bundle';
   static const String bundles = 'Bundles';
@@ -219,8 +223,15 @@ class AppStrings {
 
   static const String editFavouriteCategories = 'Edit Favourite Categories';
   static const String searchForBundles = 'Search For Bundles';
-  static const String orderNumber= 'Order Number';
-  static const String searchByOrderNumber= 'Search by order number';
+  static const String orderNumber = 'Order Number';
+  static const String searchByOrderNumber = 'Search by order number';
 
-
+  static const String productDescription = 'Product Description';
+  static const String estimatedValue = 'Estimated value';
+  static const String actualPrice = 'Actual price';
+  static const String endAfter = 'End After';
+  static const String registerForTheAuction = 'Register for the auction';
+  static const String
+      theCurrentPriceIsDeterminedAutomaticallyBasedOnAPercentageOfTheOpeningPriceValue =
+      'The current price is determined automatically based on a percentage of the opening price value.';
 }

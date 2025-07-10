@@ -82,7 +82,8 @@ class _AuctionDetailsMobileDesignScreenState
               AuctionDraggableSheet(
                 controller: _controller,
                 imageUrls: state.AuctionDetails.images ?? [],
-                child: AuctionContent(),
+
+                child: AuctionContent(model: state.AuctionDetails),
               ),
               PositionedDirectional(
                 top: 0,

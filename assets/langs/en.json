@@ -36,6 +36,9 @@
   "public": "Public",
   "private": "Private",
   "Auction duration": "Auction duration",
+  "Auction Start Date": "Auction Start Date",
+  "Auction End Date": "Auction End Date",
+  "Start Date": "Start Date",
   "End Date": "End Date",
   "Opening price": "Opening price",
   "Insurance amount": "Insurance amount",
@@ -112,6 +115,7 @@
   "Favourite": "Favourite",
   "Bundle": "Bundle",
   "Bundles": "Bundles",
+  "Auction Number": "Auction Number",
   "Auctions Number": "Auctions Number",
   "Search": "Search",
   "Last Result": "Last Result",
@@ -177,6 +181,12 @@
   "Enter Commercial Number": "Enter Commercial Number",
   "Enter Bank Number": "Enter Bank Number",
   "Enter Iban Number": "Enter Iban Number",
-  "Edit Favourite Categories": "Edit Favourite Categories"
+  "Edit Favourite Categories": "Edit Favourite Categories",
+  "Product Description": "Product Description",
+  "Estimated value": "Estimated value",
+  "Actual price": "Actual price",
+  "End After": "End After",
+  "Register for the auction": "Register for the auction",
+  "The current price is determined automatically based on a percentage of the opening price value.": "The current price is determined automatically based on a percentage of the opening price value."
 
 }

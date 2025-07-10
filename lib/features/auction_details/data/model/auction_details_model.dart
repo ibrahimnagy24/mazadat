@@ -12,8 +12,8 @@ class AuctionDetailsModel {
   String? openingPrice;
   String? biddingIncrementAmount;
   String? currentBiddingAmount;
-  String? startDate;
-  String? endDate;
+  DateTime? startDate;
+  DateTime? endDate;
   String? auctionDuration;
   String? auctionNumber;
   bool? participant;
@@ -21,30 +21,35 @@ class AuctionDetailsModel {
   String? name;
   String? description;
   bool? myfav;
+  bool? isJoined;
+  bool? isStarted;
   int? productId;
   String? primaryPhoto;
 
-  AuctionDetailsModel(
-      {this.id,
-      this.status,
-      this.statusLabel,
-      this.auctionType,
-      this.auctionCategory,
-      this.images,
-      this.openingPrice,
-      this.biddingIncrementAmount,
-      this.currentBiddingAmount,
-      this.startDate,
-      this.endDate,
-      this.auctionDuration,
-      this.auctionNumber,
-      this.participant,
-      this.videoLink,
-      this.name,
-      this.description,
-      this.myfav,
-      this.productId,
-      this.primaryPhoto});
+  AuctionDetailsModel({
+    this.id,
+    this.status,
+    this.statusLabel,
+    this.auctionType,
+    this.auctionCategory,
+    this.images,
+    this.openingPrice,
+    this.biddingIncrementAmount,
+    this.currentBiddingAmount,
+    this.startDate,
+    this.endDate,
+    this.auctionDuration,
+    this.auctionNumber,
+    this.participant,
+    this.videoLink,
+    this.name,
+    this.description,
+    this.myfav,
+    this.productId,
+    this.primaryPhoto,
+    this.isJoined,
+    this.isStarted,
+  });
 
   AuctionDetailsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -66,13 +71,16 @@ class AuctionDetailsModel {
       // });
       images = List.generate(
           10, (index) => 'https://picsum.photos/800/800?random=$index');
-
     }
     openingPrice = json['openingPrice'];
     biddingIncrementAmount = json['biddingIncrementAmount'];
     currentBiddingAmount = json['currentBiddingAmount'];
-    startDate = json['startDate'];
-    endDate = json['endDate'];
+    startDate = json['endDate'] != null
+        ? DateTime.parse(json['startDate'])
+        : DateTime.now();
+    endDate = json['endDate'] != null
+        ? DateTime.parse(json['endDate'])
+        : DateTime.now();
     auctionDuration = json['auctionDuration'];
     auctionNumber = json['auctionNumber'];
     participant = json['participant'];
@@ -82,6 +90,8 @@ class AuctionDetailsModel {
     myfav = json['myfav'];
     productId = json['productId'];
     primaryPhoto = json['primaryPhoto'];
+    isJoined = json['isJoined'];
+    isStarted = startDate?.isBefore(DateTime.now());
   }
 
   Map<String, dynamic> toJson() {
@@ -101,8 +111,8 @@ class AuctionDetailsModel {
     data['openingPrice'] = openingPrice;
     data['biddingIncrementAmount'] = biddingIncrementAmount;
     data['currentBiddingAmount'] = currentBiddingAmount;
-    data['startDate'] = startDate;
-    data['endDate'] = endDate;
+    data['startDate'] = startDate?.toIso8601String();
+    data['endDate'] = endDate?.toIso8601String();
     data['auctionDuration'] = auctionDuration;
     data['auctionNumber'] = auctionNumber;
     data['participant'] = participant;
@@ -112,6 +122,8 @@ class AuctionDetailsModel {
     data['myfav'] = myfav;
     data['productId'] = productId;
     data['primaryPhoto'] = primaryPhoto;
+    data['isJoined'] = isJoined;
+    data['isStarted'] = isStarted;
     return data;
   }
 }

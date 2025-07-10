@@ -36,6 +36,9 @@
   "public": "عام",
   "private": "خاص",
   "Auction duration": "مدة المزاد",
+  "Auction Start Date": "تاريخ بدء المزاد",
+  "Auction End Date": "تاريخ إنتهاء المزاد",
+  "Start Date": "تاريخ البدء",
   "End Date": "تاريخ الإنتهاء",
   "Opening price": "السعر الافتتاحي",
   "Insurance amount": "قيمة التأمين",
@@ -113,6 +116,7 @@
   "Favourite": "المفضلة",
   "Bundle": "حزمة",
   "Bundles": "حزم",
+  "Auction Number": "رقم المزاد",
   "Auctions Number": "عدد المزادات",
   "Search": "البحث",
   "Last Result": "آخر النتائج",
@@ -177,7 +181,13 @@
   "Enter Commercial Number": "رقم السجل التجاري",
   "Enter Bank Number": "أدخل رقم الحساب البنكي",
   "Enter Iban Number": "أدخل رقم البطاقة الإئتماني (IBAN)",
-  "Edit Favourite Categories": "تعديل الأقسام المفضلة"
+  "Edit Favourite Categories": "تعديل الأقسام المفضلة",
+  "Product Description": "وصف المنتج",
+  "Estimated value": "القيمة التقديرية",
+  "Actual price": "السعر الحالي",
+  "End After": "ينتهي بعد",
+  "Register for the auction": "تسجيل ف المزاد",
+  "The current price is determined automatically based on a percentage of the opening price value.": "السعر الحالي محدد تلقائيا بناءاً علي نسبة من قيمة السعر الإفتتاحي"
 
 
 }

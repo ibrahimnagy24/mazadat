@@ -118,6 +118,9 @@
   "Last Result": "آخر النتائج",
   "Delete All": "حذف الكل",
   "Search For Auctions":"أبحث عن المزادات",
+  "Search For Bundles":"أبحث عن حزم",
+  "Search by order number":"أبحث برقم الطلب",
+  "Order Number": "رقم الطلب",
   "Filter": "تصفية",
   "Reset": "إعادة تعيين",
   "Apply": "تطبيق",
@@ -164,7 +167,7 @@
   "Commercial Number": "الرقم التجاري",
   "Bank Information": "بيانات الحساب البنكي",
   "Edit Bank Information": "تعديل بيانات الحساب البنكي",
-  "Iban Number": "رقم الآيبان",
+  "Iban Number": "رقم البطاقة الإئتماني (IBAN)",
   "Bank Number": "رقم الحساب البنكي",
   "Bank Name": "اسم البنك",
   "Favourite Categories": "الأقسام المفضلة",
@@ -173,6 +176,8 @@
   "Select Bank": "اختر البنك",
   "Enter Commercial Number": "رقم السجل التجاري",
   "Enter Bank Number": "أدخل رقم الحساب البنكي",
-  "Enter Iban Number": "رقم البطاقة الإئتماني (IBAN)"
+  "Enter Iban Number": "أدخل رقم البطاقة الإئتماني (IBAN)",
+  "Edit Favourite Categories": "تعديل الأقسام المفضلة"
+
 
 }

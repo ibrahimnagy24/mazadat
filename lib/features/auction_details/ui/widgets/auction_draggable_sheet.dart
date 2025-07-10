@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/colors/styles.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../logic/view_auction_controller.dart';
 import 'glassy_images_row.dart';
 
@@ -35,7 +37,7 @@ class AuctionDraggableSheet extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.background,
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(25)),
                   border: const Border.symmetric(
@@ -53,11 +55,12 @@ class AuctionDraggableSheet extends StatelessWidget {
                       )
                   ],
                 ),
-                child: ListView(
+                child: ListAnimator(
                   physics: const ClampingScrollPhysics(),
                   controller: scrollController,
-                  padding: const EdgeInsets.only(top: 20, bottom: 50),
-                  children: [child],
+                  padding: EdgeInsets.only(
+                      top: 20.h, bottom: 50.h, left: 24.w, right: 24.w),
+                  data: [child],
                 ),
               ),
             ),
