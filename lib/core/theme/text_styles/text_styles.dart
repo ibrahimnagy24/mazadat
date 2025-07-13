@@ -103,6 +103,12 @@ abstract class AppTextStyles {
     color: AppColors.textPrimaryParagraph,
   );
 
+  static TextStyle textXLRegular = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.textPrimary,
+  );
+
   static TextStyle textLgRegular = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.fsS,

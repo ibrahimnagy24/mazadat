@@ -72,7 +72,9 @@
   "Please enter valid e-mail": "يرجى إدخال بريد إلكتروني صالح",
   "You agree and have read": "أنت توافق وقريت",
   "our Terms and Privacy Policy": "شروطنا وسياسة الخصوصية",
+  "Terms and Privacy Policy": "الشروط والسياسات",
   "Privacy Policy": "سياسة الخصوصية",
+  "Agree to": "الموافقة علي",
   "Phone cannot be empty please enter a valid phone": "رقم الهاتف لا يمكن أن يكون فارغًا، يرجى إدخال رقم صحيح",
   "Please enter a valid phone format": "يرجى إدخال رقم هاتف بصيغة صحيحة",
   "Please enter a valid code": "يرجى إدخال رقم كود صحيح",
@@ -187,7 +189,10 @@
   "Actual price": "السعر الحالي",
   "End After": "ينتهي بعد",
   "Register for the auction": "تسجيل ف المزاد",
-  "The current price is determined automatically based on a percentage of the opening price value.": "السعر الحالي محدد تلقائيا بناءاً علي نسبة من قيمة السعر الإفتتاحي"
+  "Last Modified":"أخر تاريخ تحديث",
+  "The current price is determined automatically based on a percentage of the opening price value.": "السعر الحالي محدد تلقائيا بناءاً علي نسبة من قيمة السعر الإفتتاحي",
+  "You agree to pay": "أنت موافق علي دفع ",
+  "Application Commission": "عمولة التطبيق"
 
 
 }

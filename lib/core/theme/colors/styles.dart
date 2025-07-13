@@ -39,7 +39,7 @@ abstract class AppColors {
 
   //barq57, 40, 42, 1
   static const Color kPrimary1000 = Color(0xff1B0D31);
-  //barq
+  //barqtextPrimaryParagraph
   static const Color kPrimary50 = Color(0xffF3EBFF);
   //barq
   static const Color kPrimary700 = Color(0xff4C2588);

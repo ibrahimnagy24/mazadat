@@ -9,11 +9,11 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
-import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
 import '../../../favourites/ui/widgets/favourite_button.dart';
 import '../../data/model/auction_details_model.dart';
+import 'auction_actions.dart';
 
 class AuctionContent extends StatelessWidget {
   const AuctionContent({super.key, required this.model});
@@ -304,11 +304,8 @@ class AuctionContent extends StatelessWidget {
 
         SizedBox(height: 24.h),
 
-        if (model.isJoined != true)
-          DefaultButton(
-            onPressed: () {},
-            text: AppStrings.registerForTheAuction.tr,
-          ),
+          AuctionActions(isJoined: model.isJoined == true,
+              id: model.id ?? 0),
       ],
     );
   }

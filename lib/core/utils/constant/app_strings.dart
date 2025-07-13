@@ -24,6 +24,7 @@ class AppStrings {
   static const String alreadyHaveAnAccount = 'Already have an account?';
   static const String youAgreeAndHaveRead = 'You agree and have read';
   static const String ourTermsAndPrivacyPolicy = 'our Terms and Privacy Policy';
+  static const String termsAndPrivacyPolicy = 'Terms and Privacy Policy';
 
   static const String veryStrong = 'Very Strong';
   static const String verificationCode = 'verification code';
@@ -231,7 +232,11 @@ class AppStrings {
   static const String actualPrice = 'Actual price';
   static const String endAfter = 'End After';
   static const String registerForTheAuction = 'Register for the auction';
+  static const String agreeTo = 'Agree to';
+  static const String lastModified = 'Last Modified';
   static const String
       theCurrentPriceIsDeterminedAutomaticallyBasedOnAPercentageOfTheOpeningPriceValue =
       'The current price is determined automatically based on a percentage of the opening price value.';
+  static const String youAgreeToPay = 'You agree to pay';
+  static const String applicationCommission = 'Application Commission';
 }

@@ -72,6 +72,8 @@
   "Please enter valid e-mail": "Please enter valid e-mail",
   "You agree and have read": "You agree and have read",
   "our Terms and Privacy Policy": "our Terms and Privacy Policy",
+  "Terms and Privacy Policy": "Terms and Privacy Policy",
+  "Agree to": "Agree to",
   "Phone cannot be empty please enter a valid phone": "Phone cannot be empty please enter a valid phone",
   "Please enter a valid phone format": "Please enter a valid phone format",
   "Please enter a valid code": "Please enter a valid code",
@@ -187,6 +189,9 @@
   "Actual price": "Actual price",
   "End After": "End After",
   "Register for the auction": "Register for the auction",
-  "The current price is determined automatically based on a percentage of the opening price value.": "The current price is determined automatically based on a percentage of the opening price value."
+  "Last Modified": "Last Modified",
+  "The current price is determined automatically based on a percentage of the opening price value.": "The current price is determined automatically based on a percentage of the opening price value.",
+  "You agree to pay": "You agree to pay",
+  "Application Commission": "Application Commission"
 
 }

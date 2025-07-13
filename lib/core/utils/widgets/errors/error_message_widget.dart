@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../../assets/app_svg.dart';
 import '../../../shared/entity/error_entity.dart';
+import '../../../shared/widgets/custom_images.dart';
 import '../../../theme/colors/styles.dart';
-import '../text/main_text.dart';
+import '../../../theme/text_styles/text_styles.dart';
+import '../../extensions/extensions.dart';
 
 class ErrorMessageWidget extends StatelessWidget {
   const ErrorMessageWidget({
@@ -19,14 +22,21 @@ class ErrorMessageWidget extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40),
-        child: Center(
-          child: MainText(
-            text: error?.message ?? message ?? '',
-            fontSize: 12,
-            color: AppColors.kBlack,
-            maxLines: 3,
-            textAlign: TextAlign.center,
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 24.h,
+          children: [
+            customImageIconSVG(
+                imageName: AppSvg.logo,
+                height: 75.h,
+                width: 105.w,
+                color: AppColors.kPrimary),
+            Text(
+              error?.message ?? message ?? '',
+              style: AppTextStyles.textXLMedium,
+            ),
+          ],
         ),
       ),
     );
