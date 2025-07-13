@@ -36,7 +36,7 @@ class AuctionDetailsCubit extends Cubit<AuctionDetailsState> {
         AuctionDetailsModel? res =
             AuctionDetailsModel.fromJson(success.data['DATA']);
         int currentIndex =
-            res.images?.indexWhere((e) => e == params.primaryImage) ?? 0;
+            res.attachments?.indexWhere((e) => e == params.primaryImage) ?? 0;
         updateImageIndex(currentIndex == -1 ? 0 : currentIndex);
 
         return emit(AuctionDetailsSuccess(AuctionDetails: res));

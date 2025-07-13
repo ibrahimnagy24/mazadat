@@ -68,7 +68,8 @@ class _AuctionStatusFilterSectionState
                         isSelected: widget.initialValue?.value ==
                             cubit.allAuctionStatuses![index].value,
                         onTap: () {
-                          if (widget.initialValue?.value == cubit.allAuctionStatuses![index].value) {
+                          if (widget.initialValue?.value ==
+                              cubit.allAuctionStatuses![index].value) {
                             widget.onTap?.call(null);
                           } else {
                             widget.onTap

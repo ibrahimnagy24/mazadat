@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/colors/styles.dart';
 import '../loading/adaptive_circle_progress.dart';
+import 'custom_network_image.dart';
 
 class DefaultNetworkImage extends StatelessWidget {
   const DefaultNetworkImage(
     this.image, {
     super.key,
-    this.raduis,
+    this.radius,
     this.height,
     this.width,
     this.fit,
@@ -25,7 +26,7 @@ class DefaultNetworkImage extends StatelessWidget {
   final String image;
   final double? height;
   final double? width;
-  final double? raduis;
+  final double? radius;
   final BoxFit? fit;
   final Widget Function(BuildContext, String)? placeholder;
   final bool? fromSliverList;
@@ -38,7 +39,7 @@ class DefaultNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(raduis??0),
+      borderRadius: BorderRadius.circular(radius??0),
       child: needCache!
           ? CachedNetworkImage(
         imageUrl: image,
@@ -51,13 +52,8 @@ class DefaultNetworkImage extends StatelessWidget {
         memCacheWidth: needResizeImage ? width?.toInt() : null,
         useOldImageOnUrlChange: true,
         filterQuality: filterQuality ?? FilterQuality.low,
-        errorWidget: (context, url, error) => Container(
-            height: height ??
-                (dynamicWidth ? null : MediaQuery.of(context).size.height),
-            width: width ??
-                (dynamicWidth ? null : MediaQuery.of(context).size.width),
-            color: AppColors.background,
-            child: const Icon(Icons.error)),
+        errorWidget: (a, b, c) => networkImageErrorWidget(
+            width: width, height: height,radius: radius, fit: fit),
         height: height ??
             (dynamicWidth ? null : MediaQuery.of(context).size.height),
         width: width ??

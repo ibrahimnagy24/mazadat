@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glass_kit/glass_kit.dart';
+import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
+import '../../../../core/utils/widgets/misc/default_video_card.dart';
+import '../../data/model/auction_details_model.dart';
 import '../../logic/view_auction_controller.dart';
 import '../../logic/view_auction_cubit.dart';
 
@@ -10,11 +15,11 @@ class GlassyImagesRow extends StatelessWidget {
   const GlassyImagesRow({
     super.key,
     required this.controller,
-    required this.imageUrls,
+    required this.attachments,
   });
 
   final ViewAuctionController controller;
-  final List<String> imageUrls;
+  final List<AttachmentModel> attachments;
 
   @override
   Widget build(BuildContext context) {
@@ -80,37 +85,63 @@ class GlassyImagesRow extends StatelessWidget {
                 builder: (context, snapshot) {
                   final selectedIndex = snapshot.data;
 
-                  if (selectedIndex == null || imageUrls.isEmpty) {
+                  if (selectedIndex == null || attachments.isEmpty) {
                     return const SizedBox();
                   }
 
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(imageUrls.length, (i) {
+                    children: List.generate(attachments.length, (i) {
                       final imgSize = baseImgSize * (0.3 + 0.7 * scale);
                       final isSelected = i == selectedIndex;
 
                       return GestureDetector(
                         onTap: () {
-                          context.read<AuctionDetailsCubit>().updateImageIndex(i);
+                          log("xxx $i");
+                          context
+                              .read<AuctionDetailsCubit>()
+                              .updateImageIndex(i);
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
                           padding: const EdgeInsets.all(1.0),
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: isSelected ? Colors.blue : Colors.transparent,
+                              color: isSelected
+                                  ? AppColors.kPrimary
+                                  : AppColors.kSecondary,
                               width: 2.0,
                             ),
-                            borderRadius: BorderRadius.circular(baseBorderRadius + 2),
+                            borderRadius:
+                                BorderRadius.circular(baseBorderRadius + 2),
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(baseBorderRadius),
-                            child: DefaultNetworkImage(
-                              imageUrls[i],
-                              width: imgSize,
-                              height: imgSize,
-                              fit: BoxFit.cover,
+                            borderRadius:
+                                BorderRadius.circular(baseBorderRadius),
+                            child: Stack(
+                              children: [
+                                (attachments[i].isVideo)
+                                    ? DefaultVideoCard(
+                                        onTap: () {
+                                          log("xxx $i");
+                                          context
+                                              .read<AuctionDetailsCubit>()
+                                              .updateImageIndex(i);
+                                        },
+                                        play: false,
+                                        key: ValueKey<String>(
+                                            attachments[i].url ?? ''),
+                                        videoUrl: attachments[i].url ?? '',
+                                        width: imgSize,
+                                        height: imgSize,
+                                      )
+                                    : DefaultNetworkImage(
+                                        attachments[i].url ?? '',
+                                        width: imgSize,
+                                        height: imgSize,
+                                        fit: BoxFit.cover,
+                                      ),
+                              ],
                             ),
                           ),
                         ),

@@ -44,7 +44,7 @@ class SearchResultCard extends StatelessWidget {
               auction.primaryPhoto,
               width: 80.w,
               height: 80.w,
-              raduis: AppRadius.rMd.w,
+              radius: AppRadius.rMd.w,
             ),
             Expanded(
               child: Column(

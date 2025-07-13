@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
+import '../../data/model/auction_details_model.dart';
 import '../../logic/view_auction_controller.dart';
 import 'glassy_images_row.dart';
 
@@ -13,12 +14,12 @@ class AuctionDraggableSheet extends StatelessWidget {
     super.key,
     required this.controller,
     required this.child,
-    required this.imageUrls,
+    required this.attachments,
   });
 
   final ViewAuctionController controller;
   final Widget child;
-  final List<String> imageUrls;
+  final List<AttachmentModel> attachments;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +33,8 @@ class AuctionDraggableSheet extends StatelessWidget {
       builder: (context, scrollController) {
         return Column(
           children: [
-            if (imageUrls.isNotEmpty)
-              GlassyImagesRow(controller: controller, imageUrls: imageUrls),
+            if (attachments.isNotEmpty)
+              GlassyImagesRow(controller: controller, attachments: attachments),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -47,7 +48,7 @@ class AuctionDraggableSheet extends StatelessWidget {
                     ),
                   ),
                   boxShadow: [
-                    if (imageUrls.isNotEmpty)
+                    if (attachments.isNotEmpty)
                       const BoxShadow(
                         color: Colors.black26,
                         blurRadius: 10,

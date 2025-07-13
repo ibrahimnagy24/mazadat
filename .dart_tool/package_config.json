@@ -1113,9 +1113,9 @@
     },
     {
       "name": "video_player",
-      "rootUri": "file:///Users/innovadigits/.pub-cache/hosted/pub.dev/video_player-2.9.5",
+      "rootUri": "file:///Users/innovadigits/.pub-cache/hosted/pub.dev/video_player-2.10.0",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.6"
     },
     {
       "name": "video_player_android",

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../assets/app_launchers.dart';
+
 class CustomNetworkImage {
   static const key = 'customCacheKey';
   // static var cacheManger;
@@ -30,7 +32,12 @@ class CustomNetworkImage {
       fadeInDuration: const Duration(seconds: 1),
       fadeOutDuration: const Duration(seconds: 1),
       errorWidget: (a, b, c) => networkImageErrorWidget(
-          width: width, height: height, edges: edges, radius: radius, fit: fit, defaultImage: defaultImage),
+          width: width,
+          height: height,
+          edges: edges,
+          radius: radius,
+          fit: fit,
+          defaultImage: defaultImage),
       placeholder: (context, url) {
         return isPlaceHolder
             ? Container(
@@ -39,13 +46,14 @@ class CustomNetworkImage {
                 decoration: BoxDecoration(
                     borderRadius: edges
                         ? BorderRadius.only(
-                            topRight: Radius.circular(radius ?? 10), topLeft: Radius.circular(radius ?? 10))
+                            topRight: Radius.circular(radius ?? 10),
+                            topLeft: Radius.circular(radius ?? 10))
                         : BorderRadius.all(Radius.circular(radius ?? 10.0)),
                     image: DecorationImage(
                         fit: fit ?? BoxFit.contain,
                         image: Image.asset(
-                          defaultImage ?? 'assets/logo.png',
-                          fit: BoxFit.contain,
+                          AppLaunchers.logo,
+                          fit: fit ?? BoxFit.contain,
                         ).image)))
             : Container();
       },
@@ -55,28 +63,38 @@ class CustomNetworkImage {
             height: height ?? 40,
             decoration: BoxDecoration(
                 borderRadius: edges
-                    ? BorderRadius.only(topRight: Radius.circular(radius ?? 10), topLeft: Radius.circular(radius ?? 10))
+                    ? BorderRadius.only(
+                        topRight: Radius.circular(radius ?? 10),
+                        topLeft: Radius.circular(radius ?? 10))
                     : BorderRadius.all(Radius.circular(radius ?? 10.0)),
-                image: DecorationImage(fit: fit ?? BoxFit.contain, image: provider)));
+                image: DecorationImage(
+                    fit: fit ?? BoxFit.contain, image: provider)));
       },
     );
   }
 
   /// Circle Network Image
   static Widget circleNewWorkImage(
-      {String? image, double? radius, String? defaultImage, bool isDefaultSvg = true, backGroundColor, color}) {
+      {String? image,
+      double? radius,
+      String? defaultImage,
+      bool isDefaultSvg = true,
+      backGroundColor,
+      color}) {
     return CachedNetworkImage(
       imageUrl: image == '' || image == null ? 'https://' : image,
       repeat: ImageRepeat.noRepeat,
       errorWidget: (a, c, b) => Container(
         height: radius! * 2,
         width: radius * 2,
-        decoration:
-            BoxDecoration(border: color != null ? Border.all(color: color, width: 1) : null, shape: BoxShape.circle),
+        decoration: BoxDecoration(
+            border: color != null ? Border.all(color: color, width: 1) : null,
+            shape: BoxShape.circle),
         child: CircleAvatar(
           radius: radius,
           backgroundColor: backGroundColor ?? Colors.white,
-          backgroundImage: Image.asset('assets/logo.png', fit: BoxFit.contain).image,
+          backgroundImage:
+              Image.asset(AppLaunchers.logo, fit: BoxFit.contain).image,
         ),
       ),
       fadeInDuration: const Duration(seconds: 1),
@@ -84,8 +102,9 @@ class CustomNetworkImage {
       placeholder: (context, url) => Container(
         height: radius! * 2,
         width: radius * 2,
-        decoration:
-            BoxDecoration(border: color != null ? Border.all(color: color, width: 1) : null, shape: BoxShape.circle),
+        decoration: BoxDecoration(
+            border: color != null ? Border.all(color: color, width: 1) : null,
+            shape: BoxShape.circle),
         child: CircleAvatar(
           radius: radius,
           backgroundColor: backGroundColor ?? Colors.white,
@@ -96,8 +115,9 @@ class CustomNetworkImage {
         return Container(
           height: radius! * 2,
           width: radius * 2,
-          decoration:
-              BoxDecoration(border: color != null ? Border.all(color: color, width: 1) : null, shape: BoxShape.circle),
+          decoration: BoxDecoration(
+              border: color != null ? Border.all(color: color, width: 1) : null,
+              shape: BoxShape.circle),
           child: CircleAvatar(
             backgroundImage: provider,
             radius: radius,
@@ -109,7 +129,8 @@ class CustomNetworkImage {
   }
 
   //Asset network Image
-  Widget imageNewWorkImage({String? image, String? defaultImage, double? height, double? width}) {
+  Widget imageNewWorkImage(
+      {String? image, String? defaultImage, double? height, double? width}) {
     return CachedNetworkImage(
       imageUrl: image == '' || image == null ? 'https://' : image,
       //     fadeInDuration: Duration(seconds: 2),
@@ -117,7 +138,10 @@ class CustomNetworkImage {
           height: height ?? 40,
           width: width ?? 40,
           decoration: BoxDecoration(
-              image: DecorationImage(fit: BoxFit.cover, image: Image.asset(defaultImage ?? 'assets/logo.png').image))),
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image:
+                      Image.asset(defaultImage ?? 'assets/logo.png').image))),
       placeholder: (context, url) => Container(
           height: height ?? 40,
           width: width ?? 40,
@@ -131,7 +155,8 @@ class CustomNetworkImage {
         return Container(
             height: height ?? 40,
             width: width ?? 40,
-            decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: provider)));
+            decoration: BoxDecoration(
+                image: DecorationImage(fit: BoxFit.cover, image: provider)));
       },
     );
   }
@@ -150,15 +175,14 @@ Widget networkImageErrorWidget({
     height: height ?? 40,
     decoration: BoxDecoration(
       borderRadius: (edges ?? false)
-          ? BorderRadius.only(topRight: Radius.circular(radius ?? 10), topLeft: Radius.circular(radius ?? 10))
+          ? BorderRadius.only(
+              topRight: Radius.circular(radius ?? 10),
+              topLeft: Radius.circular(radius ?? 10))
           : BorderRadius.all(Radius.circular(radius ?? 10.0)),
-      image: DecorationImage(
-        fit: fit ?? BoxFit.contain,
-        image: Image.asset(
-          defaultImage ?? 'assets/logo.png',
-          fit: BoxFit.contain,
-        ).image,
-      ),
+    ),
+    child: Image.asset(
+      AppLaunchers.logo,
+      fit: BoxFit.contain,
     ),
   );
 }

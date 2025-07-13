@@ -8,7 +8,7 @@ class AuctionDetailsModel {
   String? statusLabel;
   AuctionType? auctionType;
   CategoryModel? auctionCategory;
-  List<String>? images;
+  List<AttachmentModel>? attachments;
   String? openingPrice;
   String? biddingIncrementAmount;
   String? currentBiddingAmount;
@@ -32,7 +32,7 @@ class AuctionDetailsModel {
     this.statusLabel,
     this.auctionType,
     this.auctionCategory,
-    this.images,
+    this.attachments,
     this.openingPrice,
     this.biddingIncrementAmount,
     this.currentBiddingAmount,
@@ -62,6 +62,7 @@ class AuctionDetailsModel {
     auctionCategory = json['auctionCategory'] != null
         ? CategoryModel.fromJson(json['auctionCategory'])
         : null;
+    videoLink = json['videoLink'];
     if (json['images'] != null) {
       // images = [];
       // json['images'].forEach((v) {
@@ -69,8 +70,14 @@ class AuctionDetailsModel {
       //     images!.add(v['url']);
       //   }
       // });
-      images = List.generate(
-          10, (index) => 'https://picsum.photos/800/800?random=$index');
+      attachments = List.generate(
+          10,
+          (index) => AttachmentModel(
+              url: 'https://picsum.photos/800/800?random=$index',
+              isVideo: false));
+      if (videoLink != null) {
+        attachments?.add(AttachmentModel(url: videoLink, isVideo: true));
+      }
     }
     openingPrice = json['openingPrice'];
     biddingIncrementAmount = json['biddingIncrementAmount'];
@@ -84,7 +91,7 @@ class AuctionDetailsModel {
     auctionDuration = json['auctionDuration'];
     auctionNumber = json['auctionNumber'];
     participant = json['participant'];
-    videoLink = json['videoLink'];
+
     name = json['name'];
     description = json['description'];
     myfav = json['myfav'];
@@ -105,8 +112,8 @@ class AuctionDetailsModel {
     if (auctionCategory != null) {
       data['auctionCategory'] = auctionCategory!.toJson();
     }
-    if (images != null) {
-      data['images'] = images;
+    if (attachments != null) {
+      data['images'] = attachments;
     }
     data['openingPrice'] = openingPrice;
     data['biddingIncrementAmount'] = biddingIncrementAmount;
@@ -126,4 +133,10 @@ class AuctionDetailsModel {
     data['isStarted'] = isStarted;
     return data;
   }
+}
+
+class AttachmentModel {
+  String? url;
+  bool isVideo;
+  AttachmentModel({this.url, this.isVideo = false});
 }

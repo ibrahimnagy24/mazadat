@@ -76,13 +76,11 @@ class _AuctionDetailsMobileDesignScreenState
               AuctionHeroImage(
                 controller: _controller,
                 routeParams: widget.routeParams,
-                imageUrl: widget.routeParams.primaryImage,
-                imageUrls: state.AuctionDetails.images ?? [],
+                imageUrls: state.AuctionDetails.attachments ?? [],
               ),
               AuctionDraggableSheet(
                 controller: _controller,
-                imageUrls: state.AuctionDetails.images ?? [],
-
+                attachments: state.AuctionDetails.attachments ?? [],
                 child: AuctionContent(model: state.AuctionDetails),
               ),
               PositionedDirectional(
