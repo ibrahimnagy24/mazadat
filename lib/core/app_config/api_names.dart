@@ -55,6 +55,7 @@ abstract class Endpoints {
 
 //-------------------------------NOT TESTED------------------------------------\\
 
+  static const String paymentList = '/paymentMehods/listAll';
   static const String cities = '/cities/searchByKeyword';
   static const String ages = '/age/listAgeLookups';
   static const String auctionStatuses = '/utils/getLookup?lookups=AUCTION_STATUS';
