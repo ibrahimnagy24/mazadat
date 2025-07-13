@@ -1,5 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.innova.mazaadat">
 
     <!-- Connection Permission -->
@@ -129,19 +128,6 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA2xA7d84QkR0_0OPjdDRLfu--YbjJkSa8"/>
-
-        <provider
-            android:name="com.crazecoder.openfile.FileProvider"
-            android:authorities="${applicationId}.fileProvider.com.crazecoder.openfile"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            tools:replace="android:authorities">
-
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths"
-                tools:replace="android:resource" />
-        </provider>
 
     </application>
 </manifest>
