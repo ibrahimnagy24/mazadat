@@ -28,7 +28,7 @@ class DefaultFormField extends StatelessWidget {
     this.verticalEdge,
     this.initialValue,
     this.labelColor,
-    this.maxLines,
+    this.maxLines =1,
     this.textColor,
     this.controller,
     this.onChanged,
