@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppConfig {
   // static const LOCALE = 'https://2f04-197-61-38-60.eu.ngrok.io/api/v1/';
-  static String appName = 'Mazadat';
+  static String appName = 'بيت العسجدية';
   static String BASE_URL = 'https://mazadat.api.innoeg.com';
   static String BASE_URL_STAGING = 'https://mazadat.api.innoeg.com';
   static String BASE_URL_PRODUCTION = 'https://mazadat.api.innoeg.com';

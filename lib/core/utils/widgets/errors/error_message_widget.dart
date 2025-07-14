@@ -35,6 +35,7 @@ class ErrorMessageWidget extends StatelessWidget {
             Text(
               error?.message ?? message ?? '',
               style: AppTextStyles.textXLMedium,
+              textAlign: TextAlign.center,
             ),
           ],
         ),
