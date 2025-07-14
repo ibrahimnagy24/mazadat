@@ -5,19 +5,32 @@ class JoiningAuctionCubit extends Cubit<JoiningAuctionState> {
 
 //---------------------------------VARIABLES----------------------------------//
 
+  final payment = BehaviorSubject<PaymentModel?>();
+  Function(PaymentModel?) get updatePayment => payment.sink.add;
+  Stream<PaymentModel?> get paymentStream => payment.stream.asBroadcastStream();
+
 //---------------------------------FUNCTIONS----------------------------------//
 
   Future<void> joinAuction(int id) async {
     emit(JoiningAuctionLoading());
+    loadingDialog();
 
-    final response = await JoiningAuctionRepo.validateJoiningAuction(id);
+    Map<String, dynamic> data = {
+      'auctionId': id,
+      'paymentType': payment.valueOrNull?.id,
+    };
+
+    final response = await JoiningAuctionRepo.submitJoining(data);
+    CustomNavigator.pop();
+
     response.fold((failure) {
       return emit(JoiningAuctionError(failure));
     }, (success) {
-      if (success.statusCode == 200 && success.data['DATA'] != null) {
-        AuctionPolicyModel? res =
-            AuctionPolicyModel.fromJson(success.data['DATA']);
-        return emit(JoiningAuctionSuccess(data: res));
+      if (success.statusCode == 200) {
+        ///FORM_LINK
+
+        ///TRANSACTION_ID
+        return emit(const JoiningAuctionSuccess());
       } else {
         return emit(JoiningAuctionError(ErrorEntity(
             message: success.data['MESSAGE'],

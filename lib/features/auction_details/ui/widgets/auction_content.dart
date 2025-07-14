@@ -304,8 +304,11 @@ class AuctionContent extends StatelessWidget {
 
         SizedBox(height: 24.h),
 
-          AuctionActions(isJoined: model.isJoined == true,
-              id: model.id ?? 0),
+        AuctionActions(
+          id: model.id ?? 0,
+          firstBidding: model.firstBid == true,
+          isJoined: model.isJoined == true,
+        ),
       ],
     );
   }

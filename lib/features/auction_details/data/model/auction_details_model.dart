@@ -21,10 +21,10 @@ class AuctionDetailsModel {
   String? name;
   String? description;
   bool? myfav;
-  bool? isJoined;
-  bool? isStarted;
+  bool? isStarted, isJoined, firstBid, autoBiddingEnabled;
   int? productId;
   String? primaryPhoto;
+  String? maxBiddingAmount, lastBidderId;
 
   AuctionDetailsModel({
     this.id,
@@ -47,8 +47,12 @@ class AuctionDetailsModel {
     this.myfav,
     this.productId,
     this.primaryPhoto,
+    this.firstBid,
+    this.autoBiddingEnabled,
     this.isJoined,
     this.isStarted,
+    this.maxBiddingAmount,
+    this.lastBidderId,
   });
 
   AuctionDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -97,7 +101,11 @@ class AuctionDetailsModel {
     myfav = json['myfav'];
     productId = json['productId'];
     primaryPhoto = json['primaryPhoto'];
-    isJoined = json['isJoined'];
+    isJoined = json['participant'];
+    firstBid = json['firstBid'];
+    autoBiddingEnabled = json['autoBiddingEnabled'];
+    maxBiddingAmount = json['maxBiddingAmount'];
+    lastBidderId = json['lastBidderId'];
     isStarted = startDate?.isBefore(DateTime.now());
   }
 
@@ -129,8 +137,12 @@ class AuctionDetailsModel {
     data['myfav'] = myfav;
     data['productId'] = productId;
     data['primaryPhoto'] = primaryPhoto;
-    data['isJoined'] = isJoined;
+    data['participant'] = isJoined;
     data['isStarted'] = isStarted;
+    data['firstBid'] = firstBid;
+    data['autoBiddingEnabled'] = autoBiddingEnabled;
+    data['maxBiddingAmount'] = maxBiddingAmount;
+    data['lastBidderId'] = lastBidderId;
     return data;
   }
 }

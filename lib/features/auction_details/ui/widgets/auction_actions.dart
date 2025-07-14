@@ -7,19 +7,27 @@ import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../joining_auction/ui/pages/validate_joining_auction_view.dart';
 
 class AuctionActions extends StatelessWidget {
-  const AuctionActions({super.key, this.isJoined = false, required this.id});
-  final bool isJoined;
+  const AuctionActions({
+    super.key,
+    required this.id,
+    this.isJoined = false,
+    required this.firstBidding,
+  });
+
   final int id;
+  final bool isJoined, firstBidding;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         if (isJoined != true)
+
+          ///To Join Auction
           DefaultButton(
-            onPressed: () =>
-                CustomBottomSheet.show(widget: ValidateJoiningAuctionView(id: id),
-                ),
+            onPressed: () => CustomBottomSheet.show(
+              widget: ValidateJoiningAuctionView(id: id),
+            ),
             text: AppStrings.registerForTheAuction.tr,
           ),
       ],

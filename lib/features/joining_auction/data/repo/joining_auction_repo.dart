@@ -23,4 +23,20 @@ abstract class JoiningAuctionRepo {
       return Left(ApiErrorHandler().handleError(error));
     }
   }
+
+  static Future<Either<ErrorEntity, Response>> submitJoining(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await Network().request(Endpoints.submitJoiningAuction,
+          method: ServerMethods.POST, body: data);
+
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(ApiErrorHandler().handleError(response.data['message']));
+      }
+    } catch (error) {
+      return Left(ApiErrorHandler().handleError(error));
+    }
+  }
 }

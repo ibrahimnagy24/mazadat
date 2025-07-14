@@ -204,7 +204,9 @@
   "The current price is determined automatically based on a percentage of the opening price value.": "The current price is determined automatically based on a percentage of the opening price value.",
   "You agree to pay": "You agree to pay",
   "Application Commission": "Application Commission",
-  "Oops, You  have to agree to commission & insurance first": "Oops, You  have to agree to commission & insurance first"
+  "Oops, You  have to agree to commission & insurance first": "Oops, You  have to agree to commission & insurance first",
+  "Select Payment Method": "Select Payment Method",
+  "Oops, You  have to select payment method!": "Oops, You  have to select payment method!"
 
 
 }
