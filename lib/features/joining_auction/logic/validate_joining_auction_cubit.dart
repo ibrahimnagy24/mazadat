@@ -25,9 +25,9 @@ class ValidateJoiningAuctionCubit extends Cubit<ValidateJoiningAuctionState> {
     response.fold((failure) {
       return emit(ValidateJoiningAuctionError(failure));
     }, (success) {
-      if (success.statusCode == 200 && success.data['DATA'] != null) {
+      if (success.statusCode == 200 && success.data != null) {
         AuctionPolicyModel? res =
-            AuctionPolicyModel.fromJson(success.data['DATA']);
+            AuctionPolicyModel.fromJson(success.data);
         return emit(ValidateJoiningAuctionSuccess(data: res));
       } else {
         return emit(ValidateJoiningAuctionError(ErrorEntity(

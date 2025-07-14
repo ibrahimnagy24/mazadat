@@ -34,8 +34,3 @@ class AuctionPolicyModel {
   }
 }
 
-class AttachmentModel {
-  String? url;
-  bool isVideo;
-  AttachmentModel({this.url, this.isVideo = false});
-}
