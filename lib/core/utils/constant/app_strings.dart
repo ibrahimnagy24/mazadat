@@ -239,4 +239,5 @@ class AppStrings {
       'The current price is determined automatically based on a percentage of the opening price value.';
   static const String youAgreeToPay = 'You agree to pay';
   static const String applicationCommission = 'Application Commission';
+  static const String agreeToCommissionAndInsurance = 'Oops, You  have to agree to commission & insurance first';
 }

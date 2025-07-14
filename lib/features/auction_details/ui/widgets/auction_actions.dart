@@ -18,7 +18,8 @@ class AuctionActions extends StatelessWidget {
         if (isJoined != true)
           DefaultButton(
             onPressed: () =>
-                CustomBottomSheet.show(widget: ValidateJoiningAuctionView(id: id)),
+                CustomBottomSheet.show(widget: ValidateJoiningAuctionView(id: id),
+                ),
             text: AppStrings.registerForTheAuction.tr,
           ),
       ],

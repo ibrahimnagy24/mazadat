@@ -1,7 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
+import '../../../core/app_core.dart';
 import '../../../core/shared/entity/error_entity.dart';
+import '../../../core/utils/constant/app_strings.dart';
+import '../../../core/utils/extensions/extensions.dart';
 import '../data/model/auction_policy_model.dart';
 import '../data/repo/joining_auction_repo.dart';
 

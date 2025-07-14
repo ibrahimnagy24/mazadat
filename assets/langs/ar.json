@@ -192,7 +192,9 @@
   "Last Modified":"أخر تاريخ تحديث",
   "The current price is determined automatically based on a percentage of the opening price value.": "السعر الحالي محدد تلقائيا بناءاً علي نسبة من قيمة السعر الإفتتاحي",
   "You agree to pay": "أنت موافق علي دفع ",
-  "Application Commission": "عمولة التطبيق"
+  "Application Commission": "عمولة التطبيق",
+  "Oops, You  have to agree to commission & insurance first": "عذرًا، يجب أن توافق أولًا على العمولة والتأمين"
+
 
 
 }

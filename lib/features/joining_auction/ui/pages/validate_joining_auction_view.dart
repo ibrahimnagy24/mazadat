@@ -108,7 +108,9 @@ class ValidateJoiningAuctionView extends StatelessWidget {
                   Divider(height: 32.h, color: AppColors.border),
                   Expanded(
                     child: Scrollbar(
-                      child: HtmlWidget(state.data.policy ?? ''),
+                      thumbVisibility: true,
+                      trackVisibility: true,
+                      child: SingleChildScrollView(child: HtmlWidget(state.data.policy ?? '')),
                     ),
                   ),
                   ValidateJoinAuctionButton(id: id),
