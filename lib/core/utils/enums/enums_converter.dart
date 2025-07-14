@@ -31,9 +31,9 @@ class UserEnumsConverter {
   static String genderTypeToString(GenderTypes value) {
     switch (value) {
       case GenderTypes.male:
-        return 'MALE';
+        return 'M';
       case GenderTypes.female:
-        return 'FEMALE';
+        return 'F';
     }
   }
 

@@ -17,7 +17,7 @@ abstract class AppTextStyles {
   static TextStyle displayMdBold = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsXL,
-    color: AppColors.kPrimary,
+    color: Color(0xFF222715),
   );
 
   static TextStyle displaySMMedium = const TextStyle(
@@ -112,7 +112,7 @@ abstract class AppTextStyles {
   static TextStyle textLgRegular = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.fsS,
-    color: AppColors.textSecondaryParagraph,
+    color: AppColors.textPrimaryParagraph,
   );
 
   static TextStyle exoW700SizeMediumWhite = GoogleFonts.exo(
