@@ -30,6 +30,7 @@ class JoiningAuctionCubit extends Cubit<JoiningAuctionState> {
         ///FORM_LINK
 
         ///TRANSACTION_ID
+
         return emit(const JoiningAuctionSuccess());
       } else {
         return emit(JoiningAuctionError(ErrorEntity(

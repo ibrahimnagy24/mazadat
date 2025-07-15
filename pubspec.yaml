@@ -69,6 +69,8 @@ dependencies:
   glass_kit: ^4.0.1
   dotted_border: ^3.0.1
   video_player: ^2.10.0
+  webview_flutter: ^4.13.0
+  flutter_inappwebview: ^6.1.5
 
 dev_dependencies:
   flutter_test:
