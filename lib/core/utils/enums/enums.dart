@@ -21,3 +21,5 @@ enum MediaType { image, audio, video }
 enum GenderTypes { male, female }
 
 enum CategoryTypes { auction, bundle }
+
+enum BiddingMethod { manual, auto }

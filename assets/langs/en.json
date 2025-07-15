@@ -53,6 +53,7 @@
   "End Date": "End Date",
   "Opening price": "Opening price",
   "Insurance amount": "Insurance amount",
+  "Bid": "Bid",
   "Bidding": "Bidding",
   "Packages": "Packages",
   "Featured Auctions": "Featured Auctions",
@@ -207,7 +208,13 @@
   "Oops, You  have to agree to commission & insurance first": "Oops, You  have to agree to commission & insurance first",
   "Payment": "Payment",
   "Select Payment Method": "Select Payment Method",
-  "Oops, You  have to select payment method!": "Oops, You  have to select payment method!"
-
-
+  "Oops, You  have to select payment method!": "Oops, You  have to select payment method!",
+  "Select Bidding Method": "Select Bidding Method",
+  "manual": "Manual",
+  "auto": "Auto",
+  "manual_bidding": "Manual Bidding",
+  "auto_bidding": "Auto Bidding",
+  "Select Max Bidding Amount": "Select Max Bidding Amount",
+  "Selected price": "Selected price",
+  "Current auction price": "Current auction price"
 }

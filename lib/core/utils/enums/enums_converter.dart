@@ -10,21 +10,21 @@ class UserEnumsConverter {
     }
   }
 
-  static GenderTypes stringToGender(String value) {
-    switch (value) {
-      case 'M':
-        return GenderTypes.male;
-      default:
-        return GenderTypes.female;
-    }
-  }
-
   static String userTypeToString(UserType value) {
     switch (value) {
       case UserType.user:
         return 'USER';
       case UserType.visitor:
         return 'visitor';
+    }
+  }
+
+  static GenderTypes stringToGender(String value) {
+    switch (value) {
+      case 'M':
+        return GenderTypes.male;
+      default:
+        return GenderTypes.female;
     }
   }
 
@@ -87,6 +87,28 @@ class CategoryTypeConverter {
         return CategoryTypes.bundle;
       default:
         return CategoryTypes.auction;
+    }
+  }
+}
+
+class BiddingMethodConverter {
+
+
+  static BiddingMethod stringToBiddingMethod(String value) {
+    switch (value) {
+      case 'MANUAL':
+        return BiddingMethod.manual;
+      default:
+        return BiddingMethod.auto;
+    }
+  }
+
+  static String BiddingMethodToString(BiddingMethod value) {
+    switch (value) {
+      case BiddingMethod.manual:
+        return 'MANUAL';
+      case BiddingMethod.auto:
+        return 'AUTO';
     }
   }
 }

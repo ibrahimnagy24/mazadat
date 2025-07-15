@@ -1,3 +1,5 @@
+import '../../../../core/utils/enums/enums.dart';
+import '../../../../core/utils/enums/enums_converter.dart';
 import '../../../auctions/data/enums/auction_enum_converter.dart';
 import '../../../auctions/data/enums/auction_enums.dart';
 import '../../../category/data/model/category_model.dart';
@@ -10,8 +12,8 @@ class AuctionDetailsModel {
   CategoryModel? auctionCategory;
   List<AttachmentModel>? attachments;
   String? openingPrice;
-  String? biddingIncrementAmount;
-  String? currentBiddingAmount;
+  double? biddingIncrementAmount;
+  double? currentBiddingAmount;
   DateTime? startDate;
   DateTime? endDate;
   String? auctionDuration;
@@ -25,6 +27,7 @@ class AuctionDetailsModel {
   int? productId;
   String? primaryPhoto;
   String? maxBiddingAmount, lastBidderId;
+  BiddingMethod?  currentBiddingMethod;
 
   AuctionDetailsModel({
     this.id,
@@ -53,16 +56,14 @@ class AuctionDetailsModel {
     this.isStarted,
     this.maxBiddingAmount,
     this.lastBidderId,
+    this.currentBiddingMethod,
   });
 
   AuctionDetailsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     status = json['status'];
     statusLabel = json['statusLabel'];
-    auctionType = json['auctionType'] != null
-        ? AuctionEnumConverter.stringToAuctionType(
-            json['auctionType']['code']?.toString().toUpperCase() ?? 'PRIVATE')
-        : AuctionType.public;
+    auctionType = json['auctionType'] != null ? AuctionEnumConverter.stringToAuctionType(json['auctionType']['code']?.toString().toUpperCase() ?? 'PRIVATE') : AuctionType.public;
     auctionCategory = json['auctionCategory'] != null
         ? CategoryModel.fromJson(json['auctionCategory'])
         : null;
@@ -84,8 +85,8 @@ class AuctionDetailsModel {
       }
     }
     openingPrice = json['openingPrice'];
-    biddingIncrementAmount = json['biddingIncrementAmount'];
-    currentBiddingAmount = json['currentBiddingAmount'];
+    biddingIncrementAmount = double.parse(json['biddingIncrementAmount']?.toString()??'0');
+    currentBiddingAmount = double.parse(json['currentBiddingAmount']?.toString()??'0');
     startDate = json['endDate'] != null
         ? DateTime.parse(json['startDate'])
         : DateTime.now();
@@ -107,6 +108,8 @@ class AuctionDetailsModel {
     maxBiddingAmount = json['maxBiddingAmount'];
     lastBidderId = json['lastBidderId'];
     isStarted = startDate?.isBefore(DateTime.now());
+    currentBiddingMethod = json['currentBiddingMethod'] != null ? BiddingMethodConverter.stringToBiddingMethod(json['currentBiddingMethod']?.toString().toUpperCase() ?? 'PRIVATE') : BiddingMethod.manual;
+
   }
 
   Map<String, dynamic> toJson() {
@@ -143,6 +146,9 @@ class AuctionDetailsModel {
     data['autoBiddingEnabled'] = autoBiddingEnabled;
     data['maxBiddingAmount'] = maxBiddingAmount;
     data['lastBidderId'] = lastBidderId;
+    if (currentBiddingMethod != null) {
+      data['currentBiddingMethod'] = currentBiddingMethod?.name.toUpperCase();
+    }
     return data;
   }
 }

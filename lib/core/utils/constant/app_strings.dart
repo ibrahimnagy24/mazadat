@@ -56,6 +56,7 @@ class AppStrings {
   static const String openingPrice = 'Opening price';
   static const String insuranceAmount = 'Insurance amount';
   static const String bidding = 'Bidding';
+  static const String bid = 'Bid';
   static const String packages = 'Packages';
   static const String featuredAuctions = 'Featured Auctions';
   static const String currentAuctions = 'Current auctions';
@@ -230,6 +231,7 @@ class AppStrings {
   static const String productDescription = 'Product Description';
   static const String estimatedValue = 'Estimated value';
   static const String actualPrice = 'Actual price';
+  static const String selectedPrice = 'Selected price';
   static const String endAfter = 'End After';
   static const String registerForTheAuction = 'Register for the auction';
   static const String agreeTo = 'Agree to';
@@ -243,5 +245,10 @@ class AppStrings {
   static const String payment = 'Payment';
   static const String selectPaymentMethod = 'Select Payment Method';
   static const String youHaveToSelectPaymentMethod = 'Oops, You  have to select payment method!';
+
+  static const String selectBiddingMethod = 'Select Bidding Method';
+  static const String selectMaxBiddingAmount = 'Select Max Bidding Amount';
+  static const String currentAuctionPrice = 'Current auction price';
+
 
 }

@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
@@ -12,6 +13,7 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
 import '../../../favourites/ui/widgets/favourite_button.dart';
+import '../../../user/logic/user_cubit.dart';
 import '../../data/model/auction_details_model.dart';
 import 'auction_actions.dart';
 
@@ -186,7 +188,7 @@ class AuctionContent extends StatelessWidget {
                           border: Border.all(color: AppColors.border),
                         ),
                         child: PriceWidgetWithFlagWidget(
-                          price: model.currentBiddingAmount ?? '',
+                          price: '${model.currentBiddingAmount ?? 0}',
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           colorFilter: const ColorFilter.mode(
@@ -308,6 +310,9 @@ class AuctionContent extends StatelessWidget {
           id: model.id ?? 0,
           firstBidding: model.firstBid == true,
           isJoined: model.isJoined == true,
+          autoBiddingEnabled: model.autoBiddingEnabled == true,
+          canBid: model.lastBidderId != context.read<UserCubit>().userEntity?.id.toString(),
+          currentPrice: model.currentBiddingAmount ?? 0,
         ),
       ],
     );

@@ -19,6 +19,7 @@ abstract class Endpoints {
   static   auctionDetails(id) => '/auctions/viewAuction/$id';
   static   validateAuctionJoining(id) => '/auctions/validateJoining?id=$id';
   static const String  submitJoiningAuction = '/auctions/submitJoining';
+  static const String  auctionFirstBidding = '/bidding/placeBid';
   static const String auctions = '/auctions/list';
   static const String featuredAuction = '/auctions/featuredAuction';
   static const String inProgressAuction = '/auctions/liveAuction';

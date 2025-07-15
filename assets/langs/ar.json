@@ -53,6 +53,7 @@
   "End Date": "تاريخ الإنتهاء",
   "Opening price": "السعر الافتتاحي",
   "Insurance amount": "قيمة التأمين",
+  "Bid": "مزايده",
   "Bidding": "المزايدة",
   "Packages": "الباقات",
   "Featured Auctions": "مزادات مميزة",
@@ -207,9 +208,14 @@
   "Oops, You  have to agree to commission & insurance first": "عذرًا، يجب أن توافق أولًا على العمولة والتأمين",
   "Payment": "الدفع",
   "Select Payment Method": "حدد طريقه الدفع",
-  "Oops, You  have to select payment method!": "عذرًا، يجب عليك اختيار طريقة الدفع!"
-
-
-
+  "Oops, You  have to select payment method!": "عذرًا، يجب عليك اختيار طريقة الدفع!",
+  "Select Bidding Method": "اختر طريقة المزايدة",
+  "manual": "يدوي",
+  "auto": "تلقائي",
+  "manual_bidding": "مٌزايدة يدوية",
+  "auto_bidding": "مٌزايدة تلقائية",
+  "Select Max Bidding Amount": "حدد الحد الأقصى للمزايدة",
+  "Selected price": "السعر المحدد",
+  "Current auction price": "السعر الحالي للمزاد"
 
 }
