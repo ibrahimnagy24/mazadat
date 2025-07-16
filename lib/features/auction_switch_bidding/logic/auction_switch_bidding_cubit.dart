@@ -1,8 +1,8 @@
-part of 'auction_first_bidding_state.dart';
+part of 'auction_switch_bidding_state.dart';
 
-class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
-  AuctionFirstBiddingCubit() : super(AuctionFirstBiddingInitial()) {
-    updateBiddingMethod(BiddingMethod.manual);
+class AuctionSwitchBiddingCubit extends Cubit<AuctionSwitchBiddingState> {
+  AuctionSwitchBiddingCubit() : super(AuctionSwitchBiddingInitial()) {
+    updateBiddingMethod(BiddingMethod.auto);
   }
 
 //---------------------------------VARIABLES----------------------------------//
@@ -19,8 +19,8 @@ class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
 
 //---------------------------------FUNCTIONS----------------------------------//
 
-  Future<void> firstBidding(int id) async {
-    emit(AuctionFirstBiddingLoading());
+  Future<void> switchBidding(int id) async {
+    emit(AuctionSwitchBiddingLoading());
     loadingDialog();
 
     Map<String, dynamic> data = {
@@ -29,19 +29,19 @@ class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
     if(biddingMethod.valueOrNull == BiddingMethod.auto)  'maxBiddingValue': maxBiddingValue.valueOrNull
     };
 
-    final response = await AuctionFirstBiddingRepo.firstBid(data);
+    final response = await AuctionAutoBiddingRepo.switchBidding(data);
     CustomNavigator.pop();
 
     response.fold((failure) {
       showErrorToast(failure.message);
-      return emit(AuctionFirstBiddingError(failure));
+      return emit(AuctionSwitchBiddingError(failure));
     }, (success) {
       if (success.statusCode == 200) {
         CustomNavigator.pop();
-        return emit(const AuctionFirstBiddingSuccess());
+      return emit(const AuctionFirstBiddingSuccess());
       } else {
         showErrorToast(success.data['MESSAGE']);
-        return emit(AuctionFirstBiddingError(ErrorEntity(
+        return emit(AuctionSwitchBiddingError(ErrorEntity(
             message: success.data['MESSAGE'],
             statusCode: success.statusCode ?? 400,
             errors: const [])));

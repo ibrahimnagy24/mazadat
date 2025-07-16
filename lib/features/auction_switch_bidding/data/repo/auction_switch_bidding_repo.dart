@@ -5,13 +5,10 @@ import '../../../../core/services/error_handler/error_handler.dart';
 import '../../../../core/services/network/network_helper.dart';
 import '../../../../core/shared/entity/error_entity.dart';
 
-abstract class AuctionFirstBiddingRepo {
-
-
-  static Future<Either<ErrorEntity, Response>> firstBid(
-      Map<String, dynamic> data) async {
+abstract class AuctionAutoBiddingRepo {
+  static Future<Either<ErrorEntity, Response>> switchBidding(Map<String, dynamic> data) async {
     try {
-      final response = await Network().request(Endpoints.auctionFirstBidding,
+      final response = await Network().request(Endpoints.switchBiddingMethod,
           method: ServerMethods.POST, body: data);
 
       if (response.statusCode == 200) {

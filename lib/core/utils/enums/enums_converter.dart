@@ -92,14 +92,14 @@ class CategoryTypeConverter {
 }
 
 class BiddingMethodConverter {
-
-
-  static BiddingMethod stringToBiddingMethod(String value) {
+  static BiddingMethod? stringToBiddingMethod(String? value) {
     switch (value) {
       case 'MANUAL':
         return BiddingMethod.manual;
-      default:
+      case 'AUTO':
         return BiddingMethod.auto;
+      default:
+        return null;
     }
   }
 

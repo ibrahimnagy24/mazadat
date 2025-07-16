@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
+import '../../../core/app_core.dart';
 import '../../../core/navigation/custom_navigation.dart';
 import '../../../core/shared/entity/error_entity.dart';
 import '../../../core/utils/enums/enums.dart';

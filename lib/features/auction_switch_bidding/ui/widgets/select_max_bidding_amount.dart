@@ -7,7 +7,7 @@ import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/extensions/media_query_helper.dart';
-import '../../logic/auction_first_bidding_state.dart';
+import '../../logic/auction_switch_bidding_state.dart';
 
 class SelectMaxBiddingAmount extends StatelessWidget {
   const SelectMaxBiddingAmount(
@@ -20,7 +20,7 @@ class SelectMaxBiddingAmount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: context.read<AuctionFirstBiddingCubit>().maxBiddingValueStream,
+        stream: context.read<AuctionSwitchBiddingCubit>().maxBiddingValueStream,
         builder: (context, snapshot) {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -53,7 +53,7 @@ class SelectMaxBiddingAmount extends StatelessWidget {
 
                           if(currentBiddingMethod == BiddingMethod.auto)
                           InkWell(
-                            onTap: ()=> context.read<AuctionFirstBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)-1)),
+                            onTap: ()=> context.read<AuctionSwitchBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)-1)),
                             child: Container(
                               width: 32.w,
                               height: 32.w,
@@ -89,7 +89,7 @@ class SelectMaxBiddingAmount extends StatelessWidget {
 
                           if(currentBiddingMethod == BiddingMethod.auto)
                           InkWell(
-                            onTap: ()=> context.read<AuctionFirstBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)+1)),
+                            onTap: ()=> context.read<AuctionSwitchBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)+1)),
                             child: Container(
                               width: 32.w,
                               height: 32.w,

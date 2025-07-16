@@ -4,6 +4,7 @@ abstract class AppColors {
   //mazadat
   static const Color kPrimary = Color.fromRGBO(64, 77, 38, 1);
   static const Color kSecondary = Color.fromRGBO(173, 156, 109, 1);
+  static const Color kDisable = Color.fromRGBO(175, 181, 161, 1);
   //mazadat
   static const Color kPrimary900 = Color.fromRGBO(46, 46, 46, 1);
   //mazadat

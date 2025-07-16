@@ -54,6 +54,7 @@
   "Opening price": "Opening price",
   "Insurance amount": "Insurance amount",
   "Bid": "Bid",
+  "Bid with": "Bid with",
   "Bidding": "Bidding",
   "Packages": "Packages",
   "Featured Auctions": "Featured Auctions",
@@ -214,7 +215,13 @@
   "auto": "Auto",
   "manual_bidding": "Manual Bidding",
   "auto_bidding": "Auto Bidding",
+  "Automatic Bidding": "Automatic Bidding",
   "Select Max Bidding Amount": "Select Max Bidding Amount",
   "Selected price": "Selected price",
-  "Current auction price": "Current auction price"
+  "Current auction price": "Current auction price",
+  "Current price": "Current price",
+  "Are you sure you want to bid automatically?": "Are you sure you want to bid automatically?",
+  "Wًithdrawal": "Wًithdrawal",
+  "Are you sure you want to withdraw from the auction?": "Are you sure you want to withdraw from the auction?",
+  "The amount will be refunded to the payment method used.": "The amount will be refunded to the payment method used."
 }

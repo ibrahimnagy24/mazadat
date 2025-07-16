@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: depend_on_referenced_packages
 import 'package:vector_math/vector_math_64.dart' as vector;
 
+import '../../../assets/app_svg.dart';
+import '../../../shared/widgets/custom_images.dart';
 import '../../../theme/text_styles/app_font_size_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
@@ -33,6 +35,7 @@ class DefaultButton extends StatelessWidget {
     this.maxwidth,
     this.textStyle,
     this.animationDuration,
+    this.withSaudiRiyalSymbol = false,
   });
 
   final void Function()? onPressed;
@@ -57,6 +60,8 @@ class DefaultButton extends StatelessWidget {
   final double? borderWidth;
   final TextStyle? textStyle;
   final Duration? animationDuration;
+
+  final bool withSaudiRiyalSymbol;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +101,7 @@ class DefaultButton extends StatelessWidget {
                 ),
               ),
               child: Text(
-              AppStrings.loading.tr,
+                AppStrings.loading.tr,
                 style: textStyle ??
                     GoogleFonts.notoSans(
                       color: textColor ?? AppColors.kWhite,
@@ -136,14 +141,29 @@ class DefaultButton extends StatelessWidget {
             child: isLoading
                 ? const AdaptiveCircularProgress()
                 : child ??
-                    Text(
-                      text ?? 'LOGIN',
-                      style: textStyle ??
-                          GoogleFonts.notoSans(
-                            color: textColor ?? AppColors.kWhite,
-                            fontSize: fontSize ?? AppFontSizes.fsM,
-                            fontWeight: fontWeight ?? FontWeight.w700,
+                    Row(
+                      spacing: 8.w,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            text ?? 'LOGIN',
+                            style: textStyle ??
+                                GoogleFonts.notoSans(
+                                  color: textColor ?? AppColors.kWhite,
+                                  fontSize: fontSize ?? AppFontSizes.fsM,
+                                  fontWeight: fontWeight ?? FontWeight.w700,
+                                ),
                           ),
+                        ),
+                        if (withSaudiRiyalSymbol == true)
+                          customImageIconSVG(
+                              imageName: AppSvg.saudiArabiaSymbol,
+                              width: fontSize ?? 16,
+                              height: fontSize ?? 16,
+                              color: textColor ?? AppColors.kWhite)
+                      ],
                     ),
           );
   }
@@ -167,7 +187,7 @@ class LoadingAnimatedButton extends StatefulWidget {
     required this.onTap,
     this.width = 200,
     this.height = 50,
-    this.color = Colors.indigo,
+    this.color = AppColors.kSecondary,
     this.borderColor = Colors.white,
     this.borderRadius = 24.0,
     this.borderWidth = 3.0,

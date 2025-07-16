@@ -57,6 +57,7 @@ class AppStrings {
   static const String insuranceAmount = 'Insurance amount';
   static const String bidding = 'Bidding';
   static const String bid = 'Bid';
+  static const String bidWith = 'Bid with';
   static const String packages = 'Packages';
   static const String featuredAuctions = 'Featured Auctions';
   static const String currentAuctions = 'Current auctions';
@@ -246,9 +247,15 @@ class AppStrings {
   static const String selectPaymentMethod = 'Select Payment Method';
   static const String youHaveToSelectPaymentMethod = 'Oops, You  have to select payment method!';
 
+  static const String automaticBidding = 'Automatic Bidding';
   static const String selectBiddingMethod = 'Select Bidding Method';
   static const String selectMaxBiddingAmount = 'Select Max Bidding Amount';
   static const String currentAuctionPrice = 'Current auction price';
+  static const String currentPrice = 'Current price';
+  static const String areYouSureYouWantToBidAutomatically = 'Are you sure you want to bid automatically?';
+  static const String withdrawal = 'Wًithdrawal';
+  static const String areYouSureYouWantToWithdrawFromTheAuction = 'Are you sure you want to withdraw from the auction?';
+  static const String theAmountWillBeRefundedToThePaymentMethodUsed = 'The amount will be refunded to the payment method used.';
 
 
 }

@@ -22,4 +22,4 @@ enum GenderTypes { male, female }
 
 enum CategoryTypes { auction, bundle }
 
-enum BiddingMethod { manual, auto }
+enum BiddingMethod { auto,manual }

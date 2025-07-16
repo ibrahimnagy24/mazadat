@@ -54,6 +54,7 @@
   "Opening price": "السعر الافتتاحي",
   "Insurance amount": "قيمة التأمين",
   "Bid": "مزايده",
+  "Bid with": "مزايده ب",
   "Bidding": "المزايدة",
   "Packages": "الباقات",
   "Featured Auctions": "مزادات مميزة",
@@ -214,8 +215,14 @@
   "auto": "تلقائي",
   "manual_bidding": "مٌزايدة يدوية",
   "auto_bidding": "مٌزايدة تلقائية",
+  "Automatic Bidding": "مزايده آليه",
   "Select Max Bidding Amount": "حدد الحد الأقصى للمزايدة",
   "Selected price": "السعر المحدد",
-  "Current auction price": "السعر الحالي للمزاد"
+  "Current auction price": "السعر الحالي للمزاد",
+  "Current price": "السعر الحالي",
+  "Are you sure you want to bid automatically?": "هل أنت متأكد من المزايدة آلياً",
+  "Wًithdrawal": "إنسحاب",
+  "Are you sure you want to withdraw from the auction?": "هل أنت متأكد من الإنسحاب من المزاد؟",
+  "The amount will be refunded to the payment method used.": "سيتم إعادة المبلغ إلى وسيلة الدفع المستخدمة"
 
 }

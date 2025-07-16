@@ -69,7 +69,8 @@ abstract class CustomBottomSheet {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(label, style: AppTextStyles.heading),
+                          Expanded(child: Text(label, style: AppTextStyles.heading,maxLines: 1,
+                              overflow: TextOverflow.ellipsis,)),
                           GestureDetector(
                             onTap: () {
                               CustomNavigator.pop();

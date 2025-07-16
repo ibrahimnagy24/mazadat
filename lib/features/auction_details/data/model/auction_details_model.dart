@@ -96,7 +96,6 @@ class AuctionDetailsModel {
     auctionDuration = json['auctionDuration'];
     auctionNumber = json['auctionNumber'];
     participant = json['participant'];
-
     name = json['name'];
     description = json['description'];
     myfav = json['myfav'];
@@ -104,12 +103,11 @@ class AuctionDetailsModel {
     primaryPhoto = json['primaryPhoto'];
     isJoined = json['participant'];
     firstBid = json['firstBid'];
-    autoBiddingEnabled = json['autoBiddingEnabled'];
+    autoBiddingEnabled = json['autoBiddingEnabled'] ;
     maxBiddingAmount = json['maxBiddingAmount'];
     lastBidderId = json['lastBidderId'];
     isStarted = startDate?.isBefore(DateTime.now());
-    currentBiddingMethod = json['currentBiddingMethod'] != null ? BiddingMethodConverter.stringToBiddingMethod(json['currentBiddingMethod']?.toString().toUpperCase() ?? 'PRIVATE') : BiddingMethod.manual;
-
+    currentBiddingMethod = json['currentBiddingMethod'] != null ? BiddingMethodConverter.stringToBiddingMethod(json['currentBiddingMethod']?.toString().toUpperCase()) :null;
   }
 
   Map<String, dynamic> toJson() {

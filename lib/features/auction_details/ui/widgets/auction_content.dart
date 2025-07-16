@@ -10,8 +10,10 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
+import '../../../auction_withdrawal_bidding/ui/pages/auction_withdrawal_view.dart';
 import '../../../favourites/ui/widgets/favourite_button.dart';
 import '../../../user/logic/user_cubit.dart';
 import '../../data/model/auction_details_model.dart';
@@ -58,18 +60,30 @@ class AuctionContent extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.kOpacityGrey3,
-                borderRadius: BorderRadius.circular(AppRadius.rM),
-                border: Border.all(color: AppColors.kOpacityGrey),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              child: Text(
-                model.auctionType?.name.tr ?? '',
-                style: AppTextStyles.bodyXsReq,
-              ),
-            )
+            model.isJoined == true
+                ? TextButton(
+                    onPressed: () => CustomBottomSheet.show(
+                        widget: AuctionWithdrawalView(id: model.id??0)),
+                    child: Text(
+                      AppStrings.withdrawal.tr,
+                      style: AppTextStyles.textMdRegular.copyWith(
+                        fontSize: 12,
+                        color: AppColors.textError,
+                      ),
+                    ))
+                : Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.kOpacityGrey3,
+                      borderRadius: BorderRadius.circular(AppRadius.rM),
+                      border: Border.all(color: AppColors.kOpacityGrey),
+                    ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    child: Text(
+                      model.auctionType?.name.tr ?? '',
+                      style: AppTextStyles.bodyXsReq,
+                    ),
+                  ),
           ],
         ),
         DottedBorder(
@@ -313,6 +327,8 @@ class AuctionContent extends StatelessWidget {
           autoBiddingEnabled: model.autoBiddingEnabled == true,
           canBid: model.lastBidderId != context.read<UserCubit>().userEntity?.id.toString(),
           currentPrice: model.currentBiddingAmount ?? 0,
+          biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
+          currentBiddingMethod: model.currentBiddingMethod,
         ),
       ],
     );

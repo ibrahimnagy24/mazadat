@@ -144,7 +144,7 @@ abstract class AppTextStyles {
   static TextStyle bodyXsMed = GoogleFonts.notoSans(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsXs,
-    color: AppColors.kPrimary500,
+    color: AppColors.kPrimary,
     letterSpacing: 0,
   );
   static TextStyle bodySReq = GoogleFonts.notoSans(
@@ -175,7 +175,7 @@ abstract class AppTextStyles {
   static TextStyle bodyMBold = GoogleFonts.notoSans(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsM,
-    color: AppColors.kWhite,
+    color: AppColors.kPrimary,
     letterSpacing: 0,
   );
 
