@@ -59,6 +59,7 @@
         "pin_code_fields",
         "pin_code_text_field",
         "pretty_dio_logger",
+        "pusher_channels_flutter",
         "responsive_builder",
         "rxdart",
         "share_plus",
@@ -105,6 +106,28 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "pusher_channels_flutter",
+      "version": "2.5.0",
+      "dependencies": [
+        "flutter",
+        "flutter_web_plugins",
+        "js"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview",
+      "version": "6.1.5",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_android",
+        "flutter_inappwebview_ios",
+        "flutter_inappwebview_macos",
+        "flutter_inappwebview_platform_interface",
+        "flutter_inappwebview_web",
+        "flutter_inappwebview_windows"
       ]
     },
     {
@@ -845,6 +868,69 @@
       ]
     },
     {
+      "name": "flutter_web_plugins",
+      "version": "0.0.0",
+      "dependencies": [
+        "characters",
+        "collection",
+        "flutter",
+        "material_color_utilities",
+        "meta",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview_windows",
+      "version": "0.6.0",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_platform_interface"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview_web",
+      "version": "1.1.2",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_platform_interface",
+        "flutter_web_plugins",
+        "web"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview_macos",
+      "version": "1.1.2",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_platform_interface"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview_ios",
+      "version": "1.1.2",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_platform_interface"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview_android",
+      "version": "1.1.3",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_platform_interface"
+      ]
+    },
+    {
+      "name": "flutter_inappwebview_platform_interface",
+      "version": "1.3.0+1",
+      "dependencies": [
+        "flutter",
+        "flutter_inappwebview_internal_annotations",
+        "plugin_platform_interface"
+      ]
+    },
+    {
       "name": "webview_flutter_wkwebview",
       "version": "3.22.0",
       "dependencies": [
@@ -928,18 +1014,6 @@
       "name": "logging",
       "version": "1.3.0",
       "dependencies": []
-    },
-    {
-      "name": "flutter_web_plugins",
-      "version": "0.0.0",
-      "dependencies": [
-        "characters",
-        "collection",
-        "flutter",
-        "material_color_utilities",
-        "meta",
-        "vector_math"
-      ]
     },
     {
       "name": "http",
@@ -1682,6 +1756,11 @@
       "dependencies": []
     },
     {
+      "name": "flutter_inappwebview_internal_annotations",
+      "version": "1.2.0",
+      "dependencies": []
+    },
+    {
       "name": "csslib",
       "version": "1.0.2",
       "dependencies": [
@@ -1922,72 +2001,8 @@
       "dependencies": []
     },
     {
-      "name": "flutter_inappwebview",
-      "version": "6.1.5",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_android",
-        "flutter_inappwebview_ios",
-        "flutter_inappwebview_macos",
-        "flutter_inappwebview_platform_interface",
-        "flutter_inappwebview_web",
-        "flutter_inappwebview_windows"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_windows",
-      "version": "0.6.0",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_platform_interface"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_web",
-      "version": "1.1.2",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_platform_interface",
-        "flutter_web_plugins",
-        "web"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_macos",
-      "version": "1.1.2",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_platform_interface"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_ios",
-      "version": "1.1.2",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_platform_interface"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_android",
-      "version": "1.1.3",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_platform_interface"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_platform_interface",
-      "version": "1.3.0+1",
-      "dependencies": [
-        "flutter",
-        "flutter_inappwebview_internal_annotations",
-        "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "flutter_inappwebview_internal_annotations",
-      "version": "1.2.0",
+      "name": "js",
+      "version": "0.7.2",
       "dependencies": []
     }
   ],

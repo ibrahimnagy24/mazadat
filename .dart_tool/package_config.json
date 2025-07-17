@@ -680,6 +680,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "js",
+      "rootUri": "file:///Users/innovadigits/.pub-cache/hosted/pub.dev/js-0.7.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "json_annotation",
       "rootUri": "file:///Users/innovadigits/.pub-cache/hosted/pub.dev/json_annotation-4.9.0",
       "packageUri": "lib/",
@@ -948,6 +954,12 @@
       "rootUri": "file:///Users/innovadigits/.pub-cache/hosted/pub.dev/provider-6.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "pusher_channels_flutter",
+      "rootUri": "file:///Users/innovadigits/.pub-cache/hosted/pub.dev/pusher_channels_flutter-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
     },
     {
       "name": "responsive_builder",

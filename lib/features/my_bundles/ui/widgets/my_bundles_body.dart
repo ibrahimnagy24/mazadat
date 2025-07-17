@@ -86,6 +86,7 @@ class MyBundlesBody extends StatelessWidget {
                                       padding:
                                           EdgeInsets.symmetric(vertical: 8.h),
                                       child: ListBundleCard(
+                                        fromMyBundles: true,
                                           bundle: state.bundles[i]),
                                     ),
                                   ),
@@ -97,6 +98,7 @@ class MyBundlesBody extends StatelessWidget {
                                   data: List.generate(
                                       state.bundles.length,
                                       (i) => GridBundleCard(
+                                          fromMyBundles: true,
                                           bundle: state.bundles[i])),
                                   crossAxisCount: 2,
                                   aspectRatio: 0.9,

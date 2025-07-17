@@ -10,16 +10,21 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
+import '../../../bundle_details/data/params/bundle_details_route_params.dart';
 import '../../data/entity/bundle_entity.dart';
 
 class ListBundleCard extends StatelessWidget {
-  const ListBundleCard({super.key, required this.bundle});
+  const ListBundleCard({super.key, required this.bundle,this.fromMyBundles = false});
   final BundleEntity bundle;
+  final bool fromMyBundles;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        CustomNavigator.push(Routes.VIEW_BUNDLES, extra: bundle.id);
+        CustomNavigator.push(Routes.BUNDLE_DETAILS,
+            extra: BundleDetailsRouteParams(
+                bundleId: bundle.id, fromMyBundles: fromMyBundles));
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),

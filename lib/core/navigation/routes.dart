@@ -23,6 +23,7 @@ class Routes {
   //-----------------------------------VIEW AUCTION---------------------------\\
   static const AUCTION_DETAILS = 'VIEW_AUCTION';
   static const VIEW_BUNDLES = 'VIEW_BUNDLES';
+  static const BUNDLE_DETAILS = 'BUNDLE_DETAILS';
 
   //-----------------------------------SEARCH---------------------------\\
   static const SEARCH = 'SEARCH';

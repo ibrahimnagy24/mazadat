@@ -10,7 +10,7 @@ import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../auction_first_bidding/ui/pages/auction_first_bidding_view.dart';
 import '../../../auction_manual_bidding/ui/widgets/auction_manual_bidding_button.dart';
 import '../../../auction_switch_bidding/ui/pages/auction_switch_bidding_view.dart';
-import '../../../joining_auction/ui/pages/validate_joining_auction_view.dart';
+import '../../../auction_joining/ui/pages/validate_joining_auction_view.dart';
 
 class AuctionActions extends StatelessWidget {
   const AuctionActions({

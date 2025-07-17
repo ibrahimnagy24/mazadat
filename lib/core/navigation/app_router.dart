@@ -5,6 +5,8 @@ import '../../features/auth/change_password/ui/widgets/change_password_imports.d
 import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
 import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
 import '../../features/auth/change_phone_number/ui/widgets/change_phone_number_imports.dart';
+import '../../features/bundle_details/data/params/bundle_details_route_params.dart';
+import '../../features/bundle_details/ui/pages/bundle_details_screen.dart';
 import '../../features/category/ui/screens/choose_categories_screen.dart';
 import '../../features/auth/login/ui/widgets/login_imports.dart';
 import '../../features/auth/register/ui/widgets/register_imports.dart';
@@ -210,6 +212,15 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         return AuctionDetailsScreen(
             routeParams: state.extra as AuctionDetailsRouteParams);
+      },
+    ),
+
+    GoRoute(
+      path: '/bundle-details',
+      name: Routes.BUNDLE_DETAILS,
+      builder: (context, state) {
+        return BundleDetailsScreen(
+            routeParams: state.extra as BundleDetailsRouteParams);
       },
     ),
     GoRoute(

@@ -175,6 +175,7 @@ class AppStrings {
   static const String myPurchases = 'My Purchases';
   static const String paymentHistory = 'Payment History';
   static const String myBundles = 'My Bundles';
+  static const String bundleDetails = 'Bundle Details';
   static const String appSettings = 'App Settings';
   static const String whoUs = 'Who us';
   static const String notifications = 'Notifications';
