@@ -15,9 +15,9 @@ import '../widgets/select_max_bidding_amount.dart';
 
 class AuctionFirstBiddingView extends StatelessWidget {
   const AuctionFirstBiddingView(
-      {super.key, required this.id, required this.currentAuctionPrice});
+      {super.key, required this.id, required this.currentAuctionPrice,required this.biddingIncrementAmount});
   final int id;
-  final double currentAuctionPrice;
+  final double currentAuctionPrice,biddingIncrementAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,8 @@ class AuctionFirstBiddingView extends StatelessWidget {
                                 initialValue: snapshot.data,
                                 currentAuctionPrice: currentAuctionPrice),
                             SelectMaxBiddingAmount(
-                              currentAuctionPrice: currentAuctionPrice,
+                              currentPrice: currentAuctionPrice,
+                              biddingIncrementAmount : biddingIncrementAmount,
                               currentBiddingMethod:
                                   snapshot.data ?? BiddingMethod.manual,
                             ),

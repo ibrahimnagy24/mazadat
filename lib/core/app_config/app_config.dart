@@ -23,7 +23,7 @@ class AppConfig {
 
   static const APP_LINK = 'https://mazadat.api.innoeg.com';
 
-  static const PUSHER_API_KEY = '7a6aa46f5b5135831c02';
+  static const PUSHER_API_KEY = '484829b34536dc168dcb';
   static const PUSHER_API_CLUSTER = 'eu';
   static const PUSHER_AUTH_ENDPOINT = 'https://mazadat.api.innoeg.com';
 

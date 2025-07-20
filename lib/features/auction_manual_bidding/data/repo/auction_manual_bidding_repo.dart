@@ -6,9 +6,10 @@ import '../../../../core/services/network/network_helper.dart';
 import '../../../../core/shared/entity/error_entity.dart';
 
 abstract class AuctionManualBiddingRepo {
-  static Future<Either<ErrorEntity, Response>> manualBidding(Map<String, dynamic> data) async {
+  static Future<Either<ErrorEntity, Response>> manualBidding(
+      Map<String, dynamic> data) async {
     try {
-      final response = await Network().request(Endpoints.auctionManualBidding,
+      final response = await Network().request(Endpoints.auctionBidding,
           method: ServerMethods.POST, body: data);
 
       if (response.statusCode == 200) {

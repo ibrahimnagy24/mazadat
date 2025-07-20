@@ -92,7 +92,8 @@ class _AuctionDetailsMobileDesignScreenState
             ],
           ),
         );
-      } else {
+      }
+      else {
         return CustomScaffoldWidget(
           appbar: const CustomAppBar(),
           needAppbar: true,

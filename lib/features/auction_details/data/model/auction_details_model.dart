@@ -27,7 +27,7 @@ class AuctionDetailsModel {
   int? productId;
   String? primaryPhoto;
   String? maxBiddingAmount, lastBidderId;
-  BiddingMethod?  currentBiddingMethod;
+  BiddingMethod? currentBiddingMethod;
 
   AuctionDetailsModel({
     this.id,
@@ -63,7 +63,10 @@ class AuctionDetailsModel {
     id = json['id'];
     status = json['status'];
     statusLabel = json['statusLabel'];
-    auctionType = json['auctionType'] != null ? AuctionEnumConverter.stringToAuctionType(json['auctionType']['code']?.toString().toUpperCase() ?? 'PRIVATE') : AuctionType.public;
+    auctionType = json['auctionType'] != null
+        ? AuctionEnumConverter.stringToAuctionType(
+            json['auctionType']['code']?.toString().toUpperCase() ?? 'PRIVATE')
+        : AuctionType.public;
     auctionCategory = json['auctionCategory'] != null
         ? CategoryModel.fromJson(json['auctionCategory'])
         : null;
@@ -85,8 +88,10 @@ class AuctionDetailsModel {
       }
     }
     openingPrice = json['openingPrice'];
-    biddingIncrementAmount = double.parse(json['biddingIncrementAmount']?.toString()??'0');
-    currentBiddingAmount = double.parse(json['currentBiddingAmount']?.toString()??'0');
+    biddingIncrementAmount =
+        double.parse(json['biddingIncrementAmount']?.toString() ?? '0');
+    currentBiddingAmount =
+        double.parse(json['currentBiddingAmount']?.toString() ?? '0');
     startDate = json['endDate'] != null
         ? DateTime.parse(json['startDate'])
         : DateTime.now();
@@ -103,11 +108,14 @@ class AuctionDetailsModel {
     primaryPhoto = json['primaryPhoto'];
     isJoined = json['participant'];
     firstBid = json['firstBid'];
-    autoBiddingEnabled = json['autoBiddingEnabled'] ;
+    autoBiddingEnabled = json['autoBiddingEnabled'];
     maxBiddingAmount = json['maxBiddingAmount'];
     lastBidderId = json['lastBidderId'];
     isStarted = startDate?.isBefore(DateTime.now());
-    currentBiddingMethod = json['currentBiddingMethod'] != null ? BiddingMethodConverter.stringToBiddingMethod(json['currentBiddingMethod']?.toString().toUpperCase()) :null;
+    currentBiddingMethod = json['currentBiddingMethod'] != null
+        ? BiddingMethodConverter.stringToBiddingMethod(
+            json['currentBiddingMethod']?.toString().toUpperCase())
+        : null;
   }
 
   Map<String, dynamic> toJson() {

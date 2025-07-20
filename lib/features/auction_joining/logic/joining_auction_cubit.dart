@@ -27,6 +27,11 @@ class JoiningAuctionCubit extends Cubit<JoiningAuctionState> {
       return emit(JoiningAuctionError(failure));
     }, (success) {
       if (success.statusCode == 200) {
+        CustomNavigator.pop();
+        CustomNavigator.navigatorState.currentContext?.read<CheckOnJoiningAuctionCubit>().checkOnJoinAuction({
+          'auctionId': id,
+          'paymentTransactionId': success.data['TRANSACTION_ID']
+        });
         ///FORM_LINK
 
         ///TRANSACTION_ID

@@ -12,9 +12,11 @@ import '../../logic/auction_first_bidding_state.dart';
 class SelectMaxBiddingAmount extends StatelessWidget {
   const SelectMaxBiddingAmount(
       {super.key,
-      required this.currentAuctionPrice,
+      required this.currentPrice,
+      required this.biddingIncrementAmount,
       required this.currentBiddingMethod});
-  final double currentAuctionPrice;
+  final double currentPrice, biddingIncrementAmount;
+
   final BiddingMethod currentBiddingMethod;
 
   @override
@@ -28,7 +30,8 @@ class SelectMaxBiddingAmount extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 12.h,
               children: [
-                Text(
+                if(currentBiddingMethod == BiddingMethod.auto)
+                  Text(
                   AppStrings.selectMaxBiddingAmount.tr,
                   style: AppTextStyles.textLgBold,
                 ),
@@ -75,7 +78,10 @@ class SelectMaxBiddingAmount extends StatelessWidget {
                           ),
 
                           PriceWidgetWithFlagWidget(
-                            price: '${snapshot.data ?? 0}',
+                            price: '${
+                                (currentBiddingMethod == BiddingMethod.manual)?
+                                (currentPrice + biddingIncrementAmount)  :
+                                snapshot.data ?? 0}',
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             colorFilter: const ColorFilter.mode(

@@ -16,7 +16,7 @@ class AuctionFirstBiddingButton extends StatelessWidget {
       child: DefaultButton(
         text: AppStrings.bid.tr,
         onPressed: ()=>
-          context.read<AuctionFirstBiddingCubit>().firstBidding(id),
+          context.read<AuctionFirstBiddingCubit>().bidding(id),
       ),
     );
   }

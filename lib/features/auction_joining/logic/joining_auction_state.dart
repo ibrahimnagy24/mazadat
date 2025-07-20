@@ -6,6 +6,7 @@ import '../../../core/shared/entity/error_entity.dart';
 import '../../../core/utils/widgets/dialogs/loading_dialog.dart';
 import '../../check_out/data/model/payment_model.dart';
 import '../data/repo/joining_auction_repo.dart';
+import 'check_on_joining_auction_state.dart';
 part  'joining_auction_cubit.dart';
 
 sealed class JoiningAuctionState extends Equatable {

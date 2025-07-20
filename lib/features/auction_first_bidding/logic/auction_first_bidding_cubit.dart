@@ -19,7 +19,7 @@ class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
 
 //---------------------------------FUNCTIONS----------------------------------//
 
-  Future<void> firstBidding(int id) async {
+  Future<void> bidding(int id) async {
     emit(AuctionFirstBiddingLoading());
     loadingDialog();
 

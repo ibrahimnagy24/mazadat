@@ -11,7 +11,7 @@ abstract class AuctionFirstBiddingRepo {
   static Future<Either<ErrorEntity, Response>> firstBid(
       Map<String, dynamic> data) async {
     try {
-      final response = await Network().request(Endpoints.auctionFirstBidding,
+      final response = await Network().request(Endpoints.auctionBidding,
           method: ServerMethods.POST, body: data);
 
       if (response.statusCode == 200) {

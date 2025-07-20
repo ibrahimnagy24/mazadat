@@ -258,5 +258,8 @@ class AppStrings {
   static const String areYouSureYouWantToWithdrawFromTheAuction = 'Are you sure you want to withdraw from the auction?';
   static const String theAmountWillBeRefundedToThePaymentMethodUsed = 'The amount will be refunded to the payment method used.';
 
+  static const String youHaveSuccessfullySubscribedToTheAuction = 'You have successfully subscribed to the auction.';
+  static const String tryAgain = 'Try Again';
+
 
 }

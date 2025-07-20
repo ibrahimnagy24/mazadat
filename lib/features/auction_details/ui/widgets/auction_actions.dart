@@ -49,7 +49,9 @@ class AuctionActions extends StatelessWidget {
             onPressed: () => CustomBottomSheet.show(
                 label: AppStrings.selectBiddingMethod.tr,
                 widget: AuctionFirstBiddingView(
-                    id: id, currentAuctionPrice: currentPrice)),
+                    id: id,
+                    currentAuctionPrice: currentPrice,
+                    biddingIncrementAmount: biddingIncrementAmount)),
             text: AppStrings.bidding.tr,
           ),
 

@@ -224,6 +224,8 @@
   "Are you sure you want to bid automatically?": "هل أنت متأكد من المزايدة آلياً",
   "Wًithdrawal": "إنسحاب",
   "Are you sure you want to withdraw from the auction?": "هل أنت متأكد من الإنسحاب من المزاد؟",
-  "The amount will be refunded to the payment method used.": "سيتم إعادة المبلغ إلى وسيلة الدفع المستخدمة"
+  "The amount will be refunded to the payment method used.": "سيتم إعادة المبلغ إلى وسيلة الدفع المستخدمة",
+  "You have successfully subscribed to the auction.": "لقد اشتركت بنجاح في المزاد.",
+  "Try Again": "المحاولة مره اخري"
 
 }

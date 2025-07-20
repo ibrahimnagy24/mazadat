@@ -3,10 +3,8 @@ part of 'auction_manual_bidding_state.dart';
 class AuctionManualBiddingCubit extends Cubit<AuctionManualBiddingState> {
   AuctionManualBiddingCubit() : super(AuctionManualBiddingInitial()) ;
 
-//---------------------------------VARIABLES----------------------------------//
 
 
-//---------------------------------FUNCTIONS----------------------------------//
 
   Future<void> startManualBidding(int id) async {
     emit(AuctionManualBiddingLoading());
@@ -14,6 +12,7 @@ class AuctionManualBiddingCubit extends Cubit<AuctionManualBiddingState> {
 
     Map<String, dynamic> data = {
       'auctionId': id,
+      'biddingMethod':'MANUAL'
    };
 
     final response = await AuctionManualBiddingRepo.manualBidding(data);

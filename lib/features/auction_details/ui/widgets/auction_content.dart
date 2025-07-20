@@ -17,6 +17,7 @@ import '../../../auction_withdrawal_bidding/ui/pages/auction_withdrawal_view.dar
 import '../../../favourites/ui/widgets/favourite_button.dart';
 import '../../../user/logic/user_cubit.dart';
 import '../../data/model/auction_details_model.dart';
+import '../../logic/auction_pusher_cubit.dart';
 import 'auction_actions.dart';
 
 class AuctionContent extends StatelessWidget {
@@ -25,86 +26,120 @@ class AuctionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 16.h,
-      children: [
-        ///Auction Header
-        Row(
-          spacing: 12.w,
-          children: [
-            FavouriteButton(
-              id: model.id,
-              isFav: model.myfav == true,
-              withBackGround: true,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    model.name ?? '',
-                    style: AppTextStyles.displaySMMedium.copyWith(fontSize: 20),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                        text: AppStrings.auctionNumber.tr,
-                        style: AppTextStyles.textMdRegular,
-                        children: [
-                          TextSpan(
-                            text: " ${model.auctionNumber ?? ''}",
-                            style: AppTextStyles.textLgRegular,
-                          ),
-                        ]),
-                  )
-                ],
+    return BlocBuilder<AuctionPusherCubit, AuctionPusherState>(
+        builder: (context, state) {
+      final cubit = context.read<AuctionPusherCubit>();
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16.h,
+        children: [
+          ///Auction Header
+          Row(
+            spacing: 12.w,
+            children: [
+              FavouriteButton(
+                id: model.id,
+                isFav: model.myfav == true,
+                withBackGround: true,
               ),
-            ),
-            model.isJoined == true
-                ? TextButton(
-                    onPressed: () => CustomBottomSheet.show(
-                        widget: AuctionWithdrawalView(id: model.id??0)),
-                    child: Text(
-                      AppStrings.withdrawal.tr,
-                      style: AppTextStyles.textMdRegular.copyWith(
-                        fontSize: 12,
-                        color: AppColors.textError,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.name ?? '',
+                      style:
+                          AppTextStyles.displaySMMedium.copyWith(fontSize: 20),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                          text: AppStrings.auctionNumber.tr,
+                          style: AppTextStyles.textMdRegular,
+                          children: [
+                            TextSpan(
+                              text: " ${model.auctionNumber ?? ''}",
+                              style: AppTextStyles.textLgRegular,
+                            ),
+                          ]),
+                    )
+                  ],
+                ),
+              ),
+              model.isJoined == true
+                  ? TextButton(
+                      onPressed: () => CustomBottomSheet.show(
+                          widget: AuctionWithdrawalView(id: model.id ?? 0)),
+                      child: Text(
+                        AppStrings.withdrawal.tr,
+                        style: AppTextStyles.textMdRegular.copyWith(
+                          fontSize: 12,
+                          color: AppColors.textError,
+                        ),
+                      ))
+                  : Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.kOpacityGrey3,
+                        borderRadius: BorderRadius.circular(AppRadius.rM),
+                        border: Border.all(color: AppColors.kOpacityGrey),
                       ),
-                    ))
-                : Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.kOpacityGrey3,
-                      borderRadius: BorderRadius.circular(AppRadius.rM),
-                      border: Border.all(color: AppColors.kOpacityGrey),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 6),
+                      child: Text(
+                        model.auctionType?.name.tr ?? '',
+                        style: AppTextStyles.bodyXsReq,
+                      ),
                     ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                    child: Text(
-                      model.auctionType?.name.tr ?? '',
-                      style: AppTextStyles.bodyXsReq,
-                    ),
-                  ),
-          ],
-        ),
-        DottedBorder(
-          options: const RectDottedBorderOptions(
-            strokeWidth: 1,
-            color: Color.fromRGBO(138, 147, 118, 1),
-            dashPattern: [3, 5],
-            padding: EdgeInsets.zero,
+            ],
           ),
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 18.h),
-            decoration: BoxDecoration(
-              color: AppColors.kOpacityGrey3,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.kOpacityGrey),
+          DottedBorder(
+            options: const RectDottedBorderOptions(
+              strokeWidth: 1,
+              color: Color.fromRGBO(138, 147, 118, 1),
+              dashPattern: [3, 5],
+              padding: EdgeInsets.zero,
             ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (model.isStarted == true) ...[
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 18.h),
+              decoration: BoxDecoration(
+                color: AppColors.kOpacityGrey3,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.kOpacityGrey),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (model.isStarted == true) ...[
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 4.h,
+                        children: [
+                          Text(
+                            AppStrings.endAfter.tr,
+                            style: AppTextStyles.bodyXsReq,
+                          ),
+                          CountdownTimerWidget(
+                            startDate: model.startDate ?? DateTime.now(),
+                            endTime: model.endDate ?? DateTime.now(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const DottedBorder(
+                      options: RectDottedBorderOptions(
+                        strokeWidth: 1,
+                        color: Color.fromRGBO(138, 147, 118, 1),
+                        dashPattern: [3, 5],
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: SizedBox(
+                        width: 1,
+                        height: 56,
+                      ),
+                    ),
+                  ],
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -112,225 +147,197 @@ class AuctionContent extends StatelessWidget {
                       spacing: 4.h,
                       children: [
                         Text(
-                          AppStrings.endAfter.tr,
+                          AppStrings.openingPrice.tr,
                           style: AppTextStyles.bodyXsReq,
                         ),
-                        CountdownTimerWidget(
-                          startDate: model.startDate ?? DateTime.now(),
-                          endTime: model.endDate ?? DateTime.now(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const DottedBorder(
-                    options: RectDottedBorderOptions(
-                      strokeWidth: 1,
-                      color: Color.fromRGBO(138, 147, 118, 1),
-                      dashPattern: [3, 5],
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: SizedBox(
-                      width: 1,
-                      height: 56,
-                    ),
-                  ),
-                ],
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 4.h,
-                    children: [
-                      Text(
-                        AppStrings.openingPrice.tr,
-                        style: AppTextStyles.bodyXsReq,
-                      ),
-                      PriceWidgetWithFlagWidget(
-                        price: model.openingPrice ?? '',
-                        priceStyle: AppTextStyles.textLgBold,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.kPrimary,
-                          BlendMode.srcIn,
-                        ),
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        ///Product Description
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8.h,
-          children: [
-            Text(
-              AppStrings.productDescription.tr,
-              style: AppTextStyles.textLgBold
-                  .copyWith(color: AppColors.textDefault),
-            ),
-            Text(
-              model.description ?? '',
-              style: AppTextStyles.textLgRegular,
-            ),
-          ],
-        ),
-
-        ///Estimated Value
-        model.isStarted == true
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 14.h,
-                children: [
-                  Text(
-                    AppStrings.estimatedValue.tr,
-                    style: AppTextStyles.textLgBold
-                        .copyWith(color: AppColors.textDefault),
-                  ),
-                  Stack(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: MediaQuery.sizeOf(context).width,
-                        decoration: BoxDecoration(
-                          color: AppColors.kOpacityGrey3,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: AppColors.border),
-                        ),
-                        child: PriceWidgetWithFlagWidget(
-                          price: '${model.currentBiddingAmount ?? 0}',
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        PriceWidgetWithFlagWidget(
+                          price: model.openingPrice ?? '',
+                          priceStyle: AppTextStyles.textLgBold,
                           colorFilter: const ColorFilter.mode(
                             AppColors.kPrimary,
                             BlendMode.srcIn,
                           ),
-                          priceStyle: AppTextStyles.displaySMMedium.copyWith(
-                              color: AppColors.kPrimary, fontSize: 20),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                         ),
-                      ),
-                      PositionedDirectional(
-                        top: 0,
-                        start: 20,
-                        child: Transform.translate(
-                          offset: const Offset(0, -10),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: AppColors.kOpacityGrey3,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: MainText(
-                              text: AppStrings.actualPrice.tr,
-                              style: AppTextStyles.textMdRegular,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-
-                  ///Estimated Value
-                  Row(
-                    spacing: 4.w,
-                    children: [
-                      const Icon(
-                        Icons.info_outline,
-                        color: AppColors.iconDefault,
-                        size: 16,
-                      ),
-                      Expanded(
-                          child: Text(
-                        AppStrings
-                            .theCurrentPriceIsDeterminedAutomaticallyBasedOnAPercentageOfTheOpeningPriceValue
-                            .tr,
-                        style: AppTextStyles.textMdRegular,
-                      ))
-                    ],
-                  )
-                ],
-              )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 8.h,
-                children: [
-                  ///Auction Start Date
-                  Row(
-                    spacing: 8.w,
-                    children: [
-                      customImageIconSVG(
-                          imageName: AppSvg.calendar,
-                          width: 16.w,
-                          height: 16.w,
-                          color: AppColors.iconDefault),
-                      Expanded(
-                        child: RichText(
-                          text: TextSpan(
-                              text: '${AppStrings.auctionStartDate.tr}  ',
-                              style: AppTextStyles.textLgRegular,
-                              children: [
-                                TextSpan(
-                                  text: model.startDate?.toDateFormat(
-                                      format: 'd MMMM yyyy',
-                                      locale: mainAppBloc.lang.valueOrNull),
-                                  style: AppTextStyles.textLgRegular
-                                      .copyWith(color: AppColors.textPrimary),
-                                ),
-                              ]),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  ///Auction End Date
-                  Row(
-                    spacing: 8.w,
-                    children: [
-                      customImageIconSVG(
-                          imageName: AppSvg.calendar,
-                          width: 16.w,
-                          height: 16.w,
-                          color: AppColors.iconDefault),
-                      Expanded(
-                        child: RichText(
-                          text: TextSpan(
-                              text: '${AppStrings.auctionEndDate.tr}  ',
-                              style: AppTextStyles.textLgRegular,
-                              children: [
-                                TextSpan(
-                                  text: model.endDate?.toDateFormat(
-                                      format: 'd MMMM yyyy',
-                                      locale: mainAppBloc.lang.valueOrNull),
-                                  style: AppTextStyles.textLgRegular
-                                      .copyWith(color: AppColors.textPrimary),
-                                ),
-                              ]),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
+            ),
+          ),
 
-        SizedBox(height: 24.h),
+          ///Product Description
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 8.h,
+            children: [
+              Text(
+                AppStrings.productDescription.tr,
+                style: AppTextStyles.textLgBold
+                    .copyWith(color: AppColors.textDefault),
+              ),
+              Text(
+                model.description ?? '',
+                style: AppTextStyles.textLgRegular,
+              ),
+            ],
+          ),
 
-        AuctionActions(
-          id: model.id ?? 0,
-          firstBidding: model.firstBid == true,
-          isJoined: model.isJoined == true,
-          autoBiddingEnabled: model.autoBiddingEnabled == true,
-          canBid: model.lastBidderId != context.read<UserCubit>().userEntity?.id.toString(),
-          currentPrice: model.currentBiddingAmount ?? 0,
-          biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
-          currentBiddingMethod: model.currentBiddingMethod,
-        ),
-      ],
-    );
+          ///Estimated Value
+          model.isStarted == true
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 14.h,
+                  children: [
+                    Text(
+                      AppStrings.estimatedValue.tr,
+                      style: AppTextStyles.textLgBold
+                          .copyWith(color: AppColors.textDefault),
+                    ),
+                    Stack(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: MediaQuery.sizeOf(context).width,
+                          decoration: BoxDecoration(
+                            color: AppColors.kOpacityGrey3,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: AppColors.border),
+                          ),
+                          child: PriceWidgetWithFlagWidget(
+                            price:
+                                '${cubit.details?.currentBiddingAmount ?? model.currentBiddingAmount ?? 0}',
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            colorFilter: const ColorFilter.mode(
+                              AppColors.kPrimary,
+                              BlendMode.srcIn,
+                            ),
+                            priceStyle: AppTextStyles.displaySMMedium.copyWith(
+                                color: AppColors.kPrimary, fontSize: 20),
+                          ),
+                        ),
+                        PositionedDirectional(
+                          top: 0,
+                          start: 20,
+                          child: Transform.translate(
+                            offset: const Offset(0, -10),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: AppColors.kOpacityGrey3,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: MainText(
+                                text: AppStrings.actualPrice.tr,
+                                style: AppTextStyles.textMdRegular,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+
+                    ///Estimated Value
+                    Row(
+                      spacing: 4.w,
+                      children: [
+                        const Icon(
+                          Icons.info_outline,
+                          color: AppColors.iconDefault,
+                          size: 16,
+                        ),
+                        Expanded(
+                            child: Text(
+                          AppStrings
+                              .theCurrentPriceIsDeterminedAutomaticallyBasedOnAPercentageOfTheOpeningPriceValue
+                              .tr,
+                          style: AppTextStyles.textMdRegular,
+                        ))
+                      ],
+                    )
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 8.h,
+                  children: [
+                    ///Auction Start Date
+                    Row(
+                      spacing: 8.w,
+                      children: [
+                        customImageIconSVG(
+                            imageName: AppSvg.calendar,
+                            width: 16.w,
+                            height: 16.w,
+                            color: AppColors.iconDefault),
+                        Expanded(
+                          child: RichText(
+                            text: TextSpan(
+                                text: '${AppStrings.auctionStartDate.tr}  ',
+                                style: AppTextStyles.textLgRegular,
+                                children: [
+                                  TextSpan(
+                                    text: model.startDate?.toDateFormat(
+                                        format: 'd MMMM yyyy',
+                                        locale: mainAppBloc.lang.valueOrNull),
+                                    style: AppTextStyles.textLgRegular
+                                        .copyWith(color: AppColors.textPrimary),
+                                  ),
+                                ]),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    ///Auction End Date
+                    Row(
+                      spacing: 8.w,
+                      children: [
+                        customImageIconSVG(
+                            imageName: AppSvg.calendar,
+                            width: 16.w,
+                            height: 16.w,
+                            color: AppColors.iconDefault),
+                        Expanded(
+                          child: RichText(
+                            text: TextSpan(
+                                text: '${AppStrings.auctionEndDate.tr}  ',
+                                style: AppTextStyles.textLgRegular,
+                                children: [
+                                  TextSpan(
+                                    text: model.endDate?.toDateFormat(
+                                        format: 'd MMMM yyyy',
+                                        locale: mainAppBloc.lang.valueOrNull),
+                                    style: AppTextStyles.textLgRegular
+                                        .copyWith(color: AppColors.textPrimary),
+                                  ),
+                                ]),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+
+          SizedBox(height: 24.h),
+
+          AuctionActions(
+            id: model.id ?? 0,
+            isJoined: model.isJoined == true && (cubit.details?.isJoined ?? true) == true,
+            firstBidding: model.firstBid == true && (cubit.details?.firstBid ?? true) == true,
+            autoBiddingEnabled: model.autoBiddingEnabled == true && (cubit.details?.autoBiddingEnabled ?? true) == true,
+            canBid: model.lastBidderId != context.read<UserCubit>().userEntity?.id.toString() && cubit.details?.lastBidderId != context.read<UserCubit>().userEntity?.id.toString(),
+            currentPrice: cubit.details?.currentBiddingAmount ?? model.currentBiddingAmount ?? 0,
+            biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
+            currentBiddingMethod: model.currentBiddingMethod,
+          ),
+        ],
+      );
+    });
   }
 }

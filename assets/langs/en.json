@@ -224,5 +224,7 @@
   "Are you sure you want to bid automatically?": "Are you sure you want to bid automatically?",
   "Wًithdrawal": "Wًithdrawal",
   "Are you sure you want to withdraw from the auction?": "Are you sure you want to withdraw from the auction?",
-  "The amount will be refunded to the payment method used.": "The amount will be refunded to the payment method used."
+  "The amount will be refunded to the payment method used.": "The amount will be refunded to the payment method used.",
+  "You have successfully subscribed to the auction.": "You have successfully subscribed to the auction.",
+  "Try Again": "Try Again"
 }
