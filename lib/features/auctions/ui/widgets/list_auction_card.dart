@@ -33,7 +33,7 @@ class ListAuctionCard extends StatelessWidget {
           CustomNavigator.push(
             Routes.AUCTION_DETAILS,
             extra: AuctionDetailsRouteParams(
-                auctionId: auction.id, primaryImage: auction.primaryPhoto),
+                auctionId: 113, primaryImage: auction.primaryPhoto),
           );
         }
       },

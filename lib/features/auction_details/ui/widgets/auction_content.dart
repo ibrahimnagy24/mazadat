@@ -30,9 +30,7 @@ class AuctionContent extends StatelessWidget {
     return BlocConsumer<AuctionPusherCubit, AuctionPusherState>(
         listener: (c, s) {
       final cubit = context.read<AuctionPusherCubit>();
-      if (((cubit.details?.currentBiddingAmount ?? 0) >
-              (cubit.details?.maxBiddingAmount ?? 0)) &&
-          cubit.details?.isJoined == true) {
+      if (((cubit.details?.currentBiddingAmount ?? 0) > (cubit.details?.maxBiddingAmount ?? 0)) && cubit.details?.isJoined == true) {
         CustomBottomSheet.show(
           label: AppStrings.selectBiddingMethod.tr,
           widget: AuctionExceedMaxBiddingAlert(
@@ -42,6 +40,7 @@ class AuctionContent extends StatelessWidget {
           ),
         );
       }
+
     }, builder: (context, state) {
       final cubit = context.read<AuctionPusherCubit>();
 
