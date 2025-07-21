@@ -56,6 +56,7 @@
   "Bid": "Bid",
   "Bid with": "Bid with",
   "Bidding": "Bidding",
+  "New Bidding": "New Bidding",
   "Packages": "Packages",
   "Featured Auctions": "Featured Auctions",
   "Current auctions": "Current auctions",
@@ -226,5 +227,6 @@
   "Are you sure you want to withdraw from the auction?": "Are you sure you want to withdraw from the auction?",
   "The amount will be refunded to the payment method used.": "The amount will be refunded to the payment method used.",
   "You have successfully subscribed to the auction.": "You have successfully subscribed to the auction.",
-  "Try Again": "Try Again"
+  "Try Again": "Try Again",
+  "The specified bid value has been reached.": "The specified bid value has been reached."
 }

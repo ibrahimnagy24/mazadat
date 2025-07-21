@@ -3,8 +3,8 @@ import '../../../../core/utils/enums/enums_converter.dart';
 
 class AuctionPusherModel {
   int? id;
-  String? maxBiddingAmount, lastBidderId;
-  double? currentBiddingAmount;
+  String?  lastBidderId;
+  double? currentBiddingAmount,maxBiddingAmount;
   bool? isJoined,firstBid, autoBiddingEnabled;
   BiddingMethod? currentBiddingMethod;
 
@@ -23,8 +23,8 @@ class AuctionPusherModel {
 
   AuctionPusherModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    currentBiddingAmount = json['currentBiddingAmount'];
-    maxBiddingAmount = json['maxBiddingAmount'];
+    currentBiddingAmount = double.parse( json['currentBiddingAmount']?.toString()??'0');
+    maxBiddingAmount = double.parse( json['maxBiddingAmount']?.toString()??'0');
     lastBidderId = json['lastBidderId'];
     isJoined = json['isJoined'];
     firstBid = json['firstBid'];

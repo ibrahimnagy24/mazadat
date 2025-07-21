@@ -56,6 +56,7 @@ class AppStrings {
   static const String openingPrice = 'Opening price';
   static const String insuranceAmount = 'Insurance amount';
   static const String bidding = 'Bidding';
+  static const String newBidding = 'New Bidding';
   static const String bid = 'Bid';
   static const String bidWith = 'Bid with';
   static const String packages = 'Packages';
@@ -260,6 +261,7 @@ class AppStrings {
 
   static const String youHaveSuccessfullySubscribedToTheAuction = 'You have successfully subscribed to the auction.';
   static const String tryAgain = 'Try Again';
+  static const String theSpecifiedBidValueHasBeeReached = 'The specified bid value has been reached.';
 
 
 }

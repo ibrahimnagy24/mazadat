@@ -19,6 +19,7 @@ import '../../../user/logic/user_cubit.dart';
 import '../../data/model/auction_details_model.dart';
 import '../../logic/auction_pusher_cubit.dart';
 import 'auction_actions.dart';
+import 'auction_exceed_max_bidding_alert.dart';
 
 class AuctionContent extends StatelessWidget {
   const AuctionContent({super.key, required this.model});
@@ -26,9 +27,24 @@ class AuctionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuctionPusherCubit, AuctionPusherState>(
-        builder: (context, state) {
+    return BlocConsumer<AuctionPusherCubit, AuctionPusherState>(
+        listener: (c, s) {
       final cubit = context.read<AuctionPusherCubit>();
+      if (((cubit.details?.currentBiddingAmount ?? 0) >
+              (cubit.details?.maxBiddingAmount ?? 0)) &&
+          cubit.details?.isJoined == true) {
+        CustomBottomSheet.show(
+          label: AppStrings.selectBiddingMethod.tr,
+          widget: AuctionExceedMaxBiddingAlert(
+            id: cubit.details?.id ?? 0,
+            currentAuctionPrice: cubit.details?.currentBiddingAmount ?? 0,
+            biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
+          ),
+        );
+      }
+    }, builder: (context, state) {
+      final cubit = context.read<AuctionPusherCubit>();
+
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16.h,
@@ -328,11 +344,19 @@ class AuctionContent extends StatelessWidget {
 
           AuctionActions(
             id: model.id ?? 0,
-            isJoined: model.isJoined == true && (cubit.details?.isJoined ?? true) == true,
-            firstBidding: model.firstBid == true && (cubit.details?.firstBid ?? true) == true,
-            autoBiddingEnabled: model.autoBiddingEnabled == true && (cubit.details?.autoBiddingEnabled ?? true) == true,
-            canBid: model.lastBidderId != context.read<UserCubit>().userEntity?.id.toString() && cubit.details?.lastBidderId != context.read<UserCubit>().userEntity?.id.toString(),
-            currentPrice: cubit.details?.currentBiddingAmount ?? model.currentBiddingAmount ?? 0,
+            isJoined: model.isJoined == true &&
+                (cubit.details?.isJoined ?? true) == true,
+            firstBidding: model.firstBid == true &&
+                (cubit.details?.firstBid ?? true) == true,
+            autoBiddingEnabled: model.autoBiddingEnabled == true &&
+                (cubit.details?.autoBiddingEnabled ?? true) == true,
+            canBid: model.lastBidderId !=
+                    context.read<UserCubit>().userEntity?.id.toString() &&
+                cubit.details?.lastBidderId !=
+                    context.read<UserCubit>().userEntity?.id.toString(),
+            currentPrice: cubit.details?.currentBiddingAmount ??
+                model.currentBiddingAmount ??
+                0,
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
             currentBiddingMethod: model.currentBiddingMethod,
           ),

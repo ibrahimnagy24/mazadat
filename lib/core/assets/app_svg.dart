@@ -68,5 +68,6 @@ class AppSvg {
   static const String bank = '$_svgPath/bank.svg';
   static const String money = '$_svgPath/money.svg';
   static const String withdrawal = '$_svgPath/withdrawal.svg';
+  static const String alert = '$_svgPath/alert.svg';
 
 }
