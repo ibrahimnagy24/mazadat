@@ -62,7 +62,7 @@ class _AuctionDetailsMobileDesignScreenState
                 onTap: () {
                   context
                       .read<AuctionDetailsCubit>()
-                      .auctionDetailsStatesHandled(widget.routeParams);
+                      .auctionDetailsStatesHandled(widget.routeParams.auctionId);
                 },
               ),
             ));

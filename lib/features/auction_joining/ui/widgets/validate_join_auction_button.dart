@@ -13,8 +13,10 @@ import 'agree_to_commission.dart';
 import 'agree_to_insurance.dart';
 
 class ValidateJoinAuctionButton extends StatelessWidget {
-  const ValidateJoinAuctionButton({super.key, required this.id});
+  const ValidateJoinAuctionButton(
+      {super.key, required this.id, this.onSuccess});
   final int id;
+  final Function()? onSuccess;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +30,26 @@ class ValidateJoinAuctionButton extends StatelessWidget {
           DefaultButton(
             text: AppStrings.confirm.tr,
             onPressed: () {
-              if (context.read<ValidateJoiningAuctionCubit>().commission.valueOrNull != true) {
+              if (context
+                      .read<ValidateJoiningAuctionCubit>()
+                      .commission
+                      .valueOrNull !=
+                  true) {
                 showToast(AppStrings.agreeToCommissionAndInsurance.tr);
-              } else if (context.read<ValidateJoiningAuctionCubit>().insurance.valueOrNull !=
+              } else if (context
+                      .read<ValidateJoiningAuctionCubit>()
+                      .insurance
+                      .valueOrNull !=
                   true) {
                 showToast(AppStrings.agreeToCommissionAndInsurance.tr);
               } else {
                 CustomNavigator.pop();
-                CustomBottomSheet.show(label: AppStrings.selectPaymentMethod.tr, widget: JoinAuctionView(id: id));
+                CustomBottomSheet.show(
+                    label: AppStrings.selectPaymentMethod.tr,
+                    widget: JoinAuctionView(
+                      id: id,
+                      onSuccess: onSuccess,
+                    ));
               }
             },
           ),

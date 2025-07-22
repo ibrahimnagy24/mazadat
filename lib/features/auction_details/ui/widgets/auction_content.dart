@@ -9,6 +9,7 @@ import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
+import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
@@ -18,6 +19,7 @@ import '../../../favourites/ui/widgets/favourite_button.dart';
 import '../../../user/logic/user_cubit.dart';
 import '../../data/model/auction_details_model.dart';
 import '../../logic/auction_pusher_cubit.dart';
+import '../../logic/view_auction_cubit.dart';
 import 'auction_actions.dart';
 import 'auction_exceed_max_bidding_alert.dart';
 
@@ -30,17 +32,25 @@ class AuctionContent extends StatelessWidget {
     return BlocConsumer<AuctionPusherCubit, AuctionPusherState>(
         listener: (c, s) {
       final cubit = context.read<AuctionPusherCubit>();
-      if (((cubit.details?.currentBiddingAmount ?? 0) > (cubit.details?.maxBiddingAmount ?? 0)) && cubit.details?.isJoined == true) {
+
+      ///To View Alert After exceeded maxBiddingAmount
+      if (((cubit.details?.currentBiddingAmount ?? 0) >
+              (model.maxBiddingAmount ?? 0)) &&
+          model.currentBiddingMethod == BiddingMethod.auto &&
+          model.isJoined == true) {
         CustomBottomSheet.show(
           label: AppStrings.selectBiddingMethod.tr,
           widget: AuctionExceedMaxBiddingAlert(
-            id: cubit.details?.id ?? 0,
-            currentAuctionPrice: cubit.details?.currentBiddingAmount ?? 0,
+            id: model.id ?? 0,
+            onSuccess: () => context
+                .read<AuctionDetailsCubit>()
+                .auctionDetailsStatesHandled(model.id!),
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
+            currentAuctionPrice: cubit.details?.currentBiddingAmount ?? 0,
+            autoBiddingEnabled: model.autoBiddingEnabled == true,
           ),
         );
       }
-
     }, builder: (context, state) {
       final cubit = context.read<AuctionPusherCubit>();
 
@@ -83,7 +93,12 @@ class AuctionContent extends StatelessWidget {
               model.isJoined == true
                   ? TextButton(
                       onPressed: () => CustomBottomSheet.show(
-                          widget: AuctionWithdrawalView(id: model.id ?? 0)),
+                              widget: AuctionWithdrawalView(
+                            id: model.id ?? 0,
+                            onSuccess: () => context
+                                .read<AuctionDetailsCubit>()
+                                .auctionDetailsStatesHandled(model.id ?? 0),
+                          )),
                       child: Text(
                         AppStrings.withdrawal.tr,
                         style: AppTextStyles.textMdRegular.copyWith(
@@ -343,16 +358,11 @@ class AuctionContent extends StatelessWidget {
 
           AuctionActions(
             id: model.id ?? 0,
-            isJoined: model.isJoined == true &&
-                (cubit.details?.isJoined ?? true) == true,
-            firstBidding: model.firstBid == true &&
-                (cubit.details?.firstBid ?? true) == true,
-            autoBiddingEnabled: model.autoBiddingEnabled == true &&
-                (cubit.details?.autoBiddingEnabled ?? true) == true,
-            canBid: model.lastBidderId !=
-                    context.read<UserCubit>().userEntity?.id.toString() &&
-                cubit.details?.lastBidderId !=
-                    context.read<UserCubit>().userEntity?.id.toString(),
+            isJoined: model.isJoined == true,
+            firstBidding: model.firstBid == true,
+            autoBiddingEnabled: model.autoBiddingEnabled == true,
+            canBid: (cubit.details?.userId ?? model.lastBidderId) !=
+                context.read<UserCubit>().userEntity?.id.toString(),
             currentPrice: cubit.details?.currentBiddingAmount ??
                 model.currentBiddingAmount ??
                 0,

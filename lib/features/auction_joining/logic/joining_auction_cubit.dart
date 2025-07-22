@@ -11,7 +11,7 @@ class JoiningAuctionCubit extends Cubit<JoiningAuctionState> {
 
 //---------------------------------FUNCTIONS----------------------------------//
 
-  Future<void> joinAuction(int id) async {
+  Future<void> joinAuction({required int id, Function()? onSuccess}) async {
     emit(JoiningAuctionLoading());
     loadingDialog();
 
@@ -28,10 +28,14 @@ class JoiningAuctionCubit extends Cubit<JoiningAuctionState> {
     }, (success) {
       if (success.statusCode == 200) {
         CustomNavigator.pop();
-        CustomNavigator.navigatorState.currentContext?.read<CheckOnJoiningAuctionCubit>().checkOnJoinAuction({
+        CustomNavigator.navigatorState.currentContext
+            ?.read<CheckOnJoiningAuctionCubit>()
+            .checkOnJoinAuction({
           'auctionId': id,
-          'paymentTransactionId': success.data['TRANSACTION_ID']
+          'paymentTransactionId': success.data['TRANSACTION_ID'],
+          'onSuccess': onSuccess,
         });
+
         ///FORM_LINK
 
         ///TRANSACTION_ID

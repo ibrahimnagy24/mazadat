@@ -12,11 +12,15 @@ import '../../../auction_first_bidding/ui/pages/auction_first_bidding_view.dart'
 class AuctionExceedMaxBiddingAlert extends StatelessWidget {
   const AuctionExceedMaxBiddingAlert(
       {super.key,
+      this.onSuccess,
       required this.id,
       required this.currentAuctionPrice,
-      required this.biddingIncrementAmount});
+      required this.biddingIncrementAmount,
+      required this.autoBiddingEnabled});
   final int id;
   final double currentAuctionPrice, biddingIncrementAmount;
+  final bool autoBiddingEnabled;
+  final Function()? onSuccess;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +45,7 @@ class AuctionExceedMaxBiddingAlert extends StatelessWidget {
               label: AppStrings.selectBiddingMethod.tr,
               widget: AuctionFirstBiddingView(
                   id: id,
+                  onSuccess: onSuccess,
                   currentAuctionPrice: currentAuctionPrice,
                   biddingIncrementAmount: biddingIncrementAmount)),
           text: AppStrings.newBidding.tr,

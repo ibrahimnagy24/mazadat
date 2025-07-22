@@ -8,10 +8,10 @@ import '../params/auction_details_route_params.dart';
 
 abstract class AuctionDetailsRepo {
   static Future<Either<ErrorEntity, Response>> getAuctionDetails(
-      AuctionDetailsRouteParams params) async {
+      int id) async {
     try {
       final response = await Network().request(
-        Endpoints.auctionDetails(params.auctionId),
+        Endpoints.auctionDetails(id),
         method: ServerMethods.GET,
       );
 

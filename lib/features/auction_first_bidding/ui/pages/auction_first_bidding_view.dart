@@ -16,11 +16,14 @@ import '../widgets/select_max_bidding_amount.dart';
 class AuctionFirstBiddingView extends StatelessWidget {
   const AuctionFirstBiddingView(
       {super.key,
+      this.onSuccess,
       required this.id,
       required this.currentAuctionPrice,
       required this.biddingIncrementAmount});
   final int id;
   final double currentAuctionPrice, biddingIncrementAmount;
+
+  final Function()? onSuccess;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +105,7 @@ class AuctionFirstBiddingView extends StatelessWidget {
                         );
                       }),
                 ),
-                AuctionFirstBiddingButton(id: id),
+                AuctionFirstBiddingButton(id: id,onSuccess: onSuccess),
               ],
             );
           }),

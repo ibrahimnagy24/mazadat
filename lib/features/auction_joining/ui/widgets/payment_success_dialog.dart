@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
@@ -10,9 +8,11 @@ import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/theme/colors/styles.dart';
 
 class PaymentSuccessDialog extends StatelessWidget {
-  const PaymentSuccessDialog({super.key, required this.isSuccess, this.error});
+  const PaymentSuccessDialog(
+      {super.key, required this.isSuccess, this.error, this.onTap});
   final bool isSuccess;
   final String? error;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +46,7 @@ class PaymentSuccessDialog extends StatelessWidget {
         DefaultButton(
           text: isSuccess ? AppStrings.Continue.tr : AppStrings.tryAgain.tr,
           onPressed: () {
-            CustomNavigator.pop();
-            if (isSuccess) {
-            } else {}
+            onTap?.call();
           },
         )
       ],

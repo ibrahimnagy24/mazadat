@@ -14,6 +14,7 @@ class AuctionDetailsModel {
   String? openingPrice;
   double? biddingIncrementAmount;
   double? currentBiddingAmount;
+  double? maxBiddingAmount;
   DateTime? startDate;
   DateTime? endDate;
   String? auctionDuration;
@@ -26,7 +27,7 @@ class AuctionDetailsModel {
   bool? isStarted, isJoined, firstBid, autoBiddingEnabled;
   int? productId;
   String? primaryPhoto;
-  String? maxBiddingAmount, lastBidderId;
+  String? lastBidderId;
   BiddingMethod? currentBiddingMethod;
 
   AuctionDetailsModel({
@@ -39,6 +40,7 @@ class AuctionDetailsModel {
     this.openingPrice,
     this.biddingIncrementAmount,
     this.currentBiddingAmount,
+    this.maxBiddingAmount,
     this.startDate,
     this.endDate,
     this.auctionDuration,
@@ -54,7 +56,6 @@ class AuctionDetailsModel {
     this.autoBiddingEnabled,
     this.isJoined,
     this.isStarted,
-    this.maxBiddingAmount,
     this.lastBidderId,
     this.currentBiddingMethod,
   });
@@ -72,18 +73,13 @@ class AuctionDetailsModel {
         : null;
     videoLink = json['videoLink'];
     if (json['images'] != null) {
-      // images = [];
-      // json['images'].forEach((v) {
-      //   if (v['url'] != null) {
-      //     images!.add(v['url']);
-      //   }
-      // });
-      attachments = List.generate(
-          10,
-          (index) => AttachmentModel(
-              url: 'https://picsum.photos/800/800?random=$index',
-              isVideo: false));
-      if (videoLink != null) {
+      attachments = [];
+      json['images'].forEach((v) {
+        if (v['path'] != null) {
+          attachments!.add(AttachmentModel(url: v['path'], isVideo: false));
+        }
+      });
+      if (videoLink != null && videoLink != '') {
         attachments?.add(AttachmentModel(url: videoLink, isVideo: true));
       }
     }
@@ -92,6 +88,11 @@ class AuctionDetailsModel {
         double.parse(json['biddingIncrementAmount']?.toString() ?? '0');
     currentBiddingAmount =
         double.parse(json['currentBiddingAmount']?.toString() ?? '0');
+    maxBiddingAmount =
+        json['maxBiddingAmount'] != null && json['maxBiddingAmount'] != ''
+            ? double.parse(json['maxBiddingAmount']?.toString().trim() ?? '0')
+            : null;
+
     startDate = json['endDate'] != null
         ? DateTime.parse(json['startDate'])
         : DateTime.now();
@@ -109,7 +110,6 @@ class AuctionDetailsModel {
     isJoined = json['participant'];
     firstBid = json['firstBid'];
     autoBiddingEnabled = json['autoBiddingEnabled'];
-    maxBiddingAmount = json['maxBiddingAmount'];
     lastBidderId = json['lastBidderId'];
     isStarted = startDate?.isBefore(DateTime.now());
     currentBiddingMethod = json['currentBiddingMethod'] != null

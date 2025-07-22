@@ -5,7 +5,7 @@ class AuctionWithdrawalCubit extends Cubit<AuctionWithdrawalState> {
 
 //---------------------------------FUNCTIONS----------------------------------//
 
-  Future<void> withdraw(int id) async {
+  Future<void> withdraw({required int id,Function()? onSuccess}) async {
     emit(AuctionWithdrawalLoading());
     loadingDialog();
 
@@ -19,6 +19,7 @@ class AuctionWithdrawalCubit extends Cubit<AuctionWithdrawalState> {
       return emit(AuctionWithdrawalError(failure));
     }, (success) {
       if (success.statusCode == 200) {
+        onSuccess?.call();
         CustomNavigator.pop();
         return emit(const AuctionWithdrawalSuccess());
       } else {

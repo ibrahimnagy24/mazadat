@@ -15,7 +15,7 @@ class AuctionDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AuctionDetailsCubit()..auctionDetailsStatesHandled(routeParams),),
+        BlocProvider(create: (context) => AuctionDetailsCubit()..auctionDetailsStatesHandled(routeParams.auctionId),),
         BlocProvider(create: (context) => AuctionPusherCubit()..init(routeParams.auctionId),),
 
       ],

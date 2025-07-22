@@ -8,8 +8,11 @@ class CheckOnJoiningAuctionCubit extends Cubit<CheckOnJoiningAuctionState> {
   Future<void> checkOnJoinAuction(Map<String, dynamic> data) async {
     emit(CheckOnJoiningAuctionLoading());
     loadingDialog();
-
-    final response = await JoiningAuctionRepo.checkOnJoining(data);
+    Map<String, dynamic> body = {
+      'auctionId': data['auctionId'],
+      'paymentTransactionId': data['paymentTransactionId'],
+    };
+    final response = await JoiningAuctionRepo.checkOnJoining(body);
     CustomNavigator.pop();
 
     response.fold((failure) {
@@ -17,7 +20,11 @@ class CheckOnJoiningAuctionCubit extends Cubit<CheckOnJoiningAuctionState> {
         isDismissible: false,
         customListWidget: PaymentSuccessDialog(
           isSuccess: false,
-          error: failure.message ,
+          error: failure.message,
+          onTap: () {
+            checkOnJoinAuction(data);
+            CustomNavigator.pop();
+          },
         ),
       );
       return emit(CheckOnJoiningAuctionError(failure));
@@ -27,6 +34,10 @@ class CheckOnJoiningAuctionCubit extends Cubit<CheckOnJoiningAuctionState> {
         customListWidget: PaymentSuccessDialog(
           isSuccess: success.statusCode == 200,
           error: success.data['MESSAGE'] ?? '',
+          onTap: () {
+            CustomNavigator.pop();
+            (data['onSuccess'] as Function()).call();
+          },
         ),
       );
       return emit(const CheckOnJoiningAuctionSuccess());

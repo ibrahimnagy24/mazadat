@@ -1,10 +1,15 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../core/navigation/custom_navigation.dart';
+import '../../../core/navigation/routes.dart';
 import '../../../core/shared/entity/error_entity.dart';
 import '../../../core/utils/widgets/dialogs/custom_simple_dialog.dart';
 import '../../../core/utils/widgets/dialogs/loading_dialog.dart';
+import '../../auction_details/data/params/auction_details_route_params.dart';
+import '../../auction_details/logic/view_auction_cubit.dart';
 import '../../check_out/data/model/payment_model.dart';
 import '../data/repo/joining_auction_repo.dart';
 import '../ui/widgets/payment_success_dialog.dart';

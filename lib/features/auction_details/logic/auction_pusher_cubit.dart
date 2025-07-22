@@ -5,7 +5,6 @@ import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 import '../../../../../core/app_config/app_config.dart';
 import '../../../../../core/utils/utility.dart';
 import '../../../core/shared/blocs/main_app_bloc.dart';
-import '../data/model/auction_details_model.dart';
 import '../data/model/auction_pusher_model.dart';
 part 'auction_pusher_state.dart';
 
@@ -97,7 +96,6 @@ class AuctionPusherCubit extends Cubit<AuctionPusherState> {
   }
 
   dynamic _onEvent({required PusherEvent event, required int id}) {
-
     if (event.eventName != 'PLACE_BID_$id') return;
     log("event ${event.eventName}");
     log("event ${event.data}");

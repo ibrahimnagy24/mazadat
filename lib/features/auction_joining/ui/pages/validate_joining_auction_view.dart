@@ -15,8 +15,10 @@ import '../../logic/validate_joining_auction_state.dart';
 import '../widgets/validate_join_auction_button.dart';
 
 class ValidateJoiningAuctionView extends StatelessWidget {
-  const ValidateJoiningAuctionView({super.key, required this.id});
+  const ValidateJoiningAuctionView({super.key, required this.id, this.onSuccess});
   final int id;
+  final Function()? onSuccess;
+
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +115,7 @@ class ValidateJoiningAuctionView extends StatelessWidget {
                       child: SingleChildScrollView(child: HtmlWidget(state.data.policy ?? '')),
                     ),
                   ),
-                  ValidateJoinAuctionButton(id: id),
+                  ValidateJoinAuctionButton(id: id,onSuccess: onSuccess,),
                 ],
               );
             }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
@@ -11,6 +12,7 @@ import '../../../auction_first_bidding/ui/pages/auction_first_bidding_view.dart'
 import '../../../auction_manual_bidding/ui/widgets/auction_manual_bidding_button.dart';
 import '../../../auction_switch_bidding/ui/pages/auction_switch_bidding_view.dart';
 import '../../../auction_joining/ui/pages/validate_joining_auction_view.dart';
+import '../../logic/view_auction_cubit.dart';
 
 class AuctionActions extends StatelessWidget {
   const AuctionActions({
@@ -39,7 +41,12 @@ class AuctionActions extends StatelessWidget {
         if (isJoined != true)
           DefaultButton(
             onPressed: () => CustomBottomSheet.show(
-                widget: ValidateJoiningAuctionView(id: id)),
+                widget: ValidateJoiningAuctionView(
+              id: id,
+              onSuccess: () => context
+                  .read<AuctionDetailsCubit>()
+                  .auctionDetailsStatesHandled(id),
+            )),
             text: AppStrings.registerForTheAuction.tr,
           ),
 
@@ -49,6 +56,9 @@ class AuctionActions extends StatelessWidget {
             onPressed: () => CustomBottomSheet.show(
                 label: AppStrings.selectBiddingMethod.tr,
                 widget: AuctionFirstBiddingView(
+                    onSuccess: () => context
+                        .read<AuctionDetailsCubit>()
+                        .auctionDetailsStatesHandled(id),
                     id: id,
                     currentAuctionPrice: currentPrice,
                     biddingIncrementAmount: biddingIncrementAmount)),
@@ -56,7 +66,9 @@ class AuctionActions extends StatelessWidget {
           ),
 
         ///To Manual Bidding
-        if (isJoined == true && firstBidding != true && currentBiddingMethod == BiddingMethod.manual)
+        if (isJoined == true &&
+            firstBidding != true &&
+            currentBiddingMethod == BiddingMethod.manual)
           AuctionManualBiddingButton(
             id: id,
             canBid: canBid,
@@ -65,7 +77,10 @@ class AuctionActions extends StatelessWidget {
           ),
 
         /// To Convert Bidding method to Auto
-        if (isJoined == true && firstBidding != true && autoBiddingEnabled == true && currentBiddingMethod == BiddingMethod.manual)
+        if (isJoined == true &&
+            firstBidding != true &&
+            autoBiddingEnabled == true &&
+            currentBiddingMethod == BiddingMethod.manual)
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h),
             child: TextButton(

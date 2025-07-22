@@ -11,8 +11,9 @@ import '../../logic/auction_withdrawal_state.dart';
 
 
 class AuctionWithdrawalView extends StatelessWidget {
-  const AuctionWithdrawalView({super.key, required this.id});
+  const AuctionWithdrawalView({super.key, required this.id,this.onSuccess});
   final int id;
+  final Function()? onSuccess;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class AuctionWithdrawalView extends StatelessWidget {
                   textColor: AppColors.RED,
                   text: AppStrings.withdrawal.tr,
                   onPressed: ()=>
-                      context.read<AuctionWithdrawalCubit>().withdraw(id),
+                      context.read<AuctionWithdrawalCubit>().withdraw(id:id,onSuccess: onSuccess),
                 ),
               ],
             );

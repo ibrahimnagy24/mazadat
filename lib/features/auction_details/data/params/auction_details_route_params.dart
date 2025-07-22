@@ -4,8 +4,7 @@ class AuctionDetailsRouteParams extends Equatable {
   final int auctionId;
   final String primaryImage;
 
-  const AuctionDetailsRouteParams(
-      {required this.auctionId, required this.primaryImage});
+  const AuctionDetailsRouteParams({required this.auctionId, this.primaryImage=''});
 
   Map<String, dynamic> toMap() {
     return {

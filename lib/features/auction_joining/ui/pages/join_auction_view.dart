@@ -8,8 +8,9 @@ import '../../../check_out/ui/widgets/payment_list.dart';
 import '../../logic/joining_auction_state.dart';
 
 class JoinAuctionView extends StatelessWidget {
-  const JoinAuctionView({super.key, required this.id});
+  const JoinAuctionView({super.key, required this.id, this.onSuccess});
   final int id;
+  final Function()? onSuccess;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class JoinAuctionView extends StatelessWidget {
                   isLoading: state is JoiningAuctionLoading,
                   onPressed: () {
                     if(  context.read<JoiningAuctionCubit>().payment.valueOrNull != null){
-                      context.read<JoiningAuctionCubit>().joinAuction(id);
+                      context.read<JoiningAuctionCubit>().joinAuction(id:id,onSuccess:onSuccess );
                     }else{
                       showToast(AppStrings.youHaveToSelectPaymentMethod.tr);
                     }

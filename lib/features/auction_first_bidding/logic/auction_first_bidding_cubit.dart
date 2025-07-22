@@ -19,14 +19,15 @@ class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
 
 //---------------------------------FUNCTIONS----------------------------------//
 
-  Future<void> bidding(int id) async {
+  Future<void> bidding({required int id, Function()? onSuccess}) async {
     emit(AuctionFirstBiddingLoading());
     loadingDialog();
 
     Map<String, dynamic> data = {
       'auctionId': id,
       'biddingMethod': biddingMethod.valueOrNull?.name.toUpperCase(),
-    if(biddingMethod.valueOrNull == BiddingMethod.auto)  'maxBiddingValue': maxBiddingValue.valueOrNull
+      if (biddingMethod.valueOrNull == BiddingMethod.auto)
+        'maxBiddingValue': maxBiddingValue.valueOrNull
     };
 
     final response = await AuctionFirstBiddingRepo.firstBid(data);
@@ -37,6 +38,7 @@ class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
       return emit(AuctionFirstBiddingError(failure));
     }, (success) {
       if (success.statusCode == 200) {
+        onSuccess?.call();
         CustomNavigator.pop();
         return emit(const AuctionFirstBiddingSuccess());
       } else {

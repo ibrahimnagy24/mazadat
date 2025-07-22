@@ -4,7 +4,6 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../../core/shared/entity/error_entity.dart';
 import '../data/model/auction_details_model.dart';
-import '../data/params/auction_details_route_params.dart';
 import '../data/repo/auction_details_repo.dart';
 part 'view_auction_state.dart';
 
@@ -25,10 +24,10 @@ class AuctionDetailsCubit extends Cubit<AuctionDetailsState> {
 //----------------------------------REQUEST-----------------------------------//
 
   Future<void> auctionDetailsStatesHandled(
-      AuctionDetailsRouteParams params) async {
+      int id) async {
     emit(const AuctionDetailsLoading());
 
-    final response = await AuctionDetailsRepo.getAuctionDetails(params);
+    final response = await AuctionDetailsRepo.getAuctionDetails(id);
     response.fold((failure) {
       return emit(AuctionDetailsError(failure));
     }, (success) {
@@ -36,7 +35,7 @@ class AuctionDetailsCubit extends Cubit<AuctionDetailsState> {
         AuctionDetailsModel? res =
             AuctionDetailsModel.fromJson(success.data['DATA']);
         int currentIndex =
-            res.attachments?.indexWhere((e) => e == params.primaryImage) ?? 0;
+            res.attachments?.indexWhere((e) => e.url == res.primaryPhoto) ?? 0;
         updateImageIndex(currentIndex == -1 ? 0 : currentIndex);
 
         return emit(AuctionDetailsSuccess(AuctionDetails: res));
@@ -48,4 +47,5 @@ class AuctionDetailsCubit extends Cubit<AuctionDetailsState> {
       }
     });
   }
+
 }

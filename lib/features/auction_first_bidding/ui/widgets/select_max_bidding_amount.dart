@@ -19,6 +19,7 @@ class SelectMaxBiddingAmount extends StatelessWidget {
 
   final BiddingMethod currentBiddingMethod;
 
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
