@@ -1,4 +1,5 @@
 import '../../../../core/utils/constant/app_constant.dart';
+import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/utility.dart';
 import '../entity/auction_entity.dart';
 import '../enums/auction_enum_converter.dart';
@@ -29,7 +30,8 @@ class AuctionModel extends AuctionEntity {
                 json['auctionType']['code']?.toString().toUpperCase() ??
                     'PRIVATE')
             : AuctionType.public,
-        auctionStatus: json['statusLabel'],
+        auctionStatus:checkFromMap(json['statusLabel'])?
+        json['statusLabel']: AppConstant.nullFromBack,
         primaryPhoto: checkFromMap(json['primaryPhoto'])
             ? json['primaryPhoto']
             : AppConstant.nullFromBack,

@@ -13,7 +13,6 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
     keywordTEC = TextEditingController();
     customScroll(controller);
     updateListing(true);
-
   }
 //---------------------------------VARIABLES----------------------------------//
 
@@ -48,10 +47,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
       emit(MyPurchasesSuccess(auctions: model!, isLoading: true));
     }
 
-
-    _engine.query = {
-      'keyword':keywordTEC.text.trim()
-    };
+    _engine.query = {'keyword': keywordTEC.text.trim()};
     final response = await MyPurchasesRepo.myPurchases(_engine);
     response.fold((failure) {
       return emit(MyPurchasesError(failure));
