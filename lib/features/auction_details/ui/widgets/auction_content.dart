@@ -358,14 +358,12 @@ class AuctionContent extends StatelessWidget {
             isJoined: model.isJoined == true,
             firstBidding: model.firstBid == true,
             autoBiddingEnabled: model.autoBiddingEnabled == true,
-            canBid: (cubit.details?.userId ?? model.lastBidderId) !=
-                context.read<UserCubit>().userEntity?.id.toString(),
-            currentPrice: cubit.details?.currentBiddingAmount ??
-                model.currentBiddingAmount ??
-                0,
+            canBid: (cubit.details?.userId ?? model.lastBidderId) != context.read<UserCubit>().userEntity?.id.toString(),
+            currentPrice: cubit.details?.currentBiddingAmount ?? model.currentBiddingAmount ?? 0,
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
             currentBiddingMethod: model.currentBiddingMethod,
             maxBiddingAmount: model.maxBiddingAmount,
+            isEnded: model.isEnded == true,
           ),
         ],
       );

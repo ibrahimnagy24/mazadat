@@ -228,5 +228,7 @@
   "The amount will be refunded to the payment method used.": "The amount will be refunded to the payment method used.",
   "You have successfully subscribed to the auction.": "You have successfully subscribed to the auction.",
   "Try Again": "Try Again",
-  "The specified bid value has been reached.": "The specified bid value has been reached."
+  "The specified bid value has been reached.": "The specified bid value has been reached.",
+  "Auction Ended": "Auction Ended",
+  "Track Request": "Track Request"
 }

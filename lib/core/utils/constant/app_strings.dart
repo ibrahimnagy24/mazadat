@@ -236,6 +236,8 @@ class AppStrings {
   static const String actualPrice = 'Actual price';
   static const String selectedPrice = 'Selected price';
   static const String endAfter = 'End After';
+  static const String auctionEnded = 'Auction Ended';
+  static const String trackRequest = 'Track Request';
   static const String registerForTheAuction = 'Register for the auction';
   static const String agreeTo = 'Agree to';
   static const String lastModified = 'Last Modified';

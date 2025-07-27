@@ -26,6 +26,7 @@ class AuctionActions extends StatelessWidget {
     required this.biddingIncrementAmount,
     this.currentBiddingMethod,
     this.maxBiddingAmount,
+    this.isEnded = false,
   });
 
   final int id;
@@ -34,81 +35,92 @@ class AuctionActions extends StatelessWidget {
   final double currentPrice, biddingIncrementAmount;
   final double? maxBiddingAmount;
   final BiddingMethod? currentBiddingMethod;
+  final bool isEnded;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ///To Join Auction
-        if (isJoined != true)
+        if (isEnded == true)
           DefaultButton(
-            onPressed: () => CustomBottomSheet.show(
-                widget: ValidateJoiningAuctionView(
-              id: id,
-              onSuccess: () => context
-                  .read<AuctionDetailsCubit>()
-                  .auctionDetailsStatesHandled(id),
-            )),
-            text: AppStrings.registerForTheAuction.tr,
-          ),
+            onPressed: () {},
+            text: isEnded
+                ? AppStrings.auctionEnded.tr
+                : AppStrings.auctionEnded.tr,
+          )
+        else ...[
+          ///To Join Auction
+          if (isJoined != true)
+            DefaultButton(
+              onPressed: () => CustomBottomSheet.show(
+                  widget: ValidateJoiningAuctionView(
+                id: id,
+                onSuccess: () => context
+                    .read<AuctionDetailsCubit>()
+                    .auctionDetailsStatesHandled(id),
+              )),
+              text: AppStrings.registerForTheAuction.tr,
+            ),
 
-        ///To First Bidding
-        if (isJoined == true && firstBidding == true)
-          DefaultButton(
-            onPressed: () => CustomBottomSheet.show(
-                label: AppStrings.selectBiddingMethod.tr,
-                widget: AuctionFirstBiddingView(
+          ///To First Bidding
+          if (isJoined == true && firstBidding == true)
+            DefaultButton(
+              onPressed: () => CustomBottomSheet.show(
+                  label: AppStrings.selectBiddingMethod.tr,
+                  widget: AuctionFirstBiddingView(
+                      onSuccess: () => context
+                          .read<AuctionDetailsCubit>()
+                          .auctionDetailsStatesHandled(id),
+                      id: id,
+                      currentAuctionPrice: currentPrice,
+                      biddingIncrementAmount: biddingIncrementAmount)),
+              text: AppStrings.bidding.tr,
+            ),
+
+          ///To Manual Bidding
+          if (isJoined == true &&
+                  firstBidding != true &&
+                  currentBiddingMethod == BiddingMethod.manual ||
+              (currentPrice > (maxBiddingAmount ?? 0) &&
+                  currentBiddingMethod == BiddingMethod.auto))
+            AuctionManualBiddingButton(
+              id: id,
+              canBid: canBid,
+              currentPrice: currentPrice,
+              biddingIncrementAmount: biddingIncrementAmount,
+            ),
+
+          /// To Convert Bidding method to Auto
+          if (isJoined == true &&
+                  firstBidding != true &&
+                  autoBiddingEnabled == true &&
+                  currentBiddingMethod == BiddingMethod.manual ||
+              (currentPrice > (maxBiddingAmount ?? 0) &&
+                  currentBiddingMethod == BiddingMethod.auto))
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.h),
+              child: TextButton(
+                onPressed: () => CustomBottomSheet.show(
+                  label: AppStrings.areYouSureYouWantToBidAutomatically.tr,
+                  widget: AuctionSwitchBiddingView(
+                    id: id,
                     onSuccess: () => context
                         .read<AuctionDetailsCubit>()
                         .auctionDetailsStatesHandled(id),
-                    id: id,
                     currentAuctionPrice: currentPrice,
-                    biddingIncrementAmount: biddingIncrementAmount)),
-            text: AppStrings.bidding.tr,
-          ),
-
-        ///To Manual Bidding
-        if (isJoined == true &&
-                firstBidding != true &&
-                currentBiddingMethod == BiddingMethod.manual ||
-            (currentPrice > (maxBiddingAmount ?? 0) &&
-                currentBiddingMethod == BiddingMethod.auto))
-          AuctionManualBiddingButton(
-            id: id,
-            canBid: canBid,
-            currentPrice: currentPrice,
-            biddingIncrementAmount: biddingIncrementAmount,
-          ),
-
-        /// To Convert Bidding method to Auto
-        if (isJoined == true &&
-                firstBidding != true &&
-                autoBiddingEnabled == true &&
-                currentBiddingMethod == BiddingMethod.manual ||
-            (currentPrice > (maxBiddingAmount ?? 0) &&
-                currentBiddingMethod == BiddingMethod.auto))
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.h),
-            child: TextButton(
-              onPressed: () => CustomBottomSheet.show(
-                label: AppStrings.areYouSureYouWantToBidAutomatically.tr,
-                widget: AuctionSwitchBiddingView(
-                  id: id,
-                  onSuccess: () => context
-                      .read<AuctionDetailsCubit>()
-                      .auctionDetailsStatesHandled(id),
-                  currentAuctionPrice: currentPrice,
+                  ),
                 ),
-              ),
-              child: Text(
-                AppStrings.automaticBidding.tr,
-                style: AppTextStyles.bodyMBold.copyWith(
-                  fontSize: 12,
-                  color: AppColors.kPrimary,
+                child: Text(
+                  AppStrings.automaticBidding.tr,
+                  style: AppTextStyles.bodyMBold.copyWith(
+                    fontSize: 12,
+                    color: AppColors.kPrimary,
+                  ),
                 ),
               ),
             ),
-          ),
+        ]
       ],
     );
   }

@@ -228,6 +228,8 @@
   "The amount will be refunded to the payment method used.": "سيتم إعادة المبلغ إلى وسيلة الدفع المستخدمة",
   "You have successfully subscribed to the auction.": "لقد اشتركت بنجاح في المزاد.",
   "Try Again": "المحاولة مره اخري",
-  "The specified bid value has been reached.": "تم الوصول لقيمة المزايدة المحددة"
+  "The specified bid value has been reached.": "تم الوصول لقيمة المزايدة المحددة",
+  "Auction Ended": "انتهى المزاد",
+  "Track Request":"تتبع الطلب"
 
 }
