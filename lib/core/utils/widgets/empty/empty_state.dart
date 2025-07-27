@@ -58,7 +58,7 @@ class EmptyState extends StatelessWidget {
             ),
             Text(txt ?? AppStrings.no_data,
                 textAlign: TextAlign.center,
-                style: AppTextStyles.textMdSemibold),
+                style: AppTextStyles.displayMdSemiBold.copyWith(fontSize: 24)),
             SizedBox(height: 8.h),
             Text(subText ?? '',
                 textAlign: TextAlign.center, style: AppTextStyles.textLgRegular)

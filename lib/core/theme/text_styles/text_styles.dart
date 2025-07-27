@@ -18,6 +18,10 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsXL,
     color: Color(0xFF222715),
+  );  static TextStyle displayMdSemiBold = const TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: AppFontSizes.fsXL,
+    color: Color(0xFF222715),
   );
 
   static TextStyle displaySMMedium = const TextStyle(
