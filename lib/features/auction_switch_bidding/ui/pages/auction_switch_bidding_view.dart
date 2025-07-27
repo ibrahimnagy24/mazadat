@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/enums/enums.dart';
@@ -15,9 +14,11 @@ import '../widgets/select_max_bidding_amount.dart';
 
 class AuctionSwitchBiddingView extends StatelessWidget {
   const AuctionSwitchBiddingView(
-      {super.key, required this.id, required this.currentAuctionPrice});
+      {super.key, required this.id, required this.currentAuctionPrice, this.onSuccess});
   final int id;
   final double currentAuctionPrice;
+  final Function()? onSuccess;
+
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,7 @@ class AuctionSwitchBiddingView extends StatelessWidget {
                         );
                       }),
                 ),
-                AuctionSwitchBiddingButton(id: id),
+                AuctionSwitchBiddingButton(id: id,onSuccess: onSuccess),
               ],
             );
           }),

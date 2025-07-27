@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../core/services/pagination/pagination_service.dart';
 import '../../auctions/data/entity/auction_entity.dart';
-import '../../auctions/data/model/auctions_model.dart';
+import '../data/model/my_purchases_model.dart';
 import '../data/repo/my_purchases_repo.dart';
 import 'my_purchases_state.dart';
 
@@ -52,7 +52,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
     response.fold((failure) {
       return emit(MyPurchasesError(failure));
     }, (success) {
-      AuctionsModel? res = AuctionsModel.fromJson(success.data);
+      MyPurchasesModel? res = MyPurchasesModel.fromJson(success.data);
 
       if (_engine.currentPage == -1) {
         model?.clear();

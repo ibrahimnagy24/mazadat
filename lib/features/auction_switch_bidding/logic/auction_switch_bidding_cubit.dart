@@ -19,7 +19,7 @@ class AuctionSwitchBiddingCubit extends Cubit<AuctionSwitchBiddingState> {
 
 //---------------------------------FUNCTIONS----------------------------------//
 
-  Future<void> switchBidding(int id) async {
+  Future<void> switchBidding({required int id, Function()? onSuccess}) async {
     emit(AuctionSwitchBiddingLoading());
     loadingDialog();
 
@@ -37,6 +37,7 @@ class AuctionSwitchBiddingCubit extends Cubit<AuctionSwitchBiddingState> {
       return emit(AuctionSwitchBiddingError(failure));
     }, (success) {
       if (success.statusCode == 200) {
+        onSuccess?.call();
         CustomNavigator.pop();
       return emit(const AuctionFirstBiddingSuccess());
       } else {

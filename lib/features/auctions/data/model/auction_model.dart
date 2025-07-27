@@ -49,6 +49,34 @@ class AuctionModel extends AuctionEntity {
         orderNumber: json['orderNumber'],
       );
 
+
+  factory AuctionModel.fromJsonMyPurchases(Map<String, dynamic> json, {String? orderNumber}) => AuctionModel(
+        id: json['id'],
+        searchId: json['searchId'],
+        auctionType: checkFromMap(json['auctionType'])
+            ? AuctionEnumConverter.stringToAuctionType(
+                json['auctionType']['code']?.toString().toUpperCase() ??
+                    'PRIVATE')
+            : AuctionType.public,
+        auctionStatus:checkFromMap(json['statusLabel'])?
+        json['statusLabel']: AppConstant.nullFromBack,
+        primaryPhoto: checkFromMap(json['primaryPhoto'])
+            ? json['primaryPhoto']
+            : AppConstant.nullFromBack,
+        name: json['name'] ?? AppConstant.nullFromBack,
+        description: json['description'] ?? AppConstant.nullFromBack,
+        openingPrice: json['openingPrice'],
+        insurancePrice: json['insurancePrice'],
+        startDate: json['endDate'] != null
+            ? DateTime.parse(json['startDate'])
+            : DateTime.now(),
+        endDate: json['endDate'] != null
+            ? DateTime.parse(json['endDate'])
+            : DateTime.now(),
+        isFav: json['myfav'],
+        orderNumber: json['orderNumber'],
+      );
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;

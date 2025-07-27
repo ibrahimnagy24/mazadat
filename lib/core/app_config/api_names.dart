@@ -36,7 +36,7 @@ abstract class Endpoints {
   static const String deleteAllSearchResult = '/searchResult/deleteAll';
   static const String getSearch = homeAuction;
 
-  static const String myPurchases = '/shipments/searchShipments';
+  static const String myPurchases = '/shipments/searchMyPurchases';
   static const String mySales = '/auctions/homePageFilterAuction';
 
 

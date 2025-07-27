@@ -6,8 +6,10 @@ import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../logic/auction_switch_bidding_state.dart';
 
 class AuctionSwitchBiddingButton extends StatelessWidget {
-  const AuctionSwitchBiddingButton({super.key, required this.id});
+  const AuctionSwitchBiddingButton({super.key, required this.id, this.onSuccess});
   final int id;
+  final Function()? onSuccess;
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class AuctionSwitchBiddingButton extends StatelessWidget {
       child: DefaultButton(
         text: AppStrings.confirm.tr,
         onPressed: ()=>
-          context.read<AuctionSwitchBiddingCubit>().switchBidding(id),
+          context.read<AuctionSwitchBiddingCubit>().switchBidding(id:id,onSuccess: onSuccess),
       ),
     );
   }

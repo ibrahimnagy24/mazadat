@@ -35,16 +35,13 @@ class AuctionContent extends StatelessWidget {
 
       ///To View Alert After exceeded maxBiddingAmount
       if (((cubit.details?.currentBiddingAmount ?? 0) >
-              (model.maxBiddingAmount ?? 0)) &&
-          model.currentBiddingMethod == BiddingMethod.auto &&
-          model.isJoined == true) {
+              (model.maxBiddingAmount ?? 0)) && model.currentBiddingMethod == BiddingMethod.auto && model.isJoined == true &&
+          context.read<AuctionDetailsCubit>().state is AuctionDetailsSuccess) {
         CustomBottomSheet.show(
           label: AppStrings.selectBiddingMethod.tr,
           widget: AuctionExceedMaxBiddingAlert(
             id: model.id ?? 0,
-            onSuccess: () => context
-                .read<AuctionDetailsCubit>()
-                .auctionDetailsStatesHandled(model.id!),
+            onSuccess: () => context.read<AuctionDetailsCubit>().auctionDetailsStatesHandled(model.id!),
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
             currentAuctionPrice: cubit.details?.currentBiddingAmount ?? 0,
             autoBiddingEnabled: model.autoBiddingEnabled == true,
@@ -368,6 +365,7 @@ class AuctionContent extends StatelessWidget {
                 0,
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
             currentBiddingMethod: model.currentBiddingMethod,
+            maxBiddingAmount: model.maxBiddingAmount,
           ),
         ],
       );

@@ -25,12 +25,14 @@ class AuctionActions extends StatelessWidget {
     required this.currentPrice,
     required this.biddingIncrementAmount,
     this.currentBiddingMethod,
+    this.maxBiddingAmount,
   });
 
   final int id;
   final bool isJoined, firstBidding, autoBiddingEnabled, canBid;
 
   final double currentPrice, biddingIncrementAmount;
+  final double? maxBiddingAmount;
   final BiddingMethod? currentBiddingMethod;
 
   @override
@@ -67,8 +69,10 @@ class AuctionActions extends StatelessWidget {
 
         ///To Manual Bidding
         if (isJoined == true &&
-            firstBidding != true &&
-            currentBiddingMethod == BiddingMethod.manual)
+                firstBidding != true &&
+                currentBiddingMethod == BiddingMethod.manual ||
+            (currentPrice > (maxBiddingAmount ?? 0) &&
+                currentBiddingMethod == BiddingMethod.auto))
           AuctionManualBiddingButton(
             id: id,
             canBid: canBid,
@@ -78,16 +82,24 @@ class AuctionActions extends StatelessWidget {
 
         /// To Convert Bidding method to Auto
         if (isJoined == true &&
-            firstBidding != true &&
-            autoBiddingEnabled == true &&
-            currentBiddingMethod == BiddingMethod.manual)
+                firstBidding != true &&
+                autoBiddingEnabled == true &&
+                currentBiddingMethod == BiddingMethod.manual ||
+            (currentPrice > (maxBiddingAmount ?? 0) &&
+                currentBiddingMethod == BiddingMethod.auto))
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h),
             child: TextButton(
               onPressed: () => CustomBottomSheet.show(
-                  label: AppStrings.areYouSureYouWantToBidAutomatically.tr,
-                  widget: AuctionSwitchBiddingView(
-                      id: id, currentAuctionPrice: currentPrice)),
+                label: AppStrings.areYouSureYouWantToBidAutomatically.tr,
+                widget: AuctionSwitchBiddingView(
+                  id: id,
+                  onSuccess: () => context
+                      .read<AuctionDetailsCubit>()
+                      .auctionDetailsStatesHandled(id),
+                  currentAuctionPrice: currentPrice,
+                ),
+              ),
               child: Text(
                 AppStrings.automaticBidding.tr,
                 style: AppTextStyles.bodyMBold.copyWith(
