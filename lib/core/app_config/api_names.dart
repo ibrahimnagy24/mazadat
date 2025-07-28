@@ -40,6 +40,18 @@ abstract class Endpoints {
   static const String mySales = '/auctions/homePageFilterAuction';
 
 
+
+
+
+//--------------------------------Addresses--------------------------------------\\
+
+  static const String addressTypes = '/address/AddressTypes';
+  static const String cities = '/cities/searchByKeyword';
+  static const String regions = '/regions/search';
+  static const String districts = '/districts/search';
+
+  static const String addresses = '/address/getMyAddresses';
+
 //--------------------------------Favourites--------------------------------------\\
 
   static const String getFavorites = '/favorites/getFavoriteList';
@@ -61,7 +73,6 @@ abstract class Endpoints {
 //-------------------------------NOT TESTED------------------------------------\\
 
   static const String paymentList = '/paymentMehods/listAll';
-  static const String cities = '/cities/searchByKeyword';
   static const String ages = '/age/listAgeLookups';
   static const String auctionStatuses = '/utils/getLookup?lookups=AUCTION_STATUS';
   static const String banks = '/banks/searchBanks';

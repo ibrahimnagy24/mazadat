@@ -1,17 +1,17 @@
 import '../../../../../core/services/pagination/pagination_service.dart';
-import '../entity/city_entity.dart';
+import '../entity/region_entity.dart';
 
-class CitiesModel {
-  List<CityModel>? content;
+class RegionsModel {
+  List<RegionModel>? content;
   SearchEngine? pageable;
 
-  CitiesModel({this.content, this.pageable});
+  RegionsModel({this.content, this.pageable});
 
-  CitiesModel.fromJson(Map<String, dynamic> json) {
+  RegionsModel.fromJson(Map<String, dynamic> json) {
     if (json['content'] != null) {
-      content = <CityModel>[];
+      content = <RegionModel>[];
       json['content'].forEach((v) {
-        content!.add(CityModel.fromJson(v));
+        content!.add(RegionModel.fromJson(v));
       });
     }
     pageable = json['pageable'] != null ? SearchEngine.fromJson(json) : null;
@@ -29,17 +29,16 @@ class CitiesModel {
   }
 }
 
-
-class CityModel extends CityEntity {
-  const CityModel({
+class RegionModel extends RegionEntity {
+  const RegionModel({
     required super.id,
     required super.name,
   });
 
-  factory CityModel.fromJson(Map<String, dynamic> json) => CityModel(
-        id: json['id'],
-        name: json['name'],
-      );
+  factory RegionModel.fromJson(Map<String, dynamic> json) => RegionModel(
+    id: json['id'],
+    name: json['name'],
+  );
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

@@ -7,14 +7,14 @@ import '../../../../../../core/shared/entity/error_entity.dart';
 import '../../../../../core/services/pagination/pagination_service.dart';
 
 
-abstract class CitiesRepo {
-  const CitiesRepo();
+abstract class AddressTypesRepo {
+  const AddressTypesRepo();
 
-  static Future<Either<ErrorEntity, Response>> getCities(
+  static Future<Either<ErrorEntity, Response>> getAddressTypes(
       SearchEngine params) async {
     try {
       final response = await Network().request(
-        Endpoints.cities,
+        Endpoints.addressTypes,
         method: ServerMethods.GET,
         queryParameters: params.toJson(),
       );

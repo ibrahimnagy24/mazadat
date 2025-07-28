@@ -6,15 +6,14 @@ import '../../../../../../core/services/network/network_helper.dart';
 import '../../../../../../core/shared/entity/error_entity.dart';
 import '../../../../../core/services/pagination/pagination_service.dart';
 
+abstract class RegionsRepo {
+  const RegionsRepo();
 
-abstract class CitiesRepo {
-  const CitiesRepo();
-
-  static Future<Either<ErrorEntity, Response>> getCities(
+  static Future<Either<ErrorEntity, Response>> getRegions(
       SearchEngine params) async {
     try {
       final response = await Network().request(
-        Endpoints.cities,
+        Endpoints.regions,
         method: ServerMethods.GET,
         queryParameters: params.toJson(),
       );

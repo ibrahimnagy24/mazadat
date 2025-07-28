@@ -10,33 +10,27 @@ import '../../../../../core/app_notification.dart';
 import '../../../../../core/services/pagination/pagination_service.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../../core/utils/widgets/custom_loading_text.dart';
-import '../../data/entity/city_entity.dart';
-import '../../logic/city_cubit.dart';
-import '../widgets/cities_view.dart';
+import '../../data/entity/address_type_entity.dart';
+import '../../logic/address_types_cubit.dart';
+import '../widgets/address_types_view.dart';
 
-class CityInput extends StatelessWidget {
-  const CityInput(
-      {super.key,
-      this.regionId,
-      this.initialValue,
-      this.onSelect,
-      this.validator});
-  final CityEntity? initialValue;
-  final Function(CityEntity)? onSelect;
+class AddressTypeInput extends StatelessWidget {
+  const AddressTypeInput(
+      {super.key, this.initialValue, this.onSelect, this.validator});
+  final AddressTypeEntity? initialValue;
+  final Function(AddressTypeEntity)? onSelect;
   final String? Function(String?)? validator;
-  final int? regionId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          CityCubit()..citiesStatesHandled(SearchEngine(id: regionId)),
-      child: BlocBuilder<CityCubit, CityState>(
+      create: (context) => AddressTypesCubit()..addressTypesStatesHandled(SearchEngine()),
+      child: BlocBuilder<AddressTypesCubit, AddressTypesState>(
         builder: (context, state) {
-          final cubit = context.read<CityCubit>();
+          final cubit = context.read<AddressTypesCubit>();
           return DefaultFormField(
-            titleText: AppStrings.city.tr,
-            hintText: '${AppStrings.selectCity.tr}...',
+            titleText: AppStrings.addressType.tr,
+            hintText: '${AppStrings.selectAddressType.tr}...',
             needValidation: validator != null,
             validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
@@ -47,20 +41,19 @@ class CityInput extends StatelessWidget {
               color: AppColors.kGeryText,
             ),
             onTap: () {
-              if (state is CityDone) {
+              if (state is AddressTypesDone) {
                 CustomBottomSheet.show(
-                    label: AppStrings.selectCity.tr,
+                    label: AppStrings.selectAddressType.tr,
                     widget: BlocProvider.value(
-                      value: context.read<CityCubit>(),
-                      child: BlocBuilder<CityCubit, CityState>(
+                      value: context.read<AddressTypesCubit>(),
+                      child: BlocBuilder<AddressTypesCubit, AddressTypesState>(
                           builder: (context, state) {
                         return Column(
                           children: [
                             Expanded(
-                              child: CitiesView(
-                                controller:
-                                    context.read<CityCubit>().controller,
-                                data: (state as CityDone).cities,
+                              child: AddressTypesView(
+                                controller: context.read<AddressTypesCubit>().controller,
+                                data: (state as AddressTypesDone).addressTypes,
                                 initialValue: initialValue?.id,
                                 onSelect: (v) {
                                   onSelect?.call(v);
@@ -72,7 +65,7 @@ class CityInput extends StatelessWidget {
                         );
                       }),
                     ));
-              } else if (state is CityLoading) {
+              } else if (state is AddressTypesLoading) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.loading.tr,
@@ -80,7 +73,7 @@ class CityInput extends StatelessWidget {
                     borderColor: Colors.transparent,
                   ),
                 );
-              } else if (state is CityEmpty) {
+              } else if (state is AddressTypesEmpty) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.no_data.tr,
@@ -88,7 +81,7 @@ class CityInput extends StatelessWidget {
                     borderColor: Colors.transparent,
                   ),
                 );
-              } else if (state is CityError) {
+              } else if (state is AddressTypesError) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.somethingWentWrong,

@@ -120,8 +120,15 @@ class AppStrings {
       'Passwords don\'t match please try again';
 
   static const String policyPrivacy = 'Policy Privacy';
+  static const String addressType = 'Address Type';
+  static const String selectAddressType= 'Select Address Type';
+
   static const String city = 'City';
   static const String selectCity = 'Select City';
+
+
+  static const String region = 'Region';
+  static const String selectRegion = 'Select Region';
 
   static const String age = 'Age';
   static const String selectAge = 'Select Age';

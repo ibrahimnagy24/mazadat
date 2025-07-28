@@ -2,22 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
 import '../../../../core/services/pagination/pagination_service.dart';
-import '../data/entity/city_entity.dart';
-import '../data/model/city_model.dart';
-import '../data/repo/cities_repo.dart';
-part 'city_state.dart';
+import '../data/entity/address_type_entity.dart';
+import '../data/model/address_type_model.dart';
+import '../data/repo/address_types_repo.dart';
+part 'address_types_state.dart';
 
 
 
-class CityCubit extends Cubit<CityState> {
-  CityCubit() : super(CityStart()) {
+class AddressTypesCubit extends Cubit<AddressTypesState> {
+  AddressTypesCubit() : super(AddressTypesStart()) {
     controller = ScrollController();
     customScroll(controller);
   }
 //---------------------------------VARIABLES----------------------------------//
   late ScrollController controller;
   late SearchEngine _engine;
-  List<CityEntity>? model;
+  List<AddressTypeEntity>? model;
 
   //---------------------------------FUNCTIONS----------------------------------//
   customScroll(ScrollController controller) {
@@ -25,27 +25,27 @@ class CityCubit extends Cubit<CityState> {
       bool scroll = PaginationService.scrollListener(controller,
           maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
       if (scroll) {
-        citiesStatesHandled(_engine);
+        addressTypesStatesHandled(_engine);
       }
     });
   }
 
 //---------------------------------REQUEST----------------------------------//
 
-  Future<void> citiesStatesHandled(SearchEngine params) async {
+  Future<void> addressTypesStatesHandled(SearchEngine params) async {
     _engine = params;
     if (_engine.currentPage == -1) {
       model = [];
-      emit(CityLoading());
+      emit(AddressTypesLoading());
     } else {
-      emit(CityDone(cities: model!, isLoading: true));
+      emit(AddressTypesDone(addressTypes: model!, isLoading: true));
     }
 
-    final response = await CitiesRepo.getCities(_engine);
+    final response = await AddressTypesRepo.getAddressTypes(_engine);
     response.fold((failure) {
-      return emit(CityError(failure));
+      return emit(AddressTypesError(failure));
     }, (success) {
-      CitiesModel? res = CitiesModel.fromJson(success.data);
+      AddressTypesModel? res = AddressTypesModel.fromJson(success.data);
 
       if (_engine.currentPage == -1) {
         model?.clear();
@@ -61,9 +61,9 @@ class CityCubit extends Cubit<CityState> {
       _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
-        emit(CityDone(cities: model!, isLoading: false));
+        emit(AddressTypesDone(addressTypes: model!, isLoading: false));
       } else {
-        return emit(CityEmpty());
+        return emit(AddressTypesEmpty());
       }
     });
   }

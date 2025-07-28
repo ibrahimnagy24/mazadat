@@ -5,21 +5,24 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../../core/utils/widgets/animated/animated_widget.dart';
-import '../../data/entity/city_entity.dart';
+import '../../data/entity/district_entity.dart';
 
-class CitiesView extends StatefulWidget {
-  const CitiesView(
-      {super.key, required this.data,required this.controller, this.initialValue, this.onSelect});
-  final List<CityEntity> data;
+class DistrictsView extends StatefulWidget {
+  const DistrictsView(
+      {super.key,
+      required this.data,
+      required this.controller,
+      this.initialValue,
+      this.onSelect});
+  final List<DistrictEntity> data;
   final int? initialValue;
+  final Function(DistrictEntity)? onSelect;
   final ScrollController controller;
-  final Function(CityEntity)? onSelect;
-
   @override
-  State<CitiesView> createState() => _CitiesViewState();
+  State<DistrictsView> createState() => _DistrictsViewState();
 }
 
-class _CitiesViewState extends State<CitiesView> {
+class _DistrictsViewState extends State<DistrictsView> {
   int? _selectedItem;
   @override
   void initState() {

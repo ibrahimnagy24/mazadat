@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../app/app.dart';
+import '../../features/addresses/ui/page/addresses_screen.dart';
 import '../../features/auth/change_password/ui/widgets/change_password_imports.dart';
 import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
 import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
@@ -221,6 +222,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         return BundleDetailsScreen(
             routeParams: state.extra as BundleDetailsRouteParams);
+      },
+    ),
+
+    GoRoute(
+      path: '/addresses',
+      name: Routes.ADDRESSES,
+      builder: (context, state) {
+        return const AddressesScreen();
       },
     ),
     GoRoute(

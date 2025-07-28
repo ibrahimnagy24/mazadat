@@ -10,33 +10,34 @@ import '../../../../../core/app_notification.dart';
 import '../../../../../core/services/pagination/pagination_service.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../../core/utils/widgets/custom_loading_text.dart';
-import '../../data/entity/city_entity.dart';
-import '../../logic/city_cubit.dart';
-import '../widgets/cities_view.dart';
+import '../../data/entity/district_entity.dart';
+import '../../logic/district_cubit.dart';
+import '../widgets/districts_view.dart';
 
-class CityInput extends StatelessWidget {
-  const CityInput(
+class DistrictInput extends StatelessWidget {
+  const DistrictInput(
       {super.key,
-      this.regionId,
+      required this.cityId,
       this.initialValue,
       this.onSelect,
       this.validator});
-  final CityEntity? initialValue;
-  final Function(CityEntity)? onSelect;
+  final DistrictEntity? initialValue;
+  final Function(DistrictEntity)? onSelect;
   final String? Function(String?)? validator;
-  final int? regionId;
+
+  final int cityId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CityCubit()..citiesStatesHandled(SearchEngine(id: regionId)),
-      child: BlocBuilder<CityCubit, CityState>(
+          DistrictsCubit()..districtsStatesHandled(SearchEngine(id: cityId)),
+      child: BlocBuilder<DistrictsCubit, DistrictState>(
         builder: (context, state) {
-          final cubit = context.read<CityCubit>();
+          final cubit = context.read<DistrictsCubit>();
           return DefaultFormField(
-            titleText: AppStrings.city.tr,
-            hintText: '${AppStrings.selectCity.tr}...',
+            titleText: AppStrings.region.tr,
+            hintText: '${AppStrings.selectRegion.tr}...',
             needValidation: validator != null,
             validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
@@ -47,20 +48,20 @@ class CityInput extends StatelessWidget {
               color: AppColors.kGeryText,
             ),
             onTap: () {
-              if (state is CityDone) {
+              if (state is DistrictSuccess) {
                 CustomBottomSheet.show(
-                    label: AppStrings.selectCity.tr,
+                    label: AppStrings.selectRegion.tr,
                     widget: BlocProvider.value(
-                      value: context.read<CityCubit>(),
-                      child: BlocBuilder<CityCubit, CityState>(
+                      value: context.read<DistrictsCubit>(),
+                      child: BlocBuilder<DistrictsCubit, DistrictState>(
                           builder: (context, state) {
                         return Column(
                           children: [
                             Expanded(
-                              child: CitiesView(
+                              child: DistrictsView(
                                 controller:
-                                    context.read<CityCubit>().controller,
-                                data: (state as CityDone).cities,
+                                    context.read<DistrictsCubit>().controller,
+                                data: (state as DistrictSuccess).districts,
                                 initialValue: initialValue?.id,
                                 onSelect: (v) {
                                   onSelect?.call(v);
@@ -72,7 +73,7 @@ class CityInput extends StatelessWidget {
                         );
                       }),
                     ));
-              } else if (state is CityLoading) {
+              } else if (state is DistrictLoading) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.loading.tr,
@@ -80,7 +81,7 @@ class CityInput extends StatelessWidget {
                     borderColor: Colors.transparent,
                   ),
                 );
-              } else if (state is CityEmpty) {
+              } else if (state is DistrictEmpty) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.no_data.tr,
@@ -88,7 +89,7 @@ class CityInput extends StatelessWidget {
                     borderColor: Colors.transparent,
                   ),
                 );
-              } else if (state is CityError) {
+              } else if (state is DistrictError) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.somethingWentWrong,

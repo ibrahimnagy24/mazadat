@@ -2,22 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
 import '../../../../core/services/pagination/pagination_service.dart';
-import '../data/entity/city_entity.dart';
-import '../data/model/city_model.dart';
-import '../data/repo/cities_repo.dart';
-part 'city_state.dart';
+import '../data/entity/region_entity.dart';
+import '../data/model/regions_model.dart';
+import '../data/repo/regions_repo.dart';
+part 'region_state.dart';
 
-
-
-class CityCubit extends Cubit<CityState> {
-  CityCubit() : super(CityStart()) {
+class RegionsCubit extends Cubit<RegionState> {
+  RegionsCubit() : super(RegionStart()) {
     controller = ScrollController();
     customScroll(controller);
   }
 //---------------------------------VARIABLES----------------------------------//
   late ScrollController controller;
   late SearchEngine _engine;
-  List<CityEntity>? model;
+  List<RegionEntity>? model;
 
   //---------------------------------FUNCTIONS----------------------------------//
   customScroll(ScrollController controller) {
@@ -25,27 +23,27 @@ class CityCubit extends Cubit<CityState> {
       bool scroll = PaginationService.scrollListener(controller,
           maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
       if (scroll) {
-        citiesStatesHandled(_engine);
+        regionsStatesHandled(_engine);
       }
     });
   }
 
 //---------------------------------REQUEST----------------------------------//
 
-  Future<void> citiesStatesHandled(SearchEngine params) async {
+  Future<void> regionsStatesHandled(SearchEngine params) async {
     _engine = params;
     if (_engine.currentPage == -1) {
       model = [];
-      emit(CityLoading());
+      emit(RegionLoading());
     } else {
-      emit(CityDone(cities: model!, isLoading: true));
+      emit(RegionSuccess(regions: model!, isLoading: true));
     }
 
-    final response = await CitiesRepo.getCities(_engine);
+    final response = await RegionsRepo.getRegions(_engine);
     response.fold((failure) {
-      return emit(CityError(failure));
+      return emit(RegionError(failure));
     }, (success) {
-      CitiesModel? res = CitiesModel.fromJson(success.data);
+      RegionsModel? res = RegionsModel.fromJson(success.data);
 
       if (_engine.currentPage == -1) {
         model?.clear();
@@ -61,9 +59,9 @@ class CityCubit extends Cubit<CityState> {
       _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
-        emit(CityDone(cities: model!, isLoading: false));
+        return emit(RegionSuccess(regions: model!, isLoading: false));
       } else {
-        return emit(CityEmpty());
+        return emit(RegionEmpty());
       }
     });
   }

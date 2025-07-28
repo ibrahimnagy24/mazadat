@@ -1,17 +1,17 @@
 import '../../../../../core/services/pagination/pagination_service.dart';
-import '../entity/city_entity.dart';
+import '../entity/address_type_entity.dart';
 
-class CitiesModel {
-  List<CityModel>? content;
+class AddressTypesModel {
+  List<AddressTypeModel>? content;
   SearchEngine? pageable;
 
-  CitiesModel({this.content, this.pageable});
+  AddressTypesModel({this.content, this.pageable});
 
-  CitiesModel.fromJson(Map<String, dynamic> json) {
+  AddressTypesModel.fromJson(Map<String, dynamic> json) {
     if (json['content'] != null) {
-      content = <CityModel>[];
+      content = <AddressTypeModel>[];
       json['content'].forEach((v) {
-        content!.add(CityModel.fromJson(v));
+        content!.add(AddressTypeModel.fromJson(v));
       });
     }
     pageable = json['pageable'] != null ? SearchEngine.fromJson(json) : null;
@@ -30,13 +30,13 @@ class CitiesModel {
 }
 
 
-class CityModel extends CityEntity {
-  const CityModel({
+class AddressTypeModel extends AddressTypeEntity {
+  const AddressTypeModel({
     required super.id,
     required super.name,
   });
 
-  factory CityModel.fromJson(Map<String, dynamic> json) => CityModel(
+  factory AddressTypeModel.fromJson(Map<String, dynamic> json) => AddressTypeModel(
         id: json['id'],
         name: json['name'],
       );

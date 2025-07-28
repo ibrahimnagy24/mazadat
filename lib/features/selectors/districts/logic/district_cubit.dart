@@ -2,22 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
 import '../../../../core/services/pagination/pagination_service.dart';
-import '../data/entity/city_entity.dart';
-import '../data/model/city_model.dart';
-import '../data/repo/cities_repo.dart';
-part 'city_state.dart';
+import '../data/entity/district_entity.dart';
+import '../data/model/districts_model.dart';
+import '../data/repo/districts_repo.dart';
+part 'district_state.dart';
 
-
-
-class CityCubit extends Cubit<CityState> {
-  CityCubit() : super(CityStart()) {
+class DistrictsCubit extends Cubit<DistrictState> {
+  DistrictsCubit() : super(DistrictStart()) {
     controller = ScrollController();
     customScroll(controller);
   }
 //---------------------------------VARIABLES----------------------------------//
   late ScrollController controller;
   late SearchEngine _engine;
-  List<CityEntity>? model;
+  List<DistrictEntity>? model;
 
   //---------------------------------FUNCTIONS----------------------------------//
   customScroll(ScrollController controller) {
@@ -25,27 +23,27 @@ class CityCubit extends Cubit<CityState> {
       bool scroll = PaginationService.scrollListener(controller,
           maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
       if (scroll) {
-        citiesStatesHandled(_engine);
+        districtsStatesHandled(_engine);
       }
     });
   }
 
 //---------------------------------REQUEST----------------------------------//
 
-  Future<void> citiesStatesHandled(SearchEngine params) async {
+  Future<void> districtsStatesHandled(SearchEngine params) async {
     _engine = params;
     if (_engine.currentPage == -1) {
       model = [];
-      emit(CityLoading());
+      emit(DistrictLoading());
     } else {
-      emit(CityDone(cities: model!, isLoading: true));
+      emit(DistrictSuccess(districts: model!, isLoading: true));
     }
 
-    final response = await CitiesRepo.getCities(_engine);
+    final response = await DistrictsRepo.getDistricts(_engine);
     response.fold((failure) {
-      return emit(CityError(failure));
+      return emit(DistrictError(failure));
     }, (success) {
-      CitiesModel? res = CitiesModel.fromJson(success.data);
+      DistrictsModel? res = DistrictsModel.fromJson(success.data);
 
       if (_engine.currentPage == -1) {
         model?.clear();
@@ -61,9 +59,9 @@ class CityCubit extends Cubit<CityState> {
       _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
-        emit(CityDone(cities: model!, isLoading: false));
+        return emit(DistrictSuccess(districts: model!, isLoading: false));
       } else {
-        return emit(CityEmpty());
+        return emit(DistrictEmpty());
       }
     });
   }
