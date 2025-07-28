@@ -1,0 +1,3091 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TweetNacl",
+    "printedName": "TweetNacl",
+    "children": [
+      {
+        "kind": "Var",
+        "name": "crypto_secretbox_KEYBYTES",
+        "printedName": "crypto_secretbox_KEYBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl25crypto_secretbox_KEYBYTESSivp",
+        "mangledName": "$s9TweetNacl25crypto_secretbox_KEYBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_secretbox_NONCEBYTES",
+        "printedName": "crypto_secretbox_NONCEBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl27crypto_secretbox_NONCEBYTESSivp",
+        "mangledName": "$s9TweetNacl27crypto_secretbox_NONCEBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_secretbox_ZEROBYTES",
+        "printedName": "crypto_secretbox_ZEROBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl26crypto_secretbox_ZEROBYTESSivp",
+        "mangledName": "$s9TweetNacl26crypto_secretbox_ZEROBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_secretbox_BOXZEROBYTES",
+        "printedName": "crypto_secretbox_BOXZEROBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl29crypto_secretbox_BOXZEROBYTESSivp",
+        "mangledName": "$s9TweetNacl29crypto_secretbox_BOXZEROBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_scalarmult_BYTES",
+        "printedName": "crypto_scalarmult_BYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl23crypto_scalarmult_BYTESSivp",
+        "mangledName": "$s9TweetNacl23crypto_scalarmult_BYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_scalarmult_SCALARBYTES",
+        "printedName": "crypto_scalarmult_SCALARBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl29crypto_scalarmult_SCALARBYTESSivp",
+        "mangledName": "$s9TweetNacl29crypto_scalarmult_SCALARBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_box_PUBLICKEYBYTES",
+        "printedName": "crypto_box_PUBLICKEYBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl25crypto_box_PUBLICKEYBYTESSivp",
+        "mangledName": "$s9TweetNacl25crypto_box_PUBLICKEYBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_box_SECRETKEYBYTES",
+        "printedName": "crypto_box_SECRETKEYBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl25crypto_box_SECRETKEYBYTESSivp",
+        "mangledName": "$s9TweetNacl25crypto_box_SECRETKEYBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_box_BEFORENMBYTES",
+        "printedName": "crypto_box_BEFORENMBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl24crypto_box_BEFORENMBYTESSivp",
+        "mangledName": "$s9TweetNacl24crypto_box_BEFORENMBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_box_NONCEBYTES",
+        "printedName": "crypto_box_NONCEBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl21crypto_box_NONCEBYTESSivp",
+        "mangledName": "$s9TweetNacl21crypto_box_NONCEBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_box_ZEROBYTES",
+        "printedName": "crypto_box_ZEROBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl20crypto_box_ZEROBYTESSivp",
+        "mangledName": "$s9TweetNacl20crypto_box_ZEROBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_box_BOXZEROBYTES",
+        "printedName": "crypto_box_BOXZEROBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl23crypto_box_BOXZEROBYTESSivp",
+        "mangledName": "$s9TweetNacl23crypto_box_BOXZEROBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_sign_BYTES",
+        "printedName": "crypto_sign_BYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl17crypto_sign_BYTESSivp",
+        "mangledName": "$s9TweetNacl17crypto_sign_BYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_sign_PUBLICKEYBYTES",
+        "printedName": "crypto_sign_PUBLICKEYBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl26crypto_sign_PUBLICKEYBYTESSivp",
+        "mangledName": "$s9TweetNacl26crypto_sign_PUBLICKEYBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_sign_SECRETKEYBYTES",
+        "printedName": "crypto_sign_SECRETKEYBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl26crypto_sign_SECRETKEYBYTESSivp",
+        "mangledName": "$s9TweetNacl26crypto_sign_SECRETKEYBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_sign_SEEDBYTES",
+        "printedName": "crypto_sign_SEEDBYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl21crypto_sign_SEEDBYTESSivp",
+        "mangledName": "$s9TweetNacl21crypto_sign_SEEDBYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Var",
+        "name": "crypto_hash_BYTES",
+        "printedName": "crypto_hash_BYTES",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Var",
+        "usr": "s:9TweetNacl17crypto_hash_BYTESSivp",
+        "mangledName": "$s9TweetNacl17crypto_hash_BYTESSivp",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "HasInitialValue",
+          "HasStorage",
+          "AccessControl"
+        ],
+        "isLet": true,
+        "hasStorage": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CTweetNacl",
+        "printedName": "CTweetNacl",
+        "declKind": "Import",
+        "moduleName": "TweetNacl"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NaclUtil",
+        "printedName": "NaclUtil",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "NaclUtilError",
+            "printedName": "NaclUtilError",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "badKeySize",
+                "printedName": "badKeySize",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclUtil.NaclUtilError.Type) -> TweetNacl.NaclUtil.NaclUtilError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclUtilError",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                        "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclUtilError",
+                            "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                            "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO10badKeySizeyA2EmF",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO10badKeySizeyA2EmF",
+                "moduleName": "TweetNacl",
+                "fixedbinaryorder": 0
+              },
+              {
+                "kind": "Var",
+                "name": "badNonceSize",
+                "printedName": "badNonceSize",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclUtil.NaclUtilError.Type) -> TweetNacl.NaclUtil.NaclUtilError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclUtilError",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                        "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclUtilError",
+                            "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                            "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO12badNonceSizeyA2EmF",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO12badNonceSizeyA2EmF",
+                "moduleName": "TweetNacl",
+                "fixedbinaryorder": 1
+              },
+              {
+                "kind": "Var",
+                "name": "badPublicKeySize",
+                "printedName": "badPublicKeySize",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclUtil.NaclUtilError.Type) -> TweetNacl.NaclUtil.NaclUtilError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclUtilError",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                        "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclUtilError",
+                            "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                            "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO16badPublicKeySizeyA2EmF",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO16badPublicKeySizeyA2EmF",
+                "moduleName": "TweetNacl",
+                "fixedbinaryorder": 2
+              },
+              {
+                "kind": "Var",
+                "name": "badSecretKeySize",
+                "printedName": "badSecretKeySize",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclUtil.NaclUtilError.Type) -> TweetNacl.NaclUtil.NaclUtilError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclUtilError",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                        "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclUtilError",
+                            "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                            "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO16badSecretKeySizeyA2EmF",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO16badSecretKeySizeyA2EmF",
+                "moduleName": "TweetNacl",
+                "fixedbinaryorder": 3
+              },
+              {
+                "kind": "Var",
+                "name": "internalError",
+                "printedName": "internalError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclUtil.NaclUtilError.Type) -> TweetNacl.NaclUtil.NaclUtilError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclUtilError",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                        "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclUtil.NaclUtilError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclUtilError",
+                            "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                            "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO08internalD0yA2EmF",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO08internalD0yA2EmF",
+                "moduleName": "TweetNacl",
+                "fixedbinaryorder": 4
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclUtilError",
+                    "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                    "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclUtilError",
+                    "printedName": "TweetNacl.NaclUtil.NaclUtilError",
+                    "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO2eeoiySbAE_AEtFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO9hashValueSivp",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO9hashValueSivp",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO9hashValueSivg",
+                    "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO9hashValueSivg",
+                    "moduleName": "TweetNacl",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO4hash4intoys6HasherVz_tF",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:9TweetNacl0B4UtilV0bC5ErrorO",
+            "mangledName": "$s9TweetNacl0B4UtilV0bC5ErrorO",
+            "moduleName": "TweetNacl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isEnumExhaustive": true,
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Error",
+                "printedName": "Error",
+                "usr": "s:s5ErrorP",
+                "mangledName": "$ss5ErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "BitwiseCopyable",
+                "printedName": "BitwiseCopyable",
+                "usr": "s:s15BitwiseCopyableP",
+                "mangledName": "$ss15BitwiseCopyableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "checkLengths",
+            "printedName": "checkLengths(key:nonce:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV12checkLengths3key5noncey10Foundation4DataV_AItKFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV12checkLengths3key5noncey10Foundation4DataV_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "checkBoxLength",
+            "printedName": "checkBoxLength(publicKey:secretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV14checkBoxLength9publicKey06secretH0y10Foundation4DataV_AItKFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV14checkBoxLength9publicKey06secretH0y10Foundation4DataV_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "randomBytes",
+            "printedName": "randomBytes(length:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV11randomBytes6length10Foundation4DataVSi_tKFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV11randomBytes6length10Foundation4DataVSi_tKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(message:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV4hash7message10Foundation4DataVAH_tKFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV4hash7message10Foundation4DataVAH_tKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "verify",
+            "printedName": "verify(x:y:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV6verify1x1ySb10Foundation4DataV_AItKFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV6verify1x1ySb10Foundation4DataV_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encodeBase64",
+            "printedName": "encodeBase64(data:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV12encodeBase644dataSS10Foundation4DataV_tFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV12encodeBase644dataSS10Foundation4DataV_tFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "decodeBase64",
+            "printedName": "decodeBase64(string:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Data?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4UtilV12decodeBase646string10Foundation4DataVSgSS_tFZ",
+            "mangledName": "$s9TweetNacl0B4UtilV12decodeBase646string10Foundation4DataVSgSS_tFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NaclUtil",
+                "printedName": "TweetNacl.NaclUtil",
+                "usr": "s:9TweetNacl0B4UtilV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9TweetNacl0B4UtilVACycfc",
+            "mangledName": "$s9TweetNacl0B4UtilVACycfc",
+            "moduleName": "TweetNacl",
+            "implicit": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:9TweetNacl0B4UtilV",
+        "mangledName": "$s9TweetNacl0B4UtilV",
+        "moduleName": "TweetNacl",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NaclSecretBox",
+        "printedName": "NaclSecretBox",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "NaclSecretBoxError",
+            "printedName": "NaclSecretBoxError",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "invalidParameters",
+                "printedName": "invalidParameters",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclSecretBox.NaclSecretBoxError.Type) -> TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclSecretBoxError",
+                        "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                        "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclSecretBoxError",
+                            "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                            "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO17invalidParametersyA2EmF",
+                "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO17invalidParametersyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "internalError",
+                "printedName": "internalError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclSecretBox.NaclSecretBoxError.Type) -> TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclSecretBoxError",
+                        "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                        "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclSecretBoxError",
+                            "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                            "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO08internalE0yA2EmF",
+                "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO08internalE0yA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "creationFailed",
+                "printedName": "creationFailed",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclSecretBox.NaclSecretBoxError.Type) -> TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclSecretBoxError",
+                        "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                        "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclSecretBoxError",
+                            "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                            "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO14creationFailedyA2EmF",
+                "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO14creationFailedyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclSecretBoxError",
+                    "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                    "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclSecretBoxError",
+                    "printedName": "TweetNacl.NaclSecretBox.NaclSecretBoxError",
+                    "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO2eeoiySbAE_AEtFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO9hashValueSivp",
+                "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO9hashValueSivp",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO9hashValueSivg",
+                    "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO9hashValueSivg",
+                    "moduleName": "TweetNacl",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO4hash4intoys6HasherVz_tF",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:9TweetNacl0B9SecretBoxV0bcD5ErrorO",
+            "mangledName": "$s9TweetNacl0B9SecretBoxV0bcD5ErrorO",
+            "moduleName": "TweetNacl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Error",
+                "printedName": "Error",
+                "usr": "s:s5ErrorP",
+                "mangledName": "$ss5ErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "secretBox",
+            "printedName": "secretBox(message:nonce:key:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B9SecretBoxV06secretD07message5nonce3key10Foundation4DataVAJ_A2JtKFZ",
+            "mangledName": "$s9TweetNacl0B9SecretBoxV06secretD07message5nonce3key10Foundation4DataVAJ_A2JtKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "open",
+            "printedName": "open(box:nonce:key:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B9SecretBoxV4open3box5nonce3key10Foundation4DataVAJ_A2JtKFZ",
+            "mangledName": "$s9TweetNacl0B9SecretBoxV4open3box5nonce3key10Foundation4DataVAJ_A2JtKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NaclSecretBox",
+                "printedName": "TweetNacl.NaclSecretBox",
+                "usr": "s:9TweetNacl0B9SecretBoxV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9TweetNacl0B9SecretBoxVACycfc",
+            "mangledName": "$s9TweetNacl0B9SecretBoxVACycfc",
+            "moduleName": "TweetNacl",
+            "implicit": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:9TweetNacl0B9SecretBoxV",
+        "mangledName": "$s9TweetNacl0B9SecretBoxV",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NaclScalarMult",
+        "printedName": "NaclScalarMult",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "NaclScalarMultError",
+            "printedName": "NaclScalarMultError",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "invalidParameters",
+                "printedName": "invalidParameters",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclScalarMult.NaclScalarMultError.Type) -> TweetNacl.NaclScalarMult.NaclScalarMultError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclScalarMultError",
+                        "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                        "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclScalarMultError",
+                            "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                            "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO17invalidParametersyA2EmF",
+                "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO17invalidParametersyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "internalError",
+                "printedName": "internalError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclScalarMult.NaclScalarMultError.Type) -> TweetNacl.NaclScalarMult.NaclScalarMultError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclScalarMultError",
+                        "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                        "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclScalarMultError",
+                            "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                            "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO08internalE0yA2EmF",
+                "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO08internalE0yA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "creationFailed",
+                "printedName": "creationFailed",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclScalarMult.NaclScalarMultError.Type) -> TweetNacl.NaclScalarMult.NaclScalarMultError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclScalarMultError",
+                        "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                        "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclScalarMultError",
+                            "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                            "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO14creationFailedyA2EmF",
+                "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO14creationFailedyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclScalarMultError",
+                    "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                    "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclScalarMultError",
+                    "printedName": "TweetNacl.NaclScalarMult.NaclScalarMultError",
+                    "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO2eeoiySbAE_AEtFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO9hashValueSivp",
+                "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO9hashValueSivp",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO9hashValueSivg",
+                    "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO9hashValueSivg",
+                    "moduleName": "TweetNacl",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO4hash4intoys6HasherVz_tF",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:9TweetNacl0B10ScalarMultV0bcD5ErrorO",
+            "mangledName": "$s9TweetNacl0B10ScalarMultV0bcD5ErrorO",
+            "moduleName": "TweetNacl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Error",
+                "printedName": "Error",
+                "usr": "s:s5ErrorP",
+                "mangledName": "$ss5ErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "scalarMult",
+            "printedName": "scalarMult(n:p:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B10ScalarMultV06scalarD01n1p10Foundation4DataVAI_AItKFZ",
+            "mangledName": "$s9TweetNacl0B10ScalarMultV06scalarD01n1p10Foundation4DataVAI_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "base",
+            "printedName": "base(n:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B10ScalarMultV4base1n10Foundation4DataVAH_tKFZ",
+            "mangledName": "$s9TweetNacl0B10ScalarMultV4base1n10Foundation4DataVAH_tKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NaclScalarMult",
+                "printedName": "TweetNacl.NaclScalarMult",
+                "usr": "s:9TweetNacl0B10ScalarMultV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9TweetNacl0B10ScalarMultVACycfc",
+            "mangledName": "$s9TweetNacl0B10ScalarMultVACycfc",
+            "moduleName": "TweetNacl",
+            "implicit": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:9TweetNacl0B10ScalarMultV",
+        "mangledName": "$s9TweetNacl0B10ScalarMultV",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NaclBox",
+        "printedName": "NaclBox",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "NaclBoxError",
+            "printedName": "NaclBoxError",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "invalidParameters",
+                "printedName": "invalidParameters",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclBox.NaclBoxError.Type) -> TweetNacl.NaclBox.NaclBoxError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclBoxError",
+                        "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                        "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclBox.NaclBoxError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclBoxError",
+                            "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                            "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO17invalidParametersyA2EmF",
+                "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO17invalidParametersyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "internalError",
+                "printedName": "internalError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclBox.NaclBoxError.Type) -> TweetNacl.NaclBox.NaclBoxError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclBoxError",
+                        "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                        "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclBox.NaclBoxError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclBoxError",
+                            "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                            "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO08internalD0yA2EmF",
+                "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO08internalD0yA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "creationFailed",
+                "printedName": "creationFailed",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclBox.NaclBoxError.Type) -> TweetNacl.NaclBox.NaclBoxError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclBoxError",
+                        "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                        "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclBox.NaclBoxError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclBoxError",
+                            "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                            "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO14creationFailedyA2EmF",
+                "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO14creationFailedyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclBoxError",
+                    "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                    "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclBoxError",
+                    "printedName": "TweetNacl.NaclBox.NaclBoxError",
+                    "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO2eeoiySbAE_AEtFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO9hashValueSivp",
+                "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO9hashValueSivp",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO9hashValueSivg",
+                    "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO9hashValueSivg",
+                    "moduleName": "TweetNacl",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO4hash4intoys6HasherVz_tF",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:9TweetNacl0B3BoxV0bC5ErrorO",
+            "mangledName": "$s9TweetNacl0B3BoxV0bC5ErrorO",
+            "moduleName": "TweetNacl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Error",
+                "printedName": "Error",
+                "usr": "s:s5ErrorP",
+                "mangledName": "$ss5ErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "box",
+            "printedName": "box(message:nonce:publicKey:secretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B3BoxV3box7message5nonce9publicKey06secretH010Foundation4DataVAK_A3KtKFZ",
+            "mangledName": "$s9TweetNacl0B3BoxV3box7message5nonce9publicKey06secretH010Foundation4DataVAK_A3KtKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "before",
+            "printedName": "before(publicKey:secretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B3BoxV6before9publicKey06secretF010Foundation4DataVAI_AItKFZ",
+            "mangledName": "$s9TweetNacl0B3BoxV6before9publicKey06secretF010Foundation4DataVAI_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "open",
+            "printedName": "open(message:nonce:publicKey:secretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B3BoxV4open7message5nonce9publicKey06secretH010Foundation4DataVAK_A3KtKFZ",
+            "mangledName": "$s9TweetNacl0B3BoxV4open7message5nonce9publicKey06secretH010Foundation4DataVAK_A3KtKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "keyPair",
+            "printedName": "keyPair()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(publicKey: Foundation.Data, secretKey: Foundation.Data)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B3BoxV7keyPair10Foundation4DataV9publicKey_AG06secretI0tyKFZ",
+            "mangledName": "$s9TweetNacl0B3BoxV7keyPair10Foundation4DataV9publicKey_AG06secretI0tyKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "keyPair",
+            "printedName": "keyPair(fromSecretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(publicKey: Foundation.Data, secretKey: Foundation.Data)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B3BoxV7keyPair13fromSecretKey10Foundation4DataV06publicH0_AH06secretH0tAH_tKFZ",
+            "mangledName": "$s9TweetNacl0B3BoxV7keyPair13fromSecretKey10Foundation4DataV06publicH0_AH06secretH0tAH_tKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NaclBox",
+                "printedName": "TweetNacl.NaclBox",
+                "usr": "s:9TweetNacl0B3BoxV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9TweetNacl0B3BoxVACycfc",
+            "mangledName": "$s9TweetNacl0B3BoxVACycfc",
+            "moduleName": "TweetNacl",
+            "implicit": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:9TweetNacl0B3BoxV",
+        "mangledName": "$s9TweetNacl0B3BoxV",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NaclSign",
+        "printedName": "NaclSign",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "NaclSignError",
+            "printedName": "NaclSignError",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "invalidParameters",
+                "printedName": "invalidParameters",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclSign.NaclSignError.Type) -> TweetNacl.NaclSign.NaclSignError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclSignError",
+                        "printedName": "TweetNacl.NaclSign.NaclSignError",
+                        "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclSign.NaclSignError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclSignError",
+                            "printedName": "TweetNacl.NaclSign.NaclSignError",
+                            "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4SignV0bC5ErrorO17invalidParametersyA2EmF",
+                "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO17invalidParametersyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "internalError",
+                "printedName": "internalError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclSign.NaclSignError.Type) -> TweetNacl.NaclSign.NaclSignError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclSignError",
+                        "printedName": "TweetNacl.NaclSign.NaclSignError",
+                        "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclSign.NaclSignError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclSignError",
+                            "printedName": "TweetNacl.NaclSign.NaclSignError",
+                            "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4SignV0bC5ErrorO08internalD0yA2EmF",
+                "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO08internalD0yA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Var",
+                "name": "creationFailed",
+                "printedName": "creationFailed",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(TweetNacl.NaclSign.NaclSignError.Type) -> TweetNacl.NaclSign.NaclSignError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NaclSignError",
+                        "printedName": "TweetNacl.NaclSign.NaclSignError",
+                        "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "TweetNacl.NaclSign.NaclSignError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NaclSignError",
+                            "printedName": "TweetNacl.NaclSign.NaclSignError",
+                            "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9TweetNacl0B4SignV0bC5ErrorO14creationFailedyA2EmF",
+                "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO14creationFailedyA2EmF",
+                "moduleName": "TweetNacl"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclSignError",
+                    "printedName": "TweetNacl.NaclSign.NaclSignError",
+                    "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NaclSignError",
+                    "printedName": "TweetNacl.NaclSign.NaclSignError",
+                    "usr": "s:9TweetNacl0B4SignV0bC5ErrorO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4SignV0bC5ErrorO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO2eeoiySbAE_AEtFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9TweetNacl0B4SignV0bC5ErrorO9hashValueSivp",
+                "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO9hashValueSivp",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9TweetNacl0B4SignV0bC5ErrorO9hashValueSivg",
+                    "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO9hashValueSivg",
+                    "moduleName": "TweetNacl",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4SignV0bC5ErrorO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO4hash4intoys6HasherVz_tF",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:9TweetNacl0B4SignV0bC5ErrorO",
+            "mangledName": "$s9TweetNacl0B4SignV0bC5ErrorO",
+            "moduleName": "TweetNacl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Error",
+                "printedName": "Error",
+                "usr": "s:s5ErrorP",
+                "mangledName": "$ss5ErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "sign",
+            "printedName": "sign(message:secretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4SignV4sign7message9secretKey10Foundation4DataVAI_AItKFZ",
+            "mangledName": "$s9TweetNacl0B4SignV4sign7message9secretKey10Foundation4DataVAI_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "signOpen",
+            "printedName": "signOpen(signedMessage:publicKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4SignV8signOpen13signedMessage9publicKey10Foundation4DataVAI_AItKFZ",
+            "mangledName": "$s9TweetNacl0B4SignV8signOpen13signedMessage9publicKey10Foundation4DataVAI_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "signDetached",
+            "printedName": "signDetached(message:secretKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4SignV12signDetached7message9secretKey10Foundation4DataVAI_AItKFZ",
+            "mangledName": "$s9TweetNacl0B4SignV12signDetached7message9secretKey10Foundation4DataVAI_AItKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "signDetachedVerify",
+            "printedName": "signDetachedVerify(message:sig:publicKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9TweetNacl0B4SignV18signDetachedVerify7message3sig9publicKeySb10Foundation4DataV_A2JtKFZ",
+            "mangledName": "$s9TweetNacl0B4SignV18signDetachedVerify7message3sig9publicKeySb10Foundation4DataV_A2JtKFZ",
+            "moduleName": "TweetNacl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "KeyPair",
+            "printedName": "KeyPair",
+            "children": [
+              {
+                "kind": "Function",
+                "name": "keyPair",
+                "printedName": "keyPair()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(publicKey: Foundation.Data, secretKey: Foundation.Data)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Data",
+                        "printedName": "Foundation.Data",
+                        "usr": "s:10Foundation4DataV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Data",
+                        "printedName": "Foundation.Data",
+                        "usr": "s:10Foundation4DataV"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4SignV7KeyPairV03keyE010Foundation4DataV06publicD0_AI06secretD0tyKFZ",
+                "mangledName": "$s9TweetNacl0B4SignV7KeyPairV03keyE010Foundation4DataV06publicD0_AI06secretD0tyKFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "throwing": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "keyPair",
+                "printedName": "keyPair(fromSecretKey:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(publicKey: Foundation.Data, secretKey: Foundation.Data)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Data",
+                        "printedName": "Foundation.Data",
+                        "usr": "s:10Foundation4DataV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Data",
+                        "printedName": "Foundation.Data",
+                        "usr": "s:10Foundation4DataV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4SignV7KeyPairV03keyE0010fromSecretD010Foundation4DataV06publicD0_AJ06secretD0tAJ_tKFZ",
+                "mangledName": "$s9TweetNacl0B4SignV7KeyPairV03keyE0010fromSecretD010Foundation4DataV06publicD0_AJ06secretD0tAJ_tKFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "throwing": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "keyPair",
+                "printedName": "keyPair(fromSeed:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(publicKey: Foundation.Data, secretKey: Foundation.Data)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Data",
+                        "printedName": "Foundation.Data",
+                        "usr": "s:10Foundation4DataV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Data",
+                        "printedName": "Foundation.Data",
+                        "usr": "s:10Foundation4DataV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9TweetNacl0B4SignV7KeyPairV03keyE08fromSeed10Foundation4DataV06publicD0_AJ06secretD0tAJ_tKFZ",
+                "mangledName": "$s9TweetNacl0B4SignV7KeyPairV03keyE08fromSeed10Foundation4DataV06publicD0_AJ06secretD0tAJ_tKFZ",
+                "moduleName": "TweetNacl",
+                "static": true,
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "throwing": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "KeyPair",
+                    "printedName": "TweetNacl.NaclSign.KeyPair",
+                    "usr": "s:9TweetNacl0B4SignV7KeyPairV"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:9TweetNacl0B4SignV7KeyPairVAEycfc",
+                "mangledName": "$s9TweetNacl0B4SignV7KeyPairVAEycfc",
+                "moduleName": "TweetNacl",
+                "implicit": true,
+                "init_kind": "Designated"
+              }
+            ],
+            "declKind": "Struct",
+            "usr": "s:9TweetNacl0B4SignV7KeyPairV",
+            "mangledName": "$s9TweetNacl0B4SignV7KeyPairV",
+            "moduleName": "TweetNacl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NaclSign",
+                "printedName": "TweetNacl.NaclSign",
+                "usr": "s:9TweetNacl0B4SignV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9TweetNacl0B4SignVACycfc",
+            "mangledName": "$s9TweetNacl0B4SignVACycfc",
+            "moduleName": "TweetNacl",
+            "implicit": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:9TweetNacl0B4SignV",
+        "mangledName": "$s9TweetNacl0B4SignV",
+        "moduleName": "TweetNacl",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 179,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 225,
+      "length": 2,
+      "value": "24"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 270,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 318,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 360,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 408,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 452,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 496,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 539,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 772,
+      "length": 2,
+      "value": "64"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 817,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 862,
+      "length": 2,
+      "value": "64"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 902,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/TweetNacl\/Sources\/TweetNacl\/Constant.swift",
+      "kind": "IntegerLiteral",
+      "offset": 938,
+      "length": 2,
+      "value": "64"
+    }
+  ]
+}

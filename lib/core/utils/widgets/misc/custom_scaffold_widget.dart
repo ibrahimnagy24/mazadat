@@ -17,6 +17,7 @@ class CustomScaffoldWidget extends StatelessWidget {
     this.appbarLeading,
     this.appbarHeight,
     this.centerAppbarTitle,
+    this.leadingWidth,
   });
   final Widget child;
   final PreferredSizeWidget? appbar;
@@ -28,6 +29,7 @@ class CustomScaffoldWidget extends StatelessWidget {
   final Widget? appbarLeading;
   final double? appbarHeight;
   final bool? centerAppbarTitle;
+  final double? leadingWidth;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +53,7 @@ class CustomScaffoldWidget extends StatelessWidget {
                       : SystemUiOverlayStyle.dark,
                   title: appbarTitle,
                   leading: appbarLeading,
+                  leadingWidth: leadingWidth,
                 ),
               ))
           : null,
