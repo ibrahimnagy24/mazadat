@@ -1,5 +1,4 @@
 import '../../../../core/utils/constant/app_constant.dart';
-import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/utility.dart';
 import '../entity/auction_entity.dart';
 import '../enums/auction_enum_converter.dart';
@@ -30,11 +29,8 @@ class AuctionModel extends AuctionEntity {
                 json['auctionType']['code']?.toString().toUpperCase() ??
                     'PRIVATE')
             : AuctionType.public,
-        auctionStatus:checkFromMap(json['statusLabel'])?
-        json['statusLabel']: AppConstant.nullFromBack,
-        primaryPhoto: checkFromMap(json['primaryPhoto'])
-            ? json['primaryPhoto']
-            : AppConstant.nullFromBack,
+        auctionStatus: json['statusLabel'] ?? AppConstant.nullFromBack,
+        primaryPhoto: json['primaryPhoto'] ?? AppConstant.nullFromBack,
         name: json['name'] ?? AppConstant.nullFromBack,
         description: json['description'] ?? AppConstant.nullFromBack,
         openingPrice: json['openingPrice'],
@@ -49,8 +45,9 @@ class AuctionModel extends AuctionEntity {
         orderNumber: json['orderNumber'],
       );
 
-
-  factory AuctionModel.fromJsonMyPurchases(Map<String, dynamic> json, {String? orderNumber}) => AuctionModel(
+  factory AuctionModel.fromJsonMyPurchases(Map<String, dynamic> json,
+          {String? orderNumber}) =>
+      AuctionModel(
         id: json['id'],
         searchId: json['searchId'],
         auctionType: checkFromMap(json['auctionType'])
@@ -58,11 +55,8 @@ class AuctionModel extends AuctionEntity {
                 json['auctionType']['code']?.toString().toUpperCase() ??
                     'PRIVATE')
             : AuctionType.public,
-        auctionStatus:checkFromMap(json['statusLabel'])?
-        json['statusLabel']: AppConstant.nullFromBack,
-        primaryPhoto: checkFromMap(json['primaryPhoto'])
-            ? json['primaryPhoto']
-            : AppConstant.nullFromBack,
+        auctionStatus: json['statusLabel'] ?? AppConstant.nullFromBack,
+        primaryPhoto: json['primaryPhoto'] ?? AppConstant.nullFromBack,
         name: json['name'] ?? AppConstant.nullFromBack,
         description: json['description'] ?? AppConstant.nullFromBack,
         openingPrice: json['openingPrice'],

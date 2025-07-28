@@ -97,8 +97,7 @@ class ListAuctionCard extends StatelessWidget {
                           padding:
                               EdgeInsetsDirectional.only(start: 8.w, top: 8.h),
                           child: customImageIconSVG(
-                              imageName:
-                                  AppSvg.auctionType(auction.auctionType),
+                              imageName: AppSvg.auctionType(auction.auctionType),
                               color: AppColors.kWhite,
                               width: 24.w,
                               height: 24.w),
