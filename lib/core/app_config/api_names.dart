@@ -50,7 +50,7 @@ abstract class Endpoints {
   static const String addressTypes = '/addressType/listAddressTypeLookups';
   static const String cities = '/cities/searchByKeyword';
   static const String regions = '/regions/search';
-  static const String districts = '/districts/search';
+  static const String districts = '/district/search';
 
   static const String addresses = '/address/getMyAddresses';
   static const String addAddresses = '/address/add';

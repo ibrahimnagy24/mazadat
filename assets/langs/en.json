@@ -233,6 +233,8 @@
   "Track Request": "Track Request",
   "Region": "Region",
   "Select Region": "Select Region",
+  "District": "District",
+  "Select District": "Select District",
   "Address Type": "Address Type",
   "Select Address Type": "Select Address Type",
   "Add Address": "Add Address",
@@ -252,5 +254,13 @@
   "A problem occurred": "A problem occurred",
   "Please try again later.": "Please try again later.",
   "Please specify the shipping value": "Please specify the shipping value",
-  "Wallet": "Wallet"
+  "Wallet": "Wallet",
+  "Address": "Address",
+  "Enter address": "Enter address",
+  "You have to select region first": "You have to select region first",
+  "You have to select city first": "You have to select city first",
+  "Set as a default address": "Set as a default address",
+  "Save Changes": "Save Changes"
+
+
 }

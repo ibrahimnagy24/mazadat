@@ -17,7 +17,7 @@ import '../widgets/districts_view.dart';
 class DistrictInput extends StatelessWidget {
   const DistrictInput(
       {super.key,
-      required this.cityId,
+      this.cityId,
       this.initialValue,
       this.onSelect,
       this.validator});
@@ -25,19 +25,19 @@ class DistrictInput extends StatelessWidget {
   final Function(DistrictEntity)? onSelect;
   final String? Function(String?)? validator;
 
-  final int cityId;
+  final int? cityId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          DistrictsCubit()..districtsStatesHandled(SearchEngine(id: cityId)),
+      create: (context) => DistrictsCubit()
+        ..districtsStatesHandled(SearchEngine(query: {'cityId': cityId})),
       child: BlocBuilder<DistrictsCubit, DistrictState>(
         builder: (context, state) {
           final cubit = context.read<DistrictsCubit>();
           return DefaultFormField(
-            titleText: AppStrings.region.tr,
-            hintText: '${AppStrings.selectRegion.tr}...',
+            titleText: AppStrings.district.tr,
+            hintText: '${AppStrings.selectDistrict.tr}...',
             needValidation: validator != null,
             validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
@@ -48,54 +48,63 @@ class DistrictInput extends StatelessWidget {
               color: AppColors.kGeryText,
             ),
             onTap: () {
-              if (state is DistrictSuccess) {
-                CustomBottomSheet.show(
-                    label: AppStrings.selectRegion.tr,
-                    widget: BlocProvider.value(
-                      value: context.read<DistrictsCubit>(),
-                      child: BlocBuilder<DistrictsCubit, DistrictState>(
-                          builder: (context, state) {
-                        return Column(
-                          children: [
-                            Expanded(
-                              child: DistrictsView(
-                                controller:
-                                    context.read<DistrictsCubit>().controller,
-                                data: (state as DistrictSuccess).districts,
-                                initialValue: initialValue?.id,
-                                onSelect: (v) {
-                                  onSelect?.call(v);
-                                },
-                              ),
-                            ),
-                            CustomLoadingText(loading: state.isLoading),
-                          ],
-                        );
-                      }),
-                    ));
-              } else if (state is DistrictLoading) {
+              if (cityId == null) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
-                    message: AppStrings.loading.tr,
-                    backgroundColor: AppColors.ALERT_COLOR,
-                    borderColor: Colors.transparent,
-                  ),
-                );
-              } else if (state is DistrictEmpty) {
-                AppCore.showSnackBar(
-                  notification: AppNotification(
-                    message: AppStrings.no_data.tr,
-                    backgroundColor: AppColors.ALERT_COLOR,
-                    borderColor: Colors.transparent,
-                  ),
-                );
-              } else if (state is DistrictError) {
-                AppCore.showSnackBar(
-                  notification: AppNotification(
-                    message: AppStrings.somethingWentWrong,
+                    message: AppStrings.youHveToSelectCityFirst.tr,
                     backgroundColor: AppColors.textError,
                   ),
                 );
+              } else {
+                if (state is DistrictSuccess) {
+                  CustomBottomSheet.show(
+                      label: AppStrings.selectRegion.tr,
+                      widget: BlocProvider.value(
+                        value: context.read<DistrictsCubit>(),
+                        child: BlocBuilder<DistrictsCubit, DistrictState>(
+                            builder: (context, state) {
+                          return Column(
+                            children: [
+                              Expanded(
+                                child: DistrictsView(
+                                  controller:
+                                      context.read<DistrictsCubit>().controller,
+                                  data: (state as DistrictSuccess).districts,
+                                  initialValue: initialValue?.id,
+                                  onSelect: (v) {
+                                    onSelect?.call(v);
+                                  },
+                                ),
+                              ),
+                              CustomLoadingText(loading: state.isLoading),
+                            ],
+                          );
+                        }),
+                      ));
+                } else if (state is DistrictLoading) {
+                  AppCore.showSnackBar(
+                    notification: AppNotification(
+                      message: AppStrings.loading.tr,
+                      backgroundColor: AppColors.ALERT_COLOR,
+                      borderColor: Colors.transparent,
+                    ),
+                  );
+                } else if (state is DistrictEmpty) {
+                  AppCore.showSnackBar(
+                    notification: AppNotification(
+                      message: AppStrings.no_data.tr,
+                      backgroundColor: AppColors.ALERT_COLOR,
+                      borderColor: Colors.transparent,
+                    ),
+                  );
+                } else if (state is DistrictError) {
+                  AppCore.showSnackBar(
+                    notification: AppNotification(
+                      message: AppStrings.somethingWentWrong.tr,
+                      backgroundColor: AppColors.textError,
+                    ),
+                  );
+                }
               }
             },
           );

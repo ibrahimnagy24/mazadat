@@ -133,6 +133,9 @@ class AppStrings {
   static const String region = 'Region';
   static const String selectRegion = 'Select Region';
 
+  static const String district = 'District';
+  static const String selectDistrict = 'Select District';
+
   static const String age = 'Age';
   static const String selectAge = 'Select Age';
   static const String selectAgeGroup = 'Select age group';
@@ -298,4 +301,11 @@ class AppStrings {
   static const String pleaseSpecifyTheShippingValue =
       'Please specify the shipping value';
   static const String wallet = 'Wallet';
+  static const String address = 'Address';
+  static const String enterAddress = 'Enter address';
+  static const String youHveToSelectRegionFirst = 'You have to select region first';
+  static const String youHveToSelectCityFirst = 'You have to select city first';
+  static const String setAsADefaultAddress = 'Set as a default address';
+  static const String saveChanges = 'Save Changes';
+
 }

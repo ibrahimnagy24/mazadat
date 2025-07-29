@@ -7,8 +7,6 @@ import '../data/model/address_type_model.dart';
 import '../data/repo/address_types_repo.dart';
 part 'address_types_state.dart';
 
-
-
 class AddressTypesCubit extends Cubit<AddressTypesState> {
   AddressTypesCubit() : super(AddressTypesStart()) {
     controller = ScrollController();
@@ -45,20 +43,23 @@ class AddressTypesCubit extends Cubit<AddressTypesState> {
     response.fold((failure) {
       return emit(AddressTypesError(failure));
     }, (success) {
-      AddressTypesModel? res = AddressTypesModel.fromJson(success.data);
-
-      if (_engine.currentPage == -1) {
-        model?.clear();
-      }
-
-      if (res.content != null && res.content!.isNotEmpty) {
-        for (var item in res.content!) {
-          model?.removeWhere((e) => e.id == item.id);
-          model?.add(item);
-        }
-      }
-      _engine.maxPages = res.pageable?.maxPages ?? 1;
-      _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
+      // AddressTypesModel? res = AddressTypesModel.fromJson(success.data);
+      //
+      // if (_engine.currentPage == -1) {
+      //   model?.clear();
+      // }
+      // if (res.content != null && res.content!.isNotEmpty) {
+      //   for (var item in res.content!) {
+      //     model?.removeWhere((e) => e.id == item.id);
+      //     model?.add(item);
+      //   }
+      // }
+      // _engine.maxPages = res.pageable?.maxPages ?? 1;
+      // _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
+      _engine.maxPages = 1;
+      _engine.updateCurrentPage(1);
+      model = List<AddressTypeEntity>.from(
+          success.data.map((e) => AddressTypeModel.fromJson(e))).toList();
 
       if (model != null && model!.isNotEmpty) {
         emit(AddressTypesDone(addressTypes: model!, isLoading: false));
