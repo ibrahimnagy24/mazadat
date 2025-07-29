@@ -94,11 +94,6 @@ abstract class AppTextStyles {
     fontSize: AppFontSizes.fsM,
     color: AppColors.textDefault,
   );
-  static TextStyle textXLBold = const TextStyle(
-    fontWeight: FontWeight.w700,
-    fontSize: AppFontSizes.fsM,
-    color: AppColors.kWhite,
-  );
 
   static TextStyle bodyMedium = const TextStyle(
     fontWeight: FontWeight.w500,
