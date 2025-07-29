@@ -7,7 +7,6 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
-import '../../../../core/services/cache/shared_helper.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/utility.dart';
 
@@ -41,8 +40,7 @@ class LogoutConfirmationDialog extends StatelessWidget {
                 borderColor: AppColors.RED,
                 textColor: AppColors.RED,
                 text: AppStrings.logout.tr,
-                onPressed: () async =>
-                await Utility.logout(),
+                onPressed: () async => await Utility.logout(),
               ),
             ),
             Expanded(

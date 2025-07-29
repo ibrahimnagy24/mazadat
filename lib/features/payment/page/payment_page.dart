@@ -8,7 +8,6 @@ import '../../../core/navigation/routes.dart';
 import '../../../core/theme/colors/styles.dart';
 import '../../../core/utils/widgets/custom_app_bar.dart';
 
-
 class PaymentPage extends StatefulWidget {
   final String url;
 
@@ -25,7 +24,7 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Stack(
         children: [
           InAppWebView(
@@ -65,7 +64,7 @@ class _PaymentPageState extends State<PaymentPage> {
       /// Execute JavaScript code within the WebView
       String? result = await controller!
           .evaluateJavascript(source: 'document.body.innerHTML');
-      log("======>result: $result");
+      log('======>result: $result');
 
       /// Process the JavaScript response
       if (result != null && result.contains('Transaction successful')) {

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../core/assets/app_images.dart';
-import '../../../../../core/shared/blocs/main_app_bloc.dart';
-import '../../../../../core/theme/colors/styles.dart';
-import '../../../../../core/theme/radius/app_radius.dart';
-import '../../../../../core/theme/text_styles/text_styles.dart';
-import '../../../../../core/utils/constant/app_strings.dart';
-import '../../../../../core/utils/enums/enums.dart';
-import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/widgets/text/main_text.dart';
-import '../../data/entity/wallet_history_entity.dart';
+import '../../assets/app_images.dart';
+import '../blocs/main_app_bloc.dart';
+import '../../theme/colors/styles.dart';
+import '../../theme/radius/app_radius.dart';
+import '../../theme/text_styles/text_styles.dart';
+import '../../utils/constant/app_strings.dart';
+import '../../utils/enums/enums.dart';
+import '../../utils/extensions/extensions.dart';
+import '../../utils/widgets/text/main_text.dart';
+import '../../../features/wallet/view_wallet_history/data/entity/wallet_history_entity.dart';
 
 class WalletHistoryCardWidget extends StatelessWidget {
   const WalletHistoryCardWidget({

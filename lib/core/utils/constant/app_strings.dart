@@ -276,4 +276,16 @@ class AppStrings {
   static const String transactionHistory = 'Transaction history';
   static const String auctionAwardAmount = 'Auction award amount';
   static const String transactionNumber = 'Transaction number';
+  static const String selectTheShippingAmount = 'Select the shipping amount';
+  static const String charge = 'Charge';
+  static const String applePay = 'Apple Pay';
+  static const String visa = 'Visa';
+  static const String theWalletHasBeenSuccessfullyCharged =
+      'The wallet has been successfully charged.';
+  static const String good = 'Good';
+  static const String aProblemOccurred = 'A problem occurred';
+  static const String pleaseTryAgainLater = 'Please try again later.';
+  static const String pleaseSpecifyTheShippingValue =
+      'Please specify the shipping value';
+  static const String wallet = 'Wallet';
 }

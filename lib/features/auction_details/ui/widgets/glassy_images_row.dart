@@ -97,7 +97,7 @@ class GlassyImagesRow extends StatelessWidget {
 
                       return GestureDetector(
                         onTap: () {
-                          log("xxx $i");
+                          log('xxx $i');
                           context
                               .read<AuctionDetailsCubit>()
                               .updateImageIndex(i);
@@ -123,7 +123,7 @@ class GlassyImagesRow extends StatelessWidget {
                                 (attachments[i].isVideo)
                                     ? DefaultVideoCard(
                                         onTap: () {
-                                          log("xxx $i");
+                                          log('xxx $i');
                                           context
                                               .read<AuctionDetailsCubit>()
                                               .updateImageIndex(i);

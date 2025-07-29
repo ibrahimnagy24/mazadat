@@ -91,11 +91,28 @@ class CustomNavbarWidget extends StatelessWidget {
     return [
       Expanded(
         child: IconButton(
-          onPressed: () => cubit.onItemTapped(2),
+          onPressed: () => cubit.onItemTapped(3),
           padding: EdgeInsets.zero,
           icon: CustomNavbarItemWidget(
             icon: AppSvg.auction,
             label: AppStrings.myAuctions.tr,
+            isSelected: cubit.currentIndex == 3,
+            iconHeight: iconHeight ?? 24.h,
+            iconWidth: iconWidth ?? 24.w,
+            selectedItemHeight: selectedItemHeight,
+            selectedItemWidth: selectedItemWidth,
+            unselectedItemHeight: unselectedItemHeight,
+            unselectedItemWidth: unselectedItemWidth,
+          ),
+        ),
+      ),
+      Expanded(
+        child: IconButton(
+          onPressed: () => cubit.onItemTapped(2),
+          padding: EdgeInsets.zero,
+          icon: CustomNavbarItemWidget(
+            icon: AppSvg.wallet,
+            label: AppStrings.wallet.tr,
             isSelected: cubit.currentIndex == 2,
             iconHeight: iconHeight ?? 24.h,
             iconWidth: iconWidth ?? 24.w,

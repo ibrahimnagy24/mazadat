@@ -15,6 +15,14 @@ class AppImages {
   static const String withdrawIcon = 'assets/images/withdraw_icon.png';
   static const String saudiRiyalSymbol2 =
       'assets/images/Saudi_Riyal_Symbol2.png';
+  static const String saudiRiyalSymbol3 =
+      'assets/images/Saudi_Riyal_Symbol3.png';
   static const String calendar = 'assets/images/calendar-03.png';
   static const String deposite = 'assets/images/deposite.png';
+  static const String money = 'assets/images/money-01.png';
+  static const String visaIcon = 'assets/images/visa_icon.png';
+  static const String applePayIcon = 'assets/images/apple_pay_icon.png';
+  static const String checkCirculerIcon =
+      'assets/images/check_circuler_icon.png';
+  static const String wrongCircleIcon = 'assets/images/wrong_circle.png';
 }

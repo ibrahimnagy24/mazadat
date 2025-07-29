@@ -235,5 +235,13 @@
   "Current balance": "الرصيد الحالي",
   "Transaction history": "تاريخ المعاملات",
   "Auction award amount": "مبلغ ترسية المزاد",
-  "Transaction number": "رقم المعامله"
+  "Transaction number": "رقم المعامله",
+  "Select the shipping amount": "حدد مبلغ الشحن",
+  "Charge": "إشحن",
+  "Apple Pay": "أبل باي",
+  "Visa": "فيزا",
+  "The wallet has been successfully charged.": "تم شحن المحفظه بنجاح.",
+  "Good": "حسناً",
+  "A problem occurred": "حدثت مشكله ما",
+  "Please try again later.": "برجاء المحاوله مره آخري لاحقاً"
 }

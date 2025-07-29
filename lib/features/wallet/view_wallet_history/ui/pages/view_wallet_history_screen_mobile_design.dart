@@ -15,7 +15,7 @@ import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
 import '../../logic/view_wallet_history_cubit.dart';
 import '../../logic/view_wallet_history_state.dart';
-import '../widgets/wallet_history_card_widget.dart';
+import '../../../../../core/shared/widgets/wallet_history_card_widget.dart';
 
 class ViewWalletHistoryScreenMobileDesign extends StatelessWidget {
   const ViewWalletHistoryScreenMobileDesign({super.key});

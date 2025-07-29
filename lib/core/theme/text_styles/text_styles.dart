@@ -27,7 +27,7 @@ abstract class AppTextStyles {
 
   static TextStyle displaySMMedium = const TextStyle(
     fontWeight: FontWeight.w500,
-    fontSize: AppFontSizes.fsS,
+    fontSize: AppFontSizes.fsL,
     color: AppColors.kPrimary900,
   );
   static TextStyle displaySMBold = const TextStyle(
@@ -87,6 +87,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsM,
     color: AppColors.textDefault,
+  );
+  static TextStyle textXLBold = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.kWhite,
   );
 
   static TextStyle bodyMedium = const TextStyle(

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../../../../core/assets/app_images.dart';
@@ -6,6 +8,7 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
+import 'recharge_wallet_bottom_sheet_widget.dart';
 
 class WalletBalanceCardWidget extends StatelessWidget {
   const WalletBalanceCardWidget({super.key});
@@ -32,10 +35,28 @@ class WalletBalanceCardWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  AppImages.addFloatingIcon,
-                  height: 48,
-                  width: 48,
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      barrierColor: Colors.transparent,
+                      builder: (dialogContext) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                          child: RechargeWalletBottomSheetWidget(
+                            dialogContext: dialogContext,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Image.asset(
+                    AppImages.addFloatingIcon,
+                    height: 48,
+                    width: 48,
+                  ),
                 ),
                 Row(
                   children: [

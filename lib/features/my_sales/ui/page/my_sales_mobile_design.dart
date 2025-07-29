@@ -6,7 +6,6 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../widgets/my_sales_body.dart';
-import '../widgets/my_sales_header.dart';
 
 class MySalesMobileDesign extends StatelessWidget {
   const MySalesMobileDesign({super.key});

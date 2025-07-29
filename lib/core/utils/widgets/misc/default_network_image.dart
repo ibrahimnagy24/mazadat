@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../theme/colors/styles.dart';
 import '../loading/adaptive_circle_progress.dart';
 import 'custom_network_image.dart';
 
@@ -39,39 +38,39 @@ class DefaultNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(radius??0),
+      borderRadius: BorderRadius.circular(radius ?? 0),
       child: needCache!
           ? CachedNetworkImage(
-        imageUrl: image,
-        placeholder: placeholder ??
-                (context, url) =>
-            fromSliverList != null && fromSliverList == true
-                ? const Center(child: AdaptiveCircularProgress())
-                : const Center(child: AdaptiveCircularProgress()),
-        memCacheHeight: needResizeImage ? height?.toInt() : null,
-        memCacheWidth: needResizeImage ? width?.toInt() : null,
-        useOldImageOnUrlChange: true,
-        filterQuality: filterQuality ?? FilterQuality.low,
-        errorWidget: (a, b, c) => networkImageErrorWidget(
-            width: width, height: height,radius: radius, fit: fit),
-        height: height ??
-            (dynamicWidth ? null : MediaQuery.of(context).size.height),
-        width: width ??
-            (dynamicWidth ? null : MediaQuery.of(context).size.width),
-        fit: fit ?? BoxFit.cover,
-        fadeInCurve: Curves.ease,
-      )
+              imageUrl: image,
+              placeholder: placeholder ??
+                  (context, url) =>
+                      fromSliverList != null && fromSliverList == true
+                          ? const Center(child: AdaptiveCircularProgress())
+                          : const Center(child: AdaptiveCircularProgress()),
+              memCacheHeight: needResizeImage ? height?.toInt() : null,
+              memCacheWidth: needResizeImage ? width?.toInt() : null,
+              useOldImageOnUrlChange: true,
+              filterQuality: filterQuality ?? FilterQuality.low,
+              errorWidget: (a, b, c) => networkImageErrorWidget(
+                  width: width, height: height, radius: radius, fit: fit),
+              height: height ??
+                  (dynamicWidth ? null : MediaQuery.of(context).size.height),
+              width: width ??
+                  (dynamicWidth ? null : MediaQuery.of(context).size.width),
+              fit: fit ?? BoxFit.cover,
+              fadeInCurve: Curves.ease,
+            )
           : Image.network(
-        image,
-        loadingBuilder: (context, url, _) =>
-        fromSliverList != null && fromSliverList == true
-            ? const Icon(Icons.timelapse_outlined)
-            : const Icon(Icons.timelapse_outlined),
-        errorBuilder: (context, url, error) => const Icon(Icons.error),
-        height: height ?? MediaQuery.of(context).size.height,
-        width: width ?? MediaQuery.of(context).size.width,
-        fit: fit ?? BoxFit.cover,
-      ),
+              image,
+              loadingBuilder: (context, url, _) =>
+                  fromSliverList != null && fromSliverList == true
+                      ? const Icon(Icons.timelapse_outlined)
+                      : const Icon(Icons.timelapse_outlined),
+              errorBuilder: (context, url, error) => const Icon(Icons.error),
+              height: height ?? MediaQuery.of(context).size.height,
+              width: width ?? MediaQuery.of(context).size.width,
+              fit: fit ?? BoxFit.cover,
+            ),
     );
   }
 }

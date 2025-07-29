@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		+Hv+AqQZKQJp0t4yFPfe9QthuyM=
+		rNXRvr2lecl3/rxCTjZ74aW2qCA=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -78,15 +78,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		UbNDaJOHas7TC4OdsB+igshDSv0=
+		Dk7QiELc+FopyULhHxYkaxgcbJo=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		roxFZOiwBdR24lZFOso0v6ey8Ac=
+		snEojS5zdweuw2B/vUD5+rhbC5E=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		ocJIkeqJiwKWpZ3n0UoJt/oyCxA=
+		+juMk0BVtBTdg5sABVzuIta0jeQ=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -140,9 +140,17 @@
 		<data>
 		Ebfqe5RcE5TChExdgzAWxzHxAVQ=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Saudi_Riyal_Symbol3.png</key>
+		<data>
+		QvKc9wI1FmqlNbNsUTRRZURSzCM=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/add_floating_icon.png</key>
 		<data>
 		+xhzkCkShZ/L+UwZjhW9RgB/tmE=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/apple_pay_icon.png</key>
+		<data>
+		r7ByZ/aVtWZ3wDD3rtfbx50YDIA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/arrow-reload-horizontal.png</key>
 		<data>
@@ -160,6 +168,10 @@
 		<data>
 		NIbAuftC5krEv9HROicW0FYTLG8=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/check_circuler_icon.png</key>
+		<data>
+		gCcjdGbA96+fS09N+scW+VFPL7A=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/deposite.png</key>
 		<data>
 		0DbGxni8VEWpCpmnNKOqe8oqxvA=
@@ -176,9 +188,17 @@
 		<data>
 		fqV+VPvqtnGyKdkhWAjy+nHfDCA=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/money-01.png</key>
+		<data>
+		16UyGa0u9gQBKZ5Q3equn/EbUdI=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/saudi-arabia.png</key>
 		<data>
 		SG8KXAspql1bZW1zHWbKgXG5ISw=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/visa_icon.png</key>
+		<data>
+		vn8Ck7sRsGRynT4pEf/30k2EHI4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/wallet_background.png</key>
 		<data>
@@ -196,17 +216,21 @@
 		<data>
 		Frq2yOGNQFTqwtjlNCKV0hIJG5o=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/wrong_circle.png</key>
+		<data>
+		BhQpol2yZ7G6XBq4oGF9hyRjXBE=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/yellow_dot.png</key>
 		<data>
 		4U0Ssy/YJ/wJ7dpdc1WkrcK8fac=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/langs/ar.json</key>
 		<data>
-		QaR8MMogG+s/V3W/Kfa/Xwhd8BI=
+		iLRBcyk9SqMiCRTKDJgEAOge6QQ=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/langs/en.json</key>
 		<data>
-		KCZ2MDJR3DH92CGxcxS0Rpyh+fs=
+		jQSZetLc6cBGnSLzQbMS+w1Fadw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/launchers/logo.png</key>
 		<data>
@@ -470,7 +494,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		nXU/j0UT181J6XqcWh8DVeWc8YY=
+		C8vOQ/CpdjoY53usG37YVWtebLo=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -1694,7 +1718,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EL+jKLeS5zYbhd5SvPp8kdTNn3EzneE8HxnzY/7goM0=
+			Sh09D7H+KFtyiRqZmHH2qGNEp9QyM0pTXq2Zp6t2agY=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1708,21 +1732,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4Hsj5rRcCrjImoqoSZCpMNjvtN+EKc8pPf6IERBbn7o=
+			nJFnNyIT4qqEbH3rYiG9Q1HjVDMTCcKNpWcw88sZEJM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fHhmuMmaSFFM7+EmaZ0GD3OqDGfz9kWPQmz7I5x7oKg=
+			VI/iABvOTKJYataWPiH7pJo3Q6IljiG5We4N82Dybqo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			q3KwcgRyTBH2sViB2YMAIfRzNYEkwedvo18OTESwzyQ=
+			Dlb2y0I+VnqAzmebmZVD0KEf/kwXLsI3iE/5w4JrsVE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -1816,11 +1840,25 @@
 			J5oLaxh/fQ8P1X5/w7g/1itV5ssDrMqc2ZWSXvueztk=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Saudi_Riyal_Symbol3.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oUj9EJYFGZw6pHe9MCKsz81zav5dKeZkL9+dOe7jCo8=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/add_floating_icon.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			9n3o+jj7k5byCgTQ4vZGfxusljRkTPcXXJkNRasOA0o=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/apple_pay_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wZrmJ+7GdbSHRm7XvhdRjz4x4VThc/990gvS4XN7N4A=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/arrow-reload-horizontal.png</key>
@@ -1851,6 +1889,13 @@
 			u0jlSWUQXcy0c718XVhXd7oIEPqgxjIQR0geCqA1wGA=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/check_circuler_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/UXV33xXlUYDsPMawN7KXHZBGP3Au2D3CffCnJNslC8=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/deposite.png</key>
 		<dict>
 			<key>hash2</key>
@@ -1879,11 +1924,25 @@
 			PFRkgLoyQZhpGWXNPDa+W4elUfbAIc683H9Bg05fSTs=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/money-01.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wNuoXFa9P6LPgD2CgdrCEa2+HLjDZSFnNjrtl+0O310=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/saudi-arabia.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			BwDOWusJJWvXCcFOSNzlmaxkRLpZWe/TwfjlVqLChiI=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/visa_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gMUYJyb4TypF4Pl32kRYre0T1TP3v+MiIH9ktmz6i8E=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/wallet_background.png</key>
@@ -1914,6 +1973,13 @@
 			rWs+A1VEYu2eiXYwFV4CTxLokl/zv31NF0pAj3ga7yY=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/wrong_circle.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OzRAsFHZ1qbFyEAjb6gFz/i6416zGVkLNchG/fZ9M2Q=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/yellow_dot.png</key>
 		<dict>
 			<key>hash2</key>
@@ -1925,14 +1991,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UGYz+fcYU432LEr0nZzo1iTVdDeg0To2r7CIYHiydjw=
+			SjaAIIE0MIUaaROHKr3zO5DMgK6+2mMHthZz5RajxHU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/langs/en.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			w11OyB8F6GmIpQ8N5dB2ZM7mVs144ayajzMKN1xzTE4=
+			2ivgDQMlkh8U1G+Hj32JZkgXzAiwICWin9nGA5O+/hk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/launchers/logo.png</key>
@@ -2394,7 +2460,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			B3ENlARvzuY0Mqe+LeLKKQt8/IyfFiMSADPKxyLgkUA=
+			6w5BqaXUVqncenidiz/EvE5KKEjVeWzekFOWYWoY2KM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
