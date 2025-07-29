@@ -40,5 +40,6 @@ class Routes {
   static const MY_PURCHASES = 'MY_PURCHASES';
   static const VIEW_ORDER_DETAILS = 'VIEW_ORDER_DETAILS';
   static const ADDRESSES = 'ADDRESSES';
+  static const ADD_ADDRESSES = 'ADD_ADDRESSES';
 
 }

@@ -234,5 +234,9 @@
   "Region": "Region",
   "Select Region": "Select Region",
   "Address Type": "Address Type",
-  "Select Address Type": "Select Address Type"
+  "Select Address Type": "Select Address Type",
+  "Add Address": "Add Address",
+  "Edit Address": "Edit Address",
+  "Theres no addresses!": "Theres no addresses!"
+
 }

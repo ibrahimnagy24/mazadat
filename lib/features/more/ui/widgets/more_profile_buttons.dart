@@ -42,7 +42,7 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                   title: AppStrings.mySales.tr,
                   icon: AppSvg.saleTag,
-                  onTap: () => CustomNavigator.push(Routes.MY_SALES),
+                  // onTap: () => CustomNavigator.push(Routes.MY_SALES),
               ),
               MoreButton(
                 title: AppStrings.favourite.tr,
@@ -55,7 +55,8 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                   title: AppStrings.myPurchases.tr,
                   icon: AppSvg.cart,
-                  onTap: () => CustomNavigator.push(Routes.MY_PURCHASES)),
+                  onTap: () => CustomNavigator.push(Routes.MY_PURCHASES),
+              ),
               MoreButton(
                 title: AppStrings.paymentHistory.tr,
                 icon: AppSvg.clock,
@@ -63,7 +64,7 @@ class MoreProfileButtons extends StatelessWidget {
               MoreButton(
                   title: AppStrings.myBundles.tr,
                   icon: AppSvg.package,
-                  onTap: () => CustomNavigator.push(Routes.MY_BUNDLES),
+                  // onTap: () => CustomNavigator.push(Routes.MY_BUNDLES),
               ),
             ],
           ),

@@ -234,6 +234,10 @@
   "Region": "المنطقة",
   "Select Region": "اختر المنطقة",
   "Address Type": "نوع العنوان",
-  "Select Address Type": "اختر نوع العنوان"
+  "Select Address Type": "اختر نوع العنوان",
+  "Add Address": "إضافة عنوان",
+  "Edit Address": "تعديل العنوان",
+  "Theres no addresses!": "لا يوجد عناوين!"
+
 
 }

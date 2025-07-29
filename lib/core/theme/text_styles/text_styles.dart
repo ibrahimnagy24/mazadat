@@ -48,6 +48,12 @@ abstract class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
+  static TextStyle textXLBold = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.textPrimary,
+  );
+
   static TextStyle textMdBold = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsXs,
