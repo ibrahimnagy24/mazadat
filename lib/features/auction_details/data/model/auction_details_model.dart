@@ -94,7 +94,7 @@ class AuctionDetailsModel {
             ? double.parse(json['maxBiddingAmount']?.toString().trim() ?? '0')
             : null;
 
-    startDate = json['endDate'] != null
+    startDate = json['startDate'] != null
         ? DateTime.parse(json['startDate'])
         : DateTime.now();
     endDate = json['endDate'] != null
@@ -113,7 +113,7 @@ class AuctionDetailsModel {
     autoBiddingEnabled = json['autoBiddingEnabled'];
     lastBidderId = json['lastBidderId'];
     isStarted = startDate?.isBefore(DateTime.now());
-    isEnded = endDate?.isAfter(DateTime.now());
+    isEnded = DateTime.now().isAfter(endDate??DateTime.now());
     currentBiddingMethod = json['currentBiddingMethod'] != null
         ? BiddingMethodConverter.stringToBiddingMethod(
             json['currentBiddingMethod']?.toString().toUpperCase())
