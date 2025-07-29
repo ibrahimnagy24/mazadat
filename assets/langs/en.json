@@ -231,6 +231,13 @@
   "The specified bid value has been reached.": "The specified bid value has been reached.",
   "Auction Ended": "Auction Ended",
   "Track Request": "Track Request",
+  "Region": "Region",
+  "Select Region": "Select Region",
+  "Address Type": "Address Type",
+  "Select Address Type": "Select Address Type",
+  "Add Address": "Add Address",
+  "Edit Address": "Edit Address",
+  "Theres no addresses!": "Theres no addresses!"
   "My wallet": "My wallet",
   "Current balance": "Current balance",
   "Transaction history": "Transaction history",

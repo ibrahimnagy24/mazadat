@@ -1,27 +1,28 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import '../../../../../../core/app_config/api_names.dart';
 import '../../../../../../core/services/error_handler/error_handler.dart';
 import '../../../../../../core/services/network/network_helper.dart';
 import '../../../../../../core/shared/entity/error_entity.dart';
-import '../../../../../../core/utils/utility.dart';
-import '../entity/city_entity.dart';
-import '../model/city_model.dart';
+import '../../../../../core/services/pagination/pagination_service.dart';
+
 
 abstract class CitiesRepo {
   const CitiesRepo();
 
-  static Future<Either<ErrorEntity, List<CityEntity>>> getCities() async {
+  static Future<Either<ErrorEntity, Response>> getCities(
+      SearchEngine params) async {
     try {
       final response = await Network().request(
         Endpoints.cities,
         method: ServerMethods.GET,
+        queryParameters: params.toJson(),
       );
-      final List<CityEntity> user = checkFromArray(response.data['content'])
-          ? (response.data['content'] as List)
-              .map((e) => CityModel.fromJson(e))
-              .toList()
-          : [];
-      return Right(user);
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(ApiErrorHandler().handleError(response.data['message']));
+      }
     } catch (error) {
       return Left(ApiErrorHandler().handleError(error));
     }

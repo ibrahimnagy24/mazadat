@@ -10,8 +10,9 @@ final class CityLoading extends CityState {}
 final class CityEmpty extends CityState {}
 
 final class CityDone extends CityState {
-  const CityDone(this.cities);
+  const CityDone({required this.cities,this.isLoading = false});
   final List<CityEntity> cities;
+  final bool isLoading;
 }
 
 final class CityError extends CityState {

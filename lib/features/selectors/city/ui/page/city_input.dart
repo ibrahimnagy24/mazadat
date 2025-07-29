@@ -7,27 +7,31 @@ import '../../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
+import '../../../../../core/services/pagination/pagination_service.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
+import '../../../../../core/utils/widgets/custom_loading_text.dart';
 import '../../data/entity/city_entity.dart';
 import '../../logic/city_cubit.dart';
 import '../widgets/cities_view.dart';
 
 class CityInput extends StatelessWidget {
   const CityInput(
-      {super.key, this.initialValue, this.onSelect, this.validator});
+      {super.key,
+      this.regionId,
+      this.initialValue,
+      this.onSelect,
+      this.validator});
   final CityEntity? initialValue;
   final Function(CityEntity)? onSelect;
   final String? Function(String?)? validator;
+  final int? regionId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CityCubit()..citiesStatesHandled(),
+      create: (context) =>
+          CityCubit()..citiesStatesHandled(SearchEngine(id: regionId)),
       child: BlocBuilder<CityCubit, CityState>(
-        buildWhen: (previous, current) =>
-            current is CityLoading ||
-            current is CityDone ||
-            current is CityError,
         builder: (context, state) {
           final cubit = context.read<CityCubit>();
           return DefaultFormField(
@@ -45,15 +49,29 @@ class CityInput extends StatelessWidget {
             onTap: () {
               if (state is CityDone) {
                 CustomBottomSheet.show(
-                  label: AppStrings.selectCity.tr,
-                  widget: CitiesView(
-                    data: state.cities,
-                    initialValue: initialValue?.id,
-                    onSelect: (v) {
-                      onSelect?.call(v);
-                    },
-                  ),
-                );
+                    label: AppStrings.selectCity.tr,
+                    widget: BlocProvider.value(
+                      value: context.read<CityCubit>(),
+                      child: BlocBuilder<CityCubit, CityState>(
+                          builder: (context, state) {
+                        return Column(
+                          children: [
+                            Expanded(
+                              child: CitiesView(
+                                controller:
+                                    context.read<CityCubit>().controller,
+                                data: (state as CityDone).cities,
+                                initialValue: initialValue?.id,
+                                onSelect: (v) {
+                                  onSelect?.call(v);
+                                },
+                              ),
+                            ),
+                            CustomLoadingText(loading: state.isLoading),
+                          ],
+                        );
+                      }),
+                    ));
               } else if (state is CityLoading) {
                 AppCore.showSnackBar(
                   notification: AppNotification(

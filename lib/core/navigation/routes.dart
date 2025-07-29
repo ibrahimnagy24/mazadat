@@ -39,6 +39,10 @@ class Routes {
   static const MY_SALES = 'MY_SALES';
   static const MY_PURCHASES = 'MY_PURCHASES';
   static const VIEW_ORDER_DETAILS = 'VIEW_ORDER_DETAILS';
-//-----------------------------------WALLET---------------------------\\
-  static const VIEW_WALLET_HISTORY = 'VIEW_WALLET_HISTORY';
+  //-----------------------------------ADDRESSES---------------------------\\
+  static const ADDRESSES = 'ADDRESSES';
+  static const ADD_ADDRESSES = 'ADD_ADDRESSES';
+  //-----------------------------------WALLET---------------------------\\
+    static const VIEW_WALLET_HISTORY = 'VIEW_WALLET_HISTORY';
+
 }

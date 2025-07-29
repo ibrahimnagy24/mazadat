@@ -42,6 +42,20 @@ abstract class Endpoints {
 //----------------------------------WALLET--------------------------------------\\
   static const String walletHistory = '/walletHistory';
 
+
+
+
+//--------------------------------Addresses--------------------------------------\\
+
+  static const String addressTypes = '/addressType/listAddressTypeLookups';
+  static const String cities = '/cities/searchByKeyword';
+  static const String regions = '/regions/search';
+  static const String districts = '/districts/search';
+
+  static const String addresses = '/address/getMyAddresses';
+  static const String addAddresses = '/address/add';
+  static const String editAddresses = '/address/update';
+
 //--------------------------------Favourites--------------------------------------\\
 
   static const String getFavorites = '/favorites/getFavoriteList';
@@ -63,7 +77,6 @@ abstract class Endpoints {
 //-------------------------------NOT TESTED------------------------------------\\
 
   static const String paymentList = '/paymentMehods/listAll';
-  static const String cities = '/cities/searchByKeyword';
   static const String ages = '/age/listAgeLookups';
   static const String auctionStatuses =
       '/utils/getLookup?lookups=AUCTION_STATUS';

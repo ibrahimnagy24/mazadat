@@ -9,9 +9,10 @@ import '../../data/entity/city_entity.dart';
 
 class CitiesView extends StatefulWidget {
   const CitiesView(
-      {super.key, required this.data, this.initialValue, this.onSelect});
+      {super.key, required this.data,required this.controller, this.initialValue, this.onSelect});
   final List<CityEntity> data;
   final int? initialValue;
+  final ScrollController controller;
   final Function(CityEntity)? onSelect;
 
   @override
@@ -31,6 +32,7 @@ class _CitiesViewState extends State<CitiesView> {
   @override
   Widget build(BuildContext context) {
     return ListAnimator(
+      controller: widget.controller,
       data: List.generate(
         widget.data.length,
         (index) => GestureDetector(
