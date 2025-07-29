@@ -97,8 +97,8 @@ class AuctionPusherCubit extends Cubit<AuctionPusherState> {
 
   dynamic _onEvent({required PusherEvent event, required int id}) {
     if (event.eventName != 'PLACE_BID_$id') return;
-    log("event ${event.eventName}");
-    log("event ${event.data}");
+    log('event ${event.eventName}');
+    log('event ${event.data}');
     details = AuctionPusherModel.fromJson(jsonDecode(event.data));
 
     emit(BiddingState(details!));

@@ -3,14 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theme/colors/styles.dart';
 
-import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/form_fields/default_password_form_field.dart';
 import '../../../../../core/utils/widgets/form_fields/default_phone_form_field.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../../../core/utils/widgets/misc/custom_screen_type_layout_widget.dart';
-import '../../../../../core/utils/widgets/text/main_text.dart';
 import '../../../shared/auth_header_content.dart';
 import '../../../shared/auth_title_image_banner_widget.dart';
 import '../../logic/login_cubit.dart';

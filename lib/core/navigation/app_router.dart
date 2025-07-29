@@ -34,6 +34,7 @@ import '../../features/static_pages/ui/pages/static_pages_screen.dart';
 import '../../features/auction_details/data/params/auction_details_route_params.dart';
 import '../../features/auction_details/ui/pages/auction_details_screen.dart';
 import '../../features/visitor/ui/pages/visitor_screen.dart';
+import '../../features/wallet/view_wallet_history/ui/pages/view_wallet_history_screen.dart';
 import '../utils/widgets/misc/zoom_image.dart';
 import 'routes.dart';
 
@@ -247,6 +248,11 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const VisitorScreen(),
     ),
 
+    GoRoute(
+      path: '/view-wallet-history',
+      name: Routes.VIEW_WALLET_HISTORY,
+      builder: (context, state) => const ViewWalletHistoryScreen(),
+    ),
     // Not Found route
     GoRoute(
       path: '/not-found',

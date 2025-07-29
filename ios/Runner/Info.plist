@@ -68,7 +68,7 @@
           <true/>
         </dict>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<true/>
 		<key>com.apple.security.network.client</key>
 		<true/>
 		<key>LSApplicationQueriesSchemes</key>

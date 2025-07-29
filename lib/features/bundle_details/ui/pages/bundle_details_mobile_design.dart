@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/custom_app_bar.dart';
-import '../../../../core/utils/widgets/errors/error_message_widget.dart';
-import '../../../../core/utils/widgets/loading/custom_loading.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../data/params/bundle_details_route_params.dart';
-import '../../logic/bundle_details_cubit.dart';
 import '../widgets/bundle_details_body.dart';
 
 class BundleDetailsMobileDesignScreen extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/navigation/custom_navigation.dart';
 import '../../favourites/ui/page/favourites_screen.dart';
 import '../../home/ui/pages/home_screen.dart';
+import '../../wallet/view_wallet/ui/pages/view_wallet_screen.dart';
 import 'navbar_layout_state.dart';
 
 class NavbarLayoutCubit extends Cubit<NavbarLayoutState> {
@@ -16,6 +17,7 @@ class NavbarLayoutCubit extends Cubit<NavbarLayoutState> {
   final List<Widget> pages = [
     const HomeScreen(),
     const FavouritesScreen(),
+    const ViewWalletScreen(),
     const SizedBox(),
   ];
   int currentIndex = 0;

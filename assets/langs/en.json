@@ -238,5 +238,19 @@
   "Add Address": "Add Address",
   "Edit Address": "Edit Address",
   "Theres no addresses!": "Theres no addresses!"
-
+  "My wallet": "My wallet",
+  "Current balance": "Current balance",
+  "Transaction history": "Transaction history",
+  "Auction award amount": "Auction award amount",
+  "Transaction number": "Transaction number",
+  "Select the shipping amount": "Select the shipping amount",
+  "Charge": "Charge",
+  "Apple Pay": "Apple Pay",
+  "Visa": "Visa",
+  "The wallet has been successfully charged.": "The wallet has been successfully charged.",
+  "Good": "Good",
+  "A problem occurred": "A problem occurred",
+  "Please try again later.": "Please try again later.",
+  "Please specify the shipping value": "Please specify the shipping value",
+  "Wallet": "Wallet"
 }

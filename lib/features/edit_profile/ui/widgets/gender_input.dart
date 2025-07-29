@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/theme/colors/styles.dart';
 import '../../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../../core/utils/validations/validator.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/enums/enums.dart';
@@ -27,7 +25,8 @@ class GenderInput extends StatelessWidget {
       //   label: AppStrings.gender.tr,
       // ),
       needValidation: false,
-      controller: TextEditingController(text: initialValue != null ? (initialValue?.name ?? '').tr : null),
+      controller: TextEditingController(
+          text: initialValue != null ? (initialValue?.name ?? '').tr : null),
       readOnly: true,
       suffixIcon: const Icon(
         Icons.keyboard_arrow_down_rounded,

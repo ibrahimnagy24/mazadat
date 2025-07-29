@@ -28,7 +28,7 @@ class DefaultFormField extends StatelessWidget {
     this.verticalEdge,
     this.initialValue,
     this.labelColor,
-    this.maxLines =1,
+    this.maxLines = 1,
     this.textColor,
     this.controller,
     this.onChanged,
@@ -160,7 +160,7 @@ class DefaultFormField extends StatelessWidget {
                 cursorWidth: 1,
                 validator: validator ??
                     (needValidation!
-                        ? (value) => value!.isEmpty
+                        ? (value) => value == null || value.isEmpty
                             ? AppStrings.required.tr
                             : null
                         : null),

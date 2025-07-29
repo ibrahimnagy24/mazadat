@@ -15,7 +15,6 @@ import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
-import '../../../shared/auth_header_content.dart';
 import '../../data/params/verify_code_route_params.dart';
 import '../../logic/verify_code_cubit.dart';
 import '../../logic/verify_code_state.dart';

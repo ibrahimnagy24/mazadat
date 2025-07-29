@@ -11,8 +11,6 @@ import '../../../shared/auth_title_image_banner_widget.dart';
 import '../../logic/register_cubit.dart';
 import '../../logic/register_state.dart';
 import 'already_have_account_widget.dart';
-import 'privacy_and_conditions_widget.dart';
-import 'create_account_button_widget.dart';
 import 'register_actions.dart';
 import 'register_progress_indicator.dart';
 import 'register_step_1.dart';

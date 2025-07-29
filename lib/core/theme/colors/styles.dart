@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   //mazadat
   static const Color kPrimary = Color.fromRGBO(64, 77, 38, 1);
+  static const Color buttonBackgroundPrimaryDefault =
+      Color.fromRGBO(81, 94, 50, 1);
+
   static const Color kSecondary = Color.fromRGBO(173, 156, 109, 1);
   static const Color kDisable = Color.fromRGBO(175, 181, 161, 1);
   //mazadat
@@ -18,8 +21,9 @@ abstract class AppColors {
   //mazadat
   static const Color iconSecondary = Color.fromRGBO(243, 220, 154, 1);
   //mazadat
-  static const Color iconDefault = Color.fromRGBO(162, 162, 162, 1);
+  static const Color iconDefault = Color.fromRGBO(46, 46, 46, 1);
   static const Color iconPrimary = Color.fromRGBO(81, 94, 50, 1);
+  static const Color greyScale900 = Color.fromRGBO(17, 24, 39, 1);
 
   ///Background
   static const Color background = Color.fromRGBO(238, 239, 235, 1);
@@ -87,6 +91,9 @@ abstract class AppColors {
   static const Color kOpacityBlack = Color.fromRGBO(46, 46, 46, 1);
   //mazadat
   static const Color kOpacityGrey3 = Color.fromRGBO(250, 250, 250, 1);
+  //mazadat
+  static const Color textPrimarySaFlag = Color.fromRGBO(34, 39, 21, 1);
+
   //barq
   static const Color kOpacityGrey4 = Color.fromRGBO(148, 148, 148, 1);
   //mazadat
