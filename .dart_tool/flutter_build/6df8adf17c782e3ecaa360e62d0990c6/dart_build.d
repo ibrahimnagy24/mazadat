@@ -1,0 +1,1 @@
+ /Users/adelmohsen/Desktop/INOVA-DIGITS/mazadat/.dart_tool/flutter_build/6df8adf17c782e3ecaa360e62d0990c6/dart_build_result.json: 

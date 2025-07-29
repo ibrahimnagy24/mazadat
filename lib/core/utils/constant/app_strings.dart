@@ -246,24 +246,34 @@ class AppStrings {
       'The current price is determined automatically based on a percentage of the opening price value.';
   static const String youAgreeToPay = 'You agree to pay';
   static const String applicationCommission = 'Application Commission';
-  static const String agreeToCommissionAndInsurance = 'Oops, You  have to agree to commission & insurance first';
+  static const String agreeToCommissionAndInsurance =
+      'Oops, You  have to agree to commission & insurance first';
   static const String payment = 'Payment';
   static const String selectPaymentMethod = 'Select Payment Method';
-  static const String youHaveToSelectPaymentMethod = 'Oops, You  have to select payment method!';
+  static const String youHaveToSelectPaymentMethod =
+      'Oops, You  have to select payment method!';
 
   static const String automaticBidding = 'Automatic Bidding';
   static const String selectBiddingMethod = 'Select Bidding Method';
   static const String selectMaxBiddingAmount = 'Select Max Bidding Amount';
   static const String currentAuctionPrice = 'Current auction price';
   static const String currentPrice = 'Current price';
-  static const String areYouSureYouWantToBidAutomatically = 'Are you sure you want to bid automatically?';
+  static const String areYouSureYouWantToBidAutomatically =
+      'Are you sure you want to bid automatically?';
   static const String withdrawal = 'Wًithdrawal';
-  static const String areYouSureYouWantToWithdrawFromTheAuction = 'Are you sure you want to withdraw from the auction?';
-  static const String theAmountWillBeRefundedToThePaymentMethodUsed = 'The amount will be refunded to the payment method used.';
+  static const String areYouSureYouWantToWithdrawFromTheAuction =
+      'Are you sure you want to withdraw from the auction?';
+  static const String theAmountWillBeRefundedToThePaymentMethodUsed =
+      'The amount will be refunded to the payment method used.';
 
-  static const String youHaveSuccessfullySubscribedToTheAuction = 'You have successfully subscribed to the auction.';
+  static const String youHaveSuccessfullySubscribedToTheAuction =
+      'You have successfully subscribed to the auction.';
   static const String tryAgain = 'Try Again';
-  static const String theSpecifiedBidValueHasBeeReached = 'The specified bid value has been reached.';
-
-
+  static const String theSpecifiedBidValueHasBeeReached =
+      'The specified bid value has been reached.';
+  static const String myWallet = 'My wallet';
+  static const String currentBalance = 'Current balance';
+  static const String transactionHistory = 'Transaction history';
+  static const String auctionAwardAmount = 'Auction award amount';
+  static const String transactionNumber = 'Transaction number';
 }

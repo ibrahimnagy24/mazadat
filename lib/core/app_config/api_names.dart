@@ -16,12 +16,12 @@ abstract class Endpoints {
   static const String homeBundles = '/bundles/searchBundles';
 
   static const String homeAuction = '/auctions/homePageFilterAuction';
-  static   auctionDetails(id) => '/auctions/viewAuction/$id';
-  static   validateAuctionJoining(id) => '/auctions/validateJoining?id=$id';
-  static const String  submitJoiningAuction = '/auctions/submitJoining';
-  static const String  checkOnJoiningAuction = '/auctions/checkInsurancePayment';
-  static const String  auctionBidding = '/bidding/placeBid';
-  static const String  switchBiddingMethod = '/bidding/switchBiddingMethod';
+  static auctionDetails(id) => '/auctions/viewAuction/$id';
+  static validateAuctionJoining(id) => '/auctions/validateJoining?id=$id';
+  static const String submitJoiningAuction = '/auctions/submitJoining';
+  static const String checkOnJoiningAuction = '/auctions/checkInsurancePayment';
+  static const String auctionBidding = '/bidding/placeBid';
+  static const String switchBiddingMethod = '/bidding/switchBiddingMethod';
   static const String withdrawAuction = '/auctions/withdrawAuction';
   static const String auctions = '/auctions/list';
   static const String featuredAuction = '/auctions/featuredAuction';
@@ -32,19 +32,21 @@ abstract class Endpoints {
 
   //----------------------------------SEARCH--------------------------------------\\
   static const String getSearchResult = '/searchResult/getLatestSearchResult';
-  static  String deleteSearchResult(id) => '/searchResult/delete?id=$id';
+  static String deleteSearchResult(id) => '/searchResult/delete?id=$id';
   static const String deleteAllSearchResult = '/searchResult/deleteAll';
   static const String getSearch = homeAuction;
 
   static const String myPurchases = '/shipments/searchMyPurchases';
   static const String mySales = '/auctions/homePageFilterAuction';
 
+//----------------------------------WALLET--------------------------------------\\
+  static const String walletHistory = '/walletHistory';
 
 //--------------------------------Favourites--------------------------------------\\
 
   static const String getFavorites = '/favorites/getFavoriteList';
-  static const String toggleFavoriteAuction = '/favorites/toggleFavoriteAuction';
-
+  static const String toggleFavoriteAuction =
+      '/favorites/toggleFavoriteAuction';
 
 //--------------------------------USER OPERATIONS--------------------------------------\\
   static const String getUserInfo = '/users/viewMyProfile';
@@ -63,7 +65,8 @@ abstract class Endpoints {
   static const String paymentList = '/paymentMehods/listAll';
   static const String cities = '/cities/searchByKeyword';
   static const String ages = '/age/listAgeLookups';
-  static const String auctionStatuses = '/utils/getLookup?lookups=AUCTION_STATUS';
+  static const String auctionStatuses =
+      '/utils/getLookup?lookups=AUCTION_STATUS';
   static const String banks = '/banks/searchBanks';
   static const String googleLogin = '/client/google';
 }

@@ -7,7 +7,7 @@ class AppConstant {
     watch: 320, // Watches are 320px or less
   );
 
-  static const double appbarheight = 70.0;
+  static const double appbarheight = 56;
   //NULL FROM BACKEND
   static const nullFromBack = 'N-F-B';
 }

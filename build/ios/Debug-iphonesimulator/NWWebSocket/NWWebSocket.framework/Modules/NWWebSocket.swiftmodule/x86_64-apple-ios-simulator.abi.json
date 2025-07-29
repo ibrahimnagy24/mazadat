@@ -1,0 +1,1396 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "NWWebSocket",
+    "printedName": "NWWebSocket",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Network",
+        "printedName": "Network",
+        "declKind": "Import",
+        "moduleName": "NWWebSocket"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "NWWebSocket"
+      },
+      {
+        "kind": "Import",
+        "name": "Network",
+        "printedName": "Network",
+        "declKind": "Import",
+        "moduleName": "NWWebSocket"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NWWebSocket",
+        "printedName": "NWWebSocket",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "(any NWWebSocket.WebSocketConnectionDelegate)?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvp",
+            "mangledName": "$s11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvp",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any NWWebSocket.WebSocketConnectionDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WebSocketConnectionDelegate",
+                        "printedName": "any NWWebSocket.WebSocketConnectionDelegate",
+                        "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvg",
+                "mangledName": "$s11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvg",
+                "moduleName": "NWWebSocket",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any NWWebSocket.WebSocketConnectionDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WebSocketConnectionDelegate",
+                        "printedName": "any NWWebSocket.WebSocketConnectionDelegate",
+                        "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvs",
+                "mangledName": "$s11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvs",
+                "moduleName": "NWWebSocket",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvM",
+                "mangledName": "$s11NWWebSocketAAC8delegateAA03WebB18ConnectionDelegate_pSgvM",
+                "moduleName": "NWWebSocket",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultOptions",
+            "printedName": "defaultOptions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Options",
+                "printedName": "Network.NWProtocolWebSocket.Options",
+                "usr": "s:7Network19NWProtocolWebSocketC7OptionsC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11NWWebSocketAAC14defaultOptions7Network013NWProtocolWebB0C0D0CvpZ",
+            "mangledName": "$s11NWWebSocketAAC14defaultOptions7Network013NWProtocolWebB0C0D0CvpZ",
+            "moduleName": "NWWebSocket",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Options",
+                    "printedName": "Network.NWProtocolWebSocket.Options",
+                    "usr": "s:7Network19NWProtocolWebSocketC7OptionsC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocketAAC14defaultOptions7Network013NWProtocolWebB0C0D0CvgZ",
+                "mangledName": "$s11NWWebSocketAAC14defaultOptions7Network013NWProtocolWebB0C0D0CvgZ",
+                "moduleName": "NWWebSocket",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(request:connectAutomatically:options:connectionQueue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NWWebSocket",
+                "printedName": "NWWebSocket.NWWebSocket",
+                "usr": "s:11NWWebSocketAAC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URLRequest",
+                "printedName": "Foundation.URLRequest",
+                "usr": "s:10Foundation10URLRequestV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Options",
+                "printedName": "Network.NWProtocolWebSocket.Options",
+                "hasDefaultArg": true,
+                "usr": "s:7Network19NWProtocolWebSocketC7OptionsC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DispatchQueue",
+                "printedName": "Dispatch.DispatchQueue",
+                "hasDefaultArg": true,
+                "usr": "c:objc(cs)OS_dispatch_queue"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11NWWebSocketAAC7request20connectAutomatically7options15connectionQueueAB10Foundation10URLRequestV_Sb7Network013NWProtocolWebB0C7OptionsCSo17OS_dispatch_queueCtcfc",
+            "mangledName": "$s11NWWebSocketAAC7request20connectAutomatically7options15connectionQueueAB10Foundation10URLRequestV_Sb7Network013NWProtocolWebB0C7OptionsCSo17OS_dispatch_queueCtcfc",
+            "moduleName": "NWWebSocket",
+            "declAttributes": [
+              "Convenience",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Convenience"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(url:connectAutomatically:options:connectionQueue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NWWebSocket",
+                "printedName": "NWWebSocket.NWWebSocket",
+                "usr": "s:11NWWebSocketAAC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Options",
+                "printedName": "Network.NWProtocolWebSocket.Options",
+                "hasDefaultArg": true,
+                "usr": "s:7Network19NWProtocolWebSocketC7OptionsC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DispatchQueue",
+                "printedName": "Dispatch.DispatchQueue",
+                "hasDefaultArg": true,
+                "usr": "c:objc(cs)OS_dispatch_queue"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11NWWebSocketAAC3url20connectAutomatically7options15connectionQueueAB10Foundation3URLV_Sb7Network013NWProtocolWebB0C7OptionsCSo17OS_dispatch_queueCtcfc",
+            "mangledName": "$s11NWWebSocketAAC3url20connectAutomatically7options15connectionQueueAB10Foundation3URLV_Sb7Network013NWProtocolWebB0C7OptionsCSo17OS_dispatch_queueCtcfc",
+            "moduleName": "NWWebSocket",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "connect",
+            "printedName": "connect()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC7connectyyF",
+            "mangledName": "$s11NWWebSocketAAC7connectyyF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "send",
+            "printedName": "send(string:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC4send6stringySS_tF",
+            "mangledName": "$s11NWWebSocketAAC4send6stringySS_tF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "send",
+            "printedName": "send(data:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC4send4datay10Foundation4DataV_tF",
+            "mangledName": "$s11NWWebSocketAAC4send4datay10Foundation4DataV_tF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "listen",
+            "printedName": "listen()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC6listenyyF",
+            "mangledName": "$s11NWWebSocketAAC6listenyyF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ping",
+            "printedName": "ping(interval:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC4ping8intervalySd_tF",
+            "mangledName": "$s11NWWebSocketAAC4ping8intervalySd_tF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ping",
+            "printedName": "ping()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC4pingyyF",
+            "mangledName": "$s11NWWebSocketAAC4pingyyF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "disconnect",
+            "printedName": "disconnect(closeCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CloseCode",
+                "printedName": "Network.NWProtocolWebSocket.CloseCode",
+                "hasDefaultArg": true,
+                "usr": "s:7Network19NWProtocolWebSocketC9CloseCodeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocketAAC10disconnect9closeCodey7Network013NWProtocolWebB0C05CloseE0O_tF",
+            "mangledName": "$s11NWWebSocketAAC10disconnect9closeCodey7Network013NWProtocolWebB0C05CloseE0O_tF",
+            "moduleName": "NWWebSocket",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11NWWebSocketAAC",
+        "mangledName": "$s11NWWebSocketAAC",
+        "moduleName": "NWWebSocket",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "WebSocketConnection",
+            "printedName": "WebSocketConnection",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "NWWebSocket"
+      },
+      {
+        "kind": "Import",
+        "name": "Network",
+        "printedName": "Network",
+        "declKind": "Import",
+        "moduleName": "NWWebSocket"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WebSocketConnection",
+        "printedName": "WebSocketConnection",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "connect",
+            "printedName": "connect()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP7connectyyF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP7connectyyF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "send",
+            "printedName": "send(string:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP4send6stringySS_tF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP4send6stringySS_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "send",
+            "printedName": "send(data:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP4send4datay10Foundation4DataV_tF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP4send4datay10Foundation4DataV_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "listen",
+            "printedName": "listen()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP6listenyyF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP6listenyyF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ping",
+            "printedName": "ping(interval:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP4ping8intervalySd_tF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP4ping8intervalySd_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ping",
+            "printedName": "ping()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP4pingyyF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP4pingyyF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "disconnect",
+            "printedName": "disconnect(closeCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CloseCode",
+                "printedName": "Network.NWProtocolWebSocket.CloseCode",
+                "usr": "s:7Network19NWProtocolWebSocketC9CloseCodeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP10disconnect9closeCodey7Network010NWProtocolcB0C05CloseG0O_tF",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP10disconnect9closeCodey7Network010NWProtocolcB0C05CloseG0O_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any NWWebSocket.WebSocketConnectionDelegate)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WebSocketConnectionDelegate",
+                    "printedName": "any NWWebSocket.WebSocketConnectionDelegate",
+                    "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvp",
+            "mangledName": "$s11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvp",
+            "moduleName": "NWWebSocket",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any NWWebSocket.WebSocketConnectionDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WebSocketConnectionDelegate",
+                        "printedName": "any NWWebSocket.WebSocketConnectionDelegate",
+                        "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvg",
+                "mangledName": "$s11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvg",
+                "moduleName": "NWWebSocket",
+                "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+                "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any NWWebSocket.WebSocketConnectionDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WebSocketConnectionDelegate",
+                        "printedName": "any NWWebSocket.WebSocketConnectionDelegate",
+                        "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvs",
+                "mangledName": "$s11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvs",
+                "moduleName": "NWWebSocket",
+                "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+                "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvM",
+                "mangledName": "$s11NWWebSocket03WebB10ConnectionP8delegateAA0cbD8Delegate_pSgvM",
+                "moduleName": "NWWebSocket",
+                "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnection>",
+                "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnection>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:11NWWebSocket03WebB10ConnectionP",
+        "mangledName": "$s11NWWebSocket03WebB10ConnectionP",
+        "moduleName": "NWWebSocket",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WebSocketConnectionDelegate",
+        "printedName": "WebSocketConnectionDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "webSocketDidConnect",
+            "printedName": "webSocketDidConnect(connection:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB10DidConnect10connectionyAA0cbD0_p_tF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB10DidConnect10connectionyAA0cbD0_p_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketDidDisconnect",
+            "printedName": "webSocketDidDisconnect(connection:closeCode:reason:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CloseCode",
+                "printedName": "Network.NWProtocolWebSocket.CloseCode",
+                "usr": "s:7Network19NWProtocolWebSocketC9CloseCodeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Data?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB13DidDisconnect10connection9closeCode6reasonyAA0cbD0_p_7Network010NWProtocolcB0C05CloseK0O10Foundation4DataVSgtF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB13DidDisconnect10connection9closeCode6reasonyAA0cbD0_p_7Network010NWProtocolcB0C05CloseK0O10Foundation4DataVSgtF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketViabilityDidChange",
+            "printedName": "webSocketViabilityDidChange(connection:isViable:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB18ViabilityDidChange10connection8isViableyAA0cbD0_p_SbtF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB18ViabilityDidChange10connection8isViableyAA0cbD0_p_SbtF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketDidAttemptBetterPathMigration",
+            "printedName": "webSocketDidAttemptBetterPathMigration(result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Result",
+                "printedName": "Swift.Result<any NWWebSocket.WebSocketConnection, Network.NWError>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WebSocketConnection",
+                    "printedName": "any NWWebSocket.WebSocketConnection",
+                    "usr": "s:11NWWebSocket03WebB10ConnectionP"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NWError",
+                    "printedName": "Network.NWError",
+                    "usr": "s:7Network7NWErrorO"
+                  }
+                ],
+                "usr": "s:s6ResultO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB29DidAttemptBetterPathMigration6resultys6ResultOyAA0cbD0_p7Network7NWErrorOG_tF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB29DidAttemptBetterPathMigration6resultys6ResultOyAA0cbD0_p7Network7NWErrorOG_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketDidReceiveError",
+            "printedName": "webSocketDidReceiveError(connection:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NWError",
+                "printedName": "Network.NWError",
+                "usr": "s:7Network7NWErrorO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB15DidReceiveError10connection5erroryAA0cbD0_p_7Network7NWErrorOtF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB15DidReceiveError10connection5erroryAA0cbD0_p_7Network7NWErrorOtF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketDidReceivePong",
+            "printedName": "webSocketDidReceivePong(connection:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB14DidReceivePong10connectionyAA0cbD0_p_tF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB14DidReceivePong10connectionyAA0cbD0_p_tF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketDidReceiveMessage",
+            "printedName": "webSocketDidReceiveMessage(connection:string:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB17DidReceiveMessage10connection6stringyAA0cbD0_p_SStF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB17DidReceiveMessage10connection6stringyAA0cbD0_p_SStF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "webSocketDidReceiveMessage",
+            "printedName": "webSocketDidReceiveMessage(connection:data:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketConnection",
+                "printedName": "any NWWebSocket.WebSocketConnection",
+                "usr": "s:11NWWebSocket03WebB10ConnectionP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP03webB17DidReceiveMessage10connection4datayAA0cbD0_p_10Foundation4DataVtF",
+            "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP03webB17DidReceiveMessage10connection4datayAA0cbD0_p_10Foundation4DataVtF",
+            "moduleName": "NWWebSocket",
+            "genericSig": "<τ_0_0 where τ_0_0 : NWWebSocket.WebSocketConnectionDelegate>",
+            "sugared_genericSig": "<Self where Self : NWWebSocket.WebSocketConnectionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:11NWWebSocket03WebB18ConnectionDelegateP",
+        "mangledName": "$s11NWWebSocket03WebB18ConnectionDelegateP",
+        "moduleName": "NWWebSocket",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NWConnection",
+        "printedName": "NWConnection",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "intentionalDisconnection",
+            "printedName": "intentionalDisconnection",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvp",
+            "mangledName": "$s7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvp",
+            "moduleName": "NWWebSocket",
+            "declAttributes": [
+              "Final"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvg",
+                "mangledName": "$s7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvg",
+                "moduleName": "NWWebSocket",
+                "declAttributes": [
+                  "Final"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvs",
+                "mangledName": "$s7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvs",
+                "moduleName": "NWWebSocket",
+                "declAttributes": [
+                  "Final"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvM",
+                "mangledName": "$s7Network12NWConnectionC11NWWebSocketE24intentionalDisconnectionSbvM",
+                "moduleName": "NWWebSocket",
+                "implicit": true,
+                "intro_Macosx": "10.14",
+                "intro_iOS": "12.0",
+                "intro_tvOS": "12.0",
+                "intro_watchOS": "5.0",
+                "declAttributes": [
+                  "Final",
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:7Network12NWConnectionC",
+        "mangledName": "$s7Network12NWConnectionC",
+        "moduleName": "Network",
+        "intro_Macosx": "10.14",
+        "intro_iOS": "12.0",
+        "intro_tvOS": "12.0",
+        "intro_watchOS": "5.0",
+        "declAttributes": [
+          "Final",
+          "Available",
+          "Available",
+          "Available",
+          "Available"
+        ],
+        "isExternal": true,
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Extension\/NWConnection+Extension.swift",
+      "kind": "BooleanLiteral",
+      "offset": 66,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Model\/Client\/NWWebSocket.swift",
+      "kind": "IntegerLiteral",
+      "offset": 761,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Model\/Client\/NWWebSocket.swift",
+      "kind": "StringLiteral",
+      "offset": 1059,
+      "length": 27,
+      "value": "\"nwwebsocket.disconnection\""
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Model\/Client\/NWWebSocket.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1185,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Model\/Client\/NWWebSocket.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1232,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Model\/Client\/NWWebSocket.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1992,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/adelmohsen\/Desktop\/INOVA-DIGITS\/mazadat\/ios\/Pods\/NWWebSocket\/Sources\/NWWebSocket\/Model\/Client\/NWWebSocket.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3501,
+      "length": 5,
+      "value": "false"
+    }
+  ]
+}
