@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/subjects.dart';
@@ -19,6 +21,7 @@ class AddAddressCubit extends Cubit<AddAddressState> {
 //---------------------------------FUNCTIONS----------------------------------//
 
   bool isBodyValid() {
+    log('==>Address ${entity.valueOrNull?.toJson()}');
     if (formKey.currentState!.validate()) {
       formKey.currentState?.save();
       return true;

@@ -56,6 +56,7 @@ class AppSvg {
   static const String info = '$_svgPath/info.svg';
   static const String language = '$_svgPath/language.svg';
   static const String delete = '$_svgPath/delete.svg';
+  static const String deleteAddress = '$_svgPath/delete_address.svg';
   static const String logout = '$_svgPath/logout.svg';
   static const String login = '$_svgPath/login.svg';
   static const String logoutConfirm = '$_svgPath/logout_confirm.svg';

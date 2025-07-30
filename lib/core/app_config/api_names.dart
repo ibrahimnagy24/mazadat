@@ -47,13 +47,14 @@ abstract class Endpoints {
 //--------------------------------Addresses--------------------------------------\\
 
   static const String addressTypes = '/addressType/listAddressTypeLookups';
-  static const String cities = '/cities/searchByKeyword';
+  static const String cities = '/cities/search';
   static const String regions = '/regions/search';
-  static const String districts = '/districts/search';
+  static const String districts = '/district/search';
 
   static const String addresses = '/address/getMyAddresses';
   static const String addAddresses = '/address/add';
   static const String editAddresses = '/address/update';
+  static const String deleteAddresses = '/address/delete';
 
 //--------------------------------Favourites--------------------------------------\\
 

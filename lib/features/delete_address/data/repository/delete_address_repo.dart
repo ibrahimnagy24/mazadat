@@ -4,18 +4,13 @@ import '../../../../../core/app_config/api_names.dart';
 import '../../../../../core/services/error_handler/error_handler.dart';
 import '../../../../../core/services/network/network_helper.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
-import '../entity/address_entity.dart';
 
-abstract class AddAddressRepo {
-  const AddAddressRepo();
-  static Future<Either<ErrorEntity, Response>> addAddress(
-      AddressEntity entity) async {
+abstract class DeleteAddressRepo {
+  const DeleteAddressRepo();
+  static Future<Either<ErrorEntity, Response>> deleteAddress(int id) async {
     try {
-      final response = await Network().request(
-        entity.id != null ? Endpoints.editAddresses : Endpoints.addAddresses,
-        method: ServerMethods.POST,
-        body: entity.toJson(),
-      );
+      final response = await Network().request(Endpoints.deleteAddresses,
+          method: ServerMethods.DELETE, body: {'id': id});
       if (response.statusCode == 200) {
         return Right(response);
       } else {

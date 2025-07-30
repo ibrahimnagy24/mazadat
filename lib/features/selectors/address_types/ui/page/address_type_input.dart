@@ -24,7 +24,8 @@ class AddressTypeInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddressTypesCubit()..addressTypesStatesHandled(SearchEngine()),
+      create: (context) =>
+          AddressTypesCubit()..addressTypesStatesHandled(SearchEngine()),
       child: BlocBuilder<AddressTypesCubit, AddressTypesState>(
         builder: (context, state) {
           final cubit = context.read<AddressTypesCubit>();
@@ -49,10 +50,13 @@ class AddressTypeInput extends StatelessWidget {
                       child: BlocBuilder<AddressTypesCubit, AddressTypesState>(
                           builder: (context, state) {
                         return Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Expanded(
+                            Flexible(
                               child: AddressTypesView(
-                                controller: context.read<AddressTypesCubit>().controller,
+                                controller: context
+                                    .read<AddressTypesCubit>()
+                                    .controller,
                                 data: (state as AddressTypesDone).addressTypes,
                                 initialValue: initialValue?.id,
                                 onSelect: (v) {
@@ -84,7 +88,7 @@ class AddressTypeInput extends StatelessWidget {
               } else if (state is AddressTypesError) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
-                    message: AppStrings.somethingWentWrong,
+                    message: AppStrings.somethingWentWrong.tr,
                     backgroundColor: AppColors.textError,
                   ),
                 );

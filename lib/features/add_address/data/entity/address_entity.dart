@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../selectors/address_types/data/model/address_type_model.dart';
-import '../../../selectors/city/data/model/city_model.dart';
-import '../../../selectors/districts/data/model/districts_model.dart';
-import '../../../selectors/regions/data/model/regions_model.dart';
+import '../../../selectors/address_types/data/entity/address_type_entity.dart';
+import '../../../selectors/city/data/entity/city_entity.dart';
+import '../../../selectors/districts/data/entity/district_entity.dart';
+import '../../../selectors/regions/data/entity/region_entity.dart';
 
 class AddressEntity {
   int? id;
-  AddressTypeModel? addressType;
-  RegionModel? region;
-  CityModel? city;
-  DistrictModel? district;
+  AddressTypeEntity? addressType;
+  RegionEntity? region;
+  CityEntity? city;
+  DistrictEntity? district;
   TextEditingController? addressTEC, phoneTEC;
   bool? isDefault, clearCity, clearDistrict;
 
@@ -28,10 +28,10 @@ class AddressEntity {
 
   AddressEntity copyWith({
     int? id,
-    AddressTypeModel? addressType,
-    RegionModel? region,
-    CityModel? city,
-    DistrictModel? district,
+    AddressTypeEntity? addressType,
+    RegionEntity? region,
+    CityEntity? city,
+    DistrictEntity? district,
     bool? clearCity,
     bool? clearDistrict,
     bool? isDefault,
