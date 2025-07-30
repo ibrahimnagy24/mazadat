@@ -55,6 +55,7 @@ abstract class Endpoints {
   static const String addresses = '/address/getMyAddresses';
   static const String addAddresses = '/address/add';
   static const String editAddresses = '/address/update';
+  static const String deleteAddresses = '/address/delete';
 
 //--------------------------------Favourites--------------------------------------\\
 

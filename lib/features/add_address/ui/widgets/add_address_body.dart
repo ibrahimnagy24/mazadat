@@ -43,6 +43,8 @@ class AddAddressBody extends StatelessWidget {
                     controller: snapshot.data?.addressTEC,
                     titleText: AppStrings.address.tr,
                     hintText: '${AppStrings.enterAddress.tr}...',
+                    validator: (v) => DefaultValidator.defaultValidator(v,
+                        label: AppStrings.address.tr),
                   ),
                   16.sbH,
                   DefaultPhoneFormField(

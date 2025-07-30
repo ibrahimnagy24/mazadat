@@ -124,11 +124,10 @@ class AppStrings {
   static const String addAddress = 'Add Address';
   static const String editAddress = 'Edit Address';
   static const String addressType = 'Address Type';
-  static const String selectAddressType= 'Select Address Type';
+  static const String selectAddressType = 'Select Address Type';
 
   static const String city = 'City';
   static const String selectCity = 'Select City';
-
 
   static const String region = 'Region';
   static const String selectRegion = 'Select Region';
@@ -303,9 +302,21 @@ class AppStrings {
   static const String wallet = 'Wallet';
   static const String address = 'Address';
   static const String enterAddress = 'Enter address';
-  static const String youHveToSelectRegionFirst = 'You have to select region first';
+  static const String youHveToSelectRegionFirst =
+      'You have to select region first';
   static const String youHveToSelectCityFirst = 'You have to select city first';
   static const String setAsADefaultAddress = 'Set as a default address';
   static const String saveChanges = 'Save Changes';
+  static const String delete = 'Delete';
+  static const String deleteAddress = 'Delete Address';
 
+  static const String areYouSureYouWantToDeleteAddress =
+      'Are you sure you want to delete address?';
+  static const String addressWillBePermanentlyRemoved =
+      'Address will be permanently removed!';
+
+  static const String sorryWeCannotDeleteTheAddress =
+      'Sorry, you can\'t delete the address.';
+  static const String theAddressIsLinkedToTheOrderDeliveryProcess =
+      'The address is linked to the order delivery process.';
 }

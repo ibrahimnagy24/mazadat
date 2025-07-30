@@ -16,16 +16,12 @@ class AddAddressesScreen extends StatelessWidget {
       child: ScreenTypeLayout.builder(
         breakpoints: AppConstant.breakpoints,
         mobile: (_) => OrientationLayoutBuilder(
-          portrait: (context) =>
-              AddAddressesMobileDesign(isEdit: model != null),
-          landscape: (context) =>
-              AddAddressesMobileDesign(isEdit: model != null),
+          portrait: (context) => AddAddressesMobileDesign(model: model),
+          landscape: (context) => AddAddressesMobileDesign(model: model),
         ),
         tablet: (_) => OrientationLayoutBuilder(
-          portrait: (context) =>
-              AddAddressesMobileDesign(isEdit: model != null),
-          landscape: (context) =>
-              AddAddressesMobileDesign(isEdit: model != null),
+          portrait: (context) => AddAddressesMobileDesign(model: model),
+          landscape: (context) => AddAddressesMobileDesign(model: model),
         ),
       ),
     );

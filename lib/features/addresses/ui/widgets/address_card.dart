@@ -60,7 +60,8 @@ class AddressCard extends StatelessWidget {
           ),
           if (fromAddress)
             customImageIconSVG(
-              onTap: ()=>CustomNavigator.push(Routes.ADD_ADDRESSES,extra: address),
+              onTap: () =>
+                  CustomNavigator.push(Routes.ADD_ADDRESSES, extra: address),
               imageName: AppSvg.edit,
               width: 20.w,
               height: 20.w,

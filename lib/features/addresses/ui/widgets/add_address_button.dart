@@ -39,7 +39,7 @@ class AddAddressButton extends StatelessWidget {
               ),
             ),
             Text(
-              AppStrings.addAddress,
+              AppStrings.addAddress.tr,
               style: AppTextStyles.textXLBold,
             ),
           ],
