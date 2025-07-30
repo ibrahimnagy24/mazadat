@@ -13,10 +13,17 @@ import '../../logic/payment_methods_cubit.dart';
 import '../../logic/payment_methods_state.dart';
 
 class PaymentList extends StatefulWidget {
-  const PaymentList({super.key, this.initialValue, this.onSelect});
+  const PaymentList({
+    super.key,
+    this.initialValue,
+    this.onSelect,
+    this.onSelectIndex,
+    this.needToShowWalletOption = true,
+  });
   final int? initialValue;
   final Function(PaymentModel)? onSelect;
-
+  final Function(int)? onSelectIndex;
+  final bool? needToShowWalletOption;
   @override
   State<PaymentList> createState() => _PaymentListState();
 }
@@ -25,10 +32,10 @@ class _PaymentListState extends State<PaymentList> {
   int? _selectedItem;
   @override
   void initState() {
+    super.initState();
     setState(() {
       _selectedItem = widget.initialValue;
     });
-    super.initState();
   }
 
   @override
@@ -37,27 +44,32 @@ class _PaymentListState extends State<PaymentList> {
       create: (context) => PaymentMethodsCubit()..getPaymentList(),
       child: BlocBuilder<PaymentMethodsCubit, PaymentMethodsState>(
           builder: (context, state) {
-         if (state is PaymentMethodsLoading) {
-              return ListAnimator(
-                data: List.generate(
-                    5,
-                        (i) => Padding(
+        if (state is PaymentMethodsLoading) {
+          return ListAnimator(
+            data: List.generate(
+                5,
+                (i) => Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
                       child: CustomShimmerContainer(
                         height: 60.h,
                         width: MediaQueryHelper.width,
                       ),
                     )),
-              );
-            }
+          );
+        }
         if (state is PaymentMethodsSuccess) {
+          List<PaymentModel> payments = state.payments;
+          if (widget.needToShowWalletOption == false) {
+            payments.removeWhere((element) => element.type == 'WALLET');
+          }
           return ListAnimator(
             data: List.generate(
-              state.payments.length,
+              payments.length,
               (index) => GestureDetector(
                 onTap: () {
-                  setState(() => _selectedItem = state.payments[index].id);
-                  widget.onSelect?.call(state.payments[index]);
+                  setState(() => _selectedItem = payments[index].id);
+                  widget.onSelect?.call(payments[index]);
+                  widget.onSelectIndex?.call(index);
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 8.h),
@@ -66,7 +78,7 @@ class _PaymentListState extends State<PaymentList> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.w),
                     border: Border.all(
-                      color: _selectedItem == state.payments[index].id
+                      color: _selectedItem == payments[index].id
                           ? AppColors.kPrimary
                           : AppColors.border,
                     ),
@@ -77,23 +89,23 @@ class _PaymentListState extends State<PaymentList> {
                     spacing: 8.w,
                     children: [
                       CustomNetworkImage.containerNewWorkImage(
-                        image: state.payments[index].icon ?? '',
+                        image: payments[index].icon ?? '',
                         width: 24.w,
                         height: 24.w,
                         radius: 6.w,
                       ),
                       Expanded(
                         child: Text(
-                          state.payments[index].name ?? '',
+                          payments[index].name ?? '',
                           style: AppTextStyles.textXLMedium,
                         ),
                       ),
                       Icon(
-                        _selectedItem == state.payments[index].id
+                        _selectedItem == payments[index].id
                             ? Icons.radio_button_checked
                             : Icons.radio_button_off,
                         size: 24,
-                        color: _selectedItem == state.payments[index].id
+                        color: _selectedItem == payments[index].id
                             ? AppColors.kPrimary
                             : AppColors.iconDefault,
                       ),

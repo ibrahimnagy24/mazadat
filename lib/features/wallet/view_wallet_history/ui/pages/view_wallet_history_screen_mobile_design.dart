@@ -8,17 +8,59 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_constant.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/widgets/empty/empty_screen.dart';
-import '../../../../../core/utils/widgets/errors/error_message_widget.dart';
-import '../../../../../core/utils/widgets/loading/adaptive_circle_progress.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
-import '../../logic/view_wallet_history_cubit.dart';
-import '../../logic/view_wallet_history_state.dart';
 import '../../../../../core/shared/widgets/wallet_history_card_widget.dart';
+import '../../../view_wallet/data/params/view_wallet_params.dart';
+import '../../../view_wallet/logic/view_my_wallet_cubit.dart';
+import '../../../view_wallet/logic/view_my_wallet_state.dart';
+import '../../data/params/view_wallet_history_route_params.dart';
 
-class ViewWalletHistoryScreenMobileDesign extends StatelessWidget {
-  const ViewWalletHistoryScreenMobileDesign({super.key});
+class ViewWalletHistoryScreenMobileDesign extends StatefulWidget {
+  const ViewWalletHistoryScreenMobileDesign({super.key, required this.params});
+  final ViewWalletHistoryRouteParams params;
+
+  @override
+  State<ViewWalletHistoryScreenMobileDesign> createState() =>
+      _ViewWalletHistoryScreenMobileDesignState();
+}
+
+class _ViewWalletHistoryScreenMobileDesignState
+    extends State<ViewWalletHistoryScreenMobileDesign> {
+  // final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    // _scrollController.addListener(_scrollListener);
+    widget.params.viewMyWalletCubit.size = 10000;
+
+    widget.params.viewMyWalletCubit.viewMyWalletStatesHandled(
+      params: ViewWalletParams(
+        page: widget.params.viewMyWalletCubit.page,
+        size: widget.params.viewMyWalletCubit.size,
+      ),
+    );
+  }
+
+  // @override
+  // void dispose() {
+  //   _scrollController.dispose();
+  //   super.dispose();
+  // }
+
+  // void _scrollListener() {
+  //   if (_scrollController.position.atEdge &&
+  //       _scrollController.position.pixels != 0) {
+  //     if (widget.params.viewMyWalletCubit.viewMyWalletEntity != null &&
+  //         widget.params.viewMyWalletCubit.viewMyWalletEntity!.pagginationEntity
+  //                 .lastPage >=
+  //             widget.params.viewMyWalletCubit.page) {
+  //       widget.params.viewMyWalletCubit.page++;
+  //       widget.params.viewMyWalletCubit.viewMyWalletStatesHandled();
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,58 +94,23 @@ class ViewWalletHistoryScreenMobileDesign extends StatelessWidget {
       leadingWidth: 1,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: BlocBuilder<ViewWalletHistoryCubit, ViewWalletHistoryState>(
+        child: BlocBuilder<ViewMyWalletCubit, ViewMyWalletState>(
           buildWhen: (previous, current) =>
-              current is ViewWalletHistoryLoading ||
-              current is ViewWalletHistorySuccess ||
-              current is ViewWalletHistoryError,
+              current is ViewMyWalletLoading ||
+              current is ViewMyWalletSuccess ||
+              current is ViewMyWalletError,
           builder: (context, state) {
-            final cubit = context.read<ViewWalletHistoryCubit>();
-            if (state is ViewWalletHistoryLoading) {
-              return const Center(child: AdaptiveCircularProgress());
-            }
-
-            if (state is ViewWalletHistoryError) {
-              return Center(
-                child: ErrorMessageWidget(
-                  error: state.error,
-                  message: state.error.message,
-                  onTap: () {
-                    context
-                        .read<ViewWalletHistoryCubit>()
-                        .viewHistoryStatesHandled();
-                  },
-                ),
-              );
-            }
-
-            if (cubit.walletHistory != null) {
-              if (cubit.walletHistory!.isEmpty) {
-                return Center(
-                  child: EmptyScreen(
-                    onRefresh: () async {
-                      context
-                          .read<ViewWalletHistoryCubit>()
-                          .viewHistoryStatesHandled();
-                      return;
-                    },
-                  ),
-                );
-              }
-              return ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: cubit.walletHistory!.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 16),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                itemBuilder: (context, index) {
-                  return WalletHistoryCardWidget(
-                    wallet: cubit.walletHistory![index],
-                  );
-                },
-              );
-            }
-            return const SizedBox.shrink();
+            final cubit = widget.params.viewMyWalletCubit;
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemCount: cubit.viewMyWalletEntity!.walletHistory.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              itemBuilder: (context, index) {
+                return WalletHistoryCardWidget(
+                    wallet: cubit.viewMyWalletEntity!.walletHistory[index]);
+              },
+            );
           },
         ),
       ),

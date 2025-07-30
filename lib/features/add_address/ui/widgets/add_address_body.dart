@@ -12,7 +12,7 @@ class AddAddressBody extends StatelessWidget {
     return Expanded(
       child: Form(
         key: context.read<AddAddressCubit>().formKey,
-        child: ListAnimator(
+        child: const ListAnimator(
           data: [],
         ),
       ),

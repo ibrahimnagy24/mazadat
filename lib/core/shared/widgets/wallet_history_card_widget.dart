@@ -49,7 +49,7 @@ class WalletHistoryCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MainText(
-                    text: wallet.title,
+                    text: wallet.message,
                     style: AppTextStyles.textLgMedium,
                   ),
                   const SizedBox(height: 2),

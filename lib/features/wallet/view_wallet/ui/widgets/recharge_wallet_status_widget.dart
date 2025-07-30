@@ -8,15 +8,19 @@ import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
+import '../../data/model/check_wallet_charge_model.dart';
 
 class RechargeWalletStatusWidget extends StatelessWidget {
   const RechargeWalletStatusWidget({
     super.key,
     required this.dialogContext,
     required this.isTransactionSuccess,
+    required this.transactionId,
   });
   final BuildContext dialogContext;
   final bool isTransactionSuccess;
+  final dynamic transactionId;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,7 +75,7 @@ class RechargeWalletStatusWidget extends StatelessWidget {
           const SizedBox(height: 8),
           MainText(
             text: isTransactionSuccess
-                ? 'رقم المعاملة :1234543'
+                ? 'رقم المعاملة :$transactionId'
                 : AppStrings.pleaseTryAgainLater.tr,
             style: AppTextStyles.textLgRegular,
           ),

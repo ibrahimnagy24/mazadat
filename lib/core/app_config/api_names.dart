@@ -40,10 +40,9 @@ abstract class Endpoints {
   static const String mySales = '/auctions/homePageFilterAuction';
 
 //----------------------------------WALLET--------------------------------------\\
-  static const String walletHistory = '/walletHistory';
-
-
-
+  static const String walletHistory = '/wallet/viewMyWallet';
+  static const String chargeWallet = '/wallet/chargeBalance';
+  static const String checkWalletCharge = '/wallet/checkWalletCharge';
 
 //--------------------------------Addresses--------------------------------------\\
 

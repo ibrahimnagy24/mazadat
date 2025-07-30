@@ -231,6 +231,13 @@
   "The specified bid value has been reached.": "The specified bid value has been reached.",
   "Auction Ended": "Auction Ended",
   "Track Request": "Track Request",
+  "Region": "Region",
+  "Select Region": "Select Region",
+  "Address Type": "Address Type",
+  "Select Address Type": "Select Address Type",
+  "Add Address": "Add Address",
+  "Edit Address": "Edit Address",
+  "Theres no addresses!": "Theres no addresses!",
   "My wallet": "My wallet",
   "Current balance": "Current balance",
   "Transaction history": "Transaction history",
@@ -243,5 +250,7 @@
   "The wallet has been successfully charged.": "The wallet has been successfully charged.",
   "Good": "Good",
   "A problem occurred": "A problem occurred",
-  "Please try again later.": "Please try again later."
+  "Please try again later.": "Please try again later.",
+  "Please specify the shipping value": "Please specify the shipping value",
+  "Wallet": "Wallet"
 }

@@ -230,7 +230,7 @@
   "Try Again": "المحاولة مره اخري",
   "The specified bid value has been reached.": "تم الوصول لقيمة المزايدة المحددة",
   "Auction Ended": "انتهى المزاد",
-  "Track Request":"تتبع الطلب",
+  "Track Request": "تتبع الطلب",
   "Region": "المنطقة",
   "Select Region": "اختر المنطقة",
   "Address Type": "نوع العنوان",
@@ -252,5 +252,6 @@
   "A problem occurred": "حدثت مشكله ما",
   "Please try again later.": "برجاء المحاوله مره آخري لاحقاً",
   "Please specify the shipping value": "برجاء تحديد قيمه الشحن",
-  "Wallet": "المحفظه"
+  "Wallet": "المحفظه",
+  " Please Choose Payment Method": "الرجاء اختيار طريقة الدفع"
 }

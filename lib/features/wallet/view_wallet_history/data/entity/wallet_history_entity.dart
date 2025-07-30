@@ -2,15 +2,13 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../../core/utils/enums/enums.dart';
 
-enum WalletHistoryStatus { pending, completed, failed, cancelled }
-
 class WalletHistoryEntity extends Equatable {
   final int id;
   final WalletHistoryType type;
   final String title;
   final dynamic amount;
   final String date;
-  final WalletHistoryStatus status;
+  final String message;
 
   const WalletHistoryEntity({
     required this.id,
@@ -18,9 +16,9 @@ class WalletHistoryEntity extends Equatable {
     required this.title,
     required this.amount,
     required this.date,
-    this.status = WalletHistoryStatus.completed,
+    required this.message,
   });
 
   @override
-  List<Object?> get props => [id, type, title, amount, date, status];
+  List<Object?> get props => [id, type, title, amount, date, message];
 }

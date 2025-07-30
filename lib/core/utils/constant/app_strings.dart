@@ -124,11 +124,10 @@ class AppStrings {
   static const String addAddress = 'Add Address';
   static const String editAddress = 'Edit Address';
   static const String addressType = 'Address Type';
-  static const String selectAddressType= 'Select Address Type';
+  static const String selectAddressType = 'Select Address Type';
 
   static const String city = 'City';
   static const String selectCity = 'Select City';
-
 
   static const String region = 'Region';
   static const String selectRegion = 'Select Region';
@@ -298,4 +297,6 @@ class AppStrings {
   static const String pleaseSpecifyTheShippingValue =
       'Please specify the shipping value';
   static const String wallet = 'Wallet';
+  static const String pleaseChoosePaymentMethod =
+      'Please Choose Payment Method';
 }

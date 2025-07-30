@@ -230,7 +230,14 @@
   "Try Again": "المحاولة مره اخري",
   "The specified bid value has been reached.": "تم الوصول لقيمة المزايدة المحددة",
   "Auction Ended": "انتهى المزاد",
-  "Track Request": "تتبع الطلب",
+  "Track Request":"تتبع الطلب",
+  "Region": "المنطقة",
+  "Select Region": "اختر المنطقة",
+  "Address Type": "نوع العنوان",
+  "Select Address Type": "اختر نوع العنوان",
+  "Add Address": "إضافة عنوان",
+  "Edit Address": "تعديل العنوان",
+  "Theres no addresses!": "لا يوجد عناوين!",
   "My wallet": "محفظتي",
   "Current balance": "الرصيد الحالي",
   "Transaction history": "تاريخ المعاملات",
@@ -243,5 +250,7 @@
   "The wallet has been successfully charged.": "تم شحن المحفظه بنجاح.",
   "Good": "حسناً",
   "A problem occurred": "حدثت مشكله ما",
-  "Please try again later.": "برجاء المحاوله مره آخري لاحقاً"
+  "Please try again later.": "برجاء المحاوله مره آخري لاحقاً",
+  "Please specify the shipping value": "برجاء تحديد قيمه الشحن",
+  "Wallet": "المحفظه"
 }

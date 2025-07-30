@@ -252,5 +252,6 @@
   "A problem occurred": "A problem occurred",
   "Please try again later.": "Please try again later.",
   "Please specify the shipping value": "Please specify the shipping value",
-  "Wallet": "Wallet"
+  "Wallet": "Wallet",
+  " Please Choose Payment Method": "Please Choose Payment Method"
 }

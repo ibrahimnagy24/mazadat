@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/assets/app_images.dart';
 import '../../../../../core/theme/colors/styles.dart';
@@ -8,6 +9,7 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
+import '../../logic/view_my_wallet_cubit.dart';
 import 'recharge_wallet_bottom_sheet_widget.dart';
 
 class WalletBalanceCardWidget extends StatelessWidget {
@@ -47,6 +49,7 @@ class WalletBalanceCardWidget extends StatelessWidget {
                           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                           child: RechargeWalletBottomSheetWidget(
                             dialogContext: dialogContext,
+                            cubit: context.read<ViewMyWalletCubit>(),
                           ),
                         );
                       },
