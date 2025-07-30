@@ -233,6 +233,8 @@
   "Track Request":"تتبع الطلب",
   "Region": "المنطقة",
   "Select Region": "اختر المنطقة",
+  "District": "الحي",
+  "Select District": "اختر الحي",
   "Address Type": "نوع العنوان",
   "Select Address Type": "اختر نوع العنوان",
   "Add Address": "إضافة عنوان",
@@ -252,5 +254,19 @@
   "A problem occurred": "حدثت مشكله ما",
   "Please try again later.": "برجاء المحاوله مره آخري لاحقاً",
   "Please specify the shipping value": "برجاء تحديد قيمه الشحن",
-  "Wallet": "المحفظه"
+  "Wallet": "المحفظه",
+  "Address": "العنوان",
+  "Enter address": "أدخل العنوان",
+  "You have to select region first": "يجب عليك اختيار منطقة أولاً",
+  "You have to select city first": "يجب عليك اختيار المدينة أولاً",
+  "Set as a default address": "تعيين كعنوان افتراضي",
+  "Save Changes": "حفظ التعديلات",
+  "Delete": "حذف",
+  "Delete Address": "حذف العنوان",
+  "Are you sure you want to delete address?": "هل أنت متأكد أنك تريد حذف العنوان؟",
+  "Address will be permanently removed!": "سيتم حذف العنوان نهائيًا!",
+  "Sorry, you can't delete the address.": "عذرًا، لا يمكنك حذف العنوان.",
+  "The address is linked to the order delivery process.": "العنوان مرتبط بعملية تسليم الطلب."
+
+
 }

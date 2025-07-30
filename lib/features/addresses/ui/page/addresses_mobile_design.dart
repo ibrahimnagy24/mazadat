@@ -69,9 +69,9 @@ class AddressesMobileDesign extends StatelessWidget {
                                   ErrorMessageWidget(
                                     error: state is AddressesError
                                         ? state.error
-                                        : const ErrorEntity(
-                                            message:
-                                                AppStrings.thereIsNoAddresses,
+                                        : ErrorEntity(
+                                            message: AppStrings
+                                                .thereIsNoAddresses.tr,
                                             statusCode: 200,
                                             errors: []),
                                     onTap: () {
@@ -81,7 +81,6 @@ class AddressesMobileDesign extends StatelessWidget {
                                   ),
                                   if (state is AddressesEmpty)
                                     const AddAddressButton(),
-
                                 ],
                               ),
                             );
