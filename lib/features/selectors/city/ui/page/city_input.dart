@@ -31,8 +31,8 @@ class CityInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          CityCubit()..citiesStatesHandled(SearchEngine(id: regionId)),
+      create: (context) => CityCubit()
+        ..citiesStatesHandled(SearchEngine(query: {'regionId': regionId})),
       child: BlocBuilder<CityCubit, CityState>(
         builder: (context, state) {
           final cubit = context.read<CityCubit>();

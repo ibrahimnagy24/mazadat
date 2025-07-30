@@ -48,7 +48,7 @@ abstract class Endpoints {
 //--------------------------------Addresses--------------------------------------\\
 
   static const String addressTypes = '/addressType/listAddressTypeLookups';
-  static const String cities = '/cities/searchByKeyword';
+  static const String cities = '/cities/search';
   static const String regions = '/regions/search';
   static const String districts = '/district/search';
 

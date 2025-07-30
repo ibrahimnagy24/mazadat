@@ -31,7 +31,7 @@ class DistrictInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => DistrictsCubit()
-        ..districtsStatesHandled(SearchEngine(query: {'cityId': cityId})),
+        ..districtsStatesHandled(SearchEngine(query: {'cityId': 1})),
       child: BlocBuilder<DistrictsCubit, DistrictState>(
         builder: (context, state) {
           final cubit = context.read<DistrictsCubit>();

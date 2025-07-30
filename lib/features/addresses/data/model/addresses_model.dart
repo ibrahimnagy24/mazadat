@@ -45,6 +45,8 @@ class AddressModel {
   String? creationDate;
   String? lastUpdateDate;
 
+  Function()? onSuccess;
+
   AddressModel(
       {this.id,
       this.addressType,
@@ -56,17 +58,23 @@ class AddressModel {
       this.district,
       this.isDefault,
       this.creationDate,
-      this.lastUpdateDate});
+      this.lastUpdateDate,
+      this.onSuccess});
 
   AddressModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    addressType = json['addressType'] != null ? AddressTypeModel.fromJson(json['addressType']) : null;
+    addressType = json['addressType'] != null
+        ? AddressTypeModel.fromJson(json['addressType'])
+        : null;
     desc = json['desc'];
     street = json['street'];
     phone = json['phone'];
-    region = json['region'] != null ? RegionModel.fromJson(json['region']) : null;
+    region =
+        json['region'] != null ? RegionModel.fromJson(json['region']) : null;
     city = json['city'] != null ? CityModel.fromJson(json['city']) : null;
-    district = json['district'] != null ? DistrictModel.fromJson(json['district']) : null;
+    district = json['district'] != null
+        ? DistrictModel.fromJson(json['district'])
+        : null;
     isDefault = int.parse(json['isDefault']?.toString() ?? '0') == 1;
     creationDate = json['creationDate'];
     lastUpdateDate = json['lastUpdateDate'];

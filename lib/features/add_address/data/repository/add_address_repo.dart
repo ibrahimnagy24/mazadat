@@ -12,7 +12,7 @@ abstract class AddAddressRepo {
       AddressEntity entity) async {
     try {
       final response = await Network().request(
-        entity.id != null ? Endpoints.editAddresses : Endpoints.addresses,
+        entity.id != null ? Endpoints.editAddresses : Endpoints.addAddresses,
         method: ServerMethods.POST,
         body: entity.toJson(),
       );
