@@ -10,27 +10,17 @@ part 'bundle_details_state.dart';
 class BundleDetailsCubit extends Cubit<BundleDetailsState> {
   BundleDetailsCubit() : super(BundleDetailsInitial());
 //---------------------------------VARIABLES----------------------------------//
-
-
+  BundleDetailsModel? bundleDetailsModel;
 //----------------------------------REQUEST-----------------------------------//
 
   Future<void> getBundleDetails(BundleDetailsRouteParams params) async {
     emit(const BundleDetailsLoading());
-
     final response = await BundleDetailsRepo.getBundleDetails(params);
     response.fold((failure) {
       return emit(BundleDetailsError(failure));
     }, (success) {
-      if (success.statusCode == 200) {
-        BundleDetailsModel? res =
-            BundleDetailsModel.fromJson(success.data['DATA']);
-        return emit(BundleDetailsSuccess(bundleDetails: res));
-      } else {
-        return emit(BundleDetailsError(ErrorEntity(
-            message: success.data['MESSAGE'],
-            statusCode: success.statusCode ?? 400,
-            errors: const [])));
-      }
+      bundleDetailsModel = success;
+      return emit(BundleDetailsSuccess(success));
     });
   }
 }

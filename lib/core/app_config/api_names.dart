@@ -1,3 +1,5 @@
+import '../../features/bundle_details/data/params/bundle_details_route_params.dart';
+
 abstract class Endpoints {
 //--------------------------------TESTED--------------------------------------\\
   static const String login = '/authenticate/login';
@@ -61,7 +63,9 @@ abstract class Endpoints {
   static const String getFavorites = '/favorites/getFavoriteList';
   static const String toggleFavoriteAuction =
       '/favorites/toggleFavoriteAuction';
-
+//----------------------------------BUNDLES--------------------------------------\\
+  static String viewBundle(BundleDetailsRouteParams params) =>
+      '/bundles/view/${params.bundleId}';
 //--------------------------------USER OPERATIONS--------------------------------------\\
   static const String getUserInfo = '/users/viewMyProfile';
   static const String updateUserInfo = '/users/updateMyProfile';

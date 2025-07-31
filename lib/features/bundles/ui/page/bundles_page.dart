@@ -96,10 +96,7 @@ class BundlesPage extends StatelessWidget {
             ],
           );
         }
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: const SliverToBoxAdapter(child: Text('no state provided')),
-        );
+        return const SliverToBoxAdapter(child: Text('no state provided'));
       },
     ));
   }

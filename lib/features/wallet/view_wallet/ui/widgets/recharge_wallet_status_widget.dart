@@ -8,7 +8,6 @@ import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
-import '../../data/model/check_wallet_charge_model.dart';
 
 class RechargeWalletStatusWidget extends StatelessWidget {
   const RechargeWalletStatusWidget({

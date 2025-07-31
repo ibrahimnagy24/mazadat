@@ -321,4 +321,5 @@ class AppStrings {
       'Sorry, you can\'t delete the address.';
   static const String theAddressIsLinkedToTheOrderDeliveryProcess =
       'The address is linked to the order delivery process.';
+  static const String registerInThePackage = 'Register in the package';
 }

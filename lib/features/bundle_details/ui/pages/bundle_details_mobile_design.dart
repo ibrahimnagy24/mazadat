@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../data/params/bundle_details_route_params.dart';
@@ -27,6 +28,18 @@ class BundleDetailsMobileDesignScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             BundleDetailsBody(routeParams: routeParams),
+            Container(
+              height: 114,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(color: AppColors.kWhite),
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: DefaultButton(
+                text: AppStrings.registerInThePackage.tr,
+                onPressed: () {},
+                height: 48,
+              ),
+            )
           ],
         ),
       ),

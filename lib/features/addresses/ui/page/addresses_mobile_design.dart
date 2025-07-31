@@ -73,7 +73,7 @@ class AddressesMobileDesign extends StatelessWidget {
                                             message: AppStrings
                                                 .thereIsNoAddresses.tr,
                                             statusCode: 200,
-                                            errors: []),
+                                            errors: const []),
                                     onTap: () {
                                       cubit.addressesStatesHandled(
                                           SearchEngine());

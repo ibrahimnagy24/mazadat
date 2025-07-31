@@ -21,14 +21,13 @@ class BundleDetailsModel {
     numberOfAuctions =
         json['numberOfAuctions']?.toString() ?? AppConstant.nullFromBack;
     price = json['price']?.toString() ?? AppConstant.nullFromBack;
-    if (json['auction'] != null) {
+    if (json['DATA']['auctions'] != null) {
       auction = <AuctionModel>[];
-      json['auction'].forEach((v) {
+      json['DATA']['auctions'].forEach((v) {
         auction!.add(AuctionModel.fromJson(v));
       });
     }
   }
-
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
