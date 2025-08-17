@@ -10,12 +10,15 @@ import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../logic/auction_switch_bidding_state.dart';
 
 class SelectMaxBiddingAmount extends StatelessWidget {
-  const SelectMaxBiddingAmount(
-      {super.key,
-      required this.currentAuctionPrice,
-      required this.currentBiddingMethod});
+  const SelectMaxBiddingAmount({
+    super.key,
+    required this.currentAuctionPrice,
+    required this.currentBiddingMethod,
+    required this.biddingIncrementAmount,
+  });
   final double currentAuctionPrice;
   final BiddingMethod currentBiddingMethod;
+  final double biddingIncrementAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -50,30 +53,35 @@ class SelectMaxBiddingAmount extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-
-                          if(currentBiddingMethod == BiddingMethod.auto)
-                          InkWell(
-                            onTap: ()=> context.read<AuctionSwitchBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)-1)),
-                            child: Container(
-                              width: 32.w,
-                              height: 32.w,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 6.w,
-                                vertical: 6.h,
-                              ),
-                              decoration: BoxDecoration(
-                                  color: AppColors.borderDefault,
-                                  borderRadius: BorderRadius.circular(8.w)),
-                              child: Text(
-                                '—',
-                                style: AppTextStyles.textLgBold.copyWith(
-                                    fontSize: 17,
-                                    color: AppColors.HEADER,
-                                    height: 1),
+                          if (currentBiddingMethod == BiddingMethod.auto)
+                            InkWell(
+                              onTap: () =>
+                                  ((snapshot.data ?? 0) > currentAuctionPrice)
+                                      ? context
+                                          .read<AuctionSwitchBiddingCubit>()
+                                          .updateMaxBiddingValue(
+                                              ((snapshot.data ?? 0) -
+                                                  biddingIncrementAmount))
+                                      : null,
+                              child: Container(
+                                width: 32.w,
+                                height: 32.w,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6.w,
+                                  vertical: 6.h,
+                                ),
+                                decoration: BoxDecoration(
+                                    color: AppColors.borderDefault,
+                                    borderRadius: BorderRadius.circular(8.w)),
+                                child: Text(
+                                  '—',
+                                  style: AppTextStyles.textLgBold.copyWith(
+                                      fontSize: 17,
+                                      color: AppColors.HEADER,
+                                      height: 1),
+                                ),
                               ),
                             ),
-                          ),
-
                           PriceWidgetWithFlagWidget(
                             price: '${snapshot.data ?? 0}',
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,29 +90,29 @@ class SelectMaxBiddingAmount extends StatelessWidget {
                               AppColors.kPrimary,
                               BlendMode.srcIn,
                             ),
-                            priceStyle: AppTextStyles.displaySMMedium
-                                .copyWith(
-                                    color: AppColors.kPrimary, fontSize: 20),
+                            priceStyle: AppTextStyles.displaySMMedium.copyWith(
+                                color: AppColors.kPrimary, fontSize: 20),
                           ),
-
-                          if(currentBiddingMethod == BiddingMethod.auto)
-                          InkWell(
-                            onTap: ()=> context.read<AuctionSwitchBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)+1)),
-                            child: Container(
-                              width: 32.w,
-                              height: 32.w,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: AppColors.kPrimary
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.w)),
-                              child: const Icon(
-                                Icons.add,
-                                color: AppColors.HEADER,
-                                size: 24,
+                          if (currentBiddingMethod == BiddingMethod.auto)
+                            InkWell(
+                              onTap: () => context
+                                  .read<AuctionSwitchBiddingCubit>()
+                                  .updateMaxBiddingValue(((snapshot.data ?? 0) +
+                                      biddingIncrementAmount)),
+                              child: Container(
+                                width: 32.w,
+                                height: 32.w,
+                                decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: AppColors.kPrimary),
+                                    borderRadius: BorderRadius.circular(8.w)),
+                                child: const Icon(
+                                  Icons.add,
+                                  color: AppColors.HEADER,
+                                  size: 24,
+                                ),
                               ),
                             ),
-                          ),
                         ],
                       ),
                     ),

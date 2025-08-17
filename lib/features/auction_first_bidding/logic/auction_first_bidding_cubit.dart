@@ -43,10 +43,12 @@ class AuctionFirstBiddingCubit extends Cubit<AuctionFirstBiddingState> {
         return emit(const AuctionFirstBiddingSuccess());
       } else {
         showErrorToast(success.data['MESSAGE']);
-        return emit(AuctionFirstBiddingError(ErrorEntity(
-            message: success.data['MESSAGE'],
-            statusCode: success.statusCode ?? 400,
-            errors: const [])));
+        return emit(
+          AuctionFirstBiddingError(ErrorEntity(
+              message: success.data['MESSAGE'],
+              statusCode: success.statusCode ?? 400,
+              errors: const [])),
+        );
       }
     });
   }

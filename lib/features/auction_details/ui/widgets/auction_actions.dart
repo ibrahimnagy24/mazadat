@@ -109,6 +109,7 @@ class AuctionActions extends StatelessWidget {
                         .read<AuctionDetailsCubit>()
                         .auctionDetailsStatesHandled(id),
                     currentAuctionPrice: currentPrice,
+                    biddingIncrementAmount: biddingIncrementAmount,
                   ),
                 ),
                 child: Text(

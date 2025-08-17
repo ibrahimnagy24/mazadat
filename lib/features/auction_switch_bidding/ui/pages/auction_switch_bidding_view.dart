@@ -13,12 +13,17 @@ import '../widgets/auction_switch_bidding_button.dart';
 import '../widgets/select_max_bidding_amount.dart';
 
 class AuctionSwitchBiddingView extends StatelessWidget {
-  const AuctionSwitchBiddingView(
-      {super.key, required this.id, required this.currentAuctionPrice, this.onSuccess});
+  const AuctionSwitchBiddingView({
+    super.key,
+    required this.id,
+    required this.currentAuctionPrice,
+    this.onSuccess,
+    required this.biddingIncrementAmount,
+  });
   final int id;
   final double currentAuctionPrice;
+  final double biddingIncrementAmount;
   final Function()? onSuccess;
-
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +32,26 @@ class AuctionSwitchBiddingView extends StatelessWidget {
           ..updateMaxBiddingValue(currentAuctionPrice),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-          child: BlocBuilder<AuctionSwitchBiddingCubit, AuctionSwitchBiddingState>(builder: (context, state) {
+          child:
+              BlocBuilder<AuctionSwitchBiddingCubit, AuctionSwitchBiddingState>(
+                  builder: (context, state) {
             return Column(
               mainAxisSize: MainAxisSize.min,
               spacing: 8.h,
               children: [
                 Flexible(
                   child: StreamBuilder(
-                      stream: context.read<AuctionSwitchBiddingCubit>().biddingMethodStream,
+                      stream: context
+                          .read<AuctionSwitchBiddingCubit>()
+                          .biddingMethodStream,
                       builder: (context, snapshot) {
                         return ListAnimator(
                           data: [
-
                             SelectMaxBiddingAmount(
                               currentAuctionPrice: currentAuctionPrice,
                               currentBiddingMethod:
                                   snapshot.data ?? BiddingMethod.manual,
+                              biddingIncrementAmount: biddingIncrementAmount,
                             ),
 
                             ///Current Auction Price
@@ -93,7 +102,7 @@ class AuctionSwitchBiddingView extends StatelessWidget {
                         );
                       }),
                 ),
-                AuctionSwitchBiddingButton(id: id,onSuccess: onSuccess),
+                AuctionSwitchBiddingButton(id: id, onSuccess: onSuccess),
               ],
             );
           }),

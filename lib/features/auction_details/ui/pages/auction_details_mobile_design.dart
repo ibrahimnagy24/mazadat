@@ -62,7 +62,8 @@ class _AuctionDetailsMobileDesignScreenState
                 onTap: () {
                   context
                       .read<AuctionDetailsCubit>()
-                      .auctionDetailsStatesHandled(widget.routeParams.auctionId);
+                      .auctionDetailsStatesHandled(
+                          widget.routeParams.auctionId);
                 },
               ),
             ));
@@ -92,8 +93,7 @@ class _AuctionDetailsMobileDesignScreenState
             ],
           ),
         );
-      }
-      else {
+      } else {
         return CustomScaffoldWidget(
           appbar: const CustomAppBar(),
           needAppbar: true,

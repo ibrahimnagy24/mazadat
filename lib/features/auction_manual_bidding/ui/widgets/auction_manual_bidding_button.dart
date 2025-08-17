@@ -26,15 +26,15 @@ class AuctionManualBiddingButton extends StatelessWidget {
           builder: (context, state) {
         return DefaultButton(
           onPressed: () {
-            if(canBid){
+            if (canBid) {
               context.read<AuctionManualBiddingCubit>().startManualBidding(id);
             }
           },
-          text: '${AppStrings.bidWith.tr} ${(currentPrice + biddingIncrementAmount)}',
+          text:
+              '${AppStrings.bidWith.tr} ${(currentPrice + biddingIncrementAmount)}',
           withSaudiRiyalSymbol: true,
           isLoading: state is AuctionManualBiddingLoading,
-          backgroundColor: canBid? AppColors.kPrimary:AppColors.kDisable,
-
+          backgroundColor: canBid ? AppColors.kPrimary : AppColors.kDisable,
         );
       }),
     );

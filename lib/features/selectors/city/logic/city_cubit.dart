@@ -7,8 +7,6 @@ import '../data/model/city_model.dart';
 import '../data/repo/cities_repo.dart';
 part 'city_state.dart';
 
-
-
 class CityCubit extends Cubit<CityState> {
   CityCubit() : super(CityStart()) {
     controller = ScrollController();

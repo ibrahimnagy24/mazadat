@@ -35,13 +35,17 @@ class AuctionContent extends StatelessWidget {
 
       ///To View Alert After exceeded maxBiddingAmount
       if (((cubit.details?.currentBiddingAmount ?? 0) >
-              (model.maxBiddingAmount ?? 0)) && model.currentBiddingMethod == BiddingMethod.auto && model.isJoined == true &&
+              (model.maxBiddingAmount ?? 0)) &&
+          model.currentBiddingMethod == BiddingMethod.auto &&
+          model.isJoined == true &&
           context.read<AuctionDetailsCubit>().state is AuctionDetailsSuccess) {
         CustomBottomSheet.show(
           label: AppStrings.selectBiddingMethod.tr,
           widget: AuctionExceedMaxBiddingAlert(
             id: model.id ?? 0,
-            onSuccess: () => context.read<AuctionDetailsCubit>().auctionDetailsStatesHandled(model.id!),
+            onSuccess: () => context
+                .read<AuctionDetailsCubit>()
+                .auctionDetailsStatesHandled(model.id!),
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
             currentAuctionPrice: cubit.details?.currentBiddingAmount ?? 0,
             autoBiddingEnabled: model.autoBiddingEnabled == true,
@@ -358,8 +362,11 @@ class AuctionContent extends StatelessWidget {
             isJoined: model.isJoined == true,
             firstBidding: model.firstBid == true,
             autoBiddingEnabled: model.autoBiddingEnabled == true,
-            canBid: (cubit.details?.userId ?? model.lastBidderId) != context.read<UserCubit>().userEntity?.id.toString(),
-            currentPrice: cubit.details?.currentBiddingAmount ?? model.currentBiddingAmount ?? 0,
+            canBid: (cubit.details?.userId ?? model.lastBidderId) !=
+                context.read<UserCubit>().userEntity?.id.toString(),
+            currentPrice: cubit.details?.currentBiddingAmount ??
+                model.currentBiddingAmount ??
+                0,
             biddingIncrementAmount: model.biddingIncrementAmount ?? 0,
             currentBiddingMethod: model.currentBiddingMethod,
             maxBiddingAmount: model.maxBiddingAmount,
