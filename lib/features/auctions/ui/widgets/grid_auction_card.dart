@@ -37,79 +37,87 @@ class GridAuctionCard extends StatelessWidget {
         }
       },
       child: Container(
-        height: 100.h,
         width: MediaQueryHelper.width,
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppRadius.rM),
+          borderRadius: BorderRadius.circular(AppRadius.rXS),
           color: AppColors.fillColor,
           border: Border.all(color: AppColors.kGeryText8),
         ),
         child: Column(
           children: [
-            Expanded(
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  DefaultNetworkImage(auction.primaryPhoto,
-                      radius: AppRadius.rXXS),
-
-                  ///Auction Status
-                  Align(
-                      alignment: AlignmentDirectional.topStart,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 6.h, horizontal: 12.w),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadiusDirectional.only(
-                            topStart: Radius.circular(AppRadius.rXXS),
-                            bottomEnd: Radius.circular(AppRadius.rLg),
-                          ),
-                          color: AppColors.backgroundSecondary,
+            const SizedBox(height: 8),
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                DefaultNetworkImage(
+                  auction.primaryPhoto,
+                  radius: AppRadius.rXXS,
+                  height: 135,
+                ),
+                Align(
+                    alignment: AlignmentDirectional.topStart,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 12,
+                      ),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadiusDirectional.only(
+                          topStart: Radius.circular(AppRadius.rXXS),
+                          bottomEnd: Radius.circular(AppRadius.rLg),
                         ),
-                        child: Text(
-                          auction.auctionStatus,
-                          style: AppTextStyles.textMdRegular
-                              .copyWith(color: AppColors.textPrimary),
-                        ),
-                      )),
-
-                  ///Auction Type
-                  PositionedDirectional(
-                    end: 4.w,
-                    top: 4.h,
-                    child: customImageIconSVG(
-                        imageName: AppSvg.auctionType(auction.auctionType),
-                        color: AppColors.kWhite,
-                        width: 24.w,
-                        height: 24.w),
+                        color: AppColors.backgroundSecondary,
+                      ),
+                      child: Text(
+                        auction.auctionStatus,
+                        style: AppTextStyles.textMdRegular
+                            .copyWith(color: AppColors.textPrimary),
+                      ),
+                    )),
+                PositionedDirectional(
+                  end: 4,
+                  top: 4,
+                  child: SvgPicture.asset(
+                    AppSvg.auctionType(auction.auctionType),
+                    color: AppColors.kWhite,
+                    width: 24,
+                    height: 24,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: Row(
-                spacing: 4.w,
-                children: [
-                  MainText(
-                    text: AppStrings.openingPrice.tr,
-                    style: AppTextStyles.bodyRegular.copyWith(fontSize: 10),
-                  ),
-                  MainText(
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MainText(
+                  text: AppStrings.openingPrice.tr,
+                  style: AppTextStyles.bodyXXsReq
+                      .copyWith(color: AppColors.textSecondaryParagraph),
+                ),
+                Center(
+                  child: MainText(
                     text: auction.openingPrice,
-                    style: AppTextStyles.bodyMedium,
+                    style: AppTextStyles.bodySMed
+                        .copyWith(color: AppColors.kPrimary),
                   ),
-                  SvgPicture.asset(AppSvg.saudiArabiaSymbol,
-                      color: AppColors.textPrimary),
-                ],
-              ),
+                ),
+                SvgPicture.asset(
+                  AppSvg.saudiArabiaSymbol,
+                  color: AppColors.textPrimary,
+                  height: 14,
+                  width: 14,
+                ),
+              ],
             ),
+            const SizedBox(height: 9),
             AuctionInfo(
               auction: auction,
               fromMyPurchase: fromMyPurchase,
             ),
+            const SizedBox(height: 8),
           ],
         ),
       ),
@@ -126,19 +134,18 @@ class AuctionInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 8.w,
       children: [
         if (!fromMyPurchase)
-          customImageIconSVG(
-              imageName: AppSvg.timer,
-              width: 16.w,
-              height: 16.w,
-              color: AppColors.iconDefault),
+          SvgPicture.asset(
+            AppSvg.timer,
+            color: AppColors.textSecondaryParagraph,
+            height: 16,
+            width: 16,
+          ),
         Expanded(
           child: fromMyPurchase
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 4.w,
                   children: [
                     Flexible(
                       child: Text(
@@ -156,10 +163,15 @@ class AuctionInfo extends StatelessWidget {
                     ),
                   ],
                 )
-              : CountdownTimerWidget(
-                  startDate: auction.startDate,
-                  endTime: auction.endDate,
-                  fontSize: 12),
+              : Center(
+                  child: CountdownTimerWidget(
+                    startDate: auction.startDate,
+                    endTime: auction.endDate,
+                    textStyle: AppTextStyles.textMdRegular.copyWith(
+                      color: const Color.fromRGBO(69, 173, 34, 1),
+                    ),
+                  ),
+                ),
         ),
         FavouriteButton(
           id: auction.id,

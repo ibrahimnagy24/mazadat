@@ -5,4 +5,5 @@ abstract class AppRadius {
   static const double rM = 14;
   static const double rMd = 8;
   static const double rLg = 16;
+  static const double rMD = 8;
 }

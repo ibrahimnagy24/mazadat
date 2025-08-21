@@ -71,29 +71,29 @@ class AuctionsPage extends StatelessWidget {
           return Column(
             children: [
               Expanded(
-                  child: isListing
-                      ? ListAnimator(
-                          controller: cubit.controller,
-                          padding: EdgeInsets.symmetric(horizontal: 24.w),
-                          data: List.generate(
-                            state.auctions.length,
-                            (i) => Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8.h),
-                              child:
-                                  ListAuctionCard(auction: state.auctions[i]),
-                            ),
+                child: isListing
+                    ? ListAnimator(
+                        controller: cubit.controller,
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        data: List.generate(
+                          state.auctions.length,
+                          (i) => Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.h),
+                            child: ListAuctionCard(auction: state.auctions[i]),
                           ),
-                        )
-                      : GridListAnimator(
-                          controller: cubit.controller,
-                          padding: EdgeInsets.symmetric(horizontal: 24.w),
-                          data: List.generate(
-                              state.auctions.length,
-                              (i) =>
-                                  GridAuctionCard(auction: state.auctions[i])),
-                          crossAxisCount: 2,
-                          aspectRatio: 0.9,
-                        )),
+                        ),
+                      )
+                    : GridListAnimator(
+                        controller: cubit.controller,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        data: List.generate(
+                          state.auctions.length,
+                          (i) => GridAuctionCard(auction: state.auctions[i]),
+                        ),
+                        crossAxisCount: 2,
+                        aspectRatio: 163 / 207,
+                      ),
+              ),
               CustomLoadingText(loading: state.isLoading),
             ],
           );

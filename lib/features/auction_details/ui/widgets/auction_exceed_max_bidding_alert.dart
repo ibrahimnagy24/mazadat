@@ -11,13 +11,14 @@ import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../auction_first_bidding/ui/pages/auction_first_bidding_view.dart';
 
 class AuctionExceedMaxBiddingAlert extends StatelessWidget {
-  const AuctionExceedMaxBiddingAlert(
-      {super.key,
-      this.onSuccess,
-      required this.id,
-      required this.currentAuctionPrice,
-      required this.biddingIncrementAmount,
-      required this.autoBiddingEnabled});
+  const AuctionExceedMaxBiddingAlert({
+    super.key,
+    this.onSuccess,
+    required this.id,
+    required this.currentAuctionPrice,
+    required this.biddingIncrementAmount,
+    required this.autoBiddingEnabled,
+  });
   final int id;
   final double currentAuctionPrice, biddingIncrementAmount;
   final bool autoBiddingEnabled;

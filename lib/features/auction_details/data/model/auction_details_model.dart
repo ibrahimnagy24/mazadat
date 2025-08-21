@@ -24,7 +24,7 @@ class AuctionDetailsModel {
   String? name;
   String? description;
   bool? myfav;
-  bool? isStarted,isEnded, isJoined, firstBid, autoBiddingEnabled;
+  bool? isStarted, isEnded, isJoined, firstBid, autoBiddingEnabled;
   int? productId;
   String? primaryPhoto;
   String? lastBidderId;
@@ -112,8 +112,8 @@ class AuctionDetailsModel {
     firstBid = json['firstBid'];
     autoBiddingEnabled = json['autoBiddingEnabled'];
     lastBidderId = json['lastBidderId'];
-    isStarted = startDate?.isBefore(DateTime.now());
-    isEnded = DateTime.now().isAfter(endDate??DateTime.now());
+    isStarted = json['auctionStarted'];
+    isEnded = json['auctionEnded'];
     currentBiddingMethod = json['currentBiddingMethod'] != null
         ? BiddingMethodConverter.stringToBiddingMethod(
             json['currentBiddingMethod']?.toString().toUpperCase())
@@ -149,8 +149,8 @@ class AuctionDetailsModel {
     data['productId'] = productId;
     data['primaryPhoto'] = primaryPhoto;
     data['participant'] = isJoined;
-    data['isStarted'] = isStarted;
-    data['isEnded'] = isEnded;
+    data['auctionStarted'] = isStarted;
+    data['auctionEnded'] = isEnded;
     data['firstBid'] = firstBid;
     data['autoBiddingEnabled'] = autoBiddingEnabled;
     data['maxBiddingAmount'] = maxBiddingAmount;

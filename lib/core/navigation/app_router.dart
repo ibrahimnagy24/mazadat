@@ -26,6 +26,8 @@ import '../../features/my_bundles/ui/page/my_bundles_screen.dart';
 import '../../features/my_purchases/ui/page/my_purchases_screen.dart';
 import '../../features/my_sales/ui/page/my_sales_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
+import '../../features/preview_auction/ui/pages/preview_auction_screen.dart';
+import '../../features/preview_auction/data/params/auction_details_route_params.dart';
 import '../../features/profile/ui/page/profile_screen.dart';
 import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
@@ -33,6 +35,8 @@ import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';
 import '../../features/auction_details/data/params/auction_details_route_params.dart';
 import '../../features/auction_details/ui/pages/auction_details_screen.dart';
+import '../../features/view_auction/data/params/view_auction_details_route_params.dart';
+import '../../features/view_auction/ui/pages/view_auction_details_screen.dart';
 import '../../features/visitor/ui/pages/visitor_screen.dart';
 import '../../features/wallet/view_wallet_history/data/params/view_wallet_history_route_params.dart';
 import '../../features/wallet/view_wallet_history/ui/pages/view_wallet_history_screen.dart';
@@ -216,7 +220,8 @@ final GoRouter appRouter = GoRouter(
       name: Routes.AUCTION_DETAILS,
       builder: (context, state) {
         return AuctionDetailsScreen(
-            routeParams: state.extra as AuctionDetailsRouteParams);
+          routeParams: state.extra as AuctionDetailsRouteParams,
+        );
       },
     ),
 
@@ -257,6 +262,23 @@ final GoRouter appRouter = GoRouter(
         return ViewWalletHistoryScreen(params: routeParams);
       },
     ),
+    GoRoute(
+      path: '/preview-auction',
+      name: Routes.PREVIEW_AUCTION,
+      builder: (context, state) {
+        final routeParams = state.extra as PreviewAuctionRouteParams;
+        return PreviewAuctionScreen(routeParams: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/view-auction-details',
+      name: Routes.VIEW_AUCTION_DETAILS,
+      builder: (context, state) {
+        final routeParams = state.extra as ViewAuctionDetailsRouteParams;
+        return ViewAuctionDetailsScreen(routeParams: routeParams);
+      },
+    ),
+
     // Not Found route
     GoRoute(
       path: '/not-found',

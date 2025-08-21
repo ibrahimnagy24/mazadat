@@ -11,15 +11,20 @@ import '../../logic/toggle_favourite_auction_cubit.dart';
 import '../../logic/toggle_favourite_state.dart';
 
 class FavouriteButton extends StatefulWidget {
-  const FavouriteButton(
-      {super.key,
-      required this.id,
-      this.isFav = false,
-      this.withBackGround = true});
+  const FavouriteButton({
+    super.key,
+    required this.id,
+    this.isFav = false,
+    this.withBackGround = true,
+    this.height,
+    this.width,
+  });
   final int? id;
   final bool isFav;
 
   final bool withBackGround;
+  final double? height;
+  final double? width;
 
   @override
   State<FavouriteButton> createState() => _FavouriteButtonState();
@@ -29,8 +34,8 @@ class _FavouriteButtonState extends State<FavouriteButton> {
   bool value = false;
   @override
   void initState() {
-    value = widget.isFav;
     super.initState();
+    value = widget.isFav;
   }
 
   @override
@@ -52,8 +57,11 @@ class _FavouriteButtonState extends State<FavouriteButton> {
                     setState(() {});
                   })),
           child: Container(
-            padding:
-                widget.withBackGround ? EdgeInsets.all(11.w) : EdgeInsets.zero,
+            height: widget.height,
+            width: widget.width,
+            padding: widget.withBackGround
+                ? const EdgeInsets.all(11)
+                : EdgeInsets.zero,
             decoration: widget.withBackGround
                 ? BoxDecoration(
                     color: AppColors.backgroundBody,
@@ -68,8 +76,8 @@ class _FavouriteButtonState extends State<FavouriteButton> {
                 : null,
             child: customImageIconSVG(
               imageName: value ? AppSvg.fillFav : AppSvg.fav,
-              width: 18.w,
-              height: 18.w,
+              width: 18,
+              height: 18,
             ),
           ),
         );

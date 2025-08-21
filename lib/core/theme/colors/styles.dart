@@ -93,7 +93,7 @@ abstract class AppColors {
   static const Color kOpacityGrey3 = Color.fromRGBO(250, 250, 250, 1);
   //mazadat
   static const Color textPrimarySaFlag = Color.fromRGBO(34, 39, 21, 1);
-
+  static const Color iconColor = Color.fromRGBO(116, 126, 91, 1);
   //barq
   static const Color kOpacityGrey4 = Color.fromRGBO(148, 148, 148, 1);
   //mazadat

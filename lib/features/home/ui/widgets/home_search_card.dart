@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
@@ -18,47 +19,55 @@ class HomeSearchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-        spacing: 8.w,
         children: [
           Expanded(
             child: InkWell(
               onTap: () => CustomNavigator.push(Routes.SEARCH),
               child: Container(
-                height: 50.h,
-                padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+                height: 53,
                 decoration: BoxDecoration(
-                    color: AppColors.fillColor,
-                    border: Border.all(
-                      color: AppColors.border,
-                    ),
-                    borderRadius: BorderRadius.circular(AppRadius.rMd)),
+                  color: const Color.fromRGBO(255, 255, 255, 0.5),
+                  border: Border.all(color: AppColors.borderNeutralSecondary),
+                  borderRadius: BorderRadius.circular(AppRadius.rMd),
+                ),
                 child: Row(
-                  spacing: 8.w,
                   children: [
-                    customImageIconSVG(
-                      imageName: AppSvg.searchIcon,
-                      width: 20.w,
-                      height: 20.w,
-                      color: AppColors.iconDefault,
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(
+                        start: 12,
+                        end: 8,
+                      ),
+                      child: SvgPicture.asset(
+                        AppSvg.searchIcon,
+                        width: 20,
+                        height: 20,
+                        color: AppColors.textSecondaryParagraph,
+                      ),
                     ),
                     Expanded(
-                        child: Text(
-                      AppStrings.lookingForAuctions.tr,
-                      style: AppTextStyles.textLgRegular,
-                    )),
-                    customImageIconSVG(
-                      imageName: AppSvg.filterIcon,
-                      width: 20.w,
-                      height: 20.w,
-                      color: AppColors.iconDefault,
+                      child: Text(
+                        AppStrings.lookingForAuctions.tr,
+                        style: AppTextStyles.textLgRegular
+                            .copyWith(color: AppColors.textSecondaryParagraph),
+                      ),
                     ),
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(end: 12),
+                      child: SvgPicture.asset(
+                        AppSvg.filterIcon,
+                        height: 20,
+                        width: 20,
+                        color: AppColors.textSecondaryParagraph,
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
           ),
+          const SizedBox(width: 16),
 
           ///Listing Button
           StreamBuilder(
@@ -69,22 +78,24 @@ class HomeSearchCard extends StatelessWidget {
                       .read<HomeCubit>()
                       .updateListing(snapshot.data == true ? false : true),
                   child: Container(
-                    height: 50.h,
-                    width: 50.h,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+                    height: 53,
+                    width: 53,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 14,
+                    ),
                     decoration: BoxDecoration(
-                        color: AppColors.fillColor,
-                        border: Border.all(
-                          color: AppColors.border,
-                        ),
-                        borderRadius: BorderRadius.circular(AppRadius.rMd)),
-                    child: customImageIconSVG(
-                      imageName:
-                          snapshot.data == true ? AppSvg.grid : AppSvg.list,
-                      width: 20.w,
-                      height: 20.w,
-                      color: AppColors.iconDefault,
+                      color: const Color.fromRGBO(255, 255, 255, 0.5),
+                      border: Border.all(
+                        color: AppColors.borderNeutralSecondary,
+                      ),
+                      borderRadius: BorderRadius.circular(AppRadius.rMd),
+                    ),
+                    child: SvgPicture.asset(
+                      snapshot.data == true ? AppSvg.grid : AppSvg.list,
+                      width: 20,
+                      height: 20,
+                      color: AppColors.textSecondaryParagraph,
                     ),
                   ),
                 );

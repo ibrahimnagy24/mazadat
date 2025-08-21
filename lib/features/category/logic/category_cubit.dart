@@ -13,11 +13,12 @@ class CategoryCubit extends Cubit<CategoryState> {
   List<CategoryEntity> chosenCategories = [];
   final List<CategoryEntity> _allCategories = [
     CategoryEntity(
-        id: -1,
-        name: AppStrings.bundles.tr,
-        description: '',
-        iconUrl: '',
-        categoryType: CategoryTypes.bundle),
+      id: -1,
+      name: AppStrings.bundles.tr,
+      description: '',
+      iconUrl: '',
+      categoryType: CategoryTypes.bundle,
+    ),
   ];
 
 //---------------------------------FUNCTIONS----------------------------------//

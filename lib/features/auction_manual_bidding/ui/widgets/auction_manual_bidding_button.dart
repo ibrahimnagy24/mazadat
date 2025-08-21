@@ -7,15 +7,15 @@ import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../logic/auction_manual_bidding_state.dart';
 
 class AuctionManualBiddingButton extends StatelessWidget {
-  const AuctionManualBiddingButton(
-      {super.key,
-      required this.canBid,
-      required this.id,
-      required this.currentPrice,
-      required this.biddingIncrementAmount});
+  const AuctionManualBiddingButton({
+    super.key,
+    required this.canBid,
+    required this.id,
+    required this.currentPrice,
+    required this.biddingIncrementAmount,
+  });
   final int id;
   final double currentPrice, biddingIncrementAmount;
-
   final bool canBid;
 
   @override

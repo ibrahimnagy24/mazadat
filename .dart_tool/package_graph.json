@@ -32,6 +32,7 @@
         "flutter_local_notifications",
         "flutter_localizations",
         "flutter_native_splash",
+        "flutter_sliding_toast",
         "flutter_spinkit",
         "flutter_staggered_animations",
         "flutter_staggered_grid_view",
@@ -106,6 +107,13 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "flutter_sliding_toast",
+      "version": "1.5.2",
+      "dependencies": [
+        "flutter"
       ]
     },
     {

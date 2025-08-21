@@ -256,5 +256,7 @@
   "Please specify the shipping value": "برجاء تحديد قيمه الشحن",
   "Wallet": "المحفظه",
   " Please Choose Payment Method": "الرجاء اختيار طريقة الدفع",
-  "Register in the package": "تسجيل في الحزمة"
+  "Register in the package": "تسجيل في الحزمة",
+  "Closed": "مغلق",
+  "Starts in": "يبدأ في"
 }

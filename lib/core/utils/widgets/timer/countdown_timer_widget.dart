@@ -8,12 +8,14 @@ import '../../../theme/text_styles/text_styles.dart';
 class CountdownTimerWidget extends StatefulWidget {
   final DateTime endTime, startDate;
   final double? fontSize;
+  final TextStyle? textStyle;
 
   const CountdownTimerWidget({
     super.key,
     required this.startDate,
     required this.endTime,
     this.fontSize,
+    this.textStyle,
   });
 
   @override
@@ -107,11 +109,12 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
 
     return Text(
       _formatTime(days, hours, minutes, seconds),
-      style: AppTextStyles.textLgMedium.copyWith(
-          color: widget.startDate.isAfter(now)
-              ? AppColors.textSuccess
-              : AppColors.textError,
-          fontSize: widget.fontSize),
+      style: widget.textStyle ??
+          AppTextStyles.textLgMedium.copyWith(
+              color: widget.startDate.isAfter(now)
+                  ? AppColors.textSuccess
+                  : AppColors.textError,
+              fontSize: widget.fontSize),
     );
   }
 }

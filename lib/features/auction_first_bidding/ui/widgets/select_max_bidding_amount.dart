@@ -19,45 +19,49 @@ class SelectMaxBiddingAmount extends StatelessWidget {
 
   final BiddingMethod currentBiddingMethod;
 
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: context.read<AuctionFirstBiddingCubit>().maxBiddingValueStream,
-        builder: (context, snapshot) {
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 12.h,
-              children: [
-                if(currentBiddingMethod == BiddingMethod.auto)
-                  Text(
+      stream: context.read<AuctionFirstBiddingCubit>().maxBiddingValueStream,
+      builder: (context, snapshot) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 12.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 12.h,
+            children: [
+              if (currentBiddingMethod == BiddingMethod.auto)
+                Text(
                   AppStrings.selectMaxBiddingAmount.tr,
                   style: AppTextStyles.textLgBold,
                 ),
 
-                ///Current Auction Price
-                Stack(
-                  children: [
-                    Container(
-                      width: MediaQueryHelper.width,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 18.w,
-                        vertical: 18.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.kWhite,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: AppColors.border),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-
-                          if(currentBiddingMethod == BiddingMethod.auto)
+              ///Current Auction Price
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQueryHelper.width,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 18.w,
+                      vertical: 18.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.kWhite,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColors.border),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        if (currentBiddingMethod == BiddingMethod.auto)
                           InkWell(
-                            onTap: ()=> context.read<AuctionFirstBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)-1)),
+                            onTap: () => ((snapshot.data ?? 0) > currentPrice)
+                                ? context
+                                    .read<AuctionFirstBiddingCubit>()
+                                    .updateMaxBiddingValue(
+                                        ((snapshot.data ?? 0) -
+                                            biddingIncrementAmount))
+                                : null,
                             child: Container(
                               width: 32.w,
                               height: 32.w,
@@ -77,33 +81,31 @@ class SelectMaxBiddingAmount extends StatelessWidget {
                               ),
                             ),
                           ),
-
-                          PriceWidgetWithFlagWidget(
-                            price: '${
-                                (currentBiddingMethod == BiddingMethod.manual)?
-                                (currentPrice + biddingIncrementAmount)  :
-                                snapshot.data ?? 0}',
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            colorFilter: const ColorFilter.mode(
-                              AppColors.kPrimary,
-                              BlendMode.srcIn,
-                            ),
-                            priceStyle: AppTextStyles.displaySMMedium
-                                .copyWith(
-                                    color: AppColors.kPrimary, fontSize: 20),
+                        PriceWidgetWithFlagWidget(
+                          price:
+                              '${(currentBiddingMethod == BiddingMethod.manual) ? (currentPrice + biddingIncrementAmount) : snapshot.data ?? 0}',
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          colorFilter: const ColorFilter.mode(
+                            AppColors.kPrimary,
+                            BlendMode.srcIn,
                           ),
-
-                          if(currentBiddingMethod == BiddingMethod.auto)
+                          priceStyle: AppTextStyles.displaySMMedium.copyWith(
+                              color: AppColors.kPrimary, fontSize: 20),
+                        ),
+                        if (currentBiddingMethod == BiddingMethod.auto)
                           InkWell(
-                            onTap: ()=> context.read<AuctionFirstBiddingCubit>().updateMaxBiddingValue(((snapshot.data??0)+1)),
+                            onTap: () {
+                              context
+                                  .read<AuctionFirstBiddingCubit>()
+                                  .updateMaxBiddingValue(((snapshot.data ?? 0) +
+                                      biddingIncrementAmount));
+                            },
                             child: Container(
                               width: 32.w,
                               height: 32.w,
                               decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: AppColors.kPrimary
-                                  ),
+                                  border: Border.all(color: AppColors.kPrimary),
                                   borderRadius: BorderRadius.circular(8.w)),
                               child: const Icon(
                                 Icons.add,
@@ -112,35 +114,36 @@ class SelectMaxBiddingAmount extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                      ],
                     ),
-                    PositionedDirectional(
-                      top: 0,
-                      start: 20,
-                      child: Transform.translate(
-                        offset: const Offset(0, -10),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
-                          decoration: BoxDecoration(
-                            color: AppColors.kWhite,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Text(
-                            currentBiddingMethod == BiddingMethod.auto
-                                ? AppStrings.selectedPrice.tr
-                                : AppStrings.currentPrice.tr,
-                            style: AppTextStyles.textMdRegular,
-                          ),
+                  ),
+                  PositionedDirectional(
+                    top: 0,
+                    start: 20,
+                    child: Transform.translate(
+                      offset: const Offset(0, -10),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: AppColors.kWhite,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          currentBiddingMethod == BiddingMethod.auto
+                              ? AppStrings.selectedPrice.tr
+                              : AppStrings.currentPrice.tr,
+                          style: AppTextStyles.textMdRegular,
                         ),
                       ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          );
-        });
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

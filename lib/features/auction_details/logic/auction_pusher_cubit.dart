@@ -95,12 +95,18 @@ class AuctionPusherCubit extends Cubit<AuctionPusherState> {
     emit(RoomCurrentState(currState));
   }
 
-  dynamic _onEvent({required PusherEvent event, required int id}) {
+  dynamic _onEvent({required PusherEvent event, required int? id}) {
+    cprint(event.toString());
+    if (id != null) {
+      _placeBidEvent(event, id);
+    }
+  }
+
+  dynamic _placeBidEvent(PusherEvent event, int id) {
     if (event.eventName != 'PLACE_BID_$id') return;
     log('event ${event.eventName}');
     log('event ${event.data}');
     details = AuctionPusherModel.fromJson(jsonDecode(event.data));
-
     emit(BiddingState(details!));
   }
 

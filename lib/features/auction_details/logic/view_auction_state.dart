@@ -26,3 +26,16 @@ class AuctionDetailsError extends AuctionDetailsState {
   final ErrorEntity error;
   const AuctionDetailsError(this.error);
 }
+
+class AuctionSwitchBiddingLoading extends AuctionDetailsState {
+  const AuctionSwitchBiddingLoading();
+}
+
+class AuctionSwitchBiddingError extends AuctionDetailsState {
+  final ErrorEntity error;
+  const AuctionSwitchBiddingError(this.error);
+}
+
+class AuctionFirstBiddingSuccess extends AuctionDetailsState {
+  const AuctionFirstBiddingSuccess();
+}

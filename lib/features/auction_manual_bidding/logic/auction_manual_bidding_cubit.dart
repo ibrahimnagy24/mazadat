@@ -27,4 +27,38 @@ class AuctionManualBiddingCubit extends Cubit<AuctionManualBiddingState> {
       }
     });
   }
+
+  Future<void> startAutoBidding(int id, dynamic maxBiddingValue) async {
+    emit(AuctionManualBiddingLoading());
+    loadingDialog();
+
+    Map<String, dynamic> data = {
+      'auctionId': id,
+      'biddingMethod': 'AUTO',
+      'maxBiddingValue': maxBiddingValue,
+    };
+
+    final response = await AuctionManualBiddingRepo.manualBidding(data);
+    CustomNavigator.pop();
+
+    response.fold((failure) {
+      showErrorToast(failure.message);
+      return emit(AuctionManualBiddingError(failure));
+    }, (success) {
+      if (success.statusCode == 200) {
+        return emit(const AuctionManualBiddingSuccess());
+      } else {
+        showErrorToast(success.data['MESSAGE']);
+        return emit(
+          AuctionManualBiddingError(
+            ErrorEntity(
+              message: success.data['MESSAGE'],
+              statusCode: success.statusCode ?? 400,
+              errors: const [],
+            ),
+          ),
+        );
+      }
+    });
+  }
 }

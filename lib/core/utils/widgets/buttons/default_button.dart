@@ -36,6 +36,7 @@ class DefaultButton extends StatelessWidget {
     this.textStyle,
     this.animationDuration,
     this.withSaudiRiyalSymbol = false,
+    this.isInActive = false,
   });
 
   final void Function()? onPressed;
@@ -51,6 +52,7 @@ class DefaultButton extends StatelessWidget {
   final WidgetStateProperty<BorderSide?>? side;
   final Color? textColor;
   final bool isLoading;
+  final bool isInActive;
   final FontWeight? fontWeight;
   final double? height;
   final double? width;
@@ -112,16 +114,20 @@ class DefaultButton extends StatelessWidget {
             ),
           )
         : ElevatedButton(
-            onPressed: isLoading ? () {} : onPressed ?? () {},
+            onPressed: isInActive || isLoading ? null : onPressed ?? () {},
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(
-                  backgroundColor ?? AppColors.kPrimary),
+                isInActive
+                    ? AppColors.kDisable
+                    : backgroundColor ?? AppColors.kPrimary,
+              ),
               side: side,
               minimumSize: WidgetStateProperty.all(Size(
                   width ?? MediaQuery.of(context).size.width, height ?? 50)),
               padding: WidgetStateProperty.all(
                   padding ?? const EdgeInsets.symmetric(horizontal: 5)),
-              elevation: WidgetStateProperty.all(elevation ?? 1),
+              elevation:
+                  WidgetStateProperty.all(isInActive ? 0 : elevation ?? 1),
               visualDensity: const VisualDensity(
                 horizontal: .9,
                 vertical: .8,
@@ -132,7 +138,9 @@ class DefaultButton extends StatelessWidget {
                   borderRadius: borderRadius ??
                       BorderRadius.circular(borderRadiusValue ?? 12),
                   side: BorderSide(
-                    color: borderColor ?? backgroundColor ?? AppColors.kPrimary,
+                    color: isInActive
+                        ? AppColors.kDisable
+                        : borderColor ?? backgroundColor ?? AppColors.kPrimary,
                     width: borderWidth ?? 1,
                   ),
                 ),

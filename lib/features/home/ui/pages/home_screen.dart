@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/services/pagination/pagination_service.dart';
+import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../auctions/logic/auctions_cubit.dart';
@@ -40,11 +41,13 @@ class HomeScreen extends StatelessWidget {
               builder: (c, categorySnapshot) {
                 return CustomScaffoldWidget(
                   appbar: const HomeAppbar(),
+                  backgroundColor: AppColors.surfaceBackground,
                   child: StreamBuilder(
                       stream: context.read<HomeCubit>().listingStream,
                       builder: (c, listSnapshot) {
                         return Column(
                           children: [
+                            const SizedBox(height: 16),
                             AnimatedOpacity(
                               opacity: 1.0,
                               duration: const Duration(milliseconds: 300),
@@ -72,17 +75,20 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 16),
                             const HomeSearchCard(),
+                            const SizedBox(height: 24),
                             StreamBuilder(
-                                stream: context.read<HomeCubit>().listingStream,
-                                builder: (c, listSnapshot) {
-                                  return categorySnapshot.data ==
-                                          CategoryTypes.bundle
-                                      ? BundlesPage(
-                                          isListing: listSnapshot.data == true)
-                                      : AuctionsPage(
-                                          isListing: listSnapshot.data == true);
-                                }),
+                              stream: context.read<HomeCubit>().listingStream,
+                              builder: (c, listSnapshot) {
+                                return categorySnapshot.data ==
+                                        CategoryTypes.bundle
+                                    ? BundlesPage(
+                                        isListing: listSnapshot.data == true)
+                                    : AuctionsPage(
+                                        isListing: listSnapshot.data == true);
+                              },
+                            ),
                           ],
                         );
                       }),

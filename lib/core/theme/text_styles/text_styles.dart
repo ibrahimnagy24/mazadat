@@ -25,9 +25,9 @@ abstract class AppTextStyles {
     color: Color(0xFF222715),
   );
 
-  static TextStyle displaySMMedium = const TextStyle(
+  static TextStyle displaySMMedium = GoogleFonts.ibmPlexSansArabic(
     fontWeight: FontWeight.w500,
-    fontSize: AppFontSizes.fsL,
+    fontSize: AppFontSizes.fsDisplaySm,
     color: AppColors.kPrimary900,
   );
   static TextStyle displaySMBold = const TextStyle(
@@ -48,9 +48,9 @@ abstract class AppTextStyles {
     color: AppColors.textDefault,
   );
 
-  static TextStyle textLgBold = const TextStyle(
+  static TextStyle textLgBold = GoogleFonts.cairo(
     fontWeight: FontWeight.w700,
-    fontSize: AppFontSizes.fsS,
+    fontSize: AppFontSizes.fsL,
     color: AppColors.textPrimary,
   );
 
@@ -60,7 +60,7 @@ abstract class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  static TextStyle textMdBold = const TextStyle(
+  static TextStyle textMdBold = GoogleFonts.cairo(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsXs,
     color: AppColors.textPrimary,
@@ -113,9 +113,9 @@ abstract class AppTextStyles {
     color: AppColors.textSecondaryParagraph,
   );
 
-  static TextStyle textMdRegular = const TextStyle(
+  static TextStyle textMdRegular = GoogleFonts.cairo(
     fontWeight: FontWeight.w400,
-    fontSize: AppFontSizes.fsXs,
+    fontSize: AppFontSizes.fsMd,
     color: AppColors.textPrimaryParagraph,
   );
 
@@ -125,9 +125,9 @@ abstract class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  static TextStyle textLgRegular = const TextStyle(
+  static TextStyle textLgRegular = GoogleFonts.cairo(
     fontWeight: FontWeight.w400,
-    fontSize: AppFontSizes.fsS,
+    fontSize: AppFontSizes.fsLg,
     color: AppColors.textPrimaryParagraph,
   );
 
@@ -151,18 +151,25 @@ abstract class AppTextStyles {
     color: AppColors.textPrimaryParagraph,
     letterSpacing: 0,
   );
-  static TextStyle bodyXXsReq = GoogleFonts.notoSans(
+  static TextStyle bodyXXsReq = GoogleFonts.cairo(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.xxs,
     color: AppColors.kWhite,
     letterSpacing: 0,
   );
-  static TextStyle bodyXsMed = GoogleFonts.notoSans(
+  static TextStyle bodyXsMed = GoogleFonts.cairo(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsXs,
     color: AppColors.kPrimary,
     letterSpacing: 0,
   );
+  static TextStyle bodyXlBold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsXl,
+    color: AppColors.textError,
+    letterSpacing: 0,
+  );
+
   static TextStyle bodySReq = GoogleFonts.notoSans(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.fsS,

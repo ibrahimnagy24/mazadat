@@ -30,8 +30,8 @@ class _AuctionDetailsMobileDesignScreenState
 
   @override
   void initState() {
-    _controller = ViewAuctionController(vsync: this);
     super.initState();
+    _controller = ViewAuctionController(vsync: this);
   }
 
   @override
@@ -44,6 +44,7 @@ class _AuctionDetailsMobileDesignScreenState
   Widget build(BuildContext context) {
     return BlocBuilder<AuctionDetailsCubit, AuctionDetailsState>(
         builder: (context, state) {
+      final cubit = context.read<AuctionDetailsCubit>();
       if (state is AuctionDetailsLoading) {
         return const CustomScaffoldWidget(
           appbar: CustomAppBar(),
@@ -68,7 +69,7 @@ class _AuctionDetailsMobileDesignScreenState
               ),
             ));
       }
-      if (state is AuctionDetailsSuccess) {
+      if (state is AuctionDetailsSuccess || cubit.AuctionDetails != null) {
         return CustomScaffoldWidget(
           needAppbar: false,
           child: Stack(
@@ -77,32 +78,31 @@ class _AuctionDetailsMobileDesignScreenState
               AuctionHeroImage(
                 controller: _controller,
                 routeParams: widget.routeParams,
-                imageUrls: state.AuctionDetails.attachments ?? [],
+                imageUrls: cubit.AuctionDetails?.attachments ?? [],
               ),
               AuctionDraggableSheet(
                 controller: _controller,
-                attachments: state.AuctionDetails.attachments ?? [],
-                child: AuctionContent(model: state.AuctionDetails),
+                attachments: cubit.AuctionDetails?.attachments ?? [],
+                child: AuctionContent(model: cubit.AuctionDetails!),
               ),
               PositionedDirectional(
                 top: 0,
                 child: AuctionDetailsAppBar(
-                  auctionStatus: state.AuctionDetails.statusLabel ?? '',
+                  auctionStatus: cubit.AuctionDetails?.statusLabel ?? '',
                 ),
               ),
             ],
           ),
         );
-      } else {
-        return CustomScaffoldWidget(
-          appbar: const CustomAppBar(),
-          needAppbar: true,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: const Text('no state provided'),
-          ),
-        );
       }
+      return CustomScaffoldWidget(
+        appbar: const CustomAppBar(),
+        needAppbar: true,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: const Text('no state provided'),
+        ),
+      );
     });
   }
 }

@@ -180,42 +180,48 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: height ?? 120.h,
+        height: height ?? 120,
         width: width,
-        margin: EdgeInsets.symmetric(horizontal: 6.w),
+        margin: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
           color: AppColors.kWhite,
           border: Border.all(
             color: isSelected
-                ? AppColors.borderPrimary
+                ? AppColors.kPrimary500
                 : AppColors.borderNeutralSecondary,
             width: isSelected ? 1.5 : .6,
           ),
           borderRadius:
-              BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rMD),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 4,
-                  horizontal: 4,
-                ),
-                child: category.categoryType == CategoryTypes.bundle
-                    ? customImageIconSVG(
-                        imageName: AppSvg.package,
-                        color: isSelected
-                            ? AppColors.kPrimary
-                            : AppColors.textDefault,
-                        fit: BoxFit.contain)
-                    : DefaultNetworkImage(category.iconUrl ?? ''),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 4,
+                horizontal: 4,
               ),
+              child: category.categoryType == CategoryTypes.bundle
+                  ? SvgPicture.asset(
+                      AppSvg.package,
+                      color: isSelected
+                          ? AppColors.iconColor
+                          : AppColors.textSecondaryParagraph,
+                      fit: BoxFit.contain,
+                      height: 28,
+                      width: 28,
+                    )
+                  : DefaultNetworkImage(
+                      category.iconUrl ?? '',
+                      height: 38,
+                      width: 54,
+                    ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.symmetric(
-                vertical: 10.h,
-                horizontal: 10.w,
+              padding: const EdgeInsetsDirectional.symmetric(
+                vertical: 10,
+                horizontal: 10,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -226,13 +232,15 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: isSelected
                         ? AppTextStyles.textMdBold
-                        : AppTextStyles.textMdRegular,
+                            .copyWith(color: AppColors.kPrimary500)
+                        : AppTextStyles.textMdRegular
+                            .copyWith(color: AppColors.textSecondaryParagraph),
                   ),
                   if (isSelected)
                     Container(
-                      margin: EdgeInsets.only(top: 4.h),
-                      height: 3.h,
-                      width: 15.w,
+                      margin: const EdgeInsets.only(top: 4),
+                      height: 3,
+                      width: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         color: AppColors.kPrimary300,

@@ -26,7 +26,8 @@ class AuctionSwitchBiddingCubit extends Cubit<AuctionSwitchBiddingState> {
     Map<String, dynamic> data = {
       'auctionId': id,
       'biddingMethod': biddingMethod.valueOrNull?.name.toUpperCase(),
-    if(biddingMethod.valueOrNull == BiddingMethod.auto)  'maxBiddingValue': maxBiddingValue.valueOrNull
+      if (biddingMethod.valueOrNull == BiddingMethod.auto)
+        'maxBiddingValue': maxBiddingValue.valueOrNull
     };
 
     final response = await AuctionAutoBiddingRepo.switchBidding(data);
@@ -39,7 +40,7 @@ class AuctionSwitchBiddingCubit extends Cubit<AuctionSwitchBiddingState> {
       if (success.statusCode == 200) {
         onSuccess?.call();
         CustomNavigator.pop();
-      return emit(const AuctionFirstBiddingSuccess());
+        return emit(const AuctionFirstBiddingSuccess());
       } else {
         showErrorToast(success.data['MESSAGE']);
         return emit(AuctionSwitchBiddingError(ErrorEntity(

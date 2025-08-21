@@ -72,6 +72,7 @@ dependencies:
   webview_flutter: ^4.13.0
   flutter_inappwebview: ^6.1.5
   pusher_channels_flutter: ^2.5.0
+  flutter_sliding_toast: ^1.5.2
 
 dev_dependencies:
   flutter_test:

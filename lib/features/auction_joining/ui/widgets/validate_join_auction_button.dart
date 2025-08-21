@@ -13,8 +13,11 @@ import 'agree_to_commission.dart';
 import 'agree_to_insurance.dart';
 
 class ValidateJoinAuctionButton extends StatelessWidget {
-  const ValidateJoinAuctionButton(
-      {super.key, required this.id, this.onSuccess});
+  const ValidateJoinAuctionButton({
+    super.key,
+    required this.id,
+    this.onSuccess,
+  });
   final int id;
   final Function()? onSuccess;
 

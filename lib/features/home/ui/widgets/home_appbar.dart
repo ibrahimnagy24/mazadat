@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
@@ -20,15 +21,14 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return Container(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(AppRadius.rLg.w),
-                bottomRight: Radius.circular(AppRadius.rLg.w),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(18),
+                bottomRight: Radius.circular(18),
               ),
               gradient: LinearGradient(
                 colors: AppColors.kAppBarGradient,
-                stops: const [0.08, 1],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -39,42 +39,55 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   Expanded(
                     child: Row(
-                      spacing: 24.w,
                       children: [
-                        customImageIconSVG(
-                            onTap: () => CustomNavigator.push(Routes.MORE),
-                            imageName: AppSvg.menu,
-                            width: 24.w,
-                            height: 24.w,
-                            color: AppColors.iconSecondary),
-                        customImageIconSVG(
-                            onTap: () {},
-                            imageName: AppSvg.notification,
-                            width: 24.w,
-                            height: 24.w,
-                            color: AppColors.iconSecondary),
+                        GestureDetector(
+                          onTap: () {
+                            CustomNavigator.push(Routes.MORE);
+                          },
+                          child: SvgPicture.asset(
+                            AppSvg.menu,
+                            height: 28,
+                            width: 28,
+                          ),
+                        ),
+                        const SizedBox(width: 24),
+                        GestureDetector(
+                          onTap: () {
+                            // CustomNavigator.push(Routes.no);
+                          },
+                          child: SvgPicture.asset(
+                            AppSvg.notification,
+                            height: 28,
+                            width: 28,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   Expanded(
-                    child: customImageIconSVG(
-                      imageName: AppSvg.logo,
-                      height: 55.h,
-                      width: 80.w,
+                    child: SvgPicture.asset(
+                      AppSvg.logo,
+                      height: 56,
+                      width: 78,
                     ),
                   ),
                   Expanded(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      customImageIconSVG(
-                          onTap: () => CustomNavigator.push(Routes.PROFILE),
-                          imageName: AppSvg.user,
-                          width: 24.w,
-                          height: 24.w,
-                          color: AppColors.iconSecondary),
-                    ],
-                  )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            CustomNavigator.push(Routes.PROFILE);
+                          },
+                          child: SvgPicture.asset(
+                            AppSvg.user,
+                            height: 28,
+                            width: 28,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ));
@@ -83,5 +96,5 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(100.h);
+  Size get preferredSize => const Size.fromHeight(76);
 }

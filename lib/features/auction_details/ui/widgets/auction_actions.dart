@@ -9,6 +9,7 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../auction_first_bidding/ui/pages/auction_first_bidding_view.dart';
+import '../../../auction_manual_bidding/logic/auction_manual_bidding_state.dart';
 import '../../../auction_manual_bidding/ui/widgets/auction_manual_bidding_button.dart';
 import '../../../auction_switch_bidding/ui/pages/auction_switch_bidding_view.dart';
 import '../../../auction_joining/ui/pages/validate_joining_auction_view.dart';
@@ -67,22 +68,25 @@ class AuctionActions extends StatelessWidget {
           if (isJoined == true && firstBidding == true)
             DefaultButton(
               onPressed: () => CustomBottomSheet.show(
-                  label: AppStrings.selectBiddingMethod.tr,
-                  widget: AuctionFirstBiddingView(
-                      onSuccess: () => context
-                          .read<AuctionDetailsCubit>()
-                          .auctionDetailsStatesHandled(id),
-                      id: id,
-                      currentAuctionPrice: currentPrice,
-                      biddingIncrementAmount: biddingIncrementAmount)),
+                label: AppStrings.selectBiddingMethod.tr,
+                widget: AuctionFirstBiddingView(
+                  onSuccess: () => context
+                      .read<AuctionDetailsCubit>()
+                      .auctionDetailsStatesHandled(id),
+                  id: id,
+                  currentAuctionPrice: currentPrice,
+                  biddingIncrementAmount: biddingIncrementAmount,
+                ),
+              ),
               text: AppStrings.bidding.tr,
             ),
 
+          //send request manual direct
           ///To Manual Bidding
-          if (isJoined == true &&
-                  firstBidding != true &&
-                  currentBiddingMethod == BiddingMethod.manual ||
-              (currentPrice > (maxBiddingAmount ?? 0) &&
+          if ((isJoined == true &&
+                  firstBidding == false &&
+                  currentBiddingMethod == BiddingMethod.manual) ||
+              (currentPrice >= (maxBiddingAmount ?? 0) &&
                   currentBiddingMethod == BiddingMethod.auto))
             AuctionManualBiddingButton(
               id: id,
@@ -92,12 +96,13 @@ class AuctionActions extends StatelessWidget {
             ),
 
           /// To Convert Bidding method to Auto
-          if (isJoined == true &&
-                  firstBidding != true &&
+          if ((isJoined == true &&
+                  firstBidding == false &&
                   autoBiddingEnabled == true &&
-                  currentBiddingMethod == BiddingMethod.manual ||
-              (currentPrice > (maxBiddingAmount ?? 0) &&
-                  currentBiddingMethod == BiddingMethod.auto))
+                  currentBiddingMethod == BiddingMethod.manual) ||
+              (currentPrice >= (maxBiddingAmount ?? 0) &&
+                  currentBiddingMethod == BiddingMethod.auto &&
+                  autoBiddingEnabled == false))
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: TextButton(
@@ -105,9 +110,12 @@ class AuctionActions extends StatelessWidget {
                   label: AppStrings.areYouSureYouWantToBidAutomatically.tr,
                   widget: AuctionSwitchBiddingView(
                     id: id,
-                    onSuccess: () => context
-                        .read<AuctionDetailsCubit>()
-                        .auctionDetailsStatesHandled(id),
+                    onSuccess: () {
+                      // context.read<AuctionManualBiddingCubit>().startAutoBidding(id, maxBiddingValue)
+                      context
+                          .read<AuctionDetailsCubit>()
+                          .auctionDetailsStatesHandled(id);
+                    },
                     currentAuctionPrice: currentPrice,
                     biddingIncrementAmount: biddingIncrementAmount,
                   ),

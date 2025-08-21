@@ -60,7 +60,11 @@ class AuctionDraggableSheet extends StatelessWidget {
                   physics: const ClampingScrollPhysics(),
                   controller: scrollController,
                   padding: EdgeInsets.only(
-                      top: 20.h, bottom: 50.h, left: 24.w, right: 24.w),
+                    top: 20.h,
+                    bottom: 50.h,
+                    left: 24.w,
+                    right: 24.w,
+                  ),
                   data: [child],
                 ),
               ),

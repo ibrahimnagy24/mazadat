@@ -34,7 +34,7 @@ class BundlesPage extends StatelessWidget {
                     (i) => Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
                       child: CustomShimmerContainer(
-                        height: 120.h,
+                        height: 120,
                         width: MediaQueryHelper.width,
                       ),
                     ),

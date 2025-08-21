@@ -15,78 +15,74 @@ class CategoriesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h),
-      child: BlocBuilder<CategoryCubit, CategoryState>(
-        buildWhen: (previous, current) =>
-            current is GetCategoriesLoading ||
-            current is GetCategoriesError ||
-            current is GetCategoriesSuccess ||
-            current is ChosenCategoryUpdated,
-        builder: (context, state) {
-          final cubit = context.read<CategoryCubit>();
-          if (state is GetCategoriesLoading) {
-            return SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  SizedBox(width: 18.w),
-                  ...List.generate(
-                    5,
-                    (index) => Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 8.w),
-                      child: CustomShimmerContainer(
-                        width: 75.w,
-                        height: 90.h,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-
-          if (state is GetCategoriesError) {
-            return ErrorMessageWidget(
-              error: state.error,
-              message: state.error.message,
-              onTap: () => cubit.categoriesStatesHandled(),
-            );
-          }
-
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      buildWhen: (previous, current) =>
+          current is GetCategoriesLoading ||
+          current is GetCategoriesError ||
+          current is GetCategoriesSuccess ||
+          current is ChosenCategoryUpdated,
+      builder: (context, state) {
+        final cubit = context.read<CategoryCubit>();
+        if (state is GetCategoriesLoading) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 SizedBox(width: 18.w),
                 ...List.generate(
-                    cubit.allCategories!.length,
-                    (index) => CategoryWidget(
-                          category: cubit.allCategories![index],
-                          isSelected: cubit.selectedCategory ==
-                              cubit.allCategories![index],
-                          onTap: () {
-                            if (cubit.selectedCategory ==
-                                cubit.allCategories![index]) {
-                              cubit.updateSelectedCategory(null);
-                              onTap?.call(null);
-                            } else {
-                              cubit.updateSelectedCategory(
-                                  cubit.allCategories![index]);
-                              onTap?.call(cubit.allCategories![index]);
-                            }
-                          },
-                          type: CategoryWidgetType.type2,
-                          animationDuration: (index * 10).ms,
-                          width: 75.w,
-                          height: 90.h,
-                          borderRadiusValue: AppRadius.rM,
-                        ))
+                  5,
+                  (index) => Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    child: CustomShimmerContainer(
+                      width: 75.w,
+                      height: 90.h,
+                    ),
+                  ),
+                ),
               ],
             ),
           );
-        },
-      ),
+        }
+
+        if (state is GetCategoriesError) {
+          return ErrorMessageWidget(
+            error: state.error,
+            message: state.error.message,
+            onTap: () => cubit.categoriesStatesHandled(),
+          );
+        }
+
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              const SizedBox(width: 14),
+              ...List.generate(
+                cubit.allCategories!.length,
+                (index) => CategoryWidget(
+                  category: cubit.allCategories![index],
+                  isSelected:
+                      cubit.selectedCategory == cubit.allCategories![index],
+                  onTap: () {
+                    if (cubit.selectedCategory == cubit.allCategories![index]) {
+                      cubit.updateSelectedCategory(null);
+                      onTap?.call(null);
+                    } else {
+                      cubit.updateSelectedCategory(cubit.allCategories![index]);
+                      onTap?.call(cubit.allCategories![index]);
+                    }
+                  },
+                  type: CategoryWidgetType.type2,
+                  animationDuration: 300.ms,
+                  width: 75,
+                  height: 93,
+                  borderRadiusValue: AppRadius.rMD,
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
