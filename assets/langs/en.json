@@ -258,5 +258,9 @@
   " Please Choose Payment Method": " Please Choose Payment Method",
   "Register in the package": "Register in the package",
   "Closed": "Closed",
-  "Starts in": "Starts in"
+  "Starts in": "Starts in",
+  "The auction has been awarded to you.": "The auction has been awarded to you.",
+  "You will be redirected to the payment completion page.": "You will be redirected to the payment completion page.",
+  "Sorry, the award was not made in your favor.": "Sorry, the award was not made in your favor.",
+  "Please Check Terms And Conditions": "Please Check Terms And Conditions"
 }

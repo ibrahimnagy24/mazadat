@@ -74,11 +74,11 @@ class AuctionsPage extends StatelessWidget {
                 child: isListing
                     ? ListAnimator(
                         controller: cubit.controller,
-                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
                         data: List.generate(
                           state.auctions.length,
                           (i) => Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.h),
+                            padding: const EdgeInsets.symmetric(vertical: 8),
                             child: ListAuctionCard(auction: state.auctions[i]),
                           ),
                         ),

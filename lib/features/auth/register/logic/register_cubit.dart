@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxdart/subjects.dart';
 import '../../../../core/app_core.dart';
+import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/enums/enums.dart';
+import '../../../../core/utils/extensions/extensions.dart';
 import '../../../selectors/age/data/entity/age_entity.dart';
 import '../../../selectors/city/data/entity/city_entity.dart';
 import '../data/params/register_params.dart';
@@ -20,8 +21,11 @@ class RegisterCubit extends Cubit<RegisterState> {
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController confirmPassword = TextEditingController();
-
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AgeEntity? ageController;
+  GenderTypes? genderController;
+  CityEntity? cityEntity;
+  final GlobalKey<FormState> stepOneFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> stepTwoFormKey = GlobalKey<FormState>();
   bool agreePolicyAndConditions = false;
 
 //---------------------------------FUNCTIONS----------------------------------//
@@ -31,42 +35,41 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(AgreePolicyAndConditionsState());
   }
 
-  final city = BehaviorSubject<CityEntity?>();
-  Function(CityEntity?) get updateCity => city.sink.add;
-  Stream<CityEntity?> get cityStream => city.stream.asBroadcastStream();
+  int _currentStep = 0;
+  int get currentStep => _currentStep;
 
-  final age = BehaviorSubject<AgeEntity?>();
-  Function(AgeEntity?) get updateAge => age.sink.add;
-  Stream<AgeEntity?> get ageStream => age.stream.asBroadcastStream();
+  void updateStep(int step) {
+    _currentStep = step;
+    emit(RegisterStepChanged(step));
+  }
 
-  final gender = BehaviorSubject<GenderTypes?>();
-  Function(GenderTypes?) get updateGender => gender.sink.add;
-  Stream<GenderTypes?> get genderStream => gender.stream.asBroadcastStream();
+  void rebuildInputs() {
+    emit(RebuildInputs());
+  }
 
-  final step = BehaviorSubject<int>();
-  Function(int) get updateStep => step.sink.add;
-  Stream<int> get stepStream => step.stream.asBroadcastStream();
-
-  bool isRegisterValidate() {
-    if (!agreePolicyAndConditions) {
-      showErrorSnackBar('AppStrings.pleaseCheckTermsAndConditions.tr');
-      return false;
-    }
-    if (formKey.currentState!.validate()) {
-      formKey.currentState?.save();
+  bool isStepOneValid() {
+    if (stepOneFormKey.currentState!.validate()) {
+      stepOneFormKey.currentState?.save();
       return true;
     } else {
       return false;
     }
-    // if (!fromChooseCategoryScreen) {
-    // } else {
-    //   if (choosenCategories.isEmpty) {
-    //     showErrorSnackBar('please choose atleast one cat');
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // }
+  }
+
+  bool isAgreePolicyAndConditionsValid() {
+    if (!agreePolicyAndConditions) {
+      return false;
+    }
+    return true;
+  }
+
+  bool isStepTwoValid() {
+    if (stepTwoFormKey.currentState!.validate()) {
+      stepTwoFormKey.currentState?.save();
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -85,14 +88,15 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(const RegisterLoading());
     final response = await RegisterRepo.register(
       RegisterParams(
-          email: email.text,
-          password: password.text,
-          firstName: firstName.text,
-          lastName: lastName.text,
-          phone: phone.text,
-          city: city.valueOrNull?.id,
-          age: age.valueOrNull?.id,
-          gender: gender.valueOrNull),
+        email: email.text,
+        password: password.text,
+        firstName: firstName.text,
+        lastName: lastName.text,
+        phone: phone.text,
+        city: cityEntity?.id,
+        age: ageController?.id,
+        gender: genderController,
+      ),
     );
     response.fold((failure) {
       return emit(RegisterError(failure));

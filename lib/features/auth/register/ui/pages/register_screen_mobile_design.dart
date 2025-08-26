@@ -28,29 +28,41 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
                       topLeft: Radius.circular(24),
                     ),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: SingleChildScrollView(
-                    child: StreamBuilder<int>(
-                        stream: context.read<RegisterCubit>().stepStream,
-                        builder: (context, snapshot) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AuthHeaderContent(
-                                  title: AppStrings.registerHeader.tr),
-                              const RegisterProgressIndicator(),
-                              24.sbH,
-                              if (snapshot.data == 0)
-                                const RegisterFieldStep1()
-                              else
-                                const RegisterFieldStep2(),
-                              20.sbH,
-                              const RegisterActions(),
-                              20.sbH,
-                              const Center(child: AlreadyHaveAccountWidget()),
-                            ],
-                          );
-                        }),
+                    child: BlocBuilder<RegisterCubit, RegisterState>(
+                      buildWhen: (previous, current) {
+                        return current is RegisterStepChanged ||
+                            current is RegisterInitial;
+                      },
+                      builder: (context, state) {
+                        final currentStep =
+                            context.read<RegisterCubit>().currentStep;
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 24),
+                            AuthHeaderContent(
+                                title: AppStrings.registerHeader.tr),
+                            const SizedBox(height: 24),
+                            const RegisterProgressIndicator(),
+                            const SizedBox(height: 24),
+                            if (currentStep == 0)
+                              const RegisterFieldStep1()
+                            else
+                              const RegisterFieldStep2(),
+                            const SizedBox(height: 20),
+                            if (currentStep == 1)
+                              const PrivacyAndConditionsWidget(),
+                            const CreateAccountButtonWidget(),
+                            const SizedBox(height: 20),
+                            const OrTextWidget(),
+                            const SizedBox(height: 20),
+                            const Center(child: AlreadyHaveAccountWidget()),
+                          ],
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

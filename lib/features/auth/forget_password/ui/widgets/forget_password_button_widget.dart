@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/app_core.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 
+import '../../../../../core/services/toast_service.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_constant.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
 
@@ -35,7 +37,12 @@ class ForgetPasswordButtonWidget extends StatelessWidget {
       listener: (context, state) {
         final cubit = context.read<ForgetPasswordCubit>();
         if (state is ForgetPasswordError) {
-          showErrorSnackBar(state.error.message);
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
+          );
         }
         if (state is ForgetPasswordSuccess) {
           CustomNavigator.push(
@@ -44,7 +51,7 @@ class ForgetPasswordButtonWidget extends StatelessWidget {
             extra: VerifyCodeRouteParams(
               phone: cubit.phone.text,
               fromScreenEnum: VerifyCodeFromScreen.fromForgetPassword,
-              countryCode: '966',
+              countryCode: AppConstant.countryCode,
             ),
           );
         }
@@ -68,6 +75,8 @@ class ForgetPasswordButtonWidget extends StatelessWidget {
           width: width,
           borderRadiusValue: borderRadiusValue,
           fontSize: fontSize,
+          textStyle: AppTextStyles.bodyXlBold
+              .copyWith(color: const Color.fromRGBO(255, 255, 255, 1)),
         );
       },
     );

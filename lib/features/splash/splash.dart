@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-
 import '../../core/assets/app_launchers.dart';
 import '../../core/navigation/custom_navigation.dart';
 import '../../core/navigation/routes.dart';
-import '../../core/shared/widgets/custom_images.dart';
-
-import '../../core/utils/extensions/extensions.dart';
 import '../../core/utils/extensions/media_query_helper.dart';
 import '../../core/utils/utility.dart';
+import '../../core/utils/widgets/misc/default_network_image.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -22,12 +19,19 @@ class SplashScreen extends StatelessWidget {
           width: MediaQueryHelper.width,
           alignment: Alignment.center,
           decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(AppLaunchers.splash), fit: BoxFit.cover)),
-          child: customImageIcon(
-            imageName: AppLaunchers.logo,
-            height: 95.h,
-            width: 130.w,
+            gradient: LinearGradient(
+              colors: [
+                Color.fromRGBO(64, 77, 38, 1),
+                Color.fromRGBO(24, 28, 16, 1),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: const DefaultNetworkImage(
+            AppLaunchers.logo,
+            height: 95,
+            width: 130,
             fit: BoxFit.contain,
           )
               .animate(
@@ -41,15 +45,37 @@ class SplashScreen extends StatelessWidget {
                   }
                 },
               )
-              .scale(
-                begin: const Offset(0.5, 0.5),
-                end: const Offset(1.0, 1.0),
-                duration: 1000.ms,
-                delay: 0.ms,
-                curve: Curves.easeInOut,
+              .fadeIn(
+                duration: 400.ms,
+                curve: Curves.easeOutQuart,
               )
-              .then(delay: 200.ms)
-              .shimmer(duration: 1000.ms, curve: Curves.easeInOut),
+              .scale(
+                begin: const Offset(0.2, 0.2),
+                end: const Offset(1.05, 1.05),
+                duration: 900.ms,
+                delay: 100.ms,
+                curve: Curves.easeOutBack,
+              )
+              .scale(
+                begin: const Offset(1.05, 1.05),
+                end: const Offset(1.0, 1.0),
+                duration: 300.ms,
+                curve: Curves.easeInOutQuart,
+              )
+              .shimmer(
+                duration: 1000.ms,
+                delay: 50.ms,
+                curve: Curves.easeInOutSine,
+                colors: [
+                  Colors.transparent,
+                  Colors.white.withOpacity(0.2),
+                  Colors.white.withOpacity(0.6),
+                  Colors.white.withOpacity(0.9),
+                  Colors.white.withOpacity(0.6),
+                  Colors.white.withOpacity(0.2),
+                  Colors.transparent,
+                ],
+              ),
         ),
       ),
     );

@@ -11,20 +11,11 @@ class ResetPasswordScreen extends StatelessWidget {
         builder: (context, state) {
           return Form(
             key: context.read<ResetPasswordCubit>().formKey,
-            child: ScreenTypeLayout.builder(
-              breakpoints: AppConstant.breakpoints,
-              mobile: (_) => OrientationLayoutBuilder(
-                portrait: (context) =>
-                    const RestPasswordScreenMobilePortraitDesignScreen(),
-                landscape: (context) =>
-                    const ChangePasswordScreenMobileLandscapeDesignScreen(),
-              ),
-              tablet: (_) => OrientationLayoutBuilder(
-                portrait: (context) =>
-                    const RestPasswordScreenMobilePortraitDesignScreen(),
-                landscape: (context) =>
-                    const ChangePasswordScreenMobileLandscapeDesignScreen(),
-              ),
+            child: CustomScreenTypeLayoutWidget(
+              mobilePortrait: (context) =>
+                  const RestPasswordScreenMobilePortraitDesignScreen(),
+              mobileLandscape: (context) =>
+                  const RestPasswordScreenMobilePortraitDesignScreen(),
             ),
           );
         },

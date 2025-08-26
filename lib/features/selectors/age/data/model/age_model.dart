@@ -16,5 +16,4 @@ class AgeModel extends AgeEntity {
     data['name'] = name;
     return data;
   }
-
 }

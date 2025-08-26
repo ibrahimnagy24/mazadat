@@ -30,3 +30,7 @@ enum CategoryTypes { auction, bundle }
 enum BiddingMethod { auto, manual }
 
 enum WalletHistoryType { deposit, withdraw }
+
+enum ChangePasswordFromScreen {
+  fromForgetPassword,
+}

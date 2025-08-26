@@ -4,7 +4,9 @@ import '../../app/app.dart';
 import '../../features/add_address/ui/page/add_addresses_screen.dart';
 import '../../features/addresses/data/model/addresses_model.dart';
 import '../../features/addresses/ui/page/addresses_screen.dart';
+import '../../features/auth/change_password/data/params/change_password_route_params.dart';
 import '../../features/auth/change_password/ui/widgets/change_password_imports.dart';
+import '../../features/auth/change_phone_number/data/params/change_phone_number_route_params.dart';
 import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
 import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
 import '../../features/auth/change_phone_number/ui/widgets/change_phone_number_imports.dart';
@@ -92,7 +94,7 @@ final GoRouter appRouter = GoRouter(
       path: '/change-phone-number',
       name: Routes.CHANGE_PHONE_NUMBER_SCREEN,
       builder: (context, state) => ChangePhoneNumberScreen(
-        oldPhone: state.extra as String,
+        params: state.extra as ChangePhoneNumberRouteParams,
       ),
     ),
 
@@ -116,7 +118,9 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/change-password',
       name: Routes.CHANGE_PASSWORD_SCREEN,
-      builder: (context, state) => const ChangePasswordScreen(),
+      builder: (context, state) => ChangePasswordScreen(
+        params: state.extra as ChangePasswordRouteParams,
+      ),
     ),
 
     // Home routes

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/assets/app_images.dart';
 import '../../../../core/shared/widgets/custom_back_icon.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
@@ -22,12 +21,12 @@ class ProfileHeader extends StatelessWidget {
         bottom: 100.h,
       ),
       decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(
-              AppImages.authHeaderBk,
-            ),
-            fit: BoxFit.cover),
-      ),
+          // image: DecorationImage(
+          //     image: AssetImage(
+          //       AppImages.authHeaderBk,
+          //     ),
+          //     fit: BoxFit.cover),
+          ),
       child: SafeArea(
         child: Row(
           spacing: 8.w,

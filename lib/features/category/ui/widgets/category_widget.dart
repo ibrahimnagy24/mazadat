@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../data/entity/category_entity.dart';
 import '../../../../core/assets/app_svg.dart';

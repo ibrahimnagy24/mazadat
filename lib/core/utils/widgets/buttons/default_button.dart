@@ -119,7 +119,7 @@ class DefaultButton extends StatelessWidget {
               backgroundColor: WidgetStateProperty.all(
                 isInActive
                     ? AppColors.kDisable
-                    : backgroundColor ?? AppColors.kPrimary,
+                    : backgroundColor ?? const Color.fromRGBO(81, 94, 50, 1),
               ),
               side: side,
               minimumSize: WidgetStateProperty.all(Size(
@@ -127,7 +127,7 @@ class DefaultButton extends StatelessWidget {
               padding: WidgetStateProperty.all(
                   padding ?? const EdgeInsets.symmetric(horizontal: 5)),
               elevation:
-                  WidgetStateProperty.all(isInActive ? 0 : elevation ?? 1),
+                  WidgetStateProperty.all(isInActive ? 0 : elevation ?? .5),
               visualDensity: const VisualDensity(
                 horizontal: .9,
                 vertical: .8,
@@ -140,7 +140,9 @@ class DefaultButton extends StatelessWidget {
                   side: BorderSide(
                     color: isInActive
                         ? AppColors.kDisable
-                        : borderColor ?? backgroundColor ?? AppColors.kPrimary,
+                        : borderColor ??
+                            backgroundColor ??
+                            const Color.fromRGBO(81, 94, 50, 1),
                     width: borderWidth ?? 1,
                   ),
                 ),

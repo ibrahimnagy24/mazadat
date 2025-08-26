@@ -58,6 +58,19 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
     });
   }
 
+  String getTitle() {
+    switch (resetPasswordParams.fromScreenEnum) {
+      case VerifyCodeFromScreen.fromForgetPassword:
+        return AppStrings.verificationCode.tr;
+      case VerifyCodeFromScreen.fromLogin:
+        return AppStrings.confirmMobileNumber.tr;
+      case VerifyCodeFromScreen.fromRegister:
+        return AppStrings.confirmMobileNumber.tr;
+      case VerifyCodeFromScreen.fromChangePhoneNumber:
+        return AppStrings.confirmMobileNumber.tr;
+    }
+  }
+
   @override
   Future<void> close() {
     code.dispose();
@@ -98,7 +111,6 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
           break;
         case VerifyCodeFromScreen.fromLogin:
           await SharedHelper.sharedHelper?.cacheLoginData(success);
-          // SharedHelper.sharedHelper?.saveToken(success.token, needToCacheToken: false);
           break;
         case VerifyCodeFromScreen.fromRegister:
           await SharedHelper.sharedHelper?.cacheLoginData(success);

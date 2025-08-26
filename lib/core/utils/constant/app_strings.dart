@@ -324,4 +324,12 @@ class AppStrings {
   static const String registerInThePackage = 'Register in the package';
   static const String closed = 'Closed';
   static const String startsIn = 'Starts in';
+  static const String theAuctionHasBeenAwardedToYou =
+      'The auction has been awarded to you.';
+  static const String youWillBeRedirectedToThePaymentCompletionPage =
+      'You will be redirected to the payment completion page.';
+  static const String sorryTheAwardWasNotMadeInYourFavor =
+      'Sorry, the award was not made in your favor.';
+  static const String pleaseCheckTermsAndConditions =
+      'Please Check Terms And Conditions';
 }

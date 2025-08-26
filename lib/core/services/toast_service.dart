@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sliding_toast/flutter_sliding_toast.dart';
+import 'package:flutter_svg/svg.dart';
+import '../assets/app_svg.dart';
+import '../shared/entity/error_entity.dart';
 import '../theme/colors/styles.dart';
 import '../theme/text_styles/text_styles.dart';
 
@@ -13,7 +16,7 @@ class ToastService {
     }
   }
 
-  static void showSuccess(String message, {BuildContext? context}) {
+  static void showSuccess(String message, BuildContext context) {
     try {
       InteractiveToast.slide(
         context: context,
@@ -51,7 +54,7 @@ class ToastService {
     }
   }
 
-  static void showError(String message, {BuildContext? context}) {
+  static void showError(String message, BuildContext context) {
     try {
       InteractiveToast.slide(
         context: context,
@@ -107,7 +110,7 @@ class ToastService {
     }
   }
 
-  static void showWarning(String message, {BuildContext? context}) {
+  static void showWarning(String message, BuildContext context) {
     try {
       InteractiveToast.slide(
         context: context,
@@ -145,7 +148,7 @@ class ToastService {
     }
   }
 
-  static void showInfo(String message, {BuildContext? context}) {
+  static void showInfo(String message, BuildContext context) {
     try {
       InteractiveToast.slide(
         context: context,
@@ -184,7 +187,7 @@ class ToastService {
   }
 
   /// Glassy toast with blur effect
-  static void showGlassy(String message, {BuildContext? context}) {
+  static void showGlassy(String message, BuildContext context) {
     try {
       InteractiveToast.slide(
         context: context,
@@ -220,7 +223,7 @@ class ToastService {
   }
 
   /// Shows a glassy error toast with blur effect
-  static void showGlassyError(String message, {BuildContext? context}) {
+  static void showGlassyError(String message, BuildContext context) {
     try {
       InteractiveToast.slide(
         context: context,
@@ -257,46 +260,73 @@ class ToastService {
 
   static void showCustom({
     required String message,
-    required Color backgroundColor,
-    required IconData icon,
-    Color? textColor,
-    Color? iconColor,
-    Duration? duration,
-    BuildContext? context,
-    bool glassy = false,
+    required BuildContext context,
+    required ToastStatusType toastStatusType,
+    ErrorEntity? errorEntity,
+    Color backgroundColor = Colors.white,
   }) {
+    final Map<ToastStatusType, String> iconMap = {
+      ToastStatusType.success: AppSvg.checkDone,
+      ToastStatusType.error: AppSvg.errorIconWithBackground,
+      ToastStatusType.warning: AppSvg.warrningIcon,
+      ToastStatusType.alarm: AppSvg.alarmIcon,
+      ToastStatusType.info: AppSvg.infoIcon,
+    };
+
+    final Map<ToastStatusType, Color> colorMap = {
+      ToastStatusType.success: const Color.fromRGBO(81, 94, 50, 1),
+      ToastStatusType.error: const Color.fromRGBO(224, 44, 31, 1),
+      ToastStatusType.warning: const Color.fromRGBO(255, 166, 0, 1),
+      ToastStatusType.alarm: const Color.fromRGBO(255, 166, 0, 1),
+      ToastStatusType.info: const Color.fromRGBO(185, 185, 185, 1),
+    };
+
+    final icon = iconMap[toastStatusType] ?? AppSvg.checkDone;
+    final color = colorMap[toastStatusType] ?? AppColors.GREEN;
     try {
       InteractiveToast.slide(
         context: context,
-        title: Text(
-          message,
-          style: AppTextStyles.textMdMedium.copyWith(
-            color: textColor ?? Colors.white,
-          ),
+        title: Row(
+          children: [
+            Container(
+              color: color,
+              height: 80,
+              width: 8,
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(
+                top: 16,
+                bottom: 16,
+                end: 12,
+                start: 16,
+              ),
+              child: SvgPicture.asset(
+                icon,
+                height: 48,
+                width: 48,
+              ),
+            ),
+            Expanded(
+              child: Text(
+                message,
+                style: AppTextStyles.textLgMedium
+                    .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+                maxLines: 2,
+              ),
+            ),
+          ],
         ),
-        trailing: Icon(
-          icon,
-          color: iconColor ?? Colors.white,
-          size: 20,
-        ),
-        toastSetting: SlidingToastSetting(
-          animationDuration: const Duration(milliseconds: 400),
-          displayDuration: duration ?? const Duration(seconds: 3),
-          toastAlignment: Alignment.topCenter,
+        toastSetting: const SlidingToastSetting(
+          animationDuration: Duration(milliseconds: 400),
+          displayDuration: Duration(seconds: 3),
+          toastAlignment: Alignment.center,
           toastStartPosition: ToastPosition.top,
+          padding: EdgeInsets.zero,
         ),
         toastStyle: ToastStyle(
           backgroundColor: backgroundColor,
-          glassBlur: glassy ? 6 : 0,
-          backgroundColorOpacity: glassy ? 0.3 : 1.0,
-          boxShadow: [
-            BoxShadow(
-              color: backgroundColor.withAlpha(51),
-              blurRadius: 8,
-              spreadRadius: 2,
-              offset: const Offset(0, 2),
-            ),
-          ],
+          padding: EdgeInsets.zero,
+          progressBarColor: color,
         ),
       );
     } catch (e) {
@@ -312,4 +342,12 @@ class ToastService {
       debugPrint('ToastService Error: $e');
     }
   }
+}
+
+enum ToastStatusType {
+  success,
+  error,
+  warning,
+  info,
+  alarm,
 }

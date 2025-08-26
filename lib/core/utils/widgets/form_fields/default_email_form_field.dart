@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/radius/app_radius.dart';
+import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
 import '../../validations/validator.dart';
@@ -41,6 +42,10 @@ class DefaultEmailFormField extends StatelessWidget {
       onTapOutside: (p0) {},
       readOnly: readOnly,
       needValidation: needValidation,
+      titleStyle: AppTextStyles.textMdRegular
+          .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
+      style: AppTextStyles.textLgRegular
+          .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
     );
   }
 }

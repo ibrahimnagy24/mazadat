@@ -1,68 +1,42 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
-import '../../../../core/services/pagination/pagination_service.dart';
+import '../../../../core/navigation/custom_navigation.dart';
 import '../data/entity/city_entity.dart';
-import '../data/model/city_model.dart';
+import '../data/params/city_params.dart';
 import '../data/repo/cities_repo.dart';
 part 'city_state.dart';
 
 class CityCubit extends Cubit<CityState> {
-  CityCubit() : super(CityStart()) {
-    controller = ScrollController();
-    customScroll(controller);
-  }
+  CityCubit() : super(CityStart());
 //---------------------------------VARIABLES----------------------------------//
-  late ScrollController controller;
-  late SearchEngine _engine;
-  List<CityEntity>? model;
+  List<CityEntity>? cities;
 
-  //---------------------------------FUNCTIONS----------------------------------//
-  customScroll(ScrollController controller) {
-    controller.addListener(() {
-      bool scroll = PaginationService.scrollListener(controller,
-          maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
-      if (scroll) {
-        citiesStatesHandled(_engine);
-      }
-    });
-  }
+//---------------------------------FUNCTIONS----------------------------------//
 
-//---------------------------------REQUEST----------------------------------//
+//----------------------------------REQUEST----------------------------------//
 
-  Future<void> citiesStatesHandled(SearchEngine params) async {
-    _engine = params;
-    if (_engine.currentPage == -1) {
-      model = [];
-      emit(CityLoading());
-    } else {
-      emit(CityDone(cities: model!, isLoading: true));
-    }
-
-    final response = await CitiesRepo.getCities(_engine);
+  Future<void> citiesStatesHandled({CityParams? params}) async {
+    CustomNavigator.context.loaderOverlay.show();
+    emit(const GetCitiesLoading());
+    final response = await CitiesRepo.getCities(
+      params ??
+          const CityParams(
+            regionId: 12,
+            page: 0,
+            limit: 100000,
+          ),
+    );
     response.fold((failure) {
-      return emit(CityError(failure));
+      CustomNavigator.context.loaderOverlay.hide();
+      return emit(GetCitiesError(failure));
     }, (success) {
-      CitiesModel? res = CitiesModel.fromJson(success.data);
-
-      if (_engine.currentPage == -1) {
-        model?.clear();
+      cities = success;
+      CustomNavigator.context.loaderOverlay.hide();
+      if (success.isEmpty) {
+        return emit(const GetCitiesEmpty());
       }
-
-      if (res.content != null && res.content!.isNotEmpty) {
-        for (var item in res.content!) {
-          model?.removeWhere((e) => e.id == item.id);
-          model?.add(item);
-        }
-      }
-      _engine.maxPages = res.pageable?.maxPages ?? 1;
-      _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
-
-      if (model != null && model!.isNotEmpty) {
-        emit(CityDone(cities: model!, isLoading: false));
-      } else {
-        return emit(CityEmpty());
-      }
+      return emit(GetCitiesDone(success));
     });
   }
 }

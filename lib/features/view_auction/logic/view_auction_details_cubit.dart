@@ -1,9 +1,7 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import '../../../core/navigation/custom_navigation.dart';
-import '../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../core/shared/entity/error_entity.dart';
 import '../../../core/utils/enums/enums.dart';
 import '../../user/logic/user_cubit.dart';

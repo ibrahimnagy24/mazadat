@@ -7,21 +7,20 @@ import '../../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
-import '../../../../../core/services/pagination/pagination_service.dart';
-import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
-import '../../../../../core/utils/widgets/custom_loading_text.dart';
+import '../../../../../core/services/toast_service.dart';
 import '../../data/entity/city_entity.dart';
 import '../../logic/city_cubit.dart';
 import '../widgets/cities_view.dart';
 
 class CityInput extends StatelessWidget {
-  const CityInput(
-      {super.key,
-      this.withRegionFilter = false,
-      this.regionId,
-      this.initialValue,
-      this.onSelect,
-      this.validator});
+  const CityInput({
+    super.key,
+    this.withRegionFilter = false,
+    this.regionId,
+    this.initialValue,
+    this.onSelect,
+    this.validator,
+  });
   final CityEntity? initialValue;
   final Function(CityEntity)? onSelect;
   final String? Function(String?)? validator;
@@ -31,9 +30,18 @@ class CityInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CityCubit()
-        ..citiesStatesHandled(SearchEngine(query: {'regionId': regionId})),
-      child: BlocBuilder<CityCubit, CityState>(
+      create: (context) => CityCubit()..citiesStatesHandled(),
+      child: BlocConsumer<CityCubit, CityState>(
+        listener: (context, state) {
+          if (state is GetCitiesError) {
+            ToastService.showCustom(
+              message: state.error.message,
+              context: context,
+              toastStatusType: ToastStatusType.error,
+              errorEntity: state.error,
+            );
+          }
+        },
         builder: (context, state) {
           final cubit = context.read<CityCubit>();
           return DefaultFormField(
@@ -56,56 +64,61 @@ class CityInput extends StatelessWidget {
                     backgroundColor: AppColors.textError,
                   ),
                 );
-              } else {
-                if (state is CityDone) {
-                  CustomBottomSheet.show(
-                      label: AppStrings.selectCity.tr,
-                      widget: BlocProvider.value(
-                        value: context.read<CityCubit>(),
-                        child: BlocBuilder<CityCubit, CityState>(
-                            builder: (context, state) {
-                          return Column(
-                            children: [
-                              Expanded(
-                                child: CitiesView(
-                                  controller:
-                                      context.read<CityCubit>().controller,
-                                  data: (state as CityDone).cities,
-                                  initialValue: initialValue?.id,
-                                  onSelect: (v) {
-                                    onSelect?.call(v);
-                                  },
-                                ),
-                              ),
-                              CustomLoadingText(loading: state.isLoading),
-                            ],
-                          );
-                        }),
-                      ));
-                } else if (state is CityLoading) {
-                  AppCore.showSnackBar(
-                    notification: AppNotification(
-                      message: AppStrings.loading.tr,
-                      backgroundColor: AppColors.ALERT_COLOR,
-                      borderColor: Colors.transparent,
-                    ),
-                  );
-                } else if (state is CityEmpty) {
-                  AppCore.showSnackBar(
-                    notification: AppNotification(
-                      message: AppStrings.no_data.tr,
-                      backgroundColor: AppColors.ALERT_COLOR,
-                      borderColor: Colors.transparent,
-                    ),
-                  );
-                } else if (state is CityError) {
-                  AppCore.showSnackBar(
-                    notification: AppNotification(
-                      message: AppStrings.somethingWentWrong,
-                      backgroundColor: AppColors.textError,
-                    ),
-                  );
-                }
+                return;
+              }
+              if (cubit.cities != null && cubit.cities!.isNotEmpty) {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.9,
+                  ),
+                  enableDrag: true,
+                  builder: (modalContext) {
+                    return BlocProvider.value(
+                      value: context.read<CityCubit>(),
+                      child: BlocBuilder<CityCubit, CityState>(
+                          builder: (context, state) {
+                        return CitiesView(
+                          modalContext: modalContext,
+                          data: cubit.cities!,
+                          initialValue: initialValue?.id,
+                          onSelect: (v) {
+                            onSelect?.call(v);
+                            Navigator.pop(modalContext);
+                          },
+                        );
+                      }),
+                    );
+                  },
+                );
+                return;
+              }
+              if (cubit.cities != null && cubit.cities!.isEmpty) {
+                cubit.citiesStatesHandled();
+                AppCore.showSnackBar(
+                  notification: AppNotification(
+                    message: AppStrings.no_data.tr,
+                    backgroundColor: AppColors.ALERT_COLOR,
+                    borderColor: Colors.transparent,
+                  ),
+                );
+                return;
+              }
+
+              if (state is GetCitiesLoading) {
+                AppCore.showSnackBar(
+                  notification: AppNotification(
+                    message: AppStrings.loading.tr,
+                    backgroundColor: AppColors.ALERT_COLOR,
+                    borderColor: Colors.transparent,
+                  ),
+                );
+                return;
+              }
+              if (state is GetCitiesError) {
+                cubit.citiesStatesHandled();
+                return;
               }
             },
           );

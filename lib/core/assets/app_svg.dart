@@ -72,4 +72,12 @@ class AppSvg {
   static const String alert = '$_svgPath/alert.svg';
   static const String wallet = '$_svgPath/wallet.svg';
   static const String clockIcon = '$_svgPath/clock_icon.svg';
+  static const String viewOff = '$_svgPath/view-off.svg';
+  static const String view = '$_svgPath/view.svg';
+  static const String errorIconWithBackground =
+      '$_svgPath/error_icon_with_background.svg';
+  static const String checkDone = '$_svgPath/check_done.svg';
+  static const String warrningIcon = '$_svgPath/warrning_icon.svg';
+  static const String alarmIcon = '$_svgPath/alarm_icon.svg';
+  static const String infoIcon = '$_svgPath/info_icon.svg';
 }

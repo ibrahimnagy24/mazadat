@@ -6,16 +6,20 @@ sealed class CityState {
 
 final class CityStart extends CityState {}
 
-final class CityLoading extends CityState {}
-final class CityEmpty extends CityState {}
-
-final class CityDone extends CityState {
-  const CityDone({required this.cities,this.isLoading = false});
-  final List<CityEntity> cities;
-  final bool isLoading;
+final class GetCitiesLoading extends CityState {
+  const GetCitiesLoading();
 }
 
-final class CityError extends CityState {
-  const CityError(this.error);
+final class GetCitiesEmpty extends CityState {
+  const GetCitiesEmpty();
+}
+
+final class GetCitiesDone extends CityState {
+  GetCitiesDone(this.cities);
+  final List<CityEntity> cities;
+}
+
+final class GetCitiesError extends CityState {
+  const GetCitiesError(this.error);
   final ErrorEntity error;
 }

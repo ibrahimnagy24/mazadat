@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
-import '../../../theme/colors/styles.dart';
+import '../../../assets/app_svg.dart';
 import '../../../theme/radius/app_radius.dart';
 
 import '../../constant/app_strings.dart';
@@ -65,6 +65,7 @@ class _DefaultPasswordFormFieldState extends State<DefaultPasswordFormField> {
           borderRadius: widget.borderRadious ?? AppRadius.rS,
           obscureText: isPasswordVisible,
           keyboardType: TextInputType.visiblePassword,
+          fillColor: const Color.fromRGBO(255, 255, 255, 1),
           suffixIcon: IconButton(
             onPressed: () {
               setState(() {
@@ -72,13 +73,15 @@ class _DefaultPasswordFormFieldState extends State<DefaultPasswordFormField> {
               });
             },
             icon: isPasswordVisible
-                ? const Icon(
-                    CupertinoIcons.eye,
-                    color: AppColors.kGeryText2,
+                ? SvgPicture.asset(
+                    AppSvg.viewOff,
+                    height: 20,
+                    width: 20,
                   )
-                : const Icon(
-                    CupertinoIcons.eye_slash,
-                    color: AppColors.kGeryText2,
+                : SvgPicture.asset(
+                    AppSvg.view,
+                    height: 20,
+                    width: 20,
                   ),
           ),
           errorStyle: widget.needPasswordStrength

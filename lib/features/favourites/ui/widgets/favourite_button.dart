@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/assets/app_svg.dart';
-import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/utils/extensions/extensions.dart';
 import '../../data/enums/toggle_favorite_auction_enum.dart';
 import '../../data/params/toggle_favourites_params.dart';
 import '../../logic/toggle_favourite_auction_cubit.dart';
@@ -18,6 +17,8 @@ class FavouriteButton extends StatefulWidget {
     this.withBackGround = true,
     this.height,
     this.width,
+    this.favIconHeight = 18,
+    this.favIconWidth = 18,
   });
   final int? id;
   final bool isFav;
@@ -25,6 +26,8 @@ class FavouriteButton extends StatefulWidget {
   final bool withBackGround;
   final double? height;
   final double? width;
+  final double? favIconHeight;
+  final double? favIconWidth;
 
   @override
   State<FavouriteButton> createState() => _FavouriteButtonState();
@@ -74,10 +77,10 @@ class _FavouriteButtonState extends State<FavouriteButton> {
                             color: Colors.white.withValues(alpha: 0.2))
                       ])
                 : null,
-            child: customImageIconSVG(
-              imageName: value ? AppSvg.fillFav : AppSvg.fav,
-              width: 18,
-              height: 18,
+            child: SvgPicture.asset(
+              value ? AppSvg.fillFav : AppSvg.fav,
+              width: widget.favIconWidth,
+              height: widget.favIconHeight,
             ),
           ),
         );

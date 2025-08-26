@@ -366,7 +366,7 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
         if (state is AuctionBidError) {
           ToastService.showError(
             state.error.message,
-            context: context,
+            context,
           );
         }
       },

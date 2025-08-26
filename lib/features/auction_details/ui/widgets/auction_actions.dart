@@ -9,7 +9,6 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../auction_first_bidding/ui/pages/auction_first_bidding_view.dart';
-import '../../../auction_manual_bidding/logic/auction_manual_bidding_state.dart';
 import '../../../auction_manual_bidding/ui/widgets/auction_manual_bidding_button.dart';
 import '../../../auction_switch_bidding/ui/pages/auction_switch_bidding_view.dart';
 import '../../../auction_joining/ui/pages/validate_joining_auction_view.dart';

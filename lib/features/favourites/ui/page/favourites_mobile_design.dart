@@ -72,16 +72,20 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                     return Column(
                       children: [
                         Expanded(
-                            child: GridListAnimator(
-                          controller: cubit.controller,
-                          padding: EdgeInsets.symmetric(horizontal: 24.w),
-                          data: List.generate(
+                          child: GridListAnimator(
+                            controller: cubit.controller,
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            data: List.generate(
                               state.auctions.length,
-                              (i) =>
-                                  GridAuctionCard(auction: state.auctions[i])),
-                          crossAxisCount: 2,
-                          aspectRatio: 0.9,
-                        )),
+                              (i) => GridAuctionCard(
+                                auction: state.auctions[i],
+                                height: 150,
+                              ),
+                            ),
+                            crossAxisCount: 2,
+                            aspectRatio: 0.9,
+                          ),
+                        ),
                         CustomLoadingText(loading: state.isLoading),
                       ],
                     );

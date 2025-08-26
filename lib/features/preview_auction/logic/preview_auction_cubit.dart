@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../pusher_service/pusher_cubit.dart';
 import '../../pusher_service/pusher_state.dart';
-import '../data/model/auction_pusher_model.dart';
 import '../data/params/get_preview_auction_details_params.dart';
 import '../data/repo/preview_auction_repository.dart';
 import '../data/params/auction_details_route_params.dart';

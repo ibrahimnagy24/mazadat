@@ -10,4 +10,5 @@ class AppConstant {
   static const double appbarheight = 56;
   //NULL FROM BACKEND
   static const nullFromBack = 'N-F-B';
+  static const countryCode = '966';
 }

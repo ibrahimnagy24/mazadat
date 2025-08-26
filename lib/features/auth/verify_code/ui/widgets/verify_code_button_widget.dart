@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/app_core.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
+import '../../../../../core/services/toast_service.dart';
+import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/app_font_size_styles.dart';
 
+import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -37,11 +39,15 @@ class VerifyCodeButtonWidget extends StatelessWidget {
       listener: (context, state) {
         final cubit = context.read<VerifyCodeCubit>();
         if (state is VerifyCodeError) {
-          showErrorSnackBar(state.error.message);
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
+          );
         }
         if (state is VerifyCodeSuccess) {
           FocusScope.of(context).unfocus();
-          // showSuccessToast(state.data.message);
           switch (cubit.resetPasswordParams.fromScreenEnum) {
             case VerifyCodeFromScreen.fromLogin:
               CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
@@ -51,8 +57,9 @@ class VerifyCodeButtonWidget extends StatelessWidget {
                 Routes.RESET_PASSWORD_SCREEN,
                 replace: true,
                 extra: ResetPasswordRouteParams(
-                    phone: cubit.resetPasswordParams.phone,
-                    otp: cubit.code.text.trim()),
+                  phone: cubit.resetPasswordParams.phone,
+                  otp: cubit.code.text.trim(),
+                ),
               );
               break;
             case VerifyCodeFromScreen.fromRegister:
@@ -90,6 +97,7 @@ class VerifyCodeButtonWidget extends StatelessWidget {
           borderRadiusValue: borderRadiusValue,
           fontSize: fontSize ?? AppFontSizes.fsM,
           fontWeight: FontWeight.w500,
+          textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
         );
       },
     );

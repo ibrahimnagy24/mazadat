@@ -9,14 +9,11 @@ class RegisterScreen extends StatelessWidget {
       create: (context) => RegisterCubit(),
       child: BlocBuilder<RegisterCubit, RegisterState>(
         builder: (context, state) {
-          return Form(
-            key: context.read<RegisterCubit>().formKey,
-            child: CustomScreenTypeLayoutWidget(
-              mobilePortrait: (context) =>
-                  const RegisterScreenMobilePortraitDesignScreen(),
-              mobileLandscape: (context) =>
-                  const RegisterScreenMobilePortraitDesignScreen(),
-            ),
+          return CustomScreenTypeLayoutWidget(
+            mobilePortrait: (context) =>
+                const RegisterScreenMobilePortraitDesignScreen(),
+            mobileLandscape: (context) =>
+                const RegisterScreenMobilePortraitDesignScreen(),
           );
         },
       ),

@@ -14,10 +14,10 @@ abstract class AppTextStyles {
 //MAZADAT
 //----------------------------------EXOW700----------------------------------//
 
-  static TextStyle displayMdBold = const TextStyle(
+  static TextStyle displayMdBold = GoogleFonts.ibmPlexSansArabic(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsXL,
-    color: Color(0xFF222715),
+    color: const Color.fromRGBO(34, 39, 21, 1),
   );
   static TextStyle displayMdSemiBold = const TextStyle(
     fontWeight: FontWeight.w600,
@@ -72,7 +72,7 @@ abstract class AppTextStyles {
     color: AppColors.kPrimary,
   );
 
-  static TextStyle textSmSemibold = const TextStyle(
+  static TextStyle textSmSemibold = GoogleFonts.cairo(
     fontWeight: FontWeight.w600,
     fontSize: AppFontSizes.xxs,
     color: AppColors.kPrimary,
@@ -89,7 +89,13 @@ abstract class AppTextStyles {
     color: AppColors.textDefault,
   );
 
-  static TextStyle textXLMedium = const TextStyle(
+  static TextStyle textLMedium = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    color: AppColors.textDefault,
+  );
+
+  static TextStyle textXLMedium = GoogleFonts.cairo(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsM,
     color: AppColors.textDefault,

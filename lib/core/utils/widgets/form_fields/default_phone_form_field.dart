@@ -39,21 +39,22 @@ class DefaultPhoneFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: AppStrings.mobileNumber.tr,
-      hintStyle: AppTextStyles.textMdRegular,
+      hintStyle: AppTextStyles.textLgRegular
+          .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
       style: AppTextStyles.textMdMedium.copyWith(color: AppColors.kBlack),
-      titleStyle: AppTextStyles.textMdRegular,
+      titleStyle: AppTextStyles.textMdRegular
+          .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
       prefixIcon: Container(
         width: 64,
         height: 53,
-        // margin: const EdgeInsets.symmetric(horizontal: 1.5, vertical: 1),
         margin: const EdgeInsetsDirectional.only(
           top: 1,
           bottom: 1,
-          start: 1.5,
+          start: .5,
           end: 8,
         ),
         decoration: const BoxDecoration(
-          color: AppColors.fillColor,
+          color: Color.fromRGBO(255, 255, 255, 1),
           borderRadius: BorderRadiusDirectional.only(
             topStart: Radius.circular(AppRadius.rS),
             bottomStart: Radius.circular(AppRadius.rS),
@@ -74,13 +75,13 @@ class DefaultPhoneFormField extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       maxLength: 9,
+      fillColor: const Color.fromRGBO(255, 255, 255, 1),
       borderRadius: borderRadius ?? AppRadius.rS,
       keyboardType: TextInputType.phone,
       controller: controller,
       needValidation: needValidation,
       readOnly: readOnly,
       suffixIcon: suffixWidget,
-      // contentPadding: EdgeInsetsDirectional.fromSTEB(24.r, 10, 10, 10),
     );
   }
 }

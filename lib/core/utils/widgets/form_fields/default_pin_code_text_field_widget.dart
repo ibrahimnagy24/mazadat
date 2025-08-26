@@ -59,8 +59,11 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
       hintStyle: AppTextStyles.heading.copyWith(
           fontSize: hintFontSize ?? 14,
           color: AppColors.textSecondaryParagraph),
-      textStyle: AppTextStyles.heading
-          .copyWith(fontSize: fontSize, color: AppColors.kPrimary),
+      textStyle: AppTextStyles.heading.copyWith(
+        fontSize: fontSize ?? 16,
+        color: AppColors.kPrimary,
+        fontWeight: FontWeight.w700,
+      ),
       controller: TextEditingController(text: controller?.text ?? ''),
       onSaved: onSave,
       onCompleted: onCompleted,

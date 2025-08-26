@@ -29,6 +29,7 @@ abstract class AppColors {
   static const Color background = Color.fromRGBO(238, 239, 235, 1);
   static const Color backgroundSecondary = Color.fromRGBO(243, 220, 154, 1);
   static const Color backgroundBody = Color.fromRGBO(250, 250, 250, 1);
+  static const Color scaffoldBackground = Color.fromRGBO(238, 239, 235, 1);
 
   static const Color fillColor = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color innerColor = Color.fromRGBO(238, 239, 236, 1);
@@ -146,4 +147,6 @@ abstract class AppColors {
   static const TextStyle SUB_HEADER_STYLE = TextStyle(
       color: AppColors.SUB_HEADER, fontSize: 12, fontWeight: FontWeight.w600);
   static const String fontFamily = 'text';
+
+  static const Color textPrimaryColor = Color.fromRGBO(81, 94, 50, 1);
 }

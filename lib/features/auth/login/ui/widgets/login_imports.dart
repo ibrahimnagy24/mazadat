@@ -15,8 +15,9 @@ import '../../logic/login_cubit.dart';
 import '../../logic/login_state.dart';
 import '../widgets/login_button_widget.dart';
 import 'dont_have_account_widget.dart';
-import '../../../shared/login_as_visitor_text_widget.dart';
-import 'login_remember_me_widget.dart';
+import '../../../shared/or_text_widget.dart';
+import 'login_as_visitor_button_widget.dart';
+import 'forgot_password_text_widget.dart';
 
 part '../pages/login_screen.dart';
 part '../pages/login_screen_mobile.dart';

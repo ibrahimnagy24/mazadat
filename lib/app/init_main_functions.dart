@@ -30,6 +30,7 @@ Future<void> initMainFunction() async {
   } catch (e) {
     cprint(e.toString());
   }
+
   Bloc.observer = BlocObserverService();
   HttpOverrides.global = MyHttpOverrides();
   try {

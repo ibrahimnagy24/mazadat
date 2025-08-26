@@ -12,7 +12,7 @@ import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/validations/validator.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
-import '../../../auth/register/ui/widgets/gender_input.dart';
+import '../../../../core/shared/widgets/gender_input.dart';
 import '../../../selectors/age/ui/page/age_input.dart';
 import '../../../selectors/city/ui/page/city_input.dart';
 import '../../logic/edit_profile_cubit.dart';

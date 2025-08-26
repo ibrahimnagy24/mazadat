@@ -1,11 +1,12 @@
 part of '../widgets/change_password_imports.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
-  const ChangePasswordScreen({super.key});
+  const ChangePasswordScreen({super.key, required this.params});
+  final ChangePasswordRouteParams params;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChangePasswordCubit(),
+      create: (context) => ChangePasswordCubit()..init(params),
       child: BlocBuilder<ChangePasswordCubit, ChangePasswordState>(
         builder: (context, state) {
           return Form(

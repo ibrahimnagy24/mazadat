@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/app_core.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 
+import '../../../../../core/services/toast_service.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_constant.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
 
@@ -34,28 +36,35 @@ class LoginButtonWidget extends StatelessWidget {
           current is LoginError || current is LoginSuccess,
       listener: (context, state) {
         if (state is LoginError) {
-          showErrorSnackBar(state.error.message, error: state.error);
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
+          );
+
           if (state.error.message == 'INACTIVE_ACCOUNT') {
             CustomNavigator.push(
               Routes.VERIFY_CODE_SCREEN,
               extra: VerifyCodeRouteParams(
                 phone: context.read<LoginCubit>().phone.text,
                 fromScreenEnum: VerifyCodeFromScreen.fromLogin,
-                countryCode: '966',
+                countryCode: AppConstant.countryCode,
               ),
             );
           }
         }
         if (state is LoginSuccess) {
-          // if (state.loginEntity.message != null) {
-          //   showSuccessToast(state.loginEntity.message);
-          // }
           FocusScope.of(context).unfocus();
 
           if (state.loginEntity.userStatus == UserStatus.active) {
             CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
           } else {
-            showErrorSnackBar('account is not active');
+            ToastService.showCustom(
+              message: 'account is not active',
+              context: context,
+              toastStatusType: ToastStatusType.warning,
+            );
           }
         }
       },
@@ -78,6 +87,8 @@ class LoginButtonWidget extends StatelessWidget {
           width: width,
           borderRadiusValue: borderRadiousValue,
           fontSize: fontSize,
+          textStyle: AppTextStyles.bodyXlBold
+              .copyWith(color: const Color.fromRGBO(255, 255, 255, 1)),
         );
       },
     );

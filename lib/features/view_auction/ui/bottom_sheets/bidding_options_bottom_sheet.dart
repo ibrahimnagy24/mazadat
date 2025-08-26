@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/services/toast_service.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
@@ -138,7 +137,7 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
                 HapticFeedback.mediumImpact();
                 ToastService.showError(
                   state.error.message,
-                  context: context,
+                  context,
                 );
               }
               if (state is AuctionBidSuccess) {

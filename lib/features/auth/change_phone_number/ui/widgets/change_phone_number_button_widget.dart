@@ -5,6 +5,10 @@ import '../../../../../core/app_core.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 
+import '../../../../../core/services/toast_service.dart';
+import '../../../../../core/theme/colors/styles.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_constant.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
 
@@ -21,13 +25,11 @@ class ChangePhoneButtonWidget extends StatelessWidget {
     this.width,
     this.borderRadiusValue,
     this.fontSize,
-    required this.oldPhone,
   });
   final double? height;
   final double? width;
   final double? borderRadiusValue;
   final double? fontSize;
-  final String oldPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +40,22 @@ class ChangePhoneButtonWidget extends StatelessWidget {
       listener: (context, state) {
         final cubit = context.read<ChangePhoneNumberCubit>();
         if (state is ChangePhoneNumberError) {
-          showErrorSnackBar(state.error.message);
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
+          );
         }
         if (state is ChangePHoneNumberSuccess) {
           CustomNavigator.push(
             Routes.VERIFY_CODE_SCREEN,
             replace: true,
             extra: VerifyCodeRouteParams(
-              oldPhone: oldPhone,
+              oldPhone: cubit.params.oldPhone,
               phone: cubit.phone.text,
               fromScreenEnum: VerifyCodeFromScreen.fromChangePhoneNumber,
-              countryCode: '966',
+              countryCode: AppConstant.countryCode,
             ),
           );
         }
@@ -62,10 +69,11 @@ class ChangePhoneButtonWidget extends StatelessWidget {
         return DefaultButton(
           isLoading: state is ChangePhoneNumberLoading,
           text: AppStrings.next.tr,
+          textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
           onPressed: () {
             if (cubit.isResetValidate()) {
               FocusScope.of(context).unfocus();
-              cubit.changePhoneNumberStatesHandled(oldPhone);
+              cubit.changePhoneNumberStatesHandled();
             }
           },
         );

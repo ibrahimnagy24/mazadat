@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/params/change_password_params.dart';
+import '../data/params/change_password_route_params.dart';
 import '../data/repo/reset_password_repo.dart';
 import 'change_password_state.dart';
 
@@ -10,8 +11,12 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
   final TextEditingController password = TextEditingController();
   final TextEditingController newPassword = TextEditingController();
   final TextEditingController confirmNewPassword = TextEditingController();
+  late ChangePasswordRouteParams params;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 //---------------------------------FUNCTIONS----------------------------------//
+  void init(ChangePasswordRouteParams params) {
+    this.params = params;
+  }
 
   @override
   Future<void> close() {

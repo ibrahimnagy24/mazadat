@@ -17,9 +17,7 @@ abstract class CitiesRepo {
         method: ServerMethods.GET,
       );
       final List<AgeEntity> user = checkFromArray(response.data)
-          ? (response.data as List)
-              .map((e) => AgeModel.fromJson(e))
-              .toList()
+          ? (response.data as List).map((e) => AgeModel.fromJson(e)).toList()
           : [];
       return Right(user);
     } catch (error) {

@@ -19,7 +19,7 @@
   "Mobile number": "رقم الجوال",
   "Remember me": "تذكرني",
   "Don't have an account?": "ليس لديك حساب؟",
-  "Login as a visitor": "تسجيل الدخول كزائر",
+  "Login as a visitor": "الدخول كزائر",
   "or": "أو",
   "First name": "الاسم الأول",
   "Enter first name here": "أدخل الاسم الأول هنا",
@@ -68,7 +68,7 @@
   "Enter your phone": "أدخل رقم الجوال هنا",
   "Password": "كلمة المرور",
   "Enter your password": "أدخل كلمة المرور",
-  "Forgot your password?": "هل نسيت كلمة المرور؟",
+  "Forgot your password?": "نسيت كلمة المرور؟",
   "new account": "إنشاء حساب",
   "Create a new account": "إنشاء حساب جديد",
   "Login": "تسجيل الدخول",
@@ -258,5 +258,9 @@
   " Please Choose Payment Method": "الرجاء اختيار طريقة الدفع",
   "Register in the package": "تسجيل في الحزمة",
   "Closed": "مغلق",
-  "Starts in": "يبدأ في"
+  "Starts in": "يبدأ في",
+  "The auction has been awarded to you.": "تم ترسيه المزاد عليك",
+  "You will be redirected to the payment completion page.": "سيتم تحويلك إلي صفحة إستكمال الدفع.",
+  "Sorry, the award was not made in your favor.": "نأسف، لم تتم الترسية لصالحك.",
+  "Please Check Terms And Conditions": "يرجى مراجعة الشروط والأحكام"
 }

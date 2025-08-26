@@ -16,39 +16,44 @@ class RegisterFieldStep1 extends StatelessWidget {
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) {
         final isLoading = state is RegisterLoading;
-        return Column(
-          spacing: 16.h,
-          children: [
-            Row(
-              spacing: 8.w,
-              children: [
-                Expanded(
-                  child: DefaultUsernameFormField(
-                    controller: context.read<RegisterCubit>().firstName,
-                    readonly: isLoading,
-                    titleText: AppStrings.firstName.tr,
-                    hintText: AppStrings.enterFirstName.tr,
+        final cubit = context.read<RegisterCubit>();
+        return Form(
+          key: cubit.stepOneFormKey,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: DefaultUsernameFormField(
+                      controller: context.read<RegisterCubit>().firstName,
+                      readonly: isLoading,
+                      titleText: AppStrings.firstName.tr,
+                      hintText: AppStrings.enterFirstName.tr,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: DefaultUsernameFormField(
-                    controller: context.read<RegisterCubit>().lastName,
-                    titleText: AppStrings.lastName.tr,
-                    hintText: AppStrings.enterLastName.tr,
-                    readonly: isLoading,
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: DefaultUsernameFormField(
+                      controller: context.read<RegisterCubit>().lastName,
+                      titleText: AppStrings.lastName.tr,
+                      hintText: AppStrings.enterLastName.tr,
+                      readonly: isLoading,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            DefaultPhoneFormField(
-              controller: context.read<RegisterCubit>().phone,
-              readOnly: isLoading,
-            ),
-            DefaultEmailFormField(
-              controller: context.read<RegisterCubit>().email,
-              readOnly: isLoading,
-            ),
-          ],
+                ],
+              ),
+              const SizedBox(height: 16),
+              DefaultPhoneFormField(
+                controller: context.read<RegisterCubit>().phone,
+                readOnly: isLoading,
+              ),
+              const SizedBox(height: 16),
+              DefaultEmailFormField(
+                controller: context.read<RegisterCubit>().email,
+                readOnly: isLoading,
+              ),
+            ],
+          ),
         );
       },
     );

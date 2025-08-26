@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
-import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
@@ -19,9 +18,13 @@ import '../../data/entity/auction_entity.dart';
 
 class GridAuctionCard extends StatelessWidget {
   const GridAuctionCard(
-      {super.key, required this.auction, this.fromMyPurchase = false});
+      {super.key,
+      required this.auction,
+      this.fromMyPurchase = false,
+      this.height});
   final AuctionEntity auction;
   final bool fromMyPurchase;
+  final double? height;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -37,6 +40,7 @@ class GridAuctionCard extends StatelessWidget {
         }
       },
       child: Container(
+        height: height,
         width: MediaQueryHelper.width,
         padding: const EdgeInsets.symmetric(horizontal: 8),
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -142,6 +146,7 @@ class AuctionInfo extends StatelessWidget {
             height: 16,
             width: 16,
           ),
+        const SizedBox(width: 6),
         Expanded(
           child: fromMyPurchase
               ? Row(
@@ -163,13 +168,11 @@ class AuctionInfo extends StatelessWidget {
                     ),
                   ],
                 )
-              : Center(
-                  child: CountdownTimerWidget(
-                    startDate: auction.startDate,
-                    endTime: auction.endDate,
-                    textStyle: AppTextStyles.textMdRegular.copyWith(
-                      color: const Color.fromRGBO(69, 173, 34, 1),
-                    ),
+              : CountdownTimerWidget(
+                  startDate: auction.startDate,
+                  endTime: auction.endDate,
+                  textStyle: AppTextStyles.textMdRegular.copyWith(
+                    color: const Color.fromRGBO(69, 173, 34, 1),
                   ),
                 ),
         ),

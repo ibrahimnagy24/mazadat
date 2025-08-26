@@ -1,11 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/app_core.dart';
+import '../../../../../core/services/toast_service.dart';
+import '../../../../../core/theme/colors/styles.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
-import '../../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart';
 import '../../logic/reset_password_cubit.dart';
 import '../../logic/reset_password_state.dart';
 import 'reset_password_success_dialog.dart';
@@ -30,13 +33,26 @@ class ResetPasswordButtonWidget extends StatelessWidget {
           current is ResetPasswordError || current is ResetPasswordSuccess,
       listener: (context, state) {
         if (state is ResetPasswordError) {
-          showErrorSnackBar(state.error.message);
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
+          );
         }
         if (state is ResetPasswordSuccess) {
           FocusScope.of(context).unfocus();
-          CustomSimpleDialog.parentSimpleDialog(
+          showModalBottomSheet(
+            context: context,
             isDismissible: false,
-            customListWidget: const ResetPasswordSuccessDialog(),
+            enableDrag: false,
+            showDragHandle: false,
+            builder: (context) {
+              return BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                child: const ResetPasswordSuccessDialog(),
+              );
+            },
           );
         }
       },
@@ -59,6 +75,7 @@ class ResetPasswordButtonWidget extends StatelessWidget {
           width: width,
           borderRadiusValue: borderRadiusValue,
           fontSize: fontSize,
+          textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
         );
       },
     );
