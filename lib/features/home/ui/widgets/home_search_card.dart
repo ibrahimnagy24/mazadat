@@ -10,7 +10,9 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../data/enum/displayed_types.dart';
 import '../../logic/home_cubit.dart';
+import '../../logic/home_state.dart';
 
 class HomeSearchCard extends StatelessWidget {
   const HomeSearchCard({super.key});
@@ -67,38 +69,39 @@ class HomeSearchCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 16),
-
-          ///Listing Button
-          StreamBuilder(
-              stream: context.read<HomeCubit>().listingStream,
-              builder: (c, snapshot) {
-                return InkWell(
-                  onTap: () => context
-                      .read<HomeCubit>()
-                      .updateListing(snapshot.data == true ? false : true),
-                  child: Container(
-                    height: 53,
-                    width: 53,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 14,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(255, 255, 255, 0.5),
-                      border: Border.all(
-                        color: AppColors.borderNeutralSecondary,
-                      ),
-                      borderRadius: BorderRadius.circular(AppRadius.rMd),
-                    ),
-                    child: SvgPicture.asset(
-                      snapshot.data == true ? AppSvg.grid : AppSvg.list,
-                      width: 20,
-                      height: 20,
-                      color: AppColors.textSecondaryParagraph,
-                    ),
+          BlocBuilder<HomeCubit, HomeState>(
+            buildWhen: (previous, current) =>
+                current is HomeDisplayedTypeChanged,
+            builder: (context, state) {
+              final cubit = context.read<HomeCubit>();
+              return InkWell(
+                onTap: () => cubit.updateOrToggleDisplayedType(),
+                child: Container(
+                  height: 53,
+                  width: 53,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 14,
                   ),
-                );
-              }),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(255, 255, 255, 0.5),
+                    border: Border.all(
+                      color: AppColors.borderNeutralSecondary,
+                    ),
+                    borderRadius: BorderRadius.circular(AppRadius.rMd),
+                  ),
+                  child: SvgPicture.asset(
+                    cubit.displayedType == HomeDisplayedTypes.grid
+                        ? AppSvg.grid
+                        : AppSvg.list,
+                    width: 20,
+                    height: 20,
+                    color: AppColors.textSecondaryParagraph,
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

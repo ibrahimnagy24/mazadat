@@ -332,4 +332,7 @@ class AppStrings {
       'Sorry, the award was not made in your favor.';
   static const String pleaseCheckTermsAndConditions =
       'Please Check Terms And Conditions';
+  static const String noCategoriesFound = 'No Categories Found';
+  static const String thereAreNoCategoriesAvailableAtTheMoment =
+      'There are no categories available at the moment.';
 }

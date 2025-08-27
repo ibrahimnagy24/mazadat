@@ -14,8 +14,11 @@ import '../../../bundle_details/data/params/bundle_details_route_params.dart';
 import '../../data/entity/bundle_entity.dart';
 
 class GridBundleCard extends StatelessWidget {
-  const GridBundleCard(
-      {super.key, required this.bundle, this.fromMyBundles = false});
+  const GridBundleCard({
+    super.key,
+    required this.bundle,
+    this.fromMyBundles = false,
+  });
   final BundleEntity bundle;
   final bool fromMyBundles;
 
@@ -23,9 +26,13 @@ class GridBundleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        CustomNavigator.push(Routes.BUNDLE_DETAILS,
-            extra: BundleDetailsRouteParams(
-                bundleId: bundle.id, fromMyBundles: fromMyBundles));
+        CustomNavigator.push(
+          Routes.BUNDLE_DETAILS,
+          extra: BundleDetailsRouteParams(
+            bundleId: bundle.id,
+            fromMyBundles: fromMyBundles,
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),

@@ -1,4 +1,4 @@
-import '../../features/auctions/data/enums/auction_enums.dart';
+import '../utils/enums/enums.dart';
 
 class AppSvg {
   static const String _svgPath = 'assets/svgs';

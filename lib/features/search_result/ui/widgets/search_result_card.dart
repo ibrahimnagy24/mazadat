@@ -12,7 +12,7 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auctions/data/entity/auction_entity.dart';
-import '../../../auction_details/data/params/auction_details_route_params.dart';
+import '../../../old_auction_displayed_deprecated/auction_details/data/params/auction_details_route_params.dart';
 import '../../logic/search_result_cubit.dart';
 
 class SearchResultCard extends StatelessWidget {

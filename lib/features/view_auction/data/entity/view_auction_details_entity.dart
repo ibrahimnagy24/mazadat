@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import '../../../../core/utils/enums/enums.dart';
-import '../../../auctions/data/enums/auction_enums.dart';
 import '../../../category/data/model/category_model.dart';
 
 class ViewAuctionDetailsEntity extends Equatable {

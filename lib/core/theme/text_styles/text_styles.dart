@@ -113,7 +113,7 @@ abstract class AppTextStyles {
     color: AppColors.textSecondaryParagraph,
   );
 
-  static TextStyle textSmRegular = const TextStyle(
+  static TextStyle textSmRegular = GoogleFonts.cairo(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.xxs,
     color: AppColors.textSecondaryParagraph,

@@ -1,6 +1,5 @@
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/enums/enums_converter.dart';
-import '../../../auctions/data/enums/auction_enum_converter.dart';
 import '../../../category/data/model/category_model.dart';
 import '../entity/view_auction_details_entity.dart';
 

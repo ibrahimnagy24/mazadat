@@ -6,7 +6,7 @@ import '../../../../core/utils/widgets/empty/empty_state.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/adaptive_circle_progress.dart';
 import '../../../category/logic/category_cubit.dart';
-import '../../../category/ui/widgets/category_widget.dart';
+import '../../../../core/shared/widgets/category_widget.dart';
 import '../../logic/edit_favourite_categories_cubit.dart';
 
 class EditFavouriteCategoriesBody extends StatelessWidget {
@@ -49,46 +49,49 @@ class EditFavouriteCategoriesBody extends StatelessWidget {
                       .read<EditFavouriteCategoriesCubit>()
                       .categoriesStream,
                   builder: (context, snapshot) {
-                    return
-                      snapshot.data != null?
-                      GridListAnimator(
-                      crossAxisCount: 3,
-                      aspectRatio: 1,
-                      data: List.generate(
-                          context.read<CategoryCubit>().allCategories!.length,
-                          (index) {
-                        return CategoryWidget(
-                          category: context
-                              .read<CategoryCubit>()
-                              .allCategories![index],
-                          isSelected: snapshot.data?.any((e) =>
-                                  e.id ==
-                                  context
-                                      .read<CategoryCubit>()
-                                      .allCategories![index]
-                                      .id) ??
-                              false,
-                          onTap: () {
-                            if (snapshot.data?.contains(context
+                    return snapshot.data != null
+                        ? GridListAnimator(
+                            crossAxisCount: 3,
+                            aspectRatio: 1,
+                            data: List.generate(
+                                context
                                     .read<CategoryCubit>()
-                                    .allCategories![index]) ==
-                                true) {
-                              snapshot.data?.remove(context
-                                  .read<CategoryCubit>()
-                                  .allCategories![index]);
-                            } else {
-                              snapshot.data?.add(context
-                                  .read<CategoryCubit>()
-                                  .allCategories![index]);
-                            }
-                            context.read<EditFavouriteCategoriesCubit>().updateCategories( snapshot.data!);
-
-                          },
-                          type: CategoryWidgetType.type1,
-                          animationDuration: (index * 10).ms,
-                        );
-                      }),
-                    ):const SizedBox.shrink();
+                                    .allCategories!
+                                    .length, (index) {
+                              return CategoryWidget(
+                                category: context
+                                    .read<CategoryCubit>()
+                                    .allCategories![index],
+                                isSelected: snapshot.data?.any((e) =>
+                                        e.id ==
+                                        context
+                                            .read<CategoryCubit>()
+                                            .allCategories![index]
+                                            .id) ??
+                                    false,
+                                onTap: () {
+                                  if (snapshot.data?.contains(context
+                                          .read<CategoryCubit>()
+                                          .allCategories![index]) ==
+                                      true) {
+                                    snapshot.data?.remove(context
+                                        .read<CategoryCubit>()
+                                        .allCategories![index]);
+                                  } else {
+                                    snapshot.data?.add(context
+                                        .read<CategoryCubit>()
+                                        .allCategories![index]);
+                                  }
+                                  context
+                                      .read<EditFavouriteCategoriesCubit>()
+                                      .updateCategories(snapshot.data!);
+                                },
+                                type: CategoryWidgetType.type1,
+                                animationDuration: (index * 10).ms,
+                              );
+                            }),
+                          )
+                        : const SizedBox.shrink();
                   });
             }
           }

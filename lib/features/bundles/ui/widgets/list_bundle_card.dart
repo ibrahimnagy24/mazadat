@@ -14,7 +14,8 @@ import '../../../bundle_details/data/params/bundle_details_route_params.dart';
 import '../../data/entity/bundle_entity.dart';
 
 class ListBundleCard extends StatelessWidget {
-  const ListBundleCard({super.key, required this.bundle,this.fromMyBundles = false});
+  const ListBundleCard(
+      {super.key, required this.bundle, this.fromMyBundles = false});
   final BundleEntity bundle;
   final bool fromMyBundles;
 

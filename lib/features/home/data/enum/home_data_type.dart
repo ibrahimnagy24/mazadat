@@ -1,0 +1,1 @@
+enum HomeDataType { auctions, bundles }

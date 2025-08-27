@@ -16,11 +16,13 @@ abstract class CategoryRepo {
         Endpoints.getCategories,
         method: ServerMethods.GET,
       );
+
       final List<CategoryEntity> user = checkFromArray(response.data['content'])
           ? (response.data['content'] as List)
               .map((e) => CategoryModel.fromJson(e))
               .toList()
           : [];
+
       return Right(user);
     } catch (error) {
       return Left(ApiErrorHandler().handleError(error));

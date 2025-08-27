@@ -13,7 +13,6 @@ class MySalesCubit extends Cubit<MySalesState> {
     keywordTEC = TextEditingController();
     customScroll(controller);
     updateListing(true);
-
   }
 //---------------------------------VARIABLES----------------------------------//
 
@@ -48,28 +47,25 @@ class MySalesCubit extends Cubit<MySalesState> {
       emit(MySalesSuccess(auctions: model!, isLoading: true));
     }
 
-
-    _engine.query = {
-      'keyword':keywordTEC.text.trim()
-    };
+    _engine.query = {'keyword': keywordTEC.text.trim()};
     final response = await MySalesRepo.mySales(_engine);
     response.fold((failure) {
       return emit(MySalesError(failure));
     }, (success) {
-      AuctionsModel? res = AuctionsModel.fromJson(success.data);
+      // AuctionsModel? res = AuctionsModel.fromJson(success.data);
 
-      if (_engine.currentPage == -1) {
-        model?.clear();
-      }
+      // if (_engine.currentPage == -1) {
+      //   model?.clear();
+      // }
 
-      if (res.content != null && res.content!.isNotEmpty) {
-        for (var item in res.content!) {
-          model?.removeWhere((e) => e.id == item.id);
-          model?.add(item);
-        }
-      }
-      _engine.maxPages = res.pageable?.maxPages ?? 1;
-      _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
+      // if (res.content != null && res.content!.isNotEmpty) {
+      //   for (var item in res.content!) {
+      //     model?.removeWhere((e) => e.id == item.id);
+      //     model?.add(item);
+      //   }
+      // }
+      // _engine.maxPages = res.pageable?.maxPages ?? 1;
+      // _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
         return emit(MySalesSuccess(auctions: model!, isLoading: false));

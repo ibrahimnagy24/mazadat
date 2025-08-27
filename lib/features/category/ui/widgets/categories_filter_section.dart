@@ -5,7 +5,7 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
 import '../../data/entity/category_entity.dart';
-import 'category_widget.dart';
+import '../../../../core/shared/widgets/category_widget.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../logic/category_cubit.dart';

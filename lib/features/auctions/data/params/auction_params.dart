@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../enums/auction_enums.dart';
+import '../../../../core/utils/enums/enums.dart';
 
 class AuctionParams extends Equatable {
   final int? page;

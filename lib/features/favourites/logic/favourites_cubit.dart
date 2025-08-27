@@ -46,20 +46,20 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     response.fold((failure) {
       return emit(FavouritesError(failure));
     }, (success) {
-      AuctionsModel? res = AuctionsModel.fromJson(success.data);
+      // AuctionsModel? res = AuctionsModel.fromJson(success.data);
 
-      if (_engine.currentPage == -1) {
-        model?.clear();
-      }
+      // if (_engine.currentPage == -1) {
+      //   model?.clear();
+      // }
 
-      if (res.content != null && res.content!.isNotEmpty) {
-        for (var item in res.content!) {
-          model?.removeWhere((e) => e.id == item.id);
-          model?.add(item);
-        }
-      }
-      _engine.maxPages = res.pageable?.maxPages ?? 1;
-      _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
+      // if (res.content != null && res.content!.isNotEmpty) {
+      //   for (var item in res.content!) {
+      //     model?.removeWhere((e) => e.id == item.id);
+      //     model?.add(item);
+      //   }
+      // }
+      // _engine.maxPages = res.pageable?.maxPages ?? 1;
+      // _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
         return emit(FavouritesSuccess(auctions: model!, isLoading: false));

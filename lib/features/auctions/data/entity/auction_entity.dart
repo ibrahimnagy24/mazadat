@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../enums/auction_enums.dart';
+import '../../../../core/utils/enums/enums.dart';
 
 class AuctionEntity extends Equatable {
   final AuctionType auctionType;
@@ -29,7 +28,7 @@ class AuctionEntity extends Equatable {
     required this.startDate,
     required this.endDate,
     required this.isFav,
-     this.orderNumber,
+    this.orderNumber,
   });
 
   @override
@@ -46,6 +45,6 @@ class AuctionEntity extends Equatable {
         startDate,
         endDate,
         isFav,
-    orderNumber,
+        orderNumber,
       ];
 }

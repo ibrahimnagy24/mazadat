@@ -1,8 +1,8 @@
 import '../../../../core/utils/constant/app_constant.dart';
+import '../../../../core/utils/enums/enums.dart';
+import '../../../../core/utils/enums/enums_converter.dart';
 import '../../../../core/utils/utility.dart';
 import '../entity/auction_entity.dart';
-import '../enums/auction_enum_converter.dart';
-import '../enums/auction_enums.dart';
 
 class AuctionModel extends AuctionEntity {
   const AuctionModel({

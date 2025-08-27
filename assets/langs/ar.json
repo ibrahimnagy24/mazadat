@@ -262,5 +262,7 @@
   "The auction has been awarded to you.": "تم ترسيه المزاد عليك",
   "You will be redirected to the payment completion page.": "سيتم تحويلك إلي صفحة إستكمال الدفع.",
   "Sorry, the award was not made in your favor.": "نأسف، لم تتم الترسية لصالحك.",
-  "Please Check Terms And Conditions": "يرجى مراجعة الشروط والأحكام"
+  "Please Check Terms And Conditions": "يرجى مراجعة الشروط والأحكام",
+  "No Categories Found": "لم يتم العثور على فئات",
+  "There are no categories available at the moment.": "لا توجد فئات متاحة في الوقت الحالي."
 }

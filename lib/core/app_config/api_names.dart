@@ -14,10 +14,9 @@ abstract class Endpoints {
   static const String deleteAccount = '/users/deleteAccount';
   static const String checkDeleteAccount = '/users/checkDeleteAccount';
 //----------------------------------HOME--------------------------------------\\
-
   static const String homeBundles = '/bundles/searchBundles';
-
   static const String homeAuction = '/auctions/homePageFilterAuction';
+
   static auctionDetails(id) => '/auctions/viewAuction/$id';
   static validateAuctionJoining(id) => '/auctions/validateJoining?id=$id';
   static const String submitJoiningAuction = '/auctions/submitJoining';

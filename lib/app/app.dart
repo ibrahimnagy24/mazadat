@@ -75,13 +75,12 @@ class MyApp extends StatelessWidget {
                 ),
                 checkboxTheme: CheckboxThemeData(
                   overlayColor: WidgetStateProperty.all<Color>(
-                    AppColors.kPrimary.withOpacity(0.1),
-                  ),
+                      AppColors.kPrimary.withOpacity(0.1)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
-                fontFamily: 'en',
+                // fontFamily: 'en',
                 appBarTheme:
                     const AppBarTheme(surfaceTintColor: AppColors.transparent),
               ),

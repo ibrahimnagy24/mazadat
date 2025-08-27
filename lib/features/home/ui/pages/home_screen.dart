@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/theme/colors/styles.dart';
-import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
-import '../../../auctions/logic/auctions_cubit.dart';
-import '../../../auctions/ui/page/auctions_page.dart';
-import '../../../bundles/logic/bundles_cubit.dart' show BundlesCubit;
-import '../../../bundles/ui/page/bundles_page.dart';
-import '../../../category/logic/category_cubit.dart';
-import '../../../category/ui/widgets/categories_section.dart';
+import '../../data/enum/home_data_type.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
 import '../widgets/home_appbar.dart';
+import '../widgets/home_categories_list_widget.dart';
+import '../widgets/home_displayed_auctions_widget.dart';
+import '../widgets/home_displayed_bundles_widget.dart';
 import '../widgets/home_search_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,81 +16,39 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
-        BlocProvider(
-          create: (context) => CategoryCubit()..categoriesStatesHandled(),
+    return BlocProvider(
+      create: (context) => HomeCubit()..getSuitableData(),
+      child: CustomScaffoldWidget(
+        appbar: const HomeAppbar(),
+        backgroundColor: AppColors.surfaceBackground,
+        child: Column(
+          children: [
+            const SizedBox(height: 16),
+            const Padding(
+              padding: EdgeInsetsDirectional.only(start: 12),
+              child: HomeCategoriesListWidget(),
+            ),
+            const SizedBox(height: 16),
+            const HomeSearchCard(),
+            const SizedBox(height: 24),
+            Expanded(
+              child: BlocBuilder<HomeCubit, HomeState>(
+                buildWhen: (previous, current) =>
+                    current is HomeDataTypeChanged,
+                builder: (context, state) {
+                  final cubit = context.read<HomeCubit>();
+
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: cubit.homeDataType == HomeDataType.auctions
+                        ? const HomeDisplayedAuctionsWidget()
+                        : const HomeDisplayedBundlesWidget(),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
-        BlocProvider(
-            create: (context) =>
-                BundlesCubit()..bundlesStatesHandled(SearchEngine())),
-        BlocProvider(
-            create: (context) =>
-                AuctionsCubit()..auctionStatesHandled(SearchEngine())),
-      ],
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          final cubit = context.read<HomeCubit>();
-          return StreamBuilder(
-              stream: context.read<HomeCubit>().categoryTypeStream,
-              builder: (c, categorySnapshot) {
-                return CustomScaffoldWidget(
-                  appbar: const HomeAppbar(),
-                  backgroundColor: AppColors.surfaceBackground,
-                  child: StreamBuilder(
-                      stream: context.read<HomeCubit>().listingStream,
-                      builder: (c, listSnapshot) {
-                        return Column(
-                          children: [
-                            const SizedBox(height: 16),
-                            AnimatedOpacity(
-                              opacity: 1.0,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 400),
-                                curve: Curves.easeOutQuad,
-                                child: CategoriesSection(
-                                  onTap: (v) {
-                                    if (v?.categoryType !=
-                                        CategoryTypes.bundle) {
-                                      context
-                                          .read<AuctionsCubit>()
-                                          .auctionStatesHandled(SearchEngine(
-                                              query: {'categoryIds': v?.id}));
-                                    }
-                                    if (categorySnapshot.data !=
-                                        v?.categoryType) {
-                                      context
-                                          .read<HomeCubit>()
-                                          .updateCategoryType(v?.categoryType ??
-                                              CategoryTypes.auction);
-                                    }
-                                  },
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            const HomeSearchCard(),
-                            const SizedBox(height: 24),
-                            StreamBuilder(
-                              stream: context.read<HomeCubit>().listingStream,
-                              builder: (c, listSnapshot) {
-                                return categorySnapshot.data ==
-                                        CategoryTypes.bundle
-                                    ? BundlesPage(
-                                        isListing: listSnapshot.data == true)
-                                    : AuctionsPage(
-                                        isListing: listSnapshot.data == true);
-                              },
-                            ),
-                          ],
-                        );
-                      }),
-                );
-              });
-        },
       ),
     );
   }

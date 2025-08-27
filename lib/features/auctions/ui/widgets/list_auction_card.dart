@@ -17,8 +17,11 @@ import '../../../view_auction/data/params/view_auction_details_route_params.dart
 import '../../data/entity/auction_entity.dart';
 
 class ListAuctionCard extends StatelessWidget {
-  const ListAuctionCard(
-      {super.key, required this.auction, this.fromMyPurchase = false});
+  const ListAuctionCard({
+    super.key,
+    required this.auction,
+    this.fromMyPurchase = false,
+  });
   final AuctionEntity auction;
   final bool fromMyPurchase;
 
