@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
   CategoryEntity? _selectedCategory;
   bool _isBundleSelected = false;
   int _page = 0;
-  int _limit = 20;
+  int _limit = 200;
 
 //---------------------------------FUNCTIONS----------------------------------//
   CategoryEntity? get getSelectedCategory => _selectedCategory;

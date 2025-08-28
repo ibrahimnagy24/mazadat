@@ -9,20 +9,22 @@ import '../../extensions/extensions.dart';
 import '../buttons/default_button.dart';
 
 abstract class CustomBottomSheet {
-  static show(
-      {Function()? onConfirm,
-      Function()? onCancel,
-      String? label,
-      String? buttonText,
-      required Widget widget,
-      double? height,
-      Widget? child,
-      Widget? labelWidget,
-      bool? isLoading,
-      bool withPadding = true,
-      bool withCancel = true,
-      Function()? onDismiss,
-      Function()? onClose}) {
+  static show({
+    Function()? onConfirm,
+    Function()? onCancel,
+    String? label,
+    String? buttonText,
+    required Widget widget,
+    double? height,
+    Widget? child,
+    Widget? labelWidget,
+    bool? isLoading,
+    bool withPadding = true,
+    bool withCancel = true,
+    Function()? onDismiss,
+    Function()? onClose,
+    TextStyle? labelStyle,
+  }) {
     return showMaterialModalBottomSheet(
       enableDrag: true,
       clipBehavior: Clip.antiAlias,
@@ -69,8 +71,13 @@ abstract class CustomBottomSheet {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(child: Text(label, style: AppTextStyles.heading,maxLines: 1,
-                              overflow: TextOverflow.ellipsis,)),
+                          Expanded(
+                              child: Text(
+                            label,
+                            style: labelStyle ?? AppTextStyles.heading,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )),
                           GestureDetector(
                             onTap: () {
                               CustomNavigator.pop();
@@ -130,6 +137,4 @@ abstract class CustomBottomSheet {
       },
     ).then((value) => onClose?.call());
   }
-
-
 }

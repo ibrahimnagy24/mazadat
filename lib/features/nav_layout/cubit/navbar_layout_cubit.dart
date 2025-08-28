@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/navigation/custom_navigation.dart';
+import '../../../core/utils/utility.dart';
 import '../../favourites/ui/page/favourites_screen.dart';
 import '../../home/ui/pages/home_screen.dart';
+import '../../visitor/ui/pages/visitor_screen.dart';
 import '../../wallet/view_wallet/ui/pages/view_wallet_screen.dart';
 import 'navbar_layout_state.dart';
 
@@ -16,9 +18,9 @@ class NavbarLayoutCubit extends Cubit<NavbarLayoutState> {
   PageController pageController = PageController(initialPage: 0);
   final List<Widget> pages = [
     const HomeScreen(),
-    const FavouritesScreen(),
-    const ViewWalletScreen(),
-    const SizedBox(),
+    Utility.isUserLoggedIn() ? const FavouritesScreen() : const VisitorScreen(),
+    Utility.isUserLoggedIn() ? const ViewWalletScreen() : const VisitorScreen(),
+    Utility.isUserLoggedIn() ? const SizedBox() : const VisitorScreen(),
   ];
   int currentIndex = 0;
 //---------------------------------FUNCTIONS----------------------------------//

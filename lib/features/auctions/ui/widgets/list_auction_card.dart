@@ -32,18 +32,6 @@ class ListAuctionCard extends StatelessWidget {
         if (fromMyPurchase) {
           CustomNavigator.push(Routes.VIEW_ORDER_DETAILS, extra: auction.id);
         } else {
-          // CustomNavigator.push(
-          //   Routes.AUCTION_DETAILS,
-          //   extra: AuctionDetailsRouteParams(
-          //     auctionId: auction.id,
-          //     primaryImage: auction.primaryPhoto,
-          //   ),
-          // );
-          // CustomNavigator.push(
-          //   Routes.PREVIEW_AUCTION,
-          //   extra: PreviewAuctionRouteParams(
-          //       auctionId: auction.id, primaryImage: auction.primaryPhoto),
-          // );
           CustomNavigator.push(
             Routes.VIEW_AUCTION_DETAILS,
             extra: ViewAuctionDetailsRouteParams(

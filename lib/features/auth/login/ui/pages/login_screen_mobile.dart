@@ -45,6 +45,9 @@ class LoginScreenMobilePortraitDesignScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         DefaultPasswordFormField(
                           controller: context.read<LoginCubit>().password,
+                          validator: (value) => value == null || value.isEmpty
+                              ? AppStrings.thisFieldIsRequired.tr
+                              : null,
                         ),
                         const SizedBox(height: 6),
                         const ForgotPasswordTextWidget(),

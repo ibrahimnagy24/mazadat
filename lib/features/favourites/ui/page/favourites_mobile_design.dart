@@ -40,9 +40,9 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
             SafeArea(
               bottom: false,
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24.w,
-                  vertical: 24.h,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 24,
                 ),
                 child: Text(
                   AppStrings.favourite.tr,

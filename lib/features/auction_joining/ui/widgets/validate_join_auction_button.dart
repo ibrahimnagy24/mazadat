@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_core.dart';
 import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
@@ -24,7 +25,7 @@ class ValidateJoinAuctionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: Column(
         children: [
           const AgreeToCommission(),
@@ -32,6 +33,8 @@ class ValidateJoinAuctionButton extends StatelessWidget {
           8.sbH,
           DefaultButton(
             text: AppStrings.confirm.tr,
+            textStyle: AppTextStyles.bodyXlBold
+                .copyWith(color: const Color.fromRGBO(255, 255, 255, 1)),
             onPressed: () {
               if (context
                       .read<ValidateJoiningAuctionCubit>()
@@ -48,11 +51,14 @@ class ValidateJoinAuctionButton extends StatelessWidget {
               } else {
                 CustomNavigator.pop();
                 CustomBottomSheet.show(
-                    label: AppStrings.selectPaymentMethod.tr,
-                    widget: JoinAuctionView(
-                      id: id,
-                      onSuccess: onSuccess,
-                    ));
+                  label: AppStrings.selectPaymentMethod.tr,
+                  labelStyle: AppTextStyles.displaySMMedium
+                      .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+                  widget: JoinAuctionView(
+                    id: id,
+                    onSuccess: onSuccess,
+                  ),
+                );
               }
             },
           ),

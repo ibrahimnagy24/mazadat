@@ -80,7 +80,7 @@ class HomeDisplayedBundlesWidget extends StatelessWidget {
                         },
                       );
                     },
-                    itemCount: cubit.homeAuctions!.length,
+                    itemCount: cubit.homeBundles!.length,
                   )
                 : ListView.builder(
                     key: const ValueKey('list_view'),

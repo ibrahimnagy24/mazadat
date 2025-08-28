@@ -13,6 +13,7 @@ import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auctions/data/entity/auction_entity.dart';
 import '../../../old_auction_displayed_deprecated/auction_details/data/params/auction_details_route_params.dart';
+import '../../../view_auction/data/params/view_auction_details_route_params.dart';
 import '../../logic/search_result_cubit.dart';
 
 class SearchResultCard extends StatelessWidget {
@@ -24,9 +25,11 @@ class SearchResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => CustomNavigator.push(
-        Routes.AUCTION_DETAILS,
-        extra: AuctionDetailsRouteParams(
-            auctionId: auction.id, primaryImage: auction.primaryPhoto),
+        Routes.VIEW_AUCTION_DETAILS,
+        extra: ViewAuctionDetailsRouteParams(
+          auctionId: auction.id,
+          primaryImage: auction.primaryPhoto,
+        ),
       ),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 8.h),

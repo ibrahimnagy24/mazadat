@@ -64,14 +64,16 @@ class AgeInput extends StatelessWidget {
                     maxHeight: MediaQuery.of(context).size.height * 0.75,
                   ),
                   builder: (modalContext) {
-                    return AgeGroupView(
-                      data: cubit.agesEntity!,
-                      initialValue: initialValue?.id,
-                      onSelect: (v) {
-                        onSelect?.call(v);
-                        Navigator.pop(modalContext);
-                      },
-                      modalContext: modalContext,
+                    return SafeArea(
+                      child: AgeGroupView(
+                        data: cubit.agesEntity!,
+                        initialValue: initialValue?.id,
+                        onSelect: (v) {
+                          onSelect?.call(v);
+                          Navigator.pop(modalContext);
+                        },
+                        modalContext: modalContext,
+                      ),
                     );
                   },
                 );

@@ -36,7 +36,7 @@ class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
           statusBarColor: AppColors.transparent,
-          statusBarIconBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
         child: BlocBuilder<UserCubit, UserState>(builder: (context, state) {
@@ -62,8 +62,7 @@ class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
                         data: [
                           80.sbH,
                           const PersonalInfoDetails(),
-                          if (cubit.userEntity?.isSeller == true)
-                            ...[
+                          if (cubit.userEntity?.isSeller == true) ...[
                             16.sbH,
                             const BankInfoDetails(),
                           ]

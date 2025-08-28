@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/utils/utility.dart';
 import '../../data/enums/toggle_favorite_auction_enum.dart';
 import '../../data/params/toggle_favourites_params.dart';
 import '../../logic/toggle_favourite_auction_cubit.dart';
@@ -43,6 +44,9 @@ class _FavouriteButtonState extends State<FavouriteButton> {
 
   @override
   Widget build(BuildContext context) {
+    if (!Utility.isUserLoggedIn()) {
+      return const SizedBox.shrink();
+    }
     return BlocProvider(
       create: (context) => ToggleFavouriteAuctionCubit(),
       child: BlocBuilder<ToggleFavouriteAuctionCubit, ToggleFavouriteState>(
@@ -50,7 +54,8 @@ class _FavouriteButtonState extends State<FavouriteButton> {
         return InkWell(
           onTap: () => context
               .read<ToggleFavouriteAuctionCubit>()
-              .toggleFavouriteAuction(ToggleFavouritesParams(
+              .toggleFavouriteAuction(
+                ToggleFavouritesParams(
                   id: widget.id,
                   action: value
                       ? ToggleFavoriteAuctions.UNFAVORITE
@@ -58,7 +63,10 @@ class _FavouriteButtonState extends State<FavouriteButton> {
                   onSuccess: () {
                     value = !value;
                     setState(() {});
-                  })),
+                  },
+                ),
+                context,
+              ),
           child: Container(
             height: widget.height,
             width: widget.width,
@@ -70,12 +78,14 @@ class _FavouriteButtonState extends State<FavouriteButton> {
                     color: AppColors.backgroundBody,
                     shape: BoxShape.circle,
                     boxShadow: [
-                        BoxShadow(
-                            offset: const Offset(0, -1),
-                            blurRadius: 8,
-                            spreadRadius: 0,
-                            color: Colors.white.withValues(alpha: 0.2))
-                      ])
+                      BoxShadow(
+                        offset: const Offset(0, -1),
+                        blurRadius: 8,
+                        spreadRadius: 0,
+                        color: Colors.white.withValues(alpha: 0.2),
+                      )
+                    ],
+                  )
                 : null,
             child: SvgPicture.asset(
               value ? AppSvg.fillFav : AppSvg.fav,

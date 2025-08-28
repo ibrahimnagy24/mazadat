@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/app_core.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
@@ -51,6 +52,10 @@ class VisitorButtonWidget extends StatelessWidget {
             isLoading: state is VisitorLoginLoading,
             text: buttonText ?? AppStrings.loginAsAVisitor.tr,
             onPressed: () async {
+              if (categories == null || categories!.isEmpty) {
+                showErrorToast(AppStrings.chooseYourFavouriteList.tr);
+                return;
+              }
               await context
                   .read<VisitorCubit>()
                   .visitorLoginStatesHandled(categories: categories);
@@ -59,6 +64,7 @@ class VisitorButtonWidget extends StatelessWidget {
             width: width,
             borderRadiusValue: borderRadiusValue,
             fontSize: fontSize,
+            textStyle: AppTextStyles.bodyXlBold.copyWith(color: Colors.white),
           );
         },
       ),

@@ -108,18 +108,18 @@ class _AuctionDetailsMobileDesignScreenState
                   child: SafeArea(
                     child: Container(
                       width: MediaQueryHelper.width,
-                      padding: EdgeInsets.symmetric(horizontal: 18.w),
+                      padding: const EdgeInsets.symmetric(horizontal: 18),
                       child: Row(
-                        spacing: 8.w,
+                        spacing: 8,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const CustomBackIcon(iconColor: AppColors.kWhite),
                           if (cubit.auctionDetails?.statusLabel != null)
                             Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 6.h, horizontal: 12.w),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 6, horizontal: 12),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100.w),
+                                borderRadius: BorderRadius.circular(100),
                                 color: AppColors.backgroundSecondary,
                               ),
                               child: Text(

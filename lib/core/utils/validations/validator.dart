@@ -161,8 +161,26 @@ class ConfirmNewPasswordValidator {
 
 class NameValidator {
   static String? nameValidator(var name) {
-    if (name!.length < 2) {
-      return 'please_enter_valid_user_name'.tr;
+    if (name!.length < 3) {
+      return '2+ characters'.tr;
+    }
+    if (name.contains('٠١٥') ||
+        name.contains('٠١٢') ||
+        name.contains('٠١١') ||
+        name.contains('٠١٠') ||
+        name.contains('015') ||
+        name.contains('012') ||
+        name.contains('011') ||
+        name.contains('010') ||
+        name.contains('http://') ||
+        name.contains('https://')) {
+      return 'format is invalid'.tr;
+    }
+    if (name.contains(' ')) {
+      return 'no spaces allowed'.tr;
+    }
+    if (name!.contains(RegExp(r'\d'))) {
+      return 'numbers are not allowed'.tr;
     }
     return null;
   }

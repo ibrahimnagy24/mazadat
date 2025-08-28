@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/services/toast_service.dart';
 import '../../../../core/assets/app_svg.dart';
@@ -114,15 +115,19 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
   }
 
   void _decrementAmount() {
-    final currentPrice = widget.cubit.auctionDetails!.currentBiddingAmount;
-    final minAmount =
-        currentPrice + widget.cubit.auctionDetails!.biddingIncrementAmount;
-    if (selectedMaxBiddingAmount > minAmount) {
+    if (_canDecrementAmount()) {
       HapticFeedback.mediumImpact();
       final newAmount = selectedMaxBiddingAmount -
           widget.cubit.auctionDetails!.biddingIncrementAmount;
       _updateMaxBiddingAmount(newAmount);
     }
+  }
+
+  bool _canDecrementAmount() {
+    final currentPrice = widget.cubit.auctionDetails!.currentBiddingAmount;
+    final minAmount =
+        currentPrice + widget.cubit.auctionDetails!.biddingIncrementAmount;
+    return selectedMaxBiddingAmount > minAmount;
   }
 
   @override
@@ -159,8 +164,9 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
                     children: [
                       Expanded(
                         child: Text(
-                          widget.title ?? AppStrings.selectBiddingMethod.tr,
-                          style: AppTextStyles.heading,
+                          widget.title ?? AppStrings.specifyTheBiddingMethod.tr,
+                          style: AppTextStyles.headingLMedBold.copyWith(
+                              color: const Color.fromRGBO(34, 39, 21, 1)),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -215,6 +221,7 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
                             selectedAmount: selectedMaxBiddingAmount,
                             onIncrement: _incrementAmount,
                             onDecrement: _decrementAmount,
+                            canDecrement: _canDecrementAmount(),
                           ),
                         ),
                       );
@@ -239,10 +246,10 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
                             child: Row(
                               spacing: 4.w,
                               children: [
-                                customImageIconSVG(
-                                  imageName: AppSvg.money,
-                                  width: 16.w,
-                                  height: 16.h,
+                                SvgPicture.asset(
+                                  AppSvg.money,
+                                  width: 16,
+                                  height: 16,
                                   color: AppColors.textSecondaryParagraph,
                                 ),
                                 Expanded(
@@ -266,11 +273,10 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
                                                       .textPrimaryParagraph),
                                         ),
                                         WidgetSpan(
-                                          child: customImageIconSVG(
-                                              imageName:
-                                                  AppSvg.saudiArabiaSymbol,
-                                              width: 16.w,
-                                              height: 16.w,
+                                          child: SvgPicture.asset(
+                                              AppSvg.saudiArabiaSymbol,
+                                              width: 16,
+                                              height: 16,
                                               color: AppColors
                                                   .textPrimaryParagraph),
                                         ),
@@ -284,25 +290,28 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
                         : const SizedBox.shrink(key: ValueKey('empty')),
                   ),
                   const SizedBox(height: 24),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeOutCubic,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 250),
-                      switchInCurve: Curves.easeOutCubic,
-                      child: DefaultButton(
-                        key: ValueKey(state.runtimeType),
-                        text: AppStrings.bid.tr,
-                        onPressed: state is AuctionBidLoading
-                            ? null
-                            : () => widget.cubit.auctionBidStatesHandled(
-                                  AuctionBidParams(
-                                    auctionId: widget.cubit.auctionDetails!.id,
-                                    biddingMethod: selectedBiddingMethod,
-                                    maxBiddingValue: selectedMaxBiddingAmount,
+                  SafeArea(
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeOutCubic,
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 250),
+                        switchInCurve: Curves.easeOutCubic,
+                        child: DefaultButton(
+                          key: ValueKey(state.runtimeType),
+                          text: AppStrings.bid.tr,
+                          onPressed: state is AuctionBidLoading
+                              ? null
+                              : () => widget.cubit.auctionBidStatesHandled(
+                                    AuctionBidParams(
+                                      auctionId:
+                                          widget.cubit.auctionDetails!.id,
+                                      biddingMethod: selectedBiddingMethod,
+                                      maxBiddingValue: selectedMaxBiddingAmount,
+                                    ),
                                   ),
-                                ),
-                        isLoading: state is AuctionBidLoading,
+                          isLoading: state is AuctionBidLoading,
+                        ),
                       ),
                     ),
                   ),
@@ -391,20 +400,22 @@ class _SelectMaxBiddingAmount extends StatelessWidget {
     required this.selectedAmount,
     required this.onIncrement,
     required this.onDecrement,
+    required this.canDecrement,
   });
   final double currentPrice, biddingIncrementAmount;
   final BiddingMethod currentBiddingMethod;
   final double selectedAmount;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
+  final bool canDecrement;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 12.h,
+        spacing: 12,
         children: [
           if (currentBiddingMethod == BiddingMethod.auto)
             Text(
@@ -415,9 +426,9 @@ class _SelectMaxBiddingAmount extends StatelessWidget {
             children: [
               Container(
                 width: MediaQueryHelper.width,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 18.w,
-                  vertical: 18.h,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 18,
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.kWhite,
@@ -432,19 +443,22 @@ class _SelectMaxBiddingAmount extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: onDecrement,
-                          borderRadius: BorderRadius.circular(8.w),
+                          borderRadius: BorderRadius.circular(8),
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             curve: Curves.easeOutCubic,
-                            width: 32.w,
-                            height: 32.w,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 6.w,
-                              vertical: 6.h,
-                            ),
-                            decoration: BoxDecoration(
-                                color: AppColors.borderDefault,
-                                borderRadius: BorderRadius.circular(8.w)),
+                            width: 32,
+                            height: 32,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 6),
+                            decoration: canDecrement
+                                ? BoxDecoration(
+                                    border:
+                                        Border.all(color: AppColors.kPrimary),
+                                    borderRadius: BorderRadius.circular(8))
+                                : BoxDecoration(
+                                    color: AppColors.borderDefault,
+                                    borderRadius: BorderRadius.circular(8)),
                             child: Text(
                               '—',
                               style: AppTextStyles.textLgBold.copyWith(
@@ -476,8 +490,8 @@ class _SelectMaxBiddingAmount extends StatelessWidget {
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             curve: Curves.easeOutCubic,
-                            width: 32.w,
-                            height: 32.w,
+                            width: 32,
+                            height: 32,
                             decoration: BoxDecoration(
                                 border: Border.all(color: AppColors.kPrimary),
                                 borderRadius: BorderRadius.circular(8.w)),

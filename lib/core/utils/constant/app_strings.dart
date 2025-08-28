@@ -335,4 +335,14 @@ class AppStrings {
   static const String noCategoriesFound = 'No Categories Found';
   static const String thereAreNoCategoriesAvailableAtTheMoment =
       'There are no categories available at the moment.';
+  static const String welcomeToMazadat = 'Welcome to Mazadat';
+  static const String
+      joinOurCommunityToEnjoyExcitingAuctionsAndConnectWithFriendsAlreadyHaveAnAccountWelcomeBack =
+      'Join our community to enjoy exciting auctions and connect with friends. Already have an account? Welcome back!';
+  static const String secureTrustedPlatform = 'Secure & Trusted Platform';
+  static const String registerAndStart = 'Register & Start';
+  static const String thisFieldIsRequired = 'This field is required';
+  static const String specifyTheBiddingMethod = 'Specify the bidding method';
+  static const String public = 'Public';
+  static const String private = 'Private';
 }

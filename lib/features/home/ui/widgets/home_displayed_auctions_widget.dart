@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/autcion_cards/auction_card_widget.dart';
@@ -8,7 +7,8 @@ import '../../../../core/shared/widgets/autcion_cards/stacked_auction_card_widge
 import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
-import '../../../old_auction_displayed_deprecated/auction_details/data/params/auction_details_route_params.dart';
+import '../../../../core/global_favourites/global_favourites.dart';
+import '../../../view_auction/data/params/view_auction_details_route_params.dart';
 import '../../data/enum/displayed_types.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
@@ -63,24 +63,36 @@ class HomeDisplayedAuctionsWidget extends StatelessWidget {
                       mainAxisExtent: 213,
                     ),
                     itemBuilder: (context, index) {
-                      return AuctionCardWidget(
-                        auctionId: cubit.homeAuctions![index].id,
-                        image: cubit.homeAuctions![index].primaryPhoto,
-                        auctionType: cubit.homeAuctions![index].auctionType,
-                        auctionStatus: cubit.homeAuctions![index].auctionStatus,
-                        needFavouriteIcon: true,
-                        isFav: false,
-                        startDate: cubit.homeAuctions![index].startDate,
-                        endDate: cubit.homeAuctions![index].endDate,
-                        fianancePrice: cubit.homeAuctions![index].openingPrice,
-                        onTap: () {
-                          CustomNavigator.push(
-                            Routes.AUCTION_DETAILS,
-                            extra: AuctionDetailsRouteParams(
-                              auctionId: cubit.homeAuctions![index].id,
-                              primaryImage:
-                                  cubit.homeAuctions![index].primaryPhoto,
-                            ),
+                      return BlocBuilder<GlobalFavouritesCubit,
+                          GlobalFavouritesState>(
+                        bloc: GlobalFavouritesService.getCubit(),
+                        builder: (context, state) {
+                          final auctionId = cubit.homeAuctions![index].id;
+                          final isFavourite =
+                              GlobalFavouritesService.isFavourite(auctionId);
+
+                          return AuctionCardWidget(
+                            auctionId: cubit.homeAuctions![index].id,
+                            image: cubit.homeAuctions![index].primaryPhoto,
+                            auctionType: cubit.homeAuctions![index].auctionType,
+                            auctionStatus:
+                                cubit.homeAuctions![index].auctionStatus,
+                            needFavouriteIcon: true,
+                            isFav: isFavourite,
+                            startDate: cubit.homeAuctions![index].startDate,
+                            endDate: cubit.homeAuctions![index].endDate,
+                            fianancePrice:
+                                cubit.homeAuctions![index].openingPrice,
+                            onTap: () {
+                              CustomNavigator.push(
+                                Routes.VIEW_AUCTION_DETAILS,
+                                extra: ViewAuctionDetailsRouteParams(
+                                  auctionId: cubit.homeAuctions![index].id,
+                                  primaryImage:
+                                      cubit.homeAuctions![index].primaryPhoto,
+                                ),
+                              );
+                            },
                           );
                         },
                       );
@@ -91,6 +103,10 @@ class HomeDisplayedAuctionsWidget extends StatelessWidget {
                     key: const ValueKey('list_view'),
                     itemCount: cubit.homeAuctions!.length,
                     itemBuilder: (context, index) {
+                      final auctionId = cubit.homeAuctions![index].id;
+                      final isFavourite =
+                          GlobalFavouritesService.isFavourite(auctionId);
+
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16),
                         child: StackedAuctionCardWidget(
@@ -105,8 +121,8 @@ class HomeDisplayedAuctionsWidget extends StatelessWidget {
                               cubit.homeAuctions![index].openingPrice,
                           onTap: () {
                             CustomNavigator.push(
-                              Routes.AUCTION_DETAILS,
-                              extra: AuctionDetailsRouteParams(
+                              Routes.VIEW_AUCTION_DETAILS,
+                              extra: ViewAuctionDetailsRouteParams(
                                 auctionId: cubit.homeAuctions![index].id,
                                 primaryImage:
                                     cubit.homeAuctions![index].primaryPhoto,
@@ -114,6 +130,7 @@ class HomeDisplayedAuctionsWidget extends StatelessWidget {
                             );
                           },
                           height: 213,
+                          isFav: isFavourite,
                         ),
                       );
                     },

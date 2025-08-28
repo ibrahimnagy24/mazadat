@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/app_core.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
@@ -28,19 +29,29 @@ class JoinAuctionView extends StatelessWidget {
                     stream: context.read<JoiningAuctionCubit>().paymentStream,
                     builder: (context, snapshot) {
                       return PaymentList(
-                        onSelect: (v) => context.read<JoiningAuctionCubit>().updatePayment(v),
+                        onSelect: (v) => context
+                            .read<JoiningAuctionCubit>()
+                            .updatePayment(v),
                         initialValue: snapshot.data?.id,
                       );
                     },
                   ),
                 ),
                 DefaultButton(
+                  textStyle: AppTextStyles.bodyXlBold
+                      .copyWith(color: const Color.fromRGBO(255, 255, 255, 1)),
                   text: AppStrings.confirm.tr,
                   isLoading: state is JoiningAuctionLoading,
                   onPressed: () {
-                    if(  context.read<JoiningAuctionCubit>().payment.valueOrNull != null){
-                      context.read<JoiningAuctionCubit>().joinAuction(id:id,onSuccess:onSuccess );
-                    }else{
+                    if (context
+                            .read<JoiningAuctionCubit>()
+                            .payment
+                            .valueOrNull !=
+                        null) {
+                      context
+                          .read<JoiningAuctionCubit>()
+                          .joinAuction(id: id, onSuccess: onSuccess);
+                    } else {
                       showToast(AppStrings.youHaveToSelectPaymentMethod.tr);
                     }
                   },

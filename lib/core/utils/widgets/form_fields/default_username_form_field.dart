@@ -3,6 +3,7 @@ import '../../../theme/radius/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
+import '../../validations/validator.dart';
 import 'default_form_field.dart';
 
 class DefaultUsernameFormField extends StatelessWidget {
@@ -36,7 +37,6 @@ class DefaultUsernameFormField extends StatelessWidget {
     return DefaultFormField(
       titleText: needUserName ? titleText ?? AppStrings.userName.tr : null,
       hintText: '${hintText ?? AppStrings.enterYourName.tr}...',
-      // validator: (value) => validateEmail(value),
       borderRadius: borderRadious ?? AppRadius.rS,
       keyboardType: TextInputType.name,
       controller: controller,
@@ -45,6 +45,7 @@ class DefaultUsernameFormField extends StatelessWidget {
           .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
       style: AppTextStyles.textLgRegular
           .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+      validator: (value) => NameValidator.nameValidator(value),
     );
   }
 }

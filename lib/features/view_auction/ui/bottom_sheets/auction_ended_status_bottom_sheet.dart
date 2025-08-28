@@ -24,7 +24,7 @@ class AuctionEndedStatusBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final myId = context.read<UserCubit>().userEntity?.id;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -161,7 +161,7 @@ class DefaultFormField extends StatelessWidget {
                 validator: validator ??
                     (needValidation!
                         ? (value) => value == null || value.isEmpty
-                            ? AppStrings.required.tr
+                            ? AppStrings.thisFieldIsRequired.tr
                             : null
                         : null),
                 autovalidateMode:

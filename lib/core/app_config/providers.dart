@@ -10,10 +10,16 @@ import '../../features/user/logic/user_cubit.dart';
 
 abstract class ProviderList {
   static List<BlocProviderSingleChildWidget> providers = [
-    BlocProvider<UserCubit>(create: (_) => UserCubit()..getUserDataStatesHandled(),),
+    BlocProvider<UserCubit>(
+      create: (_) => UserCubit()..getUserDataStatesHandled(),
+    ),
     BlocProvider<NavbarLayoutCubit>(create: (_) => NavbarLayoutCubit()),
     BlocProvider<MoreCubit>(create: (_) => MoreCubit()),
-    BlocProvider<CheckOnJoiningAuctionCubit>(create: (_) => CheckOnJoiningAuctionCubit()),
-    BlocProvider<InternetConnectionCubit>(create: (_) => InternetConnectionCubit()),
+    BlocProvider<CheckOnJoiningAuctionCubit>(
+        create: (_) => CheckOnJoiningAuctionCubit()),
+    BlocProvider<InternetConnectionCubit>(
+        create: (_) => InternetConnectionCubit()),
+    BlocProvider<CheckOnJoiningAuctionCubit>(
+        create: (_) => CheckOnJoiningAuctionCubit()),
   ];
 }

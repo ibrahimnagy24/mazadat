@@ -5,6 +5,7 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<RegisterCubit>();
     return CustomScaffoldWidget(
       needAppbar: false,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -42,8 +43,32 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(height: 24),
-                            AuthHeaderContent(
-                                title: AppStrings.registerHeader.tr),
+                            GestureDetector(
+                              onTap: cubit.currentStep == 1
+                                  ? () {
+                                      context
+                                          .read<RegisterCubit>()
+                                          .updateStep(0);
+                                    }
+                                  : () {},
+                              child: Row(
+                                children: [
+                                  if (cubit.currentStep == 1)
+                                    const Icon(
+                                      Icons.arrow_back_ios_new_rounded,
+                                      size: 16,
+                                      color: Color.fromRGBO(22, 22, 22, 1),
+                                    ),
+                                  if (cubit.currentStep == 1)
+                                    const SizedBox(width: 12),
+                                  Expanded(
+                                    child: AuthHeaderContent(
+                                      title: AppStrings.registerHeader.tr,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             const SizedBox(height: 24),
                             const RegisterProgressIndicator(),
                             const SizedBox(height: 24),
@@ -58,7 +83,11 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
                             const SizedBox(height: 20),
                             const OrTextWidget(),
                             const SizedBox(height: 20),
-                            const Center(child: AlreadyHaveAccountWidget()),
+                            const Center(
+                                child: SafeArea(
+                              top: false,
+                              child: AlreadyHaveAccountWidget(),
+                            )),
                           ],
                         );
                       },

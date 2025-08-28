@@ -21,7 +21,7 @@ class Routes {
   //--------------------------------------MISC---------------------------\\
   static const ZOOM_IN_IMAGE = 'ZOOM_IN_IMAGE';
   //-----------------------------------VIEW AUCTION---------------------------\\
-  static const AUCTION_DETAILS = 'VIEW_AUCTION';
+  // static const AUCTION_DETAILS = 'VIEW_AUCTION';
   static const VIEW_BUNDLES = 'VIEW_BUNDLES';
   static const BUNDLE_DETAILS = 'BUNDLE_DETAILS';
   static const PREVIEW_AUCTION = 'PREVIEW_AUCTION';

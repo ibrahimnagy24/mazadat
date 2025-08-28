@@ -8,6 +8,7 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/utility.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
@@ -72,13 +73,12 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
                   physics: const ClampingScrollPhysics(),
                   controller: scrollController,
                   padding: const EdgeInsets.only(
-                    top: 20,
+                    top: 24,
                     bottom: 50,
                     left: 24,
                     right: 24,
                   ),
                   data: [
-                    const SizedBox(height: 24),
                     _buildAuctionHeader(cubit.auctionDetails!),
                     const SizedBox(height: 16),
                     _BuildPriceWidget(auction: cubit.auctionDetails!),
@@ -115,9 +115,8 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
             children: [
               Text(
                 auction.name,
-                style: AppTextStyles.displaySMMedium.copyWith(
-                  color: AppColors.buttonBackgroundPrimaryDefault,
-                ),
+                style: AppTextStyles.displaySMMedium
+                    .copyWith(color: AppColors.buttonBackgroundPrimaryDefault),
               ),
               const SizedBox(height: 4),
               RichText(
@@ -138,6 +137,24 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
             ],
           ),
         ),
+        Container(
+          height: 30,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+            color: Color.fromRGBO(250, 250, 250, 1),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+          ),
+          child: Center(
+            child: MainText(
+              text: auction.auctionType == AuctionType.public
+                  ? AppStrings.public.tr
+                  : AppStrings.private.tr,
+              style: AppTextStyles.textMdRegular
+                  .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+            ),
+          ),
+        )
       ],
     );
   }
@@ -306,7 +323,9 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
       builder: (context, state) {
         final cubit = context.read<ViewAuctionDetailsCubit>();
         final auction = cubit.auctionDetails;
-
+        if (!Utility.isUserLoggedIn()) {
+          return const SizedBox();
+        }
         if (auction == null) {
           return const SizedBox();
         }
@@ -337,6 +356,7 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
     return DefaultButton(
       onPressed: () {},
       text: AppStrings.auctionEnded.tr,
+      textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
     );
   }
 
@@ -354,6 +374,7 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
         ),
       ),
       text: AppStrings.registerForTheAuction.tr,
+      textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
     );
   }
 
@@ -413,6 +434,8 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
               isInActive: context
                   .read<ViewAuctionDetailsCubit>()
                   .isIamLastBidder(context),
+              textStyle:
+                  AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
             ),
             if (_shouldShowAutoBiddingSwitch(auction) &&
                 context
@@ -454,10 +477,8 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
         },
         child: Text(
           AppStrings.automaticBidding.tr,
-          style: AppTextStyles.bodyMBold.copyWith(
-            fontSize: 12,
-            color: AppColors.kPrimary,
-          ),
+          style: AppTextStyles.bodyXsMed
+              .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
         ),
       ),
     );

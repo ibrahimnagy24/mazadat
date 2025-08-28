@@ -264,5 +264,16 @@
   "Sorry, the award was not made in your favor.": "نأسف، لم تتم الترسية لصالحك.",
   "Please Check Terms And Conditions": "يرجى مراجعة الشروط والأحكام",
   "No Categories Found": "لم يتم العثور على فئات",
-  "There are no categories available at the moment.": "لا توجد فئات متاحة في الوقت الحالي."
+  "There are no categories available at the moment.": "لا توجد فئات متاحة في الوقت الحالي.",
+  "Welcome to Mazadat": "مرحباً بكم في مازادات",
+  "Join our community to enjoy exciting auctions and connect with friends. Already have an account? Welcome back!": "انضم إلى مجتمعنا للاستمتاع بمزادات شيّقة والتواصل مع الأصدقاء. هل لديك حساب بالفعل؟ أهلاً بك من جديد!",
+  "Secure & Trusted Platform": "منصة آمنة وموثوقة",
+  "Register & Start": "سجل وابدأ",
+  "This field is required": "هذه الخانة مطلوبه",
+  "2+ characters": "2+ حرف",
+  "format is invalid": "التنسيق غير صالح",
+  "no spaces allowed": "لا توجد مسافات مسموح بها",
+  "numbers are not allowed": "الأرقام غير مسموح بها",
+  "Specify the bidding method": "تحديد طريقة المزايدة",
+  "Public": "عام"
 }

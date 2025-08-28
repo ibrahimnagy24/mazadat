@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/theme/colors/styles.dart';
@@ -22,6 +23,12 @@ class _CustomNavbarLayoutMobilePortraitDesignScreenState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<NavbarLayoutCubit>().onPageInit();
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          systemNavigationBarColor: AppColors.kWhite,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      );
     });
   }
 

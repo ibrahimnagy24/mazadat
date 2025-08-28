@@ -3,7 +3,7 @@ description: A new Flutter application.
 
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -73,6 +73,7 @@ dependencies:
   flutter_inappwebview: ^6.1.5
   pusher_channels_flutter: ^2.5.0
   flutter_sliding_toast: ^1.5.2
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:

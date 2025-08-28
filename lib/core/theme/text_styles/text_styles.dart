@@ -150,6 +150,12 @@ abstract class AppTextStyles {
     color: AppColors.kWhite,
     letterSpacing: 0,
   );
+  static TextStyle headingLMedBold = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    color: AppColors.kWhite,
+    letterSpacing: 0,
+  );
 
   static TextStyle bodyXsReq = GoogleFonts.notoSans(
     fontWeight: FontWeight.w400,

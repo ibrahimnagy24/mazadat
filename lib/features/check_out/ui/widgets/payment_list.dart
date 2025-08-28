@@ -49,9 +49,9 @@ class _PaymentListState extends State<PaymentList> {
             data: List.generate(
                 5,
                 (i) => Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       child: CustomShimmerContainer(
-                        height: 60.h,
+                        height: 60,
                         width: MediaQueryHelper.width,
                       ),
                     )),
@@ -72,11 +72,11 @@ class _PaymentListState extends State<PaymentList> {
                   widget.onSelectIndex?.call(index);
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 8.h),
+                  margin: const EdgeInsets.symmetric(vertical: 8),
                   padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.w),
+                    borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       color: _selectedItem == payments[index].id
                           ? AppColors.kPrimary
@@ -86,13 +86,13 @@ class _PaymentListState extends State<PaymentList> {
                   width: MediaQueryHelper.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    spacing: 8.w,
+                    spacing: 8,
                     children: [
                       CustomNetworkImage.containerNewWorkImage(
                         image: payments[index].icon ?? '',
-                        width: 24.w,
-                        height: 24.w,
-                        radius: 6.w,
+                        width: 24,
+                        height: 24,
+                        radius: 6,
                       ),
                       Expanded(
                         child: Text(

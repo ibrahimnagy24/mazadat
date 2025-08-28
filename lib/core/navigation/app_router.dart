@@ -219,15 +219,15 @@ final GoRouter appRouter = GoRouter(
         return ZoomImageScreen(urlImage: urlImage);
       },
     ),
-    GoRoute(
-      path: '/auction-details',
-      name: Routes.AUCTION_DETAILS,
-      builder: (context, state) {
-        return AuctionDetailsScreen(
-          routeParams: state.extra as AuctionDetailsRouteParams,
-        );
-      },
-    ),
+    // GoRoute(
+    //   path: '/auction-details',
+    //   name: Routes.AUCTION_DETAILS,
+    //   builder: (context, state) {
+    //     return AuctionDetailsScreen(
+    //       routeParams: state.extra as AuctionDetailsRouteParams,
+    //     );
+    //   },
+    // ),
 
     GoRoute(
       path: '/bundle-details',

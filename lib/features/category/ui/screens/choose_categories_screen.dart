@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../logic/category_cubit.dart';
 import 'package:flutter/services.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
@@ -52,6 +54,7 @@ class ChooseCategoriesScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const SizedBox(height: 24),
                               Row(
                                 spacing: 8.w,
                                 children: [
@@ -64,6 +67,7 @@ class ChooseCategoriesScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                              const SizedBox(height: 24),
                               const Expanded(
                                 child: SingleChildScrollView(
                                   child: ChooseCategoriesGridWidget(),
@@ -81,15 +85,18 @@ class ChooseCategoriesScreen extends StatelessWidget {
                                       .toList(),
                                 );
                               }),
-                              DefaultButton(
-                                text: AppStrings.skip.tr,
-                                onPressed: () => CustomNavigator.push(
-                                    Routes.NAV_BAR_LAYOUT,
-                                    clean: true),
-                                backgroundColor: AppColors.transparent,
-                                elevation: 0,
-                                textStyle: AppTextStyles.bodyXsMed
-                                    .copyWith(color: AppColors.kPrimary),
+                              SafeArea(
+                                child: Center(
+                                  child: MainText(
+                                    text: AppStrings.skip.tr,
+                                    style: AppTextStyles.bodyXsMed
+                                        .copyWith(color: AppColors.kPrimary),
+                                    onTap: () => CustomNavigator.push(
+                                      Routes.NAV_BAR_LAYOUT,
+                                      clean: true,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ],
                           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,8 +18,17 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        return AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          toolbarHeight: 76,
+          automaticallyImplyLeading: false,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Color.fromRGBO(64, 77, 38, 1),
+            statusBarIconBrightness: Brightness.light,
+          ),
+          flexibleSpace: Container(
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(18),
@@ -32,62 +42,68 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
             ),
             child: SafeArea(
               bottom: false,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            CustomNavigator.push(Routes.MORE);
-                          },
-                          child: SvgPicture.asset(
-                            AppSvg.menu,
-                            height: 28,
-                            width: 28,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              CustomNavigator.push(Routes.MORE);
+                            },
+                            child: SvgPicture.asset(
+                              AppSvg.menu,
+                              height: 28,
+                              width: 28,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 24),
-                        GestureDetector(
-                          onTap: () {
-                            // CustomNavigator.push(Routes.no);
-                          },
-                          child: SvgPicture.asset(
-                            AppSvg.notification,
-                            height: 28,
-                            width: 28,
+                          const SizedBox(width: 24),
+                          GestureDetector(
+                            onTap: () {
+                              // CustomNavigator.push(Routes.no);
+                            },
+                            child: SvgPicture.asset(
+                              AppSvg.notification,
+                              height: 28,
+                              width: 28,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: SvgPicture.asset(
-                      AppSvg.logo,
-                      height: 56,
-                      width: 78,
+                    Expanded(
+                      child: SvgPicture.asset(
+                        AppSvg.logo,
+                        height: 56,
+                        width: 78,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            CustomNavigator.push(Routes.PROFILE);
-                          },
-                          child: SvgPicture.asset(
-                            AppSvg.user,
-                            height: 28,
-                            width: 28,
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              CustomNavigator.push(Routes.PROFILE);
+                            },
+                            child: SvgPicture.asset(
+                              AppSvg.user,
+                              height: 28,
+                              width: 28,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ));
+            ),
+          ),
+        );
       },
     );
   }

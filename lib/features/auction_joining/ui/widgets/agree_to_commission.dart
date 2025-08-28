@@ -16,35 +16,37 @@ class AgreeToCommission extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         StreamBuilder(
-            stream:
-                context.read<ValidateJoiningAuctionCubit>().commissionStream,
-            builder: (context, snapshot) {
-              return Checkbox.adaptive(
-                value: snapshot.data == true,
-                activeColor: AppColors.kPrimary,
-                checkColor: AppColors.kWhite,
-                onChanged: (value) {
-                  context
-                      .read<ValidateJoiningAuctionCubit>()
-                      .updateCommission(value == true);
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                side: const BorderSide(color: AppColors.kPrimary),
-              );
-            }),
+          stream: context.read<ValidateJoiningAuctionCubit>().commissionStream,
+          builder: (context, snapshot) {
+            return Checkbox.adaptive(
+              value: snapshot.data == true,
+              activeColor: AppColors.kPrimary,
+              checkColor: AppColors.kWhite,
+              onChanged: (value) {
+                context
+                    .read<ValidateJoiningAuctionCubit>()
+                    .updateCommission(value == true);
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              side: const BorderSide(color: AppColors.kPrimary),
+            );
+          },
+        ),
         Expanded(
           child: RichText(
             text: TextSpan(
               children: [
                 TextSpan(
                   text: AppStrings.youAgreeToPay.tr,
-                  style: AppTextStyles.textLgRegular,
+                  style: AppTextStyles.textLgRegular
+                      .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
                 ),
                 TextSpan(
                   text: AppStrings.applicationCommission.tr,
-                  style: AppTextStyles.textLgBold,
+                  style: AppTextStyles.textLgBold
+                      .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
                 ),
               ],
             ),

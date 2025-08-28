@@ -41,14 +41,16 @@ class GenderInput extends StatelessWidget {
           context: context,
           constraints: const BoxConstraints(minHeight: 207),
           builder: (modalContext) {
-            return _GenderView(
-              data: GenderTypes.values,
-              initialValue: initialValue?.index,
-              modalContext: modalContext,
-              onSelect: (v) {
-                onSelect?.call(v);
-                Navigator.pop(modalContext);
-              },
+            return SafeArea(
+              child: _GenderView(
+                data: GenderTypes.values,
+                initialValue: initialValue?.index,
+                modalContext: modalContext,
+                onSelect: (v) {
+                  onSelect?.call(v);
+                  Navigator.pop(modalContext);
+                },
+              ),
             );
           },
         );
@@ -87,10 +89,10 @@ class __GenderViewState extends State<_GenderView> {
   int? _selectedItem;
   @override
   void initState() {
+    super.initState();
     setState(() {
       _selectedItem = widget.initialValue;
     });
-    super.initState();
   }
 
   @override
@@ -113,7 +115,7 @@ class __GenderViewState extends State<_GenderView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MainText(
-                text: AppStrings.selectAgeGroup.tr,
+                text: AppStrings.selectGender.tr,
                 style: AppTextStyles.textLMedium,
               ),
               GestureDetector(
