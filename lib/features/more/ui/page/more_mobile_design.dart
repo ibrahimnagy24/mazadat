@@ -58,7 +58,7 @@ class MoreMobileDesign extends StatelessWidget {
 
                         ///Account Settings Buttons
 
-                          const AccountSettingsButtons(),
+                        const AccountSettingsButtons(),
                       ],
                     ),
                   ),

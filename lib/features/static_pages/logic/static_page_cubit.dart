@@ -22,7 +22,6 @@ class StaticPageCubit extends Cubit<StaticPageState> {
     response.fold((failure) {
       return emit(GetStaticPageError(failure));
     }, (success) async {
-      staticPageEntity = success;
       return emit(GetStaticPageSuccess(success));
     });
   }

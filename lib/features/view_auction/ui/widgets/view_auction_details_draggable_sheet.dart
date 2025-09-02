@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
 import '../../../../core/services/toast_service.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
@@ -39,62 +41,81 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ViewAuctionDetailsCubit>();
-    return DraggableScrollableSheet(
-      controller: controller.sheetController,
-      initialChildSize: 0.5,
-      minChildSize: .4,
-      maxChildSize: 0.7,
-      snap: true,
-      snapSizes: const [0.4, 0.7],
-      builder: (context, scrollController) {
-        return Column(
-          children: [
-            ViewAuctionDetailsGlassyImagesRow(controller: controller),
-            Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: AppColors.background,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      color: AppColors.kOpacityGrey3,
-                      width: 1,
+    return Column(
+      children: [
+        Expanded(
+          child: DraggableScrollableSheet(
+            controller: controller.sheetController,
+            initialChildSize: 0.5,
+            minChildSize: .4,
+            maxChildSize: 0.6,
+            snap: true,
+            snapSizes: const [0.4, 0.6],
+            builder: (context, scrollController) {
+              return Column(
+                children: [
+                  ViewAuctionDetailsGlassyImagesRow(controller: controller),
+                  Expanded(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: AppColors.background,
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(25)),
+                        border: Border.symmetric(
+                          horizontal: BorderSide(
+                            color: AppColors.kOpacityGrey3,
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                      child: ListView(
+                        physics: const ClampingScrollPhysics(),
+                        controller: scrollController,
+                        padding: const EdgeInsets.only(
+                          top: 24,
+                          bottom: 50,
+                          left: 24,
+                          right: 24,
+                        ),
+                        children: [
+                          _buildAuctionHeader(cubit.auctionDetails!),
+                          const SizedBox(height: 16),
+                          _BuildPriceWidget(auction: cubit.auctionDetails!),
+                          const SizedBox(height: 16),
+                          _buildDescription(cubit.auctionDetails!),
+                          const SizedBox(height: 16),
+                          _buildEstimatedValueOrDates(
+                              context, cubit.auctionDetails!),
+                        ],
+                      ),
                     ),
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10,
-                      spreadRadius: 50,
-                    )
-                  ],
-                ),
-                child: ListAnimator(
-                  physics: const ClampingScrollPhysics(),
-                  controller: scrollController,
-                  padding: const EdgeInsets.only(
-                    top: 24,
-                    bottom: 50,
-                    left: 24,
-                    right: 24,
-                  ),
-                  data: [
-                    _buildAuctionHeader(cubit.auctionDetails!),
-                    const SizedBox(height: 16),
-                    _BuildPriceWidget(auction: cubit.auctionDetails!),
-                    const SizedBox(height: 16),
-                    _buildDescription(cubit.auctionDetails!),
-                    const SizedBox(height: 16),
-                    _buildEstimatedValueOrDates(context, cubit.auctionDetails!),
-                    const SizedBox(height: 24),
-                    _ViewAuctionDetailsContent(),
-                  ],
-                ),
-              ),
+                ],
+              );
+            },
+          ),
+        ),
+        Container(
+          height: 114,
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: AppColors.background,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
             ),
-          ],
-        );
-      },
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26.withValues(alpha: .1),
+                blurRadius: .5,
+                spreadRadius: .5,
+                offset: const Offset(0, -1),
+              )
+            ],
+          ),
+          child: Center(child: _ViewAuctionDetailsContent()),
+        ),
+      ],
     );
   }
 
@@ -324,7 +345,14 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
         final cubit = context.read<ViewAuctionDetailsCubit>();
         final auction = cubit.auctionDetails;
         if (!Utility.isUserLoggedIn()) {
-          return const SizedBox();
+          return DefaultButton(
+            text: AppStrings.login.tr,
+            onPressed: () {
+              CustomNavigator.push(Routes.LOGIN_SCREEN);
+            },
+            textStyle:
+                AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
+          );
         }
         if (auction == null) {
           return const SizedBox();

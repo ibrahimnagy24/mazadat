@@ -45,6 +45,11 @@ class PusherCubit extends Cubit<PusherState> {
     emit(AuctionEnded(auctionId: auctionId));
   }
 
+  void _auctionStarted(PusherEvent event, int auctionId) {
+    cprint('🎯 [AUCTION] Processing started for auction $auctionId');
+    emit(AuctionStarted(auctionId: auctionId));
+  }
+
   Future<void> startAudio(String path, {bool needVibration = false}) async {
     await _player.setAsset(path);
     _player.play();
@@ -118,11 +123,15 @@ class PusherCubit extends Cubit<PusherState> {
 
   dynamic _onEvent({required PusherEvent event, required int auctionId}) {
     cprint('📨 [PUSHER] Event received: ${event.eventName}');
+    if (event.eventName == 'START_BIDDING_$auctionId') {
+      _auctionStarted(event, auctionId);
+      return;
+    }
     if (event.eventName == 'PLACE_BID_$auctionId') {
       _auctionBidReceived(event, auctionId);
       return;
     }
-    if (event.eventName == 'AUCTION_ENDED_$auctionId') {
+    if (event.eventName == 'END_BIDDING_$auctionId') {
       _auctionEnded(event, auctionId);
       return;
     }

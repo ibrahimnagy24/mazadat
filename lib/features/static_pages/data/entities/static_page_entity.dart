@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class StaticPageEntity extends Equatable {
   const StaticPageEntity({
-    required this.id,
-    required this.title,
+    this.id,
+    this.title,
     required this.body,
-    required this.photo,
+    this.photo,
   });
-  final int id;
-  final String title;
+  final int? id;
+  final String? title;
   final String body;
   final String? photo;
   @override

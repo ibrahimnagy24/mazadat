@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/shared/widgets/custom_back_icon.dart';
 import '../../../../core/theme/colors/styles.dart';
@@ -98,6 +99,7 @@ class _AuctionDetailsMobileDesignScreenState
             cubit.auctionDetails != null) {
           return CustomScaffoldWidget(
             needAppbar: false,
+            backgroundColor: AppColors.background,
             child: Stack(
               fit: StackFit.expand,
               children: [

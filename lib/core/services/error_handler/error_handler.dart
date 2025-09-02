@@ -22,6 +22,23 @@ class ApiErrorHandler implements ErrorHandler {
     }
 
     if (response is DioException) {
+      // Check if response data is HTML
+      if (response.response?.data is String) {
+        final responseData = response.response!.data.toString();
+        if (responseData.toLowerCase().contains('<!doctype html>') ||
+            responseData.toLowerCase().contains('<html')) {
+          return ErrorModel(
+            statusCode: response.response?.statusCode ?? ResponseCode.unknown,
+            message:
+                'Server returned HTML instead of JSON. Please check the API endpoint.',
+            errors: const [
+              'The server returned an HTML page instead of JSON data.',
+              'This usually indicates a server error, redirect, or incorrect endpoint.',
+            ],
+          );
+        }
+      }
+
       if (checkFromMap(response.response?.data)) {
         if (response.response?.statusCode == ResponseCode.unAuthorized) {
           bool isFromLoginScreen = response.response?.realUri.toString() ==
@@ -116,16 +133,6 @@ class ApiErrorHandler implements ErrorHandler {
     }
 
     if (response is TypeError) {
-      // if (response is String &&
-      //     response.toString().toLowerCase().contains('<!doctype html>')) {
-      //   return ErrorModel(
-      //     statusCode: ResponseCode.unknown,
-      //     message: ErrorMessages.responseReturnedHtml.tr,
-      //     errors: [
-      //       ErrorMessages.responseReturnedHtml.tr,
-      //     ],
-      //   );
-      // }
       return ErrorModel(
         statusCode: ResponseCode.unknown,
         message: 'something changed in returned data',

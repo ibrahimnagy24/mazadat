@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/shared/widgets/custom_back_icon.dart';
-import '../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/utils/constant/app_constant.dart';
-import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
-import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../data/params/static_page_params.dart';
 import '../../logic/static_page_cubit.dart';
 import '../../logic/static_page_state.dart';
@@ -22,14 +19,13 @@ class StaticPageScreen extends StatelessWidget {
     return BlocProvider<StaticPageCubit>(
       create: (context) => StaticPageCubit()..getStaticPage(params),
       child: CustomScaffoldWidget(
-        appbarTitle: MainText(
-          text: params.title.tr,
-          style: AppTextStyles.balooBhaijaan2W600Size16Primary1000
-              .copyWith(fontSize: 16),
-        ),
-        centerAppbarTitle: true,
-        appbarLeading: const CustomBackIcon(),
         appbarHeight: AppConstant.appbarheight,
+        appbarLeading: IconButton(
+          onPressed: () {
+            CustomNavigator.pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+        ),
         child: BlocBuilder<StaticPageCubit, StaticPageState>(
           buildWhen: (previous, current) =>
               current is GetStaticPageLoading ||

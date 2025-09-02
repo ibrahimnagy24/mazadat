@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
@@ -9,6 +10,44 @@ import '../../shared/blocs/main_app_bloc.dart';
 import '../cache/shared_helper.dart';
 
 enum ServerMethods { GET, POST, UPDATE, DELETE, PUT, PATCH, DOWNLOAD }
+
+// Custom transformer to handle HTML responses
+class CustomTransformer extends DefaultTransformer {
+  @override
+  Future transformResponse(
+    RequestOptions options,
+    ResponseBody responseBody,
+  ) async {
+    try {
+      // Collect bytes from stream
+      final List<int> bytes = [];
+      await for (final chunk in responseBody.stream) {
+        bytes.addAll(chunk);
+      }
+      final responseString = utf8.decode(bytes);
+
+      // Check if response is HTML (more comprehensive detection)
+      final lowerResponse = responseString.toLowerCase();
+      if (lowerResponse.contains('<!doctype html>') ||
+          lowerResponse.contains('<html') ||
+          lowerResponse.contains('<div') ||
+          lowerResponse.contains('<span') ||
+          lowerResponse.contains('<p>') ||
+          lowerResponse.contains('<body') ||
+          lowerResponse.contains('<head') ||
+          responseString.trim().startsWith('<')) {
+        // Return JSON format with HTML content
+        return {'html': responseString};
+      }
+
+      // Try to parse as JSON
+      return jsonDecode(responseString);
+    } catch (e) {
+      // If anything fails, return error wrapped in JSON
+      return {'error': 'Failed to decode response: ${e.toString()}'};
+    }
+  }
+}
 
 class Network {
   // Private instance for singleton behavior
@@ -28,10 +67,16 @@ class Network {
           receiveDataWhenStatusError: true,
         )) {
     _configureInterceptors();
+    _configureTransformer();
   }
 
   // Factory constructor to return the same instance
   factory Network() => _instance;
+
+  // Transformer configuration to handle HTML responses
+  void _configureTransformer() {
+    _dio.transformer = CustomTransformer();
+  }
 
   // Interceptor configuration
   void _configureInterceptors() {
@@ -46,6 +91,41 @@ class Network {
         maxWidth: 120,
       ));
     }
+
+    // Add response interceptor to handle HTML responses
+    _dio.interceptors.add(InterceptorsWrapper(
+      onResponse: (response, handler) {
+        // Check if response is HTML when we expect JSON
+        if (response.data is String &&
+            (response.data
+                    .toString()
+                    .toLowerCase()
+                    .contains('<!doctype html>') ||
+                response.data.toString().toLowerCase().contains('<html'))) {
+          // Convert HTML response to JSON format
+          final htmlContent = response.data.toString();
+          final jsonResponse = {'html': htmlContent};
+
+          // Update the response data
+          response.data = jsonResponse;
+        }
+        handler.next(response);
+      },
+      onError: (error, handler) {
+        // Additional check for HTML in error responses
+        if (error.response?.data is String) {
+          final responseData = error.response!.data.toString();
+          if (responseData.toLowerCase().contains('<!doctype html>') ||
+              responseData.toLowerCase().contains('<html')) {
+            // Convert HTML error response to JSON format
+            final jsonResponse = {'html': responseData};
+            error.response!.data = jsonResponse;
+          }
+        }
+        handler.next(error);
+      },
+    ));
+
     _dio.interceptors.add(DioCacheInterceptor(
       options: CacheOptions(
         store: MemCacheStore(),

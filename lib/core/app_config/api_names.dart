@@ -72,11 +72,12 @@ abstract class Endpoints {
 
 //--------------------------------STATIC PAGES--------------------------------------\\
   static const String privacyAndPolicy =
-      '/settings?key=policies_terms&limit=1000';
+      '/setting/getContent?code=PRIVACY_POLICY';
   static const String support = '/settings?key=support&limit=1000';
-
+  static const String termsAndConditions =
+      '/setting/getContent?code=TERMS_CONDITION';
   static const String gameSettings = '/game-settings';
-
+  static const String aboutUs = '/setting/getContent?code=ABOUT_US';
 //-------------------------------NOT TESTED------------------------------------\\
 
   static const String paymentList = '/paymentMehods/listAll';

@@ -13,7 +13,7 @@ class GetStaticPageLoading extends StaticPageState {}
 
 class GetStaticPageSuccess extends StaticPageState {
   const GetStaticPageSuccess(this.entity);
-  final List<StaticPageEntity> entity;
+  final StaticPageEntity entity;
 }
 
 class GetStaticPageError extends StaticPageState {

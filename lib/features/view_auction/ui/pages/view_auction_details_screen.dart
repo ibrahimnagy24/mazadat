@@ -32,7 +32,11 @@ class ViewAuctionDetailsScreen extends StatelessWidget {
           }
           if (state is AuctionEnded) {
             final auctionCubit = context.read<ViewAuctionDetailsCubit>();
-            // Handle auction ended
+            await auctionCubit.viewAuctionDetailsStatesHandled();
+          }
+          if (state is AuctionStarted) {
+            final auctionCubit = context.read<ViewAuctionDetailsCubit>();
+            await auctionCubit.viewAuctionDetailsStatesHandled();
           }
         },
         builder: (context, state) {

@@ -53,6 +53,11 @@ final class AuctionEnded extends PusherState {
   const AuctionEnded({required this.auctionId});
 }
 
+final class AuctionStarted extends PusherState {
+  final int auctionId;
+  const AuctionStarted({required this.auctionId});
+}
+
 enum PusherConnectionState {
   RECONNECTING,
   DISCONNECTED,
