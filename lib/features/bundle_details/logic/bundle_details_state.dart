@@ -26,3 +26,17 @@ class BundleDetailsError extends BundleDetailsState {
   final ErrorEntity errorEntity;
   const BundleDetailsError(this.errorEntity);
 }
+
+class ValidateJoiningAuctionInitial extends BundleDetailsState {}
+
+class ValidateJoiningAuctionLoading extends BundleDetailsState {}
+
+class ValidateJoiningAuctionSuccess extends BundleDetailsState {
+  final AuctionPolicyModel data;
+  const ValidateJoiningAuctionSuccess({required this.data});
+}
+
+class ValidateJoiningAuctionError extends BundleDetailsState {
+  final ErrorEntity error;
+  const ValidateJoiningAuctionError(this.error);
+}

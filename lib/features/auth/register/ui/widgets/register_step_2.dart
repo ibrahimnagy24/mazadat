@@ -5,7 +5,7 @@ import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/validations/validator.dart';
 import '../../../../../core/utils/widgets/form_fields/default_password_form_field.dart';
 import '../../../../selectors/age/ui/page/age_input.dart';
-import '../../../../selectors/city/ui/page/city_input.dart';
+import '../../../../address/city/ui/page/city_input.dart';
 import '../../logic/register_cubit.dart';
 import '../../logic/register_state.dart';
 import '../../../../../core/shared/widgets/gender_input.dart';

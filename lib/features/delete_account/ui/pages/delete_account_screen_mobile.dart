@@ -9,14 +9,15 @@ class DeleteAccountMobilePortraitDesignScreen extends StatelessWidget {
       needAppbar: false,
       child: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(24.w),
+          padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomBackIcon(),
               DeleteAccountContent(
                   title: AppStrings.deleteAccount.tr,
-                  subtitle: AppStrings.pleaseEnterYourPasswordToConfirmDeleteAccount.tr),
+                  subtitle: AppStrings
+                      .pleaseEnterYourPasswordToConfirmDeleteAccount.tr),
               BlocBuilder<DeleteAccountCubit, DeleteAccountState>(
                 builder: (context, state) {
                   return DefaultPasswordFormField(

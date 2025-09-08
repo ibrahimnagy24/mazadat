@@ -33,7 +33,7 @@ abstract class CustomBottomSheet {
       expand: false,
       useRootNavigator: true,
       isDismissible: true,
-      builder: (c) {
+      builder: (modalContext) {
         return SafeArea(
           child: Padding(
             padding:
@@ -45,20 +45,16 @@ abstract class CustomBottomSheet {
               width: MediaQueryHelper.width,
               decoration: BoxDecoration(
                 color: AppColors.kWhite,
-                borderRadius: BorderRadius.circular(16.w),
+                borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    width: 60.w,
-                    height: 4.h,
-                    margin: EdgeInsets.only(
-                      left: 18.w,
-                      right: 18.w,
-                      top: 8.h,
-                      bottom: 18.h,
-                    ),
+                    width: 60,
+                    height: 4,
+                    margin: const EdgeInsets.only(
+                        left: 18, right: 18, top: 8, bottom: 18),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         color: AppColors.kGeryText,
@@ -67,7 +63,7 @@ abstract class CustomBottomSheet {
                   labelWidget ?? const SizedBox(),
                   if (label != null)
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 18.w),
+                      padding: const EdgeInsets.symmetric(horizontal: 18),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -101,8 +97,8 @@ abstract class CustomBottomSheet {
                     child: SafeArea(
                       top: false,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 18.w, vertical: 10.h),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18, vertical: 10),
                         child: child ??
                             Row(
                               children: [
@@ -113,7 +109,7 @@ abstract class CustomBottomSheet {
                                     onPressed: onConfirm,
                                   ),
                                 ),
-                                if (withCancel) SizedBox(width: 8.w),
+                                if (withCancel) const SizedBox(width: 8),
                                 if (withCancel)
                                   Expanded(
                                     child: DefaultButton(

@@ -6,6 +6,7 @@ import '../../../../../core/app_config/api_names.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/blocs/main_app_bloc.dart';
+import '../../../../../core/shared/widgets/static_pages_html_bottom_sheet_widget.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
@@ -59,13 +60,23 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
                   style: AppTextStyles.textMdBold,
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      CustomNavigator.push(
-                        Routes.STATIC_PAGE,
-                        extra: StaticPageParams(
-                          url: Endpoints.privacyAndPolicy,
-                          title: AppStrings.policyPrivacy.tr,
-                        ),
-                      );
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return StaticPagesHtmlBottomSheetWidget(
+                              params: StaticPageParams(
+                                url: Endpoints.privacyAndPolicy,
+                                title: AppStrings.policyPrivacy.tr,
+                              ),
+                            );
+                          });
+                      // CustomNavigator.push(
+                      //   Routes.STATIC_PAGE,
+                      //   extra: StaticPageParams(
+                      //     url: Endpoints.privacyAndPolicy,
+                      //     title: AppStrings.policyPrivacy.tr,
+                      //   ),
+                      // );
                     },
                 ),
                 if (mainAppBloc.isArabic)

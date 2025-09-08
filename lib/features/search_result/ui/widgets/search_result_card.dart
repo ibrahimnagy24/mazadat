@@ -12,13 +12,15 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auctions/data/entity/auction_entity.dart';
-import '../../../old_auction_displayed_deprecated/auction_details/data/params/auction_details_route_params.dart';
-import '../../../view_auction/data/params/view_auction_details_route_params.dart';
+import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
 import '../../logic/search_result_cubit.dart';
 
 class SearchResultCard extends StatelessWidget {
-  const SearchResultCard(
-      {super.key, required this.auction, this.withClear = true});
+  const SearchResultCard({
+    super.key,
+    required this.auction,
+    this.withClear = true,
+  });
   final AuctionEntity auction;
   final bool withClear;
   @override

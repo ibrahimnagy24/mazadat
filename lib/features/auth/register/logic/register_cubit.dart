@@ -5,7 +5,7 @@ import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../selectors/age/data/entity/age_entity.dart';
-import '../../../selectors/city/data/entity/city_entity.dart';
+import '../../../address/city/data/entity/city_entity.dart';
 import '../data/params/register_params.dart';
 import '../data/repository/register_repo.dart';
 import 'register_state.dart';

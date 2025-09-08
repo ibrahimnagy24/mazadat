@@ -14,7 +14,7 @@ import '../../../../core/utils/validations/validator.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/shared/widgets/gender_input.dart';
 import '../../../selectors/age/ui/page/age_input.dart';
-import '../../../selectors/city/ui/page/city_input.dart';
+import '../../../address/city/ui/page/city_input.dart';
 import '../../logic/edit_profile_cubit.dart';
 import '../../logic/edit_profile_state.dart';
 

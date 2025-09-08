@@ -8,7 +8,7 @@ import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
 import '../../../../core/global_favourites/global_favourites.dart';
-import '../../../view_auction/data/params/view_auction_details_route_params.dart';
+import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
 import '../../data/enum/displayed_types.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';

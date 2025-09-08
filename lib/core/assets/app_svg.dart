@@ -80,4 +80,6 @@ class AppSvg {
   static const String warrningIcon = '$_svgPath/warrning_icon.svg';
   static const String alarmIcon = '$_svgPath/alarm_icon.svg';
   static const String infoIcon = '$_svgPath/info_icon.svg';
+  static const String homeIcon = '$_svgPath/home_icon.svg';
+  static const String officePlaza = '$_svgPath/office_plaza.svg';
 }

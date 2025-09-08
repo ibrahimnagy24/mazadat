@@ -345,4 +345,8 @@ class AppStrings {
   static const String specifyTheBiddingMethod = 'Specify the bidding method';
   static const String public = 'Public';
   static const String private = 'Private';
+  static const String yourAddresses = 'Your addresses';
+  static const String selectAddress = 'Select address';
+  static const String completeYourPurchase = 'Complete your purchase';
+  static const String deliveryAddress = 'Delivery address';
 }

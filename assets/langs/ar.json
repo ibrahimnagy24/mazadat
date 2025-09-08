@@ -275,5 +275,17 @@
   "no spaces allowed": "لا توجد مسافات مسموح بها",
   "numbers are not allowed": "الأرقام غير مسموح بها",
   "Specify the bidding method": "تحديد طريقة المزايدة",
-  "Public": "عام"
+  "Public": "عام",
+  "No Auctions": "لا مزادات",
+  "No auctions found": "لم يتم العثور على مزادات",
+  "Enter address": "أدخل العنوان",
+  "Address": "العنوان",
+  "Delete Address": "حذف العنوان",
+  "Save Changes": "حفظ التغييرات",
+  "Set as a default address": "تعيين كعنوان افتراضي",
+  "Your addresses": "العناوين الخاصة بك",
+  "Are you sure you want to delete address?": "هل أنت متأكد أنك تريد حذف العنوان؟",
+  "Address will be permanently removed!": "سيتم إزالة العنوان نهائيا!",
+  "Complete your purchase": "إتمام عملية الشراء",
+  "Delivery address": "عنوان التوصيل"
 }

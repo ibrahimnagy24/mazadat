@@ -82,12 +82,16 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
                             const CreateAccountButtonWidget(),
                             const SizedBox(height: 20),
                             const OrTextWidget(),
+                            if (currentStep == 0) const SizedBox(height: 20),
+                            if (currentStep == 0)
+                              const LoginAsVisitorButtonWidget(),
                             const SizedBox(height: 20),
                             const Center(
-                                child: SafeArea(
-                              top: false,
-                              child: AlreadyHaveAccountWidget(),
-                            )),
+                              child: SafeArea(
+                                top: false,
+                                child: AlreadyHaveAccountWidget(),
+                              ),
+                            ),
                           ],
                         );
                       },

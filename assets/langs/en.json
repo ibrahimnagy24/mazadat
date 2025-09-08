@@ -275,5 +275,17 @@
   "no spaces allowed": "no spaces allowed",
   "numbers are not allowed": "numbers are not allowed",
   "Specify the bidding method": "Specify the bidding method",
-  "Public": "Public"
+  "Public": "Public",
+  "No Auctions": "No Auctions",
+  "No auctions found": "No auctions found",
+  "Enter address": "Enter address",
+  "Address": "Address",
+  "Delete Address": "Delete Address",
+  "Save Changes": "Save Changes",
+  "Set as a default address": "Set as a default address",
+  "Your addresses": "Your addresses",
+  "Are you sure you want to delete address?": "Are you sure you want to delete address?",
+  "Address will be permanently removed!": "Address will be permanently removed!",
+  "Complete your purchase": "Complete your purchase",
+  "Delivery address": "Delivery address"
 }

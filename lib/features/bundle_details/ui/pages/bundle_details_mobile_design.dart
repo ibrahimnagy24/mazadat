@@ -8,6 +8,7 @@ import '../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../data/params/bundle_details_route_params.dart';
 import '../widgets/bundle_details_body.dart';
+import '../widgets/bundle_details_joining_button_widget.dart';
 
 class BundleDetailsMobileDesignScreen extends StatelessWidget {
   const BundleDetailsMobileDesignScreen({super.key, required this.routeParams});
@@ -28,18 +29,7 @@ class BundleDetailsMobileDesignScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             BundleDetailsBody(routeParams: routeParams),
-            Container(
-              height: 114,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(color: AppColors.kWhite),
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: DefaultButton(
-                text: AppStrings.registerInThePackage.tr,
-                onPressed: () {},
-                height: 48,
-              ),
-            )
+            const BundleDetailsJoiningButtonWidget(),
           ],
         ),
       ),

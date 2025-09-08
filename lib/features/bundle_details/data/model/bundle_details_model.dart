@@ -7,12 +7,14 @@ class BundleDetailsModel {
   String? price;
   String? numberOfAuctions;
   List<AuctionModel>? auction;
+  bool? isJoined;
   BundleDetailsModel({
     this.id,
     this.name,
     this.numberOfAuctions,
     this.price,
     this.auction,
+    this.isJoined,
   });
 
   BundleDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +29,7 @@ class BundleDetailsModel {
         auction!.add(AuctionModel.fromJson(v));
       });
     }
+    isJoined = json['DATA']['isJoined'];
   }
 
   Map<String, dynamic> toJson() {
@@ -35,7 +38,7 @@ class BundleDetailsModel {
     data['name'] = name;
     data['numberOfAuctions'] = numberOfAuctions;
     data['price'] = price;
-
+    data['isJoined'] = isJoined;
     return data;
   }
 }

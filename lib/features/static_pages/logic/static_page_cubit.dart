@@ -8,7 +8,7 @@ import 'static_page_state.dart';
 class StaticPageCubit extends Cubit<StaticPageState> {
   StaticPageCubit() : super(const StaticPageInitial());
 //---------------------------------VARIABLES----------------------------------//
-  List<StaticPageEntity>? staticPageEntity;
+  StaticPageEntity? staticPageEntity;
 
 //---------------------------------FUNCTIONS----------------------------------//
 
@@ -22,6 +22,7 @@ class StaticPageCubit extends Cubit<StaticPageState> {
     response.fold((failure) {
       return emit(GetStaticPageError(failure));
     }, (success) async {
+      staticPageEntity = success;
       return emit(GetStaticPageSuccess(success));
     });
   }

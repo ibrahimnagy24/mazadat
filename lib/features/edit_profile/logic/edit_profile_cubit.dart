@@ -5,7 +5,7 @@ import '../../../../core/utils/enums/enums.dart';
 import '../../../core/navigation/custom_navigation.dart';
 import '../../../core/services/cache/shared_helper.dart';
 import '../../selectors/age/data/entity/age_entity.dart';
-import '../../selectors/city/data/entity/city_entity.dart';
+import '../../address/city/data/entity/city_entity.dart';
 import '../../user/data/entity/user_entity.dart';
 import '../../user/logic/user_cubit.dart';
 import '../data/params/edit_profile_params.dart';

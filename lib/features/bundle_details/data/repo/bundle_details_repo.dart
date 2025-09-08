@@ -22,10 +22,10 @@ abstract class BundleDetailsRepo {
   }
 
   static Future<Either<ErrorEntity, Response>> validateJoiningAuction(
-      BundleDetailsRouteParams params) async {
+      int id) async {
     try {
       final response = await Network().request(
-        Endpoints.validateAuctionJoining(params.bundleId),
+        Endpoints.validateAuctionJoining(id),
         method: ServerMethods.GET,
       );
 

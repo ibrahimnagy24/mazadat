@@ -13,8 +13,7 @@ import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
 import '../../../favourites/ui/widgets/favourite_button.dart';
-import '../../../old_auction_displayed_deprecated/auction_details/data/params/auction_details_route_params.dart';
-import '../../../view_auction/data/params/view_auction_details_route_params.dart';
+import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
 import '../../data/entity/auction_entity.dart';
 
 class GridAuctionCard extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../assets/app_svg.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../shared/blocs/main_app_bloc.dart';
@@ -19,18 +20,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool withSafeArea;
   final Color? backColor;
   final double? actionWidth;
+  final TextStyle? titleStyle;
 
-  const CustomAppBar(
-      {super.key,
-      this.title,
-      this.height,
-      this.backColor,
-      this.withHPadding = true,
-      this.withVPadding = true,
-      this.withBack = true,
-      this.withSafeArea = true,
-      this.actionWidth,
-      this.actionChild});
+  const CustomAppBar({
+    super.key,
+    this.title,
+    this.height,
+    this.backColor,
+    this.withHPadding = true,
+    this.withVPadding = true,
+    this.withBack = true,
+    this.withSafeArea = true,
+    this.actionWidth,
+    this.actionChild,
+    this.titleStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,23 +51,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             withBack && CustomNavigator.navigatorState.currentState!.canPop()
                 ? InkWell(
-              onTap:()=> CustomNavigator.pop(),
-                  child: RotatedBox(
-                      quarterTurns: mainAppBloc.lang.valueOrNull == 'en' ? 2 : 0,
-                      child: customImageIconSVG(
-                          imageName: AppSvg.arrowBack,
-                          width: 30.w,
-                          height: 24.w,
-                          color: AppColors.textPrimary),
+                    onTap: () => CustomNavigator.pop(),
+                    child: RotatedBox(
+                      quarterTurns:
+                          mainAppBloc.lang.valueOrNull == 'en' ? 2 : 0,
+                      child: SvgPicture.asset(
+                        AppSvg.arrowBack,
+                        width: 30,
+                        height: 24,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
-                )
+                  )
                 : SizedBox(width: actionWidth ?? 30),
             Expanded(
               child: Text(
                 title ?? '',
-                style: AppTextStyles.textMdBold.copyWith(
-                  fontSize: AppFontSizes.fsXL,
-                ),
+                style: titleStyle ??
+                    AppTextStyles.textMdBold
+                        .copyWith(fontSize: AppFontSizes.fsXL),
               ),
             ),
             SizedBox(

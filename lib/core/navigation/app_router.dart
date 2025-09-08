@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../app/app.dart';
-import '../../features/add_address/ui/page/add_addresses_screen.dart';
-import '../../features/addresses/data/model/addresses_model.dart';
-import '../../features/addresses/ui/page/addresses_screen.dart';
+import '../../features/address/add_address/ui/page/add_addresses_screen.dart';
+import '../../features/address/addresses/data/model/addresses_model.dart';
+import '../../features/address/addresses/ui/page/addresses_screen.dart';
 import '../../features/auth/change_password/data/params/change_password_route_params.dart';
 import '../../features/auth/change_password/ui/widgets/change_password_imports.dart';
 import '../../features/auth/change_phone_number/data/params/change_phone_number_route_params.dart';
@@ -18,6 +18,8 @@ import '../../features/auth/register/ui/widgets/register_imports.dart';
 import '../../features/auth/forget_password/ui/widgets/forget_password_imports.dart';
 import '../../features/auth/verify_code/data/params/verify_code_route_params.dart';
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
+import '../../features/checkout/check_out_address/data/params/checkout_address_route_params.dart';
+import '../../features/checkout/check_out_address/ui/page/checkout_address_screen.dart';
 import '../../features/delete_account/ui/widgets/delete_account_imports.dart';
 import '../../features/edit_bank_details/ui/widgets/edit_bank_details_imports.dart';
 import '../../features/edit_favourite_categories/ui/widgets/edit_favourite_categories_imports.dart';
@@ -28,17 +30,13 @@ import '../../features/my_bundles/ui/page/my_bundles_screen.dart';
 import '../../features/my_purchases/ui/page/my_purchases_screen.dart';
 import '../../features/my_sales/ui/page/my_sales_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
-import '../../features/preview_auction/ui/pages/preview_auction_screen.dart';
-import '../../features/preview_auction/data/params/auction_details_route_params.dart';
 import '../../features/profile/ui/page/profile_screen.dart';
 import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';
-import '../../features/old_auction_displayed_deprecated/auction_details/data/params/auction_details_route_params.dart';
-import '../../features/old_auction_displayed_deprecated/auction_details/ui/pages/auction_details_screen.dart';
-import '../../features/view_auction/data/params/view_auction_details_route_params.dart';
-import '../../features/view_auction/ui/pages/view_auction_details_screen.dart';
+import '../../features/auction_details/view_auction/data/params/view_auction_details_route_params.dart';
+import '../../features/auction_details/view_auction/ui/pages/view_auction_details_screen.dart';
 import '../../features/visitor/ui/pages/visitor_screen.dart';
 import '../../features/wallet/view_wallet_history/data/params/view_wallet_history_route_params.dart';
 import '../../features/wallet/view_wallet_history/ui/pages/view_wallet_history_screen.dart';
@@ -267,19 +265,20 @@ final GoRouter appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/preview-auction',
-      name: Routes.PREVIEW_AUCTION,
-      builder: (context, state) {
-        final routeParams = state.extra as PreviewAuctionRouteParams;
-        return PreviewAuctionScreen(routeParams: routeParams);
-      },
-    ),
-    GoRoute(
       path: '/view-auction-details',
       name: Routes.VIEW_AUCTION_DETAILS,
       builder: (context, state) {
         final routeParams = state.extra as ViewAuctionDetailsRouteParams;
         return ViewAuctionDetailsScreen(routeParams: routeParams);
+      },
+    ),
+    //CHECK-OUT
+    GoRoute(
+      path: '/checkout-address',
+      name: Routes.CHECKOUT_ADDRESS,
+      builder: (context, state) {
+        final routeParams = state.extra as CheckoutAddressRouteParams;
+        return CheckoutAddressScreen(params: routeParams);
       },
     ),
 

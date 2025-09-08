@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
-import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/radius/app_radius.dart';
@@ -77,7 +75,8 @@ class StackedAuctionCardWidget extends StatelessWidget {
                             image,
                             height: 137,
                           ),
-                          if (auctionStatus != null)
+                          if (auctionStatus != null &&
+                              auctionStatus!.isNotEmpty)
                             PositionedDirectional(
                               top: 0,
                               start: 0,

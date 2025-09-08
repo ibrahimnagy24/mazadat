@@ -22,9 +22,9 @@ class Routes {
   static const ZOOM_IN_IMAGE = 'ZOOM_IN_IMAGE';
   //-----------------------------------VIEW AUCTION---------------------------\\
   // static const AUCTION_DETAILS = 'VIEW_AUCTION';
-  static const VIEW_BUNDLES = 'VIEW_BUNDLES';
+  // static const VIEW_BUNDLES = 'VIEW_BUNDLES';
   static const BUNDLE_DETAILS = 'BUNDLE_DETAILS';
-  static const PREVIEW_AUCTION = 'PREVIEW_AUCTION';
+  // static const PREVIEW_AUCTION = 'PREVIEW_AUCTION';
   static const VIEW_AUCTION_DETAILS = 'VIEW_AUCTION_DETAILS';
 
   //-----------------------------------SEARCH---------------------------\\
@@ -46,4 +46,6 @@ class Routes {
   static const ADD_ADDRESSES = 'ADD_ADDRESSES';
   //-----------------------------------WALLET---------------------------\\
   static const VIEW_WALLET_HISTORY = 'VIEW_WALLET_HISTORY';
+//-----------------------------------CHECKOUT---------------------------\\
+  static const CHECKOUT_ADDRESS = 'CHECKOUT_ADDRESS';
 }

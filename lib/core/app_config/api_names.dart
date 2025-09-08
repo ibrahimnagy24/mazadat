@@ -44,7 +44,8 @@ abstract class Endpoints {
   static const String walletHistory = '/wallet/viewMyWallet';
   static const String chargeWallet = '/wallet/chargeBalance';
   static const String checkWalletCharge = '/wallet/checkWalletCharge';
-
+//----------------------------------MY AUCTIONS--------------------------------------\\
+  static const String myAuctions = '/auctions/filterMyAuctions';
 //--------------------------------Addresses--------------------------------------\\
 
   static const String addressTypes = '/addressType/listAddressTypeLookups';
@@ -56,6 +57,7 @@ abstract class Endpoints {
   static const String addAddresses = '/address/add';
   static const String editAddresses = '/address/update';
   static const String deleteAddresses = '/address/delete';
+  static const String setDefaultAddress = '/address/setDefault';
 
 //--------------------------------Favourites--------------------------------------\\
 

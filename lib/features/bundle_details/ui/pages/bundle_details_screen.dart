@@ -13,23 +13,8 @@ class BundleDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          BundleDetailsCubit()..getBundleDetails(routeParams),
-      child: ScreenTypeLayout.builder(
-        breakpoints: AppConstant.breakpoints,
-        mobile: (_) => OrientationLayoutBuilder(
-          portrait: (context) =>
-              BundleDetailsMobileDesignScreen(routeParams: routeParams),
-          landscape: (context) =>
-              BundleDetailsMobileDesignScreen(routeParams: routeParams),
-        ),
-        tablet: (_) => OrientationLayoutBuilder(
-          portrait: (context) =>
-              BundleDetailsMobileDesignScreen(routeParams: routeParams),
-          landscape: (context) =>
-              BundleDetailsMobileDesignScreen(routeParams: routeParams),
-        ),
-      ),
+      create: (context) => BundleDetailsCubit()..getBundleDetails(routeParams),
+      child: BundleDetailsMobileDesignScreen(routeParams: routeParams),
     );
   }
 }

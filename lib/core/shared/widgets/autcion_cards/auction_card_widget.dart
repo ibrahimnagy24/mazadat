@@ -66,7 +66,7 @@ class AuctionCardWidget extends StatelessWidget {
                   radius: AppRadius.rXXS,
                   height: 135,
                 ),
-                if (auctionStatus != null)
+                if (auctionStatus != null && auctionStatus!.isNotEmpty)
                   Align(
                     alignment: AlignmentDirectional.topStart,
                     child: Container(
