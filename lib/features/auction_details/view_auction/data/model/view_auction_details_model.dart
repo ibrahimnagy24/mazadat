@@ -33,6 +33,7 @@ class ViewAuctionDetailsModel extends ViewAuctionDetailsEntity {
     required super.primaryPhoto,
     required super.lastBidderId,
     required super.currentBiddingMethod,
+    required super.winner,
   });
 
   factory ViewAuctionDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -91,6 +92,7 @@ class ViewAuctionDetailsModel extends ViewAuctionDetailsEntity {
                   json['currentBiddingMethod']?.toString().toUpperCase()) ??
               BiddingMethod.manual
           : BiddingMethod.manual,
+      winner: json['winner'] ?? false,
     );
   }
 }

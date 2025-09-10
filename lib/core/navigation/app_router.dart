@@ -20,6 +20,8 @@ import '../../features/auth/verify_code/data/params/verify_code_route_params.dar
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
 import '../../features/checkout/check_out_address/data/params/checkout_address_route_params.dart';
 import '../../features/checkout/check_out_address/ui/page/checkout_address_screen.dart';
+import '../../features/checkout/check_out_summary/data/params/checkout_summary_route_params.dart';
+import '../../features/checkout/check_out_summary/ui/pages/checkout_summary_screen.dart';
 import '../../features/delete_account/ui/widgets/delete_account_imports.dart';
 import '../../features/edit_bank_details/ui/widgets/edit_bank_details_imports.dart';
 import '../../features/edit_favourite_categories/ui/widgets/edit_favourite_categories_imports.dart';
@@ -279,6 +281,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         final routeParams = state.extra as CheckoutAddressRouteParams;
         return CheckoutAddressScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/checkout-summary',
+      name: Routes.CHECKOUT_SUMMARY,
+      builder: (context, state) {
+        final routeParams = state.extra as CheckoutSummaryRouteParams;
+        return CheckoutSummaryScreen(params: routeParams);
       },
     ),
 

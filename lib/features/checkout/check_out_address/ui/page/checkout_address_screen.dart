@@ -23,7 +23,9 @@ class CheckoutAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CheckoutAddressCubit()..fetchAddresses(),
+      create: (context) => CheckoutAddressCubit()
+        ..init(params)
+        ..fetchAddresses(),
       child: const CustomScaffoldWidget(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),

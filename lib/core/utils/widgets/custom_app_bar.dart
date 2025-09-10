@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../assets/app_svg.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../shared/blocs/main_app_bloc.dart';
-import '../../shared/widgets/custom_images.dart';
 import '../../theme/colors/styles.dart';
 import '../../theme/text_styles/app_font_size_styles.dart';
 import '../../theme/text_styles/text_styles.dart';

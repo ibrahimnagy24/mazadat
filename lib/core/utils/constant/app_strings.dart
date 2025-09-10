@@ -349,4 +349,20 @@ class AppStrings {
   static const String selectAddress = 'Select address';
   static const String completeYourPurchase = 'Complete your purchase';
   static const String deliveryAddress = 'Delivery address';
+  static const String purchaseSummary = 'Purchase summary';
+  static const String thePriceSetToCompleteThePurchase =
+      'The price set to complete the purchase';
+  static const String productDetails = 'Product details';
+  static const String purchaseDetails = 'Purchase details';
+  static const String productPrice = 'Product price';
+  static const String applicationPercentage = 'Application rate';
+  static const String deliveryPrice = 'Delivery price';
+  static const String totalWithoutVat = 'Total (excluding VAT)';
+  static const String addedValue = 'Added value';
+  static const String totalPrice = 'Total price';
+  static const String theDeadlineToCompleteThePurchaseHasExpired =
+      'The deadline to complete the purchase has expired.';
+  static const String yourInsuranceAmountWillBeDeducted =
+      'Your insurance amount will be deducted.';
+  static const String goToTheHomePage = 'Go to the home page';
 }

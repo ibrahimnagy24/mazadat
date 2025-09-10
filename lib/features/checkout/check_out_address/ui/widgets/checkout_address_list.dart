@@ -49,12 +49,6 @@ class CheckoutAddressList extends StatelessWidget {
         }
 
         if (cubit.addresses != null && cubit.addresses!.isNotEmpty) {
-          final addresses = state is CheckoutAddressLoaded
-              ? state.addresses
-              : (state as CheckoutAddressSelected).addresses;
-          final selectedAddress =
-              state is CheckoutAddressSelected ? state.selectedAddress : null;
-
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -66,8 +60,8 @@ class CheckoutAddressList extends StatelessWidget {
               const SizedBox(height: 16),
               Column(
                 spacing: 12,
-                children: addresses.map((address) {
-                  final isSelected = selectedAddress?.id == address.id;
+                children: cubit.addresses!.map((address) {
+                  final isSelected = cubit.selectedAddress?.id == address.id;
                   return _CheckoutAddressCard(
                     address: address,
                     isSelected: isSelected,

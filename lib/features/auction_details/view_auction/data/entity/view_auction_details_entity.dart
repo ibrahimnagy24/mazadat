@@ -31,6 +31,7 @@ class ViewAuctionDetailsEntity extends Equatable {
   final String primaryPhoto;
   final String lastBidderId;
   final BiddingMethod currentBiddingMethod;
+  final bool winner;
 
   const ViewAuctionDetailsEntity({
     required this.id,
@@ -61,6 +62,7 @@ class ViewAuctionDetailsEntity extends Equatable {
     required this.primaryPhoto,
     required this.lastBidderId,
     required this.currentBiddingMethod,
+    required this.winner,
   });
 
   @override
@@ -91,6 +93,7 @@ class ViewAuctionDetailsEntity extends Equatable {
         primaryPhoto,
         lastBidderId,
         currentBiddingMethod,
+        winner,
       ];
 }
 

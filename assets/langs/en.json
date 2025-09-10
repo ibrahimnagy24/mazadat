@@ -287,5 +287,18 @@
   "Are you sure you want to delete address?": "Are you sure you want to delete address?",
   "Address will be permanently removed!": "Address will be permanently removed!",
   "Complete your purchase": "Complete your purchase",
-  "Delivery address": "Delivery address"
+  "Delivery address": "Delivery address",
+  "Purchase summary": "Purchase summary",
+  "The price set to complete the purchase": "The price set to complete the purchase",
+  "Product details": "Product details",
+  "Purchase details": "Purchase details",
+  "Product price": "Product price",
+  "Application rate": "Application rate",
+  "Delivery price": "Delivery price",
+  "Total (excluding VAT)": "Total (excluding VAT)",
+  "Added value": "Added value",
+  "Total price": "Total price",
+  "The deadline to complete the purchase has expired.": "The deadline to complete the purchase has expired.",
+  "Your insurance amount will be deducted.": "Your insurance amount will be deducted.",
+  "Go to the home page": "Go to the home page"
 }

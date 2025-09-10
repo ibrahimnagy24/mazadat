@@ -48,4 +48,5 @@ class Routes {
   static const VIEW_WALLET_HISTORY = 'VIEW_WALLET_HISTORY';
 //-----------------------------------CHECKOUT---------------------------\\
   static const CHECKOUT_ADDRESS = 'CHECKOUT_ADDRESS';
+  static const CHECKOUT_SUMMARY = 'CHECKOUT_SUMMARY';
 }

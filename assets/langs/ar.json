@@ -287,5 +287,18 @@
   "Are you sure you want to delete address?": "هل أنت متأكد أنك تريد حذف العنوان؟",
   "Address will be permanently removed!": "سيتم إزالة العنوان نهائيا!",
   "Complete your purchase": "إتمام عملية الشراء",
-  "Delivery address": "عنوان التوصيل"
+  "Delivery address": "عنوان التوصيل",
+  "Purchase summary": "ملخص الشراء",
+  "The price set to complete the purchase": "السعر المحدد لإتمام الشراء",
+  "Product details": "تفاصيل المنتج",
+  "Purchase details": "تفاصيل الشراء",
+  "Product price": "سعر المنتج",
+  "Application rate": "نسبة التطبيق",
+  "Delivery price": "سعر التوصيل",
+  "Total (excluding VAT)": "الإجمالي “ بدون القيمة المضافة”",
+  "Added value": "القيمة المضافة",
+  "Total price": "السعر الإجمالي",
+  "The deadline to complete the purchase has expired.": "المهله المحددة لإتمام الشراء إنتهت",
+  "Your insurance amount will be deducted.": "سيتم خصم المبلغ التأميني الخاص بك",
+  "Go to the home page": "الذهاب للصفحة  الرئيسية"
 }

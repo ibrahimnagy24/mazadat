@@ -5,6 +5,7 @@ import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../address/addresses/data/model/addresses_model.dart';
 import '../../../address/addresses/data/repo/addresses_repo.dart';
 import '../data/params/checkout_address_params.dart';
+import '../data/params/checkout_address_route_params.dart';
 import '../data/repo/check_out_repo.dart';
 import 'checkout_address_state.dart';
 
@@ -14,8 +15,11 @@ class CheckoutAddressCubit extends Cubit<CheckoutAddressState> {
 //---------------------------------VARIABLES----------------------------------//
   List<AddressModel>? _addresses;
   AddressModel? _selectedAddress;
-
+  late CheckoutAddressRouteParams routeParams;
 //---------------------------------FUNCTIONS----------------------------------//
+  void init(CheckoutAddressRouteParams routeParams) {
+    this.routeParams = routeParams;
+  }
 
   /// Get the currently selected address
   AddressModel? get selectedAddress => _selectedAddress;

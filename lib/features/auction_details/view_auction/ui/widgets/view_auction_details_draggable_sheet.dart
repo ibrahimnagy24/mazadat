@@ -98,7 +98,12 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
         ),
         Container(
           height: 114,
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsetsDirectional.only(
+            start: 24,
+            end: 24,
+            top: 8,
+            bottom: 8,
+          ),
           decoration: BoxDecoration(
             color: AppColors.background,
             borderRadius: const BorderRadius.only(
@@ -114,7 +119,12 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
               )
             ],
           ),
-          child: Center(child: _ViewAuctionDetailsContent()),
+          child: SafeArea(
+            top: false,
+            left: false,
+            right: false,
+            child: _ViewAuctionDetailsContent(),
+          ),
         ),
       ],
     );
@@ -360,7 +370,7 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
         }
 
         if (auction.isEnded) {
-          return _buildEndedAuctionButton(auction.id);
+          return _buildEndedAuctionButton(auction);
         }
 
         if (auction.isJoined == false) {
@@ -381,17 +391,35 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
     );
   }
 
-  Widget _buildEndedAuctionButton(int auctionId) {
-    return DefaultButton(
-      onPressed: () {
-        CustomNavigator.push(
-          Routes.CHECKOUT_ADDRESS,
-          extra: CheckoutAddressRouteParams(auctionId: auctionId),
-        );
-      },
-      text: AppStrings.auctionEnded.tr,
-      textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
-    );
+  Widget _buildEndedAuctionButton(ViewAuctionDetailsEntity? auction) {
+    if (auction == null) {
+      return const SizedBox.shrink();
+    }
+    if (auction.winner == true) {
+      return DefaultButton(
+        onPressed: () {
+          CustomNavigator.push(
+            Routes.CHECKOUT_ADDRESS,
+            extra: CheckoutAddressRouteParams(auctionId: auction.id),
+          );
+        },
+        text: AppStrings.completeYourPurchase.tr,
+        textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
+      );
+    }
+    if (auction.winner == false) {
+      return DefaultButton(
+        onPressed: () {
+          CustomNavigator.push(
+            Routes.CHECKOUT_ADDRESS,
+            extra: CheckoutAddressRouteParams(auctionId: auction.id),
+          );
+        },
+        text: AppStrings.auctionEnded.tr,
+        textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
+      );
+    }
+    return const SizedBox.shrink();
   }
 
   Widget _buildJoinAuctionButton(

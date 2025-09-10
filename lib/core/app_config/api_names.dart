@@ -80,6 +80,9 @@ abstract class Endpoints {
       '/setting/getContent?code=TERMS_CONDITION';
   static const String gameSettings = '/game-settings';
   static const String aboutUs = '/setting/getContent?code=ABOUT_US';
+//--------------------------------CHECK OUT--------------------------------------\\
+  static const String checkoutSummary = '/auctions/getOrderSummary';
+  static const String validateSummary = '/auctions/validateAuctionCheckout';
 //-------------------------------NOT TESTED------------------------------------\\
 
   static const String paymentList = '/paymentMehods/listAll';
