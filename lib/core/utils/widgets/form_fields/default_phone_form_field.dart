@@ -26,6 +26,7 @@ class DefaultPhoneFormField extends StatelessWidget {
     this.readOnly = false,
     this.needValidation,
     this.suffixWidget,
+    this.fillColor,
   });
   final double? titleFontSize;
   final double? hintFontSize;
@@ -35,6 +36,7 @@ class DefaultPhoneFormField extends StatelessWidget {
   final bool readOnly;
   final bool? needValidation;
   final Widget? suffixWidget;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
@@ -53,13 +55,13 @@ class DefaultPhoneFormField extends StatelessWidget {
           start: .5,
           end: 8,
         ),
-        decoration: const BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 1),
-          borderRadius: BorderRadiusDirectional.only(
+        decoration: BoxDecoration(
+          color: fillColor ?? const Color.fromRGBO(255, 255, 255, 1),
+          borderRadius: const BorderRadiusDirectional.only(
             topStart: Radius.circular(AppRadius.rS),
             bottomStart: Radius.circular(AppRadius.rS),
           ),
-          border: Border(
+          border: const Border(
             left: BorderSide(color: AppColors.borderNeutralSecondary, width: 1),
             right:
                 BorderSide(color: AppColors.borderNeutralSecondary, width: 1),

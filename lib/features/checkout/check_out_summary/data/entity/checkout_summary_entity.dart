@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../../address/address_types/data/model/address_type_model.dart';
+
 class CheckoutSummaryEntity extends Equatable {
   final String message;
   final String code;
@@ -36,6 +38,7 @@ class CheckoutData extends Equatable {
   final DateTime paymentDeadline;
   final int id;
   final int productPrice;
+  final CheckoutShipmentAddressEntity shipmentAddress;
 
   const CheckoutData({
     required this.auctionNumber,
@@ -51,6 +54,7 @@ class CheckoutData extends Equatable {
     required this.paymentDeadline,
     required this.id,
     required this.productPrice,
+    required this.shipmentAddress,
   });
 
   @override
@@ -68,6 +72,7 @@ class CheckoutData extends Equatable {
         paymentDeadline,
         id,
         productPrice,
+        shipmentAddress,
       ];
 }
 
@@ -219,4 +224,21 @@ class CheckoutSellerEntity extends Equatable {
 
   @override
   List<Object?> get props => [fullName, id];
+}
+
+class CheckoutShipmentAddressEntity extends Equatable {
+  final int id;
+  final AddressTypeModel addressType;
+  final dynamic userId;
+  final String description;
+
+  const CheckoutShipmentAddressEntity({
+    required this.id,
+    required this.addressType,
+    required this.userId,
+    required this.description,
+  });
+
+  @override
+  List<Object?> get props => [id, addressType, userId, description];
 }

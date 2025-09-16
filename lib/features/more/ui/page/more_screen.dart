@@ -8,16 +8,6 @@ class MoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout.builder(
-      breakpoints: AppConstant.breakpoints,
-      mobile: (_) => OrientationLayoutBuilder(
-        portrait: (context) => const MoreMobileDesign(),
-        landscape: (context) => const MoreMobileDesign(),
-      ),
-      tablet: (_) => OrientationLayoutBuilder(
-        portrait: (context) => const MoreMobileDesign(),
-        landscape: (context) => const MoreMobileDesign(),
-      ),
-    );
+    return const MoreMobileDesign();
   }
 }

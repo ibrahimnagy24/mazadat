@@ -66,7 +66,7 @@ abstract class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  static TextStyle textMdSemibold = const TextStyle(
+  static TextStyle textMdSemibold = GoogleFonts.cairo(
     fontWeight: FontWeight.w600,
     fontSize: AppFontSizes.fsXs,
     color: AppColors.kPrimary,

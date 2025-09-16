@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../core/services/pagination/pagination_service.dart';
-import '../../auctions/data/entity/auction_entity.dart';
+import '../data/entity/my_purchase_content_entity.dart';
 import '../data/model/my_purchases_model.dart';
 import '../data/repo/my_purchases_repo.dart';
 import 'my_purchases_state.dart';
@@ -22,7 +22,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
 
   late ScrollController controller;
   late SearchEngine _engine;
-  List<AuctionEntity>? model;
+  List<MyPurchaseContentEntity>? model;
 
   late TextEditingController keywordTEC;
 
@@ -44,7 +44,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
       model = [];
       emit(const MyPurchasesLoading());
     } else {
-      emit(MyPurchasesSuccess(auctions: model!, isLoading: true));
+      emit(MyPurchasesSuccess(purchases: model!, isLoading: true));
     }
 
     _engine.query = {'keyword': keywordTEC.text.trim()};
@@ -52,7 +52,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
     response.fold((failure) {
       return emit(MyPurchasesError(failure));
     }, (success) {
-      MyPurchasesModel? res = MyPurchasesModel.fromJson(success.data);
+      MyPurchasesModel res = success;
 
       if (_engine.currentPage == -1) {
         model?.clear();
@@ -68,7 +68,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
       _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
 
       if (model != null && model!.isNotEmpty) {
-        return emit(MyPurchasesSuccess(auctions: model!, isLoading: false));
+        return emit(MyPurchasesSuccess(purchases: model!, isLoading: false));
       } else {
         return emit(const MyPurchasesEmpty());
       }

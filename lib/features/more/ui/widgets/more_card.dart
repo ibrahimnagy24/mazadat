@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
@@ -33,16 +34,27 @@ class MoreCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 16.h,
+          spacing: 16,
           children: [
-            customContainerSvgIcon(
-                imageName: icon,
-                width: 48.w,
-                height: 48.w,
-                radius: 100.w,
-                padding: 12.w,
-                borderColor: background ?? AppColors.kWhite,
-                color: iconColor ?? AppColors.kPrimary),
+            Container(
+              height: 48,
+              width: 48,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color.fromRGBO(250, 250, 250, 1),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    icon,
+                    width: 24,
+                    height: 24,
+                    color: iconColor ?? AppColors.kPrimary,
+                  ),
+                ],
+              ),
+            ),
             Text(
               title,
               textAlign: TextAlign.center,

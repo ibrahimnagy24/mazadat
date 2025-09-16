@@ -1,9 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -29,8 +27,8 @@ class ViewAuctionExceedMaxBiddingAlert extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 24,
         children: [
-          customImageIconSVG(
-            imageName: AppSvg.alert,
+          SvgPicture.asset(
+            AppSvg.alert,
             width: 90,
             height: 90,
           ),
@@ -39,24 +37,29 @@ class ViewAuctionExceedMaxBiddingAlert extends StatelessWidget {
             style: AppTextStyles.heading,
             textAlign: TextAlign.center,
           ),
-          DefaultButton(
-            onPressed: () {
-              Navigator.pop(modalBuildContext);
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                builder: (bottomSheetContext) {
-                  return BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                    child: BiddingOptionsBottomSheet(
-                      cubit: cubit,
-                      bottomSheetContext: bottomSheetContext,
-                    ),
-                  );
-                },
-              );
-            },
-            text: AppStrings.newBidding.tr,
+          SafeArea(
+            top: false,
+            left: false,
+            right: false,
+            child: DefaultButton(
+              onPressed: () {
+                Navigator.pop(modalBuildContext);
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (bottomSheetContext) {
+                    return BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                      child: BiddingOptionsBottomSheet(
+                        cubit: cubit,
+                        bottomSheetContext: bottomSheetContext,
+                      ),
+                    );
+                  },
+                );
+              },
+              text: AppStrings.newBidding.tr,
+            ),
           ),
         ],
       ),

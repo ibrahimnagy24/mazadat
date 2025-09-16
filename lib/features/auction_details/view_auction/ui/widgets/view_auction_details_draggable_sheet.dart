@@ -11,10 +11,10 @@ import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/utility.dart';
-import '../../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../checkout/check_out_address/data/params/checkout_address_route_params.dart';
+import '../../../../checkout/shipment_order_details/data/params/shipment_details_route_params.dart';
 import '../../../auction_joining/ui/pages/validate_joining_auction_view.dart';
 import '../../../../favourites/ui/widgets/favourite_button.dart';
 import '../../data/entity/view_auction_details_entity.dart';
@@ -84,6 +84,7 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
                           _BuildPriceWidget(auction: cubit.auctionDetails!),
                           const SizedBox(height: 16),
                           _buildDescription(cubit.auctionDetails!),
+                          _buildAuctionAllDates(cubit),
                           const SizedBox(height: 16),
                           _buildEstimatedValueOrDates(
                               context, cubit.auctionDetails!),
@@ -96,36 +97,37 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
             },
           ),
         ),
-        Container(
-          height: 114,
-          padding: const EdgeInsetsDirectional.only(
-            start: 24,
-            end: 24,
-            top: 8,
-            bottom: 8,
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.background,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
+        if (cubit.auctionDetails?.cancellationReason == null)
+          Container(
+            padding: const EdgeInsetsDirectional.only(
+              start: 24,
+              end: 24,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26.withValues(alpha: .1),
-                blurRadius: .5,
-                spreadRadius: .5,
-                offset: const Offset(0, -1),
-              )
-            ],
+            decoration: BoxDecoration(
+              color: AppColors.background,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26.withValues(alpha: .1),
+                  blurRadius: .5,
+                  spreadRadius: .5,
+                  offset: const Offset(0, -1),
+                )
+              ],
+            ),
+            child: SafeArea(
+              top: false,
+              left: false,
+              right: false,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(top: 4),
+                child: _ViewAuctionDetailsContent(),
+              ),
+            ),
           ),
-          child: SafeArea(
-            top: false,
-            left: false,
-            right: false,
-            child: _ViewAuctionDetailsContent(),
-          ),
-        ),
       ],
     );
   }
@@ -211,8 +213,152 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
   }
 
   Widget _buildEstimatedValueOrDates(
-      BuildContext context, ViewAuctionDetailsEntity auction) {
-    return auction.isStarted
+    BuildContext context,
+    ViewAuctionDetailsEntity auction,
+  ) {
+    if (auction.cancellationReason != null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MainText(
+            text: AppStrings.auctionDate.tr,
+            style: AppTextStyles.textLgBold
+                .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: SvgPicture.asset(
+                        AppSvg.money,
+                        height: 14.5,
+                        width: 14.5,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: AppStrings.insuranceAmount.tr,
+                            style: AppTextStyles.textMdRegular.copyWith(
+                              color: const Color.fromRGBO(162, 162, 162, 1),
+                            ),
+                          ),
+                          const WidgetSpan(child: SizedBox(width: 4)),
+                          TextSpan(
+                            text: auction.insurancePrice.toString(),
+                            style: AppTextStyles.bodyXsMed.copyWith(
+                              color: const Color.fromRGBO(81, 94, 50, 1),
+                              fontSize: 24,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    SvgPicture.asset(
+                      AppSvg.saudiArabiaSymbol,
+                      height: 20,
+                      width: 20,
+                      color: const Color.fromRGBO(81, 94, 50, 1),
+                    ),
+                  ],
+                ),
+              ),
+              MainText(
+                text: auction.insuranceRefunded
+                    ? AppStrings.recovered.tr
+                    : AppStrings.notRefunded.tr,
+                style: AppTextStyles.textMdBold
+                    .copyWith(color: const Color.fromRGBO(69, 173, 34, 1)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          MainText(
+            text: AppStrings.reasonForCancellation.tr,
+            style: AppTextStyles.textLgBold
+                .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+          ),
+          const SizedBox(height: 12),
+          MainText(
+            text: auction.cancellationReason!,
+            style: AppTextStyles.textMdRegular
+                .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
+          )
+        ],
+      );
+    }
+
+    if (auction.isStarted == true &&
+        auction.isEnded == true &&
+        auction.isJoined &&
+        auction.shipment != null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MainText(
+            text: AppStrings.purchaseValue.tr,
+            style: AppTextStyles.textLgBold
+                .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: SvgPicture.asset(
+                  AppSvg.money,
+                  height: 14.5,
+                  width: 14.5,
+                ),
+              ),
+              const SizedBox(width: 6),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: AppStrings.purchasePrice.tr,
+                      style: AppTextStyles.textMdRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1),
+                      ),
+                    ),
+                    const WidgetSpan(child: SizedBox(width: 4)),
+                    TextSpan(
+                      text: auction.shipment!.totalAmount.toString(),
+                      style: AppTextStyles.bodyXsMed.copyWith(
+                        color: const Color.fromRGBO(81, 94, 50, 1),
+                        fontSize: 24,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              SvgPicture.asset(
+                AppSvg.saudiArabiaSymbol,
+                height: 20,
+                width: 20,
+                color: const Color.fromRGBO(81, 94, 50, 1),
+              ),
+            ],
+          ),
+        ],
+      );
+    }
+    if (auction.startDate != null &&
+        auction.endDate != null &&
+        auction.paymentDeadline != null) {
+      return const SizedBox.shrink();
+    }
+    return auction.isStarted && auction.isEnded == false
         ? _buildEstimatedValue(context, auction)
         : _buildAuctionDates(auction);
   }
@@ -346,6 +492,72 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildAuctionAllDates(ViewAuctionDetailsCubit cubit) {
+    if (cubit.auctionDetails == null) return const SizedBox.shrink();
+    if (cubit.auctionDetails!.startDate == null ||
+        cubit.auctionDetails!.endDate == null ||
+        cubit.auctionDetails!.paymentDeadline == null) {
+      return const SizedBox.shrink();
+    }
+    Widget date(
+      String label,
+      DateTime date,
+    ) =>
+        Row(
+          children: [
+            SvgPicture.asset(
+              AppSvg.calendar,
+              height: 14.5,
+              width: 14.5,
+            ),
+            const SizedBox(width: 6),
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: label,
+                    style: AppTextStyles.textMdRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                  ),
+                  const WidgetSpan(child: SizedBox(width: 4)),
+                  TextSpan(
+                    text: cubit.auctionDetails!.startDate!.toDateFormat(
+                        format: mainAppBloc.isArabic
+                            ? 'd MMMM yyyy \'م\' - h:mm \'م\''
+                            : 'd MMMM yyyy - h:mm a',
+                        locale: mainAppBloc.lang.valueOrNull),
+                    style: AppTextStyles.textLgRegular.copyWith(
+                        color: const Color.fromRGBO(116, 116, 116, 1)),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 16),
+        MainText(
+          text: AppStrings.auctionDate.tr,
+          style: AppTextStyles.textLgBold
+              .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+        ),
+        const SizedBox(height: 12),
+        if (cubit.auctionDetails!.startDate != null)
+          date(
+              AppStrings.auctionStartDate.tr, cubit.auctionDetails!.startDate!),
+        if (cubit.auctionDetails!.startDate != null) const SizedBox(height: 8),
+        if (cubit.auctionDetails!.endDate != null)
+          date(AppStrings.auctionEndDate.tr, cubit.auctionDetails!.endDate!),
+        if (cubit.auctionDetails!.endDate != null) const SizedBox(height: 8),
+        if (cubit.auctionDetails!.paymentDeadline != null)
+          date(AppStrings.purchaseDate.tr,
+              DateTime.parse(cubit.auctionDetails!.paymentDeadline!)),
+      ],
+    );
+  }
 }
 
 class _ViewAuctionDetailsContent extends StatelessWidget {
@@ -366,13 +578,14 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
           );
         }
         if (auction == null) {
-          return const SizedBox();
+          return const SizedBox.shrink();
         }
-
+        if (auction.shipment != null && auction.winner) {
+          return _buildShipmentWidget(auction.shipment!);
+        }
         if (auction.isEnded) {
-          return _buildEndedAuctionButton(auction);
+          return _buildEndedAuctionButton(auction, cubit);
         }
-
         if (auction.isJoined == false) {
           return _buildJoinAuctionButton(context, auction.id);
         }
@@ -386,12 +599,28 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
           return _buildAutoBiddingButton(context, auction);
         }
 
-        return const SizedBox();
+        return const SizedBox.shrink();
       },
     );
   }
 
-  Widget _buildEndedAuctionButton(ViewAuctionDetailsEntity? auction) {
+  Widget _buildShipmentWidget(AuctionShipmentEntity shipment) {
+    return DefaultButton(
+      onPressed: () {
+        CustomNavigator.push(
+          Routes.SHIPMENT_ORDER_DETAILS,
+          extra: ShipmentDetailsRouteParams(
+            shipmentId: shipment.id,
+          ),
+        );
+      },
+      text: AppStrings.orderTracking.tr,
+      textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
+    );
+  }
+
+  Widget _buildEndedAuctionButton(
+      ViewAuctionDetailsEntity? auction, ViewAuctionDetailsCubit? cubit) {
     if (auction == null) {
       return const SizedBox.shrink();
     }
@@ -400,7 +629,10 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
         onPressed: () {
           CustomNavigator.push(
             Routes.CHECKOUT_ADDRESS,
-            extra: CheckoutAddressRouteParams(auctionId: auction.id),
+            extra: CheckoutAddressRouteParams(
+              auctionId: auction.id,
+              cubit: cubit,
+            ),
           );
         },
         text: AppStrings.completeYourPurchase.tr,
@@ -409,12 +641,7 @@ class _ViewAuctionDetailsContent extends StatelessWidget {
     }
     if (auction.winner == false) {
       return DefaultButton(
-        onPressed: () {
-          CustomNavigator.push(
-            Routes.CHECKOUT_ADDRESS,
-            extra: CheckoutAddressRouteParams(auctionId: auction.id),
-          );
-        },
+        isInActive: true,
         text: AppStrings.auctionEnded.tr,
         textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
       );
@@ -655,7 +882,9 @@ class _BuildPriceWidget extends StatelessWidget {
                   SvgPicture.asset(AppSvg.clockIcon),
                   const SizedBox(width: 4),
                   Text(
-                    'No Date Available',
+                    mainAppBloc.isArabic
+                        ? 'لا يوجد تاريخ'
+                        : 'No Date Available',
                     style: AppTextStyles.bodyXsMed
                         .copyWith(color: AppColors.textSecondaryParagraph),
                   ),
@@ -716,7 +945,7 @@ class _BuildPriceWidget extends StatelessWidget {
                   SvgPicture.asset(AppSvg.clockIcon),
                   const SizedBox(width: 4),
                   Text(
-                    'Ends At',
+                    mainAppBloc.isArabic ? 'ينتهي في' : 'Ends At',
                     style: AppTextStyles.bodyXsMed
                         .copyWith(color: AppColors.textSecondaryParagraph),
                   ),
@@ -745,7 +974,7 @@ class _BuildPriceWidget extends StatelessWidget {
             spacing: 4,
             children: [
               Text(
-                'Auction Ended At',
+                mainAppBloc.isArabic ? 'انتهي المزاد في' : 'Auction Ended At',
                 style: AppTextStyles.bodyXsReq.copyWith(
                   color: AppColors.textSecondaryParagraph,
                 ),

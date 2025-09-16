@@ -12,15 +12,11 @@ class FavouritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FavouritesCubit()..favouritesAuctionStatesHandled(SearchEngine()),
+      create: (context) =>
+          FavouritesCubit()..favouritesAuctionStatesHandled(SearchEngine()),
       child: BlocBuilder<FavouritesCubit, FavouritesState>(
         builder: (context, state) {
-          return CustomScreenTypeLayoutWidget(
-            mobilePortrait: (context) =>
-                const ChooseCategoryMobilePortraitDesignScreen(),
-            mobileLandscape: (context) =>
-                const ChooseCategoryMobilePortraitDesignScreen(),
-          );
+          return const ChooseCategoryMobilePortraitDesignScreen();
         },
       ),
     );

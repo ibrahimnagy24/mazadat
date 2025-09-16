@@ -67,6 +67,12 @@ class ViewAuctionDetailsCubit extends Cubit<ViewAuctionDetailsState> {
   }
 
   bool isUserExceedMaxBiddingAmount(BuildContext context) {
+    if (auctionDetails?.isEnded == true) {
+      return false;
+    }
+    if (auctionDetails?.currentBiddingMethod == BiddingMethod.manual) {
+      return false;
+    }
     return auctionDetails?.currentBiddingMethod == BiddingMethod.auto &&
         auctionDetails?.isJoined == true &&
         isIamLastBidder(context) == false &&
@@ -78,26 +84,37 @@ class ViewAuctionDetailsCubit extends Cubit<ViewAuctionDetailsState> {
   Future<void> viewAuctionDetailsStatesHandled() async {
     CustomNavigator.context.loaderOverlay.show();
     emit(const ViewAuctionDetailsLoading());
-    final response = await ViewAuctionDetailsRepo.getAuctionDetails(
-        GetAuctionDetailsParams(id: routeParams.auctionId));
-    response.fold((failure) {
-      CustomNavigator.context.loaderOverlay.hide();
-      return emit(ViewAuctionDetailsError(failure));
-    }, (success) async {
-      CustomNavigator.context.loaderOverlay.hide();
-      auctionDetails = success;
+    try {
+      final response = await ViewAuctionDetailsRepo.getAuctionDetails(
+          GetAuctionDetailsParams(id: routeParams.auctionId));
+      response.fold((failure) {
+        CustomNavigator.context.loaderOverlay.hide();
+        return emit(ViewAuctionDetailsError(failure));
+      }, (success) async {
+        CustomNavigator.context.loaderOverlay.hide();
+        auctionDetails = success;
 
-      return emit(ViewAuctionDetailsSuccess(success));
-    });
+        return emit(ViewAuctionDetailsSuccess(success));
+      });
+    } catch (e) {
+      CustomNavigator.context.loaderOverlay.hide();
+      return emit(ViewAuctionDetailsError(ErrorEntity(
+          message: e.toString(), statusCode: 400, errors: const [])));
+    }
   }
 
   Future<void> auctionBidStatesHandled(AuctionBidParams params) async {
     emit(const AuctionBidLoading());
-    final response = await ViewAuctionDetailsRepo.auctionBid(params);
-    response.fold((failure) {
-      return emit(AuctionBidError(failure));
-    }, (success) async {
-      return emit(AuctionBidSuccess(success));
-    });
+    try {
+      final response = await ViewAuctionDetailsRepo.auctionBid(params);
+      response.fold((failure) {
+        return emit(AuctionBidError(failure));
+      }, (success) async {
+        return emit(AuctionBidSuccess(success));
+      });
+    } catch (e) {
+      return emit(AuctionBidError(ErrorEntity(
+          message: e.toString(), statusCode: 400, errors: const [])));
+    }
   }
 }

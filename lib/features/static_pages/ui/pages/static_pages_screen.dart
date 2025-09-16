@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/app_config/api_names.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/utils/constant/app_constant.dart';
+import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../data/params/static_page_params.dart';
 import '../../logic/static_page_cubit.dart';
 import '../../logic/static_page_state.dart';
+import '../stats/static_page_about_us_success_widget.dart';
 import '../stats/static_page_error_widget.dart';
 import '../stats/static_page_loading_widget.dart';
 import '../stats/static_page_success_widget.dart';
@@ -37,6 +40,9 @@ class StaticPageScreen extends StatelessWidget {
             }
 
             if (state is GetStaticPageSuccess) {
+              if (params.url == Endpoints.aboutUs) {
+                return StaticPageAboutUsSuccessWidget(state.entity);
+              }
               return StaticPageSuccessWidget(state.entity);
             }
 

@@ -7,8 +7,10 @@ import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/utility.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../home/data/enum/displayed_types.dart';
+import '../../../visitor/ui/pages/visitor_screen.dart';
 import '../../logic/my_auctions_cubit.dart';
 import '../../logic/my_auctions_state.dart';
 import '../widgets/my_auctions_displayed_auctions_widget.dart';
@@ -38,52 +40,55 @@ class MyAuctionsScreen extends StatelessWidget {
                 ),
               ),
               actions: [
-                BlocBuilder<MyAuctionsCubit, MyAuctionsState>(
-                  buildWhen: (previous, current) =>
-                      current is MyAuctionsDisplayedTypeChanged,
-                  builder: (context, state) {
-                    final cubit = context.read<MyAuctionsCubit>();
-                    return InkWell(
-                      onTap: () => cubit.updateOrToggleDisplayedType(),
-                      child: Container(
-                        height: 52,
-                        width: 52,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 14,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(255, 255, 255, 0.5),
-                          border: Border.all(
-                            color: AppColors.borderNeutralSecondary,
+                if (Utility.isUserLoggedIn())
+                  BlocBuilder<MyAuctionsCubit, MyAuctionsState>(
+                    buildWhen: (previous, current) =>
+                        current is MyAuctionsDisplayedTypeChanged,
+                    builder: (context, state) {
+                      final cubit = context.read<MyAuctionsCubit>();
+                      return InkWell(
+                        onTap: () => cubit.updateOrToggleDisplayedType(),
+                        child: Container(
+                          height: 52,
+                          width: 52,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 14,
                           ),
-                          borderRadius: BorderRadius.circular(AppRadius.rMd),
+                          decoration: BoxDecoration(
+                            color: const Color.fromRGBO(255, 255, 255, 0.5),
+                            border: Border.all(
+                              color: AppColors.borderNeutralSecondary,
+                            ),
+                            borderRadius: BorderRadius.circular(AppRadius.rMd),
+                          ),
+                          child: SvgPicture.asset(
+                            cubit.displayedType == HomeDisplayedTypes.grid
+                                ? AppSvg.grid
+                                : AppSvg.list,
+                            width: 20,
+                            height: 20,
+                            color: AppColors.textSecondaryParagraph,
+                          ),
                         ),
-                        child: SvgPicture.asset(
-                          cubit.displayedType == HomeDisplayedTypes.grid
-                              ? AppSvg.grid
-                              : AppSvg.list,
-                          width: 20,
-                          height: 20,
-                          color: AppColors.textSecondaryParagraph,
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                      );
+                    },
+                  ),
               ],
             ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
-                  SizedBox(height: 24),
-                  MyAuctionsStatusTabs(),
-                  SizedBox(height: 24),
-                  Expanded(child: MyAuctionsDisplayedAuctionsWidget()),
-                ],
-              ),
-            ),
+            child: !Utility.isUserLoggedIn()
+                ? const VisitorScreen()
+                : const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 24),
+                        MyAuctionsStatusTabs(),
+                        SizedBox(height: 24),
+                        Expanded(child: MyAuctionsDisplayedAuctionsWidget()),
+                      ],
+                    ),
+                  ),
           );
         },
       ),

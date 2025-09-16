@@ -48,7 +48,7 @@ class SearchEngine {
     if (query != null && query is Map<dynamic, dynamic>) {
       data.addAll(query);
     }
-    data['size'] = 10;
+    data['size'] = 1000;
     data['page'] = (currentPage! + 1);
     data.removeWhere((key, value) => value == null);
     return data;

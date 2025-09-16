@@ -1,18 +1,17 @@
 import '../../../../core/services/pagination/pagination_service.dart';
-import '../../../auctions/data/model/auction_model.dart';
+import 'my_purchase_content_model.dart';
 
 class MyPurchasesModel {
-  List<AuctionModel>? content;
+  List<MyPurchaseContentModel>? content;
   SearchEngine? pageable;
 
   MyPurchasesModel({this.content, this.pageable});
 
   MyPurchasesModel.fromJson(Map<String, dynamic> json) {
     if (json['content'] != null) {
-      content = <AuctionModel>[];
+      content = <MyPurchaseContentModel>[];
       json['content'].forEach((v) {
-        content!.add(AuctionModel.fromJsonMyPurchases(v['auction'],
-            orderNumber: v['orderNumber']));
+        content!.add(MyPurchaseContentModel.fromJson(v));
       });
     }
     pageable = json['pageable'] != null ? SearchEngine.fromJson(json) : null;

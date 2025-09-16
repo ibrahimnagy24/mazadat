@@ -42,11 +42,16 @@ class PusherCubit extends Cubit<PusherState> {
 
   void _auctionEnded(PusherEvent event, int auctionId) {
     cprint('🎯 [AUCTION] Processing ended for auction $auctionId');
-    emit(AuctionEnded(auctionId: auctionId));
+    cprint('📄 [AUCTION] Auction ended data: ${event.data}');
+    final int? winnerId = json.decode(event.data)['winnerId'] != null
+        ? int.tryParse(json.decode(event.data)['winnerId'].toString())
+        : null;
+    emit(AuctionEnded(auctionId: auctionId, winnerId: winnerId));
   }
 
   void _auctionStarted(PusherEvent event, int auctionId) {
     cprint('🎯 [AUCTION] Processing started for auction $auctionId');
+    cprint('📄 [AUCTION] Auction started data: ${event.data}');
     emit(AuctionStarted(auctionId: auctionId));
   }
 

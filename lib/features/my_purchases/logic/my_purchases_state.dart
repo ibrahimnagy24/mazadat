@@ -1,5 +1,5 @@
 import '../../../core/shared/entity/error_entity.dart';
-import '../../auctions/data/entity/auction_entity.dart';
+import '../data/entity/my_purchase_content_entity.dart';
 
 sealed class MyPurchasesState {
   const MyPurchasesState();
@@ -18,9 +18,9 @@ class MyPurchasesLoading extends MyPurchasesState {
 }
 
 class MyPurchasesSuccess extends MyPurchasesState {
-  final List<AuctionEntity> auctions;
+  final List<MyPurchaseContentEntity> purchases;
   final bool isLoading;
-  const MyPurchasesSuccess({required this.auctions, this.isLoading = false});
+  const MyPurchasesSuccess({required this.purchases, this.isLoading = false});
 }
 
 class MyPurchasesError extends MyPurchasesState {

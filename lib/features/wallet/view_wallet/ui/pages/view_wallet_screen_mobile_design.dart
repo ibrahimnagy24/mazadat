@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
@@ -31,6 +32,13 @@ class ViewWalletScreenMobileDesign extends StatelessWidget {
           current is ViewMyWalletError,
       builder: (context, state) {
         return CustomScaffoldWidget(
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: AppColors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.light,
+            systemNavigationBarColor: Colors.white,
+            systemNavigationBarIconBrightness: Brightness.dark,
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: SizedBox(

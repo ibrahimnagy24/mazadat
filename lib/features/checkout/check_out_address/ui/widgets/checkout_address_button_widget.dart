@@ -36,6 +36,7 @@ class CheckoutAddressButtonWidget extends StatelessWidget {
             extra: CheckoutSummaryRouteParams(
               auctionId:
                   context.read<CheckoutAddressCubit>().routeParams.auctionId,
+              cubit: context.read<CheckoutAddressCubit>().routeParams.cubit,
             ),
             replace: true,
           );

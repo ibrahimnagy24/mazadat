@@ -29,14 +29,14 @@ class AddressTypesModel {
   }
 }
 
-
 class AddressTypeModel extends AddressTypeEntity {
   const AddressTypeModel({
     required super.id,
     required super.name,
   });
 
-  factory AddressTypeModel.fromJson(Map<String, dynamic> json) => AddressTypeModel(
+  factory AddressTypeModel.fromJson(Map<String, dynamic> json) =>
+      AddressTypeModel(
         id: json['id'],
         name: json['name'],
       );

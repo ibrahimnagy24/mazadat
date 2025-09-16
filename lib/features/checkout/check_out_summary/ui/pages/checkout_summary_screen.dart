@@ -5,12 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/assets/app_images.dart';
 import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
+import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import '../../../check_out_choose_payment/data/params/checkout_choose_payment_route_params.dart';
 import '../../cubit/checkout_summary_cubit.dart';
 import '../../cubit/checkout_summary_state.dart';
 import '../../data/params/checkout_summary_route_params.dart';
@@ -52,7 +54,9 @@ class CheckoutSummaryScreen extends StatelessWidget {
                     right: false,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 24),
+                        horizontal: 24,
+                        vertical: 24,
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,7 +84,7 @@ class CheckoutSummaryScreen extends StatelessWidget {
                               Navigator.pop(modalContext);
                               CustomNavigator.pop();
                             },
-                            text: AppStrings.goToTheHomePage.tr,
+                            text: AppStrings.backToAuctionDetails.tr,
                             textStyle: AppTextStyles.bodyXlBold
                                 .copyWith(color: Colors.white),
                           ),
@@ -89,6 +93,16 @@ class CheckoutSummaryScreen extends StatelessWidget {
                     ),
                   );
                 },
+              );
+            }
+            if (state is ValidateSummaryLoaded) {
+              CustomNavigator.push(
+                Routes.CHECKOUT_CHOOSE_PAYMENT,
+                extra: CheckoutChoosePaymentRouteParams(
+                  auctionId: params.auctionId,
+                  cubit: params.cubit,
+                ),
+                replace: true,
               );
             }
           },

@@ -83,12 +83,24 @@ abstract class Endpoints {
 //--------------------------------CHECK OUT--------------------------------------\\
   static const String checkoutSummary = '/auctions/getOrderSummary';
   static const String validateSummary = '/auctions/validateAuctionCheckout';
+  static const String shipments = '/shipments';
+  static const String paymentList = '/paymentMehods/listPaymentMethods';
 //-------------------------------NOT TESTED------------------------------------\\
+  static const String allPaymentList = '/paymentMehods/listAll';
 
-  static const String paymentList = '/paymentMehods/listAll';
+  static const String selectPaymentMethod = '/checkout/selectPaymentMethod';
+  static const String confirmAuctionCheckout =
+      '/auctions/confirmAuctionCheckout';
+  static const String getAuctionCheckoutPaymentStatus =
+      '/auctions/getAuctionCheckoutPaymentStatus';
   static const String ages = '/age/listAgeLookups';
   static const String auctionStatuses =
       '/utils/getLookup?lookups=AUCTION_STATUS';
   static const String banks = '/banks/searchBanks';
   static const String googleLogin = '/client/google';
+  static const String downloadInvoice = '/reports/generateInvoice';
+  static const String messageTypesContactUs = '/messageTypes/listActive';
+  static const String contactRequestAdd = '/contactRequest/add';
+  static const String publicQuestions = '/publicQuestions/listPublicQuestion?page=0&size=10000';
+  static const String contactConfiguration = '/globals/configurationByCode?code=CONTACT';
 }

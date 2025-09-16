@@ -18,6 +18,8 @@ class AppStrings {
   static const String example = 'Example';
 
   static const String firstName = 'First name';
+  static const String fullName = 'Full name';
+  static const String enterNameHere = 'Enter name here';
   static const String enterFirstName = 'Enter first name here';
   static const String lastName = 'Last name';
   static const String enterLastName = 'Enter last name here';
@@ -262,6 +264,10 @@ class AppStrings {
       'Oops, You  have to agree to commission & insurance first';
   static const String payment = 'Payment';
   static const String selectPaymentMethod = 'Select Payment Method';
+  static const String choosePaymentMethod = 'Choose Payment Method';
+  static const String noPaymentMethodsAvailable =
+      'No payment methods available';
+  static const String continueText = 'Continue';
   static const String youHaveToSelectPaymentMethod =
       'Oops, You  have to select payment method!';
 
@@ -365,4 +371,32 @@ class AppStrings {
   static const String yourInsuranceAmountWillBeDeducted =
       'Your insurance amount will be deducted.';
   static const String goToTheHomePage = 'Go to the home page';
+  static const String backToAuctionDetails = 'Back to auction details';
+  static const String completeTheOrder = 'Complete the order';
+  static const String downloadInvoice = 'Download invoice';
+  static const String orderTracking = 'Order tracking';
+  static const String auctionDate = 'Auction date';
+  static const String purchaseDate = 'Purchase date';
+  static const String purchaseValue = 'Purchase value';
+  static const String purchasePrice = 'Purchase price';
+  static const String reasonForCancellation = 'Reason for cancellation';
+  static const String recovered = 'Recovered';
+  static const String notRefunded = 'Not refunded';
+  static const String paymentTransactionIdNotFound =
+      'Payment transaction ID not found';
+  static const String couldNotLaunchInvoiceUrl = 'Could not launch invoice URL';
+  static const String errorLaunchingInvoice = 'Error launching invoice';
+  static const String invoiceDownloadStarted = 'Invoice download started';
+  static const String whoAreWe = 'Who are we?';
+  static const String contactUs = 'Contact Us';
+  static const String messageType = 'Message Type';
+  static const String message = 'Message';
+  static const String enterMessage = 'Enter your message here';
+  static const String sendMessage = 'Send Message';
+  static const String messageSentSuccessfully = 'Message sent successfully';
+  static const String pleaseSelectMessageType = 'Please select message type';
+  static const String send = 'Send';
+  static const String selectMessageType = 'Select the message type.';
+  static const String frequentlyAskedQuestions = 'Frequently Asked Questions';
+  static const String faq = 'FAQ';
 }

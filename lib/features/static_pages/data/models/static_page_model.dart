@@ -6,13 +6,15 @@ class StaticPageModel extends StaticPageEntity {
     super.title,
     required super.body,
     super.photo,
+    super.lastUpdateDate,
   });
 
   factory StaticPageModel.fromJson(Map<String, dynamic> json) =>
       StaticPageModel(
         id: json['id'],
         title: json['main_title'],
-        body: json['html'],
+        body: json['CONTENT'],
         photo: json['photos'],
+        lastUpdateDate: json['LAST_UPDATE_DATE'],
       );
 }

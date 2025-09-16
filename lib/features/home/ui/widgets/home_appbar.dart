@@ -27,6 +27,8 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
           systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: Color.fromRGBO(64, 77, 38, 1),
             statusBarIconBrightness: Brightness.light,
+            systemNavigationBarColor: Colors.white,
+            systemNavigationBarIconBrightness: Brightness.dark,
           ),
           flexibleSpace: Container(
             decoration: BoxDecoration(

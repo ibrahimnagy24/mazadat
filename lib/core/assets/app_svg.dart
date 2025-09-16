@@ -82,4 +82,8 @@ class AppSvg {
   static const String infoIcon = '$_svgPath/info_icon.svg';
   static const String homeIcon = '$_svgPath/home_icon.svg';
   static const String officePlaza = '$_svgPath/office_plaza.svg';
+  static const String fileValidation = '$_svgPath/file-validation.svg';
+  static const String shippingTruck = '$_svgPath/shipping-truck-02.svg';
+  static const String packageDelivered = '$_svgPath/package-delivered.svg';
+  static const String download = '$_svgPath/download.svg';
 }

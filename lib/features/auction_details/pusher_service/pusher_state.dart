@@ -50,7 +50,8 @@ final class AuctionBidReceived extends PusherState {
 
 final class AuctionEnded extends PusherState {
   final int auctionId;
-  const AuctionEnded({required this.auctionId});
+  final int? winnerId;
+  const AuctionEnded({required this.auctionId, this.winnerId});
 }
 
 final class AuctionStarted extends PusherState {

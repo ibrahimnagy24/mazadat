@@ -22,6 +22,7 @@ class DefaultUsernameFormField extends StatelessWidget {
     this.needUserName = true,
     this.hintText,
     this.titleText,
+    this.fillColor,
   });
   final double? titleFontSize;
   final double? hintFontSize;
@@ -32,6 +33,7 @@ class DefaultUsernameFormField extends StatelessWidget {
   final bool needUserName;
   final String? titleText;
   final String? hintText;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
@@ -46,6 +48,7 @@ class DefaultUsernameFormField extends StatelessWidget {
       style: AppTextStyles.textLgRegular
           .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
       validator: (value) => NameValidator.nameValidator(value),
+      fillColor: fillColor,
     );
   }
 }

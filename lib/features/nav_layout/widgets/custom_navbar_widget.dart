@@ -35,46 +35,50 @@ class CustomNavbarWidget extends StatelessWidget {
       builder: (context, state) {
         final cubit = context.read<NavbarLayoutCubit>();
         return Container(
-            padding: EdgeInsetsDirectional.only(
-                bottom: 4.h, start: AppRadius.rLg.w, end: AppRadius.rLg.w),
-            alignment: Alignment.topCenter,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppRadius.rLg.w),
-                topRight: Radius.circular(AppRadius.rLg.w),
-              ),
-              border: Border.all(color: AppColors.border),
-              color: AppColors.navBarBackground,
+          padding: const EdgeInsetsDirectional.only(
+            bottom: 4,
+            start: AppRadius.rLg,
+            end: AppRadius.rLg,
+          ),
+          alignment: Alignment.topCenter,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(AppRadius.rLg),
+              topRight: Radius.circular(AppRadius.rLg),
             ),
-            child: SafeArea(
-              top: false,
-              child: isPortraitView
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: children(
-                        cubit,
-                        iconHeight: iconHeight,
-                        iconWidth: iconWidth,
-                        selectedItemHeight: selectedItemHeight,
-                        selectedItemWidth: selectedItemWidth,
-                        unselectedItemHeight: unselectedItemHeight,
-                        unselectedItemWidth: unselectedItemWidth,
-                      ),
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: children(
-                        cubit,
-                        iconHeight: iconHeight,
-                        iconWidth: iconWidth,
-                        selectedItemHeight: selectedItemHeight,
-                        selectedItemWidth: selectedItemWidth,
-                        unselectedItemHeight: unselectedItemHeight,
-                        unselectedItemWidth: unselectedItemWidth,
-                      ),
+            border: Border.all(color: AppColors.border),
+            color: AppColors.navBarBackground,
+          ),
+          child: SafeArea(
+            top: false,
+            child: isPortraitView
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: children(
+                      cubit,
+                      iconHeight: iconHeight,
+                      iconWidth: iconWidth,
+                      selectedItemHeight: selectedItemHeight,
+                      selectedItemWidth: selectedItemWidth,
+                      unselectedItemHeight: unselectedItemHeight,
+                      unselectedItemWidth: unselectedItemWidth,
                     ),
-            ));
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: children(
+                      cubit,
+                      iconHeight: iconHeight,
+                      iconWidth: iconWidth,
+                      selectedItemHeight: selectedItemHeight,
+                      selectedItemWidth: selectedItemWidth,
+                      unselectedItemHeight: unselectedItemHeight,
+                      unselectedItemWidth: unselectedItemWidth,
+                    ),
+                  ),
+          ),
+        );
       },
     );
   }

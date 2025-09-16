@@ -51,24 +51,29 @@ class AuctionEndedStatusBottomSheet extends StatelessWidget {
                 ? AppStrings.sorryTheAwardWasNotMadeInYourFavor.tr
                 : AppStrings.theAmountWillBeRefundedToThePaymentMethodUsed.tr,
           ),
-          DefaultButton(
-            onPressed: () {
-              Navigator.pop(modalBuildContext);
-              // showModalBottomSheet(
-              //   context: context,
-              //   isScrollControlled: true,
-              //   builder: (bottomSheetContext) {
-              //     return BackdropFilter(
-              //       filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-              //       child: BiddingOptionsBottomSheet(
-              //         cubit: cubit,
-              //         bottomSheetContext: bottomSheetContext,
-              //       ),
-              //     );
-              //   },
-              // );
-            },
-            text: AppStrings.newBidding.tr,
+          SafeArea(
+            top: false,
+            left: false,
+            right: false,
+            child: DefaultButton(
+              onPressed: () {
+                Navigator.pop(modalBuildContext);
+                // showModalBottomSheet(
+                //   context: context,
+                //   isScrollControlled: true,
+                //   builder: (bottomSheetContext) {
+                //     return BackdropFilter(
+                //       filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                //       child: BiddingOptionsBottomSheet(
+                //         cubit: cubit,
+                //         bottomSheetContext: bottomSheetContext,
+                //       ),
+                //     );
+                //   },
+                // );
+              },
+              text: AppStrings.newBidding.tr,
+            ),
           ),
         ],
       ),

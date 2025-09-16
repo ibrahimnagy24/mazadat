@@ -12,6 +12,7 @@ import '../../../../../core/utils/enums/enums.dart';
 
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
+import '../../../../nav_layout/cubit/navbar_layout_cubit.dart';
 import '../../../verify_code/data/params/verify_code_route_params.dart';
 import '../../logic/login_cubit.dart';
 import '../../logic/login_state.dart';
@@ -43,7 +44,8 @@ class LoginButtonWidget extends StatelessWidget {
             errorEntity: state.error,
           );
 
-          if (state.error.message == 'INACTIVE_ACCOUNT') {
+          if (state.error.message == 'INACTIVE_ACCOUNT' ||
+              state.error.statusCode == 405) {
             CustomNavigator.push(
               Routes.VERIFY_CODE_SCREEN,
               extra: VerifyCodeRouteParams(
@@ -58,6 +60,7 @@ class LoginButtonWidget extends StatelessWidget {
           FocusScope.of(context).unfocus();
 
           if (state.loginEntity.userStatus == UserStatus.active) {
+            context.read<NavbarLayoutCubit>().onItemTapped(0);
             CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
           } else {
             ToastService.showCustom(

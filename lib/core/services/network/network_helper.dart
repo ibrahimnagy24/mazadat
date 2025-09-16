@@ -37,7 +37,7 @@ class CustomTransformer extends DefaultTransformer {
           lowerResponse.contains('<head') ||
           responseString.trim().startsWith('<')) {
         // Return JSON format with HTML content
-        return {'html': responseString};
+        return jsonDecode(responseString);
       }
 
       // Try to parse as JSON

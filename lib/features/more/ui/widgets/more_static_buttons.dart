@@ -8,6 +8,8 @@ import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/animated/grid_list_animator.dart';
+import '../../../contact_us/data/params/contact_us_route_params.dart';
+import '../../../faq/data/params/faq_route_params.dart';
 import '../../../static_pages/data/params/static_page_params.dart';
 import 'more_card.dart';
 
@@ -21,13 +23,25 @@ class MoreStaticButtons extends StatelessWidget {
       data: [
         MoreCard(
           icon: AppSvg.customerService,
-          title: AppStrings.customerService.tr,
+          title: AppStrings.contactUs.tr,
+          onTap: () {
+            CustomNavigator.push(
+              Routes.CONTACT_US,
+              extra: const ContactUsRouteParams(),
+            );
+          },
         ),
         MoreCard(
           icon: AppSvg.quiz,
           title: AppStrings.faqs.tr,
           background: AppColors.borderSecondary.withValues(alpha: 0.5),
-          iconColor: AppColors.kSecondary,
+          iconColor: const Color.fromRGBO(173, 156, 109, 1),
+          onTap: () {
+            CustomNavigator.push(
+              Routes.FAQ,
+              extra: const FaqRouteParams(),
+            );
+          },
         ),
         MoreCard(
           icon: AppSvg.terms,

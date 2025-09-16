@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../category/data/model/category_model.dart';
 
-class ViewAuctionDetailsEntity extends Equatable {
+class ViewAuctionDetailsEntity {
   final int id;
   final String status;
   final String statusLabel;
@@ -32,8 +32,13 @@ class ViewAuctionDetailsEntity extends Equatable {
   final String lastBidderId;
   final BiddingMethod currentBiddingMethod;
   final bool winner;
+  final AuctionShipmentEntity? shipment;
+  final String? paymentDeadline;
+  final String? cancellationReason;
+  final dynamic insurancePrice;
+  final bool insuranceRefunded;
 
-  const ViewAuctionDetailsEntity({
+  ViewAuctionDetailsEntity({
     required this.id,
     required this.status,
     required this.statusLabel,
@@ -63,38 +68,12 @@ class ViewAuctionDetailsEntity extends Equatable {
     required this.lastBidderId,
     required this.currentBiddingMethod,
     required this.winner,
+    required this.shipment,
+    required this.paymentDeadline,
+    required this.cancellationReason,
+    required this.insurancePrice,
+    required this.insuranceRefunded,
   });
-
-  @override
-  List<Object> get props => [
-        id,
-        status,
-        statusLabel,
-        auctionType,
-        auctionCategory,
-        attachments,
-        openingPrice,
-        biddingIncrementAmount,
-        currentBiddingAmount,
-        maxBiddingAmount,
-        auctionDuration,
-        auctionNumber,
-        participant,
-        videoLink,
-        name,
-        description,
-        myfav,
-        isStarted,
-        isEnded,
-        isJoined,
-        firstBid,
-        autoBiddingEnabled,
-        productId,
-        primaryPhoto,
-        lastBidderId,
-        currentBiddingMethod,
-        winner,
-      ];
 }
 
 class AttachmentEntity extends Equatable {
@@ -108,4 +87,21 @@ class AttachmentEntity extends Equatable {
 
   @override
   List<Object> get props => [url, isVideo];
+}
+
+class AuctionShipmentEntity extends Equatable {
+  final String totalAmount;
+  final int id;
+  final String creationDate;
+  final String status;
+
+  const AuctionShipmentEntity({
+    required this.totalAmount,
+    required this.id,
+    required this.creationDate,
+    required this.status,
+  });
+
+  @override
+  List<Object> get props => [totalAmount, id, creationDate, status];
 }

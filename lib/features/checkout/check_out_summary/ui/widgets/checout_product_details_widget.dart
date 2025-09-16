@@ -48,26 +48,27 @@ class ChecoutProductDetailsWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   RichText(
-                      maxLines: 1,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppStrings.auctionNumber.tr,
-                            style: AppTextStyles.textSmRegular.copyWith(
-                                color: const Color.fromRGBO(162, 162, 162, 1)),
+                    maxLines: 1,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: AppStrings.auctionNumber.tr,
+                          style: AppTextStyles.textSmRegular.copyWith(
+                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                        ),
+                        const WidgetSpan(child: SizedBox(width: 4)),
+                        TextSpan(
+                          text: cubit.checkoutSummary!.data.auctionNumber
+                              .toString(),
+                          style: AppTextStyles.textSmRegular.copyWith(
+                            color: const Color.fromRGBO(46, 46, 46, 1),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
                           ),
-                          const WidgetSpan(child: SizedBox(width: 4)),
-                          TextSpan(
-                            text: cubit.checkoutSummary!.data.product.id
-                                .toString(),
-                            style: AppTextStyles.textSmRegular.copyWith(
-                              color: const Color.fromRGBO(46, 46, 46, 1),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      )),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],

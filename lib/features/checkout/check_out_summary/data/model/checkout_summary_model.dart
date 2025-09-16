@@ -1,3 +1,4 @@
+import '../../../../address/address_types/data/model/address_type_model.dart';
 import '../entity/checkout_summary_entity.dart';
 
 class CheckoutSummaryModel extends CheckoutSummaryEntity {
@@ -32,6 +33,7 @@ class CheckoutDataModel extends CheckoutData {
     required super.paymentDeadline,
     required super.id,
     required super.productPrice,
+    required super.shipmentAddress,
   });
 
   factory CheckoutDataModel.fromJson(Map<String, dynamic> json) =>
@@ -49,6 +51,8 @@ class CheckoutDataModel extends CheckoutData {
         paymentDeadline: DateTime.parse(json['paymentDeadline']),
         id: json['id'],
         productPrice: json['productPrice'],
+        shipmentAddress:
+            CheckoutShipmentAddressModel.fromJson(json['shipmentAddress']),
       );
 }
 
@@ -167,5 +171,22 @@ class CheckoutSellerModel extends CheckoutSellerEntity {
       CheckoutSellerModel(
         fullName: json['fullName'],
         id: json['id'],
+      );
+}
+
+class CheckoutShipmentAddressModel extends CheckoutShipmentAddressEntity {
+  const CheckoutShipmentAddressModel({
+    required super.id,
+    required super.addressType,
+    required super.userId,
+    required super.description,
+  });
+
+  factory CheckoutShipmentAddressModel.fromJson(Map<String, dynamic> json) =>
+      CheckoutShipmentAddressModel(
+        id: json['id'],
+        addressType: AddressTypeModel.fromJson(json['addressType']),
+        userId: json['userId'],
+        description: json['desc'],
       );
 }

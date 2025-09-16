@@ -20,12 +20,20 @@ import '../../features/auth/verify_code/data/params/verify_code_route_params.dar
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
 import '../../features/checkout/check_out_address/data/params/checkout_address_route_params.dart';
 import '../../features/checkout/check_out_address/ui/page/checkout_address_screen.dart';
+import '../../features/checkout/check_out_choose_payment/data/params/checkout_choose_payment_route_params.dart';
+import '../../features/checkout/check_out_choose_payment/ui/pages/checkout_choose_payment_screen.dart';
 import '../../features/checkout/check_out_summary/data/params/checkout_summary_route_params.dart';
 import '../../features/checkout/check_out_summary/ui/pages/checkout_summary_screen.dart';
+import '../../features/checkout/shipment_order_details/data/params/shipment_details_route_params.dart';
+import '../../features/checkout/shipment_order_details/ui/pages/shipment_order_details_screen.dart';
+import '../../features/contact_us/data/params/contact_us_route_params.dart';
+import '../../features/contact_us/ui/pages/contact_us_screen.dart';
 import '../../features/delete_account/ui/widgets/delete_account_imports.dart';
 import '../../features/edit_bank_details/ui/widgets/edit_bank_details_imports.dart';
 import '../../features/edit_favourite_categories/ui/widgets/edit_favourite_categories_imports.dart';
 import '../../features/edit_profile/ui/widgets/edit_profile_imports.dart';
+import '../../features/faq/data/params/faq_route_params.dart';
+import '../../features/faq/ui/pages/faq_screen.dart';
 import '../../features/home/ui/pages/home_screen.dart';
 import '../../features/more/ui/page/more_screen.dart';
 import '../../features/my_bundles/ui/page/my_bundles_screen.dart';
@@ -210,7 +218,19 @@ final GoRouter appRouter = GoRouter(
         return StaticPageScreen(params: params);
       },
     ),
-
+    GoRoute(
+      path: '/contact-us',
+      name: Routes.CONTACT_US,
+      builder: (context, state) => ContactUsScreen(
+        params: state.extra as ContactUsRouteParams,
+      ),
+    ),
+    GoRoute(
+      path: '/faq',
+      name: Routes.FAQ,
+      builder: (context, state) =>
+          FaqScreen(params: state.extra as FaqRouteParams),
+    ),
     GoRoute(
       path: '/zoom-image',
       name: Routes.ZOOM_IN_IMAGE,
@@ -289,6 +309,22 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         final routeParams = state.extra as CheckoutSummaryRouteParams;
         return CheckoutSummaryScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/checkout-choose-payment',
+      name: Routes.CHECKOUT_CHOOSE_PAYMENT,
+      builder: (context, state) {
+        final routeParams = state.extra as CheckoutChoosePaymentRouteParams;
+        return CheckoutChoosePaymentScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/shipment-order-details',
+      name: Routes.SHIPMENT_ORDER_DETAILS,
+      builder: (context, state) {
+        final routeParams = state.extra as ShipmentDetailsRouteParams;
+        return ShipmentOrderDetailsScreen(params: routeParams);
       },
     ),
 

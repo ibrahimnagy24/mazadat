@@ -10,7 +10,7 @@ abstract class PaymentMethodsRepo {
   static Future<Either<ErrorEntity, Response>> getPaymentList() async {
     try {
       final response = await Network().request(
-        Endpoints.paymentList,
+        Endpoints.allPaymentList,
         method: ServerMethods.GET,
       );
 

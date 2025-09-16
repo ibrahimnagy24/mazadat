@@ -49,13 +49,14 @@ class CheckoutDeliveryAddressWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'المنزل',
+                      cubit.checkoutSummary!.data.shipmentAddress.addressType
+                          .name,
                       style: AppTextStyles.textLgRegular.copyWith(
                           color: const Color.fromRGBO(116, 116, 116, 1)),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'المنزل',
+                      cubit.checkoutSummary!.data.shipmentAddress.description,
                       style: AppTextStyles.textMdRegular.copyWith(
                           color: const Color.fromRGBO(162, 162, 162, 1)),
                     ),

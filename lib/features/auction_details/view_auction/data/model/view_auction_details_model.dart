@@ -1,10 +1,11 @@
 import '../../../../../core/utils/enums/enums.dart';
 import '../../../../../core/utils/enums/enums_converter.dart';
+import '../../../../../core/utils/utility.dart';
 import '../../../../category/data/model/category_model.dart';
 import '../entity/view_auction_details_entity.dart';
 
 class ViewAuctionDetailsModel extends ViewAuctionDetailsEntity {
-  const ViewAuctionDetailsModel({
+  ViewAuctionDetailsModel({
     required super.id,
     required super.status,
     required super.statusLabel,
@@ -34,6 +35,11 @@ class ViewAuctionDetailsModel extends ViewAuctionDetailsEntity {
     required super.lastBidderId,
     required super.currentBiddingMethod,
     required super.winner,
+    required super.shipment,
+    required super.paymentDeadline,
+    required super.cancellationReason,
+    required super.insurancePrice,
+    required super.insuranceRefunded,
   });
 
   factory ViewAuctionDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -93,6 +99,13 @@ class ViewAuctionDetailsModel extends ViewAuctionDetailsEntity {
               BiddingMethod.manual
           : BiddingMethod.manual,
       winner: json['winner'] ?? false,
+      shipment: checkFromMap(json['shipment'])
+          ? AuctionShipmentModel.fromJson(json['shipment'])
+          : null,
+      paymentDeadline: json['paymentDeadline']?.toString(),
+      cancellationReason: json['cancellationReason'],
+      insurancePrice: json['insurancePrice'],
+      insuranceRefunded: json['insuranceRefunded'],
     );
   }
 }
@@ -125,6 +138,24 @@ class AttachmentModel extends AttachmentEntity {
     return AttachmentModel(
       url: url ?? this.url,
       isVideo: isVideo ?? this.isVideo,
+    );
+  }
+}
+
+class AuctionShipmentModel extends AuctionShipmentEntity {
+  const AuctionShipmentModel({
+    required super.totalAmount,
+    required super.id,
+    required super.creationDate,
+    required super.status,
+  });
+
+  factory AuctionShipmentModel.fromJson(Map<String, dynamic> json) {
+    return AuctionShipmentModel(
+      totalAmount: json['totalAmount'],
+      id: json['id'],
+      creationDate: json['creationDate'],
+      status: json['status'],
     );
   }
 }

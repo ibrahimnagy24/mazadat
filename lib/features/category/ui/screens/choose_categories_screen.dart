@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../logic/category_cubit.dart';
@@ -11,7 +10,6 @@ import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../auth/shared/auth_header_content.dart';
 import '../../../auth/shared/auth_title_image_banner_widget.dart';

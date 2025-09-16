@@ -20,6 +20,7 @@ class DefaultEmailFormField extends StatelessWidget {
     this.controller,
     this.readOnly = false,
     this.needValidation = true,
+    this.fillColor,
   });
   final double? titleFontSize;
   final double? hintFontSize;
@@ -28,6 +29,7 @@ class DefaultEmailFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool readOnly;
   final bool needValidation;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
@@ -46,6 +48,7 @@ class DefaultEmailFormField extends StatelessWidget {
           .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
       style: AppTextStyles.textLgRegular
           .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+      fillColor: fillColor,
     );
   }
 }

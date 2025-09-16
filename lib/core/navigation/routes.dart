@@ -8,6 +8,8 @@ class Routes {
 //---------------------------------------MORE---------------------------\\
   static const SETTINGS_SCREEN = 'SETTINGS_SCREEN';
   static const STATIC_PAGE = 'STATIC_PAGE';
+  static const CONTACT_US = 'CONTACT_US';
+  static const FAQ = 'FAQ';
   //------------------------------------AUTHENTICATION---------------------------\\
   static const LOGIN_SCREEN = 'LOGIN_SCREEN';
   static const REGISTER_SCREEN = 'REGISTER_SCREEN';
@@ -49,4 +51,6 @@ class Routes {
 //-----------------------------------CHECKOUT---------------------------\\
   static const CHECKOUT_ADDRESS = 'CHECKOUT_ADDRESS';
   static const CHECKOUT_SUMMARY = 'CHECKOUT_SUMMARY';
+  static const CHECKOUT_CHOOSE_PAYMENT = 'CHECKOUT_CHOOSE_PAYMENT';
+  static const SHIPMENT_ORDER_DETAILS = 'SHIPMENT_ORDER_DETAILS';
 }
