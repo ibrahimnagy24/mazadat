@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/services/pagination/pagination_service.dart';
-import '../../../../core/shared/entity/error_entity.dart';
-import '../../../../core/utils/extensions/extensions.dart';
-import '../../../../core/utils/extensions/media_query_helper.dart';
-import '../../../../core/utils/widgets/animated/animated_widget.dart';
-import '../../../../core/utils/widgets/animated/grid_list_animator.dart';
-import '../../../../core/utils/widgets/custom_loading_text.dart';
+import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/navigation/routes.dart';
+import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
-import '../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
-import '../../../auctions/ui/widgets/grid_auction_card.dart';
-import '../../../auctions/ui/widgets/list_auction_card.dart';
+import '../../../../core/utils/widgets/loading/logo_loading.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
+import '../../data/entity/auction_entity.dart';
+import '../../data/enum/display_types.dart';
 import '../../logic/my_sales_cubit.dart';
 import '../../logic/my_sales_state.dart';
+import 'auction_card_widget.dart';
+import 'stacked_auction_card_widget.dart';
 
 class MySalesBody extends StatelessWidget {
   const MySalesBody({super.key});
@@ -22,97 +21,157 @@ class MySalesBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<MySalesCubit>();
     return Expanded(
-        child: StreamBuilder(
-            stream: context.read<MySalesCubit>().listingStream,
-            builder: (c, snapshot) {
-              return BlocBuilder<MySalesCubit, MySalesState>(
-                builder: (context, state) {
-                  if (state is MySalesLoading) {
-                    return snapshot.data == true
-                        ? ListAnimator(
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
-                            data: List.generate(
-                              10,
-                              (i) => Padding(
-                                padding: EdgeInsets.symmetric(vertical: 8.h),
-                                child: CustomShimmerContainer(
-                                  height: 120.h,
-                                  width: MediaQueryHelper.width,
-                                ),
-                              ),
-                            ),
-                          )
-                        : GridListAnimator(
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
-                            data: List.generate(
-                              20,
-                              (i) => CustomShimmerContainer(
-                                height: 120.h,
-                                width: MediaQueryHelper.width,
-                              ),
-                            ),
-                            crossAxisCount: 2,
-                            aspectRatio: 0.9,
-                          );
-                  }
-                  if (state is MySalesError ||
-                      state is MySalesEmpty) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: ErrorMessageWidget(
-                        error: state is MySalesError
-                            ? state.error
-                            : const ErrorEntity(
-                                message: 'no Data',
-                                statusCode: 200,
-                                errors: []),
-                        onTap: () {
-                          cubit.mySalesStatesHandled(SearchEngine());
-                        },
-                      ),
-                    );
-                  }
-                  if (state is MySalesSuccess) {
-                    return Column(
-                      children: [
-                        Expanded(
-                            child: snapshot.data == true
-                                ? ListAnimator(
-                                    controller: cubit.controller,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 24.w),
-                                    data: List.generate(
-                                      state.auctions.length,
-                                      (i) => Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.h),
-                                        child: ListAuctionCard(
-                                            auction: state.auctions[i]),
-                                      ),
-                                    ),
-                                  )
-                                : GridListAnimator(
-                                    controller: cubit.controller,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 24.w),
-                                    data: List.generate(
-                                        state.auctions.length,
-                                        (i) => GridAuctionCard(
-                                            fromMyPurchase: true,
-                                            auction: state.auctions[i])),
-                                    crossAxisCount: 2,
-                                    aspectRatio: 0.9,
-                                  )),
-                        CustomLoadingText(loading: state.isLoading),
-                      ],
-                    );
-                  }
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: const Text('no state provided'),
+      child: BlocBuilder<MySalesCubit, MySalesState>(
+        buildWhen: (previous, current) =>
+            current is MySalesLoading ||
+            current is MySalesSuccess ||
+            current is MySalesError ||
+            current is MySalesDisplayTypeChanged ||
+            current is MySalesSearchLoading ||
+            current is MySalesSearchSuccess ||
+            current is MySalesSearchError ||
+            current is MySalesSearchEmpty,
+        builder: (context, state) {
+          // Determine which data to display
+          List<AuctionEntity>? currentData;
+          bool isSearching = cubit.currentSearchQuery.isNotEmpty;
+
+          if (isSearching) {
+            // Use search results if searching
+            if (state is MySalesSearchSuccess) {
+              currentData = state.searchResults;
+            } else if (cubit.searchResults != null) {
+              currentData = cubit.searchResults;
+            }
+          } else {
+            // Use regular auctions data
+            if (state is MySalesSuccess) {
+              currentData = state.auctions;
+            } else if (cubit.auctions != null) {
+              currentData = cubit.auctions;
+            }
+          }
+
+          // Loading states
+          if (state is MySalesLoading) {
+            return const LogoLoadingWidget();
+          }
+
+          // Error states
+          if (state is MySalesError) {
+            return Center(
+              child: ErrorMessageWidget(
+                error: state.error,
+                onTap: () {
+                  cubit.getAuctions();
+                },
+                message: state.error.message,
+              ),
+            );
+          }
+
+          if (state is MySalesSearchError) {
+            return Center(
+              child: ErrorMessageWidget(
+                error: state.error,
+                onTap: () {
+                  cubit.searchAuctions(cubit.currentSearchQuery);
+                },
+                message: state.error.message,
+              ),
+            );
+          }
+
+          // Empty states
+          if (state is MySalesSearchEmpty ||
+              (isSearching && (currentData == null || currentData.isEmpty))) {
+            return ResponsiveEmptyWidget(
+              onTap: () {
+                cubit.searchAuctions(cubit.currentSearchQuery);
+              },
+              title: 'No Search Results'.tr,
+              subtitle: 'No auctions found for your search'.tr,
+            );
+          }
+
+          if (!isSearching && (currentData == null || currentData.isEmpty)) {
+            return ResponsiveEmptyWidget(
+              onTap: () {
+                cubit.getAuctions();
+              },
+              title: 'No Auctions'.tr,
+              subtitle: 'No auctions found'.tr,
+            );
+          }
+
+          // Data display
+          if (currentData != null && currentData.isNotEmpty) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeInOut,
+                    ),
+                    child: child,
                   );
                 },
-              );
-            }));
+                child: cubit.displayType == MySalesDisplayTypes.list
+                    ? ListView.builder(
+                        key: const ValueKey('list_view'),
+                        itemCount: currentData.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: StackedAuctionCardWidget(
+                              auction: currentData![index],
+                              height: 210,
+                              onTap: () {
+                                CustomNavigator.push(
+                                  Routes.VIEW_AUCTION_DETAILS,
+                                  extra: ViewAuctionDetailsRouteParams(
+                                    auctionId: currentData![index].id,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      )
+                    : GridView.builder(
+                        key: const ValueKey('grid_view'),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          mainAxisExtent: 213,
+                        ),
+                        itemBuilder: (context, index) {
+                          return AuctionCardWidget(
+                            auction: currentData![index],
+                            onTap: () {
+                              CustomNavigator.push(
+                                Routes.VIEW_AUCTION_DETAILS,
+                                extra: ViewAuctionDetailsRouteParams(
+                                  auctionId: currentData![index].id,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        itemCount: currentData.length,
+                      ),
+              ),
+            );
+          }
+
+          return const SizedBox.shrink();
+        },
+      ),
+    );
   }
 }

@@ -38,7 +38,7 @@ abstract class Endpoints {
   static const String getSearch = homeAuction;
 
   static const String myPurchases = '/shipments/searchMyPurchases';
-  static const String mySales = '/auctions/homePageFilterAuction';
+  static const String filterMySales = '/auctions/filterMySales';
 
 //----------------------------------WALLET--------------------------------------\\
   static const String walletHistory = '/wallet/viewMyWallet';

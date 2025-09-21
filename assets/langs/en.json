@@ -327,5 +327,13 @@
   "Please select message type": "Please select message type",
   "Message Type": "Message Type",
   "Frequently Asked Questions": "Frequently Asked Questions",
-  "FAQ": "FAQ"
+  "FAQ": "FAQ",
+  "Shipping date": "Shipping date",
+  "Latest update": "Latest update",
+  "Search by auction name": "Search by auction name",
+  "No Search Results": "No Search Results",
+  "No auctions found for your search": "No auctions found for your search",
+  "No Shipments": "No Shipments",
+  "No shipments found": "No shipments found",
+  "No shipments found for your search": "No shipments found for your search"
 }

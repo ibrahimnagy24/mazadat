@@ -8,7 +8,6 @@ import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
-import '../../../../core/global_favourites/global_favourites.dart';
 import '../../../home/data/enum/displayed_types.dart';
 import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
 import '../../logic/my_auctions_cubit.dart';
@@ -64,36 +63,24 @@ class MyAuctionsDisplayedAuctionsWidget extends StatelessWidget {
                       mainAxisExtent: 213,
                     ),
                     itemBuilder: (context, index) {
-                      return BlocBuilder<GlobalFavouritesCubit,
-                          GlobalFavouritesState>(
-                        bloc: GlobalFavouritesService.getCubit(),
-                        builder: (context, state) {
-                          final auctionId = cubit.myAuctions![index].id;
-                          final isFavourite =
-                              GlobalFavouritesService.isFavourite(auctionId);
-
-                          return AuctionCardWidget(
-                            auctionId: cubit.myAuctions![index].id,
-                            image: cubit.myAuctions![index].primaryPhoto,
-                            auctionType: cubit.myAuctions![index].auctionType,
-                            auctionStatus:
-                                cubit.myAuctions![index].auctionStatus,
-                            needFavouriteIcon: true,
-                            isFav: isFavourite,
-                            startDate: cubit.myAuctions![index].startDate,
-                            endDate: cubit.myAuctions![index].endDate,
-                            fianancePrice:
-                                cubit.myAuctions![index].openingPrice,
-                            onTap: () {
-                              CustomNavigator.push(
-                                Routes.VIEW_AUCTION_DETAILS,
-                                extra: ViewAuctionDetailsRouteParams(
-                                  auctionId: cubit.myAuctions![index].id,
-                                  primaryImage:
-                                      cubit.myAuctions![index].primaryPhoto,
-                                ),
-                              );
-                            },
+                      return AuctionCardWidget(
+                        auctionId: cubit.myAuctions![index].id,
+                        image: cubit.myAuctions![index].primaryPhoto,
+                        auctionType: cubit.myAuctions![index].auctionType,
+                        auctionStatus: cubit.myAuctions![index].auctionStatus,
+                        needFavouriteIcon: true,
+                        isFav: false,
+                        startDate: cubit.myAuctions![index].startDate,
+                        endDate: cubit.myAuctions![index].endDate,
+                        fianancePrice: cubit.myAuctions![index].openingPrice,
+                        onTap: () {
+                          CustomNavigator.push(
+                            Routes.VIEW_AUCTION_DETAILS,
+                            extra: ViewAuctionDetailsRouteParams(
+                              auctionId: cubit.myAuctions![index].id,
+                              primaryImage:
+                                  cubit.myAuctions![index].primaryPhoto,
+                            ),
                           );
                         },
                       );
@@ -104,10 +91,6 @@ class MyAuctionsDisplayedAuctionsWidget extends StatelessWidget {
                     key: const ValueKey('list_view'),
                     itemCount: cubit.myAuctions!.length,
                     itemBuilder: (context, index) {
-                      final auctionId = cubit.myAuctions![index].id;
-                      final isFavourite =
-                          GlobalFavouritesService.isFavourite(auctionId);
-
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16),
                         child: StackedAuctionCardWidget(
@@ -130,7 +113,7 @@ class MyAuctionsDisplayedAuctionsWidget extends StatelessWidget {
                             );
                           },
                           height: 213,
-                          isFav: isFavourite,
+                          isFav: false,
                         ),
                       );
                     },

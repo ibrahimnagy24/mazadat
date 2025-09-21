@@ -10,6 +10,7 @@ import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
+import '../../../../features/favourites/ui/widgets/favourite_button.dart';
 import '../../../utils/enums/enums.dart';
 
 class AuctionCardWidget extends StatelessWidget {
@@ -138,6 +139,7 @@ class AuctionCardWidget extends StatelessWidget {
               isFav: isFav,
               startDate: startDate,
               endDate: endDate,
+              auctionId: auctionId,
             ),
           ],
         ),
@@ -152,11 +154,13 @@ class _AuctionInfo extends StatelessWidget {
     required this.isFav,
     this.startDate,
     this.endDate,
+    required this.auctionId,
   });
   final bool needFavouriteIcon;
   final bool isFav;
   final DateTime? startDate;
   final DateTime? endDate;
+  final int auctionId;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -186,11 +190,20 @@ class _AuctionInfo extends StatelessWidget {
           ),
         if (needFavouriteIcon) const SizedBox(width: 16),
         if (needFavouriteIcon)
-          SvgPicture.asset(
-            isFav ? AppSvg.fillFav : AppSvg.fav,
-            width: 15,
-            height: 15,
+          FavouriteButton(
+            id: auctionId,
+            isFav: isFav,
+            // height: 25,
+            // width: 25,
+            favIconHeight: 15,
+            favIconWidth: 15,
+            withBackGround: false,
           ),
+        // SvgPicture.asset(
+        //   isFav ? AppSvg.fillFav : AppSvg.fav,
+        //   width: 15,
+        //   height: 15,
+        // ),
       ],
     );
   }

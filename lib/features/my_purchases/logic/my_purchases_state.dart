@@ -1,5 +1,6 @@
 import '../../../core/shared/entity/error_entity.dart';
-import '../data/entity/my_purchase_content_entity.dart';
+import '../data/entity/shipment_entity.dart';
+import '../data/enum/display_types.dart';
 
 sealed class MyPurchasesState {
   const MyPurchasesState();
@@ -9,21 +10,39 @@ final class MyPurchasesInitial extends MyPurchasesState {
   const MyPurchasesInitial();
 }
 
-final class MyPurchasesEmpty extends MyPurchasesState {
-  const MyPurchasesEmpty();
-}
-
 class MyPurchasesLoading extends MyPurchasesState {
   const MyPurchasesLoading();
 }
 
 class MyPurchasesSuccess extends MyPurchasesState {
-  final List<MyPurchaseContentEntity> purchases;
-  final bool isLoading;
-  const MyPurchasesSuccess({required this.purchases, this.isLoading = false});
+  final List<ShipmentEntity> shipments;
+  const MyPurchasesSuccess({required this.shipments});
 }
 
 class MyPurchasesError extends MyPurchasesState {
   final ErrorEntity error;
   const MyPurchasesError(this.error);
+}
+
+final class MyPurchasesDisplayTypeChanged extends MyPurchasesState {
+  final MyPurchasesDisplayTypes displayType;
+  const MyPurchasesDisplayTypeChanged({required this.displayType});
+}
+
+class MyPurchasesSearchLoading extends MyPurchasesState {
+  const MyPurchasesSearchLoading();
+}
+
+class MyPurchasesSearchSuccess extends MyPurchasesState {
+  final List<ShipmentEntity> searchResults;
+  const MyPurchasesSearchSuccess({required this.searchResults});
+}
+
+class MyPurchasesSearchError extends MyPurchasesState {
+  final ErrorEntity error;
+  const MyPurchasesSearchError(this.error);
+}
+
+class MyPurchasesSearchEmpty extends MyPurchasesState {
+  const MyPurchasesSearchEmpty();
 }

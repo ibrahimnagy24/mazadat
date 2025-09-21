@@ -15,12 +15,7 @@ class ChangePhoneNumberScreen extends StatelessWidget {
         builder: (context, state) {
           return Form(
             key: context.read<ChangePhoneNumberCubit>().formKey,
-            child: CustomScreenTypeLayoutWidget(
-              mobilePortrait: (context) =>
-                  const ChangePhoneNumberScreenMobilePortraitDesignScreen(),
-              mobileLandscape: (context) =>
-                  const ChangePhoneNumberScreenMobilePortraitDesignScreen(),
-            ),
+            child: const ChangePhoneNumberScreenMobilePortraitDesignScreen(),
           );
         },
       ),

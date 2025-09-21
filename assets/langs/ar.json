@@ -327,5 +327,13 @@
   "Please select message type": "الرجاء تحديد نوع الرسالة",
   "Message Type": "نوع الرسالة",
   "Frequently Asked Questions": "الأسئله الشائعه",
-  "FAQ": "الأسئله الشائعه"
+  "FAQ": "الأسئله الشائعه",
+  "Shipping date": "تاريخ الشحن",
+  "Latest update": "اخر تحديث",
+  "Search by auction name": "البحث حسب اسم المزاد",
+  "No Search Results": "لا توجد نتائج بحث",
+  "No auctions found for your search": "لم يتم العثور على مزادات لبحثك",
+  "No Shipments": "لا شحنات",
+  "No shipments found": "لم يتم العثور على شحنات",
+  "No shipments found for your search": "لم يتم العثور على شحنات لبحثك"
 }

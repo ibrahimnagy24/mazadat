@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/form_fields/default_email_form_field.dart';
@@ -13,6 +14,7 @@ import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/validations/validator.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/shared/widgets/gender_input.dart';
+import '../../../auth/change_phone_number/data/params/change_phone_number_route_params.dart';
 import '../../../selectors/age/ui/page/age_input.dart';
 import '../../../address/city/ui/page/city_input.dart';
 import '../../logic/edit_profile_cubit.dart';
@@ -121,16 +123,20 @@ class EditProfileBody extends StatelessWidget {
                 controller: context.read<EditProfileCubit>().phone,
                 readOnly: true,
                 suffixWidget: IconButton(
-                    onPressed: () => CustomNavigator.push(
-                        Routes.CHANGE_PHONE_NUMBER_SCREEN,
-                        extra:
-                            context.read<EditProfileCubit>().phone.text.trim()),
-                    icon: customImageIconSVG(
-                      imageName: AppSvg.edit,
-                      width: 16.w,
-                      height: 16.w,
-                      color: AppColors.kPrimary,
-                    )),
+                  onPressed: () => CustomNavigator.push(
+                    Routes.CHANGE_PHONE_NUMBER_SCREEN,
+                    extra: ChangePhoneNumberRouteParams(
+                      oldPhone:
+                          context.read<EditProfileCubit>().phone.text.trim(),
+                    ),
+                  ),
+                  icon: SvgPicture.asset(
+                    AppSvg.edit,
+                    width: 16,
+                    height: 16,
+                    color: AppColors.kPrimary,
+                  ),
+                ),
               ),
               16.sbH,
 

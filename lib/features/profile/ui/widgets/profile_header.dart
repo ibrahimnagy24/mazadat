@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/assets/app_svg.dart';
 import '../../../../core/shared/widgets/custom_back_icon.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
@@ -14,19 +16,23 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQueryHelper.width,
-      padding: EdgeInsetsDirectional.only(
-        start: 18.w,
-        end: 18.w,
-        top: 24.h,
-        bottom: 100.h,
+      height: 220,
+      padding: const EdgeInsetsDirectional.only(
+        start: 18,
+        end: 18,
+        top: 24,
+        bottom: 24,
       ),
       decoration: const BoxDecoration(
-          // image: DecorationImage(
-          //     image: AssetImage(
-          //       AppImages.authHeaderBk,
-          //     ),
-          //     fit: BoxFit.cover),
-          ),
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(64, 77, 38, 1),
+            Color.fromRGBO(24, 28, 16, 1),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: SafeArea(
         child: Row(
           spacing: 8.w,

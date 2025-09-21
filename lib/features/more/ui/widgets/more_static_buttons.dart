@@ -71,7 +71,7 @@ class MoreStaticButtons extends StatelessWidget {
         ),
       ],
       crossAxisCount: 2,
-      aspectRatio: 1.1,
+      aspectRatio: 1.0,
     );
   }
 }

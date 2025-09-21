@@ -79,14 +79,16 @@ class RechargeWalletStatusWidget extends StatelessWidget {
             style: AppTextStyles.textLgRegular,
           ),
           const SizedBox(height: 24),
-          DefaultButton(
-            backgroundColor: AppColors.buttonBackgroundPrimaryDefault,
-            text: AppStrings.good.tr,
-            onPressed: () {
-              Navigator.pop(dialogContext);
-            },
-            textStyle:
-                AppTextStyles.textXLBold.copyWith(color: AppColors.kWhite),
+          SafeArea(
+            child: DefaultButton(
+              backgroundColor: AppColors.buttonBackgroundPrimaryDefault,
+              text: AppStrings.good.tr,
+              onPressed: () {
+                Navigator.pop(dialogContext);
+              },
+              textStyle:
+                  AppTextStyles.textXLBold.copyWith(color: AppColors.kWhite),
+            ),
           )
         ],
       ),

@@ -147,28 +147,31 @@ class _RechargeWalletBottomSheetWidgetState
                     ),
                   ),
                   const SizedBox(height: 48),
-                  DefaultButton(
-                    text: AppStrings.charge.tr,
-                    onPressed: () {
-                      if (!_formKey.currentState!.validate()) {
-                        return;
-                      }
-                      if (_selectedPayment == null ||
-                          _selectedPayment!.id == null) {
-                        showErrorToast(AppStrings.pleaseChoosePaymentMethod.tr);
-                        return;
-                      }
-                      widget.cubit.chargeWalletStatesHandled(
-                        ChargeBalanceParams(
-                          amount: _transactionAmountController.text,
-                          paymentId: _selectedPayment!.id!,
-                        ),
-                      );
-                    },
-                    backgroundColor: AppColors.buttonBackgroundPrimaryDefault,
-                    textColor: AppColors.kWhite,
-                    textStyle: AppTextStyles.textXLBold.copyWith(
-                      color: AppColors.kWhite,
+                  SafeArea(
+                    child: DefaultButton(
+                      text: AppStrings.charge.tr,
+                      onPressed: () {
+                        if (!_formKey.currentState!.validate()) {
+                          return;
+                        }
+                        if (_selectedPayment == null ||
+                            _selectedPayment!.id == null) {
+                          showErrorToast(
+                              AppStrings.pleaseChoosePaymentMethod.tr);
+                          return;
+                        }
+                        widget.cubit.chargeWalletStatesHandled(
+                          ChargeBalanceParams(
+                            amount: _transactionAmountController.text,
+                            paymentId: _selectedPayment!.id!,
+                          ),
+                        );
+                      },
+                      backgroundColor: AppColors.buttonBackgroundPrimaryDefault,
+                      textColor: AppColors.kWhite,
+                      textStyle: AppTextStyles.textXLBold.copyWith(
+                        color: AppColors.kWhite,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),

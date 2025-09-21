@@ -1,26 +1,26 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import '../../../../core/app_config/api_names.dart';
 import '../../../../core/services/error_handler/error_handler.dart';
 import '../../../../core/services/network/network_helper.dart';
-import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/shared/entity/error_entity.dart';
+import '../entity/auction_entity.dart';
+import '../model/auction_model.dart';
+import '../params/auction_params.dart';
 
 abstract class MySalesRepo {
-  static Future<Either<ErrorEntity, Response>> mySales(
-      SearchEngine params) async {
+  static Future<Either<ErrorEntity, List<AuctionEntity>>> getAuctions(
+      AuctionParams params) async {
     try {
       final response = await Network().request(
-        Endpoints.mySales,
+        Endpoints.filterMySales,
         method: ServerMethods.GET,
-        queryParameters: params.toJson(),
+        queryParameters: params.returnedMap(),
       );
 
-      if (response.statusCode == 200) {
-        return Right(response);
-      } else {
-        return Left(ApiErrorHandler().handleError(response.data['message']));
-      }
+      final AuctionsResponseModel auctionsResponse =
+          AuctionsResponseModel.fromJson(response.data);
+
+      return Right(auctionsResponse.content);
     } catch (error) {
       return Left(ApiErrorHandler().handleError(error));
     }

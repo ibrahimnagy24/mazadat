@@ -27,3 +27,8 @@ class FavouritesError extends FavouritesState {
   final ErrorEntity error;
   const FavouritesError(this.error);
 }
+
+class FavouritesUpdated extends FavouritesState {
+  final Set<int> favouriteIds;
+  const FavouritesUpdated({required this.favouriteIds});
+}

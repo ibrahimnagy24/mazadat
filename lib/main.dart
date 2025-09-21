@@ -14,6 +14,7 @@ Future<void> main() async {
   AppConfig.BASE_URL = Flavour.appFlavor == FlavorEnum.STAGING
       ? AppConfig.BASE_URL_STAGING
       : AppConfig.BASE_URL_PRODUCTION;
+
   try {
     await initMainFunction();
   } catch (e) {

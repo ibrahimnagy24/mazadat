@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
@@ -10,7 +9,6 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/buttons/custom_button_with_inner_shadow_widget.dart';
-import '../../../../core/utils/widgets/buttons/custom_gradient_button_widget.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/responsive/responsive.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
@@ -198,7 +196,7 @@ class VisitorScreen extends StatelessWidget {
                             curve: Curves.easeOut,
                           ),
 
-                    32.sbH,
+                    12.sbH,
 
                     // Additional Info
                     Container(

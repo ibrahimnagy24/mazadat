@@ -58,15 +58,16 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: BlocBuilder<FavouritesCubit, FavouritesState>(
+                      bloc: FavouritesCubit.instance,
                       builder: (context, state) {
-                        final cubit = context.read<FavouritesCubit>();
+                        final cubit = FavouritesCubit.instance;
                         if (state is FavouritesLoading) {
                           return GridListAnimator(
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
                             data: List.generate(
                               20,
                               (i) => CustomShimmerContainer(
-                                height: 120.h,
+                                height: 120,
                                 width: MediaQueryHelper.width,
                               ),
                             ),
@@ -86,11 +87,11 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                                     state.auctions.length,
                                     (i) => GridAuctionCard(
                                       auction: state.auctions[i],
-                                      height: 150,
+                                      height: 190,
                                     ),
                                   ),
                                   crossAxisCount: 2,
-                                  aspectRatio: 0.9,
+                                  aspectRatio: .75,
                                 ),
                               ),
                               CustomLoadingText(loading: state.isLoading),
@@ -99,19 +100,21 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                         }
                         if (state is FavouritesError) {
                           return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
                             child: ErrorMessageWidget(
                               error: state.error,
                               onTap: () {
-                                cubit.favouritesAuctionStatesHandled(
-                                    SearchEngine());
+                                FavouritesCubit.instance
+                                    .favouritesAuctionStatesHandled(
+                                        SearchEngine());
                               },
                             ),
                           );
                         }
                         if (state is FavouritesEmpty) {
                           return ListAnimator(
-                              padding: EdgeInsets.symmetric(horizontal: 24.w),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 24),
                               data: [
                                 EmptyState(
                                   img: AppImages.emptyFavourites,

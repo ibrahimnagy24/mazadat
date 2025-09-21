@@ -12,6 +12,7 @@ class ChangePhoneNumberScreenMobilePortraitDesignScreen
         appbar: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: AppBar(
+            backgroundColor: const Color.fromRGBO(238, 239, 235, 1),
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Color.fromRGBO(238, 239, 235, 1),
               statusBarIconBrightness: Brightness.dark,

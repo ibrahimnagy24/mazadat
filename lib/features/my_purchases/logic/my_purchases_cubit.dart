@@ -1,77 +1,94 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxdart/rxdart.dart';
-import '../../../core/services/pagination/pagination_service.dart';
-import '../data/entity/my_purchase_content_entity.dart';
-import '../data/model/my_purchases_model.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import '../../../core/navigation/custom_navigation.dart';
+import '../data/entity/shipment_entity.dart';
+import '../data/enum/display_types.dart';
+import '../data/params/shipment_params.dart';
 import '../data/repo/my_purchases_repo.dart';
 import 'my_purchases_state.dart';
 
 class MyPurchasesCubit extends Cubit<MyPurchasesState> {
-  MyPurchasesCubit() : super(const MyPurchasesInitial()) {
-    controller = ScrollController();
-    keywordTEC = TextEditingController();
-    customScroll(controller);
-    updateListing(true);
-  }
+  MyPurchasesCubit() : super(const MyPurchasesInitial());
+
 //---------------------------------VARIABLES----------------------------------//
-
-  final listing = BehaviorSubject<bool>();
-  Function(bool) get updateListing => listing.sink.add;
-  Stream<bool> get listingStream => listing.stream.asBroadcastStream();
-
-  late ScrollController controller;
-  late SearchEngine _engine;
-  List<MyPurchaseContentEntity>? model;
-
-  late TextEditingController keywordTEC;
+  MyPurchasesDisplayTypes displayType = MyPurchasesDisplayTypes.list;
+  List<ShipmentEntity>? shipments;
+  List<ShipmentEntity>? searchResults;
+  String currentSearchQuery = '';
 
 //---------------------------------FUNCTIONS----------------------------------//
-  customScroll(ScrollController controller) {
-    controller.addListener(() {
-      bool scroll = PaginationService.scrollListener(controller,
-          maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
-      if (scroll) {
-        myPurchasesStatesHandled(_engine);
-      }
-    });
-  }
-
-//----------------------------------REQUEST-----------------------------------//
-  Future<void> myPurchasesStatesHandled(SearchEngine params) async {
-    _engine = params;
-    if (_engine.currentPage == -1) {
-      model = [];
-      emit(const MyPurchasesLoading());
+  void updateOrToggleDisplayType({MyPurchasesDisplayTypes? type}) {
+    if (type != null) {
+      displayType = type;
     } else {
-      emit(MyPurchasesSuccess(purchases: model!, isLoading: true));
+      displayType = displayType == MyPurchasesDisplayTypes.list
+          ? MyPurchasesDisplayTypes.grid
+          : MyPurchasesDisplayTypes.list;
     }
-
-    _engine.query = {'keyword': keywordTEC.text.trim()};
-    final response = await MyPurchasesRepo.myPurchases(_engine);
-    response.fold((failure) {
-      return emit(MyPurchasesError(failure));
-    }, (success) {
-      MyPurchasesModel res = success;
-
-      if (_engine.currentPage == -1) {
-        model?.clear();
-      }
-
-      if (res.content != null && res.content!.isNotEmpty) {
-        for (var item in res.content!) {
-          model?.removeWhere((e) => e.id == item.id);
-          model?.add(item);
-        }
-      }
-      _engine.maxPages = res.pageable?.maxPages ?? 1;
-      _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
-
-      if (model != null && model!.isNotEmpty) {
-        return emit(MyPurchasesSuccess(purchases: model!, isLoading: false));
+    
+    // Emit display type change while preserving current data state
+    emit(MyPurchasesDisplayTypeChanged(displayType: displayType));
+    
+    // Re-emit the current data state to maintain data visibility
+    if (currentSearchQuery.isNotEmpty && searchResults != null) {
+      if (searchResults!.isEmpty) {
+        emit(const MyPurchasesSearchEmpty());
       } else {
-        return emit(const MyPurchasesEmpty());
+        emit(MyPurchasesSearchSuccess(searchResults: searchResults!));
+      }
+    } else if (shipments != null) {
+      if (shipments!.isEmpty) {
+        emit(const MyPurchasesInitial());
+      } else {
+        emit(MyPurchasesSuccess(shipments: shipments!));
+      }
+    }
+  }
+
+  Future<void> getShipments() async {
+    CustomNavigator.context.loaderOverlay.show();
+    emit(const MyPurchasesLoading());
+
+    final response = await MyPurchasesRepo.getShipments(const ShipmentParams());
+
+    response.fold((failure) {
+      CustomNavigator.context.loaderOverlay.hide();
+      emit(MyPurchasesError(failure));
+    }, (success) {
+      CustomNavigator.context.loaderOverlay.hide();
+      shipments = success;
+      emit(MyPurchasesSuccess(shipments: shipments!));
+    });
+  }
+
+  Future<void> searchShipments(String query) async {
+    currentSearchQuery = query;
+    emit(const MyPurchasesSearchLoading());
+
+    final params = ShipmentParams(query: query);
+    final response = await MyPurchasesRepo.getShipments(params);
+
+    response.fold((failure) {
+      emit(MyPurchasesSearchError(failure));
+    }, (success) {
+      searchResults = success;
+      if (success.isEmpty) {
+        emit(const MyPurchasesSearchEmpty());
+      } else {
+        emit(MyPurchasesSearchSuccess(searchResults: success));
       }
     });
   }
+
+  void clearSearch() {
+    currentSearchQuery = '';
+    searchResults = null;
+    // Emit the original data state
+    if (shipments != null && shipments!.isNotEmpty) {
+      emit(MyPurchasesSuccess(shipments: shipments!));
+    } else {
+      emit(const MyPurchasesInitial());
+    }
+  }
+
 }

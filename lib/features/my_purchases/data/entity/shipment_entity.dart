@@ -1,30 +1,30 @@
 import 'package:equatable/equatable.dart';
 
-class MyPurchaseContentEntity extends Equatable {
+class ShipmentEntity extends Equatable {
   final int id;
   final String userId;
   final String orderNumber;
-  final ShipmentAddressEntity shipmentAddress;
+  final ShipmentAddressEntity? shipmentAddress;
   final String status;
   final String? paymentTransactionId;
   final String productPrice;
-  final String insurancePrice;
+  final String? insurancePrice;
   final String appCommissionAmount;
   final String vatPercentage;
   final String vatAmount;
-  final String totalAmountNoVat;
-  final String totalAmount;
-  final String deliveryPrice;
+  final String? totalAmountNoVat;
+  final String? totalAmount;
+  final String? deliveryPrice;
   final Map<String, dynamic> paymentDetails;
   final String? shipmentDate;
   final String? deliveryDate;
-  final PurchaseAuctionEntity auction;
-  final String createdBy;
+  final AuctionEntity auction;
+  final String? createdBy;
   final String creationDate;
-  final String lastUpdatedBy;
+  final String? lastUpdatedBy;
   final String lastUpdateDate;
 
-  const MyPurchaseContentEntity({
+  const ShipmentEntity({
     required this.id,
     required this.userId,
     required this.orderNumber,
@@ -161,14 +161,7 @@ class AddressTypeEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        name,
-        createdBy,
-        creationDate,
-        lastUpdatedBy,
-        lastUpdateDate,
-      ];
+  List<Object?> get props => [id, name, createdBy, creationDate, lastUpdatedBy, lastUpdateDate];
 }
 
 class RegionEntity extends Equatable {
@@ -195,17 +188,7 @@ class RegionEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        nameEn,
-        nameAr,
-        status,
-        name,
-        createdBy,
-        creationDate,
-        lastUpdatedBy,
-        lastUpdateDate,
-      ];
+  List<Object?> get props => [id, nameEn, nameAr, status, name, createdBy, creationDate, lastUpdatedBy, lastUpdateDate];
 }
 
 class CityEntity extends Equatable {
@@ -234,18 +217,7 @@ class CityEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        nameEn,
-        nameAr,
-        status,
-        regionId,
-        name,
-        createdBy,
-        creationDate,
-        lastUpdatedBy,
-        lastUpdateDate,
-      ];
+  List<Object?> get props => [id, nameEn, nameAr, status, regionId, name, createdBy, creationDate, lastUpdatedBy, lastUpdateDate];
 }
 
 class DistrictEntity extends Equatable {
@@ -272,27 +244,17 @@ class DistrictEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        nameEn,
-        nameAr,
-        status,
-        cityId,
-        createdBy,
-        lastUpdatedBy,
-        lastUpdateDate,
-        name,
-      ];
+  List<Object?> get props => [id, nameEn, nameAr, status, cityId, createdBy, lastUpdatedBy, lastUpdateDate, name];
 }
 
-class PurchaseAuctionEntity extends Equatable {
+class AuctionEntity extends Equatable {
   final String auctionNumber;
   final List<ProductImageEntity> productImages;
   final String productName;
   final String productDescription;
   final BuyerEntity buyer;
 
-  const PurchaseAuctionEntity({
+  const AuctionEntity({
     required this.auctionNumber,
     required this.productImages,
     required this.productName,
@@ -301,13 +263,7 @@ class PurchaseAuctionEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        auctionNumber,
-        productImages,
-        productName,
-        productDescription,
-        buyer,
-      ];
+  List<Object?> get props => [auctionNumber, productImages, productName, productDescription, buyer];
 }
 
 class ProductImageEntity extends Equatable {
@@ -328,14 +284,7 @@ class ProductImageEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        name,
-        displayName,
-        type,
-        path,
-        categoryId,
-      ];
+  List<Object?> get props => [id, name, displayName, type, path, categoryId];
 }
 
 class BuyerEntity extends Equatable {
@@ -352,10 +301,16 @@ class BuyerEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        completePhone,
-        fullName,
-        id,
-        email,
-      ];
+  List<Object?> get props => [completePhone, fullName, id, email];
+}
+
+class ShipmentsResponseEntity extends Equatable {
+  final List<ShipmentEntity> content;
+
+  const ShipmentsResponseEntity({
+    required this.content,
+  });
+
+  @override
+  List<Object?> get props => [content];
 }

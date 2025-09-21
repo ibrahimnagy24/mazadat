@@ -2,26 +2,25 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/app_config/api_names.dart';
 import '../../../../core/services/error_handler/error_handler.dart';
 import '../../../../core/services/network/network_helper.dart';
-import '../../../../core/services/pagination/pagination_service.dart';
 import '../../../../core/shared/entity/error_entity.dart';
-import '../model/my_purchases_model.dart';
+import '../entity/shipment_entity.dart';
+import '../model/shipment_model.dart';
+import '../params/shipment_params.dart';
 
 abstract class MyPurchasesRepo {
-  static Future<Either<ErrorEntity, MyPurchasesModel>> myPurchases(
-      SearchEngine params) async {
+  static Future<Either<ErrorEntity, List<ShipmentEntity>>> getShipments(
+      ShipmentParams params) async {
     try {
       final response = await Network().request(
         Endpoints.myPurchases,
         method: ServerMethods.GET,
-        queryParameters: params.toJson(),
+        queryParameters: params.returnedMap(),
       );
 
-      if (response.statusCode == 200) {
-        final model = MyPurchasesModel.fromJson(response.data);
-        return Right(model);
-      } else {
-        return Left(ApiErrorHandler().handleError(response.data['message']));
-      }
+      final ShipmentsResponseModel shipmentsResponse = 
+          ShipmentsResponseModel.fromJson(response.data);
+      
+      return Right(shipmentsResponse.content);
     } catch (error) {
       return Left(ApiErrorHandler().handleError(error));
     }

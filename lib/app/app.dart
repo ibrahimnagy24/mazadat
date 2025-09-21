@@ -14,6 +14,7 @@ import '../core/theme/text_styles/text_styles.dart';
 import '../core/translation/all_translation.dart';
 import '../core/translation/translations.dart';
 import '../core/utils/constant/app_strings.dart';
+import '../core/utils/extensions/extensions.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
                     top: 18,
                   ),
                   child: Text(
-                    AppStrings.loading,
+                    AppStrings.loading.tr,
                     style: AppTextStyles.textLgMedium,
                   ),
                 ),

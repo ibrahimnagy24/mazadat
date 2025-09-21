@@ -7,9 +7,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScreenTypeLayoutWidget(
-      mobilePortrait: (context) => const ProfileMobileDesign(),
-      mobileLandscape: (context) => const ProfileMobileDesign(),
-    );
+    return const ProfileMobileDesign();
   }
 }

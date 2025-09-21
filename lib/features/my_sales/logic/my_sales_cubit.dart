@@ -1,77 +1,94 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxdart/rxdart.dart';
-import '../../../core/services/pagination/pagination_service.dart';
-import '../../auctions/data/entity/auction_entity.dart';
-import '../../auctions/data/model/auctions_model.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import '../../../core/navigation/custom_navigation.dart';
+import '../data/entity/auction_entity.dart';
+import '../data/enum/display_types.dart';
+import '../data/params/auction_params.dart';
 import '../data/repo/my_sales_repo.dart';
 import 'my_sales_state.dart';
 
 class MySalesCubit extends Cubit<MySalesState> {
-  MySalesCubit() : super(const MySalesInitial()) {
-    controller = ScrollController();
-    keywordTEC = TextEditingController();
-    customScroll(controller);
-    updateListing(true);
-  }
+  MySalesCubit() : super(const MySalesInitial());
+
 //---------------------------------VARIABLES----------------------------------//
-
-  final listing = BehaviorSubject<bool>();
-  Function(bool) get updateListing => listing.sink.add;
-  Stream<bool> get listingStream => listing.stream.asBroadcastStream();
-
-  late ScrollController controller;
-  late SearchEngine _engine;
-  List<AuctionEntity>? model;
-
-  late TextEditingController keywordTEC;
+  MySalesDisplayTypes displayType = MySalesDisplayTypes.list;
+  List<AuctionEntity>? auctions;
+  List<AuctionEntity>? searchResults;
+  String currentSearchQuery = '';
 
 //---------------------------------FUNCTIONS----------------------------------//
-  customScroll(ScrollController controller) {
-    controller.addListener(() {
-      bool scroll = PaginationService.scrollListener(controller,
-          maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
-      if (scroll) {
-        mySalesStatesHandled(_engine);
-      }
-    });
-  }
-
-//----------------------------------REQUEST-----------------------------------//
-  Future<void> mySalesStatesHandled(SearchEngine params) async {
-    _engine = params;
-    if (_engine.currentPage == -1) {
-      model = [];
-      emit(const MySalesLoading());
+  void updateOrToggleDisplayType({MySalesDisplayTypes? type}) {
+    if (type != null) {
+      displayType = type;
     } else {
-      emit(MySalesSuccess(auctions: model!, isLoading: true));
+      displayType = displayType == MySalesDisplayTypes.list
+          ? MySalesDisplayTypes.grid
+          : MySalesDisplayTypes.list;
     }
-
-    _engine.query = {'keyword': keywordTEC.text.trim()};
-    final response = await MySalesRepo.mySales(_engine);
-    response.fold((failure) {
-      return emit(MySalesError(failure));
-    }, (success) {
-      // AuctionsModel? res = AuctionsModel.fromJson(success.data);
-
-      // if (_engine.currentPage == -1) {
-      //   model?.clear();
-      // }
-
-      // if (res.content != null && res.content!.isNotEmpty) {
-      //   for (var item in res.content!) {
-      //     model?.removeWhere((e) => e.id == item.id);
-      //     model?.add(item);
-      //   }
-      // }
-      // _engine.maxPages = res.pageable?.maxPages ?? 1;
-      // _engine.updateCurrentPage(res.pageable?.currentPage ?? 0);
-
-      if (model != null && model!.isNotEmpty) {
-        return emit(MySalesSuccess(auctions: model!, isLoading: false));
+    
+    // Emit display type change while preserving current data state
+    emit(MySalesDisplayTypeChanged(displayType: displayType));
+    
+    // Re-emit the current data state to maintain data visibility
+    if (currentSearchQuery.isNotEmpty && searchResults != null) {
+      if (searchResults!.isEmpty) {
+        emit(const MySalesSearchEmpty());
       } else {
-        return emit(const MySalesEmpty());
+        emit(MySalesSearchSuccess(searchResults: searchResults!));
+      }
+    } else if (auctions != null) {
+      if (auctions!.isEmpty) {
+        emit(const MySalesInitial());
+      } else {
+        emit(MySalesSuccess(auctions: auctions!));
+      }
+    }
+  }
+
+  Future<void> getAuctions() async {
+    CustomNavigator.context.loaderOverlay.show();
+    emit(const MySalesLoading());
+
+    final response = await MySalesRepo.getAuctions(const AuctionParams());
+
+    response.fold((failure) {
+      CustomNavigator.context.loaderOverlay.hide();
+      emit(MySalesError(failure));
+    }, (success) {
+      CustomNavigator.context.loaderOverlay.hide();
+      auctions = success;
+      emit(MySalesSuccess(auctions: auctions!));
+    });
+  }
+
+  Future<void> searchAuctions(String query) async {
+    currentSearchQuery = query;
+    emit(const MySalesSearchLoading());
+
+    final params = AuctionParams(query: query);
+    final response = await MySalesRepo.getAuctions(params);
+
+    response.fold((failure) {
+      emit(MySalesSearchError(failure));
+    }, (success) {
+      searchResults = success;
+      if (success.isEmpty) {
+        emit(const MySalesSearchEmpty());
+      } else {
+        emit(MySalesSearchSuccess(searchResults: success));
       }
     });
   }
+
+  void clearSearch() {
+    currentSearchQuery = '';
+    searchResults = null;
+    // Emit the original data state
+    if (auctions != null && auctions!.isNotEmpty) {
+      emit(MySalesSuccess(auctions: auctions!));
+    } else {
+      emit(const MySalesInitial());
+    }
+  }
+
 }

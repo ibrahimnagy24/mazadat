@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -50,19 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBP-1GyVPUSgM611y3RZmHMp4AtbonDLto',
-    appId: '1:883820146071:android:fcb100ec285d944b5ca8d2',
-    messagingSenderId: '883820146071',
-    projectId: 'barq-test',
-    storageBucket: 'barq-test.firebasestorage.app',
+    apiKey: 'AIzaSyDUzwmRFXJ43LwaJnH4zjqL7da_NzyJlZ4',
+    appId: '1:40769922379:android:0c3ea9f2b7e51ebc7db4ce',
+    messagingSenderId: '40769922379',
+    projectId: 'bait-alasgadia',
+    storageBucket: 'bait-alasgadia.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDJ62f5dexbHtJT3VF6Q4s3ENQmR30Bi60',
-    appId: '1:883820146071:ios:8e932eb5f7113ce95ca8d2',
-    messagingSenderId: '883820146071',
-    projectId: 'barq-test',
-    storageBucket: 'barq-test.firebasestorage.app',
+    apiKey: 'AIzaSyD80WfN-Md6D3eajkAUYyt0BUJZ4rWaysk',
+    appId: '1:40769922379:ios:3e965be5a77024027db4ce',
+    messagingSenderId: '40769922379',
+    projectId: 'bait-alasgadia',
+    storageBucket: 'bait-alasgadia.firebasestorage.app',
     iosBundleId: 'com.innova.mazaadat',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCzrNytwngebuSkDLtXIJB6gnZIHix3RrE',
+    appId: '1:40769922379:web:604d53902a81a8c57db4ce',
+    messagingSenderId: '40769922379',
+    projectId: 'bait-alasgadia',
+    authDomain: 'bait-alasgadia.firebaseapp.com',
+    storageBucket: 'bait-alasgadia.firebasestorage.app',
+    measurementId: 'G-EDX2ZWFMNW',
+  );
+
 }

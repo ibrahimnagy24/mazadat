@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../core/assets/app_svg.dart';
-import '../../../../core/services/pagination/pagination_service.dart';
-import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/form_fields/default_form_field.dart';
+import '../../data/enum/display_types.dart';
 import '../../logic/my_sales_cubit.dart';
 import '../../logic/my_sales_state.dart';
 
@@ -20,91 +20,109 @@ class MySalesHeader extends StatefulWidget {
 }
 
 class _MySalesHeaderState extends State<MySalesHeader> {
-  Timer? timer;
+  Timer? _debounceTimer;
+  final TextEditingController _searchController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    _debounceTimer?.cancel();
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _onSearchChanged(String query, MySalesCubit cubit) {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(const Duration(milliseconds: 750), () {
+      if (query.isEmpty) {
+        cubit.clearSearch();
+      } else {
+        cubit.searchAuctions(query);
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MySalesCubit, MySalesState>(
-        builder: (context, state) {
-      return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Row(
-          spacing: 8.w,
-          children: [
-            Expanded(
-              child: DefaultFormField(
-                controller: context.read<MySalesCubit>().keywordTEC,
-                hintText: '${AppStrings.searchByOrderNumber.tr}...',
-                needValidation: false,
-                prefixIcon: Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    start: 16.w,
-                    end: 12.w,
-                    top: 12.h,
-                    bottom: 12.h,
+      buildWhen: (previous, current) =>
+          current is MySalesDisplayTypeChanged ||
+          current is MySalesSearchLoading ||
+          current is MySalesSearchSuccess ||
+          current is MySalesSearchError,
+      builder: (context, state) {
+        final cubit = context.read<MySalesCubit>();
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              Row(
+                spacing: 8,
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        DefaultFormField(
+                          controller: _searchController,
+                          hintText: '${AppStrings.searchByAuctionName.tr}...',
+                          needValidation: false,
+                          prefixIcon: Padding(
+                            padding: const EdgeInsetsDirectional.only(
+                              start: 16,
+                              end: 12,
+                              top: 12,
+                              bottom: 12,
+                            ),
+                            child: SvgPicture.asset(
+                              AppSvg.searchIcon,
+                              color: AppColors.iconDefault,
+                              width: 20,
+                              height: 20,
+                            ),
+                          ),
+                          onChanged: (value) => _onSearchChanged(value, cubit),
+                        ),
+                        // Linear loading indicator
+                        if (state is MySalesSearchLoading)
+                          Container(
+                            margin: const EdgeInsets.only(top: 2),
+                            height: 2,
+                            child: const LinearProgressIndicator(
+                              backgroundColor: Colors.transparent,
+                              valueColor: AlwaysStoppedAnimation<Color>(AppColors.kPrimary),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
-                  child: customImageIconSVG(
-                      imageName: AppSvg.searchIcon,
-                      color: AppColors.iconDefault,
-                      width: 20.w,
-                      height: 20.w),
-                ),
-                onChanged: (v) {
-                  if (timer != null) if (timer!.isActive) timer!.cancel();
-                  timer = Timer(
-                    const Duration(milliseconds: 400),
-                    () {
-                      context
-                          .read<MySalesCubit>()
-                          .mySalesStatesHandled(SearchEngine());
-                    },
-                  );
-                },
-                onSaved: (v) {
-                  context
-                      .read<MySalesCubit>()
-                      .mySalesStatesHandled(SearchEngine());
-                },
-              ),
-            ),
-
-            ///Listing Button
-            StreamBuilder(
-                stream: context.read<MySalesCubit>().listingStream,
-                builder: (c, snapshot) {
-                  return InkWell(
-                    onTap: () => context
-                        .read<MySalesCubit>()
-                        .updateListing(snapshot.data == true ? false : true),
+                  ///Display Type Toggle Button
+                  InkWell(
+                    onTap: () => cubit.updateOrToggleDisplayType(),
                     child: Container(
-                      height: 48.h,
-                      width: 48.h,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 14.w, vertical: 14.h),
+                      height: 48,
+                      width: 48,
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                       decoration: BoxDecoration(
                           color: AppColors.fillColor,
                           border: Border.all(
                             color: AppColors.border,
                           ),
                           borderRadius: BorderRadius.circular(AppRadius.rMd)),
-                      child: customImageIconSVG(
-                        imageName:
-                            snapshot.data == true ? AppSvg.grid : AppSvg.list,
-                        width: 20.w,
-                        height: 20.w,
+                      child: SvgPicture.asset(
+                        cubit.displayType == MySalesDisplayTypes.list
+                            ? AppSvg.grid
+                            : AppSvg.list,
+                        width: 20,
+                        height: 20,
                         color: AppColors.iconDefault,
                       ),
                     ),
-                  );
-                }),
-          ],
-        ),
-      );
-    });
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

@@ -10,6 +10,7 @@ import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
 import '../../../../../core/utils/widgets/timer/countdown_timer_widget.dart';
+import '../../../../features/favourites/ui/widgets/favourite_button.dart';
 import '../../../utils/enums/enums.dart';
 
 class StackedAuctionCardWidget extends StatelessWidget {
@@ -130,28 +131,35 @@ class StackedAuctionCardWidget extends StatelessWidget {
                           ),
                           if (needFavouriteIcon) const SizedBox(width: 16),
                           if (needFavouriteIcon)
-                            Container(
+                            FavouriteButton(
+                              id: auctionId,
                               height: 40,
                               width: 40,
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: AppColors.backgroundBody,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    offset: const Offset(0, -1),
-                                    blurRadius: 8,
-                                    spreadRadius: 0,
-                                    color: Colors.black.withValues(alpha: 0.1),
-                                  )
-                                ],
-                              ),
-                              child: SvgPicture.asset(
-                                isFav ? AppSvg.fillFav : AppSvg.fav,
-                                width: 40,
-                                height: 40,
-                              ),
+                              favIconHeight: 18,
+                              favIconWidth: 18,
                             ),
+                          //  Container(
+                          //       height: 40,
+                          //       width: 40,
+                          //       padding: const EdgeInsets.all(8),
+                          //       decoration: BoxDecoration(
+                          //         color: AppColors.backgroundBody,
+                          //         shape: BoxShape.circle,
+                          //         boxShadow: [
+                          //           BoxShadow(
+                          //             offset: const Offset(0, -1),
+                          //             blurRadius: 8,
+                          //             spreadRadius: 0,
+                          //             color: Colors.black.withValues(alpha: 0.1),
+                          //           )
+                          //         ],
+                          //       ),
+                          //       child: SvgPicture.asset(
+                          //         isFav ? AppSvg.fillFav : AppSvg.fav,
+                          //         width: 40,
+                          //         height: 40,
+                          //       ),
+                          //     ),
                         ],
                       ),
                     ),

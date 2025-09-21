@@ -399,4 +399,8 @@ class AppStrings {
   static const String selectMessageType = 'Select the message type.';
   static const String frequentlyAskedQuestions = 'Frequently Asked Questions';
   static const String faq = 'FAQ';
+  static const String shippingDate = 'Shipping date';
+  static const String latestUpdate = 'Latest update';
+  static const String auctionName = 'Auction Name';
+  static const String searchByAuctionName = 'Search by auction name';
 }

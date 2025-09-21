@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDJ62f5dexbHtJT3VF6Q4s3ENQmR30Bi60</string>
+	<string>AIzaSyD80WfN-Md6D3eajkAUYyt0BUJZ4rWaysk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>883820146071</string>
+	<string>40769922379</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.innova.mazaadat</string>
 	<key>PROJECT_ID</key>
-	<string>barq-test</string>
+	<string>bait-alasgadia</string>
 	<key>STORAGE_BUCKET</key>
-	<string>barq-test.firebasestorage.app</string>
+	<string>bait-alasgadia.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:883820146071:ios:8e932eb5f7113ce95ca8d2</string>
+	<string>1:40769922379:ios:3e965be5a77024027db4ce</string>
 </dict>
 </plist>

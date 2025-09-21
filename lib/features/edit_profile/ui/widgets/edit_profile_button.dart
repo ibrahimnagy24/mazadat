@@ -6,6 +6,7 @@ import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart';
+import '../../../user/logic/user_cubit.dart';
 import '../../logic/edit_profile_cubit.dart';
 import '../../logic/edit_profile_state.dart';
 import 'update_profile_success_dialog.dart';
@@ -34,6 +35,7 @@ class EditProfileButton extends StatelessWidget {
           showErrorSnackBar(state.error.message, error: state.error);
         }
         if (state is EditProfileSuccess) {
+          context.read<UserCubit>().getUserDataStatesHandled();
           FocusScope.of(context).unfocus();
           CustomSimpleDialog.parentSimpleDialog(
             isDismissible: false,
