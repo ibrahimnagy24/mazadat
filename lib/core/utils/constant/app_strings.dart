@@ -403,4 +403,5 @@ class AppStrings {
   static const String latestUpdate = 'Latest update';
   static const String auctionName = 'Auction Name';
   static const String searchByAuctionName = 'Search by auction name';
+  static const String markAllAsRead = 'Mark all as read';
 }

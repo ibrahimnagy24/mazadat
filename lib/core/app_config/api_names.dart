@@ -46,6 +46,8 @@ abstract class Endpoints {
   static const String checkWalletCharge = '/wallet/checkWalletCharge';
 //----------------------------------MY AUCTIONS--------------------------------------\\
   static const String myAuctions = '/auctions/filterMyAuctions';
+//----------------------------------NOTIFICATIONS--------------------------------------\\
+  static const String userNotificationList = '/notifications/userNotificationList';
 //--------------------------------Addresses--------------------------------------\\
 
   static const String addressTypes = '/addressType/listAddressTypeLookups';

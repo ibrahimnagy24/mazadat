@@ -86,4 +86,8 @@ class AppSvg {
   static const String shippingTruck = '$_svgPath/shipping-truck-02.svg';
   static const String packageDelivered = '$_svgPath/package-delivered.svg';
   static const String download = '$_svgPath/download.svg';
+  static const String check = '$_svgPath/check.svg';
+  static const String van = '$_svgPath/van.svg';
+  static const String alarmClock = '$_svgPath/alarm-clock.svg';
+  static const String cancelXmark = '$_svgPath/cancel_xmark.svg';
 }

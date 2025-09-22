@@ -65,7 +65,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                           const SizedBox(width: 24),
                           GestureDetector(
                             onTap: () {
-                              // CustomNavigator.push(Routes.no);
+                              CustomNavigator.push(Routes.NOTIFICATIONS);
                             },
                             child: SvgPicture.asset(
                               AppSvg.notification,

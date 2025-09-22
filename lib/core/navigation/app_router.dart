@@ -40,6 +40,7 @@ import '../../features/my_bundles/ui/page/my_bundles_screen.dart';
 import '../../features/my_purchases/ui/page/my_purchases_screen.dart';
 import '../../features/my_sales/ui/page/my_sales_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
+import '../../features/notification/ui/pages/notification_screen.dart';
 import '../../features/profile/ui/page/profile_screen.dart';
 import '../../features/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
@@ -326,6 +327,11 @@ final GoRouter appRouter = GoRouter(
         final routeParams = state.extra as ShipmentDetailsRouteParams;
         return ShipmentOrderDetailsScreen(params: routeParams);
       },
+    ),
+    GoRoute(
+      path: '/notifications',
+      name: Routes.NOTIFICATIONS,
+      builder: (context, state) => const NotificationScreen(),
     ),
 
     // Not Found route

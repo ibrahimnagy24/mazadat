@@ -53,4 +53,7 @@ class Routes {
   static const CHECKOUT_SUMMARY = 'CHECKOUT_SUMMARY';
   static const CHECKOUT_CHOOSE_PAYMENT = 'CHECKOUT_CHOOSE_PAYMENT';
   static const SHIPMENT_ORDER_DETAILS = 'SHIPMENT_ORDER_DETAILS';
+  //-----------------------------------VIDEO---------------------------\\
+  static const FULL_SCREEN_VIDEO_PLAYER = 'FULL_SCREEN_VIDEO_PLAYER';
+  static const NOTIFICATIONS = 'NOTIFICATIONS';
 }

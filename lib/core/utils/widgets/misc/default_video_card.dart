@@ -91,12 +91,45 @@ class VideoCardState extends State<DefaultVideoCard> {
                 future: _initializeVideoPlayerFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
-                    return AspectRatio(
-                      aspectRatio: _videoController.value.aspectRatio,
-                      child: VideoPlayer(_videoController),
+                    if (_videoController.value.hasError) {
+                      return Container(
+                        color: Colors.black,
+                        child: const Center(
+                          child: Icon(
+                            Icons.error_outline,
+                            color: Colors.white,
+                            size: 48,
+                          ),
+                        ),
+                      );
+                    }
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(widget.radius),
+                      child: AspectRatio(
+                        aspectRatio: _videoController.value.aspectRatio,
+                        child: VideoPlayer(_videoController),
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Container(
+                      color: Colors.black,
+                      child: const Center(
+                        child: Icon(
+                          Icons.error_outline,
+                          color: Colors.white,
+                          size: 48,
+                        ),
+                      ),
                     );
                   } else {
-                    return const Center(child: CircularProgressIndicator());
+                    return Container(
+                      color: Colors.black,
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
                   }
                 },
               ),
@@ -120,32 +153,11 @@ class VideoCardState extends State<DefaultVideoCard> {
                 },
                 icon: Icon(
                   Icons.play_circle,
-                  size: widget.width! / 4,
+                  size: (widget.width ?? MediaQueryHelper.width) / 4,
                   color: AppColors.kGeryText,
                 ),
               ),
             ),
-          if (widget.play)
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: IconButton(
-                onPressed: () {
-                  if (_videoController.value.isPlaying) {
-                    _videoController.pause();
-                  }
-                  // CustomNavigator.push(Routes.videoPreview, arguments: {
-                  //   "url": widget.videoUrl,
-                  //   "file": widget.videoFile
-                  // });
-                },
-                icon: Icon(
-                  Icons.fullscreen,
-                  size: widget.width! / 8,
-                  color: AppColors.kGeryText,
-                ),
-              ),
-            )
         ],
       ),
     );

@@ -6,7 +6,6 @@ import 'package:glass_kit/glass_kit.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../../core/utils/widgets/misc/default_network_image.dart';
-import '../../../../../core/utils/widgets/misc/default_video_card.dart';
 import '../../logic/view_auction_details_cubit.dart';
 import '../../utils/view_auction_details_controller.dart';
 
@@ -118,30 +117,41 @@ class ViewAuctionDetailsGlassyImagesRow extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius:
                                 BorderRadius.circular(baseBorderRadius),
-                            child: Stack(
-                              children: [
-                                (attachments[i].isVideo)
-                                    ? DefaultVideoCard(
-                                        onTap: () {
-                                          log('xxx $i');
-                                          context
-                                              .read<ViewAuctionDetailsCubit>()
-                                              .changeImageIndex(i);
-                                        },
-                                        play: false,
-                                        key: ValueKey<String>(
-                                            attachments[i].url),
-                                        videoUrl: attachments[i].url,
-                                        width: imgSize,
-                                        height: imgSize,
-                                      )
-                                    : DefaultNetworkImage(
-                                        attachments[i].url,
-                                        width: imgSize,
-                                        height: imgSize,
-                                        fit: BoxFit.cover,
+                            child: GestureDetector(
+                              onTap: () {
+                                log('xxx $i');
+                                context
+                                    .read<ViewAuctionDetailsCubit>()
+                                    .changeImageIndex(i);
+                              },
+                              behavior: HitTestBehavior.opaque,
+                              child: Stack(
+                                children: [
+                                  DefaultNetworkImage(
+                                    attachments[i].url,
+                                    width: imgSize,
+                                    height: imgSize,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  // Video play icon indicator (non-interactive)
+                                  if (attachments[i].isVideo)
+                                    Positioned.fill(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withOpacity(0.3),
+                                          borderRadius: BorderRadius.circular(baseBorderRadius),
+                                        ),
+                                        child: const Center(
+                                          child: Icon(
+                                            Icons.play_circle_filled,
+                                            color: Colors.white,
+                                            size: 24,
+                                          ),
+                                        ),
                                       ),
-                              ],
+                                    ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

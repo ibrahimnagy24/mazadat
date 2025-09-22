@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "mazadat",
-      "version": "1.0.1+5",
+      "version": "1.0.1+6",
       "dependencies": [
         "app_links",
         "app_settings",
@@ -66,6 +66,7 @@
         "share_plus",
         "shared_preferences",
         "shimmer",
+        "timeago",
         "url_launcher",
         "video_player",
         "webview_flutter"
@@ -108,6 +109,13 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "timeago",
+      "version": "3.7.1",
+      "dependencies": [
+        "intl"
       ]
     },
     {
