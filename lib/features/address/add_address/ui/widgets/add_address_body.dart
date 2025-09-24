@@ -4,6 +4,7 @@ import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/utility.dart';
 import '../../../../../core/utils/validations/validator.dart';
 import '../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/utils/widgets/form_fields/default_phone_form_field.dart';
@@ -61,13 +62,25 @@ class AddAddressBody extends StatelessWidget {
                       label: AppStrings.region.tr,
                     ),
                     onSelect: (v) {
-                      context.read<AddAddressCubit>().updateEntity(
-                            snapshot.data?.copyWith(
-                              region: v,
-                              clearCity: true,
-                              clearDistrict: true,
-                            ),
-                          );
+                      cprint(
+                          '🔍 [DEBUG] Selected new region: ${v.id} (${v.name})');
+                      cprint(
+                          '🔍 [DEBUG] Current region before update: ${snapshot.data?.region?.id} (${snapshot.data?.region?.name})');
+
+                      final updatedEntity = snapshot.data?.copyWith(
+                        region: v,
+                        clearCity: true,
+                        clearDistrict: true,
+                      );
+
+                      cprint(
+                          '🔍 [DEBUG] Updated entity region: ${updatedEntity?.region?.id} (${updatedEntity?.region?.name})');
+                      cprint(
+                          '🔍 [DEBUG] Updated entity toJson: ${updatedEntity?.toJson()}');
+
+                      context
+                          .read<AddAddressCubit>()
+                          .updateEntity(updatedEntity);
                     },
                     fillColor: AppColors.kWhite,
                     borderColor: const Color.fromRGBO(232, 232, 232, 1),
@@ -92,21 +105,23 @@ class AddAddressBody extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  ShouldRebuild(
-                    shouldRebuild: (o, n) => o.key != n.key,
-                    child: DistrictInput(
-                      key: ValueKey(
-                          '${snapshot.data?.city?.id}_${snapshot.data?.district?.id}'),
-                      cityId: snapshot.data?.city?.id,
-                      initialValue: snapshot.data?.district,
-                      validator: (v) => DefaultValidator.defaultValidator(v,
-                          label: AppStrings.district.tr),
-                      onSelect: (v) => context
+                  DistrictInput(
+                    key: ValueKey('${snapshot.data?.city?.id}'),
+                    cityId: snapshot.data?.city?.id,
+                    initialValue: snapshot.data?.district,
+                    validator: (v) => DefaultValidator.defaultValidator(v,
+                        label: AppStrings.district.tr),
+                    onSelect: (v) {
+                      cprint(
+                          '🔍 [DEBUG] Selected district: ${v.id} (${v.name})');
+                      cprint(
+                          '🔍 [DEBUG] Just saving district value, no API calls needed');
+                      context
                           .read<AddAddressCubit>()
-                          .updateEntity(snapshot.data?.copyWith(district: v)),
-                      fillColor: AppColors.kWhite,
-                      borderColor: const Color.fromRGBO(232, 232, 232, 1),
-                    ),
+                          .updateEntity(snapshot.data?.copyWith(district: v));
+                    },
+                    fillColor: AppColors.kWhite,
+                    borderColor: const Color.fromRGBO(232, 232, 232, 1),
                   ),
                   const SizedBox(height: 16),
                   Row(

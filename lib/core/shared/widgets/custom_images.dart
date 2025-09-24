@@ -46,7 +46,7 @@ Widget customCircleSvgIcon(
         ),
         if (title != null)
           Text(
-            title ?? '',
+            title,
             style: const TextStyle(
                 color: AppColors.kPrimary,
                 fontWeight: FontWeight.w600,

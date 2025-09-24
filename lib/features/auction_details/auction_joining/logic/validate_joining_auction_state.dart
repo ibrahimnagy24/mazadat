@@ -1,8 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/shared/entity/error_entity.dart';
 import '../../../../core/shared/models/auction_policy_model.dart';
-import '../../../../core/utils/utility.dart';
-import '../data/repo/joining_auction_repo.dart';
 
 sealed class ValidateJoiningAuctionState {
   const ValidateJoiningAuctionState();

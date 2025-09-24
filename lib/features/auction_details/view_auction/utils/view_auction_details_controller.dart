@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/utils/utility.dart';
+
 class ViewAuctionDetailsController with ChangeNotifier {
   ViewAuctionDetailsController({required TickerProvider vsync}) {
     _animController = AnimationController(
@@ -45,7 +47,7 @@ class ViewAuctionDetailsController with ChangeNotifier {
       // Return initial child size if sheet not attached yet
       return 0.5; // Default value matching initialChildSize in AuctionDraggableSheet
     } catch (e) {
-      print('Error getting sheet fraction: $e');
+      cprint('Error getting sheet fraction: $e');
       return 0.5; // Default fallback
     }
   }

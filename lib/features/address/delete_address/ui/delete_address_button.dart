@@ -4,7 +4,6 @@ import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
-import '../../../../core/utils/widgets/dialogs/custom_simple_dialog.dart';
 import 'delete_address_dialog.dart';
 
 class DeleteAddressButton extends StatelessWidget {

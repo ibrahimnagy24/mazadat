@@ -19,7 +19,8 @@ class InAppNotificationWidget extends StatefulWidget {
   });
 
   @override
-  State<InAppNotificationWidget> createState() => _InAppNotificationWidgetState();
+  State<InAppNotificationWidget> createState() =>
+      _InAppNotificationWidgetState();
 }
 
 class _InAppNotificationWidgetState extends State<InAppNotificationWidget>
@@ -99,7 +100,7 @@ class _InAppNotificationWidgetState extends State<InAppNotificationWidget>
                     // Notification Icon/Image
                     _buildNotificationIcon(),
                     const SizedBox(width: 12),
-                    
+
                     // Content
                     Expanded(
                       child: Column(
@@ -129,13 +130,13 @@ class _InAppNotificationWidgetState extends State<InAppNotificationWidget>
                         ],
                       ),
                     ),
-                    
+
                     // Dismiss Button
                     GestureDetector(
                       onTap: _dismiss,
                       child: Container(
                         padding: const EdgeInsets.all(4),
-                        child: Icon(
+                        child: const Icon(
                           Icons.close,
                           size: 20,
                           color: AppColors.textSecondaryParagraph,

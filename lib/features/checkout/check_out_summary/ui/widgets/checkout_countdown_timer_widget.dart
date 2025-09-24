@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared/widgets/default_countdown_timer_widget.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/utility.dart';
 import '../../cubit/checkout_summary_cubit.dart';
 
 class CheckoutCountdownTimerWidget extends StatelessWidget {

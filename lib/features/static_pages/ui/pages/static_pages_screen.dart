@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/app_config/api_names.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/utils/constant/app_constant.dart';
-import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../data/params/static_page_params.dart';
 import '../../logic/static_page_cubit.dart';

@@ -133,66 +133,71 @@ class _CitiesViewState extends State<CitiesView> {
               const SizedBox(height: 16),
             ],
             Flexible(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height * 0.6,
-                ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                      _filteredData.length,
-                      (index) => Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() =>
-                                  _selectedItem = _filteredData[index].id);
-                              widget.onSelect?.call(_filteredData[index]);
-                            },
-                            child: Container(
-                              height: 56,
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: (_filteredData.length - 1) == index
-                                        ? Colors.transparent
-                                        : AppColors.border,
-                                  ),
-                                ),
-                              ),
-                              width: MediaQueryHelper.width,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      _filteredData[index].name,
-                                      style: AppTextStyles.textXLMedium,
+              child: SafeArea(
+                top: false,
+                left: false,
+                right: false,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.6,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(
+                        _filteredData.length,
+                        (index) => Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() =>
+                                    _selectedItem = _filteredData[index].id);
+                                widget.onSelect?.call(_filteredData[index]);
+                              },
+                              child: Container(
+                                height: 56,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: (_filteredData.length - 1) == index
+                                          ? Colors.transparent
+                                          : AppColors.border,
                                     ),
                                   ),
-                                  Icon(
-                                    _selectedItem == _filteredData[index].id
-                                        ? Icons.radio_button_checked
-                                        : Icons.radio_button_off,
-                                    size: 24,
-                                    color: _selectedItem ==
-                                            _filteredData[index].id
-                                        ? const Color.fromRGBO(81, 94, 50, 1)
-                                        : const Color.fromRGBO(
-                                            162, 162, 162, 1),
-                                  ),
-                                ],
+                                ),
+                                width: MediaQueryHelper.width,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        _filteredData[index].name,
+                                        style: AppTextStyles.textXLMedium,
+                                      ),
+                                    ),
+                                    Icon(
+                                      _selectedItem == _filteredData[index].id
+                                          ? Icons.radio_button_checked
+                                          : Icons.radio_button_off,
+                                      size: 24,
+                                      color: _selectedItem ==
+                                              _filteredData[index].id
+                                          ? const Color.fromRGBO(81, 94, 50, 1)
+                                          : const Color.fromRGBO(
+                                              162, 162, 162, 1),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          if (_filteredData.length - 1 != index)
-                            const Divider(
-                              height: 1,
-                              thickness: 1,
-                              color: Color.fromRGBO(232, 232, 232, 1),
-                            ),
-                        ],
+                            if (_filteredData.length - 1 != index)
+                              const Divider(
+                                height: 1,
+                                thickness: 1,
+                                color: Color.fromRGBO(232, 232, 232, 1),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

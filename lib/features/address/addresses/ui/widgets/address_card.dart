@@ -6,10 +6,8 @@ import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/services/pagination/pagination_service.dart';
-import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
-import '../../../../../core/utils/extensions/extensions.dart';
 import '../../data/model/addresses_model.dart';
 import '../../logic/addresses_cubit.dart';
 

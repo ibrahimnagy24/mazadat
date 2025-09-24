@@ -48,6 +48,8 @@ abstract class Endpoints {
   static const String myAuctions = '/auctions/filterMyAuctions';
 //----------------------------------NOTIFICATIONS--------------------------------------\\
   static const String userNotificationList = '/notifications/userNotificationList';
+  static const String seenAllNotification = '/notifications/seenAllNotification';
+  static const String seenNotification = '/notifications/seenNotification';
 //--------------------------------Addresses--------------------------------------\\
 
   static const String addressTypes = '/addressType/listAddressTypeLookups';

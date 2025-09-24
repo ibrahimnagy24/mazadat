@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../assets/app_svg.dart';
 import '../blocs/main_app_bloc.dart';
-import '../../theme/colors/styles.dart';
 import '../../theme/text_styles/text_styles.dart';
 import '../../utils/widgets/text/main_text.dart';
 
@@ -108,15 +107,15 @@ class _DefaultCountdownTimerWidgetState
   }
 
   /// Static functional method to calculate remaining time in seconds
-  static int calculateRemainingTime(DateTime targetDateTime) {
-    final now = DateTime.now();
-    final difference = targetDateTime.difference(now);
+  // static int calculateRemainingTime(DateTime targetDateTime) {
+  //   final now = DateTime.now();
+  //   final difference = targetDateTime.difference(now);
 
-    if (difference.isNegative || difference.inSeconds <= 0) {
-      return 0;
-    }
-    return difference.inSeconds;
-  }
+  //   if (difference.isNegative || difference.inSeconds <= 0) {
+  //     return 0;
+  //   }
+  //   return difference.inSeconds;
+  // }
 
   @override
   Widget build(BuildContext context) {

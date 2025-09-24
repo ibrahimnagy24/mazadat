@@ -28,8 +28,8 @@ class ProfileMobileDesign extends StatefulWidget {
 class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
   @override
   void initState() {
-    context.read<UserCubit>().getUserDataStatesHandled();
     super.initState();
+    context.read<UserCubit>().getUserDataStatesHandled();
   }
 
   @override
@@ -60,71 +60,79 @@ class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
                   ],
                 ),
               )
-            : BlocBuilder<UserCubit, UserState>(builder: (context, state) {
-                final cubit = context.read<UserCubit>();
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const ProfileHeader(),
-                    Expanded(
-                      child: Transform.translate(
-                        offset: const Offset(0, -20),
-                        child: Stack(alignment: Alignment.topCenter, children: [
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: AppColors.background,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(24),
-                                topLeft: Radius.circular(24),
+            : BlocBuilder<UserCubit, UserState>(
+                buildWhen: (previous, current) =>
+                    current is UserDataLoading ||
+                    current is UserDataSuccess ||
+                    current is UserDataError,
+                builder: (context, state) {
+                  final cubit = context.read<UserCubit>();
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const ProfileHeader(),
+                      Expanded(
+                        child: Transform.translate(
+                          offset: const Offset(0, -20),
+                          child:
+                              Stack(alignment: Alignment.topCenter, children: [
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: AppColors.background,
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(24),
+                                  topLeft: Radius.circular(24),
+                                ),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 24.w),
+                              child: ListAnimator(
+                                data: [
+                                  80.sbH,
+                                  const PersonalInfoDetails(),
+                                  if (cubit.userEntity?.isSeller == true) ...[
+                                    16.sbH,
+                                    const BankInfoDetails(),
+                                  ]
+                                ],
                               ),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
-                            child: ListAnimator(
-                              data: [
-                                80.sbH,
-                                const PersonalInfoDetails(),
-                                if (cubit.userEntity?.isSeller == true) ...[
-                                  16.sbH,
-                                  const BankInfoDetails(),
-                                ]
-                              ],
-                            ),
-                          ),
-                          Transform.translate(
-                            offset: const Offset(0, -70),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              spacing: 4.h,
-                              children: [
-                                customContainerSvgIcon(
-                                    imageName: AppSvg.user,
-                                    width: 100.w,
-                                    height: 100.w,
-                                    radius: 100.w,
-                                    padding: 20.w,
-                                    color: AppColors.kPrimary,
-                                    backGround: AppColors.backgroundBody),
-                                Text(
-                                  cubit.userEntity?.firstName ?? 'Name',
-                                  style: AppTextStyles.textXLMedium,
-                                ),
-                                if (cubit.userEntity?.isSeller == true &&
-                                    cubit.userEntity?.commericalNumber != null)
+                            Transform.translate(
+                              offset: const Offset(0, -70),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                spacing: 4.h,
+                                children: [
+                                  customContainerSvgIcon(
+                                      imageName: AppSvg.user,
+                                      width: 100.w,
+                                      height: 100.w,
+                                      radius: 100.w,
+                                      padding: 20.w,
+                                      color: AppColors.kPrimary,
+                                      backGround: AppColors.backgroundBody),
                                   Text(
-                                    '${AppStrings.commercialNumber.tr} ${cubit.userEntity?.commericalNumber}',
-                                    style: AppTextStyles.textXLMedium.copyWith(
-                                        color:
-                                            AppColors.textSecondaryParagraph),
+                                    cubit.userEntity?.firstName ?? 'Name',
+                                    style: AppTextStyles.textXLMedium,
                                   ),
-                              ],
+                                  if (cubit.userEntity?.isSeller == true &&
+                                      cubit.userEntity?.commericalNumber !=
+                                          null)
+                                    Text(
+                                      '${AppStrings.commercialNumber.tr} ${cubit.userEntity?.commericalNumber}',
+                                      style: AppTextStyles.textXLMedium
+                                          .copyWith(
+                                              color: AppColors
+                                                  .textSecondaryParagraph),
+                                    ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ]),
+                          ]),
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              }),
+                    ],
+                  );
+                }),
       ),
     );
   }

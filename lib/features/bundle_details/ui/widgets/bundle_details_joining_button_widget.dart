@@ -5,7 +5,6 @@ import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
-import '../../../auction_details/auction_joining/ui/pages/join_auction_view.dart';
 import '../../../auction_details/auction_joining/ui/pages/validate_joining_auction_view.dart';
 import '../../../auction_details/view_auction/logic/view_auction_details_cubit.dart';
 import '../../logic/bundle_details_cubit.dart';

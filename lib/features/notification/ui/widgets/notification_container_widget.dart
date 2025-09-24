@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/assets/app_svg.dart';
@@ -8,6 +9,7 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/widgets/misc/default_network_image.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
+import '../../cubit/notification_cubit.dart';
 import '../../data/entity/notification_entity.dart';
 
 class NotificationContainerWidget extends StatelessWidget {
@@ -50,11 +52,17 @@ class NotificationContainerWidget extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
+        // Mark notification as read if it's unread
+        if (!notification.isRead) {
+          context.read<NotificationCubit>().seenNotification(notification.id);
+        }
+
+        // Navigate to auction details if it's an auction notification
         if (notification.flagType == 'AUCTION') {
           CustomNavigator.push(
             Routes.VIEW_AUCTION_DETAILS,
             extra: ViewAuctionDetailsRouteParams(
-              auctionId: notification.id,
+              auctionId: notification.flagId,
             ),
           );
         }

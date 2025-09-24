@@ -404,4 +404,5 @@ class AppStrings {
   static const String auctionName = 'Auction Name';
   static const String searchByAuctionName = 'Search by auction name';
   static const String markAllAsRead = 'Mark all as read';
+  static const String youHaveNoNotifications = 'You have no notifications';
 }

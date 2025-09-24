@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
@@ -9,7 +8,6 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
-import '../../cubit/checkout_summary_cubit.dart';
 
 class CheckoutSummaryHeaderWidget extends StatelessWidget {
   const CheckoutSummaryHeaderWidget({super.key});

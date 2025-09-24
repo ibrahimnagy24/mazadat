@@ -114,10 +114,10 @@ class _CheckoutPaymentListWidgetState extends State<CheckoutPaymentListWidget> {
                 : AppColors.scaffoldBackground,
             boxShadow: isSelected
                 ? [
-                    BoxShadow(
-                      color: const Color.fromRGBO(81, 94, 50, 0.2),
+                    const BoxShadow(
+                      color: Color.fromRGBO(81, 94, 50, 0.2),
                       blurRadius: 8,
-                      offset: const Offset(0, 2),
+                      offset: Offset(0, 2),
                     ),
                   ]
                 : null,
@@ -151,18 +151,19 @@ class _CheckoutPaymentListWidgetState extends State<CheckoutPaymentListWidget> {
                         paymentMethod.name,
                       ),
                     ),
-                    if (paymentMethod.type == 'WALLET' && widget.walletBalance != null) ...[
-                    const SizedBox(height: 4),
-                    AnimatedDefaultTextStyle(
-                      duration: const Duration(milliseconds: 200),
-                      style: AppTextStyles.textSmRegular.copyWith(
-                        color: AppColors.kGeryText3,
+                    if (paymentMethod.type == 'WALLET' &&
+                        widget.walletBalance != null) ...[
+                      const SizedBox(height: 4),
+                      AnimatedDefaultTextStyle(
+                        duration: const Duration(milliseconds: 200),
+                        style: AppTextStyles.textSmRegular.copyWith(
+                          color: AppColors.kGeryText3,
+                        ),
+                        child: Text(
+                          'الرصيد: ${widget.walletBalance} ر.س',
+                        ),
                       ),
-                      child: Text(
-                        'الرصيد: ${widget.walletBalance} ر.س',
-                      ),
-                    ),
-                  ] else if (paymentMethod.nameEn.isNotEmpty) ...[
+                    ] else if (paymentMethod.nameEn.isNotEmpty) ...[
                       const SizedBox(height: 4),
                       AnimatedDefaultTextStyle(
                         duration: const Duration(milliseconds: 200),

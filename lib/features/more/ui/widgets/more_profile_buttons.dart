@@ -56,10 +56,10 @@ class MoreProfileButtons extends StatelessWidget {
                 icon: AppSvg.cart,
                 onTap: () => CustomNavigator.push(Routes.MY_PURCHASES),
               ),
-              MoreButton(
-                title: AppStrings.paymentHistory.tr,
-                icon: AppSvg.clock,
-              ),
+              // MoreButton(
+              //   title: AppStrings.paymentHistory.tr,
+              //   icon: AppSvg.clock,
+              // ),
               MoreButton(
                 title: AppStrings.myBundles.tr,
                 icon: AppSvg.package,

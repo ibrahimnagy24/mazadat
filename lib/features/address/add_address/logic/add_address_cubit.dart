@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/subjects.dart';
+import '../../../../core/utils/utility.dart';
 import '../../addresses/data/model/addresses_model.dart';
 import '../../address_types/data/entity/address_type_entity.dart';
 import '../data/entity/address_entity.dart';
@@ -19,7 +20,12 @@ class AddAddressCubit extends Cubit<AddAddressState> {
   AddressTypeEntity? selectedAddressTypeEntity;
 
   final entity = BehaviorSubject<AddressEntity?>();
-  Function(AddressEntity?) get updateEntity => entity.sink.add;
+  Function(AddressEntity?) get updateEntity => (AddressEntity? newEntity) {
+        cprint(
+            '🔍 [CUBIT DEBUG] Updating entity with region: ${newEntity?.region?.id} (${newEntity?.region?.name})');
+        cprint('🔍 [CUBIT DEBUG] Entity toJson: ${newEntity?.toJson()}');
+        entity.sink.add(newEntity);
+      };
   Stream<AddressEntity?> get entityStream => entity.stream.asBroadcastStream();
   ScrollController controller = ScrollController();
 //---------------------------------FUNCTIONS----------------------------------//
@@ -47,6 +53,8 @@ class AddAddressCubit extends Cubit<AddAddressState> {
       selectedAddressTypeEntity;
 
   bool isBodyValid() {
+    cprint(
+        '🔍 [VALIDATION DEBUG] Current entity region: ${entity.valueOrNull?.region?.id}');
     log('==>Address ${entity.valueOrNull?.toJson()}');
     if (entity.valueOrNull?.addressType == null) {
       controller.animateTo(

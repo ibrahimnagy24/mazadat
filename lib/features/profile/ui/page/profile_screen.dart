@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/widgets/misc/custom_screen_type_layout_widget.dart';
 import 'profile_mobile_design.dart';
 
 class ProfileScreen extends StatelessWidget {

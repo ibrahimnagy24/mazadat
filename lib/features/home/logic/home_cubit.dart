@@ -20,8 +20,8 @@ class HomeCubit extends Cubit<HomeState> {
   HomeDataType homeDataType = HomeDataType.auctions;
   CategoryEntity? _selectedCategory;
   bool _isBundleSelected = false;
-  int _page = 0;
-  int _limit = 200;
+  final int _page = 0;
+  final int _limit = 200;
 
 //---------------------------------FUNCTIONS----------------------------------//
   CategoryEntity? get getSelectedCategory => _selectedCategory;

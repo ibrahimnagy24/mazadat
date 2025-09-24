@@ -6,7 +6,6 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../logic/validate_joining_auction_cubit.dart';
-import '../../logic/validate_joining_auction_state.dart';
 
 class AgreeToCommission extends StatelessWidget {
   const AgreeToCommission({super.key});

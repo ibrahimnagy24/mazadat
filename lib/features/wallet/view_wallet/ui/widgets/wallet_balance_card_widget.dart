@@ -12,7 +12,6 @@ import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/errors/error_message_widget.dart';
-import '../../../../../core/utils/widgets/loading/adaptive_circle_progress.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
 import '../../logic/view_my_wallet_cubit.dart';
 import '../../logic/view_my_wallet_state.dart';

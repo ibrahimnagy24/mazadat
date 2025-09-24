@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/app_config/api_names.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
-import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../../core/shared/widgets/static_pages_html_bottom_sheet_widget.dart';
 import '../../../../../core/theme/colors/styles.dart';

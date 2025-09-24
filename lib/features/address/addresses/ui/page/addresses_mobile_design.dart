@@ -4,12 +4,10 @@ import '../../../../../core/services/pagination/pagination_service.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../../core/utils/widgets/custom_loading_text.dart';
 import '../../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
-import '../../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
 import '../../logic/addresses_cubit.dart';
 import '../../logic/addresses_state.dart';
 import '../widgets/add_address_button.dart';
@@ -69,12 +67,16 @@ class AddressesMobileDesign extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: ListAnimator(
-                                  controller: cubit.controller,
                                   data: List.generate(
                                     state.addresses.length,
                                     (i) => AddressCard(
                                         address: state.addresses[i]),
-                                  )..add(const AddAddressButton()),
+                                  )..add(const SafeArea(
+                                      top: false,
+                                      left: false,
+                                      right: false,
+                                      child: AddAddressButton(),
+                                    )),
                                 ),
                               ),
                               CustomLoadingText(loading: state.isLoading),

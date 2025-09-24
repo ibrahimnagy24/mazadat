@@ -29,4 +29,5 @@ class AppImages {
   static const String unselectedIcon = 'assets/images/unselected_icon.png';
   static const String primaryColorLogo = 'assets/images/primary_color_logo.png';
   static const String whatsappImage = 'assets/images/whatsapp_image.png';
+  static const String notificationBill = 'assets/images/notification_bill.png';
 }

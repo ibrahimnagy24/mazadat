@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:rxdart/rxdart.dart';
@@ -10,8 +9,6 @@ import 'addresses_state.dart';
 
 class AddressesCubit extends Cubit<AddressesState> {
   AddressesCubit() : super(const AddressesInitial()) {
-    controller = ScrollController();
-    customScroll(controller);
     updateListing(true);
   }
 //---------------------------------VARIABLES----------------------------------//
@@ -20,20 +17,10 @@ class AddressesCubit extends Cubit<AddressesState> {
   Function(bool) get updateListing => listing.sink.add;
   Stream<bool> get listingStream => listing.stream.asBroadcastStream();
 
-  late ScrollController controller;
   late SearchEngine _engine;
   List<AddressModel>? model;
 
 //---------------------------------FUNCTIONS----------------------------------//
-  customScroll(ScrollController controller) {
-    controller.addListener(() {
-      bool scroll = PaginationService.scrollListener(controller,
-          maxPage: _engine.maxPages!, currentPage: _engine.currentPage!);
-      if (scroll) {
-        addressesStatesHandled(_engine);
-      }
-    });
-  }
 
 //----------------------------------REQUEST-----------------------------------//
   Future<void> addressesStatesHandled(SearchEngine params) async {

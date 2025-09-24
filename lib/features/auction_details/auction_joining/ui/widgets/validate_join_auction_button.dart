@@ -9,7 +9,6 @@ import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../logic/validate_joining_auction_cubit.dart';
-import '../../logic/validate_joining_auction_state.dart';
 import '../pages/join_auction_view.dart';
 import 'agree_to_commission.dart';
 import 'agree_to_insurance.dart';

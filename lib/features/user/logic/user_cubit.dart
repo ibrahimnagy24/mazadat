@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/utility.dart';
 import '../../../../core/services/cache/shared_helper.dart';
+import '../../../core/navigation/custom_navigation.dart';
 import '../data/entity/user_entity.dart';
 import '../repo/user_repo.dart';
 import 'user_state.dart';
@@ -59,13 +61,16 @@ class UserCubit extends Cubit<UserState> {
       _loginAsGuest(visitorName: visitorName);
       return;
     }
+    CustomNavigator.context.loaderOverlay.show();
     emit(const UserDataLoading());
     final response = await UserRepo.getUserData();
     response.fold((failure) {
+      CustomNavigator.context.loaderOverlay.hide();
       return emit(UserDataError(failure));
     }, (success) async {
+      CustomNavigator.context.loaderOverlay.hide();
       await SharedHelper.sharedHelper?.saveUser(success);
-
+      setUser(success);
       return emit(UserDataSuccess(success));
     });
   }

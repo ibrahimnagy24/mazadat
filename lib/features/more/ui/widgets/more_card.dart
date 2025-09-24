@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';

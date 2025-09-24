@@ -5,7 +5,6 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/shared/blocs/main_app_bloc.dart';
-import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';

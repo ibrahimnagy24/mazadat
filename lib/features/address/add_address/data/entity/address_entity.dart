@@ -41,17 +41,17 @@ class AddressEntity {
     bool? clearDistrict,
     bool? isDefault,
   }) {
-    this.id = id ?? this.id;
-    this.addressType = addressType ?? selectedAddressTypeEntity ?? this.addressType;
-    this.selectedAddressType = selectedAddressType ?? this.selectedAddressType;
-    this.region = region ?? this.region;
-    this.city = city ?? this.city;
-    this.district = district ?? this.district;
-    if (clearCity == true) this.city = null;
-    if (clearDistrict == true) this.district = null;
-    this.isDefault = isDefault ?? this.isDefault;
-
-    return this;
+    return AddressEntity(
+      id: id ?? this.id,
+      addressType: addressType ?? selectedAddressTypeEntity ?? this.addressType,
+      selectedAddressType: selectedAddressType ?? this.selectedAddressType,
+      region: region ?? this.region,
+      city: clearCity == true ? null : (city ?? this.city),
+      district: clearDistrict == true ? null : (district ?? this.district),
+      addressTEC: addressTEC, // Keep the same controllers
+      phoneTEC: phoneTEC, // Keep the same controllers
+      isDefault: isDefault ?? this.isDefault,
+    );
   }
 
   Map<String, dynamic> toJson() {

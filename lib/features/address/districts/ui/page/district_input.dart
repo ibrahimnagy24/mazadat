@@ -9,6 +9,7 @@ import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
 import '../../../../../core/services/toast_service.dart';
 import '../../data/entity/district_entity.dart';
+import '../../data/params/district_params.dart';
 import '../../logic/district_cubit.dart';
 import '../widgets/districts_view.dart';
 
@@ -32,7 +33,11 @@ class DistrictInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DistrictsCubit()..districtsStatesHandled(),
+      create: (context) => DistrictsCubit()..districtsStatesHandled(
+        params: cityId != null 
+          ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
+          : null,
+      ),
       child: BlocConsumer<DistrictsCubit, DistrictState>(
         listener: (context, state) {
           if (state is GetDistrictsError) {
@@ -99,7 +104,11 @@ class DistrictInput extends StatelessWidget {
                 return;
               }
               if (cubit.districts != null && cubit.districts!.isEmpty) {
-                cubit.districtsStatesHandled();
+                cubit.districtsStatesHandled(
+                  params: cityId != null 
+                    ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
+                    : null,
+                );
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.no_data.tr,
@@ -121,7 +130,11 @@ class DistrictInput extends StatelessWidget {
                 return;
               }
               if (state is GetDistrictsError) {
-                cubit.districtsStatesHandled();
+                cubit.districtsStatesHandled(
+                  params: cityId != null 
+                    ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
+                    : null,
+                );
                 return;
               }
             },

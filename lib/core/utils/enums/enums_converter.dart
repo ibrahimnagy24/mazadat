@@ -3,7 +3,7 @@ import 'enums.dart';
 class UserEnumsConverter {
   static UserType stringToUserType(String value) {
     switch (value) {
-      case 'user':
+      case 'USER':
         return UserType.user;
       default:
         return UserType.visitor;

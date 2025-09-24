@@ -6,7 +6,6 @@ import '../../core/navigation/routes.dart';
 import '../../core/utils/extensions/media_query_helper.dart';
 import '../../core/utils/utility.dart';
 import '../../core/utils/widgets/misc/default_network_image.dart';
-import '../checkout/shipment_order_details/data/params/shipment_details_route_params.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

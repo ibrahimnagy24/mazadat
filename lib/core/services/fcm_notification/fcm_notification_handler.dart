@@ -4,18 +4,22 @@ import '../../navigation/routes.dart';
 import '../../utils/utility.dart';
 import 'models/notification_model.dart';
 import 'notification_types.dart';
-import 'ui/in_app_notification_widget.dart';
 
 class FCMNotificationHandler {
   /// Handle notification based on type and action
-  static void handleNotification(NotificationModel notification) {
+  static void handleNotification(NotificationModel notification,
+      {bool showInApp = true, bool shouldNavigate = false}) {
     cprint('Handling notification: ${notification.toString()}');
 
-    // Show in-app notification if app is in foreground
-    _showInAppNotification(notification);
+    // Show in-app notification if app is in foreground and requested
+    if (showInApp) {
+      _showInAppNotification(notification);
+    }
 
-    // Handle navigation based on notification type
-    _handleNavigation(notification);
+    // Handle navigation based on notification type only if explicitly requested
+    if (shouldNavigate) {
+      _handleNavigation(notification);
+    }
 
     // Handle custom actions
     _handleCustomActions(notification);
@@ -24,28 +28,65 @@ class FCMNotificationHandler {
   /// Show in-app notification overlay
   static void _showInAppNotification(NotificationModel notification) {
     final context = CustomNavigator.navigatorState.currentContext;
-    if (context != null) {
-      // Show overlay notification
-      OverlayEntry? overlayEntry;
-      overlayEntry = OverlayEntry(
-        builder: (context) => InAppNotificationWidget(
-          notification: notification,
-          onDismiss: () {
-            overlayEntry?.remove();
-          },
-          onTap: () {
-            overlayEntry?.remove();
-            _handleNavigation(notification);
-          },
-        ),
-      );
+    if (context == null) {
+      cprint('No context available for in-app notification');
+      return;
+    }
 
-      Overlay.of(context).insert(overlayEntry);
+    // Check if overlay is available
+    // final overlay = Overlay.maybeOf(context);
+    // if (overlay == null) {
+    //   cprint('No overlay available, falling back to snackbar notification');
+    //   _showFallbackNotification(context, notification);
+    //   return;
+    // }
 
-      // Auto dismiss after 4 seconds
-      Future.delayed(const Duration(seconds: 4), () {
-        overlayEntry?.remove();
-      });
+    // try {
+    //   // Show overlay notification
+    //   OverlayEntry? overlayEntry;
+    //   overlayEntry = OverlayEntry(
+    //     builder: (context) => InAppNotificationWidget(
+    //       notification: notification,
+    //       onDismiss: () {
+    //         overlayEntry?.remove();
+    //       },
+    //       onTap: () {
+    //         overlayEntry?.remove();
+    //         _handleNavigation(notification);
+    //       },
+    //     ),
+    //   );
+
+    //   overlay.insert(overlayEntry);
+
+    //   // Auto dismiss after 4 seconds
+    //   Future.delayed(const Duration(seconds: 4), () {
+    //     try {
+    //       overlayEntry?.remove();
+    //     } catch (e) {
+    //       cprint('Error removing overlay entry: $e');
+    //     }
+    //   });
+    // } catch (e) {
+    //   cprint('Error showing overlay notification: $e');
+    //   _showFallbackNotification(context, notification);
+    // }
+  }
+
+  /// Show fallback notification when overlay is not available
+  static void _showFallbackNotification(
+      BuildContext context, NotificationModel notification) {
+    try {
+      // Use ToastService as fallback instead of SnackBar
+      // ToastService.showCustom(
+      //   message: notification.title ?? notification.body ?? 'New Notification',
+      //   context: context,
+      //   toastStatusType: ToastStatusType.success,
+      // );
+
+      cprint('Showed fallback toast notification');
+    } catch (e) {
+      cprint('Error showing fallback toast notification: $e');
     }
   }
 
@@ -78,9 +119,9 @@ class FCMNotificationHandler {
 
   /// Handle auction-related notifications
   static void _handleAuctionNotification(NotificationModel notification) {
-    final auctionId = notification.getDataValue('auction_id') ?? 
-                     notification.getDataValue('auctionId');
-    
+    final auctionId = notification.getDataValue('auction_id') ??
+        notification.getDataValue('auctionId');
+
     if (auctionId != null) {
       // Navigate to auction details
       CustomNavigator.push(
@@ -95,9 +136,9 @@ class FCMNotificationHandler {
 
   /// Handle order-related notifications
   static void _handleOrderNotification(NotificationModel notification) {
-    final orderId = notification.getDataValue('order_id') ?? 
-                   notification.getDataValue('orderId');
-    
+    final orderId = notification.getDataValue('order_id') ??
+        notification.getDataValue('orderId');
+
     if (orderId != null) {
       // Navigate to order details or my purchases
       CustomNavigator.push(Routes.MY_PURCHASES);
@@ -109,46 +150,48 @@ class FCMNotificationHandler {
 
   /// Handle payment-related notifications
   static void _handlePaymentNotification(NotificationModel notification) {
-    final paymentId = notification.getDataValue('payment_id') ?? 
-                     notification.getDataValue('paymentId');
-    
+    final paymentId = notification.getDataValue('payment_id') ??
+        notification.getDataValue('paymentId');
+
     // Navigate to wallet or payment history
     CustomNavigator.push(Routes.VIEW_WALLET_HISTORY);
   }
 
   /// Handle general notifications
   static void _handleGeneralNotification(NotificationModel notification) {
-    final targetScreen = notification.getDataValue('target_screen') ?? 
-                        notification.getDataValue('targetScreen');
-    
+    final targetScreen = notification.getDataValue('target_screen') ??
+        notification.getDataValue('targetScreen');
+
     if (targetScreen != null) {
       // Navigate to specific screen
       _navigateToScreen(targetScreen);
-    } else {
-      // Navigate to home
-      CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
     }
+    // Don't navigate anywhere if no target screen is specified
   }
 
   /// Handle promotion notifications
   static void _handlePromotionNotification(NotificationModel notification) {
-    final promotionId = notification.getDataValue('promotion_id') ?? 
-                       notification.getDataValue('promotionId');
-    
-    // Navigate to promotions or home
-    CustomNavigator.push(Routes.NAV_BAR_LAYOUT);
+    final promotionId = notification.getDataValue('promotion_id') ??
+        notification.getDataValue('promotionId');
+
+    // Only navigate if there's a specific promotion to show
+    // Otherwise just show the notification without navigation
+    if (promotionId != null) {
+      // TODO: Navigate to specific promotion when route is available
+      cprint('Promotion notification with ID: $promotionId');
+    }
   }
 
   /// Handle default notification (fallback)
   static void _handleDefaultNotification(NotificationModel notification) {
-    // Default action - navigate to home
-    CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
+    // Default action - just log, don't navigate anywhere
+    cprint('Default notification handled: ${notification.title}');
   }
 
   /// Handle custom actions
   static void _handleCustomActions(NotificationModel notification) {
     final action = notification.action?.toLowerCase();
-    
+
     switch (action) {
       case 'open_url':
         final url = notification.getDataValue('url');
@@ -193,7 +236,7 @@ class FCMNotificationHandler {
         CustomNavigator.push(Routes.SEARCH);
         break;
       default:
-        CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
+        cprint('Unknown screen name for navigation: $screenName');
         break;
     }
   }

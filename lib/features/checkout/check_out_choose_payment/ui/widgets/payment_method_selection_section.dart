@@ -10,7 +10,6 @@ import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
-import '../../../../../core/utils/utility.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../shipment_order_details/data/params/shipment_details_route_params.dart';
 import '../../cubit/checkout_payment_cubit.dart';

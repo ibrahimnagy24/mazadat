@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/services/pagination/pagination_service.dart';
 import '../data/entity/auction_entity.dart';
-import '../data/model/auctions_model.dart';
 import '../data/repo/auction_repo.dart';
 import 'auctions_state.dart';
 

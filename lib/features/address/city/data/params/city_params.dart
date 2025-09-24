@@ -3,12 +3,12 @@ import 'package:equatable/equatable.dart';
 class CityParams extends Equatable {
   final int page;
   final int limit;
-  final int regionId;
+  final int? regionId;
 
   const CityParams({
     required this.page,
     required this.limit,
-    required this.regionId,
+    this.regionId,
   });
 
   Map<String, dynamic> returnedMap() {

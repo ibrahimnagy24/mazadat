@@ -6,7 +6,6 @@ import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../delete_address/ui/delete_address_button.dart';
 import '../../../addresses/data/model/addresses_model.dart';
-import '../../data/entity/address_entity.dart';
 import '../../logic/add_address_cubit.dart';
 import '../../logic/add_address_state.dart';
 

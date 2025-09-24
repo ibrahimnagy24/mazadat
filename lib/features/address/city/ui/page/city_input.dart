@@ -9,6 +9,7 @@ import '../../../../../core/app_core.dart';
 import '../../../../../core/app_notification.dart';
 import '../../../../../core/services/toast_service.dart';
 import '../../data/entity/city_entity.dart';
+import '../../data/params/city_params.dart';
 import '../../logic/city_cubit.dart';
 import '../widgets/cities_view.dart';
 
@@ -16,6 +17,7 @@ class CityInput extends StatelessWidget {
   const CityInput({
     super.key,
     this.withRegionFilter = false,
+    this.loadAllCities = false,
     this.regionId,
     this.initialValue,
     this.onSelect,
@@ -28,13 +30,29 @@ class CityInput extends StatelessWidget {
   final String? Function(String?)? validator;
   final int? regionId;
   final bool withRegionFilter;
+  final bool loadAllCities;
   final Color? fillColor;
   final Color? borderColor;
+
+  CityParams? _getCityParams() {
+    if (loadAllCities) {
+      // Load all cities without region filter
+      return const CityParams(page: 0, limit: 100000);
+    } else if (withRegionFilter && regionId != null) {
+      // Load cities filtered by region
+      return CityParams(regionId: regionId!, page: 0, limit: 100000);
+    } else {
+      // Use default behavior (hardcoded regionId from cubit)
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CityCubit()..citiesStatesHandled(),
+      create: (context) => CityCubit()..citiesStatesHandled(
+        params: _getCityParams(),
+      ),
       child: BlocConsumer<CityCubit, CityState>(
         listener: (context, state) {
           if (state is GetCitiesError) {
@@ -63,7 +81,7 @@ class CityInput extends StatelessWidget {
               color: AppColors.kGeryText,
             ),
             onTap: () {
-              if (regionId == null && withRegionFilter) {
+              if (regionId == null && withRegionFilter && !loadAllCities) {
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.youHveToSelectRegionFirst.tr,
@@ -101,7 +119,7 @@ class CityInput extends StatelessWidget {
                 return;
               }
               if (cubit.cities != null && cubit.cities!.isEmpty) {
-                cubit.citiesStatesHandled();
+                cubit.citiesStatesHandled(params: _getCityParams());
                 AppCore.showSnackBar(
                   notification: AppNotification(
                     message: AppStrings.no_data.tr,
@@ -123,7 +141,7 @@ class CityInput extends StatelessWidget {
                 return;
               }
               if (state is GetCitiesError) {
-                cubit.citiesStatesHandled();
+                cubit.citiesStatesHandled(params: _getCityParams());
                 return;
               }
             },

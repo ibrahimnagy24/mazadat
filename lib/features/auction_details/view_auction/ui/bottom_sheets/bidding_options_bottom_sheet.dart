@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/services/toast_service.dart';
 import '../../../../../core/assets/app_svg.dart';
-import '../../../../../core/shared/widgets/custom_images.dart';
 import '../../../../../core/shared/widgets/price_widget_with_flag_widget.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/radius/app_radius.dart';

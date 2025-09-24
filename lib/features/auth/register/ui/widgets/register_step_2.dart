@@ -51,6 +51,7 @@ class RegisterFieldStep2 extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CityInput(
+                loadAllCities: true, // Load all cities without region filter
                 initialValue: context.read<RegisterCubit>().cityEntity,
                 onSelect: (selected) {
                   context.read<RegisterCubit>().cityEntity = selected;

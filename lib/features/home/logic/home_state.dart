@@ -1,5 +1,4 @@
 import '../../../core/shared/entity/error_entity.dart';
-import '../../category/data/entity/category_entity.dart';
 import '../data/entity/home_auction_entity.dart';
 import '../data/entity/home_bundle_entity.dart';
 import '../data/enum/displayed_types.dart';

@@ -143,8 +143,11 @@ class FCMNotificationService {
     // Show local notification
     await _showLocalNotification(notificationModel);
     
-    // Handle notification action
-    FCMNotificationHandler.handleNotification(notificationModel);
+    // Handle notification action with small delay to ensure UI is ready
+    // For foreground messages, only show the notification, don't navigate
+    Future.delayed(const Duration(milliseconds: 100), () {
+      FCMNotificationHandler.handleNotification(notificationModel, showInApp: true, shouldNavigate: false);
+    });
   }
 
   /// Handle messages when app is opened from background or terminated state
@@ -154,8 +157,9 @@ class FCMNotificationService {
     final notificationModel = NotificationModel.fromRemoteMessage(message);
     
     // Handle notification action with delay to ensure app is ready
+    // User tapped on system notification, so navigate to relevant screen
     Future.delayed(const Duration(milliseconds: 500), () {
-      FCMNotificationHandler.handleNotification(notificationModel);
+      FCMNotificationHandler.handleNotification(notificationModel, showInApp: false, shouldNavigate: true);
     });
   }
 
@@ -204,7 +208,8 @@ class FCMNotificationService {
       try {
         final data = jsonDecode(response.payload!);
         final notification = NotificationModel.fromJson(data);
-        FCMNotificationHandler.handleNotification(notification);
+        // User tapped on system notification, so navigate to relevant screen
+        FCMNotificationHandler.handleNotification(notification, showInApp: false, shouldNavigate: true);
       } catch (e) {
         cprint('Error parsing notification payload: $e');
       }
