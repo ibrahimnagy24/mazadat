@@ -13,7 +13,7 @@ class NotificationCubit extends Cubit<NotificationState> {
 
   NotificationType _currentNotificationType = NotificationType.seller;
   int _page = 0;
-  final int _size = 100;
+  final int _size = 50;
   NotificationsResponseEntity? _notificationsResponse;
   List<NotificationEntity> _allNotifications = [];
   bool _isLoadingMore = false;
@@ -36,6 +36,7 @@ class NotificationCubit extends Cubit<NotificationState> {
   void setNotificationType(NotificationType type) {
     _currentNotificationType = type;
     emit(NotificationTypeChanged(type));
+    getNotifications(isRefresh: true);
   }
 
   Future<void> getNotifications({bool isRefresh = false}) async {
@@ -50,6 +51,8 @@ class NotificationCubit extends Cubit<NotificationState> {
     final params = GetNotificationParams(
       page: _page,
       size: _size,
+      notificationType:
+          _currentNotificationType == NotificationType.buyer ? 'BUYER' : null,
     );
 
     final result = await NotificationRepo.getNotifications(params);
@@ -106,6 +109,8 @@ class NotificationCubit extends Cubit<NotificationState> {
     final params = GetNotificationParams(
       page: _page,
       size: _size,
+      notificationType:
+          _currentNotificationType == NotificationType.buyer ? 'BUYER' : null,
     );
 
     final result = await NotificationRepo.getNotifications(params);

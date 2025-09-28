@@ -8,6 +8,7 @@ import '../../../../core/utils/widgets/loading/adaptive_circle_progress.dart';
 import '../../../category/logic/category_cubit.dart';
 import '../../../../core/shared/widgets/category_widget.dart';
 import '../../logic/edit_favourite_categories_cubit.dart';
+import '../../../category/data/entity/category_entity.dart';
 
 class EditFavouriteCategoriesBody extends StatelessWidget {
   const EditFavouriteCategoriesBody({super.key});
@@ -40,59 +41,56 @@ class EditFavouriteCategoriesBody extends StatelessWidget {
             if (context.read<CategoryCubit>().allCategories!.isEmpty) {
               return const EmptyState();
             } else {
-              context
+              // Use a locally filtered list to avoid mutating cubit's state in build
+              final categories = context
                   .read<CategoryCubit>()
                   .allCategories!
-                  .removeWhere((e) => e.id == -1);
+                  .where((e) => e.id != -1)
+                  .toList(growable: false);
               return StreamBuilder(
-                  stream: context
-                      .read<EditFavouriteCategoriesCubit>()
-                      .categoriesStream,
-                  builder: (context, snapshot) {
-                    return snapshot.data != null
-                        ? GridListAnimator(
-                            crossAxisCount: 3,
-                            aspectRatio: 1,
-                            data: List.generate(
-                                context
-                                    .read<CategoryCubit>()
-                                    .allCategories!
-                                    .length, (index) {
+                stream: context
+                    .read<EditFavouriteCategoriesCubit>()
+                    .categoriesStream,
+                builder: (context, snapshot) {
+                  return snapshot.data != null
+                      ? GridListAnimator(
+                          crossAxisCount: 3,
+                          aspectRatio: 1,
+                          data: List.generate(
+                            categories.length,
+                            (index) {
                               return CategoryWidget(
-                                category: context
-                                    .read<CategoryCubit>()
-                                    .allCategories![index],
-                                isSelected: snapshot.data?.any((e) =>
-                                        e.id ==
-                                        context
-                                            .read<CategoryCubit>()
-                                            .allCategories![index]
-                                            .id) ??
+                                category: categories[index],
+                                isSelected: snapshot.data?.any(
+                                        (e) => e.id == categories[index].id) ??
                                     false,
                                 onTap: () {
-                                  if (snapshot.data?.contains(context
-                                          .read<CategoryCubit>()
-                                          .allCategories![index]) ==
-                                      true) {
-                                    snapshot.data?.remove(context
-                                        .read<CategoryCubit>()
-                                        .allCategories![index]);
+                                  // Work on a mutable copy; snapshot.data may be unmodifiable
+                                  final List<CategoryEntity> current =
+                                      List<CategoryEntity>.of(snapshot.data ??
+                                          const <CategoryEntity>[]);
+                                  final tapped = categories[index];
+                                  final exists =
+                                      current.any((e) => e.id == tapped.id);
+                                  if (exists) {
+                                    current
+                                        .removeWhere((e) => e.id == tapped.id);
                                   } else {
-                                    snapshot.data?.add(context
-                                        .read<CategoryCubit>()
-                                        .allCategories![index]);
+                                    current.add(tapped);
                                   }
                                   context
                                       .read<EditFavouriteCategoriesCubit>()
-                                      .updateCategories(snapshot.data!);
+                                      .updateCategories(current);
                                 },
                                 type: CategoryWidgetType.type1,
                                 animationDuration: (index * 10).ms,
                               );
-                            }),
-                          )
-                        : const SizedBox.shrink();
-                  });
+                            },
+                          ),
+                        )
+                      : const SizedBox.shrink();
+                },
+              );
             }
           }
 

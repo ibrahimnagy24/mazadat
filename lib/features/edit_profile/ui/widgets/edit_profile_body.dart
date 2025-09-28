@@ -113,6 +113,7 @@ class EditProfileBody extends StatelessWidget {
                         asyncSnapshot.data?.name ?? '',
                         label: AppStrings.city.tr,
                       ),
+                      loadAllCities: true,
                     );
                   }),
               16.sbH,

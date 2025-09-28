@@ -337,5 +337,7 @@
   "No shipments found": "لم يتم العثور على شحنات",
   "No shipments found for your search": "لم يتم العثور على شحنات لبحثك",
   "Mark all as read": "تمييز الكل كمقروء",
-  "You have no notifications": "لا يوجد لديك إشعارات"
+  "You have no notifications": "لا يوجد لديك إشعارات",
+  "No Bundles": "لا توجد حزم",
+  "No bundles found": "لم يتم العثور على حزم"
 }

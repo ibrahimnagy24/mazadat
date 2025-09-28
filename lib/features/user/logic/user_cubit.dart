@@ -61,14 +61,24 @@ class UserCubit extends Cubit<UserState> {
       _loginAsGuest(visitorName: visitorName);
       return;
     }
-    CustomNavigator.context.loaderOverlay.show();
+    
+    // Check if context is available before using loader overlay
+    final context = CustomNavigator.safeContext;
+    if (context != null) {
+      context.loaderOverlay.show();
+    }
+    
     emit(const UserDataLoading());
     final response = await UserRepo.getUserData();
     response.fold((failure) {
-      CustomNavigator.context.loaderOverlay.hide();
+      if (context != null) {
+        context.loaderOverlay.hide();
+      }
       return emit(UserDataError(failure));
     }, (success) async {
-      CustomNavigator.context.loaderOverlay.hide();
+      if (context != null) {
+        context.loaderOverlay.hide();
+      }
       await SharedHelper.sharedHelper?.saveUser(success);
       setUser(success);
       return emit(UserDataSuccess(success));

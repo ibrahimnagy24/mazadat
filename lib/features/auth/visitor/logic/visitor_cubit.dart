@@ -14,17 +14,19 @@ class VisitorCubit extends Cubit<VisitorState> {
 //---------------------------------FUNCTIONS----------------------------------//
 
 //----------------------------------REQUEST-----------------------------------//
-  Future<void> visitorLoginStatesHandled(
-      {List<Map<String, dynamic>>? categories}) async {
+  Future<void> visitorLoginStatesHandled({
+    List<Map<String, dynamic>>? categories,
+  }) async {
     emit(const VisitorLoginLoading());
     log('xx $categories');
 
     final deviceInfo = await DeviceInfoService.getDeviceInfo();
     final VisitorLoginParams params = VisitorLoginParams(
-        deviceName: deviceInfo.deviceName,
-        deviceType: deviceInfo.platform,
-        lang: mainAppBloc.globalLang,
-        categories: categories ?? []);
+      deviceName: deviceInfo.deviceName,
+      deviceType: deviceInfo.platform,
+      lang: mainAppBloc.globalLang,
+      categories: categories ?? [],
+    );
     final response = await VisitorRepo.login(params);
     response.fold((failure) {
       return emit(VisitorLoginError(failure));

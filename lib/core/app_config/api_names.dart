@@ -1,4 +1,4 @@
-import '../../features/bundle_details/data/params/bundle_details_route_params.dart';
+import '../../features/bundle_details/view_bundle_details/data/params/bundle_details_route_params.dart';
 
 abstract class Endpoints {
 //--------------------------------TESTED--------------------------------------\\
@@ -14,13 +14,17 @@ abstract class Endpoints {
   static const String deleteAccount = '/users/deleteAccount';
   static const String checkDeleteAccount = '/users/checkDeleteAccount';
 //----------------------------------HOME--------------------------------------\\
-  static const String homeBundles = '/bundles/searchBundles';
+  static const String homeBundles = '/bundles/searchBundleByKeyword';
   static const String homeAuction = '/auctions/homePageFilterAuction';
 
   static auctionDetails(id) => '/auctions/viewAuction/$id';
   static validateAuctionJoining(id) => '/auctions/validateJoining?id=$id';
   static const String submitJoiningAuction = '/auctions/submitJoining';
+  static const String validateBundleJoining = '/bundles/validateJoining';
+  static const String submitJoiningBundle = '/bundles/submitJoining';
   static const String checkOnJoiningAuction = '/auctions/checkInsurancePayment';
+  static const String checkBundleInsurancePayment =
+      '/bundles/checkInsurancePayment';
   static const String auctionBidding = '/bidding/placeBid';
   static const String switchBiddingMethod = '/bidding/switchBiddingMethod';
   static const String withdrawAuction = '/auctions/withdrawAuction';
@@ -47,8 +51,10 @@ abstract class Endpoints {
 //----------------------------------MY AUCTIONS--------------------------------------\\
   static const String myAuctions = '/auctions/filterMyAuctions';
 //----------------------------------NOTIFICATIONS--------------------------------------\\
-  static const String userNotificationList = '/notifications/userNotificationList';
-  static const String seenAllNotification = '/notifications/seenAllNotification';
+  static const String userNotificationList =
+      '/notifications/userNotificationList';
+  static const String seenAllNotification =
+      '/notifications/seenAllNotification';
   static const String seenNotification = '/notifications/seenNotification';
 //--------------------------------Addresses--------------------------------------\\
 
@@ -105,6 +111,13 @@ abstract class Endpoints {
   static const String downloadInvoice = '/reports/generateInvoice';
   static const String messageTypesContactUs = '/messageTypes/listActive';
   static const String contactRequestAdd = '/contactRequest/add';
-  static const String publicQuestions = '/publicQuestions/listPublicQuestion?page=0&size=10000';
-  static const String contactConfiguration = '/globals/configurationByCode?code=CONTACT';
+  static const String publicQuestions =
+      '/publicQuestions/listPublicQuestion?page=0&size=10000';
+  static const String contactConfiguration =
+      '/globals/configurationByCode?code=CONTACT';
+//--------------------------------BUNDLE PAYMENT--------------------------------------\\
+  static const String selectBundlePaymentMethod =
+      '/bundles/selectPaymentMethod';
+  static const String getBundleCheckoutPaymentStatus =
+      '/bundles/checkInsurancePayment';
 }

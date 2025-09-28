@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
+import '../../../user/logic/user_cubit.dart';
 import '../../cubit/notification_cubit.dart';
 import '../../cubit/notification_state.dart';
 import '../../data/enum/notification_type.dart';
@@ -48,22 +49,31 @@ class NotificationStatusTabs extends StatelessWidget {
           ),
         };
 
-        return SizedBox(
-          height: 40,
-          width: MediaQuery.sizeOf(context).width,
-          child: CupertinoSlidingSegmentedControl<NotificationType>(
-            children: segmentOptions,
-            groupValue: currentType,
-            onValueChanged: (NotificationType? value) {
-              if (value != null) {
-                cubit.setNotificationType(value);
-              }
-            },
-            thumbColor: const Color.fromRGBO(138, 147, 118, 1),
-            backgroundColor: AppColors.kWhite,
-            padding: const EdgeInsets.all(0),
-          ),
-        );
+        return context.read<UserCubit>().userEntity != null &&
+                context.read<UserCubit>().userEntity!.isSeller != null &&
+                context.read<UserCubit>().userEntity!.isSeller == true
+            ? Column(
+                children: [
+                  SizedBox(
+                    height: 40,
+                    width: MediaQuery.sizeOf(context).width,
+                    child: CupertinoSlidingSegmentedControl<NotificationType>(
+                      children: segmentOptions,
+                      groupValue: currentType,
+                      onValueChanged: (NotificationType? value) {
+                        if (value != null) {
+                          cubit.setNotificationType(value);
+                        }
+                      },
+                      thumbColor: const Color.fromRGBO(138, 147, 118, 1),
+                      backgroundColor: AppColors.kWhite,
+                      padding: const EdgeInsets.all(0),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              )
+            : const SizedBox.shrink();
       },
     );
   }

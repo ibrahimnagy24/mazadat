@@ -9,6 +9,8 @@ class CountdownTimerWidget extends StatefulWidget {
   final DateTime endTime, startDate;
   final double? fontSize;
   final TextStyle? textStyle;
+  final bool showSeconds;
+  final bool showMinutes;
 
   const CountdownTimerWidget({
     super.key,
@@ -16,6 +18,8 @@ class CountdownTimerWidget extends StatefulWidget {
     required this.endTime,
     this.fontSize,
     this.textStyle,
+    this.showSeconds = false,
+    this.showMinutes = false,
   });
 
   @override
@@ -52,12 +56,9 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
     super.dispose();
   }
 
-  final now = DateTime.now();
-
   _calculateRemainingTime() {
-    if (widget.startDate.isAfter(now)) {
-      _remainingTime = widget.startDate.difference(now);
-    } else if (widget.endTime.isAfter(now)) {
+    final now = DateTime.now();
+    if (widget.endTime.isAfter(now)) {
       _remainingTime = widget.endTime.difference(now);
     } else {
       _remainingTime = const Duration();
@@ -81,17 +82,49 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
 
   String _formatTime(int days, int hours, int minutes, int seconds) {
     if (mainAppBloc.isArabic) {
+      List<String> parts = [];
+
       if (days > 0) {
-        return '${_convertToArabicNumerals(days)} ي : ${_convertToArabicNumerals(hours)} س ';
-      } else {
-        return '${_convertToArabicNumerals(hours)} س : ${_convertToArabicNumerals(minutes)}د : ${_convertToArabicNumerals(seconds)} ث';
+        parts.add('${_convertToArabicNumerals(days)} ي');
       }
+      if (hours > 0 || days > 0) {
+        parts.add('${_convertToArabicNumerals(hours)} س');
+      }
+      if (widget.showMinutes && (minutes > 0 || hours > 0 || days > 0)) {
+        parts.add('${_convertToArabicNumerals(minutes)} د');
+      }
+      if (widget.showSeconds && (seconds > 0 || parts.isEmpty)) {
+        parts.add('${_convertToArabicNumerals(seconds)} ث');
+      }
+
+      return parts.join(' : ');
     } else {
+      List<String> parts = [];
+
       if (days > 0) {
-        return '${days.toString().padLeft(2, '0')}d :${hours.toString().padLeft(2, '0')}h';
-      } else {
-        return '${hours.toString().padLeft(2, '0')}h : ${minutes.toString().padLeft(2, '0')}m : ${seconds.toString().padLeft(2, '0')}s';
+        parts.add('${days.toString().padLeft(2, '0')}d');
       }
+      if (hours > 0 || days > 0) {
+        parts.add('${hours.toString().padLeft(2, '0')}h');
+      }
+      if (widget.showMinutes && (minutes > 0 || hours > 0 || days > 0)) {
+        parts.add('${minutes.toString().padLeft(2, '0')}m');
+      }
+      if (widget.showSeconds && (seconds > 0 || parts.isEmpty)) {
+        parts.add('${seconds.toString().padLeft(2, '0')}s');
+      }
+
+      return parts.join(' : ');
+    }
+  }
+
+  String _formatEndDate() {
+    if (mainAppBloc.isArabic) {
+      // Format end date in Arabic
+      return '${_convertToArabicNumerals(widget.endTime.day)}/${_convertToArabicNumerals(widget.endTime.month)}/${_convertToArabicNumerals(widget.endTime.year)}';
+    } else {
+      // Format end date in English
+      return '${widget.endTime.day.toString().padLeft(2, '0')}/${widget.endTime.month.toString().padLeft(2, '0')}/${widget.endTime.year}';
     }
   }
 
@@ -107,11 +140,21 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
     final minutes = _remainingTime.inMinutes.remainder(60);
     final seconds = _remainingTime.inSeconds.remainder(60);
 
+    // If countdown is finished (all values are 0), show formatted end date
+    if (days == 0 && hours == 0 && minutes == 0 && seconds == 0) {
+      return Text(
+        _formatEndDate(),
+        style: widget.textStyle ??
+            AppTextStyles.textLgMedium.copyWith(
+                color: AppColors.textError, fontSize: widget.fontSize),
+      );
+    }
+
     return Text(
       _formatTime(days, hours, minutes, seconds),
       style: widget.textStyle ??
           AppTextStyles.textLgMedium.copyWith(
-              color: widget.startDate.isAfter(now)
+              color: _remainingTime.inSeconds > 0
                   ? AppColors.textSuccess
                   : AppColors.textError,
               fontSize: widget.fontSize),

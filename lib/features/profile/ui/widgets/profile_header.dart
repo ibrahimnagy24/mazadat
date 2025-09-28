@@ -14,7 +14,7 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQueryHelper.width,
-      height: 220,
+      height: 260,
       padding: const EdgeInsetsDirectional.only(
         start: 18,
         end: 18,

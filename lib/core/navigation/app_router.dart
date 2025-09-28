@@ -10,8 +10,8 @@ import '../../features/auth/change_phone_number/data/params/change_phone_number_
 import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
 import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
 import '../../features/auth/change_phone_number/ui/widgets/change_phone_number_imports.dart';
-import '../../features/bundle_details/data/params/bundle_details_route_params.dart';
-import '../../features/bundle_details/ui/pages/bundle_details_screen.dart';
+import '../../features/bundle_details/view_bundle_details/data/params/bundle_details_route_params.dart';
+import '../../features/bundle_details/view_bundle_details/ui/pages/bundle_details_screen.dart';
 import '../../features/category/ui/screens/choose_categories_screen.dart';
 import '../../features/auth/login/ui/widgets/login_imports.dart';
 import '../../features/auth/register/ui/widgets/register_imports.dart';

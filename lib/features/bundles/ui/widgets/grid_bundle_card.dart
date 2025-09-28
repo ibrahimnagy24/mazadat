@@ -10,7 +10,7 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
-import '../../../bundle_details/data/params/bundle_details_route_params.dart';
+import '../../../bundle_details/view_bundle_details/data/params/bundle_details_route_params.dart';
 import '../../data/entity/bundle_entity.dart';
 
 class GridBundleCard extends StatelessWidget {

@@ -67,89 +67,90 @@ class NotificationContainerWidget extends StatelessWidget {
           );
         }
       },
-      child: Container(
-        height: 75,
-        width: MediaQuery.sizeOf(context).width,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: const Color.fromRGBO(255, 255, 255, 0.4),
-        ),
-        child: Row(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: backgroundColor,
-                    shape: BoxShape.circle,
+      child: FittedBox(
+        child: Container(
+          width: MediaQuery.sizeOf(context).width,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: const Color.fromRGBO(255, 255, 255, 0.4),
+          ),
+          child: Row(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: backgroundColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: notification.assetId != null
+                        ? DefaultNetworkImage(
+                            notification.assetId!,
+                            width: 15,
+                            height: 15,
+                            fit: BoxFit.cover,
+                          )
+                        : SvgPicture.asset(
+                            AppSvg.notification, // Default notification icon
+                            height: 15,
+                            width: 15,
+                          ),
                   ),
-                  child: notification.assetId != null
-                      ? DefaultNetworkImage(
-                          notification.assetId!,
-                          width: 15,
-                          height: 15,
-                          fit: BoxFit.cover,
-                        )
-                      : SvgPicture.asset(
-                          AppSvg.notification, // Default notification icon
-                          height: 15,
-                          width: 15,
+                  if (!notification.isRead)
+                    PositionedDirectional(
+                      top: 3,
+                      start: 0,
+                      child: Container(
+                        height: 8,
+                        width: 8,
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(224, 44, 31, 1),
+                          shape: BoxShape.circle,
                         ),
-                ),
-                if (!notification.isRead)
-                  PositionedDirectional(
-                    top: 3,
-                    start: 0,
-                    child: Container(
-                      height: 8,
-                      width: 8,
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(224, 44, 31, 1),
-                        shape: BoxShape.circle,
                       ),
-                    ),
-                  )
-              ],
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MainText(
-                      text: notification.title,
-                      style: AppTextStyles.textLgMedium
-                          .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
-                      maxLines: 1,
-                    ),
-                    const SizedBox(height: 4),
-                    MainText(
-                      text: notification.body,
-                      style: AppTextStyles.textMdRegular.copyWith(
-                          color: const Color.fromRGBO(162, 162, 162, 1)),
-                      maxLines: 1,
                     )
-                  ],
+                ],
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MainText(
+                        text: notification.title,
+                        style: AppTextStyles.textLgMedium.copyWith(
+                            color: const Color.fromRGBO(81, 94, 50, 1)),
+                        maxLines: 1,
+                      ),
+                      const SizedBox(height: 4),
+                      MainText(
+                        text: notification.body,
+                        style: AppTextStyles.textMdRegular.copyWith(
+                            color: const Color.fromRGBO(162, 162, 162, 1)),
+                        maxLines: 2,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                MainText(
-                  text: notification.duration,
-                  style: AppTextStyles.textMdRegular
-                      .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
-                ),
-              ],
-            )
-          ],
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  MainText(
+                    text: notification.duration,
+                    style: AppTextStyles.textMdRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

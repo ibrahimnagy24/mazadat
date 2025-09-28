@@ -73,16 +73,17 @@ class ChooseCategoriesScreen extends StatelessWidget {
                               ),
                               24.sbH,
                               BlocBuilder<CategoryCubit, CategoryState>(
-                                  builder: (context, state) {
-                                return VisitorButtonWidget(
-                                  buttonText: AppStrings.confirm.tr,
-                                  categories: context
-                                      .read<CategoryCubit>()
-                                      .chosenCategories
-                                      .map((e) => e.returnedCategoryIdMap())
-                                      .toList(),
-                                );
-                              }),
+                                builder: (context, state) {
+                                  return VisitorButtonWidget(
+                                    buttonText: AppStrings.confirm.tr,
+                                    categories: context
+                                        .read<CategoryCubit>()
+                                        .chosenCategories
+                                        .map((e) => e.returnedCategoryIdMap())
+                                        .toList(),
+                                  );
+                                },
+                              ),
                               SafeArea(
                                 child: Center(
                                   child: MainText(

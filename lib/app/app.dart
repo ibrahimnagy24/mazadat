@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                 cprint('onGeneralNotification $p0');
                 ToastService.showCustom(
                   message: p0.notificationData.title ?? 'no title',
-                  context: CustomNavigator.context,
+                  context: context,
                   toastStatusType: ToastStatusType.success,
                 );
               },
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                 cprint('onUserNotification $p0');
                 ToastService.showCustom(
                   message: p0.notificationData.title ?? 'no title',
-                  context: CustomNavigator.context,
+                  context: context,
                   toastStatusType: ToastStatusType.success,
                 );
               },

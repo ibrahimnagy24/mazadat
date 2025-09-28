@@ -5,10 +5,11 @@ import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/bundle_cards/bundle_card_widget.dart';
 import '../../../../core/shared/widgets/bundle_cards/horizontal_bundle_card_widget.dart';
+import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
-import '../../../bundle_details/data/params/bundle_details_route_params.dart';
+import '../../../bundle_details/view_bundle_details/data/params/bundle_details_route_params.dart';
 import '../../data/enum/displayed_types.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
@@ -114,8 +115,8 @@ class HomeDisplayedBundlesWidget extends StatelessWidget {
             onTap: () {
               cubit.getSuitableData();
             },
-            title: 'No Bundles',
-            subtitle: 'No bundles found',
+            title: 'No Bundles'.tr,
+            subtitle: 'No bundles found'.tr,
           );
         }
         return SizedBox.fromSize();

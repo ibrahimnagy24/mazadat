@@ -9,6 +9,9 @@ abstract class CustomNavigator {
 
   /// Current context from the navigator state
   static BuildContext get context => navigatorState.currentContext!;
+  
+  /// Safe access to context - returns null if context is not available
+  static BuildContext? get safeContext => navigatorState.currentContext;
 
   /// Route observer for analytics or other navigation tracking
   static final RouteObserver<PageRoute> routeObserver =

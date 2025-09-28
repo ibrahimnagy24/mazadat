@@ -74,9 +74,8 @@ class _GroupedNotificationsListState extends State<GroupedNotificationsList> {
             // Notifications for this date
             ...dayNotifications.map((notification) => Padding(
                   padding: const EdgeInsets.only(bottom: 12),
-                  child: NotificationContainerWidget(
-                    notification: notification,
-                  ),
+                  child:
+                      NotificationContainerWidget(notification: notification),
                 )),
           ],
         );
