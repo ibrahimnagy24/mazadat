@@ -338,6 +338,22 @@
   "No shipments found for your search": "No shipments found for your search",
   "Mark all as read": "Mark all as read",
   "You have no notifications": "You have no notifications",
+  "Winner": "Winner",
+  "Loser": "Loser",
   "No Bundles": "No Bundles",
-  "No bundles found": "No bundles found"
+  "No bundles found": "No bundles found",
+  "Enter first name": "Enter first name",
+  "Enter last name": "Enter last name",
+  "Old to New": "Old to New",
+  "New to Old": "New to Old",
+  "I won it": "I won it",
+  "canceled": "canceled",
+  "I lost it": "I lost it",
+  "Charging status": "Charging status",
+  "Request done": "Request done",
+  "Ready to ship": "Ready to ship",
+  "Shipped": "Shipped",
+  "Delivered": "Delivered",
+  "No favorite auctions have been added yet.": "No favorite auctions have been added yet.",
+  "Start adding the auction you like to your favorites for easy access later.": "Start adding the auction you like to your favorites for easy access later."
 }

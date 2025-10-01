@@ -123,6 +123,7 @@ class AuctionContentComponent extends StatelessWidget {
               .read<ViewAuctionDetailsCubit>()
               .viewAuctionDetailsStatesHandled(),
         ),
+        dragColor: const Color.fromRGBO(46, 46, 46, 1),
       ),
       text: AppStrings.registerForTheAuction.tr,
       textStyle: AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
@@ -136,9 +137,11 @@ class AuctionContentComponent extends StatelessWidget {
     return BlocConsumer<ViewAuctionDetailsCubit, ViewAuctionDetailsState>(
       listener: (context, state) {
         if (state is AuctionBidError) {
-          ToastService.showError(
-            state.error.message,
-            context,
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
           );
         }
       },

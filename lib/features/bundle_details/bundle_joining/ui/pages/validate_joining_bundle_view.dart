@@ -52,87 +52,109 @@ class ValidateJoiningBundleView extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.8,
               child: Column(
                 children: [
-                  Row(
-                    spacing: 8,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 4,
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                  text: AppStrings.agreeTo.tr,
-                                  style: AppTextStyles.textXLRegular.copyWith(
-                                    fontSize: 16,
-                                    color:
-                                        const Color.fromRGBO(138, 147, 118, 1),
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          '\n${AppStrings.termsAndPrivacyPolicy.tr}',
-                                      style: AppTextStyles.displaySMMedium
-                                          .copyWith(
-                                        fontSize: 20,
-                                        color:
-                                            const Color.fromRGBO(81, 94, 50, 1),
-                                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Row(
+                      spacing: 8,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            spacing: 4,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                    text: AppStrings.agreeTo.tr,
+                                    style: AppTextStyles.textXLRegular.copyWith(
+                                      fontSize: 16,
+                                      color: const Color.fromRGBO(
+                                          138, 147, 118, 1),
                                     ),
-                                  ]),
-                            ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            '\n${AppStrings.termsAndPrivacyPolicy.tr}',
+                                        style: AppTextStyles.displaySMMedium
+                                            .copyWith(
+                                          fontSize: 20,
+                                          color: const Color.fromRGBO(
+                                              81, 94, 50, 1),
+                                        ),
+                                      ),
+                                    ]),
+                              ),
 
-                            ///Last Modified
-                            Row(
-                              spacing: 4,
-                              children: [
-                                SvgPicture.asset(
-                                  AppSvg.calendar,
-                                  width: 16,
-                                  height: 16,
-                                  color: const Color.fromRGBO(185, 185, 185, 1),
-                                ),
-                                Expanded(
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: '${AppStrings.lastModified.tr}  ',
-                                        style: AppTextStyles.textLgRegular,
-                                        children: [
-                                          TextSpan(
-                                            text: (state.data.lastModified)
-                                                ?.toDateFormat(
-                                                    format: 'd MMMM yyyy',
-                                                    locale: mainAppBloc
-                                                        .lang.valueOrNull),
-                                            style: AppTextStyles.textLgRegular
-                                                .copyWith(
-                                                    color:
-                                                        AppColors.textPrimary),
-                                          ),
-                                        ]),
+                              ///Last Modified
+                              Row(
+                                spacing: 4,
+                                children: [
+                                  SvgPicture.asset(
+                                    AppSvg.calendar,
+                                    width: 13,
+                                    height: 13,
+                                    color:
+                                        const Color.fromRGBO(185, 185, 185, 1),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                  Expanded(
+                                    child: RichText(
+                                      text: TextSpan(
+                                          text:
+                                              '${AppStrings.lastModified.tr}  ',
+                                          style: AppTextStyles.textMdRegular
+                                              .copyWith(
+                                                  color: const Color.fromRGBO(
+                                                      162, 162, 162, 1)),
+                                          children: [
+                                            TextSpan(
+                                              text: (state.data.lastModified)
+                                                  ?.toDateFormat(
+                                                      format: 'd MMMM yyyy',
+                                                      locale: mainAppBloc
+                                                          .lang.valueOrNull),
+                                              style: AppTextStyles.textLgMedium
+                                                  .copyWith(
+                                                      color:
+                                                          const Color.fromRGBO(
+                                                              116,
+                                                              116,
+                                                              116,
+                                                              1)),
+                                            ),
+                                          ]),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SvgPicture.asset(
-                        AppSvg.logo,
-                        height: 56,
-                        width: 78,
-                        color: const Color.fromRGBO(81, 94, 50, 1),
-                      ),
-                    ],
+                        SvgPicture.asset(
+                          AppSvg.joiningAuctionBaitAlasjadyah,
+                          height: 56,
+                          width: 78,
+                        ),
+                      ],
+                    ),
                   ),
                   const Divider(height: 32, color: AppColors.border),
                   Expanded(
-                    child: Scrollbar(
-                      thumbVisibility: true,
-                      trackVisibility: true,
-                      child: SingleChildScrollView(
-                        child: HtmlWidget(state.data.policy ?? ''),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: RawScrollbar(
+                        thumbVisibility: true,
+                        trackVisibility: true,
+                        thickness: 8,
+                        radius: const Radius.circular(8),
+                        thumbColor: const Color.fromRGBO(209, 209, 209, 1),
+                        trackColor: const Color.fromRGBO(242, 242, 242, 1),
+                        trackBorderColor: Colors.transparent,
+                        trackRadius: const Radius.circular(8),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(end: 8),
+                          child: SingleChildScrollView(
+                              child: HtmlWidget(state.data.policy ?? '')),
+                        ),
                       ),
                     ),
                   ),
@@ -140,10 +162,13 @@ class ValidateJoiningBundleView extends StatelessWidget {
                     top: false,
                     left: false,
                     right: false,
-                    child: ValidateJoinBundleButton(
-                      id: params.id,
-                      onSuccess: onSuccess,
-                      bottomSheetContext: bottomSheetContext,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: ValidateJoinBundleButton(
+                        id: params.id,
+                        onSuccess: onSuccess,
+                        bottomSheetContext: bottomSheetContext,
+                      ),
                     ),
                   ),
                 ],

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import '../../../core/navigation/custom_navigation.dart';
+import '../../../core/utils/utility.dart';
 import '../../home/data/enum/displayed_types.dart';
 import '../data/entity/my_auction_entity.dart';
 import '../data/enum/auction_status_type.dart';
@@ -37,6 +38,9 @@ class MyAuctionsCubit extends Cubit<MyAuctionsState> {
   AuctionStatusType get getAuctionStatusTypeEndPoint => statusType;
 //----------------------------------REQUEST-----------------------------------//
   Future<void> myAuctionsStatesHandled() async {
+    if (!Utility.isUserLoggedIn()) {
+      return;
+    }
     CustomNavigator.context.loaderOverlay.show();
     emit(MyAuctionsLoading());
     final response = await MyAuctionsRepo.myAuctions(

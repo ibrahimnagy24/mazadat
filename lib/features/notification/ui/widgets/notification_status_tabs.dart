@@ -54,6 +54,7 @@ class NotificationStatusTabs extends StatelessWidget {
                 context.read<UserCubit>().userEntity!.isSeller == true
             ? Column(
                 children: [
+                  const SizedBox(height: 24),
                   SizedBox(
                     height: 40,
                     width: MediaQuery.sizeOf(context).width,
@@ -70,7 +71,6 @@ class NotificationStatusTabs extends StatelessWidget {
                       padding: const EdgeInsets.all(0),
                     ),
                   ),
-                  const SizedBox(height: 24),
                 ],
               )
             : const SizedBox.shrink();

@@ -15,8 +15,8 @@ class AgreeToInsuranceBundle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ValidateJoiningBundleCubit,
-        ValidateJoiningBundleState>(builder: (context, state) {
+    return BlocBuilder<ValidateJoiningBundleCubit, ValidateJoiningBundleState>(
+        builder: (context, state) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -24,19 +24,27 @@ class AgreeToInsuranceBundle extends StatelessWidget {
               stream:
                   context.read<ValidateJoiningBundleCubit>().insuranceStream,
               builder: (context, snapshot) {
-                return Checkbox.adaptive(
-                  value: snapshot.data == true,
-                  activeColor: AppColors.kPrimary,
-                  checkColor: AppColors.kWhite,
-                  onChanged: (value) {
-                    context
-                        .read<ValidateJoiningBundleCubit>()
-                        .updateInsurance(value == true);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
+                return SizedBox(
+                  width: 20,
+                  height: 24,
+                  child: Checkbox.adaptive(
+                    value: snapshot.data == true,
+                    activeColor: AppColors.kPrimary,
+                    checkColor: AppColors.kWhite,
+                    onChanged: (value) {
+                      context
+                          .read<ValidateJoiningBundleCubit>()
+                          .updateInsurance(value == true);
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    side: const BorderSide(
+                      color: Color.fromRGBO(162, 162, 162, 1),
+                    ),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
                   ),
-                  side: const BorderSide(color: AppColors.kPrimary),
                 );
               }),
           Expanded(
@@ -50,15 +58,18 @@ class AgreeToInsuranceBundle extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                        '${AppStrings.insuranceAmount.tr} ${(state is ValidateJoiningBundleSuccess) ? state.data.insuranceAmount : ''}',
-                    style: AppTextStyles.textLgBold
-                        .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
+                        ' ${AppStrings.insuranceAmount.tr} ${(state is ValidateJoiningBundleSuccess) ? state.data.insuranceAmount : ''} ',
+                    style: AppTextStyles.textLgBold.copyWith(
+                      color: const Color.fromRGBO(81, 94, 50, 1),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 12,
+                    ),
                   ),
                   WidgetSpan(
                     child: SvgPicture.asset(
                       AppSvg.saudiArabiaSymbol,
-                      width: 16,
-                      height: 16,
+                      width: 13,
+                      height: 13,
                       color: const Color.fromRGBO(81, 94, 50, 1),
                     ),
                   ),

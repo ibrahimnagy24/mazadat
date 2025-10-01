@@ -79,6 +79,7 @@ class RegisterScreenMobilePortraitDesignScreen extends StatelessWidget {
                             const SizedBox(height: 20),
                             if (currentStep == 1)
                               const PrivacyAndConditionsWidget(),
+                            const SizedBox(height: 20),
                             const CreateAccountButtonWidget(),
                             const SizedBox(height: 20),
                             const OrTextWidget(),

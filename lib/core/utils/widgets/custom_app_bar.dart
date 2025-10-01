@@ -39,14 +39,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: withHPadding ? 24.w : 0,
-        vertical: withVPadding ? 24.h : 0,
+        horizontal: withHPadding ? 24 : 0,
+        vertical: withVPadding ? 24 : 0,
       ),
       child: SafeArea(
         top: withSafeArea,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 12.w,
+          spacing: 12,
           children: [
             withBack && CustomNavigator.navigatorState.currentState!.canPop()
                 ? InkWell(
@@ -58,7 +58,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         AppSvg.arrowBack,
                         width: 30,
                         height: 24,
-                        color: AppColors.textPrimary,
+                        color: backColor ?? AppColors.textPrimary,
                       ),
                     ),
                   )

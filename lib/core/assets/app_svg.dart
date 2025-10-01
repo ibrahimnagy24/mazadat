@@ -90,4 +90,11 @@ class AppSvg {
   static const String van = '$_svgPath/van.svg';
   static const String alarmClock = '$_svgPath/alarm-clock.svg';
   static const String cancelXmark = '$_svgPath/cancel_xmark.svg';
+  static const String policyGuard = '$_svgPath/policy_gurad.svg';
+  static const String joiningAuctionBaitAlasjadyah =
+      '$_svgPath/joining_auction_bait_alasjadyah.svg';
+  static const String inactiveRadio = '$_svgPath/inactive_radio.svg';
+  static const String activeRadio = '$_svgPath/active_radio.svg';
+  static const String rubsh = '$_svgPath/rubsh.svg';
+  static const String redLogout = '$_svgPath/red_logout.svg';
 }

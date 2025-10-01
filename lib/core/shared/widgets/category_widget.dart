@@ -23,6 +23,8 @@ class CategoryWidget extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.textStyle,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -32,6 +34,8 @@ class CategoryWidget extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final TextStyle? textStyle;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     switch (type) {
@@ -44,6 +48,7 @@ class CategoryWidget extends StatelessWidget {
           height: height,
           width: width,
           borderRadiusValue: borderRadiusValue,
+          fillColor: fillColor,
         );
       case CategoryWidgetType.type2:
         return _CategoryWidgetTypeTwo(
@@ -54,6 +59,7 @@ class CategoryWidget extends StatelessWidget {
           height: height,
           width: width,
           borderRadiusValue: borderRadiusValue,
+          fillColor: fillColor,
         );
 
       case CategoryWidgetType.type3:
@@ -65,6 +71,8 @@ class CategoryWidget extends StatelessWidget {
           height: height,
           width: width,
           borderRadiusValue: borderRadiusValue,
+          textStyle: textStyle,
+          fillColor: fillColor,
         );
     }
   }
@@ -85,6 +93,7 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -93,6 +102,8 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final Color? fillColor;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -101,7 +112,7 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
         height: height ?? 118,
         width: width,
         decoration: BoxDecoration(
-          color: AppColors.kWhite,
+          color: fillColor ?? AppColors.kWhite,
           border: Border.all(
             color: isSelected ? AppColors.kPrimary : AppColors.kOpacityGrey2,
           ),
@@ -166,6 +177,7 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -174,6 +186,8 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final Color? fillColor;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -183,7 +197,7 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
         width: width,
         margin: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
-          color: AppColors.kWhite,
+          color: fillColor ?? AppColors.kWhite,
           border: Border.all(
             color: isSelected
                 ? AppColors.kPrimary500
@@ -264,6 +278,8 @@ class _CategoryWidgetTypeThree extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.textStyle,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -272,16 +288,20 @@ class _CategoryWidgetTypeThree extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final TextStyle? textStyle;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
         height: height,
         width: width,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: AppColors.kWhite,
+          color: fillColor ?? AppColors.kWhite,
           border: Border.all(
             color: isSelected
                 ? AppColors.borderPrimary
@@ -291,11 +311,11 @@ class _CategoryWidgetTypeThree extends StatelessWidget {
           borderRadius:
               BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
         ),
-        child: Text(
-          category.name,
-          style: isSelected
-              ? AppTextStyles.textMdBold
-              : AppTextStyles.textMdRegular,
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          style: textStyle ?? AppTextStyles.textMdRegular,
+          child: Text(category.name),
         ),
       ),
     ).animate().fadeIn(delay: animationDuration);

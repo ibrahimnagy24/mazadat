@@ -29,6 +29,7 @@ class ValidateJoinAuctionButton extends StatelessWidget {
       child: Column(
         children: [
           const AgreeToCommission(),
+          8.sbH,
           const AgreeToInsurance(),
           8.sbH,
           DefaultButton(
@@ -52,8 +53,10 @@ class ValidateJoinAuctionButton extends StatelessWidget {
                 CustomNavigator.pop();
                 CustomBottomSheet.show(
                   label: AppStrings.selectPaymentMethod.tr,
+                  showCloseIcon: false,
                   labelStyle: AppTextStyles.displaySMMedium
                       .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+                  dragColor: const Color.fromRGBO(17, 24, 39, 1),
                   widget: JoinAuctionView(
                     id: id,
                     onSuccess: onSuccess,

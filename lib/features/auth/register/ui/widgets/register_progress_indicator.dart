@@ -18,25 +18,62 @@ class RegisterProgressIndicator extends StatelessWidget {
       builder: (context, state) {
         final currentStep = context.read<RegisterCubit>().currentStep;
         return GestureDetector(
-          onTap: () => context.read<RegisterCubit>().updateStep(0),
-          child: Row(
-            children: List.generate(
-              2,
-              (i) => Expanded(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: MediaQueryHelper.width,
-                  height: 5,
-                  decoration: BoxDecoration(
-                      color: currentStep == i
-                          ? AppColors.kWhite
-                          : const Color.fromRGBO(138, 147, 118, 1),
-                      borderRadius: BorderRadius.circular(100)),
+            onTap: () => context.read<RegisterCubit>().updateStep(0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    width: MediaQueryHelper.width,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: currentStep == 0
+                          ? const Color.fromRGBO(138, 147, 118, 1)
+                          : const Color.fromRGBO(81, 94, 50, 1),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-        );
+                const SizedBox(width: 4),
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    width: MediaQueryHelper.width,
+                    height: 5,
+                    decoration: BoxDecoration(
+                        color: currentStep == 0
+                            ? const Color.fromRGBO(255, 255, 255, 1)
+                            : const Color.fromRGBO(138, 147, 118, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                  ),
+                ),
+              ],
+            )
+            // Row(
+            //   children: List.generate(
+            //     2,
+            //     (i) => Expanded(
+            //       child: Container(
+            //         margin: const EdgeInsets.symmetric(horizontal: 4),
+            //         width: MediaQueryHelper.width,
+            //         height: 5,
+            //         decoration: BoxDecoration(
+            //             color: currentStep == 0
+            //                 ? currentStep == i
+            //                     ? const Color.fromRGBO(138, 147, 118, 1)
+            //                     : const Color.fromRGBO(81, 94, 50, 1)
+            //                 : currentStep == 1
+            //                     ? currentStep == i
+            //                         ? const Color.fromRGBO(138, 147, 118, 1)
+            //                         : const Color.fromRGBO(255, 255, 255, 1)
+            //                     : const Color.fromRGBO(255, 255, 255, 1),
+            //             borderRadius: BorderRadius.circular(100)),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+
+            );
       },
     );
   }

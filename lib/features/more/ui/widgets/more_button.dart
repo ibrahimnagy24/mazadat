@@ -11,12 +11,14 @@ class MoreButton extends StatelessWidget {
     required this.title,
     this.onTap,
     this.action,
+    this.leading,
   });
   final String icon, title;
 
   final Function()? onTap;
 
   final Widget? action;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +31,16 @@ class MoreButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           spacing: 16.h,
           children: [
-            customContainerSvgIcon(
-                imageName: icon,
-                width: 40.w,
-                height: 40.w,
-                radius: 100.w,
-                padding: 10.w,
-                borderColor: AppColors.background,
-                backGround: AppColors.background,
-                color: AppColors.iconPrimary),
+            leading ??
+                customContainerSvgIcon(
+                    imageName: icon,
+                    width: 40.w,
+                    height: 40.w,
+                    radius: 100.w,
+                    padding: 10.w,
+                    borderColor: AppColors.background,
+                    backGround: AppColors.background,
+                    color: AppColors.iconPrimary),
             Expanded(
               child: Text(title,
                   textAlign: TextAlign.start,

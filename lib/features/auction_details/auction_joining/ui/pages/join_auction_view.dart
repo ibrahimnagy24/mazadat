@@ -18,7 +18,7 @@ class JoinAuctionView extends StatelessWidget {
     return BlocProvider(
       create: (context) => JoiningAuctionCubit(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: BlocBuilder<JoiningAuctionCubit, JoiningAuctionState>(
             builder: (context, state) {
           return Column(

@@ -18,35 +18,47 @@ class AgreeToCommissionBundle extends StatelessWidget {
         StreamBuilder(
           stream: context.read<ValidateJoiningBundleCubit>().commissionStream,
           builder: (context, snapshot) {
-            return Checkbox.adaptive(
-              value: snapshot.data == true,
-              activeColor: AppColors.kPrimary,
-              checkColor: AppColors.kWhite,
-              onChanged: (value) {
-                context
-                    .read<ValidateJoiningBundleCubit>()
-                    .updateCommission(value == true);
-              },
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
+            return SizedBox(
+              width: 20,
+              height: 24,
+              child: Checkbox.adaptive(
+                value: snapshot.data == true,
+                activeColor: AppColors.kPrimary,
+                checkColor: AppColors.kWhite,
+                onChanged: (value) {
+                  context
+                      .read<ValidateJoiningBundleCubit>()
+                      .updateCommission(value == true);
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                side: const BorderSide(color: Color.fromRGBO(162, 162, 162, 1)),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
               ),
-              side: const BorderSide(color: AppColors.kPrimary),
             );
           },
         ),
+        8.sbW,
         Expanded(
           child: RichText(
             text: TextSpan(
               children: [
                 TextSpan(
                   text: AppStrings.youAgreeToPay.tr,
-                  style: AppTextStyles.textLgRegular
-                      .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
+                  style: AppTextStyles.textLgRegular.copyWith(
+                    fontSize: 12,
+                    color: const Color.fromRGBO(162, 162, 162, 1),
+                  ),
                 ),
                 TextSpan(
                   text: AppStrings.applicationCommission.tr,
-                  style: AppTextStyles.textLgBold
-                      .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
+                  style: AppTextStyles.textLgBold.copyWith(
+                    color: const Color.fromRGBO(81, 94, 50, 1),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
                 ),
               ],
             ),

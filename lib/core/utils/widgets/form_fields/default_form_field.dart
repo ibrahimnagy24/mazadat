@@ -62,6 +62,7 @@ class DefaultFormField extends StatelessWidget {
     this.foucsBorderColor,
     this.inactiveBorderColor,
     this.onTap,
+    this.errorBorderColor,
   });
 
   final String? labelText;
@@ -114,6 +115,7 @@ class DefaultFormField extends StatelessWidget {
   final Color? enabledBorderColor;
   final Color? foucsBorderColor;
   final Color? inactiveBorderColor;
+  final Color? errorBorderColor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -219,7 +221,7 @@ class DefaultFormField extends StatelessWidget {
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                          color: Color(0xFFFF0000),
+                          color: Color.fromRGBO(224, 44, 31, 1),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(borderRadius),
@@ -237,7 +239,8 @@ class DefaultFormField extends StatelessWidget {
                               16.w, 16.h, 16.w, 16.h),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: borderColor ?? AppColors.kPrimary,
+                          color: errorBorderColor ??
+                              const Color.fromRGBO(224, 44, 31, 1),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(borderRadius),

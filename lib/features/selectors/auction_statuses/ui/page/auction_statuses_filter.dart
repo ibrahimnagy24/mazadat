@@ -27,14 +27,15 @@ class _AuctionStatusFilterSectionState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 12.h,
+        spacing: 12,
         children: [
           Text(
             AppStrings.auctionStatus.tr,
-            style: AppTextStyles.textLgBold,
+            style: AppTextStyles.textLgBold
+                .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
           ),
           BlocBuilder<AuctionStatusesCubit, AuctionStatusesState>(
             builder: (context, state) {
@@ -42,14 +43,14 @@ class _AuctionStatusFilterSectionState
               if (state is AuctionStatusesLoading) {
                 return Wrap(
                   alignment: WrapAlignment.start,
-                  spacing: 8.h,
-                  runSpacing: 8.w,
+                  spacing: 8,
+                  runSpacing: 8,
                   runAlignment: WrapAlignment.start,
                   children: List.generate(
                     5,
-                    (index) => CustomShimmerContainer(
-                      width: 80.w,
-                      height: 35.h,
+                    (index) => const CustomShimmerContainer(
+                      width: 80,
+                      height: 35,
                     ),
                   ),
                 );
@@ -58,27 +59,38 @@ class _AuctionStatusFilterSectionState
                 {
                   return Wrap(
                     alignment: WrapAlignment.start,
-                    spacing: 8.h,
-                    runSpacing: 8.w,
+                    spacing: 8,
+                    runSpacing: 8,
                     runAlignment: WrapAlignment.start,
                     children: List.generate(
                       cubit.allAuctionStatuses!.length,
-                      (index) => AuctionStatusFilterCard(
-                        auctionStatus: cubit.allAuctionStatuses![index],
-                        isSelected: widget.initialValue?.value ==
-                            cubit.allAuctionStatuses![index].value,
-                        onTap: () {
-                          if (widget.initialValue?.value ==
-                              cubit.allAuctionStatuses![index].value) {
-                            widget.onTap?.call(null);
-                          } else {
-                            widget.onTap
-                                ?.call(cubit.allAuctionStatuses![index]);
-                          }
-                        },
-                        animationDuration: (index * 10).ms,
-                        borderRadiusValue: AppRadius.rM,
-                      ),
+                      (index) {
+                        final isChosen = widget.initialValue?.value ==
+                            cubit.allAuctionStatuses![index].value;
+                        return AuctionStatusFilterCard(
+                          auctionStatus: cubit.allAuctionStatuses![index],
+                          isSelected: widget.initialValue?.value ==
+                              cubit.allAuctionStatuses![index].value,
+                          onTap: () {
+                            if (widget.initialValue?.value ==
+                                cubit.allAuctionStatuses![index].value) {
+                              widget.onTap?.call(null);
+                            } else {
+                              widget.onTap
+                                  ?.call(cubit.allAuctionStatuses![index]);
+                            }
+                          },
+                          borderRadiusValue: 12,
+                          textStyle: AppTextStyles.textMdRegular.copyWith(
+                            color: isChosen
+                                ? const Color.fromRGBO(81, 94, 50, 1)
+                                : const Color.fromRGBO(162, 162, 162, 1),
+                          ),
+                          fillColor: isChosen
+                              ? const Color.fromRGBO(81, 94, 50, 0.1)
+                              : Colors.transparent,
+                        );
+                      },
                     ),
                   );
                 }

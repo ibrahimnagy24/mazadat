@@ -17,6 +17,7 @@ import '../../../../core/utils/widgets/custom_loading_text.dart';
 import '../../../../core/utils/widgets/empty/empty_state.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
+import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auctions/ui/widgets/grid_auction_card.dart';
 import '../../../nav_layout/cubit/navbar_layout_cubit.dart';
 import '../../../visitor/ui/pages/visitor_screen.dart';
@@ -52,7 +53,8 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                       ),
                       child: Text(
                         AppStrings.favourite.tr,
-                        style: AppTextStyles.displayMdBold,
+                        style: AppTextStyles.displayMdBold.copyWith(
+                            color: const Color.fromRGBO(34, 39, 21, 1)),
                       ),
                     ),
                   ),
@@ -82,7 +84,8 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                                 child: GridListAnimator(
                                   controller: cubit.controller,
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 24),
+                                    horizontal: 24,
+                                  ),
                                   data: List.generate(
                                     state.auctions.length,
                                     (i) => GridAuctionCard(
@@ -112,22 +115,56 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                           );
                         }
                         if (state is FavouritesEmpty) {
-                          return ListAnimator(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              data: [
-                                EmptyState(
-                                  img: AppImages.emptyFavourites,
-                                  txt: AppStrings.noFavouriteAuctions.tr,
-                                  subText: AppStrings.favouriteAuctionHint.tr,
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 40),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  AppImages.emptyFavourites,
+                                  height: 271,
+                                  width: 271,
+                                ),
+                                48.sbH,
+                                MainText(
+                                  text: AppStrings
+                                      .noFavoriteAuctionsHaveBeenAddedYet.tr,
+                                  style:
+                                      AppTextStyles.displayMdSemiBold.copyWith(
+                                    color: const Color.fromRGBO(81, 94, 50, 1),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                12.sbH,
+                                MainText(
+                                  text: AppStrings
+                                      .startAddingTheAuctionYouLikeToYourFavoritesForEasyAccessLater
+                                      .tr,
+                                  style: AppTextStyles.textLgRegular.copyWith(
+                                      color: const Color.fromRGBO(
+                                          116, 116, 116, 1)),
+                                  textAlign: TextAlign.center,
                                 ),
                                 40.sbH,
-                                DefaultButton(
-                                  text: AppStrings.discoverMore.tr,
-                                  onPressed: () => NavbarLayoutCubit.instance
-                                      .onItemTapped(0),
+                                SizedBox(
+                                  width: 150,
+                                  child: DefaultButton(
+                                    text: AppStrings.discoverMore.tr,
+                                    onPressed: () => NavbarLayoutCubit.instance
+                                        .onItemTapped(0),
+                                    width: 150,
+                                    height: 48,
+                                    borderRadiusValue: 8,
+                                    textStyle: AppTextStyles.textXLBold
+                                        .copyWith(
+                                            color: const Color.fromRGBO(
+                                                255, 255, 255, 1)),
+                                    backgroundColor:
+                                        const Color.fromRGBO(81, 94, 50, 1),
+                                  ),
                                 )
-                              ]);
+                              ],
+                            ),
+                          );
                         }
                         return const SizedBox();
                       },

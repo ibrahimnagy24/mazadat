@@ -1,10 +1,9 @@
-class SeenNotificationResponseModel {
-  final String message;
-  final String status;
+import '../entity/seen_notification_response_entity_new.dart';
 
+class SeenNotificationResponseModel extends SeenNotificationResponseEntity {
   const SeenNotificationResponseModel({
-    required this.message,
-    required this.status,
+    required super.message,
+    required super.status,
   });
 
   factory SeenNotificationResponseModel.fromJson(Map<String, dynamic> json) {

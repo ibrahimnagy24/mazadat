@@ -77,7 +77,7 @@ class DefaultPhoneFormField extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       maxLength: 9,
-      fillColor: const Color.fromRGBO(255, 255, 255, 1),
+      fillColor: fillColor ?? const Color.fromRGBO(255, 255, 255, 1),
       borderRadius: borderRadius ?? AppRadius.rS,
       keyboardType: TextInputType.phone,
       controller: controller,

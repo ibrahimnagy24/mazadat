@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared/widgets/custom_back_icon.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../../core/utils/widgets/custom_app_bar.dart';
@@ -116,18 +117,29 @@ class _AuctionDetailsMobileDesignScreenState
                         children: [
                           const CustomBackIcon(iconColor: AppColors.kWhite),
                           if (cubit.auctionDetails?.statusLabel != null)
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 6, horizontal: 12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: AppColors.backgroundSecondary,
-                              ),
-                              child: Text(
-                                cubit.auctionDetails?.statusLabel ?? '',
-                                style: AppTextStyles.textMdRegular
-                                    .copyWith(color: AppColors.textPrimary),
-                              ),
+                            Builder(
+                              builder: (context) {
+                                final config = _getStatusBadgeConfig(
+                                  status: cubit.auctionDetails?.status ?? '',
+                                  isWinner:
+                                      cubit.auctionDetails?.winner ?? false,
+                                  statusLabel:
+                                      cubit.auctionDetails?.statusLabel ?? '',
+                                );
+                                return Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 6, horizontal: 12),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: config['backgroundColor'],
+                                  ),
+                                  child: Text(
+                                    config['text'],
+                                    style: AppTextStyles.textMdRegular
+                                        .copyWith(color: config['textColor']),
+                                  ),
+                                );
+                              },
                             )
                         ],
                       ),
@@ -148,5 +160,53 @@ class _AuctionDetailsMobileDesignScreenState
         );
       },
     );
+  }
+
+  /// Returns status badge configuration based on auction status and winner state
+  Map<String, dynamic> _getStatusBadgeConfig({
+    required String status,
+    required bool isWinner,
+    required String statusLabel,
+  }) {
+    switch (status) {
+      case 'NEW':
+        return {
+          'text': statusLabel,
+          'backgroundColor': const Color.fromRGBO(114, 94, 95, 1),
+          'textColor': const Color.fromRGBO(255, 255, 255, 1),
+        };
+      case 'IN_PROGRESS':
+        return {
+          'text': statusLabel,
+          'backgroundColor': const Color.fromRGBO(243, 220, 154, 1),
+          'textColor': const Color.fromRGBO(34, 39, 21, 1),
+        };
+      case 'CANCELED':
+        return {
+          'text': AppStrings.canceled.tr,
+          'backgroundColor': const Color.fromRGBO(224, 44, 31, 1),
+          'textColor': const Color.fromRGBO(255, 255, 255, 1),
+        };
+      case 'COMPLETED':
+        if (isWinner) {
+          return {
+            'text': AppStrings.iWonIt.tr,
+            'backgroundColor': const Color.fromRGBO(69, 173, 34, 1),
+            'textColor': const Color.fromRGBO(255, 255, 255, 1),
+          };
+        } else {
+          return {
+            'text': AppStrings.iLostIt.tr,
+            'backgroundColor': const Color.fromRGBO(224, 44, 31, 1),
+            'textColor': const Color.fromRGBO(255, 255, 255, 1),
+          };
+        }
+      default:
+        return {
+          'text': statusLabel,
+          'backgroundColor': AppColors.backgroundSecondary,
+          'textColor': AppColors.textPrimary,
+        };
+    }
   }
 }

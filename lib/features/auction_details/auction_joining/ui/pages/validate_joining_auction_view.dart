@@ -16,34 +16,38 @@ import '../../logic/validate_joining_auction_state.dart';
 import '../widgets/validate_join_auction_button.dart';
 
 class ValidateJoiningAuctionView extends StatelessWidget {
-  const ValidateJoiningAuctionView(
-      {super.key, required this.id, this.onSuccess});
+  const ValidateJoiningAuctionView({
+    super.key,
+    required this.id,
+    this.onSuccess,
+  });
   final int id;
   final Function()? onSuccess;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => ValidateJoiningAuctionCubit()..validate(id),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: BlocBuilder<ValidateJoiningAuctionCubit,
-              ValidateJoiningAuctionState>(builder: (context, state) {
-            if (state is ValidateJoiningAuctionLoading) {
-              return const CustomLoading();
-            }
-            if (state is ValidateJoiningAuctionError) {
-              return ErrorMessageWidget(
-                error: state.error,
-                onTap: () {
-                  context.read<ValidateJoiningAuctionCubit>().validate(id);
-                },
-              );
-            }
-            if (state is ValidateJoiningAuctionSuccess) {
-              return Column(
-                children: [
-                  Row(
+      create: (context) => ValidateJoiningAuctionCubit()..validate(id),
+      child:
+          BlocBuilder<ValidateJoiningAuctionCubit, ValidateJoiningAuctionState>(
+        builder: (context, state) {
+          if (state is ValidateJoiningAuctionLoading) {
+            return const CustomLoading();
+          }
+          if (state is ValidateJoiningAuctionError) {
+            return ErrorMessageWidget(
+              error: state.error,
+              onTap: () {
+                context.read<ValidateJoiningAuctionCubit>().validate(id);
+              },
+            );
+          }
+          if (state is ValidateJoiningAuctionSuccess) {
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Row(
                     spacing: 8,
                     children: [
                       Expanded(
@@ -80,15 +84,18 @@ class ValidateJoiningAuctionView extends StatelessWidget {
                               children: [
                                 SvgPicture.asset(
                                   AppSvg.calendar,
-                                  width: 16,
-                                  height: 16,
+                                  width: 13,
+                                  height: 13,
                                   color: const Color.fromRGBO(185, 185, 185, 1),
                                 ),
                                 Expanded(
                                   child: RichText(
                                     text: TextSpan(
                                         text: '${AppStrings.lastModified.tr}  ',
-                                        style: AppTextStyles.textLgRegular,
+                                        style: AppTextStyles.textMdRegular
+                                            .copyWith(
+                                                color: const Color.fromRGBO(
+                                                    162, 162, 162, 1)),
                                         children: [
                                           TextSpan(
                                             text: (state.data.lastModified)
@@ -96,10 +103,10 @@ class ValidateJoiningAuctionView extends StatelessWidget {
                                                     format: 'd MMMM yyyy',
                                                     locale: mainAppBloc
                                                         .lang.valueOrNull),
-                                            style: AppTextStyles.textLgRegular
+                                            style: AppTextStyles.textLgMedium
                                                 .copyWith(
-                                                    color:
-                                                        AppColors.textPrimary),
+                                                    color: const Color.fromRGBO(
+                                                        116, 116, 116, 1)),
                                           ),
                                         ]),
                                   ),
@@ -110,31 +117,47 @@ class ValidateJoiningAuctionView extends StatelessWidget {
                         ),
                       ),
                       SvgPicture.asset(
-                        AppSvg.logo,
+                        AppSvg.joiningAuctionBaitAlasjadyah,
                         height: 56,
                         width: 78,
-                        color: const Color.fromRGBO(81, 94, 50, 1),
                       ),
                     ],
                   ),
-                  const Divider(height: 32, color: AppColors.border),
-                  Expanded(
-                    child: Scrollbar(
+                ),
+                const Divider(height: 32, color: AppColors.border),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: RawScrollbar(
                       thumbVisibility: true,
                       trackVisibility: true,
-                      child: SingleChildScrollView(
-                          child: HtmlWidget(state.data.policy ?? '')),
+                      thickness: 8,
+                      radius: const Radius.circular(8),
+                      thumbColor: const Color.fromRGBO(209, 209, 209, 1),
+                      trackColor: const Color.fromRGBO(242, 242, 242, 1),
+                      trackBorderColor: Colors.transparent,
+                      trackRadius: const Radius.circular(8),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(end: 8),
+                        child: SingleChildScrollView(
+                            child: HtmlWidget(state.data.policy ?? '')),
+                      ),
                     ),
                   ),
-                  ValidateJoinAuctionButton(
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: ValidateJoinAuctionButton(
                     id: id,
                     onSuccess: onSuccess,
                   ),
-                ],
-              );
-            }
-            return const SizedBox();
-          }),
-        ));
+                ),
+              ],
+            );
+          }
+          return const SizedBox();
+        },
+      ),
+    );
   }
 }

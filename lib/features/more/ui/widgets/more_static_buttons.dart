@@ -34,8 +34,8 @@ class MoreStaticButtons extends StatelessWidget {
         MoreCard(
           icon: AppSvg.quiz,
           title: AppStrings.faqs.tr,
-          background: AppColors.borderSecondary.withValues(alpha: 0.5),
-          iconColor: const Color.fromRGBO(173, 156, 109, 1),
+          // background: AppColors.borderSecondary.withValues(alpha: 0.5),
+          // iconColor: const Color.fromRGBO(173, 156, 109, 1),
           onTap: () {
             CustomNavigator.push(
               Routes.FAQ,

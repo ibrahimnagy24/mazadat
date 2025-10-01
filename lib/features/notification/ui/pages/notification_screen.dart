@@ -58,7 +58,7 @@ class NotificationScreen extends StatelessWidget {
                           children: [
                             MainText(
                               text: AppStrings.notifications.tr,
-                              style: AppTextStyles.textMdBold.copyWith(
+                              style: AppTextStyles.displayMdBold.copyWith(
                                 color: const Color.fromRGBO(34, 39, 21, 1),
                                 fontSize: 24,
                               ),
@@ -84,11 +84,11 @@ class NotificationScreen extends StatelessWidget {
                                   );
                                 }
                                 if (state is SeenNotificationSuccess) {
-                                  ToastService.showCustom(
-                                    message: state.entity.message,
-                                    context: context,
-                                    toastStatusType: ToastStatusType.success,
-                                  );
+                                  // ToastService.showCustom(
+                                  //   message: state.entity.message,
+                                  //   context: context,
+                                  //   toastStatusType: ToastStatusType.success,
+                                  // );
                                 }
                                 if (state is SeenNotificationError) {
                                   ToastService.showCustom(
@@ -131,8 +131,8 @@ class NotificationScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
                     const NotificationStatusTabs(),
+                    const SizedBox(height: 24),
                     Expanded(
                       child: BlocBuilder<NotificationCubit, NotificationState>(
                         buildWhen: (previous, current) =>
@@ -160,9 +160,10 @@ class NotificationScreen extends StatelessWidget {
                                         .content;
                             if (notifications.isEmpty) {
                               return Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  const SizedBox(height: 120),
                                   Image.asset(
                                     AppImages.notificationBill,
                                     height: 270,
@@ -171,14 +172,16 @@ class NotificationScreen extends StatelessWidget {
                                   const SizedBox(height: 24),
                                   MainText(
                                     text: AppStrings.youHaveNoNotifications.tr,
-                                    style: AppTextStyles.textMdRegular,
+                                    style: AppTextStyles.displayMdSemiBold
+                                        .copyWith(
+                                            color: const Color.fromRGBO(
+                                                81, 94, 50, 1)),
                                   ),
                                 ],
                               );
                             }
                             return GroupedNotificationsList(
-                              notifications: notifications,
-                            );
+                                notifications: notifications);
                           }
                           if (state is GetNotificationError) {
                             return SizedBox(

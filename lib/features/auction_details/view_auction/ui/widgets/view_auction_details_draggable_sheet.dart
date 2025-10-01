@@ -106,7 +106,7 @@ class ViewAuctionDetailsDraggableSheet extends StatelessWidget {
               left: false,
               right: false,
               child: Padding(
-                padding: EdgeInsetsDirectional.only(top: 4),
+                padding: EdgeInsetsDirectional.only(top: 4, bottom: 4),
                 child: AuctionContentComponent(),
               ),
             ),

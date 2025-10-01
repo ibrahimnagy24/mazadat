@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/extensions/media_query_helper.dart';
+import '../../../../../core/utils/widgets/form_fields/default_form_field.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
 import '../../data/entity/city_entity.dart';
 
@@ -107,28 +110,25 @@ class _CitiesViewState extends State<CitiesView> {
             ),
             const SizedBox(height: 24),
             if (widget.showSearch) ...[
-              TextField(
+              DefaultFormField(
                 controller: _searchController,
-                onChanged: _filterCities,
-                decoration: InputDecoration(
-                  hintText: AppStrings.search.tr,
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(color: AppColors.border),
+                hintText: '${AppStrings.search.tr}...',
+                needValidation: false,
+                prefixIcon: Padding(
+                  padding: const EdgeInsetsDirectional.only(
+                    start: 16,
+                    end: 12,
+                    top: 12,
+                    bottom: 12,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(color: AppColors.border),
+                  child: SvgPicture.asset(
+                    AppSvg.searchIcon,
+                    color: AppColors.iconDefault,
+                    width: 20,
+                    height: 20,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide:
-                        const BorderSide(color: Color.fromRGBO(81, 94, 50, 1)),
-                  ),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
+                onChanged: (value) => _filterCities(value),
               ),
               const SizedBox(height: 16),
             ],
@@ -162,6 +162,7 @@ class _CitiesViewState extends State<CitiesView> {
                                       color: (_filteredData.length - 1) == index
                                           ? Colors.transparent
                                           : AppColors.border,
+                                      width: .1,
                                     ),
                                   ),
                                 ),

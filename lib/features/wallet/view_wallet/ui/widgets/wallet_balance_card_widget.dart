@@ -43,13 +43,17 @@ class WalletBalanceCardWidget extends StatelessWidget {
 
         return Container(
           height: 148,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
+          width: MediaQuery.sizeOf(context).width,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            image: const DecorationImage(
               image: AssetImage(AppImages.walletBackground),
               fit: BoxFit.cover,
             ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8),
+          margin: EdgeInsets.zero,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -69,11 +73,16 @@ class WalletBalanceCardWidget extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.transparent,
                           builder: (dialogContext) {
-                            return BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                              child: RechargeWalletBottomSheetWidget(
-                                dialogContext: dialogContext,
-                                cubit: context.read<ViewMyWalletCubit>(),
+                            return SafeArea(
+                              right: false,
+                              left: false,
+                              top: false,
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                child: RechargeWalletBottomSheetWidget(
+                                  dialogContext: dialogContext,
+                                  cubit: context.read<ViewMyWalletCubit>(),
+                                ),
                               ),
                             );
                           },
@@ -104,7 +113,8 @@ class WalletBalanceCardWidget extends StatelessWidget {
                             String formattedDate;
                             if (dateStr != null) {
                               try {
-                                final dateTime = DateTime.parse(dateStr);
+                                final dateTime =
+                                    DateTime.parse(dateStr).toLocal();
                                 final locale = isArabic ? 'ar' : 'en';
                                 final format =
                                     DateFormat('d MMMM yyyy', locale);

@@ -78,15 +78,20 @@ class _RechargeWalletBottomSheetWidgetState
               backgroundColor: Colors.transparent,
               barrierColor: Colors.transparent,
               builder: (dialogContext) {
-                return BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: RechargeWalletStatusWidget(
-                    dialogContext: dialogContext,
-                    isTransactionSuccess:
-                        state.checkWalletCharge.status == 'SUCCESS'
-                            ? true
-                            : false,
-                    transactionId: transactionId,
+                return SafeArea(
+                  right: false,
+                  left: false,
+                  top: false,
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                    child: RechargeWalletStatusWidget(
+                      dialogContext: dialogContext,
+                      isTransactionSuccess:
+                          state.checkWalletCharge.status == 'SUCCESS'
+                              ? true
+                              : false,
+                      transactionId: transactionId,
+                    ),
                   ),
                 );
               },
@@ -169,9 +174,8 @@ class _RechargeWalletBottomSheetWidgetState
                       },
                       backgroundColor: AppColors.buttonBackgroundPrimaryDefault,
                       textColor: AppColors.kWhite,
-                      textStyle: AppTextStyles.textXLBold.copyWith(
-                        color: AppColors.kWhite,
-                      ),
+                      textStyle: AppTextStyles.textXLBold
+                          .copyWith(color: AppColors.kWhite),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -180,90 +184,6 @@ class _RechargeWalletBottomSheetWidgetState
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildPaymentMethodOptions() {
-    return Column(
-      children: [
-        // Apple Pay Option
-        _buildPaymentMethodTile(
-          index: 0,
-          title: AppStrings.applePay.tr,
-          imageAsset: AppImages.applePayIcon,
-        ),
-        const SizedBox(height: 12),
-        // Visa Option
-        _buildPaymentMethodTile(
-          index: 1,
-          title: AppStrings.visa.tr,
-          imageAsset: AppImages.visaIcon,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPaymentMethodTile(
-      {required int index, required String title, required String imageAsset}) {
-    final bool isSelected = _selectedPaymentMethod == index;
-
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _selectedPaymentMethod = index;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: AppColors.kWhite,
-          border: Border.all(
-            color: isSelected ? AppColors.kPrimary : AppColors.borderDefault,
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(AppRadius.rS),
-        ),
-        child: Row(
-          children: [
-            // Leading image
-            Image.asset(
-              imageAsset,
-              width: 32,
-              height: 32,
-            ),
-            const SizedBox(width: 16),
-            // Title
-            Text(
-              title,
-              style: AppTextStyles.textLgMedium,
-            ),
-            const Spacer(),
-            // Trailing circular checkbox
-            Container(
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color:
-                      isSelected ? AppColors.kPrimary : AppColors.borderDefault,
-                  width: 2,
-                ),
-                color: isSelected ? AppColors.kPrimary : Colors.transparent,
-              ),
-              child: isSelected
-                  ? const Center(
-                      child: Icon(
-                        Icons.check,
-                        size: 16,
-                        color: Colors.white,
-                      ),
-                    )
-                  : null,
-            ),
-          ],
-        ),
       ),
     );
   }

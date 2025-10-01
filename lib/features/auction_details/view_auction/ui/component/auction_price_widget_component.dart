@@ -39,21 +39,21 @@ class AuctionPriceWidgetComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: _buildDynamicCountdownWidget(auction),
-              ),
-              const DottedBorder(
-                options: RectDottedBorderOptions(
-                  strokeWidth: 1,
-                  color: Color.fromRGBO(138, 147, 118, 1),
-                  dashPattern: [3, 5],
-                  padding: EdgeInsets.zero,
-                ),
-                child: SizedBox(
-                  width: 1,
-                  height: 56,
-                ),
-              ),
+              // Expanded(
+              //   child: _buildDynamicCountdownWidget(auction),
+              // ),
+              // const DottedBorder(
+              //   options: RectDottedBorderOptions(
+              //     strokeWidth: 1,
+              //     color: Color.fromRGBO(138, 147, 118, 1),
+              //     dashPattern: [3, 5],
+              //     padding: EdgeInsets.zero,
+              //   ),
+              //   child: SizedBox(
+              //     width: 1,
+              //     height: 56,
+              //   ),
+              // ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

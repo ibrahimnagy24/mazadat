@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/assets/app_images.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
@@ -28,11 +30,12 @@ class AccountSettingsButtons extends StatelessWidget {
           style: AppTextStyles.textLgBold,
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 16.h),
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          margin: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-              color: AppColors.kWhite,
-              borderRadius: BorderRadius.circular(AppRadius.rLg)),
+            color: AppColors.kWhite,
+            borderRadius: BorderRadius.circular(AppRadius.rLg),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,6 +44,11 @@ class AccountSettingsButtons extends StatelessWidget {
                   title: AppStrings.deleteAccount.tr,
                   icon: AppSvg.delete,
                   action: const SizedBox(),
+                  leading: SvgPicture.asset(
+                    AppSvg.rubsh,
+                    height: 40,
+                    width: 40,
+                  ),
                   onTap: () => CustomSimpleDialog.parentSimpleDialog(
                     isDismissible: false,
                     customListWidget: const CheckDeleteAccountDialog(),
@@ -58,6 +66,11 @@ class AccountSettingsButtons extends StatelessWidget {
                         customListWidget: const LogoutConfirmationDialog(),
                       )
                     : CustomNavigator.push(Routes.LOGIN_SCREEN),
+                leading: SvgPicture.asset(
+                  AppSvg.redLogout,
+                  height: 40,
+                  width: 40,
+                ),
               ),
             ],
           ),

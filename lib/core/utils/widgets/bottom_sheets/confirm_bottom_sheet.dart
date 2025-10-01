@@ -24,6 +24,8 @@ abstract class CustomBottomSheet {
     Function()? onDismiss,
     Function()? onClose,
     TextStyle? labelStyle,
+    Color? dragColor,
+    bool showCloseIcon = true,
   }) {
     return showMaterialModalBottomSheet(
       enableDrag: true,
@@ -57,8 +59,9 @@ abstract class CustomBottomSheet {
                         left: 18, right: 18, top: 8, bottom: 18),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: AppColors.kGeryText,
-                        borderRadius: BorderRadius.circular(100)),
+                      color: dragColor ?? AppColors.kGeryText,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
                   ),
                   labelWidget ?? const SizedBox(),
                   if (label != null)
@@ -74,14 +77,18 @@ abstract class CustomBottomSheet {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           )),
-                          GestureDetector(
-                            onTap: () {
-                              CustomNavigator.pop();
-                              onDismiss?.call();
-                            },
-                            child: const Icon(Icons.clear,
-                                size: 24, color: AppColors.textDefault),
-                          )
+                          if (showCloseIcon)
+                            GestureDetector(
+                              onTap: () {
+                                CustomNavigator.pop();
+                                onDismiss?.call();
+                              },
+                              child: const Icon(
+                                Icons.clear,
+                                size: 24,
+                                color: AppColors.textDefault,
+                              ),
+                            )
                         ],
                       ),
                     ),

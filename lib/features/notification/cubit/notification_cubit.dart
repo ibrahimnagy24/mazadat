@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import '../../../core/navigation/custom_navigation.dart';
+import '../../../core/shared/entity/error_entity.dart';
 import '../data/entity/notification_entity.dart';
 import '../data/entity/notifications_response_entity.dart';
 import '../data/enum/notification_type.dart';
+import '../data/model/notification_model.dart';
 import '../data/params/get_notification_params.dart';
 import '../data/repo/notification_repo.dart';
 import 'notification_state.dart';
@@ -167,18 +169,26 @@ class NotificationCubit extends Cubit<NotificationState> {
   }
 
   Future<void> seenNotification(int notificationId) async {
+    CustomNavigator.context.loaderOverlay.show();
     emit(SeenNotificationLoading());
+    try {
+      final result = await NotificationRepo.seenNotification(notificationId);
 
-    final result = await NotificationRepo.seenNotification(notificationId);
+      CustomNavigator.context.loaderOverlay.hide();
+      result.fold(
+        (error) => emit(SeenNotificationError(error)),
+        (data) {
+          _updateNotificationSeenStatus(notificationId);
 
-    result.fold(
-      (error) => emit(SeenNotificationError(error)),
-      (data) {
-        emit(SeenNotificationSuccess(data));
-        // Update the specific notification in the local list
-        _updateNotificationSeenStatus(notificationId);
-      },
-    );
+          emit(SeenNotificationSuccess(data));
+        },
+      );
+    } catch (e) {
+      CustomNavigator.context.loaderOverlay.hide();
+      emit(SeenNotificationError(
+        ErrorEntity(message: e.toString(), errors: const [], statusCode: 0),
+      ));
+    }
   }
 
   void _updateNotificationSeenStatus(int notificationId) {
@@ -186,7 +196,7 @@ class NotificationCubit extends Cubit<NotificationState> {
     for (int i = 0; i < _allNotifications.length; i++) {
       if (_allNotifications[i].id == notificationId) {
         // Create a new notification with seen status updated
-        final updatedNotification = NotificationEntity(
+        final updatedNotification = NotificationModel(
           id: _allNotifications[i].id,
           code: _allNotifications[i].code,
           action: _allNotifications[i].action,

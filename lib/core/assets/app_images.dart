@@ -30,4 +30,7 @@ class AppImages {
   static const String primaryColorLogo = 'assets/images/primary_color_logo.png';
   static const String whatsappImage = 'assets/images/whatsapp_image.png';
   static const String notificationBill = 'assets/images/notification_bill.png';
+  static const String baitElasjadiahVisitorLogo =
+      'assets/images/bait_elasjadiah_visitor_logo.png';
+  static const String rubsh = 'assets/images/rubsh.png';
 }

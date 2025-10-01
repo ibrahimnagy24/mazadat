@@ -139,9 +139,11 @@ class _BiddingOptionsBottomSheetState extends State<BiddingOptionsBottomSheet>
             listener: (context, state) {
               if (state is AuctionBidError) {
                 HapticFeedback.mediumImpact();
-                ToastService.showError(
-                  state.error.message,
-                  context,
+                ToastService.showCustom(
+                  message: state.error.message,
+                  context: context,
+                  toastStatusType: ToastStatusType.error,
+                  errorEntity: state.error,
                 );
               }
               if (state is AuctionBidSuccess) {

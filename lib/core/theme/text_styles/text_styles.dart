@@ -19,10 +19,10 @@ abstract class AppTextStyles {
     fontSize: AppFontSizes.fsXL,
     color: const Color.fromRGBO(34, 39, 21, 1),
   );
-  static TextStyle displayMdSemiBold = const TextStyle(
+  static TextStyle displayMdSemiBold = GoogleFonts.ibmPlexSansArabic(
     fontWeight: FontWeight.w600,
     fontSize: AppFontSizes.fsXL,
-    color: Color(0xFF222715),
+    color: const Color(0xFF222715),
   );
 
   static TextStyle displaySMMedium = GoogleFonts.ibmPlexSansArabic(
@@ -54,7 +54,7 @@ abstract class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  static TextStyle textXLBold = const TextStyle(
+  static TextStyle textXLBold = GoogleFonts.cairo(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsM,
     color: AppColors.textPrimary,
@@ -71,6 +71,12 @@ abstract class AppTextStyles {
     fontSize: AppFontSizes.fsXs,
     color: AppColors.kPrimary,
   );
+  static TextStyle textMdSemiboldIbmPlexSansArabic =
+      GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w600,
+    fontSize: 24,
+    color: const Color.fromRGBO(81, 94, 50, 1),
+  );
 
   static TextStyle textSmSemibold = GoogleFonts.cairo(
     fontWeight: FontWeight.w600,
@@ -83,10 +89,10 @@ abstract class AppTextStyles {
     color: AppColors.textSecondaryParagraph,
   );
 
-  static TextStyle textLgMedium = const TextStyle(
+  static TextStyle textLgMedium = GoogleFonts.cairo(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsS,
-    color: AppColors.textDefault,
+    color: const Color.fromRGBO(162, 162, 162, 1),
   );
 
   static TextStyle textLMedium = GoogleFonts.ibmPlexSansArabic(
@@ -163,6 +169,13 @@ abstract class AppTextStyles {
     color: AppColors.textPrimaryParagraph,
     letterSpacing: 0,
   );
+  static TextStyle bodyXsReqCairo = GoogleFonts.cairo(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textPrimaryParagraph,
+    letterSpacing: 0,
+  );
+
   static TextStyle bodyXXsReq = GoogleFonts.cairo(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.xxs,

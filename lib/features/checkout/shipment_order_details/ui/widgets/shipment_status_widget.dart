@@ -4,6 +4,8 @@ import '../../../../../core/assets/app_images.dart';
 import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/text/main_text.dart';
 
 class ShipmentStatusWidget extends StatelessWidget {
@@ -32,29 +34,28 @@ class ShipmentStatusWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MainText(
-            text: 'حالة الشحن',
-            style: AppTextStyles.textLgMedium.copyWith(
-              color: AppColors.textPrimary,
-            ),
+            text: AppStrings.chargingStatus.tr,
+            style: AppTextStyles.textLgMedium
+                .copyWith(color: AppColors.textPrimary),
           ),
           const SizedBox(height: 16),
           Column(
             children: [
               _buildStatusStep(
-                'تم الطلب',
+                AppStrings.requestDone.tr,
                 'PAID',
                 isFirst: true,
               ),
               _buildStatusStep(
-                'جاهز للشحن',
+                AppStrings.readyToShip.tr,
                 'READY_FOR_SHIP',
               ),
               _buildStatusStep(
-                'تم الشحن',
+                AppStrings.shipped.tr,
                 'SHIPPED',
               ),
               _buildStatusStep(
-                'تم التوصيل',
+                AppStrings.delivered.tr,
                 'DELIVERED',
                 isLast: true,
               ),

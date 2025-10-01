@@ -67,7 +67,8 @@ class _GroupedNotificationsListState extends State<GroupedNotificationsList> {
               child: MainText(
                 text: dateKey,
                 style: AppTextStyles.textLgBold.copyWith(
-                  color: const Color.fromRGBO(81, 94, 50, 1),
+                  color: const Color.fromRGBO(46, 46, 46, 1),
+                  fontSize: 16,
                 ),
               ),
             ),

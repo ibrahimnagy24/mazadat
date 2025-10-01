@@ -6,6 +6,7 @@ import '../../../../core/services/network/network_helper.dart';
 import '../../../../core/shared/entity/error_entity.dart';
 import '../entity/notifications_response_entity.dart';
 import '../entity/seen_all_notification_response_entity.dart';
+import '../entity/seen_notification_response_entity_new.dart';
 import '../model/notifications_response_model.dart';
 import '../model/seen_all_notification_response_model.dart';
 import '../model/seen_notification_response_model_new.dart';
@@ -47,7 +48,7 @@ abstract class NotificationRepo {
     }
   }
 
-  static Future<Either<ErrorEntity, SeenNotificationResponseModel>>
+  static Future<Either<ErrorEntity, SeenNotificationResponseEntity>>
       seenNotification(int notificationId) async {
     try {
       final response = await Network().request(
@@ -55,7 +56,7 @@ abstract class NotificationRepo {
         method: ServerMethods.GET,
       );
 
-      final seenResponse =
+      final SeenNotificationResponseEntity seenResponse =
           SeenNotificationResponseModel.fromJson(response.data);
       return Right(seenResponse);
     } catch (error) {

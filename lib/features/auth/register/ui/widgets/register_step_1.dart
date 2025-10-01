@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/form_fields/default_email_form_field.dart';
@@ -46,6 +47,7 @@ class RegisterFieldStep1 extends StatelessWidget {
               DefaultPhoneFormField(
                 controller: context.read<RegisterCubit>().phone,
                 readOnly: isLoading,
+                fillColor: AppColors.fillColor,
               ),
               const SizedBox(height: 16),
               DefaultEmailFormField(

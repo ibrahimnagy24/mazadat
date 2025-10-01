@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/app_core.dart';
-import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../choose_bundle_payment/data/params/bundle_choose_payment_route_params.dart';
 import '../../../choose_bundle_payment/ui/pages/bundle_choose_payment_screen.dart';
 import '../../logic/validate_joining_bundle_cubit.dart';
 import '../../logic/validate_joining_bundle_state.dart';
-import '../pages/bundle_payment_selection_view.dart';
 import 'agree_to_commission_bundle.dart';
 import 'agree_to_insurance_bundle.dart';
 
@@ -34,6 +30,7 @@ class ValidateJoinBundleButton extends StatelessWidget {
       child: Column(
         children: [
           const AgreeToCommissionBundle(),
+          8.sbH,
           const AgreeToInsuranceBundle(),
           8.sbH,
           DefaultButton(

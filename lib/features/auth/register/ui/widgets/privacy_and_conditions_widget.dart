@@ -9,6 +9,7 @@ import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../static_pages/data/params/static_page_params.dart';
 import '../../logic/register_cubit.dart';
 import '../../logic/register_state.dart';
@@ -28,29 +29,35 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
           buildWhen: (previous, current) =>
               current is AgreePolicyAndConditionsState,
           builder: (context, state) {
-            return Checkbox.adaptive(
-              value: context.read<RegisterCubit>().agreePolicyAndConditions,
-              activeColor: AppColors.kPrimary,
-              checkColor: AppColors.kWhite,
-              onChanged: (value) {
-                context
-                    .read<RegisterCubit>()
-                    .agreePolicyAndConditionsFunction();
-              },
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
+            return SizedBox(
+              width: 20,
+              height: 24,
+              child: Checkbox.adaptive(
+                value: context.read<RegisterCubit>().agreePolicyAndConditions,
+                activeColor: AppColors.kPrimary,
+                checkColor: AppColors.kWhite,
+                onChanged: (value) {
+                  context
+                      .read<RegisterCubit>()
+                      .agreePolicyAndConditionsFunction();
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                side: const BorderSide(color: Color.fromRGBO(162, 162, 162, 1)),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
               ),
-              side: const BorderSide(color: AppColors.kPrimary),
             );
           },
         ),
+        8.sbW,
         Expanded(
           child: RichText(
             text: TextSpan(
               children: [
                 TextSpan(
                   text: '${AppStrings.youAgreeAndHaveRead.tr} ',
-                  // text: AppStrings.pleaseCheckTermsAndConditions.tr,
                   style: AppTextStyles.textMdRegular,
                 ),
                 TextSpan(
@@ -58,23 +65,16 @@ class PrivacyAndConditionsWidget extends StatelessWidget {
                   style: AppTextStyles.textMdBold,
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return StaticPagesHtmlBottomSheetWidget(
-                              params: StaticPageParams(
-                                url: Endpoints.privacyAndPolicy,
-                                title: AppStrings.policyPrivacy.tr,
-                              ),
-                            );
-                          });
-                      // CustomNavigator.push(
-                      //   Routes.STATIC_PAGE,
-                      //   extra: StaticPageParams(
-                      //     url: Endpoints.privacyAndPolicy,
-                      //     title: AppStrings.policyPrivacy.tr,
-                      //   ),
-                      // );
+                      CustomBottomSheet.show(
+                        widget: StaticPagesHtmlBottomSheetWidget(
+                          params: StaticPageParams(
+                            url: Endpoints.privacyAndPolicy,
+                            title: AppStrings.policyPrivacy.tr,
+                          ),
+                          bottomWidget: 8.sbH,
+                        ),
+                        dragColor: const Color.fromRGBO(46, 46, 46, 1),
+                      );
                     },
                 ),
                 if (mainAppBloc.isArabic)

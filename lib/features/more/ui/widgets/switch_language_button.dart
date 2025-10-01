@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/theme/colors/styles.dart';
@@ -16,49 +17,101 @@ class SwitchLanguageButton extends StatelessWidget {
     return StreamBuilder<String>(
         stream: mainAppBloc.langStream,
         builder: (context, snapshot) {
+          final currentLang = snapshot.data ?? 'en';
+          final isEnglish = currentLang == LangKeysConstances.en.name;
+          final isArabic = currentLang == LangKeysConstances.ar.name;
+
           return Container(
-            height: 40.h,
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+            height: 50,
+            width: 90,
             decoration: BoxDecoration(
-              color: AppColors.kPrimary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(AppRadius.rM),
+              color: const Color.fromRGBO(238, 239, 235, 1),
+              borderRadius: BorderRadius.circular(16),
             ),
-            child: ToggleButtons(
-              direction: Axis.horizontal,
-              isSelected: [
-                (snapshot.data ?? 'en') == LangKeysConstances.en.name,
-                (snapshot.data ?? 'ar') == LangKeysConstances.ar.name,
-              ],
-              onPressed: (index) async {
-                await mainAppBloc
-                    .setLanguage(LangKeysConstances.values[index].name);
-                RestartWidget.restartApp(context);
-              },
-              borderRadius: BorderRadius.circular(AppRadius.rXS),
-              renderBorder: true, // ✅ Ensures borders are shown
-              selectedBorderColor: AppColors.kPrimary,
-              borderColor: AppColors.transparent,
-              selectedColor: AppColors.kPrimary,
-              fillColor: AppColors.kPrimary,
-              constraints: BoxConstraints(
-                minHeight: 25.w,
-                minWidth: 40.w,
-              ),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+            child: Row(
               children: [
-                Text(
-                  'EN',
-                  style: AppTextStyles.textLgRegular.copyWith(
-                    color: snapshot.data == LangKeysConstances.en.name
-                        ? AppColors.kWhite
-                        : AppColors.kPrimary,
+                // English Button
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      if (!isEnglish) {
+                        await mainAppBloc
+                            .setLanguage(LangKeysConstances.en.name);
+                        RestartWidget.restartApp(context);
+                      }
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeInOut,
+                      decoration: BoxDecoration(
+                        color:
+                            isEnglish ? AppColors.kPrimary : Colors.transparent,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      alignment: Alignment.center,
+                      child: AnimatedDefaultTextStyle(
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        style: AppTextStyles.textLgRegular.copyWith(
+                          color:
+                              isEnglish ? AppColors.kWhite : AppColors.kPrimary,
+                          fontWeight:
+                              isEnglish ? FontWeight.w600 : FontWeight.w400,
+                        ),
+                        child: const Text(
+                          'EN',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-                Text(
-                  'ع',
-                  style: AppTextStyles.textLgRegular.copyWith(
-                    color: snapshot.data == LangKeysConstances.ar.name
-                        ? AppColors.kWhite
-                        : AppColors.kPrimary,
+
+                const SizedBox(width: 2),
+
+                // Arabic Button
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      if (!isArabic) {
+                        await mainAppBloc
+                            .setLanguage(LangKeysConstances.ar.name);
+                        RestartWidget.restartApp(context);
+                      }
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeInOut,
+                      decoration: BoxDecoration(
+                        color:
+                            isArabic ? AppColors.kPrimary : Colors.transparent,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      alignment: Alignment.center,
+                      child: AnimatedDefaultTextStyle(
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        style: AppTextStyles.textLgRegular.copyWith(
+                          color:
+                              isArabic ? AppColors.kWhite : AppColors.kPrimary,
+                          fontWeight:
+                              isArabic ? FontWeight.w600 : FontWeight.w400,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(bottom: 6),
+                          child: Text(
+                            'ع',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.cairo(
+                              color: isArabic
+                                  ? const Color.fromRGBO(255, 255, 255, 1)
+                                  : const Color.fromRGBO(81, 94, 50, 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],

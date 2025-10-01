@@ -21,10 +21,12 @@ class AgreeToInsurance extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           StreamBuilder(
-              stream:
-                  context.read<ValidateJoiningAuctionCubit>().insuranceStream,
-              builder: (context, snapshot) {
-                return Checkbox.adaptive(
+            stream: context.read<ValidateJoiningAuctionCubit>().insuranceStream,
+            builder: (context, snapshot) {
+              return SizedBox(
+                width: 20,
+                height: 24,
+                child: Checkbox.adaptive(
                   value: snapshot.data == true,
                   activeColor: AppColors.kPrimary,
                   checkColor: AppColors.kWhite,
@@ -36,9 +38,15 @@ class AgreeToInsurance extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  side: const BorderSide(color: AppColors.kPrimary),
-                );
-              }),
+                  side:
+                      const BorderSide(color: Color.fromRGBO(162, 162, 162, 1)),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  visualDensity: VisualDensity.compact,
+                ),
+              );
+            },
+          ),
+          8.sbW,
           Expanded(
             child: RichText(
               text: TextSpan(
@@ -46,19 +54,24 @@ class AgreeToInsurance extends StatelessWidget {
                   TextSpan(
                     text: AppStrings.youAgreeToPay.tr,
                     style: AppTextStyles.textLgRegular.copyWith(
-                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                      fontSize: 12,
+                      color: const Color.fromRGBO(162, 162, 162, 1),
+                    ),
                   ),
                   TextSpan(
                     text:
-                        '${AppStrings.insuranceAmount.tr} ${(state is ValidateJoiningAuctionSuccess) ? state.data.insuranceAmount : ''}',
-                    style: AppTextStyles.textLgBold
-                        .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
+                        ' ${AppStrings.insuranceAmount.tr} ${(state is ValidateJoiningAuctionSuccess) ? state.data.insuranceAmount : ''} ',
+                    style: AppTextStyles.textLgBold.copyWith(
+                      color: const Color.fromRGBO(81, 94, 50, 1),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 12,
+                    ),
                   ),
                   WidgetSpan(
                     child: SvgPicture.asset(
                       AppSvg.saudiArabiaSymbol,
-                      width: 16,
-                      height: 16,
+                      width: 13,
+                      height: 13,
                       color: const Color.fromRGBO(81, 94, 50, 1),
                     ),
                   ),

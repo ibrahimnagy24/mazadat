@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/assets/app_images.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
@@ -50,25 +52,17 @@ class VisitorScreen extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                             color: AppColors.kPrimary.withOpacity(0.1),
-                            blurRadius: 20,
-                            offset: const Offset(0, 8),
+                            blurRadius: 1,
+                            offset: const Offset(0, 1),
                           ),
                         ],
                       ),
                       child: Column(
                         children: [
                           // Logo with smooth animation
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: AppColors.backgroundSecondary
-                                  .withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: SvgPicture.asset(
-                              AppSvg.logo,
-                              height: 120,
-                            ),
+                          Image.asset(
+                            AppImages.baitElasjadiahVisitorLogo,
+                            height: 120,
                           )
                               .animate()
                               .fadeIn(
@@ -86,12 +80,8 @@ class VisitorScreen extends StatelessWidget {
                           // Welcome Text
                           MainText(
                             text: AppStrings.welcomeToMazadat.tr,
-                            style: AppTextStyles
-                                .balooBhaijaan2W700Size24Primary1000
-                                .copyWith(
-                              fontSize: Responsive.isSmall(context) ? 22 : 24,
-                              color: AppColors.kPrimary,
-                            ),
+                            style:
+                                AppTextStyles.textMdSemiboldIbmPlexSansArabic,
                             textAlign: TextAlign.center,
                           )
                               .animate(delay: 200.ms)
@@ -111,14 +101,7 @@ class VisitorScreen extends StatelessWidget {
                             text: AppStrings
                                 .joinOurCommunityToEnjoyExcitingAuctionsAndConnectWithFriendsAlreadyHaveAnAccountWelcomeBack
                                 .tr,
-                            style: AppTextStyles
-                                .balooBhaijaan2W400Size16kPrimary700
-                                .copyWith(
-                              fontSize: fontSize ??
-                                  (Responsive.isSmall(context) ? 14 : 16),
-                              color: AppColors.textPrimaryParagraph,
-                              height: 1.5,
-                            ),
+                            style: AppTextStyles.textLgMedium,
                             textAlign: TextAlign.center,
                           )
                               .animate(delay: 400.ms)
@@ -196,35 +179,37 @@ class VisitorScreen extends StatelessWidget {
                             curve: Curves.easeOut,
                           ),
 
-                    12.sbH,
+                    16.sbH,
 
                     // Additional Info
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 12),
+                        horizontal: 8,
+                        vertical: 11,
+                      ),
                       decoration: BoxDecoration(
-                        color: AppColors.backgroundSecondary.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
+                        color: const Color.fromRGBO(254, 252, 245, 1),
+                        borderRadius: BorderRadius.circular(22),
                         border: Border.all(
-                          color: AppColors.borderSecondary.withOpacity(0.3),
+                          color: const Color.fromRGBO(249, 239, 209, 1),
                           width: 1,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(
-                            Icons.security_rounded,
-                            color: AppColors.kPrimary,
-                            size: 16,
+                          SvgPicture.asset(
+                            AppSvg.policyGuard,
+                            height: 20,
+                            width: 20,
                           ),
                           8.sbW,
                           MainText(
                             text: AppStrings.secureTrustedPlatform.tr,
-                            style: AppTextStyles
-                                .balooBhaijaan2W500Size12KPrimary700
-                                .copyWith(
+                            style: GoogleFonts.cairo(
                               color: AppColors.kPrimary,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
                             ),
                           ),
                         ],
@@ -257,78 +242,27 @@ class VisitorScreen extends StatelessWidget {
         CustomNavigator.push(Routes.LOGIN_SCREEN);
       },
       text: AppStrings.login.tr,
-      fontSize: fontSize ?? (Responsive.isSmall(context) ? 16 : 18),
-      height: 56,
-      textStyle: AppTextStyles.balooBhaijaan2W600Size18White.copyWith(
-        fontSize: fontSize ?? (Responsive.isSmall(context) ? 16 : 18),
-      ),
+      fontSize: fontSize,
+      height: 48,
+      textStyle: AppTextStyles.bodyXlBold
+          .copyWith(color: const Color.fromRGBO(255, 255, 255, 1)),
+      elevation: 0,
     );
   }
 
   Widget _buildEnhancedRegisterButton(BuildContext context,
       {final double? fontSize}) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.kPrimary.withOpacity(0.15),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: CustomButtonWithInnerShadowWidget(
-        onPressed: () {
-          CustomNavigator.push(Routes.REGISTER_SCREEN);
-        },
-        text: AppStrings.registerAndStart.tr,
-        fontSize: fontSize ?? (Responsive.isSmall(context) ? 16 : 18),
-        height: 56,
-        borderRadiousValue: 8,
-        color: AppColors.kWhite,
-        textStyle: AppTextStyles.balooBhaijaan2W600Size16KPrimary1000.copyWith(
-          fontSize: fontSize ?? (Responsive.isSmall(context) ? 16 : 18),
-          color: AppColors.kPrimary,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.backgroundSecondary.withOpacity(0.3),
-            offset: const Offset(-2, -2),
-            blurRadius: 8,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: AppColors.backgroundSecondary.withOpacity(0.2),
-            offset: const Offset(2, 2),
-            blurRadius: 8,
-            spreadRadius: 0,
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Legacy methods for backward compatibility
-  Widget loginButton({final double? fontSize}) {
     return DefaultButton(
-      onPressed: () {
-        CustomNavigator.push(Routes.LOGIN_SCREEN);
-      },
-      text: AppStrings.login.tr,
-      fontSize: fontSize,
-      backgroundColor: AppColors.kPrimary,
-      borderColor: AppColors.kPrimary,
-    );
-  }
-
-  Widget registerButton({final double? fontSize}) {
-    return CustomButtonWithInnerShadowWidget(
       onPressed: () {
         CustomNavigator.push(Routes.REGISTER_SCREEN);
       },
       text: AppStrings.registerAndStart.tr,
-      fontSize: fontSize,
+      fontSize: fontSize ?? (Responsive.isSmall(context) ? 16 : 18),
+      height: 48,
+      textStyle: AppTextStyles.bodyXlBold
+          .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
+      backgroundColor: Colors.white,
+      elevation: 0,
     );
   }
 }

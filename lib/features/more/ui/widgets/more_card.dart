@@ -22,14 +22,21 @@ class MoreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      splashColor: AppColors.borderSecondary.withValues(alpha: 0.5),
+      enableFeedback: true,
+      highlightColor: AppColors.borderSecondary.withValues(alpha: 0.5),
+      hoverColor: AppColors.borderSecondary.withValues(alpha: 0.5),
+      overlayColor: WidgetStateProperty.all(
+          AppColors.borderSecondary.withValues(alpha: 0.5)),
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: 24.w,
           vertical: 24.h,
         ),
         decoration: BoxDecoration(
-            color: background ?? AppColors.fillColor,
-            borderRadius: BorderRadius.circular(AppRadius.rLg)),
+          color: background ?? AppColors.fillColor,
+          borderRadius: BorderRadius.circular(AppRadius.rLg),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

@@ -42,7 +42,7 @@ import '../../features/my_sales/ui/page/my_sales_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
 import '../../features/notification/ui/pages/notification_screen.dart';
 import '../../features/profile/ui/page/profile_screen.dart';
-import '../../features/search/ui/page/search_page.dart';
+import '../../features/search_module/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';

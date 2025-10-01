@@ -20,9 +20,9 @@ class AppStrings {
   static const String firstName = 'First name';
   static const String fullName = 'Full name';
   static const String enterNameHere = 'Enter name here';
-  static const String enterFirstName = 'Enter first name here';
+  static const String enterFirstName = 'Enter first name';
   static const String lastName = 'Last name';
-  static const String enterLastName = 'Enter last name here';
+  static const String enterLastName = 'Enter last name';
   static const String alreadyHaveAnAccount = 'Already have an account?';
   static const String youAgreeAndHaveRead = 'You agree and have read';
   static const String ourTermsAndPrivacyPolicy = 'our Terms and Privacy Policy';
@@ -177,6 +177,8 @@ class AppStrings {
   static const String fromOldToNew = 'From Old to New';
   static const String fromNewToOld = 'From New to Old';
   static const String noFavouriteAuctions = 'no_favourite_auctions';
+  static const String newToOld = 'New to Old';
+  static const String oldToNew = 'Old to New';
   static const String favouriteAuctionHint = 'favourite_auction_hint';
   static const String discoverMore = 'Discover More';
   static const String more = 'More';
@@ -405,4 +407,19 @@ class AppStrings {
   static const String searchByAuctionName = 'Search by auction name';
   static const String markAllAsRead = 'Mark all as read';
   static const String youHaveNoNotifications = 'You have no notifications';
+  static const String winner = 'Winner';
+  static const String loser = 'Loser';
+  static const String iWonIt = 'I won it';
+  static const String canceled = 'canceled';
+  static const String iLostIt = 'I lost it';
+  static const String chargingStatus = 'Charging status';
+  static const String requestDone = 'Request done';
+  static const String readyToShip = 'Ready to ship';
+  static const String shipped = 'Shipped';
+  static const String delivered = 'Delivered';
+  static const String noFavoriteAuctionsHaveBeenAddedYet =
+      'No favorite auctions have been added yet.';
+  static const String
+      startAddingTheAuctionYouLikeToYourFavoritesForEasyAccessLater =
+      'Start adding the auction you like to your favorites for easy access later.';
 }

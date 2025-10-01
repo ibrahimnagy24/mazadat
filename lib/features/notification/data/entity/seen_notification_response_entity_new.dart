@@ -1,4 +1,6 @@
-class SeenNotificationResponseEntity {
+import 'package:equatable/equatable.dart';
+
+class SeenNotificationResponseEntity extends Equatable {
   final String message;
   final String status;
 
@@ -6,4 +8,7 @@ class SeenNotificationResponseEntity {
     required this.message,
     required this.status,
   });
+
+  @override
+  List<Object?> get props => [message, status];
 }

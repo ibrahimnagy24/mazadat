@@ -28,11 +28,12 @@ class AppSettingsButtons extends StatelessWidget {
           style: AppTextStyles.textLgBold,
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 16.h),
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          margin: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-              color: AppColors.kWhite,
-              borderRadius: BorderRadius.circular(AppRadius.rLg)),
+            color: AppColors.kWhite,
+            borderRadius: BorderRadius.circular(AppRadius.rLg),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
