@@ -36,21 +36,22 @@ class StaticPageSuccessWidget extends StatelessWidget {
                       children: [
                         RichText(
                           text: TextSpan(
-                              text: AppStrings.agreeTo.tr,
-                              style: AppTextStyles.textXLRegular.copyWith(
-                                fontSize: 16,
-                                color: const Color.fromRGBO(138, 147, 118, 1),
-                              ),
-                              children: [
-                                TextSpan(
-                                  text:
-                                      '\n${AppStrings.termsAndPrivacyPolicy.tr}',
-                                  style: AppTextStyles.displaySMMedium.copyWith(
-                                    fontSize: 20,
-                                    color: const Color.fromRGBO(81, 94, 50, 1),
-                                  ),
+                            text: '', //AppStrings.agreeTo.tr,
+                            style: AppTextStyles.textXLRegular.copyWith(
+                              fontSize: 16,
+                              color: const Color.fromRGBO(138, 147, 118, 1),
+                            ),
+                            children: [
+                              TextSpan(
+                                text: AppStrings.termsAndPrivacyPolicy.tr,
+                                // '\n${AppStrings.termsAndPrivacyPolicy.tr}',
+                                style: AppTextStyles.displayMdBold.copyWith(
+                                  fontSize: 20,
+                                  color: const Color.fromRGBO(34, 39, 21, 1),
                                 ),
-                              ]),
+                              ),
+                            ],
+                          ),
                         ),
 
                         ///Last Modified
@@ -66,21 +67,25 @@ class StaticPageSuccessWidget extends StatelessWidget {
                             Expanded(
                               child: RichText(
                                 text: TextSpan(
-                                    text: '${AppStrings.lastModified.tr}  ',
-                                    style: AppTextStyles.textLgRegular,
-                                    children: [
-                                      TextSpan(
-                                        text: (DateTime.parse(staticPageEntity
-                                                .lastUpdateDate!))
-                                            .toDateFormat(
-                                                format: 'd MMMM yyyy',
-                                                locale: mainAppBloc
-                                                    .lang.valueOrNull),
-                                        style: AppTextStyles.textLgRegular
-                                            .copyWith(
-                                                color: AppColors.textPrimary),
-                                      ),
-                                    ]),
+                                  text: '${AppStrings.lastModified.tr}  ',
+                                  style: AppTextStyles.textMdRegular.copyWith(
+                                      color: const Color.fromRGBO(
+                                          162, 162, 162, 1)),
+                                  children: [
+                                    TextSpan(
+                                      text: (DateTime.parse(
+                                              staticPageEntity.lastUpdateDate!))
+                                          .toDateFormat(
+                                              format: 'd MMMM yyyy',
+                                              locale:
+                                                  mainAppBloc.lang.valueOrNull),
+                                      style: AppTextStyles.textLgMedium
+                                          .copyWith(
+                                              color: const Color.fromRGBO(
+                                                  116, 116, 116, 1)),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -89,10 +94,9 @@ class StaticPageSuccessWidget extends StatelessWidget {
                     ),
                   ),
                   SvgPicture.asset(
-                    AppSvg.logo,
+                    AppSvg.baitAlasjdiahGoldLogo,
                     height: 56,
                     width: 78,
-                    color: const Color.fromRGBO(81, 94, 50, 1),
                   ),
                 ],
               ),

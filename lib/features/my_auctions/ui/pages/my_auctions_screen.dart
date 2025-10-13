@@ -34,10 +34,12 @@ class MyAuctionsScreen extends StatelessWidget {
               centerTitle: false,
               title: Padding(
                 padding: const EdgeInsetsDirectional.only(start: 14),
-                child: Text(
-                  AppStrings.myAuctions.tr,
-                  style: AppTextStyles.displayMdBold,
-                ),
+                child: !Utility.isUserLoggedIn()
+                    ? const SizedBox.shrink()
+                    : Text(
+                        AppStrings.myAuctions.tr,
+                        style: AppTextStyles.displayMdBold,
+                      ),
               ),
               actions: [
                 if (Utility.isUserLoggedIn())

@@ -22,6 +22,9 @@ class DistrictInput extends StatelessWidget {
     this.validator,
     this.fillColor,
     this.borderColor,
+    this.hintStyle,
+    this.style,
+    this.titleStyle,
   });
   final DistrictEntity? initialValue;
   final Function(DistrictEntity)? onSelect;
@@ -29,15 +32,19 @@ class DistrictInput extends StatelessWidget {
   final int? cityId;
   final Color? fillColor;
   final Color? borderColor;
+  final TextStyle? hintStyle;
+  final TextStyle? titleStyle;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DistrictsCubit()..districtsStatesHandled(
-        params: cityId != null 
-          ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
-          : null,
-      ),
+      create: (context) => DistrictsCubit()
+        ..districtsStatesHandled(
+          params: cityId != null
+              ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
+              : null,
+        ),
       child: BlocConsumer<DistrictsCubit, DistrictState>(
         listener: (context, state) {
           if (state is GetDistrictsError) {
@@ -60,6 +67,9 @@ class DistrictInput extends StatelessWidget {
             readOnly: true,
             fillColor: fillColor,
             borderColor: borderColor,
+            hintStyle: hintStyle,
+            titleStyle: titleStyle,
+            style: style,
             suffixIcon: const Icon(
               Icons.keyboard_arrow_down_rounded,
               size: 18,
@@ -105,9 +115,9 @@ class DistrictInput extends StatelessWidget {
               }
               if (cubit.districts != null && cubit.districts!.isEmpty) {
                 cubit.districtsStatesHandled(
-                  params: cityId != null 
-                    ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
-                    : null,
+                  params: cityId != null
+                      ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
+                      : null,
                 );
                 AppCore.showSnackBar(
                   notification: AppNotification(
@@ -131,9 +141,9 @@ class DistrictInput extends StatelessWidget {
               }
               if (state is GetDistrictsError) {
                 cubit.districtsStatesHandled(
-                  params: cityId != null 
-                    ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
-                    : null,
+                  params: cityId != null
+                      ? DistrictParams(cityId: cityId!, page: 0, limit: 100000)
+                      : null,
                 );
                 return;
               }

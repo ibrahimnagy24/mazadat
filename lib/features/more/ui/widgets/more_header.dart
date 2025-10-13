@@ -4,12 +4,14 @@ import '../../../../core/assets/app_svg.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/extensions/media_query_helper.dart';
+import '../../../auth/shared/auth_title_image_banner_widget.dart';
 
 class MoreHeader extends StatelessWidget {
   const MoreHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return const AuthTitleImageBannerWidget();
     return Container(
       width: MediaQueryHelper.width,
       padding: EdgeInsetsDirectional.only(

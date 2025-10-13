@@ -97,4 +97,6 @@ class AppSvg {
   static const String activeRadio = '$_svgPath/active_radio.svg';
   static const String rubsh = '$_svgPath/rubsh.svg';
   static const String redLogout = '$_svgPath/red_logout.svg';
+  static const String baitAlasjdiahGoldLogo =
+      '$_svgPath/bait_alasjdiah_gold_logo.svg';
 }

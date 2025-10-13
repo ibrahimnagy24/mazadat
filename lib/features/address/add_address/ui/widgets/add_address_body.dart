@@ -42,7 +42,7 @@ class AddAddressBody extends StatelessWidget {
                   DefaultFormField(
                     controller: snapshot.data?.addressTEC,
                     titleText: AppStrings.address.tr,
-                    hintText: '${AppStrings.enterAddress.tr}...',
+                    hintText: AppStrings.enterTheAddress.tr,
                     validator: (v) => DefaultValidator.defaultValidator(
                       v,
                       label: AppStrings.address.tr,
@@ -84,6 +84,8 @@ class AddAddressBody extends StatelessWidget {
                     },
                     fillColor: AppColors.kWhite,
                     borderColor: const Color.fromRGBO(232, 232, 232, 1),
+                    hintTextStyle: AppTextStyles.textLgRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1)),
                   ),
                   const SizedBox(height: 16),
                   ShouldRebuild(
@@ -102,6 +104,8 @@ class AddAddressBody extends StatelessWidget {
                               ?.copyWith(city: v, clearDistrict: true)),
                       fillColor: AppColors.kWhite,
                       borderColor: const Color.fromRGBO(232, 232, 232, 1),
+                      hintStyle: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -122,6 +126,8 @@ class AddAddressBody extends StatelessWidget {
                     },
                     fillColor: AppColors.kWhite,
                     borderColor: const Color.fromRGBO(232, 232, 232, 1),
+                    hintStyle: AppTextStyles.textLgRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1)),
                   ),
                   const SizedBox(height: 16),
                   Row(

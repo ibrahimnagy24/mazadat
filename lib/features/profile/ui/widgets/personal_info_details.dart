@@ -9,8 +9,10 @@ import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/radius/app_radius.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
+import '../../../../core/utils/enums/enums.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/utility.dart';
+import '../../../auth/change_password/data/params/change_password_route_params.dart';
 import '../../../user/logic/user_cubit.dart';
 import '../../../user/logic/user_state.dart';
 import 'profile_details_info.dart';
@@ -23,44 +25,92 @@ class PersonalInfoDetails extends StatelessWidget {
     return BlocBuilder<UserCubit, UserState>(builder: (context, state) {
       final cubit = context.read<UserCubit>();
       return !Utility.isUserLoggedIn()
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InkWell(
-                  onTap: () =>
-                      CustomNavigator.push(Routes.EDIT_FAVOURITES_CATEGORIES),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12.h),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      spacing: 16.h,
-                      children: [
-                        customContainerSvgIcon(
+          ? Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
+              decoration: BoxDecoration(
+                color: AppColors.kWhite,
+                borderRadius: BorderRadius.circular(AppRadius.rLg.w),
+              ),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () =>
+                        CustomNavigator.push(Routes.EDIT_FAVOURITES_CATEGORIES),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12.h),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        spacing: 16.h,
+                        children: [
+                          customContainerSvgIcon(
                             imageName: AppSvg.favourite,
-                            width: 40.w,
-                            height: 40.w,
-                            radius: 100.w,
-                            padding: 10.w,
-                            borderColor: AppColors.background,
-                            backGround: AppColors.background,
-                            color: AppColors.iconPrimary),
-                        Expanded(
-                          child: Text(AppStrings.favouriteCategories.tr,
-                              textAlign: TextAlign.start,
-                              style: AppTextStyles.textLgRegular),
-                        ),
-                        const Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 18,
-                          color: AppColors.iconPrimary,
-                        )
-                      ],
+                            width: 40,
+                            height: 40,
+                            radius: 100,
+                            padding: 10,
+                            borderColor: const Color.fromRGBO(238, 239, 235, 1),
+                            backGround: const Color.fromRGBO(238, 239, 235, 1),
+                            color: const Color.fromRGBO(81, 94, 50, 1),
+                          ),
+                          Expanded(
+                            child: Text(AppStrings.favouriteCategories.tr,
+                                textAlign: TextAlign.start,
+                                style: AppTextStyles.textLgRegular),
+                          ),
+                          const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 18,
+                            color: Color.fromRGBO(81, 94, 50, 1),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             )
+
+          // Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       InkWell(
+          //         onTap: () =>
+          //             CustomNavigator.push(Routes.EDIT_FAVOURITES_CATEGORIES),
+          //         child: Padding(
+          //           padding: EdgeInsets.symmetric(vertical: 12.h),
+          //           child: Row(
+          //             crossAxisAlignment: CrossAxisAlignment.center,
+          //             mainAxisAlignment: MainAxisAlignment.start,
+          //             spacing: 16.h,
+          //             children: [
+          //               customContainerSvgIcon(
+          //                 imageName: AppSvg.favourite,
+          //                 width: 40,
+          //                 height: 40,
+          //                 radius: 100,
+          //                 padding: 10,
+          //                 borderColor: const Color.fromRGBO(238, 239, 235, 1),
+          //                 backGround: const Color.fromRGBO(238, 239, 235, 1),
+          //                 color: AppColors.iconPrimary,
+          //               ),
+          //               Expanded(
+          //                 child: Text(AppStrings.favouriteCategories.tr,
+          //                     textAlign: TextAlign.start,
+          //                     style: AppTextStyles.textLgRegular),
+          //               ),
+          //               const Icon(
+          //                 Icons.arrow_forward_ios_rounded,
+          //                 size: 18,
+          //                 color: AppColors.iconPrimary,
+          //               )
+          //             ],
+          //           ),
+          //         ),
+          //       )
+          //     ],
+          //   )
+
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -161,7 +211,14 @@ class PersonalInfoDetails extends StatelessWidget {
                         icon: AppSvg.lock,
                         action: TextButton(
                           onPressed: () => CustomNavigator.push(
-                              Routes.CHANGE_PASSWORD_SCREEN),
+                            Routes.CHANGE_PASSWORD_SCREEN,
+                            extra: ChangePasswordRouteParams(
+                              phone: cubit.userEntity!.phone,
+                              fromScreenEnum:
+                                  ChangePasswordFromScreen.fromEditProfile,
+                              code: '',
+                            ),
+                          ),
                           child: Row(
                             spacing: 4.w,
                             children: [
@@ -191,14 +248,16 @@ class PersonalInfoDetails extends StatelessWidget {
                             spacing: 16.h,
                             children: [
                               customContainerSvgIcon(
-                                  imageName: AppSvg.favourite,
-                                  width: 40.w,
-                                  height: 40.w,
-                                  radius: 100.w,
-                                  padding: 10.w,
-                                  borderColor: AppColors.background,
-                                  backGround: AppColors.background,
-                                  color: AppColors.iconPrimary),
+                                imageName: AppSvg.favourite,
+                                width: 40.w,
+                                height: 40.w,
+                                radius: 100.w,
+                                padding: 10.w,
+                                borderColor: AppColors.background,
+                                backGround:
+                                    const Color.fromRGBO(238, 239, 235, 1),
+                                color: AppColors.iconPrimary,
+                              ),
                               Expanded(
                                 child: Text(AppStrings.favouriteCategories.tr,
                                     textAlign: TextAlign.start,

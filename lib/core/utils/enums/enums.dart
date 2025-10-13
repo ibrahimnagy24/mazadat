@@ -31,6 +31,6 @@ enum BiddingMethod { auto, manual }
 
 enum WalletHistoryType { deposit, withdraw }
 
-enum ChangePasswordFromScreen { fromForgetPassword }
+enum ChangePasswordFromScreen { fromForgetPassword, fromEditProfile }
 
 enum AuctionType { private, public }

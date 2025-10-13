@@ -24,6 +24,10 @@ class CityInput extends StatelessWidget {
     this.validator,
     this.fillColor,
     this.borderColor,
+    this.hintStyle,
+    this.titleStyle,
+    this.style,
+    this.suffixIconColor,
   });
   final CityEntity? initialValue;
   final Function(CityEntity)? onSelect;
@@ -33,7 +37,10 @@ class CityInput extends StatelessWidget {
   final bool loadAllCities;
   final Color? fillColor;
   final Color? borderColor;
-
+  final TextStyle? hintStyle;
+  final TextStyle? titleStyle;
+  final TextStyle? style;
+  final Color? suffixIconColor;
   CityParams? _getCityParams() {
     if (loadAllCities) {
       // Load all cities without region filter
@@ -50,9 +57,10 @@ class CityInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CityCubit()..citiesStatesHandled(
-        params: _getCityParams(),
-      ),
+      create: (context) => CityCubit()
+        ..citiesStatesHandled(
+          params: _getCityParams(),
+        ),
       child: BlocConsumer<CityCubit, CityState>(
         listener: (context, state) {
           if (state is GetCitiesError) {
@@ -68,18 +76,21 @@ class CityInput extends StatelessWidget {
           final cubit = context.read<CityCubit>();
           return DefaultFormField(
             titleText: AppStrings.city.tr,
-            hintText: '${AppStrings.selectCity.tr}...',
+            hintText: AppStrings.selectCity.tr,
             needValidation: validator != null,
             validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
             fillColor: fillColor,
             borderColor: borderColor,
-            suffixIcon: const Icon(
+            suffixIcon: Icon(
               Icons.keyboard_arrow_down_rounded,
               size: 18,
-              color: AppColors.kGeryText,
+              color: suffixIconColor ?? AppColors.kGeryText,
             ),
+            hintStyle: hintStyle,
+            titleStyle: titleStyle,
+            style: style,
             onTap: () {
               if (regionId == null && withRegionFilter && !loadAllCities) {
                 AppCore.showSnackBar(

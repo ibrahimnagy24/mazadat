@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -5,6 +7,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import '../core/app_config/app_config.dart';
 import '../core/app_config/flavour.dart';
 import '../core/app_config/providers.dart';
+import '../core/assets/app_gif.dart';
 import '../core/assets/app_launchers.dart';
 import '../core/navigation/app_router.dart';
 import '../core/navigation/custom_navigation.dart';
@@ -30,26 +33,19 @@ class MyApp extends StatelessWidget {
         stream: mainAppBloc.langStream,
         builder: (context, lang) {
           return GlobalLoaderOverlay(
-            overlayWidgetBuilder: (progress) => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  AppLaunchers.logo,
-                  color: AppColors.kPrimary,
-                  height: MediaQuery.of(context).size.width * .25,
-                  width: MediaQuery.of(context).size.width * .25,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 18,
+            overlayWidgetBuilder: (progress) => BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    AppGif.loadingAnimation,
+                    height: MediaQuery.of(context).size.width * .25,
+                    width: MediaQuery.of(context).size.width * .25,
                   ),
-                  child: Text(
-                    AppStrings.loading.tr,
-                    style: AppTextStyles.textLgMedium,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
             child: NotificationPusherWrapper(
               onConnectionStateChanged: (state) {

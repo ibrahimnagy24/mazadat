@@ -38,7 +38,7 @@ class AddAddressesHeaderWidget extends StatelessWidget {
           text: model?.id != null
               ? AppStrings.editAddress.tr
               : AppStrings.addAddress.tr,
-          style: AppTextStyles.textMdBold.copyWith(
+          style: AppTextStyles.displayMdBold.copyWith(
             color: const Color.fromRGBO(34, 39, 21, 1),
             fontSize: 24,
           ),

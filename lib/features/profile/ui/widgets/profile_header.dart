@@ -14,11 +14,11 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQueryHelper.width,
-      height: 260,
+      height: 220,
       padding: const EdgeInsetsDirectional.only(
         start: 18,
         end: 18,
-        top: 24,
+        // top: 24,
         bottom: 24,
       ),
       decoration: const BoxDecoration(
@@ -31,21 +31,19 @@ class ProfileHeader extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: SafeArea(
-        child: Row(
-          spacing: 8.w,
-          children: [
-            const CustomBackIcon(iconColor: AppColors.kWhite),
-            Expanded(
-              child: Text(
-                AppStrings.profile.tr,
-                style: AppTextStyles.displayMdBold
-                    .copyWith(color: AppColors.kWhite),
-                textAlign: TextAlign.start,
-              ),
+      child: Row(
+        spacing: 8,
+        children: [
+          const CustomBackIcon(iconColor: AppColors.kWhite),
+          Expanded(
+            child: Text(
+              AppStrings.profile.tr,
+              style:
+                  AppTextStyles.displayMdBold.copyWith(color: AppColors.kWhite),
+              textAlign: TextAlign.start,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

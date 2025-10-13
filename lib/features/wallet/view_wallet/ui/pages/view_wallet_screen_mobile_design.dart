@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/widgets/wallet_history_card_widget.dart';
@@ -60,13 +61,18 @@ class ViewWalletScreenMobileDesign extends StatelessWidget {
                       children: [
                         MainText(
                           text: AppStrings.transactionHistory.tr,
-                          style: AppTextStyles.bodyMBold,
+                          style: GoogleFonts.cairo(
+                            fontWeight: FontWeight.w700,
+                            color: const Color.fromRGBO(46, 46, 46, 1),
+                            fontSize: 16,
+                          ),
                         ),
                         MainText(
                           text: AppStrings.viewAll.tr,
-                          style: AppTextStyles.bodyMBold.copyWith(
-                            fontWeight: FontWeight.w500,
-                            fontSize: AppFontSizes.fsXs,
+                          style: GoogleFonts.cairo(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                            color: const Color.fromRGBO(81, 94, 50, 1),
                           ),
                           onTap: () {
                             CustomNavigator.push(

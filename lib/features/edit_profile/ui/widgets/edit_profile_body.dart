@@ -10,6 +10,7 @@ import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/validations/validator.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/shared/widgets/gender_input.dart';
@@ -40,6 +41,10 @@ class EditProfileBody extends StatelessWidget {
                       readonly: isLoading,
                       titleText: AppStrings.firstName.tr,
                       hintText: AppStrings.enterFirstName.tr,
+                      style: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                      hintStyle: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
                     ),
                   ),
                   Expanded(
@@ -48,6 +53,10 @@ class EditProfileBody extends StatelessWidget {
                       titleText: AppStrings.lastName.tr,
                       hintText: AppStrings.enterLastName.tr,
                       readonly: isLoading,
+                      style: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                      hintStyle: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
                     ),
                   ),
                 ],
@@ -61,41 +70,51 @@ class EditProfileBody extends StatelessWidget {
                   ///Age
                   Expanded(
                     child: StreamBuilder(
-                        stream: context.read<EditProfileCubit>().ageStream,
-                        builder: (context, asyncSnapshot) {
-                          return AgeInput(
-                            initialValue: context
-                                .read<EditProfileCubit>()
-                                .age
-                                .valueOrNull,
-                            onSelect:
-                                context.read<EditProfileCubit>().updateAge,
-                            validator: (v) => DefaultValidator.defaultValidator(
-                              asyncSnapshot.data?.name ?? '',
-                              label: AppStrings.age.tr,
-                            ),
-                          );
-                        }),
+                      stream: context.read<EditProfileCubit>().ageStream,
+                      builder: (context, asyncSnapshot) {
+                        return AgeInput(
+                          initialValue:
+                              context.read<EditProfileCubit>().age.valueOrNull,
+                          onSelect: context.read<EditProfileCubit>().updateAge,
+                          validator: (v) => DefaultValidator.defaultValidator(
+                            asyncSnapshot.data?.name ?? '',
+                            label: AppStrings.age.tr,
+                          ),
+                          style: AppTextStyles.textLgRegular.copyWith(
+                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                          hintStyle: AppTextStyles.textLgRegular.copyWith(
+                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                          suffixIconColor:
+                              const Color.fromRGBO(162, 162, 162, 1),
+                        );
+                      },
+                    ),
                   ),
 
                   ///Gender
                   Expanded(
                     child: StreamBuilder(
-                        stream: context.read<EditProfileCubit>().genderStream,
-                        builder: (context, asyncSnapshot) {
-                          return GenderInput(
-                            initialValue: context
-                                .read<EditProfileCubit>()
-                                .gender
-                                .valueOrNull,
-                            onSelect:
-                                context.read<EditProfileCubit>().updateGender,
-                            validator: (v) => DefaultValidator.defaultValidator(
-                              asyncSnapshot.data?.name ?? '',
-                              label: AppStrings.gender.tr,
-                            ),
-                          );
-                        }),
+                      stream: context.read<EditProfileCubit>().genderStream,
+                      builder: (context, asyncSnapshot) {
+                        return GenderInput(
+                          initialValue: context
+                              .read<EditProfileCubit>()
+                              .gender
+                              .valueOrNull,
+                          onSelect:
+                              context.read<EditProfileCubit>().updateGender,
+                          validator: (v) => DefaultValidator.defaultValidator(
+                            asyncSnapshot.data?.name ?? '',
+                            label: AppStrings.gender.tr,
+                          ),
+                          style: AppTextStyles.textLgRegular.copyWith(
+                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                          hintStyle: AppTextStyles.textLgRegular.copyWith(
+                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                          suffixIcon: const Color.fromRGBO(162, 162, 162, 1),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -103,25 +122,32 @@ class EditProfileBody extends StatelessWidget {
 
               // /City
               StreamBuilder(
-                  stream: context.read<EditProfileCubit>().cityStream,
-                  builder: (context, asyncSnapshot) {
-                    return CityInput(
-                      initialValue:
-                          context.read<EditProfileCubit>().city.valueOrNull,
-                      onSelect: context.read<EditProfileCubit>().updateCity,
-                      validator: (v) => DefaultValidator.defaultValidator(
-                        asyncSnapshot.data?.name ?? '',
-                        label: AppStrings.city.tr,
-                      ),
-                      loadAllCities: true,
-                    );
-                  }),
+                stream: context.read<EditProfileCubit>().cityStream,
+                builder: (context, asyncSnapshot) {
+                  return CityInput(
+                    initialValue:
+                        context.read<EditProfileCubit>().city.valueOrNull,
+                    onSelect: context.read<EditProfileCubit>().updateCity,
+                    validator: (v) => DefaultValidator.defaultValidator(
+                      asyncSnapshot.data?.name ?? '',
+                      label: AppStrings.city.tr,
+                    ),
+                    loadAllCities: true,
+                    style: AppTextStyles.textLgRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                    hintStyle: AppTextStyles.textLgRegular.copyWith(
+                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                    suffixIconColor: const Color.fromRGBO(162, 162, 162, 1),
+                  );
+                },
+              ),
               16.sbH,
 
               ///Phone
               DefaultPhoneFormField(
                 controller: context.read<EditProfileCubit>().phone,
                 readOnly: true,
+                fillColor: const Color.fromRGBO(255, 255, 255, 0.5),
                 suffixWidget: IconButton(
                   onPressed: () => CustomNavigator.push(
                     Routes.CHANGE_PHONE_NUMBER_SCREEN,
@@ -134,7 +160,7 @@ class EditProfileBody extends StatelessWidget {
                     AppSvg.edit,
                     width: 16,
                     height: 16,
-                    color: AppColors.kPrimary,
+                    color: const Color.fromRGBO(162, 162, 162, 1),
                   ),
                 ),
               ),

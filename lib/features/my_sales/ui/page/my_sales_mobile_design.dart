@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/custom_app_bar.dart';
@@ -16,6 +17,8 @@ class MySalesMobileDesign extends StatelessWidget {
       appBar: CustomAppBar(
         title: AppStrings.mySales.tr,
         withBack: true,
+        titleStyle: AppTextStyles.displayMdBold
+            .copyWith(color: const Color.fromRGBO(34, 39, 21, 1)),
       ),
       body: const Column(
         children: [

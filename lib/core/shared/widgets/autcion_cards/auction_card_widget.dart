@@ -181,9 +181,8 @@ class _AuctionInfo extends StatelessWidget {
                   CountdownTimerWidget(
                     startDate: startDate!,
                     endTime: endDate!,
-                    textStyle: AppTextStyles.textMdRegular.copyWith(
-                      color: const Color.fromRGBO(69, 173, 34, 1),
-                    ),
+                    textStyle: AppTextStyles.textMdRegular
+                        .copyWith(color: const Color.fromRGBO(69, 173, 34, 1)),
                   ),
               ],
             ),

@@ -41,7 +41,7 @@
   "Good morning": "صباح الخير",
   "Looking for auctions": "أبحث عن المزادات",
   "Departments": "الأقسام",
-  "View all": "عرض الكل",
+  "View all": "عرض الجميع",
   "Ends yet": "تنتهي خلال",
   "Auction type": "نوع المزاد",
   "public": "عام",
@@ -265,7 +265,7 @@
   "Please Check Terms And Conditions": "يرجى مراجعة الشروط والأحكام",
   "No Categories Found": "لم يتم العثور على فئات",
   "There are no categories available at the moment.": "لا توجد فئات متاحة في الوقت الحالي.",
-  "Welcome to Mazadat": "مرحباً بكم في مازادات",
+  "Welcome to Mazadat": "مرحباً بكم في مزادات",
   "Join our community to enjoy exciting auctions and connect with friends. Already have an account? Welcome back!": "انضم إلى مجتمعنا للاستمتاع بمزادات شيّقة والتواصل مع الأصدقاء. هل لديك حساب بالفعل؟ أهلاً بك من جديد!",
   "Secure & Trusted Platform": "منصة آمنة وموثوقة",
   "Register & Start": "سجل وابدأ",
@@ -343,7 +343,7 @@
   "No Bundles": "لا توجد حزم",
   "No bundles found": "لم يتم العثور على حزم",
   "Enter first name": "أدخل الاسم الأول",
-  "Enter last name": "أدخل الاسم الأخير",
+  "Enter last name": "ادخل إسم العائلة",
   "Old to New": "الأقدم للأحدث",
   "New to Old": "الأحدث للأقدم",
   "I won it": "فزت بها",
@@ -355,5 +355,9 @@
   "Shipped": "تم الشحن",
   "Delivered": "تم التوصيل",
   "No favorite auctions have been added yet.": "لم يتم إضافة أي مزاد مفضل بعد",
-  "Start adding the auction you like to your favorites for easy access later.": "ابدأ بإضافة المزاد الذي تعجبك إلى المفضلة للوصول إليه لاحقًا بسهولة."
+  "Start adding the auction you like to your favorites for easy access later.": "ابدأ بإضافة المزاد الذي تعجبك إلى المفضلة للوصول إليه لاحقًا بسهولة.",
+  "There are no categories available at the moment, expect special auctions soon.": "لا توجد فئات متاحة حالياً، انتظر قريباً إطلاق مزادات مميزة.",
+  "Edit Account": "تعديل الحساب",
+  "Enter the address": "قم بإدخال العنوان",
+  "Private": "خاص"
 }

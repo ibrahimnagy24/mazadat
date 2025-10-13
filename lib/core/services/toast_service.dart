@@ -319,8 +319,8 @@ class ToastService {
         toastSetting: const SlidingToastSetting(
           animationDuration: Duration(milliseconds: 400),
           displayDuration: Duration(seconds: 3),
-          toastAlignment: Alignment.center,
-          toastStartPosition: ToastPosition.top,
+          toastAlignment: Alignment.bottomCenter,
+          toastStartPosition: ToastPosition.bottom,
           padding: EdgeInsets.zero,
         ),
         toastStyle: ToastStyle(

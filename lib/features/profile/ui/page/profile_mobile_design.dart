@@ -2,19 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/assets/app_svg.dart';
-import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/shared/widgets/custom_images.dart';
 import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
-import '../../../../core/utils/utility.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
 import '../../../user/logic/user_cubit.dart';
 import '../../../user/logic/user_state.dart';
-import '../../../visitor/ui/pages/visitor_screen.dart';
-import '../widgets/bank_info_details.dart';
 import '../widgets/personal_info_details.dart';
 import '../widgets/profile_header.dart';
 
@@ -84,13 +80,14 @@ class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
                             spacing: 4.h,
                             children: [
                               customContainerSvgIcon(
-                                  imageName: AppSvg.user,
-                                  width: 100.w,
-                                  height: 100.w,
-                                  radius: 100.w,
-                                  padding: 20.w,
-                                  color: AppColors.kPrimary,
-                                  backGround: AppColors.backgroundBody),
+                                imageName: AppSvg.user,
+                                width: 100.w,
+                                height: 100.w,
+                                radius: 100.w,
+                                padding: 20.w,
+                                color: AppColors.kPrimary,
+                                backGround: AppColors.backgroundBody,
+                              ),
                               Text(
                                 cubit.userEntity?.firstName ?? 'Name',
                                 style: AppTextStyles.textXLMedium,

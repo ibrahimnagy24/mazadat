@@ -71,7 +71,7 @@ class DefaultPhoneFormField extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         child: SvgPicture.asset(AppSvg.saudiArabiaFlag),
       ),
-      hintText: '${AppStrings.enterYourPhone.tr}...',
+      hintText: AppStrings.enterYourPhone.tr,
       validator: (value) => PhoneValidator.phoneValidator(value),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,

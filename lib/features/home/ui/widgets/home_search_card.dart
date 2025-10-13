@@ -54,15 +54,15 @@ class HomeSearchCard extends StatelessWidget {
                             .copyWith(color: AppColors.textSecondaryParagraph),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.only(end: 12),
-                      child: SvgPicture.asset(
-                        AppSvg.filterIcon,
-                        height: 20,
-                        width: 20,
-                        color: AppColors.textSecondaryParagraph,
-                      ),
-                    )
+                    // Padding(
+                    //   padding: const EdgeInsetsDirectional.only(end: 12),
+                    //   child: SvgPicture.asset(
+                    //     AppSvg.filterIcon,
+                    //     height: 20,
+                    //     width: 20,
+                    //     color: AppColors.textSecondaryParagraph,
+                    //   ),
+                    // )
                   ],
                 ),
               ),

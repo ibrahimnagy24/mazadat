@@ -40,7 +40,7 @@ class CheckoutSummaryButtonWidget extends StatelessWidget {
           current is ValidateSummaryError,
       builder: (context, state) {
         return Container(
-          height: 114,
+          // height: 114,
           padding: const EdgeInsetsDirectional.only(
             start: 24,
             end: 24,

@@ -119,7 +119,7 @@ class _AgeGroupViewState extends State<AgeGroupView> {
                             const Divider(
                               height: 1,
                               thickness: 1,
-                              color: Color.fromRGBO(232, 232, 232, 1),
+                              color: Color.fromRGBO(232, 232, 232, .5),
                             ),
                         ],
                       ),

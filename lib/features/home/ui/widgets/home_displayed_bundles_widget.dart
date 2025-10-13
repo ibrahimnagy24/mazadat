@@ -13,6 +13,7 @@ import '../../../bundle_details/view_bundle_details/data/params/bundle_details_r
 import '../../data/enum/displayed_types.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
+import '../../../../core/shared/widgets/empty_auction_widget.dart';
 
 class HomeDisplayedBundlesWidget extends StatelessWidget {
   const HomeDisplayedBundlesWidget({super.key});
@@ -111,13 +112,7 @@ class HomeDisplayedBundlesWidget extends StatelessWidget {
           );
         }
         if (cubit.homeBundles == null || cubit.homeBundles!.isEmpty) {
-          return ResponsiveEmptyWidget(
-            onTap: () {
-              cubit.getSuitableData();
-            },
-            title: 'No Bundles'.tr,
-            subtitle: 'No bundles found'.tr,
-          );
+          return const EmptyAuctionWidget();
         }
         return SizedBox.fromSize();
       },

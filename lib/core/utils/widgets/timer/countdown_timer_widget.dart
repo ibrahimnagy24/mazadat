@@ -57,9 +57,10 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
   }
 
   _calculateRemainingTime() {
-    final now = DateTime.now();
-    if (widget.endTime.isAfter(now)) {
-      _remainingTime = widget.endTime.difference(now);
+    final now = DateTime.now().toLocal();
+    final endTimeLocal = widget.endTime.toLocal();
+    if (endTimeLocal.isAfter(now)) {
+      _remainingTime = endTimeLocal.difference(now);
     } else {
       _remainingTime = const Duration();
     }
@@ -81,6 +82,9 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
   }
 
   String _formatTime(int days, int hours, int minutes, int seconds) {
+    // If days and hours are 0, force showing minutes and seconds
+    bool forceMinutesAndSeconds = days == 0 && hours == 0;
+    
     if (mainAppBloc.isArabic) {
       List<String> parts = [];
 
@@ -90,10 +94,10 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
       if (hours > 0 || days > 0) {
         parts.add('${_convertToArabicNumerals(hours)} س');
       }
-      if (widget.showMinutes && (minutes > 0 || hours > 0 || days > 0)) {
+      if ((widget.showMinutes && (minutes > 0 || hours > 0 || days > 0)) || forceMinutesAndSeconds) {
         parts.add('${_convertToArabicNumerals(minutes)} د');
       }
-      if (widget.showSeconds && (seconds > 0 || parts.isEmpty)) {
+      if ((widget.showSeconds && (seconds > 0 || parts.isEmpty)) || forceMinutesAndSeconds) {
         parts.add('${_convertToArabicNumerals(seconds)} ث');
       }
 
@@ -107,10 +111,10 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
       if (hours > 0 || days > 0) {
         parts.add('${hours.toString().padLeft(2, '0')}h');
       }
-      if (widget.showMinutes && (minutes > 0 || hours > 0 || days > 0)) {
+      if ((widget.showMinutes && (minutes > 0 || hours > 0 || days > 0)) || forceMinutesAndSeconds) {
         parts.add('${minutes.toString().padLeft(2, '0')}m');
       }
-      if (widget.showSeconds && (seconds > 0 || parts.isEmpty)) {
+      if ((widget.showSeconds && (seconds > 0 || parts.isEmpty)) || forceMinutesAndSeconds) {
         parts.add('${seconds.toString().padLeft(2, '0')}s');
       }
 
@@ -119,12 +123,13 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
   }
 
   String _formatEndDate() {
+    final endTimeLocal = widget.endTime.toLocal();
     if (mainAppBloc.isArabic) {
       // Format end date in Arabic
-      return '${_convertToArabicNumerals(widget.endTime.day)}/${_convertToArabicNumerals(widget.endTime.month)}/${_convertToArabicNumerals(widget.endTime.year)}';
+      return '${_convertToArabicNumerals(endTimeLocal.day)}/${_convertToArabicNumerals(endTimeLocal.month)}/${_convertToArabicNumerals(endTimeLocal.year)}';
     } else {
       // Format end date in English
-      return '${widget.endTime.day.toString().padLeft(2, '0')}/${widget.endTime.month.toString().padLeft(2, '0')}/${widget.endTime.year}';
+      return '${endTimeLocal.day.toString().padLeft(2, '0')}/${endTimeLocal.month.toString().padLeft(2, '0')}/${endTimeLocal.year}';
     }
   }
 

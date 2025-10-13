@@ -11,28 +11,34 @@ class EditProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 200,
       width: MediaQueryHelper.width,
-      padding: EdgeInsetsDirectional.only(
-        start: 18.w,
-        end: 18.w,
-        top: 24.w,
-        bottom: 24.w,
+      padding: const EdgeInsetsDirectional.only(
+        start: 18,
+        end: 18,
+        top: 24,
+        bottom: 24,
       ),
       decoration: const BoxDecoration(
-          // image: DecorationImage(
-          //     image: AssetImage(
-          //       AppImages.authHeaderBk,
-          //     ),
-          //     fit: BoxFit.cover),
-          ),
-      child: SafeArea(
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(64, 77, 38, 1),
+            Color.fromRGBO(24, 28, 16, 1),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
           customImageIconSVG(
             imageName: AppSvg.logo,
             height: 75.h,
             width: 105.w,
           ),
-        ]),
+        ],
       ),
     );
   }

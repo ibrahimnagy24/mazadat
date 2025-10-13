@@ -23,6 +23,9 @@ class DefaultUsernameFormField extends StatelessWidget {
     this.hintText,
     this.titleText,
     this.fillColor,
+    this.style,
+    this.titleStyle,
+    this.hintStyle,
   });
   final double? titleFontSize;
   final double? hintFontSize;
@@ -34,19 +37,25 @@ class DefaultUsernameFormField extends StatelessWidget {
   final String? titleText;
   final String? hintText;
   final Color? fillColor;
+  final TextStyle? style;
+  final TextStyle? titleStyle;
+  final TextStyle? hintStyle;
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: needUserName ? titleText ?? AppStrings.userName.tr : null,
-      hintText: '${hintText ?? AppStrings.enterYourName.tr}...',
+      hintText: hintText ?? AppStrings.enterYourName.tr,
       borderRadius: borderRadious ?? AppRadius.rS,
       keyboardType: TextInputType.name,
       controller: controller,
       readOnly: readonly,
-      titleStyle: AppTextStyles.textMdRegular
-          .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
-      style: AppTextStyles.textLgRegular
-          .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+      titleStyle: titleStyle ??
+          AppTextStyles.textMdRegular
+              .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
+      style: style ??
+          AppTextStyles.textLgRegular
+              .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+      hintStyle: hintStyle,
       validator: (value) => NameValidator.nameValidator(value),
       fillColor: fillColor,
     );

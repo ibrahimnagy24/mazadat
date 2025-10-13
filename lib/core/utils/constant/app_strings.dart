@@ -125,6 +125,7 @@ class AppStrings {
   static const String thereIsNoAddresses = 'Theres no addresses!';
   static const String addAddress = 'Add Address';
   static const String editAddress = 'Edit Address';
+  static const String enterTheAddress = 'Enter the address';
   static const String addressType = 'Address Type';
   static const String selectAddressType = 'Select Address Type';
 
@@ -223,6 +224,8 @@ class AppStrings {
   static const String commercialNumber = 'Commercial Number';
   static const String personalInfo = 'Personal Information';
   static const String editProfileInfo = 'Edit Personal Information';
+  static const String editAccount = 'Edit Account';
+
   static const String edit = 'Edit';
   static const String bankInfo = 'Bank Information';
   static const String editBankInfo = 'Edit Bank Information';

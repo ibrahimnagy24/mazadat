@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/assets/app_images.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/autcion_cards/auction_card_widget.dart';
 import '../../../../core/shared/widgets/autcion_cards/stacked_auction_card_widget.dart';
+import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
+import '../../../../core/utils/widgets/text/main_text.dart';
 import '../../../auction_details/view_auction/data/params/view_auction_details_route_params.dart';
 import '../../data/enum/displayed_types.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
+import '../../../../core/shared/widgets/empty_auction_widget.dart';
 
 class HomeDisplayedAuctionsWidget extends StatelessWidget {
   const HomeDisplayedAuctionsWidget({super.key});
@@ -122,13 +129,7 @@ class HomeDisplayedAuctionsWidget extends StatelessWidget {
           );
         }
         if (cubit.homeAuctions == null || cubit.homeAuctions!.isEmpty) {
-          return ResponsiveEmptyWidget(
-            onTap: () {
-              cubit.getSuitableData();
-            },
-            title: 'No Auctions'.tr,
-            subtitle: 'No auctions found'.tr,
-          );
+          return const EmptyAuctionWidget();
         }
         return SizedBox.fromSize();
       },

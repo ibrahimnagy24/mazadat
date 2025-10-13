@@ -24,14 +24,8 @@ class FaqExpansionTile extends StatelessWidget {
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
           shape: const RoundedRectangleBorder(side: BorderSide.none),
-          // leading: Container(
-          //   height: 36,
-          //   width: 6,
-          //   decoration: BoxDecoration(
-          //     color: const Color.fromRGBO(81, 94, 50, 1),
-          //     borderRadius: BorderRadius.circular(8),
-          //   ),
-          // ),
+          iconColor: const Color.fromRGBO(162, 162, 162, 1),
+          collapsedIconColor: const Color.fromRGBO(162, 162, 162, 1),
           title: Row(
             children: [
               Container(
@@ -46,7 +40,7 @@ class FaqExpansionTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   faq.question,
-                  style: AppTextStyles.bodyXlBold
+                  style: AppTextStyles.textXLBold
                       .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
                 ),
               ),

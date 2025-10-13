@@ -16,7 +16,7 @@ class EditProfileAppBar extends StatelessWidget {
         const CustomBackIcon(),
         Expanded(
           child: Text(
-            AppStrings.editProfileInfo.tr,
+            AppStrings.editAccount.tr,
             style: AppTextStyles.displayMdBold,
             textAlign: TextAlign.start,
           ),

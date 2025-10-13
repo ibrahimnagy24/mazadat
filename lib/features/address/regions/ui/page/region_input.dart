@@ -20,13 +20,18 @@ class RegionInput extends StatelessWidget {
     this.validator,
     this.fillColor,
     this.borderColor,
+    this.titleTextStyle,
+    this.hintTextStyle,
+    this.style,
   });
   final RegionEntity? initialValue;
   final Function(RegionEntity)? onSelect;
   final String? Function(String?)? validator;
   final Color? fillColor;
   final Color? borderColor;
-
+  final TextStyle? titleTextStyle;
+  final TextStyle? hintTextStyle;
+  final TextStyle? style;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -53,6 +58,9 @@ class RegionInput extends StatelessWidget {
             readOnly: true,
             fillColor: fillColor,
             borderColor: borderColor,
+            style: style,
+            titleStyle: titleTextStyle,
+            hintStyle: hintTextStyle,
             suffixIcon: const Icon(
               Icons.keyboard_arrow_down_rounded,
               size: 18,

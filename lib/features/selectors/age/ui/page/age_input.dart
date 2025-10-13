@@ -17,11 +17,18 @@ class AgeInput extends StatelessWidget {
     this.initialValue,
     this.onSelect,
     this.validator,
+    this.hintStyle,
+    this.titleStyle,
+    this.style,
+    this.suffixIconColor,
   });
   final AgeEntity? initialValue;
   final Function(AgeEntity)? onSelect;
   final String? Function(String?)? validator;
-
+  final TextStyle? hintStyle;
+  final TextStyle? titleStyle;
+  final TextStyle? style;
+  final Color? suffixIconColor;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -43,15 +50,18 @@ class AgeInput extends StatelessWidget {
           final cubit = context.read<AgeCubit>();
           return DefaultFormField(
             titleText: AppStrings.age.tr,
-            hintText: '${AppStrings.selectAge.tr}...',
+            hintText: AppStrings.selectAge.tr,
             needValidation: validator != null,
             validator: validator,
             controller: TextEditingController(text: initialValue?.name ?? ''),
             readOnly: true,
-            suffixIcon: const Icon(
+            hintStyle: hintStyle,
+            titleStyle: titleStyle,
+            style: style,
+            suffixIcon: Icon(
               Icons.keyboard_arrow_down_rounded,
               size: 18,
-              color: AppColors.textSecondaryParagraph,
+              color: suffixIconColor ?? AppColors.textSecondaryParagraph,
             ),
             onTap: () {
               if (cubit.agesEntity != null && cubit.agesEntity!.isNotEmpty) {

@@ -16,26 +16,37 @@ class GenderInput extends StatelessWidget {
     this.initialValue,
     this.onSelect,
     this.validator,
+    this.hintStyle,
+    this.titleStyle,
+    this.style,
+    this.suffixIcon,
   });
   final GenderTypes? initialValue;
   final Function(GenderTypes)? onSelect;
   final String? Function(String?)? validator;
+  final TextStyle? hintStyle;
+  final TextStyle? titleStyle;
+  final TextStyle? style;
+  final Color? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: AppStrings.gender.tr,
-      hintText: '${AppStrings.selectGender.tr}...',
+      hintText: AppStrings.selectGender.tr,
       needValidation: validator != null,
       validator: validator,
       controller: TextEditingController(
           text: initialValue != null ? (initialValue?.name ?? '').tr : null),
       readOnly: true,
-      suffixIcon: const Icon(
+      suffixIcon: Icon(
         Icons.keyboard_arrow_down_rounded,
         size: 18,
-        color: AppColors.kGeryText,
+        color: suffixIcon ?? AppColors.kGeryText,
       ),
+      hintStyle: hintStyle,
+      titleStyle: titleStyle,
+      style: style,
       onTap: () {
         showModalBottomSheet(
           context: context,
@@ -187,7 +198,7 @@ class __GenderViewState extends State<_GenderView> {
                     const Divider(
                       height: 1,
                       thickness: 1,
-                      color: Color.fromRGBO(232, 232, 232, 1),
+                      color: Color.fromRGBO(232, 232, 232, .5),
                     ),
                 ],
               ),

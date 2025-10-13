@@ -50,7 +50,8 @@ class WalletHistoryCardWidget extends StatelessWidget {
                 children: [
                   MainText(
                     text: wallet.message,
-                    style: AppTextStyles.textLgMedium,
+                    style: AppTextStyles.textLgMedium
+                        .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
                   ),
                   const SizedBox(height: 2),
                   RichText(
@@ -80,13 +81,15 @@ class WalletHistoryCardWidget extends StatelessWidget {
                   children: [
                     MainText(
                       text: wallet.amount.toString(),
-                      style: AppTextStyles.textLgMedium,
+                      style: AppTextStyles.textLgMedium
+                          .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
                     ),
                     const SizedBox(width: 4),
                     Image.asset(
                       AppImages.saudiRiyalSymbol2,
                       height: 12,
                       width: 12,
+                      color: const Color.fromRGBO(81, 94, 50, 1),
                     )
                   ],
                 ),
@@ -101,7 +104,8 @@ class WalletHistoryCardWidget extends StatelessWidget {
                     const SizedBox(width: 4),
                     MainText(
                       text: _formatDate(wallet.date),
-                      style: AppTextStyles.textSmRegular,
+                      style: AppTextStyles.textSmRegular.copyWith(
+                          color: const Color.fromRGBO(116, 116, 116, 1)),
                     ),
                   ],
                 ),

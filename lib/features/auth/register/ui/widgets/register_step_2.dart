@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/validations/validator.dart';
@@ -33,6 +34,10 @@ class RegisterFieldStep2 extends StatelessWidget {
                         context.read<RegisterCubit>().ageController = selected;
                         cubit.rebuildInputs();
                       },
+                      style: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                      hintStyle: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -45,18 +50,26 @@ class RegisterFieldStep2 extends StatelessWidget {
                             selected;
                         cubit.rebuildInputs();
                       },
+                      style: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                      hintStyle: AppTextStyles.textLgRegular.copyWith(
+                          color: const Color.fromRGBO(162, 162, 162, 1)),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
               CityInput(
-                loadAllCities: true, // Load all cities without region filter
+                loadAllCities: true,
                 initialValue: context.read<RegisterCubit>().cityEntity,
                 onSelect: (selected) {
                   context.read<RegisterCubit>().cityEntity = selected;
                   cubit.rebuildInputs();
                 },
+                style: AppTextStyles.textLgRegular
+                    .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
+                hintStyle: AppTextStyles.textLgRegular
+                    .copyWith(color: const Color.fromRGBO(162, 162, 162, 1)),
               ),
               const SizedBox(height: 16),
               DefaultPasswordFormField(

@@ -4,6 +4,7 @@ import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/autcion_cards/auction_card_widget.dart';
 import '../../../../core/shared/widgets/autcion_cards/stacked_auction_card_widget.dart';
+import '../../../../core/shared/widgets/empty_auction_widget.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
@@ -121,13 +122,7 @@ class MyAuctionsDisplayedAuctionsWidget extends StatelessWidget {
           );
         }
         if (cubit.myAuctions == null || cubit.myAuctions!.isEmpty) {
-          return ResponsiveEmptyWidget(
-            onTap: () {
-              cubit.myAuctionsStatesHandled();
-            },
-            title: 'No Auctions'.tr,
-            subtitle: 'No auctions found'.tr,
-          );
+          return const FittedBox(child: EmptyAuctionWidget());
         }
         return SizedBox.fromSize();
       },

@@ -3,7 +3,7 @@ description: A new Flutter application.
 
 publish_to: 'none'
 
-version: 1.0.0+13
+version: 1.0.0+14
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -94,6 +94,7 @@ flutter:
     - assets/launchers/
     - assets/audio/
     - assets/lottie/
+    - assets/gif/
 
   fonts:
     - family: en
