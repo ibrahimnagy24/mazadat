@@ -2,7 +2,6 @@ import '../../../../core/shared/entity/error_entity.dart';
 import '../data/entity/notifications_response_entity.dart';
 import '../data/entity/seen_all_notification_response_entity.dart';
 import '../data/entity/seen_notification_response_entity_new.dart';
-import '../data/model/seen_notification_response_model_new.dart';
 import '../data/enum/notification_type.dart';
 
 sealed class NotificationState {

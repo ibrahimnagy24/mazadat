@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/assets/app_images.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
@@ -25,10 +24,7 @@ class AccountSettingsButtons extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         16.sbH,
-        Text(
-          AppStrings.accountSettings.tr,
-          style: AppTextStyles.textLgBold,
-        ),
+        Text(AppStrings.accountSettings.tr, style: AppTextStyles.textLgBold),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 16),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -74,7 +70,7 @@ class AccountSettingsButtons extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

@@ -359,5 +359,7 @@
   "There are no categories available at the moment, expect special auctions soon.": "There are no categories available at the moment, expect special auctions soon.",
   "Edit Account": "Edit Account",
   "Enter the address": "Enter the address",
-  "Private": "Private"
+  "Private": "Private",
+  "You have to select region first": "You have to select region first",
+  "You have to select city first": "You have to select city first"
 }

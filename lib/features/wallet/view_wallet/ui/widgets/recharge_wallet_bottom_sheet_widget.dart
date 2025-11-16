@@ -34,7 +34,7 @@ class RechargeWalletBottomSheetWidget extends StatefulWidget {
 
 class _RechargeWalletBottomSheetWidgetState
     extends State<RechargeWalletBottomSheetWidget> {
-  int _selectedPaymentMethod = 0;
+  final int _selectedPaymentMethod = 0;
   PaymentModel? _selectedPayment;
   late TextEditingController _transactionAmountController;
   final _formKey = GlobalKey<FormState>();
@@ -63,8 +63,11 @@ class _RechargeWalletBottomSheetWidgetState
           }
           if (state is ChargeWalletSuccess) {
             transactionId = state.chargeWallet.paymentTransactionId;
-            widget.cubit.checkWalletChargeStatesHandled(CheckWalletChargeParams(
-                paymentTransactionId: state.chargeWallet.paymentTransactionId));
+            widget.cubit.checkWalletChargeStatesHandled(
+              CheckWalletChargeParams(
+                paymentTransactionId: state.chargeWallet.paymentTransactionId,
+              ),
+            );
           }
           if (state is CheckWalletChargeError) {
             showErrorToast(state.error.message);
@@ -88,8 +91,8 @@ class _RechargeWalletBottomSheetWidgetState
                       dialogContext: dialogContext,
                       isTransactionSuccess:
                           state.checkWalletCharge.status == 'SUCCESS'
-                              ? true
-                              : false,
+                          ? true
+                          : false,
                       transactionId: transactionId,
                     ),
                   ),
@@ -162,7 +165,8 @@ class _RechargeWalletBottomSheetWidgetState
                         if (_selectedPayment == null ||
                             _selectedPayment!.id == null) {
                           showErrorToast(
-                              AppStrings.pleaseChoosePaymentMethod.tr);
+                            AppStrings.pleaseChoosePaymentMethod.tr,
+                          );
                           return;
                         }
                         widget.cubit.chargeWalletStatesHandled(
@@ -174,8 +178,9 @@ class _RechargeWalletBottomSheetWidgetState
                       },
                       backgroundColor: AppColors.buttonBackgroundPrimaryDefault,
                       textColor: AppColors.kWhite,
-                      textStyle: AppTextStyles.textXLBold
-                          .copyWith(color: AppColors.kWhite),
+                      textStyle: AppTextStyles.textXLBold.copyWith(
+                        color: AppColors.kWhite,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),

@@ -359,5 +359,7 @@
   "There are no categories available at the moment, expect special auctions soon.": "لا توجد فئات متاحة حالياً، انتظر قريباً إطلاق مزادات مميزة.",
   "Edit Account": "تعديل الحساب",
   "Enter the address": "قم بإدخال العنوان",
-  "Private": "خاص"
+  "Private": "خاص",
+  "You have to select region first": "يجب عليك تحديد المنطقة أولاً",
+  "You have to select city first": "يجب عليك اختيار المدينة أولاً"
 }

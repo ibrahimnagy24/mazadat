@@ -1,10 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/navigation/custom_navigation.dart';
-import '../../../../../core/services/toast_service.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -13,13 +9,9 @@ import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../cubit/bundle_payment_cubit.dart';
 import '../../cubit/bundle_payment_state.dart';
 import '../../data/params/bundle_choose_payment_route_params.dart';
-import 'bundle_payment_status_widget.dart';
 
 class BundlePaymentMethodSelectionSection extends StatelessWidget {
-  const BundlePaymentMethodSelectionSection({
-    super.key,
-    required this.params,
-  });
+  const BundlePaymentMethodSelectionSection({super.key, required this.params});
 
   final BundleChoosePaymentRouteParams params;
 
@@ -37,7 +29,8 @@ class BundlePaymentMethodSelectionSection extends StatelessWidget {
       },
       builder: (context, state) {
         final cubit = context.read<BundlePaymentCubit>();
-        final isLoading = state is SubmitJoiningLoading ||
+        final isLoading =
+            state is SubmitJoiningLoading ||
             state is BundlePaymentStatusLoading;
         final hasSelection = cubit.selectedPaymentMethodId != null;
         return Container(

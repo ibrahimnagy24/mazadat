@@ -10,11 +10,9 @@ import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/media_query_helper.dart';
 import '../../../../core/utils/utility.dart';
-import '../../../../core/utils/widgets/animated/animated_widget.dart';
 import '../../../../core/utils/widgets/animated/grid_list_animator.dart';
 import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../../core/utils/widgets/custom_loading_text.dart';
-import '../../../../core/utils/widgets/empty/empty_state.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/shimmer/custom_shimmer.dart';
 import '../../../../core/utils/widgets/text/main_text.dart';
@@ -54,7 +52,8 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                       child: Text(
                         AppStrings.favourite.tr,
                         style: AppTextStyles.displayMdBold.copyWith(
-                            color: const Color.fromRGBO(34, 39, 21, 1)),
+                          color: const Color.fromRGBO(34, 39, 21, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -109,7 +108,8 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                               onTap: () {
                                 FavouritesCubit.instance
                                     .favouritesAuctionStatesHandled(
-                                        SearchEngine());
+                                      SearchEngine(),
+                                    );
                               },
                             ),
                           );
@@ -127,11 +127,17 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                                 48.sbH,
                                 MainText(
                                   text: AppStrings
-                                      .noFavoriteAuctionsHaveBeenAddedYet.tr,
-                                  style:
-                                      AppTextStyles.displayMdSemiBold.copyWith(
-                                    color: const Color.fromRGBO(81, 94, 50, 1),
-                                  ),
+                                      .noFavoriteAuctionsHaveBeenAddedYet
+                                      .tr,
+                                  style: AppTextStyles.displayMdSemiBold
+                                      .copyWith(
+                                        color: const Color.fromRGBO(
+                                          81,
+                                          94,
+                                          50,
+                                          1,
+                                        ),
+                                      ),
                                   textAlign: TextAlign.center,
                                 ),
                                 12.sbH,
@@ -140,8 +146,13 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                                       .startAddingTheAuctionYouLikeToYourFavoritesForEasyAccessLater
                                       .tr,
                                   style: AppTextStyles.textLgRegular.copyWith(
-                                      color: const Color.fromRGBO(
-                                          116, 116, 116, 1)),
+                                    color: const Color.fromRGBO(
+                                      116,
+                                      116,
+                                      116,
+                                      1,
+                                    ),
+                                  ),
                                   textAlign: TextAlign.center,
                                 ),
                                 40.sbH,
@@ -156,12 +167,21 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                                     borderRadiusValue: 8,
                                     textStyle: AppTextStyles.textXLBold
                                         .copyWith(
-                                            color: const Color.fromRGBO(
-                                                255, 255, 255, 1)),
-                                    backgroundColor:
-                                        const Color.fromRGBO(81, 94, 50, 1),
+                                          color: const Color.fromRGBO(
+                                            255,
+                                            255,
+                                            255,
+                                            1,
+                                          ),
+                                        ),
+                                    backgroundColor: const Color.fromRGBO(
+                                      81,
+                                      94,
+                                      50,
+                                      1,
+                                    ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           );
@@ -169,7 +189,7 @@ class ChooseCategoryMobilePortraitDesignScreen extends StatelessWidget {
                         return const SizedBox();
                       },
                     ),
-                  )
+                  ),
                 ],
               ),
       ),

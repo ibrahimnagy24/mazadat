@@ -13,9 +13,9 @@ import 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(const UserInitial());
-//---------------------------------VARIABLES----------------------------------//
+  //---------------------------------VARIABLES----------------------------------//
   UserEntity? _userEntity;
-//---------------------------------FUNCTIONS----------------------------------//
+  //---------------------------------FUNCTIONS----------------------------------//
   UserEntity? get userEntity {
     return _userEntity ?? SharedHelper.sharedHelper?.getUser();
   }
@@ -55,33 +55,35 @@ class UserCubit extends Cubit<UserState> {
     mainAppBloc.setGlobalUserData = _userEntity;
   }
 
-//----------------------------------REQUEST-----------------------------------//
+  //----------------------------------REQUEST-----------------------------------//
   Future<void> getUserDataStatesHandled({String? visitorName}) async {
     if (!Utility.isUserLoggedIn()) {
       _loginAsGuest(visitorName: visitorName);
       return;
     }
-    
-    // Check if context is available before using loader overlay
+
     final context = CustomNavigator.safeContext;
     if (context != null) {
       context.loaderOverlay.show();
     }
-    
+
     emit(const UserDataLoading());
     final response = await UserRepo.getUserData();
-    response.fold((failure) {
-      if (context != null) {
-        context.loaderOverlay.hide();
-      }
-      return emit(UserDataError(failure));
-    }, (success) async {
-      if (context != null) {
-        context.loaderOverlay.hide();
-      }
-      await SharedHelper.sharedHelper?.saveUser(success);
-      setUser(success);
-      return emit(UserDataSuccess(success));
-    });
+    response.fold(
+      (failure) {
+        if (context != null) {
+          context.loaderOverlay.hide();
+        }
+        return emit(UserDataError(failure));
+      },
+      (success) async {
+        if (context != null) {
+          context.loaderOverlay.hide();
+        }
+        await SharedHelper.sharedHelper?.saveUser(success);
+        setUser(success);
+        return emit(UserDataSuccess(success));
+      },
+    );
   }
 }

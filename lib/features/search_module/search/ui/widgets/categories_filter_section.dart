@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/shared/widgets/category_widget.dart';
-import '../../../../../core/theme/radius/app_radius.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -26,8 +24,9 @@ class CategoriesFilterSection extends StatelessWidget {
         children: [
           Text(
             AppStrings.categories.tr,
-            style: AppTextStyles.textLgBold
-                .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+            style: AppTextStyles.textLgBold.copyWith(
+              color: const Color.fromRGBO(46, 46, 46, 1),
+            ),
           ),
           BlocBuilder<CategoryCubit, CategoryState>(
             buildWhen: (previous, current) =>
@@ -45,10 +44,8 @@ class CategoriesFilterSection extends StatelessWidget {
                   runAlignment: WrapAlignment.start,
                   children: List.generate(
                     5,
-                    (index) => const CustomShimmerContainer(
-                      width: 80,
-                      height: 35,
-                    ),
+                    (index) =>
+                        const CustomShimmerContainer(width: 80, height: 35),
                   ),
                 );
               }
@@ -68,11 +65,13 @@ class CategoriesFilterSection extends StatelessWidget {
                     cubit.allCategories!.length,
                     (index) => CategoryWidget(
                       category: cubit.allCategories![index],
-                      isSelected:
-                          cubit.isCategoryChosen(cubit.allCategories![index]),
+                      isSelected: cubit.isCategoryChosen(
+                        cubit.allCategories![index],
+                      ),
                       onTap: () {
                         cubit.checkAndToggleCategory(
-                            cubit.allCategories![index]);
+                          cubit.allCategories![index],
+                        );
                         onTap?.call(cubit.chosenCategories);
                       },
                       type: CategoryWidgetType.type3,
@@ -80,13 +79,13 @@ class CategoriesFilterSection extends StatelessWidget {
                       textStyle: AppTextStyles.textMdRegular.copyWith(
                         color:
                             cubit.isCategoryChosen(cubit.allCategories![index])
-                                ? const Color.fromRGBO(81, 94, 50, 1)
-                                : const Color.fromRGBO(162, 162, 162, 1),
+                            ? const Color.fromRGBO(81, 94, 50, 1)
+                            : const Color.fromRGBO(162, 162, 162, 1),
                       ),
                       fillColor:
                           cubit.isCategoryChosen(cubit.allCategories![index])
-                              ? const Color.fromRGBO(81, 94, 50, 0.1)
-                              : Colors.transparent,
+                          ? const Color.fromRGBO(81, 94, 50, 0.1)
+                          : Colors.transparent,
                     ),
                   ),
                 );

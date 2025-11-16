@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/assets/app_svg.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
-import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/theme/radius/app_radius.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
@@ -67,7 +66,8 @@ class SearchResultCard extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.textLgMedium.copyWith(
-                                color: const Color.fromRGBO(34, 39, 21, 1)),
+                              color: const Color.fromRGBO(34, 39, 21, 1),
+                            ),
                           ),
                         ),
                         if (withClear)
@@ -80,7 +80,7 @@ class SearchResultCard extends StatelessWidget {
                               color: Color.fromRGBO(162, 162, 162, 1),
                               size: 18,
                             ),
-                          )
+                          ),
                       ],
                     ),
                   ),
@@ -89,7 +89,8 @@ class SearchResultCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.bodyXsReqCairo.copyWith(
-                        color: const Color.fromRGBO(116, 116, 116, 1)),
+                      color: const Color.fromRGBO(116, 116, 116, 1),
+                    ),
                   ),
                   Row(
                     spacing: 6,
@@ -97,12 +98,14 @@ class SearchResultCard extends StatelessWidget {
                       MainText(
                         text: AppStrings.openingPrice.tr,
                         style: AppTextStyles.textSmRegular.copyWith(
-                            color: const Color.fromRGBO(162, 162, 162, 1)),
+                          color: const Color.fromRGBO(162, 162, 162, 1),
+                        ),
                       ),
                       MainText(
                         text: auction.openingPrice,
                         style: AppTextStyles.textMdMedium.copyWith(
-                            color: const Color.fromRGBO(81, 94, 50, 1)),
+                          color: const Color.fromRGBO(81, 94, 50, 1),
+                        ),
                       ),
                       SvgPicture.asset(
                         AppSvg.saudiArabiaSymbol,

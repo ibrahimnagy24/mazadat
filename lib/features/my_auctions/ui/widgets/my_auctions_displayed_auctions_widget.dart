@@ -5,8 +5,6 @@ import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/autcion_cards/auction_card_widget.dart';
 import '../../../../core/shared/widgets/autcion_cards/stacked_auction_card_widget.dart';
 import '../../../../core/shared/widgets/empty_auction_widget.dart';
-import '../../../../core/utils/extensions/extensions.dart';
-import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
 import '../../../home/data/enum/displayed_types.dart';
@@ -58,11 +56,11 @@ class MyAuctionsDisplayedAuctionsWidget extends StatelessWidget {
                     key: const ValueKey('grid_view'),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      mainAxisExtent: 213,
-                    ),
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          mainAxisExtent: 213,
+                        ),
                     itemBuilder: (context, index) {
                       return AuctionCardWidget(
                         auctionId: cubit.myAuctions![index].id,

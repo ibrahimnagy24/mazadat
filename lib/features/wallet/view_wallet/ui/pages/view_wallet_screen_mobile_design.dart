@@ -6,7 +6,6 @@ import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 import '../../../../../core/shared/widgets/wallet_history_card_widget.dart';
 import '../../../../../core/theme/colors/styles.dart';
-import '../../../../../core/theme/text_styles/app_font_size_styles.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -49,8 +48,9 @@ class ViewWalletScreenMobileDesign extends StatelessWidget {
                 children: [
                   MainText(
                     text: AppStrings.myWallet.tr,
-                    style: AppTextStyles.displayMdBold
-                        .copyWith(color: AppColors.textPrimarySaFlag),
+                    style: AppTextStyles.displayMdBold.copyWith(
+                      color: AppColors.textPrimarySaFlag,
+                    ),
                   ),
                   const SizedBox(height: 24),
                   const WalletBalanceCardWidget(),
@@ -82,7 +82,7 @@ class ViewWalletScreenMobileDesign extends StatelessWidget {
                               ),
                             );
                           },
-                        )
+                        ),
                       ],
                     ),
                   if (isListNotEmpty) const SizedBox(height: 12),
@@ -91,9 +91,10 @@ class ViewWalletScreenMobileDesign extends StatelessWidget {
                       child: ListView.separated(
                         itemBuilder: (context, index) =>
                             WalletHistoryCardWidget(
-                          wallet:
-                              cubit.viewMyWalletEntity!.walletHistory[index],
-                        ),
+                              wallet: cubit
+                                  .viewMyWalletEntity!
+                                  .walletHistory[index],
+                            ),
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 16),
                         itemCount:

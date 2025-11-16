@@ -1,10 +1,6 @@
 import '../../../../core/shared/blocs/main_app_bloc.dart';
 
-enum AuctionStatusType {
-  ongoing,
-  finished,
-  cancelled,
-}
+enum AuctionStatusType { ongoing, finished, cancelled }
 
 extension AuctionStatusTypeExtension on AuctionStatusType {
   String get arabicName {
@@ -23,7 +19,7 @@ extension AuctionStatusTypeEndPointStatusExtension on AuctionStatusType {
   String get name {
     switch (this) {
       case AuctionStatusType.ongoing:
-        return 'PENDING';
+        return 'IN_PROGRESS';
       case AuctionStatusType.finished:
         return 'COMPLETED';
       case AuctionStatusType.cancelled:

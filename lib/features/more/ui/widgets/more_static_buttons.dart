@@ -4,7 +4,6 @@ import '../../../../core/app_config/api_names.dart';
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
-import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/utils/constant/app_strings.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/widgets/animated/grid_list_animator.dart';
@@ -37,10 +36,7 @@ class MoreStaticButtons extends StatelessWidget {
           // background: AppColors.borderSecondary.withValues(alpha: 0.5),
           // iconColor: const Color.fromRGBO(173, 156, 109, 1),
           onTap: () {
-            CustomNavigator.push(
-              Routes.FAQ,
-              extra: const FaqRouteParams(),
-            );
+            CustomNavigator.push(Routes.FAQ, extra: const FaqRouteParams());
           },
         ),
         MoreCard(

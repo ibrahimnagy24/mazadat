@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import '../../../../core/navigation/custom_navigation.dart';
+import '../../../../core/shared/blocs/main_app_bloc.dart';
 import '../../../../core/shared/entity/error_entity.dart';
 import '../../../../core/utils/enums/enums.dart';
 import '../../../user/logic/user_cubit.dart';
@@ -15,11 +16,11 @@ part 'view_auction_details_state.dart';
 
 class ViewAuctionDetailsCubit extends Cubit<ViewAuctionDetailsState> {
   ViewAuctionDetailsCubit() : super(ViewAuctionDetailsInitial());
-//---------------------------------VARIABLES----------------------------------//
+  //---------------------------------VARIABLES----------------------------------//
   late ViewAuctionDetailsRouteParams routeParams;
   ViewAuctionDetailsEntity? auctionDetails;
   int currentImageIndex = 0;
-//---------------------------------FUNCTIONS----------------------------------//
+  //---------------------------------FUNCTIONS----------------------------------//
   void init(ViewAuctionDetailsRouteParams routeParams) {
     this.routeParams = routeParams;
   }
@@ -62,7 +63,7 @@ class ViewAuctionDetailsCubit extends Cubit<ViewAuctionDetailsState> {
       return false;
     }
 
-    final userId = context.read<UserCubit>().userEntity!.id;
+    final userId = mainAppBloc.globalUserData!.id;
     return lastBidderId == userId;
   }
 
@@ -79,27 +80,34 @@ class ViewAuctionDetailsCubit extends Cubit<ViewAuctionDetailsState> {
         (auctionDetails?.currentBiddingAmount ?? 0) >=
             (auctionDetails?.maxBiddingAmount ?? 0);
   }
-//----------------------------------REQUEST-----------------------------------//
+  //----------------------------------REQUEST-----------------------------------//
 
   Future<void> viewAuctionDetailsStatesHandled() async {
     CustomNavigator.context.loaderOverlay.show();
     emit(const ViewAuctionDetailsLoading());
     try {
       final response = await ViewAuctionDetailsRepo.getAuctionDetails(
-          GetAuctionDetailsParams(id: routeParams.auctionId));
-      response.fold((failure) {
-        CustomNavigator.context.loaderOverlay.hide();
-        return emit(ViewAuctionDetailsError(failure));
-      }, (success) async {
-        CustomNavigator.context.loaderOverlay.hide();
-        auctionDetails = success;
+        GetAuctionDetailsParams(id: routeParams.auctionId),
+      );
+      response.fold(
+        (failure) {
+          CustomNavigator.context.loaderOverlay.hide();
+          return emit(ViewAuctionDetailsError(failure));
+        },
+        (success) async {
+          CustomNavigator.context.loaderOverlay.hide();
+          auctionDetails = success;
 
-        return emit(ViewAuctionDetailsSuccess(success));
-      });
+          return emit(ViewAuctionDetailsSuccess(success));
+        },
+      );
     } catch (e) {
       CustomNavigator.context.loaderOverlay.hide();
-      return emit(ViewAuctionDetailsError(ErrorEntity(
-          message: e.toString(), statusCode: 400, errors: const [])));
+      return emit(
+        ViewAuctionDetailsError(
+          ErrorEntity(message: e.toString(), statusCode: 400, errors: const []),
+        ),
+      );
     }
   }
 
@@ -107,14 +115,20 @@ class ViewAuctionDetailsCubit extends Cubit<ViewAuctionDetailsState> {
     emit(const AuctionBidLoading());
     try {
       final response = await ViewAuctionDetailsRepo.auctionBid(params);
-      response.fold((failure) {
-        return emit(AuctionBidError(failure));
-      }, (success) async {
-        return emit(AuctionBidSuccess(success));
-      });
+      response.fold(
+        (failure) {
+          return emit(AuctionBidError(failure));
+        },
+        (success) async {
+          return emit(AuctionBidSuccess(success));
+        },
+      );
     } catch (e) {
-      return emit(AuctionBidError(ErrorEntity(
-          message: e.toString(), statusCode: 400, errors: const [])));
+      return emit(
+        AuctionBidError(
+          ErrorEntity(message: e.toString(), statusCode: 400, errors: const []),
+        ),
+      );
     }
   }
 }

@@ -35,8 +35,9 @@ class AuctionContentComponent extends StatelessWidget {
             onPressed: () {
               CustomNavigator.push(Routes.LOGIN_SCREEN);
             },
-            textStyle:
-                AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
+            textStyle: AppTextStyles.bodyXlBold.copyWith(
+              color: AppColors.kWhite,
+            ),
           );
         }
         if (auction == null) {
@@ -71,9 +72,7 @@ class AuctionContentComponent extends StatelessWidget {
       onPressed: () {
         CustomNavigator.push(
           Routes.SHIPMENT_ORDER_DETAILS,
-          extra: ShipmentDetailsRouteParams(
-            shipmentId: shipment.id,
-          ),
+          extra: ShipmentDetailsRouteParams(shipmentId: shipment.id),
         );
       },
       text: AppStrings.orderTracking.tr,
@@ -82,7 +81,9 @@ class AuctionContentComponent extends StatelessWidget {
   }
 
   Widget _buildEndedAuctionButton(
-      ViewAuctionDetailsEntity? auction, ViewAuctionDetailsCubit? cubit) {
+    ViewAuctionDetailsEntity? auction,
+    ViewAuctionDetailsCubit? cubit,
+  ) {
     if (auction == null) {
       return const SizedBox.shrink();
     }
@@ -111,10 +112,7 @@ class AuctionContentComponent extends StatelessWidget {
     return const SizedBox.shrink();
   }
 
-  Widget _buildJoinAuctionButton(
-    BuildContext context,
-    int auctionId,
-  ) {
+  Widget _buildJoinAuctionButton(BuildContext context, int auctionId) {
     return DefaultButton(
       onPressed: () => CustomBottomSheet.show(
         widget: ValidateJoiningAuctionView(
@@ -188,13 +186,14 @@ class AuctionContentComponent extends StatelessWidget {
               isInActive: context
                   .read<ViewAuctionDetailsCubit>()
                   .isIamLastBidder(context),
-              textStyle:
-                  AppTextStyles.bodyXlBold.copyWith(color: AppColors.kWhite),
+              textStyle: AppTextStyles.bodyXlBold.copyWith(
+                color: AppColors.kWhite,
+              ),
             ),
             if (_shouldShowAutoBiddingSwitch(auction) &&
-                context
-                        .read<ViewAuctionDetailsCubit>()
-                        .isIamLastBidder(context) ==
+                context.read<ViewAuctionDetailsCubit>().isIamLastBidder(
+                      context,
+                    ) ==
                     false)
               _buildAutoBiddingButton(context, auction),
           ],
@@ -231,8 +230,9 @@ class AuctionContentComponent extends StatelessWidget {
         },
         child: Text(
           AppStrings.automaticBidding.tr,
-          style: AppTextStyles.bodyXsMed
-              .copyWith(color: const Color.fromRGBO(81, 94, 50, 1)),
+          style: AppTextStyles.bodyXsMed.copyWith(
+            color: const Color.fromRGBO(81, 94, 50, 1),
+          ),
         ),
       ),
     );

@@ -5,8 +5,6 @@ import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/shared/widgets/bundle_cards/bundle_card_widget.dart';
 import '../../../../core/shared/widgets/bundle_cards/horizontal_bundle_card_widget.dart';
-import '../../../../core/utils/extensions/extensions.dart';
-import '../../../../core/utils/widgets/empty/responsive_empty_widget.dart';
 import '../../../../core/utils/widgets/errors/error_message_widget.dart';
 import '../../../../core/utils/widgets/loading/logo_loading.dart';
 import '../../../bundle_details/view_bundle_details/data/params/bundle_details_route_params.dart';
@@ -59,11 +57,11 @@ class HomeDisplayedBundlesWidget extends StatelessWidget {
                     key: const ValueKey('grid_view'),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      mainAxisExtent: 213,
-                    ),
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          mainAxisExtent: 213,
+                        ),
                     itemBuilder: (context, index) {
                       return BundleCardWidget(
                         bundleId: cubit.homeBundles![index].id,

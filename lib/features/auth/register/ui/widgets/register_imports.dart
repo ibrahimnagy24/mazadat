@@ -5,7 +5,6 @@ import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
-import '../../../../../core/utils/widgets/misc/custom_screen_type_layout_widget.dart';
 import '../../../shared/auth_header_content.dart';
 import '../../../shared/auth_title_image_banner_widget.dart';
 import '../../../shared/login_as_visitor_button_widget.dart';

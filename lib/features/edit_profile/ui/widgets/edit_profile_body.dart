@@ -9,7 +9,6 @@ import '../../../../../core/utils/widgets/form_fields/default_username_form_fiel
 import '../../../../core/assets/app_svg.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
-import '../../../../core/theme/colors/styles.dart';
 import '../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../core/utils/validations/validator.dart';
 import '../../../../core/utils/widgets/animated/animated_widget.dart';
@@ -42,9 +41,11 @@ class EditProfileBody extends StatelessWidget {
                       titleText: AppStrings.firstName.tr,
                       hintText: AppStrings.enterFirstName.tr,
                       style: AppTextStyles.textLgRegular.copyWith(
-                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                        color: const Color.fromRGBO(162, 162, 162, 1),
+                      ),
                       hintStyle: AppTextStyles.textLgRegular.copyWith(
-                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                        color: const Color.fromRGBO(162, 162, 162, 1),
+                      ),
                     ),
                   ),
                   Expanded(
@@ -54,9 +55,11 @@ class EditProfileBody extends StatelessWidget {
                       hintText: AppStrings.enterLastName.tr,
                       readonly: isLoading,
                       style: AppTextStyles.textLgRegular.copyWith(
-                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                        color: const Color.fromRGBO(162, 162, 162, 1),
+                      ),
                       hintStyle: AppTextStyles.textLgRegular.copyWith(
-                          color: const Color.fromRGBO(162, 162, 162, 1)),
+                        color: const Color.fromRGBO(162, 162, 162, 1),
+                      ),
                     ),
                   ),
                 ],
@@ -73,19 +76,27 @@ class EditProfileBody extends StatelessWidget {
                       stream: context.read<EditProfileCubit>().ageStream,
                       builder: (context, asyncSnapshot) {
                         return AgeInput(
-                          initialValue:
-                              context.read<EditProfileCubit>().age.valueOrNull,
+                          initialValue: context
+                              .read<EditProfileCubit>()
+                              .age
+                              .valueOrNull,
                           onSelect: context.read<EditProfileCubit>().updateAge,
                           validator: (v) => DefaultValidator.defaultValidator(
                             asyncSnapshot.data?.name ?? '',
                             label: AppStrings.age.tr,
                           ),
                           style: AppTextStyles.textLgRegular.copyWith(
-                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                            color: const Color.fromRGBO(162, 162, 162, 1),
+                          ),
                           hintStyle: AppTextStyles.textLgRegular.copyWith(
-                              color: const Color.fromRGBO(162, 162, 162, 1)),
-                          suffixIconColor:
-                              const Color.fromRGBO(162, 162, 162, 1),
+                            color: const Color.fromRGBO(162, 162, 162, 1),
+                          ),
+                          suffixIconColor: const Color.fromRGBO(
+                            162,
+                            162,
+                            162,
+                            1,
+                          ),
                         );
                       },
                     ),
@@ -101,16 +112,19 @@ class EditProfileBody extends StatelessWidget {
                               .read<EditProfileCubit>()
                               .gender
                               .valueOrNull,
-                          onSelect:
-                              context.read<EditProfileCubit>().updateGender,
+                          onSelect: context
+                              .read<EditProfileCubit>()
+                              .updateGender,
                           validator: (v) => DefaultValidator.defaultValidator(
                             asyncSnapshot.data?.name ?? '',
                             label: AppStrings.gender.tr,
                           ),
                           style: AppTextStyles.textLgRegular.copyWith(
-                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                            color: const Color.fromRGBO(162, 162, 162, 1),
+                          ),
                           hintStyle: AppTextStyles.textLgRegular.copyWith(
-                              color: const Color.fromRGBO(162, 162, 162, 1)),
+                            color: const Color.fromRGBO(162, 162, 162, 1),
+                          ),
                           suffixIcon: const Color.fromRGBO(162, 162, 162, 1),
                         );
                       },
@@ -125,8 +139,10 @@ class EditProfileBody extends StatelessWidget {
                 stream: context.read<EditProfileCubit>().cityStream,
                 builder: (context, asyncSnapshot) {
                   return CityInput(
-                    initialValue:
-                        context.read<EditProfileCubit>().city.valueOrNull,
+                    initialValue: context
+                        .read<EditProfileCubit>()
+                        .city
+                        .valueOrNull,
                     onSelect: context.read<EditProfileCubit>().updateCity,
                     validator: (v) => DefaultValidator.defaultValidator(
                       asyncSnapshot.data?.name ?? '',
@@ -134,9 +150,11 @@ class EditProfileBody extends StatelessWidget {
                     ),
                     loadAllCities: true,
                     style: AppTextStyles.textLgRegular.copyWith(
-                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                      color: const Color.fromRGBO(162, 162, 162, 1),
+                    ),
                     hintStyle: AppTextStyles.textLgRegular.copyWith(
-                        color: const Color.fromRGBO(162, 162, 162, 1)),
+                      color: const Color.fromRGBO(162, 162, 162, 1),
+                    ),
                     suffixIconColor: const Color.fromRGBO(162, 162, 162, 1),
                   );
                 },
@@ -152,8 +170,11 @@ class EditProfileBody extends StatelessWidget {
                   onPressed: () => CustomNavigator.push(
                     Routes.CHANGE_PHONE_NUMBER_SCREEN,
                     extra: ChangePhoneNumberRouteParams(
-                      oldPhone:
-                          context.read<EditProfileCubit>().phone.text.trim(),
+                      oldPhone: context
+                          .read<EditProfileCubit>()
+                          .phone
+                          .text
+                          .trim(),
                     ),
                   ),
                   icon: SvgPicture.asset(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/theme/radius/app_radius.dart';
 import '../../../../../core/theme/text_styles/text_styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -34,8 +32,9 @@ class _AuctionStatusFilterSectionState
         children: [
           Text(
             AppStrings.auctionStatus.tr,
-            style: AppTextStyles.textLgBold
-                .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+            style: AppTextStyles.textLgBold.copyWith(
+              color: const Color.fromRGBO(46, 46, 46, 1),
+            ),
           ),
           BlocBuilder<AuctionStatusesCubit, AuctionStatusesState>(
             builder: (context, state) {
@@ -48,10 +47,8 @@ class _AuctionStatusFilterSectionState
                   runAlignment: WrapAlignment.start,
                   children: List.generate(
                     5,
-                    (index) => const CustomShimmerContainer(
-                      width: 80,
-                      height: 35,
-                    ),
+                    (index) =>
+                        const CustomShimmerContainer(width: 80, height: 35),
                   ),
                 );
               }
@@ -62,36 +59,38 @@ class _AuctionStatusFilterSectionState
                     spacing: 8,
                     runSpacing: 8,
                     runAlignment: WrapAlignment.start,
-                    children: List.generate(
-                      cubit.allAuctionStatuses!.length,
-                      (index) {
-                        final isChosen = widget.initialValue?.value ==
-                            cubit.allAuctionStatuses![index].value;
-                        return AuctionStatusFilterCard(
-                          auctionStatus: cubit.allAuctionStatuses![index],
-                          isSelected: widget.initialValue?.value ==
-                              cubit.allAuctionStatuses![index].value,
-                          onTap: () {
-                            if (widget.initialValue?.value ==
-                                cubit.allAuctionStatuses![index].value) {
-                              widget.onTap?.call(null);
-                            } else {
-                              widget.onTap
-                                  ?.call(cubit.allAuctionStatuses![index]);
-                            }
-                          },
-                          borderRadiusValue: 12,
-                          textStyle: AppTextStyles.textMdRegular.copyWith(
-                            color: isChosen
-                                ? const Color.fromRGBO(81, 94, 50, 1)
-                                : const Color.fromRGBO(162, 162, 162, 1),
-                          ),
-                          fillColor: isChosen
-                              ? const Color.fromRGBO(81, 94, 50, 0.1)
-                              : Colors.transparent,
-                        );
-                      },
-                    ),
+                    children: List.generate(cubit.allAuctionStatuses!.length, (
+                      index,
+                    ) {
+                      final isChosen =
+                          widget.initialValue?.value ==
+                          cubit.allAuctionStatuses![index].value;
+                      return AuctionStatusFilterCard(
+                        auctionStatus: cubit.allAuctionStatuses![index],
+                        isSelected:
+                            widget.initialValue?.value ==
+                            cubit.allAuctionStatuses![index].value,
+                        onTap: () {
+                          if (widget.initialValue?.value ==
+                              cubit.allAuctionStatuses![index].value) {
+                            widget.onTap?.call(null);
+                          } else {
+                            widget.onTap?.call(
+                              cubit.allAuctionStatuses![index],
+                            );
+                          }
+                        },
+                        borderRadiusValue: 12,
+                        textStyle: AppTextStyles.textMdRegular.copyWith(
+                          color: isChosen
+                              ? const Color.fromRGBO(81, 94, 50, 1)
+                              : const Color.fromRGBO(162, 162, 162, 1),
+                        ),
+                        fillColor: isChosen
+                            ? const Color.fromRGBO(81, 94, 50, 0.1)
+                            : Colors.transparent,
+                      );
+                    }),
                   );
                 }
               } else {

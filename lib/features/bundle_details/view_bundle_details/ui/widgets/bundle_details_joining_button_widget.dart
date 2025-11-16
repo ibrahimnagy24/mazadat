@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/extensions/extensions.dart';
-import '../../../../../core/utils/widgets/bottom_sheets/confirm_bottom_sheet.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
 import '../../../bundle_joining/data/params/validate_bundle_params.dart';
 import '../../../bundle_joining/ui/pages/validate_joining_bundle_view.dart';
@@ -61,7 +60,8 @@ class BundleDetailsJoiningButtonWidget extends StatelessWidget {
                       onSuccess: () {
                         final bundleId = cubit.bundleDetailsModel!.id!;
                         context.read<BundleDetailsCubit>().getBundleDetails(
-                            BundleDetailsRouteParams(bundleId: bundleId));
+                          BundleDetailsRouteParams(bundleId: bundleId),
+                        );
                       },
                       bottomSheetContext: bottomSheetContext,
                     );
