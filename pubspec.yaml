@@ -3,10 +3,10 @@ description: A new Flutter application.
 
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.1+15
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ^3.9.2
 
 dependencies:
   flutter:
@@ -57,7 +57,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   collection: ^1.19.0
   internet_connection_checker: ^3.0.1
-  flutter_native_splash: ^2.2.16
+  flutter_native_splash: ^2.4.6
   flutter_launcher_icons: ^0.14.2
   loader_overlay: ^5.0.0
   hexcolor: ^3.0.1
@@ -68,49 +68,18 @@ dependencies:
   go_router: ^15.1.1
   glass_kit: ^4.0.1
   dotted_border: ^3.0.1
+  video_player: ^2.10.0
+  webview_flutter: ^4.13.0
+  flutter_inappwebview: ^6.1.5
+  pusher_channels_flutter: ^2.5.0
+  flutter_sliding_toast: ^1.5.2
+  shared_preferences: ^2.5.3
+  timeago: ^3.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path_android: "assets/lunchers/logo_710x599.png"
-  image_path_ios: "assets/lunchers/logo_1024x1024.png"
-  adaptive_icon_background: "assets/lunchers/icon_with_background.png" # only available for Android 8.0 devices and above
-  adaptive_icon_foreground: "assets/lunchers/logo_432x432.png" # only available for Android 8.0 devices and above
-  adaptive_icon_monochrome: "assets/lunchers/logo_432x432.png" # only available for Android 13 devices and above
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  background_color_ios: "#ffffff"
-  background_color_android: "#ffffff"
-  remove_alpha_ios: true
-  web:
-    generate: true
-    image_path: "assets/lunchers/icon_with_background.png"
-  windows:
-    generate: true
-    image_path: "assets/lunchers/icon_with_background.png"
-    icon_size: 48
-  macos:
-    generate: true
-    image_path: "assets/lunchers/icon_with_background.png"
-
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/lunchers/logo_for_splash.png
-  android_12:
-    image: assets/lunchers/splash_android_12.png
-    color: "#ffffff"
-    icon_background_color: "#ffffff"
-  ios_content_mode: center
-  android_gravity: center
-  web_image_mode: center
-  fullscreen: true
-  android: true
-  ios: true
-  web: false
 
 
 flutter:
@@ -120,11 +89,30 @@ flutter:
     - assets/
     - assets/fonts/
     - assets/svgs/
-    - assets/svgs/nav_bar/
-    - assets/svgs/settings/
-    - assets/svgs/merchant_card_icons/
     - assets/images/
     - assets/langs/
-    - assets/lunchers/
+    - assets/launchers/
     - assets/audio/
     - assets/lottie/
+    - assets/gif/
+
+  fonts:
+    - family: en
+      fonts:
+        - asset: assets/fonts/en/thin.ttf
+          weight: 200
+        - asset: assets/fonts/en/light.ttf
+          weight: 300
+        - asset: assets/fonts/en/regular.ttf
+          weight: 400
+        - asset: assets/fonts/en/medium.ttf
+          weight: 500
+        - asset: assets/fonts/en/semi_bold.ttf
+          weight: 600
+        - asset: assets/fonts/en/bold.ttf
+          weight: 700
+        - asset: assets/fonts/en/extra_bold.ttf
+          weight: 800
+        - asset: assets/fonts/en/black.ttf
+          weight: 900
+

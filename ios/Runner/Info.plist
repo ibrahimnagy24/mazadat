@@ -7,7 +7,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Mazaadat</string>
+		<string>بيت العسجدية</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>Mazaadat</string>
+		<string>بيت العسجدية</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -62,13 +62,18 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<true/>
+		<key>NSAppTransportSecurity</key>
+        <dict>
+          <key>NSAllowsArbitraryLoads</key>
+          <true/>
+        </dict>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<true/>
 		<key>com.apple.security.network.client</key>
 		<true/>
 		<key>LSApplicationQueriesSchemes</key>
 		<array>
-			<string>Mazaadat</string>
+			<string>بيت العسجدية</string>
 		</array>
 		<key>io.flutter.embedded_views_preview</key>
 		<true/>

@@ -1,0 +1,1 @@
+enum MyPurchasesDisplayTypes { list, grid }

@@ -1,0 +1,114 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/assets/app_svg.dart';
+import '../../../../core/shared/widgets/custom_images.dart';
+import '../../../../core/theme/colors/styles.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../core/utils/constant/app_strings.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/widgets/animated/animated_widget.dart';
+import '../../../../core/utils/widgets/misc/custom_scaffold_widget.dart';
+import '../../../user/logic/user_cubit.dart';
+import '../../../user/logic/user_state.dart';
+import '../widgets/personal_info_details.dart';
+import '../widgets/profile_header.dart';
+
+class ProfileMobileDesign extends StatefulWidget {
+  const ProfileMobileDesign({super.key});
+
+  @override
+  State<ProfileMobileDesign> createState() => _ProfileMobileDesignState();
+}
+
+class _ProfileMobileDesignState extends State<ProfileMobileDesign> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UserCubit>().getUserDataStatesHandled();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScaffoldWidget(
+      needAppbar: false,
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarColor: AppColors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
+        ),
+        child: BlocBuilder<UserCubit, UserState>(
+            buildWhen: (previous, current) =>
+                current is UserDataLoading ||
+                current is UserDataSuccess ||
+                current is UserDataError,
+            builder: (context, state) {
+              final cubit = context.read<UserCubit>();
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const ProfileHeader(),
+                  Expanded(
+                    child: Transform.translate(
+                      offset: const Offset(0, -20),
+                      child: Stack(alignment: Alignment.topCenter, children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: AppColors.background,
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(24),
+                              topLeft: Radius.circular(24),
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 24.w),
+                          child: ListAnimator(
+                            data: [
+                              80.sbH,
+                              const PersonalInfoDetails(),
+                              // if (cubit.userEntity?.isSeller == true) ...[
+                              //   16.sbH,
+                              //   const BankInfoDetails(),
+                              // ]
+                            ],
+                          ),
+                        ),
+                        Transform.translate(
+                          offset: const Offset(0, -70),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            spacing: 4.h,
+                            children: [
+                              customContainerSvgIcon(
+                                imageName: AppSvg.user,
+                                width: 100.w,
+                                height: 100.w,
+                                radius: 100.w,
+                                padding: 20.w,
+                                color: AppColors.kPrimary,
+                                backGround: AppColors.backgroundBody,
+                              ),
+                              Text(
+                                cubit.userEntity?.firstName ?? 'Name',
+                                style: AppTextStyles.textXLMedium,
+                              ),
+                              if (cubit.userEntity?.isSeller == true &&
+                                  cubit.userEntity?.commericalNumber != null)
+                                Text(
+                                  '${AppStrings.commercialNumber.tr} ${cubit.userEntity?.commericalNumber}',
+                                  style: AppTextStyles.textXLMedium.copyWith(
+                                      color: AppColors.textSecondaryParagraph),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ],
+              );
+            }),
+      ),
+    );
+  }
+}

@@ -7,12 +7,12 @@ sealed class ChangePasswordState {
 
 final class ChangePasswordInitial extends ChangePasswordState {}
 
-final class ChangePasswordLoading extends ChangePasswordState {
-  const ChangePasswordLoading();
+final class ResetPasswordLoading extends ChangePasswordState {
+  const ResetPasswordLoading();
 }
 
-final class ChangePasswordSucess extends ChangePasswordState {
-  const ChangePasswordSucess(this.data);
+final class ChangePasswordSuccess extends ChangePasswordState {
+  const ChangePasswordSuccess(this.data);
   final ChangePasswordModel data;
 }
 

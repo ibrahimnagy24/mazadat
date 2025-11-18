@@ -1,0 +1,214 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../../core/assets/app_svg.dart';
+import '../../../../../core/theme/colors/styles.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/extensions/media_query_helper.dart';
+import '../../../../../core/utils/widgets/form_fields/default_form_field.dart';
+import '../../../../../core/utils/widgets/text/main_text.dart';
+import '../../data/entity/city_entity.dart';
+
+class CitiesView extends StatefulWidget {
+  const CitiesView({
+    super.key,
+    required this.data,
+    this.initialValue,
+    this.onSelect,
+    required this.modalContext,
+    this.showSearch = true,
+  });
+  final List<CityEntity> data;
+  final int? initialValue;
+  final Function(CityEntity)? onSelect;
+  final BuildContext modalContext;
+  final bool showSearch;
+
+  @override
+  State<CitiesView> createState() => _CitiesViewState();
+}
+
+class _CitiesViewState extends State<CitiesView> {
+  int? _selectedItem;
+  final TextEditingController _searchController = TextEditingController();
+  List<CityEntity> _filteredData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _selectedItem = widget.initialValue;
+      _filteredData = widget.data;
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterCities(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredData = widget.data;
+      } else {
+        _filteredData = widget.data
+            .where(
+                (city) => city.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: 24,
+          right: 24,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 5,
+              width: 60,
+              margin: const EdgeInsets.symmetric(vertical: 16),
+              decoration: BoxDecoration(
+                color: const Color.fromRGBO(46, 46, 46, 1),
+                borderRadius: BorderRadius.circular(100),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MainText(
+                  text: AppStrings.selectCity.tr,
+                  style: AppTextStyles.textLMedium,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.close,
+                    color: Color.fromRGBO(22, 22, 22, 1),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            if (widget.showSearch) ...[
+              DefaultFormField(
+                controller: _searchController,
+                hintText: '${AppStrings.search.tr}...',
+                needValidation: false,
+                prefixIcon: Padding(
+                  padding: const EdgeInsetsDirectional.only(
+                    start: 16,
+                    end: 12,
+                    top: 12,
+                    bottom: 12,
+                  ),
+                  child: SvgPicture.asset(
+                    AppSvg.searchIcon,
+                    color: AppColors.iconDefault,
+                    width: 20,
+                    height: 20,
+                  ),
+                ),
+                onChanged: (value) => _filterCities(value),
+              ),
+              const SizedBox(height: 16),
+            ],
+            Flexible(
+              child: SafeArea(
+                top: false,
+                left: false,
+                right: false,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.6,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(
+                        _filteredData.length,
+                        (index) => Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() =>
+                                    _selectedItem = _filteredData[index].id);
+                                widget.onSelect?.call(_filteredData[index]);
+                              },
+                              child: Container(
+                                height: 56,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: (_filteredData.length - 1) == index
+                                          ? Colors.transparent
+                                          : AppColors.border,
+                                      width: .1,
+                                    ),
+                                  ),
+                                ),
+                                width: MediaQueryHelper.width,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        _filteredData[index].name,
+                                        style: AppTextStyles.textXLMedium,
+                                      ),
+                                    ),
+                                    Icon(
+                                      _selectedItem == _filteredData[index].id
+                                          ? Icons.radio_button_checked
+                                          : Icons.radio_button_off,
+                                      size: 24,
+                                      color: _selectedItem ==
+                                              _filteredData[index].id
+                                          ? const Color.fromRGBO(81, 94, 50, 1)
+                                          : const Color.fromRGBO(
+                                              162, 162, 162, 1),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            if (_filteredData.length - 1 != index)
+                              const Divider(
+                                height: 1,
+                                thickness: 1,
+                                color: Color.fromRGBO(232, 232, 232, .5),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+          ],
+        ),
+      ),
+    );
+  }
+}

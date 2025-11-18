@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../assets/app_svg.dart';
 import '../../../shared/entity/error_entity.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../extensions/extensions.dart';

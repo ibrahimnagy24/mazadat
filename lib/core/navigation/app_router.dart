@@ -1,23 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../app/app.dart';
+import '../../features/address/add_address/ui/page/add_addresses_screen.dart';
+import '../../features/address/addresses/data/model/addresses_model.dart';
+import '../../features/address/addresses/ui/page/addresses_screen.dart';
 import '../../features/auth/change_password/data/params/change_password_route_params.dart';
 import '../../features/auth/change_password/ui/widgets/change_password_imports.dart';
-import '../../features/auth/change_password_success/widgets/change_password_success_imports.dart';
-import '../../features/auth/choose_category/ui/screens/choose_categories_screen.dart';
+import '../../features/auth/change_phone_number/data/params/change_phone_number_route_params.dart';
+import '../../features/auth/reset_password/data/params/reset_password_route_params.dart';
+import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
+import '../../features/auth/change_phone_number/ui/widgets/change_phone_number_imports.dart';
+import '../../features/bundle_details/view_bundle_details/data/params/bundle_details_route_params.dart';
+import '../../features/bundle_details/view_bundle_details/ui/pages/bundle_details_screen.dart';
+import '../../features/category/ui/screens/choose_categories_screen.dart';
 import '../../features/auth/login/ui/widgets/login_imports.dart';
 import '../../features/auth/register/ui/widgets/register_imports.dart';
-import '../../features/auth/reset_password/ui/widgets/reset_password_imports.dart';
+import '../../features/auth/forget_password/ui/widgets/forget_password_imports.dart';
 import '../../features/auth/verify_code/data/params/verify_code_route_params.dart';
 import '../../features/auth/verify_code/ui/widgets/verify_code_imports.dart';
+import '../../features/checkout/check_out_address/data/params/checkout_address_route_params.dart';
+import '../../features/checkout/check_out_address/ui/page/checkout_address_screen.dart';
+import '../../features/checkout/check_out_choose_payment/data/params/checkout_choose_payment_route_params.dart';
+import '../../features/checkout/check_out_choose_payment/ui/pages/checkout_choose_payment_screen.dart';
+import '../../features/checkout/check_out_summary/data/params/checkout_summary_route_params.dart';
+import '../../features/checkout/check_out_summary/ui/pages/checkout_summary_screen.dart';
+import '../../features/checkout/shipment_order_details/data/params/shipment_details_route_params.dart';
+import '../../features/checkout/shipment_order_details/ui/pages/shipment_order_details_screen.dart';
+import '../../features/contact_us/data/params/contact_us_route_params.dart';
+import '../../features/contact_us/ui/pages/contact_us_screen.dart';
+import '../../features/delete_account/ui/widgets/delete_account_imports.dart';
+import '../../features/edit_bank_details/ui/widgets/edit_bank_details_imports.dart';
+import '../../features/edit_favourite_categories/ui/widgets/edit_favourite_categories_imports.dart';
+import '../../features/edit_profile/ui/widgets/edit_profile_imports.dart';
+import '../../features/faq/data/params/faq_route_params.dart';
+import '../../features/faq/ui/pages/faq_screen.dart';
 import '../../features/home/ui/pages/home_screen.dart';
+import '../../features/more/ui/page/more_screen.dart';
+import '../../features/my_bundles/ui/page/my_bundles_screen.dart';
+import '../../features/my_purchases/ui/page/my_purchases_screen.dart';
+import '../../features/my_sales/ui/page/my_sales_screen.dart';
 import '../../features/nav_layout/pages/custom_navbar_layout_screen.dart';
+import '../../features/notification/ui/pages/notification_screen.dart';
+import '../../features/profile/ui/page/profile_screen.dart';
+import '../../features/search_module/search/ui/page/search_page.dart';
 import '../../features/splash/splash.dart';
 import '../../features/static_pages/data/params/static_page_params.dart';
 import '../../features/static_pages/ui/pages/static_pages_screen.dart';
-import '../../features/view_auction/data/params/view_auction_route_params.dart';
-import '../../features/view_auction/ui/pages/view_auction_screen.dart';
+import '../../features/auction_details/view_auction/data/params/view_auction_details_route_params.dart';
+import '../../features/auction_details/view_auction/ui/pages/view_auction_details_screen.dart';
 import '../../features/visitor/ui/pages/visitor_screen.dart';
+import '../../features/wallet/view_wallet_history/data/params/view_wallet_history_route_params.dart';
+import '../../features/wallet/view_wallet_history/ui/pages/view_wallet_history_screen.dart';
 import '../utils/widgets/misc/zoom_image.dart';
 import 'routes.dart';
 
@@ -61,10 +94,19 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const ChooseCategoriesScreen(),
     ),
     GoRoute(
-      path: '/reset-password',
-      name: Routes.RESET_PASSWORD_SCREEN,
-      builder: (context, state) => const ResetPasswordScreen(),
+      path: '/forget-password',
+      name: Routes.FORGET_PASSWORD_SCREEN,
+      builder: (context, state) => const ForgetPasswordScreen(),
     ),
+
+    GoRoute(
+      path: '/change-phone-number',
+      name: Routes.CHANGE_PHONE_NUMBER_SCREEN,
+      builder: (context, state) => ChangePhoneNumberScreen(
+        params: state.extra as ChangePhoneNumberRouteParams,
+      ),
+    ),
+
     GoRoute(
       path: '/verify-code',
       name: Routes.VERIFY_CODE_SCREEN,
@@ -74,17 +116,20 @@ final GoRouter appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/change-password',
-      name: Routes.CHANGE_PASSWORD_SCREEN,
+      path: '/reset-password',
+      name: Routes.RESET_PASSWORD_SCREEN,
       builder: (context, state) {
-        final routeParams = state.extra as ChangePasswordRouteParams;
-        return ChangePasswordScreen(routeParams: routeParams);
+        final routeParams = state.extra as ResetPasswordRouteParams;
+        return ResetPasswordScreen(routeParams: routeParams);
       },
     ),
+
     GoRoute(
-      path: '/change-password-success',
-      name: Routes.CHANGE_PASSWORD_SUCCESS_SCREEN,
-      builder: (context, state) => const ChangePasswordSuccessScreen(),
+      path: '/change-password',
+      name: Routes.CHANGE_PASSWORD_SCREEN,
+      builder: (context, state) => ChangePasswordScreen(
+        params: state.extra as ChangePasswordRouteParams,
+      ),
     ),
 
     // Home routes
@@ -94,7 +139,78 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
 
+    // Search routes
+    GoRoute(
+      path: '/search',
+      name: Routes.SEARCH,
+      builder: (context, state) => const SearchPage(),
+    ),
     // More routes
+    GoRoute(
+      path: '/more',
+      name: Routes.MORE,
+      builder: (context, state) => const MoreScreen(),
+    ),
+
+    GoRoute(
+      path: '/profile',
+      name: Routes.PROFILE,
+      builder: (context, state) => const ProfileScreen(),
+    ),
+
+    GoRoute(
+      path: '/edit-profile',
+      name: Routes.EDIT_PROFILE,
+      builder: (context, state) => const EditProfileScreen(),
+    ),
+
+    GoRoute(
+      path: '/edit-bank-details',
+      name: Routes.EDIT_BANK_DETAILS,
+      builder: (context, state) => const EditBankDetailsScreen(),
+    ),
+
+    GoRoute(
+      path: '/edit-favorites-categories',
+      name: Routes.EDIT_FAVOURITES_CATEGORIES,
+      builder: (context, state) => const EditFavouriteCategoriesScreen(),
+    ),
+
+    //DELETE ACCOUNT
+    GoRoute(
+      path: '/delete-account',
+      name: Routes.DELETE_ACCOUNT,
+      builder: (context, state) => const DeleteAccountScreen(),
+    ),
+
+    //MY BUNDLES
+    GoRoute(
+      path: '/my-bundles',
+      name: Routes.MY_BUNDLES,
+      builder: (context, state) => const MyBundlesScreen(),
+    ),
+    //MY SALES
+    GoRoute(
+      path: '/my-sales',
+      name: Routes.MY_SALES,
+      builder: (context, state) => const MySalesScreen(),
+    ),
+
+    //MY PURCHASES
+    GoRoute(
+      path: '/my-purchases',
+      name: Routes.MY_PURCHASES,
+      builder: (context, state) => const MyPurchasesScreen(),
+    ),
+
+    // Misc routes
+    GoRoute(
+      path: '/nav-bar-layout',
+      name: Routes.NAV_BAR_LAYOUT,
+      builder: (context, state) => const CustomNavbarLayoutScreen(),
+    ),
+
+    // Static routes
     GoRoute(
       path: '/static-page',
       name: Routes.STATIC_PAGE,
@@ -103,12 +219,18 @@ final GoRouter appRouter = GoRouter(
         return StaticPageScreen(params: params);
       },
     ),
-
-    // Misc routes
     GoRoute(
-      path: '/nav-bar-layout',
-      name: Routes.NAV_BAR_LAYOUT,
-      builder: (context, state) => const CustomNavbarLayoutScreen(),
+      path: '/contact-us',
+      name: Routes.CONTACT_US,
+      builder: (context, state) => ContactUsScreen(
+        params: state.extra as ContactUsRouteParams,
+      ),
+    ),
+    GoRoute(
+      path: '/faq',
+      name: Routes.FAQ,
+      builder: (context, state) =>
+          FaqScreen(params: state.extra as FaqRouteParams),
     ),
     GoRoute(
       path: '/zoom-image',
@@ -118,20 +240,98 @@ final GoRouter appRouter = GoRouter(
         return ZoomImageScreen(urlImage: urlImage);
       },
     ),
+    // GoRoute(
+    //   path: '/auction-details',
+    //   name: Routes.AUCTION_DETAILS,
+    //   builder: (context, state) {
+    //     return AuctionDetailsScreen(
+    //       routeParams: state.extra as AuctionDetailsRouteParams,
+    //     );
+    //   },
+    // ),
+
     GoRoute(
-      path: '/view-auction',
-      name: Routes.VIEW_AUCTION,
+      path: '/bundle-details',
+      name: Routes.BUNDLE_DETAILS,
       builder: (context, state) {
-        final params = state.extra == null
-            ? const ViewAuctionRouteParams(auctionId: '')
-            : (state.extra as ViewAuctionRouteParams);
-        return ViewAuctionScreen(routeParams: params);
+        return BundleDetailsScreen(
+            routeParams: state.extra as BundleDetailsRouteParams);
+      },
+    ),
+
+    GoRoute(
+      path: '/addresses',
+      name: Routes.ADDRESSES,
+      builder: (context, state) {
+        return const AddressesScreen();
+      },
+    ),
+    GoRoute(
+      path: '/add-addresses',
+      name: Routes.ADD_ADDRESSES,
+      builder: (context, state) {
+        return AddAddressesScreen(model: state.extra as AddressModel?);
       },
     ),
     GoRoute(
       path: '/test',
       name: Routes.TEST_SCREEN,
       builder: (context, state) => const VisitorScreen(),
+    ),
+
+    GoRoute(
+      path: '/view-wallet-history',
+      name: Routes.VIEW_WALLET_HISTORY,
+      builder: (context, state) {
+        final routeParams = state.extra as ViewWalletHistoryRouteParams;
+        return ViewWalletHistoryScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/view-auction-details',
+      name: Routes.VIEW_AUCTION_DETAILS,
+      builder: (context, state) {
+        final routeParams = state.extra as ViewAuctionDetailsRouteParams;
+        return ViewAuctionDetailsScreen(routeParams: routeParams);
+      },
+    ),
+    //CHECK-OUT
+    GoRoute(
+      path: '/checkout-address',
+      name: Routes.CHECKOUT_ADDRESS,
+      builder: (context, state) {
+        final routeParams = state.extra as CheckoutAddressRouteParams;
+        return CheckoutAddressScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/checkout-summary',
+      name: Routes.CHECKOUT_SUMMARY,
+      builder: (context, state) {
+        final routeParams = state.extra as CheckoutSummaryRouteParams;
+        return CheckoutSummaryScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/checkout-choose-payment',
+      name: Routes.CHECKOUT_CHOOSE_PAYMENT,
+      builder: (context, state) {
+        final routeParams = state.extra as CheckoutChoosePaymentRouteParams;
+        return CheckoutChoosePaymentScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/shipment-order-details',
+      name: Routes.SHIPMENT_ORDER_DETAILS,
+      builder: (context, state) {
+        final routeParams = state.extra as ShipmentDetailsRouteParams;
+        return ShipmentOrderDetailsScreen(params: routeParams);
+      },
+    ),
+    GoRoute(
+      path: '/notifications',
+      name: Routes.NOTIFICATIONS,
+      builder: (context, state) => const NotificationScreen(),
     ),
 
     // Not Found route

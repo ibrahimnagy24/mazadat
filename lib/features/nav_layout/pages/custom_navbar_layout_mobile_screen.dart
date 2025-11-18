@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/theme/colors/styles.dart';
@@ -22,30 +23,39 @@ class _CustomNavbarLayoutMobilePortraitDesignScreenState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<NavbarLayoutCubit>().onPageInit();
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          systemNavigationBarColor: AppColors.kWhite,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<NavbarLayoutCubit>();
-    return Column(
-      children: [
-        Expanded(
-          child: BlocBuilder<NavbarLayoutCubit, NavbarLayoutState>(
-            buildWhen: (previous, current) =>
-                previous.currentIndex != current.currentIndex,
-            builder: (context, state) {
-              return PageView(
-                controller: cubit.pageController,
-                physics: const NeverScrollableScrollPhysics(),
-                reverse: true,
-                children: cubit.pages,
-              );
-            },
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: Column(
+        children: [
+          Expanded(
+            child: BlocBuilder<NavbarLayoutCubit, NavbarLayoutState>(
+              buildWhen: (previous, current) =>
+                  previous.currentIndex != current.currentIndex,
+              builder: (context, state) {
+                return PageView(
+                  controller: cubit.pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  reverse: true,
+                  children: cubit.pages,
+                );
+              },
+            ),
           ),
-        ),
-        const CustomNavbarWidget(),
-      ],
+          const CustomNavbarWidget(),
+        ],
+      ),
     );
   }
 }

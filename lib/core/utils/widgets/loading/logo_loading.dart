@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../../assets/app_svg.dart';
 
 class LogoLoadingWidget extends StatelessWidget {
   const LogoLoadingWidget({
@@ -10,13 +13,12 @@ class LogoLoadingWidget extends StatelessWidget {
   final double? width;
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Icon(Icons.abc),
-      //  Image.asset(
-      //   AppImages.earthIcon3D,
-      //   height: height ?? 100,
-      //   width: width ?? 100,
-      // ),
+    return Center(
+      child: SvgPicture.asset(
+        AppSvg.logo,
+        height: height ?? 100,
+        width: width ?? 100,
+      ),
     );
   }
 }

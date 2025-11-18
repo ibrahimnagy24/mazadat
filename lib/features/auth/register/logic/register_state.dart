@@ -22,3 +22,10 @@ final class RegisterError extends RegisterState {
 }
 
 final class AgreePolicyAndConditionsState extends RegisterState {}
+
+final class RegisterStepChanged extends RegisterState {
+  RegisterStepChanged(this.step);
+  final int step;
+}
+
+final class RebuildInputs extends RegisterState {}

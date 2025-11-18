@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/text_styles/text_styles.dart';
 
-import '../../../core/utils/extensions/extensions.dart';
 import '../../../core/utils/widgets/text/main_text.dart';
 
 class AuthTitleBoldText extends StatelessWidget {

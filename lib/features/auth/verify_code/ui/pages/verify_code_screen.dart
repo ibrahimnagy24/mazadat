@@ -17,15 +17,7 @@ class VerifyCodeScreen extends StatelessWidget {
         builder: (context, state) {
           return Form(
             key: context.read<VerifyCodeCubit>().formKey,
-            child: ScreenTypeLayout.builder(
-              breakpoints: AppConstant.breakpoints,
-              mobile: (_) => OrientationLayoutBuilder(
-                portrait: (context) =>
-                    const VerifyCodeScreenMobilePortraitDesignScreen(),
-                landscape: (context) =>
-                    const VerifyCodeScreenMobilePortraitDesignScreen(),
-              ),
-            ),
+            child: const VerifyCodeScreenMobilePortraitDesignScreen(),
           );
         },
       ),

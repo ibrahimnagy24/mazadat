@@ -1,22 +1,26 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../../core/utils/enums/enums.dart';
-
 class ResetPasswordParams extends Equatable {
   const ResetPasswordParams({
+    required this.password,
+    required this.otp,
     required this.phone,
-    required this.countryCode,
-    required this.fromScreenEnum,
   });
+  final String password;
+  final String otp;
   final String phone;
-  final String countryCode;
-  final VerifyCodeFromScreen fromScreenEnum;
+
   Map<String, dynamic> returnedMap() {
-    Map<String, dynamic> map = {'phone': '$countryCode$phone'};
+    Map<String, dynamic> map = {
+      'password': password,
+      'otp': otp,
+      'phone': phone,
+      'countryCode': '966',
+    };
     map.removeWhere((key, value) => value == null);
     return map;
   }
 
   @override
-  List<Object?> get props => [phone, countryCode, fromScreenEnum];
+  List<Object?> get props => [password, otp, phone];
 }

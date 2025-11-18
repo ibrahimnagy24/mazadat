@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../../features/auth/login/data/entity/user_entity.dart';
-import '../../../features/auth/login/data/model/user_model.dart';
+import '../../../features/user/data/entity/user_entity.dart';
+import '../../../features/user/data/model/user_model.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../navigation/routes.dart';
 import '../../shared/blocs/main_app_bloc.dart';
@@ -56,8 +56,8 @@ class SharedHelper {
 
   Future<void> saveUser(UserEntity user) async {
     try {
-      await writeData(CachingKey.USER, jsonEncode(user.toJson()));
-      getUser();
+    await writeData(CachingKey.USER, jsonEncode(user.toJson()));
+    getUser();
     } catch (e) {
       cprint('Error saving user: $e');
     }
@@ -66,9 +66,11 @@ class SharedHelper {
   UserEntity? getUser() {
     try {
       final userJson = box?.get(CachingKey.USER.value);
+
       if (userJson != null) {
         mainAppBloc.setGlobalUserData =
             UserModel.fromJson(jsonDecode(userJson));
+
         return mainAppBloc.globalUserData;
       }
       return null;
@@ -122,7 +124,8 @@ class SharedHelper {
     final currentLang = await allTranslations.getPreferredLanguage();
     await writeData(CachingKey.IS_LOGIN, false);
     await changeLanguage(currentLang);
-    CustomNavigator.push(Routes.SPLASH, replace: true);
+    CustomNavigator.pop();
+    CustomNavigator.push(Routes.SPLASH, clean: true);
   }
 
   Future<void> writeData(CachingKey key, dynamic value) async {

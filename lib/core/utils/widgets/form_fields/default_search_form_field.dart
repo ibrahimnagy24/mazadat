@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../assets/app_svg.dart';
 import '../../../theme/colors/styles.dart';
-import '../../../theme/radiuos/app_radiuos.dart';
+import '../../../theme/radius/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
-import '../../validations/vaildator.dart';
+import '../../validations/validator.dart';
 import 'default_form_field.dart';
 
 class DefaultSearchFormField extends StatelessWidget {
@@ -19,7 +19,7 @@ class DefaultSearchFormField extends StatelessWidget {
     //default 24.sp
     this.titleIconSize,
     //default 24.r
-    this.borderRadious,
+    this.borderRadius,
     this.controller,
     this.readOnly = false,
     this.needValidation = true,
@@ -27,7 +27,7 @@ class DefaultSearchFormField extends StatelessWidget {
   final double? titleFontSize;
   final double? hintFontSize;
   final double? titleIconSize;
-  final double? borderRadious;
+  final double? borderRadius;
   final TextEditingController? controller;
   final bool readOnly;
   final bool needValidation;
@@ -51,7 +51,7 @@ class DefaultSearchFormField extends StatelessWidget {
       validator: needValidation
           ? (value) => EmailValidator.emailValidator(value)
           : null,
-      borderRadious: borderRadious ?? AppRadiuos.rS,
+      borderRadius: borderRadius ?? AppRadius.rS,
       keyboardType: TextInputType.emailAddress,
       controller: controller,
       onTapOutside: (p0) {},

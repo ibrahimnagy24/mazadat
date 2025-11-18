@@ -10,13 +10,15 @@ class CustomScaffoldWidget extends StatelessWidget {
     required this.child,
     this.appbar,
     this.floatingActionButton,
-    this.backgroundColor = AppColors.surfaceBackground,
+    this.backgroundColor = AppColors.background,
     this.resizeToAvoidBottomInset,
     this.needAppbar = true,
     this.appbarTitle,
     this.appbarLeading,
     this.appbarHeight,
     this.centerAppbarTitle,
+    this.leadingWidth,
+    this.systemOverlayStyle,
   });
   final Widget child;
   final PreferredSizeWidget? appbar;
@@ -28,11 +30,12 @@ class CustomScaffoldWidget extends StatelessWidget {
   final Widget? appbarLeading;
   final double? appbarHeight;
   final bool? centerAppbarTitle;
+  final double? leadingWidth;
+  final SystemUiOverlayStyle? systemOverlayStyle;
   @override
   Widget build(BuildContext context) {
-    final Color? background = backgroundColor;
     return Scaffold(
-      backgroundColor: backgroundColor ?? AppColors.kWhite,
+      backgroundColor: backgroundColor ?? AppColors.background,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: needAppbar
           ? (appbar ??
@@ -40,18 +43,21 @@ class CustomScaffoldWidget extends StatelessWidget {
                 preferredSize: Size.fromHeight(appbarHeight ?? 0),
                 child: AppBar(
                   centerTitle: centerAppbarTitle,
-                  backgroundColor: AppColors.kWhite,
+                  backgroundColor: backgroundColor ?? AppColors.background,
                   elevation: 0,
-                  systemOverlayStyle: background == AppColors.kWhite
-                      ? const SystemUiOverlayStyle(
-                          statusBarColor: AppColors.kWhite,
-                          statusBarIconBrightness: Brightness.dark,
-                          systemNavigationBarColor: AppColors.kWhite,
-                          systemNavigationBarIconBrightness: Brightness.dark,
-                        )
-                      : SystemUiOverlayStyle.dark,
+                  systemOverlayStyle: systemOverlayStyle ??
+                      (backgroundColor == AppColors.background
+                          ? const SystemUiOverlayStyle(
+                              statusBarColor: AppColors.background,
+                              statusBarIconBrightness: Brightness.dark,
+                              systemNavigationBarColor: AppColors.background,
+                              systemNavigationBarIconBrightness:
+                                  Brightness.dark,
+                            )
+                          : SystemUiOverlayStyle.dark),
                   title: appbarTitle,
                   leading: appbarLeading,
+                  leadingWidth: leadingWidth,
                 ),
               ))
           : null,

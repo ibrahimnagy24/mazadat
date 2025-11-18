@@ -120,7 +120,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 text: widget.headLabel,
                 color: (widget.headLabel!.contains('*') &&
                         widget.validation == null)
-                    ? AppColors.RED_CHART_COLOR
+                    ? AppColors.textError
                     : AppColors.kBlack,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -162,7 +162,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
               decoration: InputDecoration(
                 fillColor: widget.color ?? AppColors.kWhite,
-                errorStyle: const TextStyle(color: AppColors.RED_CHART_COLOR),
+                errorStyle: const TextStyle(color: AppColors.textError),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
                 hintText: widget.hint,
@@ -310,7 +310,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       ).copyWith(
                         borderSide: BorderSide(
                             width: widget.borderWidth ?? 1,
-                            color: AppColors.RED_CHART_COLOR)),
+                            color: AppColors.textError)),
                 border: !widget.addBorder
                     ? null
                     : OutlineInputBorder(

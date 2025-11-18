@@ -49,7 +49,7 @@ class LoginCubit extends Cubit<LoginState> {
       return emit(LoginError(failure));
     }, (success) async {
       await SharedHelper.sharedHelper?.cacheLoginData(success);
-      return emit(LoginSucess(success));
+      return emit(LoginSuccess(success));
     });
   }
 }

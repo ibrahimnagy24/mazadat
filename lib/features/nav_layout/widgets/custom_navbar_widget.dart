@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/assets/app_svg.dart';
 import '../../../core/theme/colors/styles.dart';
+import '../../../core/theme/radius/app_radius.dart';
+import '../../../core/utils/constant/app_strings.dart';
+import '../../../core/utils/extensions/extensions.dart';
 import '../cubit/navbar_layout_cubit.dart';
 import '../cubit/navbar_layout_state.dart';
+import 'custom_navbar_item_widget.dart';
 
 class CustomNavbarWidget extends StatelessWidget {
   const CustomNavbarWidget({
@@ -26,88 +31,55 @@ class CustomNavbarWidget extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: AppColors.kWhite,
-      child: BlocBuilder<NavbarLayoutCubit, NavbarLayoutState>(
-        builder: (context, state) {
-          final cubit = context.read<NavbarLayoutCubit>();
-          return Padding(
-            padding: padding ??
-                const EdgeInsetsDirectional.only(
-                    bottom: 24, start: 24, end: 24),
-            child: Card(
-              margin: EdgeInsets.zero,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: AppColors.kOpacityGrey),
-                  color: AppColors.kWhite,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: AppColors.kWhite,
-                      spreadRadius: .1,
-                      blurRadius: 1,
-                      offset: Offset(0, 4),
-                    ),
-                    BoxShadow(
-                      color: AppColors.kWhite,
-                      spreadRadius: .1,
-                      blurRadius: 1,
-                      offset: Offset(0, -4),
-                    ),
-                    BoxShadow(
-                      color: AppColors.kWhite,
-                      spreadRadius: .1,
-                      blurRadius: 1,
-                      offset: Offset(4, 0),
-                      blurStyle: BlurStyle.outer,
-                    ),
-                    BoxShadow(
-                      color: AppColors.kWhite,
-                      spreadRadius: .1,
-                      blurRadius: 1,
-                      offset: Offset(-4, 0),
-                      blurStyle: BlurStyle.outer,
-                    ),
-                  ],
-                ),
-                height: isPortraitView ? 60 : null,
-                child: isPortraitView
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: children(
-                          cubit,
-                          iconHeight: iconHeight,
-                          iconWidth: iconWidth,
-                          selectedItemHeight: selectedItemHeight,
-                          selectedItemWidth: selectedItemWidth,
-                          unselectedItemHeight: unselectedItemHeight,
-                          unselectedItemWidth: unselectedItemWidth,
-                        ),
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: children(
-                          cubit,
-                          iconHeight: iconHeight,
-                          iconWidth: iconWidth,
-                          selectedItemHeight: selectedItemHeight,
-                          selectedItemWidth: selectedItemWidth,
-                          unselectedItemHeight: unselectedItemHeight,
-                          unselectedItemWidth: unselectedItemWidth,
-                        ),
-                      ),
-              ),
+    return BlocBuilder<NavbarLayoutCubit, NavbarLayoutState>(
+      builder: (context, state) {
+        final cubit = context.read<NavbarLayoutCubit>();
+        return Container(
+          padding: const EdgeInsetsDirectional.only(
+            bottom: 4,
+            start: AppRadius.rLg,
+            end: AppRadius.rLg,
+          ),
+          alignment: Alignment.topCenter,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(AppRadius.rLg),
+              topRight: Radius.circular(AppRadius.rLg),
             ),
-          );
-        },
-      ),
+            border: Border.all(color: AppColors.border),
+            color: AppColors.navBarBackground,
+          ),
+          child: SafeArea(
+            top: false,
+            child: isPortraitView
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: children(
+                      cubit,
+                      iconHeight: iconHeight,
+                      iconWidth: iconWidth,
+                      selectedItemHeight: selectedItemHeight,
+                      selectedItemWidth: selectedItemWidth,
+                      unselectedItemHeight: unselectedItemHeight,
+                      unselectedItemWidth: unselectedItemWidth,
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: children(
+                      cubit,
+                      iconHeight: iconHeight,
+                      iconWidth: iconWidth,
+                      selectedItemHeight: selectedItemHeight,
+                      selectedItemWidth: selectedItemWidth,
+                      unselectedItemHeight: unselectedItemHeight,
+                      unselectedItemWidth: unselectedItemWidth,
+                    ),
+                  ),
+          ),
+        );
+      },
     );
   }
 
@@ -121,58 +93,74 @@ class CustomNavbarWidget extends StatelessWidget {
     final double? iconWidth,
   }) {
     return [
-      // IconButton(
-      //   onPressed: () => cubit.onItemTapped(2),
-      //   icon: CustomNavbarItemWidget(
-      //     activeIcon: AppSvg.moreIconWithBackground,
-      //     inActiveIcon: AppSvg.moreIcon,
-      //     isSelected: cubit.currentIndex == 2,
-      //     iconHeight: iconHeight,
-      //     iconWidth: iconWidth,
-      //     selectedItemHeight: selectedItemHeight,
-      //     selectedItemWidth: selectedItemWidth,
-      //     unselectedItemHeight: unselectedItemHeight,
-      //     unselectedItemWidth: unselectedItemWidth,
-      //   ),
-      // ),
-      // IconButton(
-      //   onPressed: () => cubit.onItemTapped(1),
-      //   icon: CustomNavbarItemWidget(
-      //     activeIcon: AppSvg.homeIconWithBackground,
-      //     inActiveIcon: AppSvg.homeIcon,
-      //     isSelected: cubit.currentIndex == 1,
-      //     iconHeight: iconHeight,
-      //     iconWidth: iconWidth,
-      //     selectedItemHeight: selectedItemHeight,
-      //     selectedItemWidth: selectedItemWidth,
-      //     unselectedItemHeight: unselectedItemHeight,
-      //     unselectedItemWidth: unselectedItemWidth,
-      //   ),
-      // ),
-      // IconButton(
-      //   onPressed: () => cubit.onItemTapped(0),
-      //   icon: CustomNavbarItemWidget(
-      //     activeIcon: AppSvg.yourGameIconWithBackground,
-      //     inActiveIcon: AppSvg.yourGameIcon,
-      //     isSelected: cubit.currentIndex == 0,
-      //     iconHeight: iconHeight,
-      //     iconWidth: iconWidth,
-      //     selectedItemHeight: selectedItemHeight,
-      //     selectedItemWidth: selectedItemWidth,
-      //     unselectedItemHeight: unselectedItemHeight,
-      //     unselectedItemWidth: unselectedItemWidth,
-      //   ),
-      // ),
+      Expanded(
+        child: IconButton(
+          onPressed: () => cubit.onItemTapped(3),
+          padding: EdgeInsets.zero,
+          icon: CustomNavbarItemWidget(
+            icon: AppSvg.auction,
+            label: AppStrings.myAuctions.tr,
+            isSelected: cubit.currentIndex == 3,
+            iconHeight: iconHeight ?? 24.h,
+            iconWidth: iconWidth ?? 24.w,
+            selectedItemHeight: selectedItemHeight,
+            selectedItemWidth: selectedItemWidth,
+            unselectedItemHeight: unselectedItemHeight,
+            unselectedItemWidth: unselectedItemWidth,
+          ),
+        ),
+      ),
+      Expanded(
+        child: IconButton(
+          onPressed: () => cubit.onItemTapped(2),
+          padding: EdgeInsets.zero,
+          icon: CustomNavbarItemWidget(
+            icon: AppSvg.wallet,
+            label: AppStrings.wallet.tr,
+            isSelected: cubit.currentIndex == 2,
+            iconHeight: iconHeight ?? 24.h,
+            iconWidth: iconWidth ?? 24.w,
+            selectedItemHeight: selectedItemHeight,
+            selectedItemWidth: selectedItemWidth,
+            unselectedItemHeight: unselectedItemHeight,
+            unselectedItemWidth: unselectedItemWidth,
+          ),
+        ),
+      ),
+      Expanded(
+        child: IconButton(
+          padding: EdgeInsets.zero,
+          onPressed: () => cubit.onItemTapped(1),
+          icon: CustomNavbarItemWidget(
+            icon: AppSvg.favourite,
+            label: AppStrings.favourite.tr,
+            isSelected: cubit.currentIndex == 1,
+            iconHeight: iconHeight ?? 24.h,
+            iconWidth: iconWidth ?? 24.w,
+            selectedItemHeight: selectedItemHeight,
+            selectedItemWidth: selectedItemWidth,
+            unselectedItemHeight: unselectedItemHeight,
+            unselectedItemWidth: unselectedItemWidth,
+          ),
+        ),
+      ),
+      Expanded(
+        child: IconButton(
+          padding: EdgeInsets.zero,
+          onPressed: () => cubit.onItemTapped(0),
+          icon: CustomNavbarItemWidget(
+            icon: AppSvg.logo,
+            label: AppStrings.home.tr,
+            isSelected: cubit.currentIndex == 0,
+            iconHeight: iconHeight ?? 24.h,
+            iconWidth: iconWidth ?? 34.w,
+            selectedItemHeight: selectedItemHeight,
+            selectedItemWidth: selectedItemWidth,
+            unselectedItemHeight: unselectedItemHeight,
+            unselectedItemWidth: unselectedItemWidth,
+          ),
+        ),
+      ),
     ];
   }
-}
-
-class CustomNavbarItemData {
-  final String activeIcon;
-  final String inActiveIcon;
-
-  CustomNavbarItemData({
-    required this.activeIcon,
-    required this.inActiveIcon,
-  });
 }

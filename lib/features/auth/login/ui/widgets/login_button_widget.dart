@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/app_core.dart';
 import '../../../../../core/navigation/custom_navigation.dart';
 import '../../../../../core/navigation/routes.dart';
 
+import '../../../../../core/services/toast_service.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_constant.dart';
 import '../../../../../core/utils/constant/app_strings.dart';
 import '../../../../../core/utils/enums/enums.dart';
 
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/utils/widgets/buttons/default_button.dart';
+import '../../../../nav_layout/cubit/navbar_layout_cubit.dart';
 import '../../../verify_code/data/params/verify_code_route_params.dart';
 import '../../logic/login_cubit.dart';
 import '../../logic/login_state.dart';
@@ -31,37 +34,46 @@ class LoginButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is LoginError || current is LoginSucess,
+          current is LoginError || current is LoginSuccess,
       listener: (context, state) {
         if (state is LoginError) {
-          showErrorSnackBar(state.error.message, error: state.error);
-          if (state.error.message == 'INACTIVE_ACCOUNT') {
+          ToastService.showCustom(
+            message: state.error.message,
+            context: context,
+            toastStatusType: ToastStatusType.error,
+            errorEntity: state.error,
+          );
+
+          if (state.error.message == 'INACTIVE_ACCOUNT' ||
+              state.error.statusCode == 405) {
             CustomNavigator.push(
               Routes.VERIFY_CODE_SCREEN,
               extra: VerifyCodeRouteParams(
                 phone: context.read<LoginCubit>().phone.text,
                 fromScreenEnum: VerifyCodeFromScreen.fromLogin,
-                countryCode: '+966',
+                countryCode: AppConstant.countryCode,
               ),
             );
           }
         }
-        if (state is LoginSucess) {
-          // if (state.loginEntity.message != null) {
-          //   showSuccessToast(state.loginEntity.message);
-          // }
+        if (state is LoginSuccess) {
           FocusScope.of(context).unfocus();
 
           if (state.loginEntity.userStatus == UserStatus.active) {
+            context.read<NavbarLayoutCubit>().onItemTapped(0);
             CustomNavigator.push(Routes.NAV_BAR_LAYOUT, clean: true);
           } else {
-            showErrorSnackBar('account is not active');
+            ToastService.showCustom(
+              message: 'account is not active',
+              context: context,
+              toastStatusType: ToastStatusType.warning,
+            );
           }
         }
       },
       buildWhen: (previous, current) =>
           current is LoginLoading ||
-          current is LoginSucess ||
+          current is LoginSuccess ||
           current is LoginError,
       builder: (context, state) {
         final cubit = context.read<LoginCubit>();
@@ -78,6 +90,8 @@ class LoginButtonWidget extends StatelessWidget {
           width: width,
           borderRadiusValue: borderRadiousValue,
           fontSize: fontSize,
+          textStyle: AppTextStyles.bodyXlBold
+              .copyWith(color: const Color.fromRGBO(255, 255, 255, 1)),
         );
       },
     );

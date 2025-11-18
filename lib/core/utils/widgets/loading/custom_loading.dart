@@ -1,60 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import '../../../assets/app_launchers.dart';
+import '../../../shared/widgets/custom_images.dart';
 import '../../extensions/media_query_helper.dart';
 import '../../../theme/colors/styles.dart';
 
 class CustomLoading extends StatelessWidget {
-  final bool? loading;
-  final margin;
-  final color;
-  final value;
-  final double? remain;
-  final double? height;
-  final bool isTextLoading;
-
-  const CustomLoading(
-      {super.key,
-      this.loading,
-      this.margin,
-      this.isTextLoading = false,
-      this.color,
-      this.value,
-      this.remain = 0.0,
-      this.height});
+  const CustomLoading({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (isTextLoading) {
-      return Visibility(
-        visible: loading ?? true,
-        child: const SizedBox(
-            height: 50,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Loading ... ',
-                    style: AppColors.SUB_HEADER_STYLE,
-                  )
-                ],
-              ),
-            )),
-      );
-    } else {
-      return Visibility(
-        visible: loading ?? true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: MediaQueryHelper.appMediaQueryViewPadding.bottom),
-          child: SizedBox(
-            height: height ?? MediaQueryHelper.height - remain!,
-            child: Center(
-                child: CircularProgressIndicator(
-              color: color ?? AppColors.kPrimary,
-            )),
-          ),
-        ),
-      );
-    }
+    return Center(
+        child: customImageIcon(
+      imageName: AppLaunchers.logo,
+      height: MediaQueryHelper.width * .5,
+      width: MediaQueryHelper.width * .5,
+      color: AppColors.kPrimary,
+    ).animate(onPlay: (controller) => controller.repeat()).shimmer(
+              duration: .5.seconds,
+            ));
   }
 }

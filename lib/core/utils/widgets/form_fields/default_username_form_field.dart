@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../theme/colors/styles.dart';
-import '../../../theme/radiuos/app_radiuos.dart';
+import '../../../theme/radius/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
+import '../../validations/validator.dart';
 import 'default_form_field.dart';
 
 class DefaultUsernameFormField extends StatelessWidget {
@@ -22,6 +22,10 @@ class DefaultUsernameFormField extends StatelessWidget {
     this.needUserName = true,
     this.hintText,
     this.titleText,
+    this.fillColor,
+    this.style,
+    this.titleStyle,
+    this.hintStyle,
   });
   final double? titleFontSize;
   final double? hintFontSize;
@@ -32,27 +36,28 @@ class DefaultUsernameFormField extends StatelessWidget {
   final bool needUserName;
   final String? titleText;
   final String? hintText;
+  final Color? fillColor;
+  final TextStyle? style;
+  final TextStyle? titleStyle;
+  final TextStyle? hintStyle;
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
       titleText: needUserName ? titleText ?? AppStrings.userName.tr : null,
-      hintStyle: AppTextStyles.balooBhaijaan2W400Size14GreyText3.copyWith(
-        fontSize: hintFontSize ?? 14,
-      ),
-      style: AppTextStyles.bodyXsReq.copyWith(
-        fontSize: titleFontSize ?? 14,
-        color: AppColors.kPrimary900,
-      ),
-      titleStyle: AppTextStyles.bodyXsReq.copyWith(
-        fontSize: titleFontSize,
-        color: AppColors.kGeryText,
-      ),
-      hintText: hintText ?? '${AppStrings.enterYourName.tr}...',
-      // validator: (value) => validateEmail(value),
-      borderRadious: borderRadious ?? AppRadiuos.rS,
+      hintText: hintText ?? AppStrings.enterYourName.tr,
+      borderRadius: borderRadious ?? AppRadius.rS,
       keyboardType: TextInputType.name,
       controller: controller,
       readOnly: readonly,
+      titleStyle: titleStyle ??
+          AppTextStyles.textMdRegular
+              .copyWith(color: const Color.fromRGBO(92, 92, 92, 1)),
+      style: style ??
+          AppTextStyles.textLgRegular
+              .copyWith(color: const Color.fromRGBO(46, 46, 46, 1)),
+      hintStyle: hintStyle,
+      validator: (value) => NameValidator.nameValidator(value),
+      fillColor: fillColor,
     );
   }
 }

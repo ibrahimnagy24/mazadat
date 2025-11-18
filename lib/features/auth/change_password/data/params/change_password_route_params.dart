@@ -1,9 +1,18 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../../../core/utils/enums/enums.dart';
+
 class ChangePasswordRouteParams extends Equatable {
-  const ChangePasswordRouteParams({required this.email});
-  final String email;
+  final String phone;
+  final String code;
+  final ChangePasswordFromScreen fromScreenEnum;
+
+  const ChangePasswordRouteParams({
+    required this.phone,
+    required this.code,
+    required this.fromScreenEnum,
+  });
 
   @override
-  List<Object?> get props => [email];
+  List<Object?> get props => [phone, code, fromScreenEnum];
 }

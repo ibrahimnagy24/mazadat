@@ -3,7 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: depend_on_referenced_packages
 import 'package:vector_math/vector_math_64.dart' as vector;
 
-import '../loading/adaptive_cirluer_progress.dart';
+import '../../../assets/app_svg.dart';
+import '../../../shared/widgets/custom_images.dart';
+import '../../../theme/text_styles/app_font_size_styles.dart';
+import '../../constant/app_strings.dart';
+import '../../extensions/extensions.dart';
+import '../loading/adaptive_circle_progress.dart';
 import '../../../theme/colors/styles.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -23,13 +28,15 @@ class DefaultButton extends StatelessWidget {
     this.textColor,
     this.isLoading = false,
     this.fontWeight,
-    this.height,
+    this.height = 50,
     this.width,
     this.borderWidth,
     this.maxheight,
     this.maxwidth,
     this.textStyle,
     this.animationDuration,
+    this.withSaudiRiyalSymbol = false,
+    this.isInActive = false,
   });
 
   final void Function()? onPressed;
@@ -45,6 +52,7 @@ class DefaultButton extends StatelessWidget {
   final WidgetStateProperty<BorderSide?>? side;
   final Color? textColor;
   final bool isLoading;
+  final bool isInActive;
   final FontWeight? fontWeight;
   final double? height;
   final double? width;
@@ -55,6 +63,8 @@ class DefaultButton extends StatelessWidget {
   final TextStyle? textStyle;
   final Duration? animationDuration;
 
+  final bool withSaudiRiyalSymbol;
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -62,7 +72,7 @@ class DefaultButton extends StatelessWidget {
             onTap: () {},
             duration: animationDuration ?? const Duration(milliseconds: 1500),
             width: width ?? MediaQuery.of(context).size.width,
-            height: height ?? 50.5,
+            height: height ?? 50,
             borderRadius: borderRadiusValue ?? 15,
             child: ElevatedButton(
               onPressed: isLoading ? () {} : onPressed ?? () {},
@@ -93,27 +103,31 @@ class DefaultButton extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'loading',
+                AppStrings.loading.tr,
                 style: textStyle ??
                     GoogleFonts.notoSans(
                       color: textColor ?? AppColors.kWhite,
-                      fontSize: fontSize ?? 15,
-                      fontWeight: fontWeight ?? FontWeight.w500,
+                      fontSize: fontSize ?? AppFontSizes.fsM,
+                      fontWeight: fontWeight ?? FontWeight.w700,
                     ),
               ),
             ),
           )
         : ElevatedButton(
-            onPressed: isLoading ? () {} : onPressed ?? () {},
+            onPressed: isInActive || isLoading ? null : onPressed ?? () {},
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(
-                  backgroundColor ?? AppColors.kPrimary),
+                isInActive
+                    ? AppColors.kDisable
+                    : backgroundColor ?? const Color.fromRGBO(81, 94, 50, 1),
+              ),
               side: side,
               minimumSize: WidgetStateProperty.all(Size(
-                  width ?? MediaQuery.of(context).size.width, height ?? 45)),
+                  width ?? MediaQuery.of(context).size.width, height ?? 50)),
               padding: WidgetStateProperty.all(
                   padding ?? const EdgeInsets.symmetric(horizontal: 5)),
-              elevation: WidgetStateProperty.all(elevation ?? 1),
+              elevation:
+                  WidgetStateProperty.all(isInActive ? 0 : elevation ?? .5),
               visualDensity: const VisualDensity(
                 horizontal: .9,
                 vertical: .8,
@@ -124,7 +138,11 @@ class DefaultButton extends StatelessWidget {
                   borderRadius: borderRadius ??
                       BorderRadius.circular(borderRadiusValue ?? 12),
                   side: BorderSide(
-                    color: borderColor ?? backgroundColor ?? AppColors.kPrimary,
+                    color: isInActive
+                        ? AppColors.kDisable
+                        : borderColor ??
+                            backgroundColor ??
+                            const Color.fromRGBO(81, 94, 50, 1),
                     width: borderWidth ?? 1,
                   ),
                 ),
@@ -133,14 +151,29 @@ class DefaultButton extends StatelessWidget {
             child: isLoading
                 ? const AdaptiveCircularProgress()
                 : child ??
-                    Text(
-                      text ?? 'LOGIN',
-                      style: textStyle ??
-                          GoogleFonts.notoSans(
-                            color: textColor ?? AppColors.kWhite,
-                            fontSize: fontSize ?? 15,
-                            fontWeight: fontWeight ?? FontWeight.w500,
+                    Row(
+                      spacing: 8.w,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            text ?? 'LOGIN',
+                            style: textStyle ??
+                                GoogleFonts.notoSans(
+                                  color: textColor ?? AppColors.kWhite,
+                                  fontSize: fontSize ?? AppFontSizes.fsM,
+                                  fontWeight: fontWeight ?? FontWeight.w700,
+                                ),
                           ),
+                        ),
+                        if (withSaudiRiyalSymbol == true)
+                          customImageIconSVG(
+                              imageName: AppSvg.saudiArabiaSymbol,
+                              width: fontSize ?? 16,
+                              height: fontSize ?? 16,
+                              color: textColor ?? AppColors.kWhite)
+                      ],
                     ),
           );
   }
@@ -164,7 +197,7 @@ class LoadingAnimatedButton extends StatefulWidget {
     required this.onTap,
     this.width = 200,
     this.height = 50,
-    this.color = Colors.indigo,
+    this.color = AppColors.kSecondary,
     this.borderColor = Colors.white,
     this.borderRadius = 24.0,
     this.borderWidth = 3.0,

@@ -1,5 +1,5 @@
 import 'package:rxdart/rxdart.dart';
-import '../../../features/auth/login/data/entity/user_entity.dart';
+import '../../../features/user/data/entity/user_entity.dart';
 import '../../services/cache/shared_helper.dart';
 import '../../translation/all_translation.dart';
 import '../../utils/utility.dart';

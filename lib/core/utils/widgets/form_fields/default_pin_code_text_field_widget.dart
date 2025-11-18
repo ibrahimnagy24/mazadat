@@ -4,8 +4,9 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../core/theme/colors/styles.dart';
 import '../../../shared/blocs/main_app_bloc.dart';
-import '../../../theme/radiuos/app_radiuos.dart';
+import '../../../theme/radius/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
+import '../../validations/validator.dart';
 
 class DefaultPinCodeTextFieldWidget extends StatelessWidget {
   const DefaultPinCodeTextFieldWidget({
@@ -22,7 +23,7 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
     //default 14
     this.hintFontSize,
     //default 24
-    this.borderRadious,
+    this.borderRadius,
     this.fieldHeight,
     this.fieldWidth,
   });
@@ -36,7 +37,7 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
   final bool readOnly;
   final double? fontSize;
   final double? hintFontSize;
-  final double? borderRadious;
+  final double? borderRadius;
   final double? fieldHeight;
   final double? fieldWidth;
 
@@ -50,14 +51,19 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
       hapticFeedbackTypes: HapticFeedbackTypes.light,
       useHapticFeedback: true,
       cursorColor: AppColors.kGeryText6,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       enablePinAutofill: true,
       autoDismissKeyboard: true,
       enabled: enabled,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      hintStyle: AppTextStyles.bodySReq.copyWith(fontSize: hintFontSize ?? 14),
-      textStyle: AppTextStyles.bodySReq
-          .copyWith(fontSize: fontSize, color: AppColors.kPrimary900),
+      hintStyle: AppTextStyles.heading.copyWith(
+          fontSize: hintFontSize ?? 14,
+          color: AppColors.textSecondaryParagraph),
+      textStyle: AppTextStyles.heading.copyWith(
+        fontSize: fontSize ?? 16,
+        color: AppColors.kPrimary,
+        fontWeight: FontWeight.w700,
+      ),
       controller: TextEditingController(text: controller?.text ?? ''),
       onSaved: onSave,
       onCompleted: onCompleted,
@@ -67,20 +73,20 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
       enableActiveFill: true,
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
-        borderRadius: BorderRadius.circular(borderRadious ?? AppRadiuos.rS),
+        borderRadius: BorderRadius.circular(borderRadius ?? AppRadius.rS),
         fieldOuterPadding: const EdgeInsets.all(0),
         fieldHeight: fieldHeight ?? 60,
         fieldWidth: fieldWidth ?? 60,
         borderWidth: 1,
         activeBorderWidth: 1,
         inactiveBorderWidth: 1,
-        selectedBorderWidth: 2,
-        inactiveColor: AppColors.kOpacityGrey,
-        inactiveFillColor: Colors.white,
-        activeColor: AppColors.kOpacityGrey,
-        selectedColor: AppColors.kPrimary300,
-        activeFillColor: Colors.white,
-        selectedFillColor: Colors.white.withOpacity(.5),
+        selectedBorderWidth: 1,
+        inactiveColor: AppColors.borderNeutralSecondary,
+        activeColor: AppColors.borderNeutralSecondary,
+        selectedColor: AppColors.kPrimary,
+        inactiveFillColor: AppColors.fillColor,
+        activeFillColor: AppColors.fillColor,
+        selectedFillColor: AppColors.fillColor,
       ),
       errorTextDirection:
           mainAppBloc.isArabic ? TextDirection.rtl : TextDirection.ltr,
@@ -93,8 +99,7 @@ class DefaultPinCodeTextFieldWidget extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
       ],
       appContext: context,
-      validator: (value) =>
-          value!.isEmpty ? 'AppStrings.thisFieldIsRequired.tr' : null,
+      validator: OTPValidator.otpValidator,
     );
   }
 }

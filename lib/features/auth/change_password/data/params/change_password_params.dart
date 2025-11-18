@@ -3,23 +3,20 @@ import 'package:equatable/equatable.dart';
 class ChangePasswordParams extends Equatable {
   const ChangePasswordParams({
     required this.newPassword,
-    required this.comfirmPassword,
-    required this.email,
+    required this.oldPassword,
   });
   final String newPassword;
-  final String comfirmPassword;
-  final String email;
+  final String oldPassword;
 
   Map<String, dynamic> returnedMap() {
     Map<String, dynamic> map = {
       'password': newPassword,
-      'password_confirmation': comfirmPassword,
-      'email': email,
+      'oldPassword': oldPassword,
     };
     map.removeWhere((key, value) => value == null);
     return map;
   }
 
   @override
-  List<Object?> get props => [newPassword, comfirmPassword];
+  List<Object?> get props => [newPassword, oldPassword];
 }

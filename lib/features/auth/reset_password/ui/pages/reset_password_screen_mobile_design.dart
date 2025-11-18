@@ -1,49 +1,57 @@
 part of '../widgets/reset_password_imports.dart';
 
-class ResetPasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
-  const ResetPasswordScreenMobilePortraitDesignScreen({super.key});
+class RestPasswordScreenMobilePortraitDesignScreen extends StatelessWidget {
+  const RestPasswordScreenMobilePortraitDesignScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
-        child: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomBackIcon(),
-            const SizedBox(height: 16),
-            MainText(
-              text: AppStrings.confirmMobileNumber.tr,
-              style: AppTextStyles.headingLBold
-                  .copyWith(color: AppColors.kOpacityBlack),
-            ),
-            const SizedBox(height: 16),
-            MainText(
-              text:
-                  '${AppStrings.pleaseEnterYourMobileNumberToSendNumVeri.tr}.',
-              style:
-                  AppTextStyles.bodySReq.copyWith(color: AppColors.kGeryText4),
-            ),
-            const SizedBox(height: 28),
-            BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
-              buildWhen: (previous, current) =>
-                  current is ResetPasswordLoading ||
-                  current is ResetPasswordSucess ||
-                  current is ResetPasswordError,
-              builder: (context, state) {
-                return DefaultPhoneFormField(
-                  controller: context.read<ResetPasswordCubit>().phone,
-                  readOnly: state is ResetPasswordLoading,
-                );
-              },
-            ),
-            64.sbH,
-            const ResetPasswordButtonWidget(),
-          ],
+      backgroundColor: AppColors.scaffoldBackground,
+      appbar: PreferredSize(
+        preferredSize: const Size.fromHeight(0),
+        child: AppBar(
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: AppColors.scaffoldBackground,
+            statusBarIconBrightness: Brightness.dark,
+          ),
         ),
       ),
-    ));
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+              const CustomBackIcon(),
+              const SizedBox(height: 16),
+              AuthHeaderContent(
+                title: AppStrings.resetPassword.tr,
+              ),
+              const SizedBox(height: 24),
+              DefaultPasswordFormField(
+                controller: context.read<ResetPasswordCubit>().password,
+                titleText: AppStrings.newPassword.tr,
+                hintText: '*******',
+                needPasswordStrength: true,
+              ),
+              const SizedBox(height: 16),
+              DefaultPasswordFormField(
+                controller: context.read<ResetPasswordCubit>().confirmPassword,
+                titleText: AppStrings.confirmNewPassword.tr,
+                hintText: '*******',
+                validator: (value) =>
+                    PasswordConfirmationValidator.passwordValidator(
+                  context.read<ResetPasswordCubit>().password.text,
+                  value,
+                ),
+              ),
+              const SizedBox(height: 40),
+              const ResetPasswordButtonWidget(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

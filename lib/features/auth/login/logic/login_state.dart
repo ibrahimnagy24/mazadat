@@ -1,5 +1,5 @@
 import '../../../../core/shared/entity/error_entity.dart';
-import '../data/entity/user_entity.dart';
+import '../../../user/data/entity/user_entity.dart';
 
 sealed class LoginState {
   const LoginState();
@@ -11,8 +11,8 @@ final class LoginLoading extends LoginState {
   const LoginLoading();
 }
 
-final class LoginSucess extends LoginState {
-  const LoginSucess(this.loginEntity);
+final class LoginSuccess extends LoginState {
+  const LoginSuccess(this.loginEntity);
   final UserEntity loginEntity;
 }
 

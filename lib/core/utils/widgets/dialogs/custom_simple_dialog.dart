@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../navigation/custom_navigation.dart';
+import '../../../theme/colors/styles.dart';
+import '../../extensions/extensions.dart';
 
 class CustomSimpleDialog {
   static parentSimpleDialog(
@@ -14,21 +16,24 @@ class CustomSimpleDialog {
             scale: a1.value,
             child: Opacity(
               opacity: a1.value,
-              child: AlertDialog(
-                insetPadding: contentPadding,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(radius ?? 10)),
+              child: SafeArea(
+                child: SimpleDialog(
+                  insetPadding: contentPadding ?? EdgeInsets.zero,
+                  alignment: Alignment.bottomCenter,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(radius ?? 24),
+                  ),
+                  elevation: 3,
+                  contentPadding: EdgeInsets.all(24.w),
+                  backgroundColor: AppColors.kWhite,
+                  children: [customListWidget],
                 ),
-                elevation: 3,
-                contentPadding: const EdgeInsets.all(5),
-                // children: [customListWidget],
-                content: customListWidget,
               ),
             ),
           );
         },
         transitionDuration: const Duration(milliseconds: 300),
-        barrierDismissible: isDismissible ?? true,
+        barrierDismissible: isDismissible ?? false,
         barrierLabel: '',
         context: CustomNavigator.context,
         // ignore: missing_return

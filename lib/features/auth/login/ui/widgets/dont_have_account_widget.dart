@@ -14,22 +14,27 @@ class DontHaveAccountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        MainText(
-          text: AppStrings.donthaveanaccount.tr,
-          style: AppTextStyles.bodyXsReq.copyWith(color: AppColors.kGeryText3),
-        ),
-        const SizedBox(width: 5),
-        MainText(
-          text: AppStrings.createANewAccount.tr,
-          style: AppTextStyles.bodyXsMed,
-          onTap: () {
-            CustomNavigator.push(Routes.REGISTER_SCREEN);
-          },
-        ),
-      ],
+    return SafeArea(
+      top: false,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MainText(
+            text: AppStrings.donthaveanaccount.tr,
+            style: AppTextStyles.textMdRegular
+                .copyWith(color: const Color.fromRGBO(116, 116, 116, 1)),
+          ),
+          const SizedBox(width: 5),
+          MainText(
+            text: AppStrings.createANewAccount.tr,
+            style: AppTextStyles.textMdBold
+                .copyWith(color: AppColors.textPrimaryColor),
+            onTap: () {
+              CustomNavigator.push(Routes.REGISTER_SCREEN);
+            },
+          ),
+        ],
+      ),
     );
   }
 }

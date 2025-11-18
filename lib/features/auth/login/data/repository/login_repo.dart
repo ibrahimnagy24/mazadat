@@ -4,8 +4,8 @@ import '../../../../../core/app_config/api_names.dart';
 import '../../../../../core/services/error_handler/error_handler.dart';
 import '../../../../../core/services/network/network_helper.dart';
 import '../../../../../core/shared/entity/error_entity.dart';
-import '../entity/user_entity.dart';
-import '../model/user_model.dart';
+import '../../../../user/data/entity/user_entity.dart';
+import '../../../../user/data/model/user_model.dart';
 import '../params/login_params.dart';
 
 abstract class LoginRepo {

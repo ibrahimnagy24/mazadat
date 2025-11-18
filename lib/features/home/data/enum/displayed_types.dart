@@ -1,0 +1,1 @@
+enum HomeDisplayedTypes { list, grid }

@@ -1,0 +1,1 @@
+enum ToggleFavoriteAuctions { FAVORITE, UNFAVORITE }

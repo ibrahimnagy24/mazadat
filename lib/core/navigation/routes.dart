@@ -8,18 +8,52 @@ class Routes {
 //---------------------------------------MORE---------------------------\\
   static const SETTINGS_SCREEN = 'SETTINGS_SCREEN';
   static const STATIC_PAGE = 'STATIC_PAGE';
+  static const CONTACT_US = 'CONTACT_US';
+  static const FAQ = 'FAQ';
   //------------------------------------AUTHENTICATION---------------------------\\
   static const LOGIN_SCREEN = 'LOGIN_SCREEN';
   static const REGISTER_SCREEN = 'REGISTER_SCREEN';
   static const CHOOSE_FAV_CATEGORY = 'CHOOSE_FAV_CATEGORY';
   // static const VISITOR_LOGIN_SCREEN = 'VISITOR_LOGIN_SCREEN';
-  static const RESET_PASSWORD_SCREEN = 'RESET_PASSWORD_SCREEN';
+  static const CHANGE_PHONE_NUMBER_SCREEN = 'CHANGE_PHONE_NUMBER_SCREEN';
+  static const FORGET_PASSWORD_SCREEN = 'FORGET_PASSWORD_SCREEN';
   static const VERIFY_CODE_SCREEN = 'VERIFY_CODE_SCREEN';
+  static const RESET_PASSWORD_SCREEN = 'RESET_PASSWORD_SCREEN';
   static const CHANGE_PASSWORD_SCREEN = 'CHANGE_PASSWORD_SCREEN';
-  static const CHANGE_PASSWORD_SUCCESS_SCREEN =
-      'CHANGE_PASSWORD_SUCCESS_SCREEN';
   //--------------------------------------MISC---------------------------\\
   static const ZOOM_IN_IMAGE = 'ZOOM_IN_IMAGE';
   //-----------------------------------VIEW AUCTION---------------------------\\
-  static const VIEW_AUCTION = 'VIEW_AUCTION';
+  // static const AUCTION_DETAILS = 'VIEW_AUCTION';
+  // static const VIEW_BUNDLES = 'VIEW_BUNDLES';
+  static const BUNDLE_DETAILS = 'BUNDLE_DETAILS';
+  // static const PREVIEW_AUCTION = 'PREVIEW_AUCTION';
+  static const VIEW_AUCTION_DETAILS = 'VIEW_AUCTION_DETAILS';
+
+  //-----------------------------------SEARCH---------------------------\\
+  static const SEARCH = 'SEARCH';
+
+  //-----------------------------------MORE---------------------------\\
+  static const MORE = 'MORE';
+  static const PROFILE = 'PROFILE';
+  static const EDIT_PROFILE = 'EDIT_PROFILE';
+  static const EDIT_BANK_DETAILS = 'EDIT_BANK_DETAILS';
+  static const EDIT_FAVOURITES_CATEGORIES = 'EDIT_FAVOURITES_CATEGORIES';
+  static const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+  static const MY_BUNDLES = 'MY_BUNDLES';
+  static const MY_SALES = 'MY_SALES';
+  static const MY_PURCHASES = 'MY_PURCHASES';
+  static const VIEW_ORDER_DETAILS = 'VIEW_ORDER_DETAILS';
+  //-----------------------------------ADDRESSES---------------------------\\
+  static const ADDRESSES = 'ADDRESSES';
+  static const ADD_ADDRESSES = 'ADD_ADDRESSES';
+  //-----------------------------------WALLET---------------------------\\
+  static const VIEW_WALLET_HISTORY = 'VIEW_WALLET_HISTORY';
+//-----------------------------------CHECKOUT---------------------------\\
+  static const CHECKOUT_ADDRESS = 'CHECKOUT_ADDRESS';
+  static const CHECKOUT_SUMMARY = 'CHECKOUT_SUMMARY';
+  static const CHECKOUT_CHOOSE_PAYMENT = 'CHECKOUT_CHOOSE_PAYMENT';
+  static const SHIPMENT_ORDER_DETAILS = 'SHIPMENT_ORDER_DETAILS';
+  //-----------------------------------VIDEO---------------------------\\
+  static const FULL_SCREEN_VIDEO_PLAYER = 'FULL_SCREEN_VIDEO_PLAYER';
+  static const NOTIFICATIONS = 'NOTIFICATIONS';
 }

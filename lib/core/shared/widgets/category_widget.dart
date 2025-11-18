@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../features/auth/choose_category/data/entity/category_entity.dart';
+import '../../utils/enums/enums.dart';
+import '../../../features/category/data/entity/category_entity.dart';
 import '../../assets/app_svg.dart';
 import '../../theme/colors/styles.dart';
-import '../../theme/radiuos/app_radiuos.dart';
+import '../../theme/radius/app_radius.dart';
 import '../../theme/text_styles/text_styles.dart';
+import '../../utils/extensions/extensions.dart';
 import '../../utils/widgets/misc/default_network_image.dart';
 import '../../utils/widgets/text/main_text.dart';
 
@@ -15,12 +17,14 @@ class CategoryWidget extends StatelessWidget {
     super.key,
     required this.category,
     this.onTap,
-    required this.isSelected,
+    this.isSelected = false,
     this.animationDuration,
     this.type = CategoryWidgetType.type1,
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.textStyle,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -30,6 +34,8 @@ class CategoryWidget extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final TextStyle? textStyle;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     switch (type) {
@@ -42,6 +48,7 @@ class CategoryWidget extends StatelessWidget {
           height: height,
           width: width,
           borderRadiusValue: borderRadiusValue,
+          fillColor: fillColor,
         );
       case CategoryWidgetType.type2:
         return _CategoryWidgetTypeTwo(
@@ -52,12 +59,30 @@ class CategoryWidget extends StatelessWidget {
           height: height,
           width: width,
           borderRadiusValue: borderRadiusValue,
+          fillColor: fillColor,
+        );
+
+      case CategoryWidgetType.type3:
+        return _CategoryWidgetTypeThree(
+          onTap: onTap,
+          category: category,
+          isSelected: isSelected,
+          animationDuration: animationDuration,
+          height: height,
+          width: width,
+          borderRadiusValue: borderRadiusValue,
+          textStyle: textStyle,
+          fillColor: fillColor,
         );
     }
   }
 }
 
-enum CategoryWidgetType { type1, type2 }
+enum CategoryWidgetType {
+  type1,
+  type2,
+  type3,
+}
 
 class _CategoryWidgetTypeOne extends StatelessWidget {
   const _CategoryWidgetTypeOne({
@@ -68,6 +93,7 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -76,6 +102,8 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final Color? fillColor;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -84,29 +112,26 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
         height: height ?? 118,
         width: width,
         decoration: BoxDecoration(
-          color: AppColors.kWhite,
+          color: fillColor ?? AppColors.kWhite,
           border: Border.all(
-            color: isSelected ? AppColors.kPrimary500 : AppColors.kOpacityGrey2,
+            color: isSelected ? AppColors.kPrimary : AppColors.kOpacityGrey2,
           ),
           borderRadius:
-              BorderRadius.circular(borderRadiusValue ?? AppRadiuos.rS),
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
         ),
         child: Stack(
           children: [
             Column(
               children: [
-                if (category.iconUrl != null)
-                  const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 2,
-                      ),
-                      child: DefaultNetworkImage(
-                        'https://s3-alpha-sig.figma.com/img/15ee/3809/2df2c095f32b4e47de6b3ee5c7010b6e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=gc4cjxWa0QCfoKQPgdE4~G~wUYhYdkpkD8lF2aIDLFtaKEHsOoWlFfHU~jwUWn0RJFhdVHAcq4FUd~vM0q3k-5CeFPUdMMNEhnq6NQszQrdcM-RUfVT6tQam6CvaK-5A-wZyCJg3wKJXXjOxyPhptuRj3ngp74bLuWlkJEn1QzvnBX17NFoCXakTmSevXN-XlBfUa8acgEyEvknGYPtIp9ZRT4JCedd73-ni~3clcKATAryWOjKiKeyyq5usLh1yf-3aDsVYcBILrVqQStfNZ2eAJXtNGYckSF7CFNpjHdvtsVZ4woCwrUwdMHnlSBGvbM5DGtM3Kp9BZeJYMHrwcQ__', // cubit.allCategories![index].iconUrl!,
-                      ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 2,
                     ),
+                    child: DefaultNetworkImage(category.iconUrl ?? ''),
                   ),
+                ),
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
                     bottom: 12,
@@ -118,24 +143,24 @@ class _CategoryWidgetTypeOne extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: isSelected
-                        ? AppTextStyles.bodyXsMed
-                            .copyWith(color: AppColors.kPrimary500)
-                        : AppTextStyles.bodyXsReq
-                            .copyWith(color: AppColors.kGeryText9),
+                        ? AppTextStyles.textMdBold
+                            .copyWith(color: AppColors.kPrimary)
+                        : AppTextStyles.textMdRegular
+                            .copyWith(color: AppColors.textSecondaryParagraph),
                   ),
                 )
               ],
             ).animate().fadeIn(delay: animationDuration),
             if (isSelected)
-              Positioned(
-                top: 5,
-                right: 5,
+              PositionedDirectional(
+                top: 5.w,
+                end: 5.w,
                 child: SvgPicture.asset(
-                  AppSvg.checkRightCircle,
-                  height: 21,
-                  width: 21,
-                ),
-              ).animate().fadeIn()
+                  AppSvg.tickCheck,
+                  height: 20.w,
+                  width: 20.w,
+                ).animate().fadeIn(),
+              ),
           ],
         ),
       ),
@@ -152,6 +177,7 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadiusValue,
+    this.fillColor,
   });
   final void Function()? onTap;
   final CategoryEntity category;
@@ -160,70 +186,138 @@ class _CategoryWidgetTypeTwo extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadiusValue;
+  final Color? fillColor;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: height ?? 118,
+        height: height ?? 120,
         width: width,
+        margin: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
-          color: AppColors.kWhite,
+          color: fillColor ?? AppColors.kWhite,
           border: Border.all(
-            color: isSelected ? AppColors.kPrimary500 : AppColors.kOpacityGrey2,
+            color: isSelected
+                ? AppColors.kPrimary500
+                : AppColors.borderNeutralSecondary,
             width: isSelected ? 1.5 : .6,
           ),
           borderRadius:
-              BorderRadius.circular(borderRadiusValue ?? AppRadiuos.rS),
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rMD),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            if (category.iconUrl != null)
-              const Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 4,
-                  ),
-                  child: DefaultNetworkImage(
-                    'https://s3-alpha-sig.figma.com/img/15ee/3809/2df2c095f32b4e47de6b3ee5c7010b6e?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=gc4cjxWa0QCfoKQPgdE4~G~wUYhYdkpkD8lF2aIDLFtaKEHsOoWlFfHU~jwUWn0RJFhdVHAcq4FUd~vM0q3k-5CeFPUdMMNEhnq6NQszQrdcM-RUfVT6tQam6CvaK-5A-wZyCJg3wKJXXjOxyPhptuRj3ngp74bLuWlkJEn1QzvnBX17NFoCXakTmSevXN-XlBfUa8acgEyEvknGYPtIp9ZRT4JCedd73-ni~3clcKATAryWOjKiKeyyq5usLh1yf-3aDsVYcBILrVqQStfNZ2eAJXtNGYckSF7CFNpjHdvtsVZ4woCwrUwdMHnlSBGvbM5DGtM3Kp9BZeJYMHrwcQ__', // cubit.allCategories![index].iconUrl!,
-                  ),
-                ),
-              ),
             Padding(
-              padding: const EdgeInsetsDirectional.only(
-                bottom: 6,
-                start: 4,
-                end: 4,
+              padding: const EdgeInsets.symmetric(
+                vertical: 4,
+                horizontal: 4,
+              ),
+              child: category.categoryType == CategoryTypes.bundle
+                  ? SvgPicture.asset(
+                      AppSvg.package,
+                      color: isSelected
+                          ? AppColors.iconColor
+                          : AppColors.textSecondaryParagraph,
+                      fit: BoxFit.contain,
+                      height: 28,
+                      width: 28,
+                    )
+                  : DefaultNetworkImage(
+                      category.iconUrl ?? '',
+                      height: 38,
+                      width: 54,
+                    ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.symmetric(
+                vertical: 10,
+                horizontal: 10,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  MainText(
-                    text: category.name,
-                    textAlign: TextAlign.center,
+                  Text(
+                    category.name,
                     maxLines: 1,
+                    textAlign: TextAlign.center,
                     style: isSelected
-                        ? AppTextStyles.bodyXsMed
+                        ? AppTextStyles.textMdBold
                             .copyWith(color: AppColors.kPrimary500)
-                        : AppTextStyles.bodyXsReq
-                            .copyWith(color: AppColors.kGeryText9),
+                        : AppTextStyles.textMdRegular
+                            .copyWith(color: AppColors.textSecondaryParagraph),
                   ),
                   if (isSelected)
                     Container(
+                      margin: const EdgeInsets.only(top: 4),
                       height: 3,
-                      width: 12,
+                      width: 15,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(100),
                         color: AppColors.kPrimary300,
                       ),
-                    ).animate().scale(),
+                    ),
                 ],
               ),
             )
           ],
-        ).animate().fadeIn(delay: animationDuration),
+        ),
       ),
     );
+  }
+}
+
+class _CategoryWidgetTypeThree extends StatelessWidget {
+  const _CategoryWidgetTypeThree({
+    required this.onTap,
+    required this.category,
+    required this.isSelected,
+    this.animationDuration,
+    this.height,
+    this.width,
+    this.borderRadiusValue,
+    this.textStyle,
+    this.fillColor,
+  });
+  final void Function()? onTap;
+  final CategoryEntity category;
+  final bool isSelected;
+  final Duration? animationDuration;
+  final double? height;
+  final double? width;
+  final double? borderRadiusValue;
+  final TextStyle? textStyle;
+  final Color? fillColor;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        height: height,
+        width: width,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: fillColor ?? AppColors.kWhite,
+          border: Border.all(
+            color: isSelected
+                ? AppColors.borderPrimary
+                : AppColors.borderNeutralSecondary,
+            width: isSelected ? 1.5 : .6,
+          ),
+          borderRadius:
+              BorderRadius.circular(borderRadiusValue ?? AppRadius.rS),
+        ),
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          style: textStyle ?? AppTextStyles.textMdRegular,
+          child: Text(category.name),
+        ),
+      ),
+    ).animate().fadeIn(delay: animationDuration);
   }
 }

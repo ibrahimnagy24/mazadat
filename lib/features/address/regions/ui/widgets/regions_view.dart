@@ -1,0 +1,213 @@
+import 'package:flutter/material.dart';
+import '../../../../../core/theme/colors/styles.dart';
+import '../../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../../core/utils/constant/app_strings.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../core/utils/extensions/media_query_helper.dart';
+import '../../../../../core/utils/widgets/text/main_text.dart';
+import '../../data/entity/region_entity.dart';
+
+class RegionsView extends StatefulWidget {
+  const RegionsView({
+    super.key,
+    required this.data,
+    this.initialValue,
+    this.onSelect,
+    required this.modalContext,
+    this.showSearch = true,
+  });
+  final List<RegionEntity> data;
+  final int? initialValue;
+  final Function(RegionEntity)? onSelect;
+  final BuildContext modalContext;
+  final bool showSearch;
+
+  @override
+  State<RegionsView> createState() => _RegionsViewState();
+}
+
+class _RegionsViewState extends State<RegionsView> {
+  int? _selectedItem;
+  final TextEditingController _searchController = TextEditingController();
+  List<RegionEntity> _filteredData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _selectedItem = widget.initialValue;
+      _filteredData = widget.data;
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterRegions(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredData = widget.data;
+      } else {
+        _filteredData = widget.data
+            .where((region) =>
+                region.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: 24,
+          right: 24,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 5,
+              width: 60,
+              margin: const EdgeInsets.symmetric(vertical: 16),
+              decoration: BoxDecoration(
+                color: const Color.fromRGBO(46, 46, 46, 1),
+                borderRadius: BorderRadius.circular(100),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MainText(
+                  text: AppStrings.selectRegion.tr,
+                  style: AppTextStyles.textLMedium,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.close,
+                    color: Color.fromRGBO(22, 22, 22, 1),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            if (widget.showSearch) ...[
+              TextField(
+                controller: _searchController,
+                onChanged: _filterRegions,
+                decoration: InputDecoration(
+                  hintText: AppStrings.search.tr,
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: AppColors.border),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: AppColors.border),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide:
+                        const BorderSide(color: Color.fromRGBO(81, 94, 50, 1)),
+                  ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
+            Flexible(
+              child: SafeArea(
+                top: false,
+                left: false,
+                right: false,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.6,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(
+                        _filteredData.length,
+                        (index) => Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() =>
+                                    _selectedItem = _filteredData[index].id);
+                                widget.onSelect?.call(_filteredData[index]);
+                              },
+                              child: Container(
+                                height: 56,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: (_filteredData.length - 1) == index
+                                          ? Colors.transparent
+                                          : AppColors.border,
+                                    ),
+                                  ),
+                                ),
+                                width: MediaQueryHelper.width,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        _filteredData[index].name,
+                                        style: AppTextStyles.textXLMedium,
+                                      ),
+                                    ),
+                                    Icon(
+                                      _selectedItem == _filteredData[index].id
+                                          ? Icons.radio_button_checked
+                                          : Icons.radio_button_off,
+                                      size: 24,
+                                      color: _selectedItem ==
+                                              _filteredData[index].id
+                                          ? const Color.fromRGBO(81, 94, 50, 1)
+                                          : const Color.fromRGBO(
+                                              162, 162, 162, 1),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            if (_filteredData.length - 1 != index)
+                              const Divider(
+                                height: 1,
+                                thickness: 1,
+                                color: Color.fromRGBO(232, 232, 232, 1),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+          ],
+        ),
+      ),
+    );
+  }
+}

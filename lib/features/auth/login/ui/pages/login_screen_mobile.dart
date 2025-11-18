@@ -16,41 +16,49 @@ class LoginScreenMobilePortraitDesignScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AuthTitleImageBannerWidget(
-              title: AppStrings.welcome.tr,
-              subtitle:
-                  AppStrings.loginAndStartBiddingOnExclusiveOpportunities.tr,
-            ),
+            const AuthTitleImageBannerWidget(),
             Expanded(
               child: Transform.translate(
                 offset: const Offset(0, -20),
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: AppColors.kWhite,
+                    color: AppColors.background,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(16),
-                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(24),
+                      topLeft: Radius.circular(24),
                     ),
                   ),
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: 24),
+                        AuthHeaderContent(
+                          title: AppStrings.loginHeader.tr,
+                          subtitle: AppStrings.loginSubHeader.tr,
+                        ),
+                        const SizedBox(height: 24),
                         DefaultPhoneFormField(
                           controller: context.read<LoginCubit>().phone,
                         ),
-                        12.sbH,
+                        const SizedBox(height: 16),
                         DefaultPasswordFormField(
                           controller: context.read<LoginCubit>().password,
+                          validator: (value) => value == null || value.isEmpty
+                              ? AppStrings.thisFieldIsRequired.tr
+                              : null,
                         ),
-                        5.sbH,
-                        const LoginRememberMeWidget(),
-                        40.sbH,
+                        const SizedBox(height: 6),
+                        const ForgotPasswordTextWidget(),
+                        const SizedBox(height: 32),
                         const LoginButtonWidget(),
-                        12.sbH,
+                        const SizedBox(height: 24),
+                        const OrTextWidget(),
+                        const SizedBox(height: 24),
+                        const LoginAsVisitorButtonWidget(),
+                        const SizedBox(height: 24),
                         const DontHaveAccountWidget(),
-                        16.sbH,
-                        const LoginAsVisitorTextWidget(),
                       ],
                     ),
                   ),

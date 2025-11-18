@@ -1,28 +1,47 @@
 class AppStrings {
-  static const String firstName = 'First name';
   static const String welcomeToTheWorldOfAuctions =
       'Welcome to the world of auctions';
   static const String registerYourAccountAndStayCloseToTheStrongestAuctions =
       'Register your account and stay close to the strongest auctions';
+  static const String willBeAvailableAt = 'Will be available at';
   static const String welcome = 'Welcome';
-  static const String loginAndStartBiddingOnExclusiveOpportunities =
-      'Log in and start bidding on exclusive opportunities.';
+  static const String loginHeader = 'loginHeader';
+  static const String loginSubHeader = 'loginSubHeader';
+
+  static const String registerHeader = 'new account';
+
   static const String mobileNumber = 'Mobile number';
   static const String rememberMe = 'Remember me';
   static const String donthaveanaccount = "Don't have an account?";
   static const String loginAsAVisitor = 'Login as a visitor';
+  static const String or = 'or';
   static const String example = 'Example';
+
+  static const String firstName = 'First name';
+  static const String fullName = 'Full name';
+  static const String enterNameHere = 'Enter name here';
+  static const String enterFirstName = 'Enter first name';
   static const String lastName = 'Last name';
+  static const String enterLastName = 'Enter last name';
   static const String alreadyHaveAnAccount = 'Already have an account?';
+  static const String youAgreeAndHaveRead = 'You agree and have read';
+  static const String ourTermsAndPrivacyPolicy = 'our Terms and Privacy Policy';
+  static const String termsAndPrivacyPolicy = 'Terms and Privacy Policy';
+
   static const String veryStrong = 'Very Strong';
   static const String verificationCode = 'verification code';
   static const String a4DigitVerificationCodeHasBeenSent =
-      'A 4-digit verification code has been sent to your mobile number.';
+      'A 4-digit verification code has been sent to your mobile number';
+  static const String changePhoneNumber = 'Change Phone Number';
   static const String confirmMobileNumber = 'Confirm mobile number';
-  static const String pleaseEnterYourMobileNumberToSendNumVeri =
+  static const String pleaseEnterYourMobileNumberToSendNumVerify =
       'Please enter your mobile number to send a phone number confirmation message';
+
+  static const String otpValidation = 'Please, Enter Valid code';
+
   static const String Continue = 'Continue';
-  static const String chooseYourFavouriteList = 'Choose your favorite list';
+  static const String next = 'next';
+  static const String chooseYourFavouriteList = 'Choose your favorite category';
   static const String chooseYourFavouriteListSubtitle =
       'Choose the categories that interest you and enter the world of auctions with a unique experience.';
   static const String skip = 'Skip';
@@ -32,32 +51,378 @@ class AppStrings {
   static const String viewAll = 'View all';
   static const String endsYet = 'Ends yet';
   static const String auctionDuration = 'Auction duration';
+  static const String auctionStartDate = 'Auction Start Date';
+  static const String auctionEndDate = 'Auction End Date';
+  static const String startDate = 'Start Date';
+  static const String endDate = 'End Date';
   static const String openingPrice = 'Opening price';
   static const String insuranceAmount = 'Insurance amount';
   static const String bidding = 'Bidding';
+  static const String newBidding = 'New Bidding';
+  static const String bid = 'Bid';
+  static const String bidWith = 'Bid with';
   static const String packages = 'Packages';
   static const String featuredAuctions = 'Featured Auctions';
   static const String currentAuctions = 'Current auctions';
   static const String upcomingAuctions = 'Upcoming auctions';
   static const String numberOfAuctions = 'Number of auctions';
   static const String auctions = 'auctions';
+  static const String auctionNumber = 'Auction Number';
+  static const String auctionsNumber = 'Auctions Number';
+  static const String bundle = 'Bundle';
+  static const String bundles = 'Bundles';
   static const String totalInsuranceAmount = 'Total insurance amount';
   static const String availablePackages = 'Available packages';
   static const String enterYourPhone = 'Enter your phone';
+  static const String resetPassword = 'Reset Password';
+  static const String changePassword = 'Change Password';
+  static const String passwordChangedSuccessfully =
+      'Password Changed Successfully';
+  static const String
+      pleaseWriteSomethingThatYouWillRememberAndThatIsDifficultForOthersToGuess =
+      'Please, Write something that you will remember and that is difficult for others to guess';
+  static const String newPassword = 'New Password';
   static const String password = 'Password';
   static const String enterYourPassword = 'Enter your password';
   static const String forgotYourPassword = 'Forgot your password?';
   static const String createANewAccount = 'Create a new account';
   static const String login = 'Login';
-  static const String confirmPassword = 'Confirm Password';
   static const String confirmNewPassword = 'Confirm New Password';
   static const String repeatPassword = 'Repeat Password';
   static const String userName = 'User Name';
   static const String enterYourName = 'Enter your name';
   static const String enterYourEmail = 'Enter your email';
   static const String theEmail = 'The email';
+  static const String pleaseEnterValidEmail = 'Please enter valid e-mail';
   static const String phoneCannotBeEmptyPleaseEnterAValidPhone =
       'Phone cannot be empty please enter a valid phone';
   static const String pleaseEnterAValidPhoneFormat =
       'Please enter a valid phone format';
+
+  static const String pleaseEnterValidCode = 'Please enter a valid code';
+  static const String passwordCannotBeEmpty = 'Password cannot be empty';
+  static const String yourPasswordMustIncludeAtLeastOneUppercaseLetter =
+      'Your password must include at least one uppercase letter';
+  static const String yourPasswordMustIncludeAtLeastOneLowercaseLetter =
+      'Your password must include at least one lowercase letter';
+  static const String yourPasswordMustIncludeAtLeastOneNumber =
+      'Your password must include at least one number';
+  static const String yourPasswordCannotContainSpaces =
+      'Your password cannot contain spaces';
+  static const String passwordIsTooShortItMustBeAtLeast8 =
+      'Password is too short it must be at least 8';
+  static const String yourPasswordMustIncludeAtLeastOneSpecialCharacter =
+      'Your password must include at least one special character';
+
+  static const String newPasswordMatchValidation =
+      'New password must be different the current password';
+  static const String confirmedNewPasswordMatchValidation =
+      'Confirmed new password doesn\'t match the new password';
+  static const String passwordsDonTMatchPleaseTryAgain =
+      'Passwords don\'t match please try again';
+
+  static const String policyPrivacy = 'Policy Privacy';
+  static const String thereIsNoAddresses = 'Theres no addresses!';
+  static const String addAddress = 'Add Address';
+  static const String editAddress = 'Edit Address';
+  static const String enterTheAddress = 'Enter the address';
+  static const String addressType = 'Address Type';
+  static const String selectAddressType = 'Select Address Type';
+
+  static const String city = 'City';
+  static const String selectCity = 'Select City';
+
+  static const String region = 'Region';
+  static const String selectRegion = 'Select Region';
+
+  static const String district = 'District';
+  static const String selectDistrict = 'Select District';
+
+  static const String age = 'Age';
+  static const String selectAge = 'Select Age';
+  static const String selectAgeGroup = 'Select age group';
+
+  static const String gender = 'Gender';
+  static const String selectGender = 'Select Gender';
+  static const String isRequired = 'is Required';
+  static const String required = 'Required';
+  static const String loading = 'Loading';
+  static const String somethingWentWrong = 'Oops, Something went wrong!';
+  static const String no_data = 'No Data!';
+  static const String confirm = 'Confirm';
+  static const String save = 'Save';
+  static const String submit = 'Submit';
+  static const String cancel = 'Cancel';
+  static const String didntReceiveTheCode = "Didn't receive the code?";
+  static const String sendNewCode = 'Send new code';
+  static const String accountCreatedSuccessfully =
+      'Account Created Successfully';
+  static const String mainPage = 'Main Page';
+  static const String myAuctions = 'My Auctions';
+  static const String home = 'Home';
+  static const String favourite = 'Favourite';
+  static const String favouriteCategories = 'Favourite Categories';
+
+  static const String search = 'Search';
+  static const String lastResult = 'Last Result';
+  static const String deleteAll = 'Delete All';
+  static const String searchForAuctions = 'Search For Auctions';
+  static const String filter = 'Filter';
+  static const String reset = 'Reset';
+  static const String apply = 'Apply';
+  static const String categories = 'Categories';
+  static const String auctionStatus = 'Auction Status';
+  static const String order = 'Order';
+
+  static const String fromTo = 'From : to';
+  static const String fromOldToNew = 'From Old to New';
+  static const String fromNewToOld = 'From New to Old';
+  static const String noFavouriteAuctions = 'no_favourite_auctions';
+  static const String newToOld = 'New to Old';
+  static const String oldToNew = 'Old to New';
+  static const String favouriteAuctionHint = 'favourite_auction_hint';
+  static const String discoverMore = 'Discover More';
+  static const String more = 'More';
+  static const String customerService = 'Customer Service';
+  static const String faqs = 'Faqs';
+  static const String termsAndConditions = 'Terms and Conditions';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String myProfile = 'My Profile';
+  static const String myAddresses = 'My Address';
+  static const String mySales = 'My Sales';
+  static const String myPurchases = 'My Purchases';
+  static const String paymentHistory = 'Payment History';
+  static const String myBundles = 'My Bundles';
+  static const String bundleDetails = 'Bundle Details';
+  static const String appSettings = 'App Settings';
+  static const String whoUs = 'Who us';
+  static const String notifications = 'Notifications';
+  static const String language = 'language';
+
+  static const String accountSettings = 'Account Settings';
+  static const String deleteAccount = 'Delete Account';
+  static const String areYouSureYouWantToDeleteAccount =
+      'Are you sure you want to delete account?';
+  static const String youCanReactivateYourAccountAtAnyTime =
+      'You can reactivate your account at any time.';
+
+  static const String youCantDeleteAccountNow = 'You can\'t delete account now';
+  static const String thereAreCurrentlyActiveAuctionsAssociatedWithYourAccount =
+      'There are currently active Auctions associated with your account.';
+  static const String pleaseEnterYourPasswordToConfirmDeleteAccount =
+      'Please enter your password to confirm delete account';
+  static const String accountDeletedSuccessfully =
+      'Account deleted successfully';
+  static const String youWillBeRedirectedToTheLoginPage =
+      'You will be redirected to the login page.';
+  static const String goToLogin = 'Go to Login';
+  static const String logout = 'Log out';
+  static const String areYouSureYouWantToLogout =
+      'Are you sure you want to log out?';
+  static const String okay = 'Okay';
+  static const String profile = 'Profile';
+  static const String commercialNumber = 'Commercial Number';
+  static const String personalInfo = 'Personal Information';
+  static const String editProfileInfo = 'Edit Personal Information';
+  static const String editAccount = 'Edit Account';
+
+  static const String edit = 'Edit';
+  static const String bankInfo = 'Bank Information';
+  static const String editBankInfo = 'Edit Bank Information';
+  static const String ibanNumber = 'Iban Number';
+  static const String bankNumber = 'Bank Number';
+
+  static const String bankName = 'Bank Name';
+
+  static const String changesSavedSuccessfully = 'Changes Saved Successfully';
+
+  static const String bank = 'Bank';
+  static const String selectBank = 'Select Bank';
+
+  static const String enterCommercialNumber = 'Enter Commercial Number';
+
+  static const String enterBankNumber = 'Enter Bank Number';
+
+  static const String enterIbanNumber = 'Enter Iban Number';
+
+  static const String editFavouriteCategories = 'Edit Favourite Categories';
+  static const String searchForBundles = 'Search For Bundles';
+  static const String orderNumber = 'Order Number';
+  static const String searchByOrderNumber = 'Search by order number';
+
+  static const String productDescription = 'Product Description';
+  static const String estimatedValue = 'Estimated value';
+  static const String actualPrice = 'Actual price';
+  static const String selectedPrice = 'Selected price';
+  static const String endAfter = 'End After';
+  static const String auctionEnded = 'Auction Ended';
+  static const String trackRequest = 'Track Request';
+  static const String registerForTheAuction = 'Register for the auction';
+  static const String agreeTo = 'Agree to';
+  static const String lastModified = 'Last Modified';
+  static const String
+      theCurrentPriceIsDeterminedAutomaticallyBasedOnAPercentageOfTheOpeningPriceValue =
+      'The current price is determined automatically based on a percentage of the opening price value.';
+  static const String youAgreeToPay = 'You agree to pay';
+  static const String applicationCommission = 'Application Commission';
+  static const String agreeToCommissionAndInsurance =
+      'Oops, You  have to agree to commission & insurance first';
+  static const String payment = 'Payment';
+  static const String selectPaymentMethod = 'Select Payment Method';
+  static const String choosePaymentMethod = 'Choose Payment Method';
+  static const String noPaymentMethodsAvailable =
+      'No payment methods available';
+  static const String continueText = 'Continue';
+  static const String youHaveToSelectPaymentMethod =
+      'Oops, You  have to select payment method!';
+
+  static const String automaticBidding = 'Automatic Bidding';
+  static const String selectBiddingMethod = 'Select Bidding Method';
+  static const String selectMaxBiddingAmount = 'Select Max Bidding Amount';
+  static const String currentAuctionPrice = 'Current auction price';
+  static const String currentPrice = 'Current price';
+  static const String areYouSureYouWantToBidAutomatically =
+      'Are you sure you want to bid automatically?';
+  static const String withdrawal = 'Wًithdrawal';
+  static const String areYouSureYouWantToWithdrawFromTheAuction =
+      'Are you sure you want to withdraw from the auction?';
+  static const String theAmountWillBeRefundedToThePaymentMethodUsed =
+      'The amount will be refunded to the payment method used.';
+
+  static const String youHaveSuccessfullySubscribedToTheAuction =
+      'You have successfully subscribed to the auction.';
+  static const String tryAgain = 'Try Again';
+  static const String theSpecifiedBidValueHasBeeReached =
+      'The specified bid value has been reached.';
+  static const String myWallet = 'My wallet';
+  static const String currentBalance = 'Current balance';
+  static const String transactionHistory = 'Transaction history';
+  static const String auctionAwardAmount = 'Auction award amount';
+  static const String transactionNumber = 'Transaction number';
+  static const String selectTheShippingAmount = 'Select the shipping amount';
+  static const String charge = 'Charge';
+  static const String applePay = 'Apple Pay';
+  static const String visa = 'Visa';
+  static const String theWalletHasBeenSuccessfullyCharged =
+      'The wallet has been successfully charged.';
+  static const String good = 'Good';
+  static const String aProblemOccurred = 'A problem occurred';
+  static const String pleaseTryAgainLater = 'Please try again later.';
+  static const String pleaseSpecifyTheShippingValue =
+      'Please specify the shipping value';
+  static const String wallet = 'Wallet';
+  static const String pleaseChoosePaymentMethod =
+      'Please Choose Payment Method';
+  static const String address = 'Address';
+  static const String enterAddress = 'Enter address';
+  static const String youHveToSelectRegionFirst =
+      'You have to select region first';
+  static const String youHveToSelectCityFirst = 'You have to select city first';
+  static const String setAsADefaultAddress = 'Set as a default address';
+  static const String saveChanges = 'Save Changes';
+  static const String delete = 'Delete';
+  static const String deleteAddress = 'Delete Address';
+
+  static const String areYouSureYouWantToDeleteAddress =
+      'Are you sure you want to delete address?';
+  static const String addressWillBePermanentlyRemoved =
+      'Address will be permanently removed!';
+
+  static const String sorryWeCannotDeleteTheAddress =
+      'Sorry, you can\'t delete the address.';
+  static const String theAddressIsLinkedToTheOrderDeliveryProcess =
+      'The address is linked to the order delivery process.';
+  static const String registerInThePackage = 'Register in the package';
+  static const String closed = 'Closed';
+  static const String startsIn = 'Starts in';
+  static const String theAuctionHasBeenAwardedToYou =
+      'The auction has been awarded to you.';
+  static const String youWillBeRedirectedToThePaymentCompletionPage =
+      'You will be redirected to the payment completion page.';
+  static const String sorryTheAwardWasNotMadeInYourFavor =
+      'Sorry, the award was not made in your favor.';
+  static const String pleaseCheckTermsAndConditions =
+      'Please Check Terms And Conditions';
+  static const String noCategoriesFound = 'No Categories Found';
+  static const String thereAreNoCategoriesAvailableAtTheMoment =
+      'There are no categories available at the moment.';
+  static const String welcomeToMazadat = 'Welcome to Mazadat';
+  static const String
+      joinOurCommunityToEnjoyExcitingAuctionsAndConnectWithFriendsAlreadyHaveAnAccountWelcomeBack =
+      'Join our community to enjoy exciting auctions and connect with friends. Already have an account? Welcome back!';
+  static const String secureTrustedPlatform = 'Secure & Trusted Platform';
+  static const String registerAndStart = 'Register & Start';
+  static const String thisFieldIsRequired = 'This field is required';
+  static const String specifyTheBiddingMethod = 'Specify the bidding method';
+  static const String public = 'Public';
+  static const String private = 'Private';
+  static const String yourAddresses = 'Your addresses';
+  static const String selectAddress = 'Select address';
+  static const String completeYourPurchase = 'Complete your purchase';
+  static const String deliveryAddress = 'Delivery address';
+  static const String purchaseSummary = 'Purchase summary';
+  static const String thePriceSetToCompleteThePurchase =
+      'The price set to complete the purchase';
+  static const String productDetails = 'Product details';
+  static const String purchaseDetails = 'Purchase details';
+  static const String productPrice = 'Product price';
+  static const String applicationPercentage = 'Application rate';
+  static const String deliveryPrice = 'Delivery price';
+  static const String totalWithoutVat = 'Total (excluding VAT)';
+  static const String addedValue = 'Added value';
+  static const String totalPrice = 'Total price';
+  static const String theDeadlineToCompleteThePurchaseHasExpired =
+      'The deadline to complete the purchase has expired.';
+  static const String yourInsuranceAmountWillBeDeducted =
+      'Your insurance amount will be deducted.';
+  static const String goToTheHomePage = 'Go to the home page';
+  static const String backToAuctionDetails = 'Back to auction details';
+  static const String completeTheOrder = 'Complete the order';
+  static const String downloadInvoice = 'Download invoice';
+  static const String orderTracking = 'Order tracking';
+  static const String auctionDate = 'Auction date';
+  static const String purchaseDate = 'Purchase date';
+  static const String purchaseValue = 'Purchase value';
+  static const String purchasePrice = 'Purchase price';
+  static const String reasonForCancellation = 'Reason for cancellation';
+  static const String recovered = 'Recovered';
+  static const String notRefunded = 'Not refunded';
+  static const String paymentTransactionIdNotFound =
+      'Payment transaction ID not found';
+  static const String couldNotLaunchInvoiceUrl = 'Could not launch invoice URL';
+  static const String errorLaunchingInvoice = 'Error launching invoice';
+  static const String invoiceDownloadStarted = 'Invoice download started';
+  static const String whoAreWe = 'Who are we?';
+  static const String contactUs = 'Contact Us';
+  static const String messageType = 'Message Type';
+  static const String message = 'Message';
+  static const String enterMessage = 'Enter your message here';
+  static const String sendMessage = 'Send Message';
+  static const String messageSentSuccessfully = 'Message sent successfully';
+  static const String pleaseSelectMessageType = 'Please select message type';
+  static const String send = 'Send';
+  static const String selectMessageType = 'Select the message type.';
+  static const String frequentlyAskedQuestions = 'Frequently Asked Questions';
+  static const String faq = 'FAQ';
+  static const String shippingDate = 'Shipping date';
+  static const String latestUpdate = 'Latest update';
+  static const String auctionName = 'Auction Name';
+  static const String searchByAuctionName = 'Search by auction name';
+  static const String markAllAsRead = 'Mark all as read';
+  static const String youHaveNoNotifications = 'You have no notifications';
+  static const String winner = 'Winner';
+  static const String loser = 'Loser';
+  static const String iWonIt = 'I won it';
+  static const String canceled = 'canceled';
+  static const String iLostIt = 'I lost it';
+  static const String chargingStatus = 'Charging status';
+  static const String requestDone = 'Request done';
+  static const String readyToShip = 'Ready to ship';
+  static const String shipped = 'Shipped';
+  static const String delivered = 'Delivered';
+  static const String noFavoriteAuctionsHaveBeenAddedYet =
+      'No favorite auctions have been added yet.';
+  static const String
+      startAddingTheAuctionYouLikeToYourFavoritesForEasyAccessLater =
+      'Start adding the auction you like to your favorites for easy access later.';
 }

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../theme/colors/styles.dart';
 import '../../../theme/text_styles/text_styles.dart';
 
-import '../../extensions/extensions.dart';
-import '../loading/adaptive_cirluer_progress.dart';
+import '../loading/adaptive_circle_progress.dart';
 
 class CustomButtonWithInnerShadowWidget extends StatefulWidget {
   const CustomButtonWithInnerShadowWidget({

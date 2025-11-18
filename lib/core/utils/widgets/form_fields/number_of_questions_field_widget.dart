@@ -5,7 +5,6 @@ import '../../../app_config/app_config.dart';
 import '../../../shared/blocs/main_app_bloc.dart';
 import '../../../theme/text_styles/text_styles.dart';
 
-import '../../extensions/extensions.dart';
 import 'default_form_field.dart';
 
 class NumberOfQuestionsFieldWidget extends StatelessWidget {

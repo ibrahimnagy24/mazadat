@@ -1,5 +1,8 @@
 import '../../../core/shared/entity/error_entity.dart';
 import '../data/entity/home_auction_entity.dart';
+import '../data/entity/home_bundle_entity.dart';
+import '../data/enum/displayed_types.dart';
+import '../data/enum/home_data_type.dart';
 
 sealed class HomeState {
   const HomeState();
@@ -9,46 +12,40 @@ final class HomeInitial extends HomeState {
   const HomeInitial();
 }
 
-final class HomeTitleTypeChanged extends HomeState {}
-
-class HomeFeaturedAuctionLoading extends HomeState {
-  const HomeFeaturedAuctionLoading();
+final class HomeDisplayedTypeChanged extends HomeState {
+  final HomeDisplayedTypes displayedType;
+  HomeDisplayedTypeChanged({required this.displayedType});
 }
 
-class HomeFeaturedAuctionSuccess extends HomeState {
+final class HomeDataTypeChanged extends HomeState {
+  final HomeDataType homeDataType;
+  HomeDataTypeChanged({required this.homeDataType});
+}
+
+final class HomeAutionsLoading extends HomeState {
+  const HomeAutionsLoading();
+}
+
+final class HomeAutionsSuccess extends HomeState {
   final List<HomeAuctionEntity> auctions;
-  const HomeFeaturedAuctionSuccess(this.auctions);
+  HomeAutionsSuccess(this.auctions);
 }
 
-class HomeFeaturedAuctionError extends HomeState {
+final class HomeAutionsError extends HomeState {
   final ErrorEntity error;
-  const HomeFeaturedAuctionError(this.error);
+  HomeAutionsError(this.error);
 }
 
-class HomeInProgressAuctionLoading extends HomeState {
-  const HomeInProgressAuctionLoading();
+final class HomeBundlesLoading extends HomeState {
+  const HomeBundlesLoading();
 }
 
-class HomeInProgressAuctionSuccess extends HomeState {
-  final List<HomeAuctionEntity> auctions;
-  const HomeInProgressAuctionSuccess(this.auctions);
+final class HomeBundlesSuccess extends HomeState {
+  final List<HomeBundleEntity> bundles;
+  HomeBundlesSuccess(this.bundles);
 }
 
-class HomeInProgressAuctionError extends HomeState {
+final class HomeBundlesError extends HomeState {
   final ErrorEntity error;
-  const HomeInProgressAuctionError(this.error);
-}
-
-class HomeUpComingAuctionLoading extends HomeState {
-  const HomeUpComingAuctionLoading();
-}
-
-class HomeUpComingAuctionSuccess extends HomeState {
-  final List<HomeAuctionEntity> auctions;
-  const HomeUpComingAuctionSuccess(this.auctions);
-}
-
-class HomeUpComingAuctionError extends HomeState {
-  final ErrorEntity error;
-  const HomeUpComingAuctionError(this.error);
+  HomeBundlesError(this.error);
 }

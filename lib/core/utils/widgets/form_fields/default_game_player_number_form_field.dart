@@ -79,7 +79,7 @@ class DefaultGamePlayerNumberFormField extends StatelessWidget {
           return oldValue;
         }),
       ],
-      borderRadious: borderRadious ?? 24,
+      borderRadius: borderRadious ?? 24,
       keyboardType: TextInputType.number,
       controller: controller,
       validator: (value) {

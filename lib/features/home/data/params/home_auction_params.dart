@@ -1,18 +1,22 @@
 import 'package:equatable/equatable.dart';
 
 class HomeAuctionParams extends Equatable {
+  final int? categoryId;
   final int? page;
-  final int? size;
-  final String endPoint;
+  final int size;
+
   const HomeAuctionParams({
+    this.categoryId,
     this.page,
-    this.size,
-    required this.endPoint,
+    required this.size,
   });
+
   @override
-  List<Object?> get props => [page, size, endPoint];
+  List<Object?> get props => [categoryId, page, size];
+
   Map<String, dynamic> returnedMap() {
     Map<String, dynamic> map = {
+      'categoryIds': categoryId,
       'page': page,
       'size': size,
     };

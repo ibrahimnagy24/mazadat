@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/app_core.dart';
 import '../../../../core/navigation/custom_navigation.dart';
 import '../../../../core/navigation/routes.dart';
-import '../../../../core/utils/widgets/buttons/custom_gradient_button_widget.dart';
+import '../../../../core/theme/text_styles/text_styles.dart';
+import '../../../../core/utils/constant/app_strings.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/utils/widgets/buttons/default_button.dart';
 import '../logic/visitor_cubit.dart';
 import '../logic/visitor_state.dart';
 
@@ -12,14 +15,18 @@ class VisitorButtonWidget extends StatelessWidget {
     super.key,
     this.height,
     this.width,
-    this.borderRadiousValue,
+    this.borderRadiusValue,
     this.fontSize,
+    this.buttonText,
+    this.categories,
   });
   final double? height;
   final double? width;
-  final double? borderRadiousValue;
+  final double? borderRadiusValue;
   final double? fontSize;
+  final String? buttonText;
 
+  final List<Map<String, dynamic>>? categories;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -41,16 +48,23 @@ class VisitorButtonWidget extends StatelessWidget {
             current is VisitorLoginError,
         builder: (context, state) {
           final cubit = context.read<VisitorCubit>();
-          return CustomGradientButtonWidget(
+          return DefaultButton(
             isLoading: state is VisitorLoginLoading,
-            text: 'AppStrings.loginAsAGuest.tr',
+            text: buttonText ?? AppStrings.loginAsAVisitor.tr,
             onPressed: () async {
-              await context.read<VisitorCubit>().visitorLoginStatesHandled();
+              if (categories == null || categories!.isEmpty) {
+                showErrorToast(AppStrings.chooseYourFavouriteList.tr);
+                return;
+              }
+              await context
+                  .read<VisitorCubit>()
+                  .visitorLoginStatesHandled(categories: categories);
             },
             height: height,
             width: width,
-            borderRadiousValue: borderRadiousValue,
+            borderRadiusValue: borderRadiusValue,
             fontSize: fontSize,
+            textStyle: AppTextStyles.bodyXlBold.copyWith(color: Colors.white),
           );
         },
       ),

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../core/services/cache/shared_helper.dart';
+import '../core/services/fcm_notification/fcm_integration_helper.dart';
 import '../core/services/observable/bloc_observer.dart';
 import '../core/shared/blocs/main_app_bloc.dart';
 import '../core/translation/all_translation.dart';
@@ -14,6 +15,14 @@ Future<void> initMainFunction() async {
         options: DefaultFirebaseOptions.currentPlatform);
   } catch (e) {
     cprint(e.toString());
+  }
+
+  try {
+    // Initialize new FCM notification module
+    await FCMIntegrationHelper.initializeFCM();
+    FCMIntegrationHelper.getFCMToken();
+  } catch (e) {
+    cprint('Error initializing FCM module: $e');
   }
   try {
     await SharedHelper.init();
@@ -30,6 +39,7 @@ Future<void> initMainFunction() async {
   } catch (e) {
     cprint(e.toString());
   }
+
   Bloc.observer = BlocObserverService();
   HttpOverrides.global = MyHttpOverrides();
   try {

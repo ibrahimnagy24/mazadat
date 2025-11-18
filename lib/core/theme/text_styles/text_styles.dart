@@ -13,15 +13,152 @@ abstract class AppTextStyles {
   static const TextStyle w500 = TextStyle(fontWeight: FontWeight.w500);
 //MAZADAT
 //----------------------------------EXOW700----------------------------------//
+
+  static TextStyle displayMdBold = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsXL,
+    color: const Color.fromRGBO(34, 39, 21, 1),
+  );
+  static TextStyle displayMdSemiBold = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w600,
+    fontSize: AppFontSizes.fsXL,
+    color: const Color(0xFF222715),
+  );
+
+  static TextStyle displaySMMedium = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsDisplaySm,
+    color: AppColors.kPrimary900,
+  );
+  static TextStyle displaySMBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: AppFontSizes.fsDisplaySm,
+    color: AppColors.kWhite,
+  );
+
+  static TextStyle displayLgMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsL,
+    color: AppColors.kPrimary900,
+  );
+
+  static TextStyle heading = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsL,
+    color: AppColors.textDefault,
+  );
+
+  static TextStyle textLgBold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsL,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle textXLBold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle textMdBold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle textMdSemibold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w600,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.kPrimary,
+  );
+  static TextStyle textMdSemiboldIbmPlexSansArabic =
+      GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w600,
+    fontSize: 24,
+    color: const Color.fromRGBO(81, 94, 50, 1),
+  );
+
+  static TextStyle textSmSemibold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w600,
+    fontSize: AppFontSizes.xxs,
+    color: AppColors.kPrimary,
+  );
+  static TextStyle textMdMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textSecondaryParagraph,
+  );
+
+  static TextStyle textLgMedium = GoogleFonts.cairo(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsS,
+    color: const Color.fromRGBO(162, 162, 162, 1),
+  );
+
+  static TextStyle textLMedium = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    color: AppColors.textDefault,
+  );
+
+  static TextStyle textXLMedium = GoogleFonts.cairo(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.textDefault,
+  );
+
+  static TextStyle bodyMedium = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: AppFontSizes.fsS,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle bodyRegular = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textSecondaryParagraph,
+  );
+
+  static TextStyle textSmRegular = GoogleFonts.cairo(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.xxs,
+    color: AppColors.textSecondaryParagraph,
+  );
+
+  static TextStyle textMdRegular = GoogleFonts.cairo(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsMd,
+    color: AppColors.textPrimaryParagraph,
+  );
+
+  static TextStyle textXLRegular = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsM,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle textLgRegular = GoogleFonts.cairo(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsLg,
+    color: AppColors.textPrimaryParagraph,
+  );
+
   static TextStyle exoW700SizeMediumWhite = GoogleFonts.exo(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsM,
     color: AppColors.kWhite,
     letterSpacing: 0,
   );
+
   static TextStyle headingLBold = GoogleFonts.notoSans(
     fontWeight: FontWeight.w700,
-    fontSize: AppFontSizes.fsL,
+    fontSize: AppFontSizes.fsXL,
+    color: AppColors.kWhite,
+    letterSpacing: 0,
+  );
+  static TextStyle headingLMedBold = GoogleFonts.ibmPlexSansArabic(
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
     color: AppColors.kWhite,
     letterSpacing: 0,
   );
@@ -29,21 +166,35 @@ abstract class AppTextStyles {
   static TextStyle bodyXsReq = GoogleFonts.notoSans(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.fsXs,
-    color: AppColors.kWhite,
+    color: AppColors.textPrimaryParagraph,
     letterSpacing: 0,
   );
-  static TextStyle bodyXXsReq = GoogleFonts.notoSans(
+  static TextStyle bodyXsReqCairo = GoogleFonts.cairo(
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.fsXs,
+    color: AppColors.textPrimaryParagraph,
+    letterSpacing: 0,
+  );
+
+  static TextStyle bodyXXsReq = GoogleFonts.cairo(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.xxs,
     color: AppColors.kWhite,
     letterSpacing: 0,
   );
-  static TextStyle bodyXsMed = GoogleFonts.notoSans(
+  static TextStyle bodyXsMed = GoogleFonts.cairo(
     fontWeight: FontWeight.w500,
     fontSize: AppFontSizes.fsXs,
-    color: AppColors.kPrimary500,
+    color: AppColors.kPrimary,
     letterSpacing: 0,
   );
+  static TextStyle bodyXlBold = GoogleFonts.cairo(
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.fsXl,
+    color: AppColors.textError,
+    letterSpacing: 0,
+  );
+
   static TextStyle bodySReq = GoogleFonts.notoSans(
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.fsS,
@@ -52,7 +203,7 @@ abstract class AppTextStyles {
   );
   static TextStyle bodySMed = GoogleFonts.notoSans(
     fontWeight: FontWeight.w500,
-    fontSize: AppFontSizes.fsS2,
+    fontSize: AppFontSizes.fsS,
     color: AppColors.kGeryText7,
     letterSpacing: 0,
   );
@@ -72,7 +223,7 @@ abstract class AppTextStyles {
   static TextStyle bodyMBold = GoogleFonts.notoSans(
     fontWeight: FontWeight.w700,
     fontSize: AppFontSizes.fsM,
-    color: AppColors.kWhite,
+    color: AppColors.kPrimary,
     letterSpacing: 0,
   );
 

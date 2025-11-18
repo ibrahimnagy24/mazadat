@@ -13,9 +13,9 @@ abstract class ResetPasswordRepo {
       ResetPasswordParams params) async {
     try {
       final response = await Network().request(
-        Endpoints.forgotPassword,
-        method: ServerMethods.GET,
-        queryParameters: params.returnedMap(),
+        Endpoints.resetPassword,
+        method: ServerMethods.POST,
+        body: params.returnedMap(),
       );
       return Right(ResetPasswordModel.fromJson(response.data));
     } catch (error) {

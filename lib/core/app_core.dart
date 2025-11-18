@@ -56,7 +56,7 @@ class AppCore {
                 children: [
                   if (notification.iconName != null)
                     customImageIconSVG(
-                        imageName: notification.iconName, color: Colors.white),
+                        imageName: notification.iconName!, color: Colors.white),
                   if (notification.iconName != null) const SizedBox(width: 8),
                   Expanded(
                     child: Text(
@@ -81,7 +81,6 @@ void showErrorSnackBar(message, {ErrorEntity? error}) {
       message: message.toString(),
       backgroundColor: AppColors.IN_ACTIVE,
       borderColor: AppColors.DARK_RED,
-      iconName: 'fill-close-circle',
       isFloating: true,
     ),
   );

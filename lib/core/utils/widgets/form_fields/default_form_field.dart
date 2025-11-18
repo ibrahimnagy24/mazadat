@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../theme/colors/styles.dart';
+import '../../../theme/radius/app_radius.dart';
 import '../../../theme/text_styles/text_styles.dart';
+import '../../constant/app_strings.dart';
+import '../../extensions/extensions.dart';
 import '../text/main_text.dart';
 
 class DefaultFormField extends StatelessWidget {
@@ -25,7 +28,7 @@ class DefaultFormField extends StatelessWidget {
     this.verticalEdge,
     this.initialValue,
     this.labelColor,
-    this.maxLines,
+    this.maxLines = 1,
     this.textColor,
     this.controller,
     this.onChanged,
@@ -34,7 +37,7 @@ class DefaultFormField extends StatelessWidget {
     this.margin,
     this.prefixIconConstraints,
     this.maxLength = -1,
-    this.borderRadious,
+    this.borderRadius = AppRadius.rS,
     this.titleText,
     this.decoration,
     this.inputFormatters,
@@ -50,6 +53,7 @@ class DefaultFormField extends StatelessWidget {
     this.readOnly,
     this.titleIconWidget,
     this.hintStyle,
+    this.helperStyle,
     this.hintTextMaxLines,
     this.contentPadding,
     this.errorText,
@@ -57,10 +61,13 @@ class DefaultFormField extends StatelessWidget {
     this.enabledBorderColor,
     this.foucsBorderColor,
     this.inactiveBorderColor,
+    this.onTap,
+    this.errorBorderColor,
   });
 
   final String? labelText;
   final String? hintText;
+  final void Function()? onTap;
   final void Function(String? newValue)? onSaved;
   final double? width;
   final Widget? prefixIcon;
@@ -85,7 +92,7 @@ class DefaultFormField extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final BoxConstraints? prefixIconConstraints;
   final int? maxLength;
-  final double? borderRadious;
+  final double borderRadius;
   final String? titleText;
   final InputDecoration? decoration;
   final List<TextInputFormatter>? inputFormatters;
@@ -100,7 +107,7 @@ class DefaultFormField extends StatelessWidget {
   final bool autofocus;
   final bool? readOnly;
   final Widget? titleIconWidget;
-  final TextStyle? hintStyle;
+  final TextStyle? hintStyle, helperStyle;
   final int? hintTextMaxLines;
   final EdgeInsetsGeometry? contentPadding;
   final String? errorText;
@@ -108,6 +115,7 @@ class DefaultFormField extends StatelessWidget {
   final Color? enabledBorderColor;
   final Color? foucsBorderColor;
   final Color? inactiveBorderColor;
+  final Color? errorBorderColor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -126,7 +134,7 @@ class DefaultFormField extends StatelessWidget {
                     titleIconWidget ?? const SizedBox.shrink(),
                     MainText(
                       text: titleText!,
-                      style: titleStyle ?? AppTextStyles.bodyXsReq,
+                      style: titleStyle ?? AppTextStyles.textMdRegular,
                     ),
                   ],
                 ),
@@ -139,6 +147,9 @@ class DefaultFormField extends StatelessWidget {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 readOnly: readOnly ?? false,
                 autofocus: autofocus,
+                onTap: () {
+                  onTap?.call();
+                },
                 onTapOutside: onTapOutside ??
                     (pointer) {
                       FocusScope.of(context).unfocus();
@@ -151,8 +162,8 @@ class DefaultFormField extends StatelessWidget {
                 cursorWidth: 1,
                 validator: validator ??
                     (needValidation!
-                        ? (value) => value!.isEmpty
-                            ? 'AppStrings.thisFieldIsRequired.tr'
+                        ? (value) => value == null || value.isEmpty
+                            ? AppStrings.thisFieldIsRequired.tr
                             : null
                         : null),
                 autovalidateMode:
@@ -166,11 +177,16 @@ class DefaultFormField extends StatelessWidget {
                 onSaved: onSaved,
                 maxLines: maxLines == -1 ? null : maxLines ?? 1,
                 onChanged: onChanged,
-                style: style ?? TextStyle(color: textColor ?? AppColors.kBlack),
+                style: style ??
+                    AppTextStyles.textMdMedium
+                        .copyWith(color: AppColors.kBlack),
                 decoration: decoration ??
                     InputDecoration(
                       filled: true,
-                      fillColor: fillColor ?? AppColors.kWhite,
+                      helperStyle: helperStyle ??
+                          const TextStyle(
+                              color: Colors.transparent, fontSize: 0),
+                      fillColor: fillColor ?? AppColors.fillColor,
                       errorMaxLines: errorMaxLines ?? 2,
                       errorText: errorText,
                       suffixIcon: suffixIcon,
@@ -180,15 +196,9 @@ class DefaultFormField extends StatelessWidget {
                       labelText: labelText,
                       labelStyle: labelColor != null
                           ? TextStyle(color: labelColor ?? AppColors.kGeryText)
-                          : AppTextStyles.balooBhaijaan2W400Size14GreyText2,
-                      hintStyle: hintStyle ??
-                          (labelColor != null
-                              ? TextStyle(
-                                  color: labelColor ?? AppColors.kGeryText,
-                                  fontSize: 12,
-                                )
-                              : AppTextStyles
-                                  .balooBhaijaan2W400Size14GreyText3),
+                          : AppTextStyles.textMdRegular.copyWith(
+                              color: labelColor ?? AppColors.textPrimary),
+                      hintStyle: hintStyle ?? AppTextStyles.textLgRegular,
                       hintText: hintText,
                       hintMaxLines: hintTextMaxLines ?? 2,
                       disabledBorder: OutlineInputBorder(
@@ -198,45 +208,42 @@ class DefaultFormField extends StatelessWidget {
                               AppColors.kBlack,
                           width: 1.0,
                         ),
-                        borderRadius:
-                            BorderRadius.circular(borderRadious ?? 24),
+                        borderRadius: BorderRadius.circular(borderRadius),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: enabledBorderColor ??
                               borderColor ??
-                              AppColors.kOpacityGrey2,
+                              AppColors.borderNeutralSecondary,
                           width: 1.0,
                         ),
-                        borderRadius:
-                            BorderRadius.circular(borderRadious ?? 24),
+                        borderRadius: BorderRadius.circular(borderRadius),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                          color: Color(0xFFFF0000),
+                          color: Color.fromRGBO(224, 44, 31, 1),
                           width: 1.0,
                         ),
-                        borderRadius:
-                            BorderRadius.circular(borderRadious ?? 24),
+                        borderRadius: BorderRadius.circular(borderRadius),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(borderRadious ?? 24),
+                        borderRadius: BorderRadius.circular(borderRadius),
                         borderSide: BorderSide(
                           color: foucsBorderColor ??
                               borderColor ??
-                              AppColors.kOpacityGrey2,
+                              AppColors.kPrimary,
                         ),
                       ),
                       contentPadding: contentPadding ??
-                          const EdgeInsetsDirectional.fromSTEB(12, 10, 10, 10),
+                          EdgeInsetsDirectional.fromSTEB(
+                              16.w, 16.h, 16.w, 16.h),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: borderColor ?? AppColors.kPrimary,
+                          color: errorBorderColor ??
+                              const Color.fromRGBO(224, 44, 31, 1),
                           width: 1.0,
                         ),
-                        borderRadius:
-                            BorderRadius.circular(borderRadious ?? 24),
+                        borderRadius: BorderRadius.circular(borderRadius),
                       ),
                     ),
               ),

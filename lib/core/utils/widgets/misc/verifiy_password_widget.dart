@@ -5,7 +5,7 @@ import '../../../theme/colors/styles.dart';
 import '../../../theme/text_styles/text_styles.dart';
 import '../../constant/app_strings.dart';
 import '../../extensions/extensions.dart';
-import '../../validations/vaildator.dart';
+import '../../validations/validator.dart';
 import '../../validations/validation.dart';
 import '../text/main_text.dart';
 
@@ -70,7 +70,7 @@ class _VerifiPasswordWidgetState extends State<VerifiPasswordWidget> {
 
   Color getProgressColor() {
     double progress = getPasswordStrengthProgress();
-    if (progress <= 0.25) return AppColors.RED_CHART_COLOR;
+    if (progress <= 0.25) return AppColors.textError;
     if (progress <= 0.5) return Colors.orange;
     if (progress <= 0.75) return Colors.yellow;
     return Colors.green;

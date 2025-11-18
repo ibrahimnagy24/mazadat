@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../assets/app_images.dart';
 import '../../../shared/widgets/title_with_back_arrorw_widget.dart';
-import '../../constant/app_strings.dart';
-import '../../extensions/extensions.dart';
 import '../text/main_text.dart';
 import '../../../theme/colors/styles.dart';
 import '../misc/customer_scroll_behaviour.dart';

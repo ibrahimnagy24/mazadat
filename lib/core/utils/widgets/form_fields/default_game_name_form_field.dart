@@ -50,7 +50,7 @@ class DefaultGameNameFormField extends StatelessWidget {
           .copyWith(fontSize: titleFontSize ?? 14),
       hintText: '${hintText ?? 'AppStrings.gameName.tr'}...',
       // validator: (value) => validateEmail(value),
-      borderRadious: borderRadious ?? 24,
+      borderRadius: borderRadious ?? 24,
       keyboardType: TextInputType.name,
       controller: controller,
     );

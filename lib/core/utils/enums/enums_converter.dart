@@ -3,7 +3,7 @@ import 'enums.dart';
 class UserEnumsConverter {
   static UserType stringToUserType(String value) {
     switch (value) {
-      case 'user':
+      case 'USER':
         return UserType.user;
       default:
         return UserType.visitor;
@@ -16,6 +16,24 @@ class UserEnumsConverter {
         return 'USER';
       case UserType.visitor:
         return 'visitor';
+    }
+  }
+
+  static GenderTypes stringToGender(String value) {
+    switch (value) {
+      case 'M':
+        return GenderTypes.male;
+      default:
+        return GenderTypes.female;
+    }
+  }
+
+  static String genderTypeToString(GenderTypes value) {
+    switch (value) {
+      case GenderTypes.male:
+        return 'M';
+      case GenderTypes.female:
+        return 'F';
     }
   }
 
@@ -49,6 +67,68 @@ class GenderTypeConverter {
         return GenderTypes.female;
       default:
         return null;
+    }
+  }
+}
+
+class CategoryTypeConverter {
+  static String categoryTypeToString(CategoryTypes value) {
+    switch (value) {
+      case CategoryTypes.auction:
+        return 'AUCTION';
+      case CategoryTypes.bundle:
+        return 'BUNDLE';
+    }
+  }
+
+  static CategoryTypes stringToCategoryType(String value) {
+    switch (value) {
+      case 'bundle':
+        return CategoryTypes.bundle;
+      default:
+        return CategoryTypes.auction;
+    }
+  }
+}
+
+class BiddingMethodConverter {
+  static BiddingMethod? stringToBiddingMethod(String? value) {
+    switch (value) {
+      case 'MANUAL':
+        return BiddingMethod.manual;
+      case 'AUTO':
+        return BiddingMethod.auto;
+      default:
+        return null;
+    }
+  }
+
+  static String BiddingMethodToString(BiddingMethod value) {
+    switch (value) {
+      case BiddingMethod.manual:
+        return 'MANUAL';
+      case BiddingMethod.auto:
+        return 'AUTO';
+    }
+  }
+}
+
+abstract class AuctionEnumConverter {
+  static AuctionType stringToAuctionType(String value) {
+    switch (value.toUpperCase()) {
+      case 'PRIVATE':
+        return AuctionType.private;
+      default:
+        return AuctionType.public;
+    }
+  }
+
+  static String AuctionTypeToString(AuctionType value) {
+    switch (value) {
+      case AuctionType.private:
+        return AuctionType.private.name.toUpperCase();
+      case AuctionType.public:
+        return AuctionType.public.name.toUpperCase();
     }
   }
 }
