@@ -564,63 +564,13 @@ We welcome contributions! Please follow these guidelines:
 
 ---
 
-## 📞 Support
-
-For support and questions:
-
-- **Email**: support@innoeg.com
-- **Documentation**: [Project Wiki](link-to-wiki)
-- **Issue Tracker**: [GitHub Issues](link-to-issues)
-
----
-
-## 📄 License
-
-This project is proprietary software owned by **INOVA-DIGITS**. All rights reserved.
-
-**Unauthorized copying, distribution, or modification is prohibited.**
-
----
-
 ## 👥 Authors & Acknowledgments
 
 ### Development Team
 - **INOVA-DIGITS Development Team**
 
-### Special Thanks
-- Flutter Team for the amazing framework
-- Open source community for excellent packages
-- All contributors and testers
-
 ---
 
-## 📊 Project Stats
-
-- **Lines of Code**: 50,000+
-- **Features**: 35+ modules
-- **Dependencies**: 70+ packages
-- **Supported Languages**: 2 (Arabic, English)
-- **Platforms**: Android, iOS
-
----
-
-## 🗺️ Roadmap
-
-### Upcoming Features
-- [ ] Web platform support
-- [ ] Desktop platform support
-- [ ] Enhanced analytics dashboard
-- [ ] Advanced search filters
-- [ ] Social sharing improvements
-- [ ] Offline mode support
-
-### Future Enhancements
-- [ ] AI-powered auction recommendations
-- [ ] Live streaming integration
-- [ ] Multi-currency support
-- [ ] Enhanced security features
-
----
 
 ## 📚 Additional Resources
 
