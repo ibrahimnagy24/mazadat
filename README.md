@@ -158,57 +158,8 @@ Create a Postman environment with the following variables:
   "token": "your_jwt_token_here",
   "user_id": "your_user_id"
 }
-```
 
-#### 3. Authentication
 
-Most endpoints require authentication. After successful login:
-1. Copy the JWT token from login response
-2. Set it in environment variable `{{token}}`
-3. Token will be automatically included in authenticated requests
-
-#### 4. Test Endpoints
-
-- All endpoints are organized by category
-- Most endpoints include example requests
-- Success responses are documented
-- Use query parameters as shown in examples
-
-### Base URL
-
-```
-Production: https://mazadat.api.innoeg.com
-Staging: https://mazadat.api.innoeg.com
-```
-
-### Example Requests
-
-#### Get Auctions
-```http
-GET {{host}}/auctions/filter?page=0&size=10
-```
-
-#### User Login
-```http
-POST {{host}}/auth/login
-Content-Type: application/json
-
-{
-  "phone": "1234567890",
-  "password": "password"
-}
-```
-
-#### Place Bid
-```http
-POST {{host}}/bidding/placeBid
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-  "auctionId": "123",
-  "bidAmount": 1000
-}
 ```
 
 ### Tips
