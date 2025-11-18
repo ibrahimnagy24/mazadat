@@ -97,7 +97,131 @@ dart --version
 
 ---
 
-## 🛠️ Getting Started
+## � API Documentation (Postman Collection)
+
+The project includes a comprehensive Postman collection for testing and exploring all API endpoints.
+
+### Collection File
+- **Location**: `Mazadat.postman_collection.json` (in project root)
+- **Collection Name**: Mazadat
+- **Workspace**: [DEV Team Workspace](https://dev-team-1728.postman.co/workspace/DEV-Team-Workspace~ae694832-fe07-4429-8ba1-1b5225054810/collection/43167083-71cf3eeb-e541-4f1a-ada8-e6755f404200?action=share&source=collection_link&creator=43167083)
+
+### API Categories Included
+
+The Postman collection contains 20+ organized API endpoint categories:
+
+| Category | Description | Key Endpoints |
+|----------|-------------|---------------|
+| **Auction Categories** | Auction category management | Filter, List, Add, Update, Delete |
+| **Regions** | Geographic regions | Search, Filter, CRUD operations |
+| **Cities** | City management | Filter by region, CRUD operations |
+| **District** | District management | Filter by city, CRUD operations |
+| **Auction Types** | Auction type configuration | List, Filter, CRUD operations |
+| **Banks** | Bank information | Filter, CRUD operations |
+| **Bundles** | Bundle auction management | Filter, Add, Update, Delete |
+| **User Management** | User operations | Profile, Authentication, Preferences |
+| **Auctions** | Main auction endpoints | Create, Update, Filter, Bidding |
+| **Mobile** | Mobile-specific APIs | All mobile app endpoints |
+| **Util** | Utility endpoints | File upload, Configuration |
+| **Roles** | Role management | User roles and permissions |
+| **Admin** | Admin panel APIs | Dashboard, Reports, Management |
+| **Finance Setting** | Financial configuration | Payment settings, Commissions |
+| **Shipments** | Order shipment tracking | Status updates, Tracking |
+| **Bidding Ranges** | Bidding increment rules | Configure bid steps |
+| **Bidding** | Live bidding operations | Place bids, Bid history |
+| **Contact Us** | Contact functionality | Messages, Support tickets |
+| **Products** | Product management | CRUD, Categories, Images |
+| **Public Question** | FAQ management | Public questions, Answers |
+| **Static Content** | Static pages | Terms, Privacy, About |
+| **Payment Methods** | Payment integration | Payment gateways, Methods |
+| **Custom Notifications** | Push notifications | Send, Schedule, Templates |
+| **Manual Notification** | Manual notification sending | Admin notifications |
+
+### How to Use
+
+#### 1. Import Collection
+
+```bash
+# Open Postman application
+# Click "Import" button
+# Select file: Mazadat.postman_collection.json
+# Or drag and drop the file into Postman
+```
+
+#### 2. Set Up Environment Variables
+
+Create a Postman environment with the following variables:
+
+```json
+{
+  "host": "https://mazadat.api.innoeg.com",
+  "token": "your_jwt_token_here",
+  "user_id": "your_user_id"
+}
+```
+
+#### 3. Authentication
+
+Most endpoints require authentication. After successful login:
+1. Copy the JWT token from login response
+2. Set it in environment variable `{{token}}`
+3. Token will be automatically included in authenticated requests
+
+#### 4. Test Endpoints
+
+- All endpoints are organized by category
+- Most endpoints include example requests
+- Success responses are documented
+- Use query parameters as shown in examples
+
+### Base URL
+
+```
+Production: https://mazadat.api.innoeg.com
+Staging: https://mazadat.api.innoeg.com
+```
+
+### Example Requests
+
+#### Get Auctions
+```http
+GET {{host}}/auctions/filter?page=0&size=10
+```
+
+#### User Login
+```http
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "phone": "1234567890",
+  "password": "password"
+}
+```
+
+#### Place Bid
+```http
+POST {{host}}/bidding/placeBid
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "auctionId": "123",
+  "bidAmount": 1000
+}
+```
+
+### Tips
+
+- 💡 Use environment variables for reusable values
+- 🔑 Keep authentication tokens secure and updated
+- 📁 Organize your own collections based on the main collection
+- 🧪 Test all endpoints before integrating into the app
+- 📝 Document any custom modifications to the collection
+
+---
+
+## �🛠️ Getting Started
 
 ### 1. Clone the Repository
 
@@ -374,29 +498,6 @@ BlocBuilder<AuctionsCubit, AuctionsState>(
 
 ---
 
-## 🧪 Testing
-
-```bash
-# Run all tests
-flutter test
-
-# Run tests with coverage
-flutter test --coverage
-
-# Run integration tests
-flutter drive --target=test_driver/app.dart
-```
-
-### Test Structure
-```
-test/
-├── unit/           # Unit tests
-├── widget/         # Widget tests
-└── integration/    # Integration tests
-```
-
----
-
 ## 📦 Building for Production
 
 ### Android
@@ -471,25 +572,6 @@ Text(allTranslations.text('key_name'))
 
 ---
 
-## 🎨 Theming
-
-The app uses a comprehensive theming system:
-
-```dart
-// Primary color
-AppColors.kPrimary // rgba(81, 94, 50, 1)
-
-// Theme configuration in app.dart
-ThemeData(
-  primaryColor: AppColors.kPrimary,
-  colorScheme: ColorScheme.light(
-    primary: AppColors.kPrimary,
-    secondary: AppColors.kPrimary300,
-  ),
-)
-```
-
----
 
 ## 🚀 Performance Optimizations
 
@@ -567,7 +649,7 @@ We welcome contributions! Please follow these guidelines:
 ## 👥 Authors & Acknowledgments
 
 ### Development Team
-- **INOVA-DIGITS Development Team**
+- **INNOVA-DIGITS Development Team**
 
 ---
 
@@ -583,7 +665,7 @@ We welcome contributions! Please follow these guidelines:
 
 <div align="center">
 
-**Built with ❤️ by INOVA-DIGITS**
+**Built with ❤️ by INNOVA-DIGITS**
 
 
 </div>
