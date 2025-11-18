@@ -56,6 +56,10 @@ post_install do |installer|
         'PERMISSION_NOTIFICATIONS=1',
         'PERMISSION_MEDIA_LIBRARY=1'
       ]
+      
+      # Fix for TweetNacl/PusherSwift module dependency issues
+      config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['$(inherited)']
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-Xcc -fmodule-map-file=${PODS_ROOT}/TweetNacl/Sources/module.map'
     end
     # End of the permission_handler configuration
 
